@@ -1,5 +1,5 @@
 //	Utilities
-import {colors} from '../helpers/constants';
+import { colors } from '../helpers/constants';
 
 //	Components
 import Signature from '../components/signature';

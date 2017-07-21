@@ -1,5 +1,5 @@
 //	Utilities
-import {getRandomEmoji} from '../helpers/emojis';
+import { getRandomEmoji } from '../helpers/emojis';
 
 const About = () => (
 	<p>
