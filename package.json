@@ -2,12 +2,14 @@
   "name": "ythecombinator.me",
   "version": "1.0.0",
   "scripts": {
-	"build": "node purify && next build src",
+    "build": "node purify && next build src",
     "heroku-postbuild": "npm run build",
     "dev": "cp ./node_modules/tachyons/css/tachyons.css ./node_modules/tachyons/css/tachyons.min.pure.css && node server",
     "start": "NODE_ENV=production node server",
     "lint": "xo",
-    "test": "npm run lint"
+    "test": "npm run lint",
+    "docs:TOC": "markdown-toc README.md -i",
+    "docs:TOC:watch": "onchange 'README.md' -- npm run docs:TOC"
   },
   "license": "MIT",
   "repository": "ythecombinator/me",
@@ -28,12 +30,12 @@
       "import/no-extraneous-dependencies": 0,
       "react/prop-types": 0,
       "react/display-name": 0,
-	  "semi": 1,
-	  "prefer-default-export": 0
+      "semi": 1,
+      "prefer-default-export": 0
     }
   },
   "dependencies": {
-	"babel-runtime": "^6.23.0",
+    "babel-runtime": "^6.23.0",
     "babili-webpack-plugin": "0.1.2",
     "module-alias": "^2.0.0",
     "next": "3.0.1-beta.18",
@@ -45,7 +47,7 @@
     "react": "15.6.1",
     "react-dom": "15.6.1",
     "react-icon-base": "2.1.0",
-	"stackframe": "^1.0.3",
+    "stackframe": "^1.0.3",
     "postcss": "6.0.8",
     "styled-jsx": "1.0.9",
     "styled-jsx-postcss": "0.2.0",
@@ -57,6 +59,8 @@
   "devDependencies": {
     "eslint-config-prettier": "2.3.0",
     "eslint-plugin-react": "7.1.0",
+    "markdown-toc": "1.1.0",
+    "onchange": "3.2.1",
     "prettier": "1.5.3",
     "xo": "0.18.2"
   }
