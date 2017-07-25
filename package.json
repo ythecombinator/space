@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "scripts": {
     "build": "node purify && next build src",
-    "heroku-postbuild": "npm run build",
     "dev": "cp ./node_modules/tachyons/css/tachyons.css ./node_modules/tachyons/css/tachyons.min.pure.css && node server",
     "start": "NODE_ENV=production node server",
     "lint": "xo",
@@ -33,6 +32,9 @@
       "semi": 1,
       "prefer-default-export": 0
     }
+  },
+  "now": {
+    "alias": "ythecombinator.now.sh"
   },
   "dependencies": {
     "babel-runtime": "^6.23.0",
