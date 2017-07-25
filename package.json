@@ -1,0 +1,71 @@
+{
+  "name": "ythecombinator.me",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "node purify && next build src",
+    "dev": "cp ./node_modules/tachyons/css/tachyons.css ./node_modules/tachyons/css/tachyons.min.pure.css && node server",
+    "start": "NODE_ENV=production node server",
+    "lint": "xo",
+    "test": "npm run lint"
+  },
+  "license": "MIT",
+  "repository": "ythecombinator/me",
+  "xo": {
+    "extends": [
+      "prettier",
+      "prettier/react",
+      "plugin:react/recommended"
+    ],
+    "env": [
+      "browser",
+      "node"
+    ],
+    "rules": {
+      "react/react-in-jsx-scope": 0,
+      "import/named": 0,
+      "import/order": 0,
+      "import/no-extraneous-dependencies": 0,
+      "react/prop-types": 0,
+      "react/display-name": 0,
+	  "semi": 1,
+	  "prefer-default-export": 0
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run test",
+      "prettier --single-quote --no-semi --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "babel-runtime": "^6.23.0",
+    "module-alias": "^2.0.0",
+    "next": "3.0.1-beta.18",
+    "next-routes": "^1.0.40",
+    "preact": "8.2.1",
+    "preact-compat": "3.16.0",
+    "purify-css": "^1.2.5",
+    "ramda": "^0.24.1",
+    "react": "15.6.1",
+    "react-dom": "15.6.1",
+    "react-icon-base": "2.1.0",
+    "stackframe": "^1.0.3",
+    "styled-jsx": "1.0.9",
+    "styled-jsx-postcss": "0.2.0",
+    "sw-precache-webpack-plugin": "^0.11.4",
+    "tachyons": "^4.7.4",
+    "unique-random-array": "1.0.0",
+    "vivus": "^0.4.1"
+  },
+  "devDependencies": {
+    "babili-webpack-plugin": "0.1.2",
+    "eslint-config-prettier": "2.3.0",
+    "eslint-plugin-react": "7.1.0",
+    "husky": "0.14.3",
+    "lint-staged": "4.0.2",
+    "postcss": "6.0.8",
+    "prettier": "1.5.3",
+    "xo": "0.18.2"
+  }
+}
