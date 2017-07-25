@@ -36,9 +36,9 @@
 
 - Service worker support with [sw-precache](https://github.com/GoogleChrome/sw-precache)
 
-- Component-friendly (server/client rendered) PostCSS support for JSX
+- Component-friendly (server/client rendered) [PostCSS](http://postcss.org/) support for *JSX*
 
-- Emerging Lighthouse score
+- Significant [Lighthouse](https://github.com/GoogleChrome/lighthouse) score–its evolution can be tracked [here](https://github.com/ythecombinator/me/issues/1).
 
 ## Getting Started
 
