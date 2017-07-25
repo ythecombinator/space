@@ -2,7 +2,8 @@
   "name": "ythecombinator.me",
   "version": "1.0.0",
   "scripts": {
-    "build": "node purify && next build src",
+	"build": "node purify && next build src",
+    "heroku-postbuild": "npm run build",
     "dev": "cp ./node_modules/tachyons/css/tachyons.css ./node_modules/tachyons/css/tachyons.min.pure.css && node server",
     "start": "NODE_ENV=production node server",
     "lint": "xo",
