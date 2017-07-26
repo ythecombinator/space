@@ -13,7 +13,8 @@
 		"test:regression:reference": "backstop reference",
 		"test:regression:compare": "backstop test",
 		"test:regression": "npm run test:regression:reference && npm run test:regression:compare",
-		"test": "npm run lint"
+    	"test:dependencies": "npm-check -u",
+		"test": "npm run test:lint"
 	},
 	"license": "MIT",
 	"repository": "ythecombinator/me",
@@ -68,6 +69,7 @@
 		"eslint-config-prettier": "2.3.0",
 		"eslint-plugin-react": "7.1.0",
 		"markdown-toc": "1.1.0",
+		"npm-check": "5.4.5",
 		"onchange": "3.2.1",
 		"opn-cli": "3.1.0",
 		"plato": "1.7.0",

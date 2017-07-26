@@ -38,7 +38,9 @@
 
 - Component-friendly (server/client rendered) [PostCSS](http://postcss.org/) support for *JSX*
 
-- Significant [Lighthouse](https://github.com/GoogleChrome/lighthouse) score–its evolution can be tracked [here](https://github.com/ythecombinator/me/issues/1).
+- Significant [Lighthouse](https://github.com/GoogleChrome/lighthouse) score–its evolution can be tracked [here](https://github.com/ythecombinator/me/issues/1)
+
+- *Code complexity*, *performance auditing*, *CSS regression* and other useful tests
 
 ## Getting Started
 
