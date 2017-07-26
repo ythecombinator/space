@@ -15,7 +15,7 @@ const Content = ({social, communities, interests, currentJob, activity, alias}) 
     <div className="content">
 
 		<Hero
-			name="me"
+			name="hero"
 			source="../static/ythecombinator.svg"
 			color= {colors.hero}
 			strokeWidth = {5}

@@ -22,7 +22,7 @@ class Hero extends PureComponent {
 
     render() {
         return(
-            <div id={this.props.name} style={this.state.style}></div>
+            <div className={this.props.name} id={this.props.name} style={this.state.style}></div>
         );
 	}
 
