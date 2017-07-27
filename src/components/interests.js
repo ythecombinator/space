@@ -7,7 +7,7 @@ import { getRandomEmoji } from '../helpers/emojis';
 
 const Interests = ({interests}) => (
 	<p>
-		{`${getRandomEmoji('interests').data}`} My passions include: {dropLast(1, interests).map((interest) => (
+		{`${getRandomEmoji('interests')}`} My passions include: {dropLast(1, interests).map((interest) => (
 			` ${interest}, `
 		))}
 

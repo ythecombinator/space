@@ -1,6 +1,7 @@
 //	Utilities
 import convert from './object-to-array';
 import random from 'unique-random-array';
+import { map } from 'ramda';
 
 const emojis = {
 	hi: {
@@ -43,22 +44,25 @@ const emojis = {
 
 const {hi, work, heart, people, speaking} = emojis;
 
+const toEmojiRepresentation = arr =>
+	map(elem => elem.data, arr);
+
 const getRandomEmoji = type => {
 	const emojis = {
 		'about'() {
-			return random(convert(hi))();
+			return random(toEmojiRepresentation(convert(hi)))();
 		},
 		'job'() {
-			return random(convert(work))();
+			return random(toEmojiRepresentation(convert(work)))();
 		},
 		'interests'() {
-			return random(convert(heart))();
+			return random(toEmojiRepresentation(convert(heart)))();
 		},
 		'community'() {
-			return random(convert(people))();
+			return random(toEmojiRepresentation(convert(people)))();
 		},
 		'speaking'() {
-			return random(convert(speaking))();
+			return random(toEmojiRepresentation(convert(speaking)))();
 		}
 	};
 	return emojis[type]();

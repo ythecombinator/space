@@ -3,7 +3,7 @@ import { getRandomEmoji } from '../helpers/emojis';
 
 const About = () => (
 	<p>
-		{`${getRandomEmoji('about').data}`}
+		{`${getRandomEmoji('about')}`}
 		{"Hi folks! I'm just another constantly evolving "}
 		<s>{"web wizard who doesn't know nothing about sketching; as you can see"}</s>
 		{" full-stack developer draft who inhabits this world."}
