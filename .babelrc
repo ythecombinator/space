@@ -1,5 +1,16 @@
 {
-  "presets": [
-    "./babel-preset"
-  ]
+  "env": {
+    "development": {
+      "presets": "./babel-preset"
+    },
+    "production": {
+      "presets": "./babel-preset"
+    },
+    "test": {
+      "presets": [
+        ["env", { "modules": "commonjs" }],
+        "./babel-preset"
+      ]
+    }
+  }
 }

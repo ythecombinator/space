@@ -1,6 +1,7 @@
 {
 	"files.exclude": {
 		"**/build": true,
+		"**/reports": true,
 		"**/node_modules": true
 	}
 }
