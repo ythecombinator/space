@@ -13,4 +13,4 @@ const isAvailable = (prop, obj) => has(prop, obj);
 const toAvailableOnes = elem => isAvailable(elem.name, icons);
 
 export default icons;
-export {toAvailableOnes};
+export { toAvailableOnes, isAvailable };
