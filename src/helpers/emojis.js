@@ -69,4 +69,4 @@ const getRandomEmoji = type => {
 };
 
 export default emojis;
-export {getRandomEmoji};
+export { getRandomEmoji, toEmojiRepresentation };
