@@ -12,7 +12,7 @@ const Communities = ({events}) => (
 	<div>
 		<p>
 
-			{`${getRandomEmoji('community')}`} I also try to be as active as possible at local communities like
+			{`${getRandomEmoji('community')} I also try to be as active as possible at local communities like `}
 
 			{events.map((event) => (
 				<a key= {`${event.name}`} href={event.link} target="_blank">
@@ -20,7 +20,7 @@ const Communities = ({events}) => (
 				</a>
 			))}
 
-			 and many others!
+			{"and many others!"}
 		</p>
 
 		<p>
