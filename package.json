@@ -7,14 +7,14 @@
 		"start": "NODE_ENV=production node server",
 		"docs:TOC": "markdown-toc README.md -i",
 		"docs:TOC:watch": "onchange 'README.md' -- npm run docs:TOC",
+		"test:unit": "jest",
 		"test:lint": "xo",
 		"test:complexity": "plato -r -d reports/complexity -t 'Code Complexity' -x .json src/**/*.js && opn reports/complexity/index.html",
 		"test:perf": "sitespeed.io http://localhost:3000 --outputFolder reports/perf && opn reports/perf/index.html",
 		"test:regression:reference": "backstop reference",
 		"test:regression:compare": "backstop test",
 		"test:regression": "npm run test:regression:reference && npm run test:regression:compare",
-    	"test:dependencies": "npm-check -u",
-		"test": "npm run test:lint"
+		"test:dependencies": "npm-check -u"
 	},
 	"license": "MIT",
 	"repository": "ythecombinator/me",
@@ -39,15 +39,20 @@
 			"prefer-default-export": 0
 		}
 	},
+	"jest": {
+		"collectCoverage": true,
+		"coverageDirectory": "reports/coverage"
+	},
 	"now": {
 		"alias": "ythecombinator.now.sh"
 	},
 	"dependencies": {
-		"babel-runtime": "^6.23.0",
+		"babel-runtime": "6.25.0",
 		"babili-webpack-plugin": "0.1.2",
 		"module-alias": "^2.0.0",
 		"next": "3.0.1-beta.18",
 		"next-routes": "^1.0.40",
+		"postcss": "6.0.8",
 		"preact": "8.2.1",
 		"preact-compat": "3.16.0",
 		"purify-css": "^1.2.5",
@@ -56,8 +61,7 @@
 		"react-dom": "15.6.1",
 		"react-icon-base": "2.1.0",
 		"stackframe": "^1.0.3",
-		"postcss": "6.0.8",
-		"styled-jsx": "1.0.9",
+		"styled-jsx": "1.0.10",
 		"styled-jsx-postcss": "0.2.0",
 		"sw-precache-webpack-plugin": "^0.11.4",
 		"tachyons": "^4.7.4",
@@ -66,8 +70,11 @@
 	},
 	"devDependencies": {
 		"backstopjs": "2.7.5",
+		"emoji-tree": "1.1.1",
+		"enzyme": "2.9.1",
 		"eslint-config-prettier": "2.3.0",
 		"eslint-plugin-react": "7.1.0",
+		"jest": "20.0.4",
 		"markdown-toc": "1.1.0",
 		"npm-check": "5.4.5",
 		"onchange": "3.2.1",
