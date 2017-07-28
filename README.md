@@ -38,7 +38,7 @@
 
 - Component-friendly (server/client rendered) [PostCSS](http://postcss.org/) support for *JSX*
 
-- Significant [Lighthouse](https://github.com/GoogleChrome/lighthouse) score–its evolution can be tracked [here](https://github.com/ythecombinator/me/issues/1)
+- Significant [Lighthouse](https://github.com/GoogleChrome/lighthouse) score–its evolution can be tracked [here](https://github.com/ythecombinator/.me-front/issues/1)
 
 - *Code complexity*, *performance auditing*, *CSS regression* and other useful tests
 
@@ -47,7 +47,7 @@
 Clone the repository.
 
 ```sh
-git clone git@github.com:ythecombinator/me.git
+git clone git@github.com:ythecombinator/.me-front.git
 ```
 
 `cd` into the directory.
@@ -100,7 +100,7 @@ npm start
 
 ## License
 
-[ythecombinator.me](https://github.com/ythecombinator/me) is distributed under
+[ythecombinator.me](https://github.com/ythecombinator/.me-front) is distributed under
 the MIT License, available in this repository.
 
 All contributions are assumed to

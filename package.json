@@ -1,5 +1,5 @@
 {
-	"name": "ythecombinator.me",
+	"name": "ythecombinator.me-front",
 	"version": "1.0.0",
 	"scripts": {
 		"build": "node purify && next build src",
@@ -17,7 +17,7 @@
 		"test:dependencies": "npm-check -u"
 	},
 	"license": "MIT",
-	"repository": "ythecombinator/me",
+	"repository": "ythecombinator/.me-front",
 	"xo": {
 		"extends": [
 			"prettier",
