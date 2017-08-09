@@ -1,5 +1,5 @@
 {
-	"name": "ythecombinator.me-front",
+	"name": "ythecombinator.me",
 	"version": "1.0.0",
 	"scripts": {
 		"build": "node purify && next build src",
@@ -10,6 +10,7 @@
 		"test:unit": "jest",
 		"test:lint": "xo",
 		"test:complexity": "plato -r -d reports/complexity -t 'Code Complexity' -x .json src/**/*.js && opn reports/complexity/index.html",
+		"test:pwa": "mkdir reports/pwa && lighthouse http://localhost:3000 --output-path  reports/pwa/index --view",
 		"test:perf": "sitespeed.io http://localhost:3000 --outputFolder reports/perf && opn reports/perf/index.html",
 		"test:regression:reference": "backstop reference",
 		"test:regression:compare": "backstop test",
@@ -17,7 +18,7 @@
 		"test:dependencies": "npm-check -u"
 	},
 	"license": "MIT",
-	"repository": "ythecombinator/.me-front",
+	"repository": "ythecombinator/.me",
 	"xo": {
 		"extends": [
 			"prettier",
@@ -49,6 +50,7 @@
 	"dependencies": {
 		"babel-runtime": "6.25.0",
 		"babili-webpack-plugin": "0.1.2",
+		"lighthouse": "^2.4.0",
 		"module-alias": "^2.0.0",
 		"next": "3.0.1-beta.18",
 		"next-routes": "^1.0.40",
