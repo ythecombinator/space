@@ -72,11 +72,4 @@ describe('getRandomEmoji()', () => {
 		expect(hasEmojiIn(getRandomEmoji(input))).toBe(true);
 	});
 
-  	it('returns an unique emoji', () => {
-
-		const types = ['about', 'job', 'interests', 'community', 'speaking'];
-		const input = random(types)();
-
-		expect(getRandomEmoji(input)).not.toEqual(getRandomEmoji(input));
-	});
 });
