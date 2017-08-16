@@ -9,8 +9,18 @@
 
 <p align="center">
 	🎇 here's where you can find me on the web 🎇
-</p>
+<br>
+<br>
 
+<a href="https://travis-ci.org/ythecombinator/.me">
+    <img src="https://travis-ci.org/ythecombinator/.me.svg?branch=master" alt="Build Status">
+</a>
+
+<a href="LICENSE.md">
+    <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg" alt="MIT License">
+</a>
+
+</p>
 <br>
 
 ---
