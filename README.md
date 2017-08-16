@@ -16,6 +16,22 @@
     <img src="https://travis-ci.org/ythecombinator/.me.svg?branch=master" alt="Build Status">
 </a>
 
+<a href="https://codebeat.co/projects/github-com-ythecombinator-me-master">
+	<img alt="codebeat badge" src="https://codebeat.co/badges/88ec80a1-e3b0-4e0f-9c76-4a717e68a252" />
+</a>
+
+<a href="https://codeclimate.com/github/ythecombinator/.me">
+	<img src="https://codeclimate.com/github/ythecombinator/.me/badges/gpa.svg" />
+</a>
+
+<a href="https://david-dm.org/ythecombinator/.me" title="dependencies status">
+	<img src="https://david-dm.org/ythecombinator/.me/status.svg"/>
+</a>
+
+<a href="https://david-dm.org/ythecombinator/.me?type=dev" title="devDependencies status">
+	<img src="https://david-dm.org/ythecombinator/.me/dev-status.svg"/>
+</a>
+
 <a href="LICENSE.md">
     <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg" alt="MIT License">
 </a>
