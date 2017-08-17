@@ -27,6 +27,10 @@ const SocialLinks = ({socialNetworks}) => (
 				text-align: center;
 			}
 
+			.social-links-list a:hover {
+				border: 0;
+			}
+
 			.social-links-list i {
 				color: #aaa;
 				transition: transform 250ms ease, color 250ms linear;
