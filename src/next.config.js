@@ -18,7 +18,7 @@ module.exports = {
 				runtimeCaching: [
 					{
 						handler: 'fastest',
-						urlPattern: /[.](png|jpg|css)/
+						urlPattern: /[.](webp|jpg|css)/
 					},
 					{
 						handler: "networkFirst",
