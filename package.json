@@ -7,10 +7,12 @@
 		"start": "NODE_ENV=production node server",
 		"docs:TOC": "markdown-toc README.md -i",
 		"docs:TOC:watch": "onchange 'README.md' -- npm run docs:TOC",
+		"test:pre:clean": "rm -rf reports",
+		"test:pre:scaffold": "mkdir reports",
 		"test:unit": "jest",
 		"test:lint": "xo",
 		"test:complexity": "plato -r -d reports/complexity -t 'Code Complexity' -x .json src/**/*.js && opn reports/complexity/index.html",
-		"test:pwa": "mkdir reports/pwa && lighthouse http://localhost:3000 --output-path  reports/pwa/index --view",
+		"test:pwa": "npm run test:pre:clean && npm run test:pre:scaffold && mkdir reports/pwa && lighthouse http://localhost:3000 --output-path  reports/pwa/index --view",
 		"test:perf": "sitespeed.io http://localhost:3000 --outputFolder reports/perf && opn reports/perf/index.html",
 		"test:regression:reference": "backstop reference",
 		"test:regression:compare": "backstop test",
@@ -67,8 +69,7 @@
 		"styled-jsx-postcss": "0.2.0",
 		"sw-precache-webpack-plugin": "^0.11.4",
 		"tachyons": "4.8.1",
-		"unique-random-array": "1.0.0",
-		"vivus": "0.4.2"
+		"unique-random-array": "1.0.0"
 	},
 	"devDependencies": {
 		"backstopjs": "2.7.5",
