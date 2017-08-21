@@ -15,17 +15,8 @@ const Content = ({social, communities, interests, currentJob, activity, alias}) 
     <div className="content">
 
 		<Hero
-			name="hero"
-			source="../static/ythecombinator.svg"
-			color= {colors.hero}
-			strokeWidth = {5}
-			duration = {700}
-			animation = {{
-				type: "async",
-				pathTiming: "EASE_IN",
-				animTiming: "EASE_OUT_BOUNCE"
-			}}
-		/>
+			source = "../static/ythecombinator.webp"
+			description = "It's me, ythecombinator" />
 
 		<About />
 
