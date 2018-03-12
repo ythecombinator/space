@@ -5,9 +5,8 @@ const content = [
 	'./src/layouts/*.js',
 	'./src/components/*.js'
 ];
-const css = ['./node_modules/tachyons/css/tachyons.css'];
+const css = [''];
 const options = {
-  output: './node_modules/tachyons/css/tachyons.min.pure.css',
   minify: true,
   info: true
 };
