@@ -6,15 +6,15 @@
 	"banner": "",
 	"experiences": [{
 		"company": {
-			"name": "BEPiD",
-			"link": "http://www.bepid.ifce.edu.br"
+			"name": "Apple Developer Academy",
+			"link": "http://developeracademy.ifce.edu.br/"
 		},
 		"description": "native development lab",
 		"role": "iOS • back-end • front-end • watchOS • tvOS developer"
 	}, {
 		"company": {
 			"name": "Beakyn",
-			"link": "beakyn.com"
+			"link": "https://beakyn.com"
 		},
 		"description": "a company whose mission is to help people better understand locations by building the most comprehensive geofence and Point of Interest (PoI) data in the United States",
 		"role": "front-end developer"
