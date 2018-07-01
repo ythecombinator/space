@@ -7,7 +7,7 @@ import icon from '../assets/external-link.svg'
 export default () => (
   <Menu>
     <li><Link to='/about'>About</Link></li>
-    <li><Link to='/blog'>Blog</Link></li>
+    <li><Link to='/posts'>Posts</Link></li>
     <li>
       <a href='https://github.com/bntzio/gatsby-starter-superstylin' target='_blank'>
         GitHub
