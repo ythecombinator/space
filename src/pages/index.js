@@ -1,64 +1,18 @@
-//	Utilities
-import {
-	last,
-	find,
-	propEq,
-	filter
-} from 'ramda';
-import {toAvailableOnes} from '../helpers/icons';
+import React from 'react'
+import Link from 'gatsby-link'
 
-//	Data Source
-import data from '../data';
+import Menu from '../components/Menu'
+import icon from '../assets/external-link.svg'
 
-//	Layouts
-import Page from '../layouts/page';
-
-//	Components
-import Title from '../components/title';
-import Content from '../components/content';
-import { PureComponent } from 'react';
-
-const {
-	alias,
-	interests,
-	experiences,
-	bio,
-	communities,
-	social
-} = data;
-const activityDataSource = find(propEq('name', 'wakatime'))(data.social);
-const socialLinks = filter(toAvailableOnes, social);
-
-const index = class extends PureComponent {
-
-	componentDidMount() {
-		if ("serviceWorker" in navigator) {
-			navigator.serviceWorker.register("/sw.js")
-				.then(() => {
-					console.info('Hey there 🙋! Content is now available offline!');
-				})
-				.catch(err => {
-					console.warn(err);
-				});
-		}
-	}
-
-	render() {
-		return (
-			<Page data = {data} >
-				<Title name = {alias} />
-				<Content
-					alias = {alias}
-					social = {socialLinks}
-					communities = {communities}
-					interests = {interests}
-					description = {bio}
-					currentJob = {last(experiences)}
-					activity = {activityDataSource}
-				/>
-			</Page>
-		);
-	}
-};
-
-export default index;
+export default () => (
+  <Menu>
+    <li><Link to='/about'>About</Link></li>
+    <li><Link to='/blog'>Blog</Link></li>
+    <li>
+      <a href='https://github.com/bntzio/gatsby-starter-superstylin' target='_blank'>
+        GitHub
+      </a>
+      <img id='external-link' src={icon} alt='External link icon' />
+    </li>
+  </Menu>
+)

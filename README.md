@@ -1,137 +1,45 @@
-<h1 align="center">
-	<img src="docs/img/banner.png" alt="It's me, matt!" width="800px">
-	<br>
-	<br>
-</h1>
+<h1 align="center">Superstylin' v2 🎉</h1>
 
-<br>
-<br>
+<p align="center">A <a href="https://github.com/gatsbyjs/gatsby" target="_blank">Gatsby</a> Starter with <a href="https://styled-components.com/" target="_blank">Style 💅</a></p>
 
-<p align="center">
-	🎇 here's where you can find me on the web 🎇
-<br>
-<br>
+## What is Superstylin'?
+Superstylin' is a Gatsby starter that uses styled-components as the main way to style your Gatsby site, it provides an easy to start structure to get you up and running with your first Gatsby-powered site.
 
-<a href="https://travis-ci.org/ythecombinator/.me">
-    <img src="https://travis-ci.org/ythecombinator/.me.svg?branch=master" alt="Build Status">
-</a>
+## About styled-components
+Simply put, styled-components is a way to add your css in your js, it works by creating a component and style it, then you'll get a styled-component, it's really simple and very powerful.
 
-<a href="https://codebeat.co/projects/github-com-ythecombinator-me-master">
-	<img alt="codebeat badge" src="https://codebeat.co/badges/88ec80a1-e3b0-4e0f-9c76-4a717e68a252" />
-</a>
+## Benefits of using styled-components
+By using your css in your js you get the power of javascript to add more functionality to the way you declare your styles, but wait, that's not all!
 
-<a href="https://codeclimate.com/github/ythecombinator/.me">
-	<img src="https://codeclimate.com/github/ythecombinator/.me/badges/gpa.svg" />
-</a>
+Below are some interesting readings to further discover the benefits of styled-components.
 
-<a href="https://david-dm.org/ythecombinator/.me" title="dependencies status">
-	<img src="https://david-dm.org/ythecombinator/.me/status.svg"/>
-</a>
+* [Styled-Components: Enforcing Best Practices In Component-Based Systems](https://www.smashingmagazine.com/2017/01/styled-components-enforcing-best-practices-component-based-systems/)
+* [The magic behind 💅 styled-components](http://mxstbr.blog/2016/11/styled-components-magic-explained/)
 
-<a href="https://david-dm.org/ythecombinator/.me?type=dev" title="devDependencies status">
-	<img src="https://david-dm.org/ythecombinator/.me/dev-status.svg"/>
-</a>
+A big thanks to [Glen Maddern](https://twitter.com/glenmaddern) and [Max Stoiber](https://twitter.com/mxstbr) for making [styled-components](https://github.com/styled-components/styled-components) 👏🎉.
 
-<a href="LICENSE.md">
-    <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg" alt="MIT License">
-</a>
+Also big thanks to [Kyle Mathews](https://github.com/KyleAMathews) for starting and maintaining [Gatsby](https://github.com/gatsbyjs/gatsby) 👏🎊.
 
-</p>
-<br>
+## Inline-styles vs CSS in JS
+Read this excellent post on [why inline-styles !== css-in-js](http://mxstbr.blog/2016/11/inline-styles-vs-css-in-js/) by [Max Stoiber](https://github.com/mxstbr).
 
----
+## Features of Superstylin' v2
+* Use css-in-js with the magic of [styled-components](https://github.com/styled-components/styled-components) 💅
+* Uses [Gatsby](https://www.gatsbyjs.org) built-in [GraphQL](http://graphql.org) to fetch and sort blog posts
+* Easy to customize and to get started with your own Gatsby site
+* Perfect for sites, blogs or both
+* Super simple project structure to get you up and running fast
 
-## Table of Contents
-
-<!-- DO NOT EDIT THE COMMENTS BELOW -->
-
-<!-- toc -->
-
-- [Features](#features)
-- [Getting Started](#getting-started)
-- [License](#license)
-- [Credits](#credits)
-
-<!-- tocstop -->
-
-## Features
-
-- Server-rendered [React](https://facebook.github.io/react/) with [Next.js](https://github.com/zeit/next.js/)
-
-- Aliases React to [Preact](https://preactjs.com/) in production for a smaller bundle size
-
-- Service worker support with [sw-precache](https://github.com/GoogleChrome/sw-precache)
-
-- Component-friendly (server/client rendered) [PostCSS](http://postcss.org/) support for *JSX*
-
-- Significant [Lighthouse](https://github.com/GoogleChrome/lighthouse) score–its evolution can be tracked [here](https://github.com/ythecombinator/.me/issues/1)
-
-- *Code complexity*, *performance auditing*, *CSS regression* and other useful tests
-
-## Getting Started
-
-Clone the repository.
-
+## Installing
 ```sh
-git clone git@github.com:ythecombinator/.me.git
+$ gatsby new my-awesome-site https://github.com/bntzio/gatsby-starter-superstylin
+
+$ cd my-awesome-site
+
+$ gatsby develop
 ```
-
-`cd` into the directory.
-
-```sh
-cd me
-```
-
-Install the project dependencies:
-
-```sh
-yarn
-
-# or
-
-npm install
-```
-
-Start the development server:
-
-```sh
-yarn dev
-
-# or
-
-npm run dev
-```
-
-Navigate to [localhost:3000](http://localhost:3000) in your browser of choice.
-
-> Testing the Service Worker setup requires running as production:
-
-```sh
-yarn build
-
-# or
-
-npm run build
-```
-
-```sh
-yarn start
-
-# or
-
-npm start
-```
-
-🚀 Navigate to [localhost:3000](http://localhost:3000) in your browser of choice.
 
 ## License
+Licensed under the MIT License, Copyright © 2018 Enrique Benitez
 
-[ythecombinator.me](https://github.com/ythecombinator/.me) is distributed under
-the MIT License, available in this repository.
-
-All contributions are assumed to
-be also licensed under the same.
-
-## Credits
-
-Visual design inspiration was explicitly taken from [Rico's blog](https://github.com/rstacruz/rstacruz.github.io)–so special thanks to him 😁.
+See [license](https://github.com/bntzio/gatsby-starter-superstylin/blob/master/license) for more information.
