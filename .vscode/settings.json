@@ -1,0 +1,11 @@
+{
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.cache": true
+  },
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/.cache": true
+  },
+  "editor.formatOnSave": true
+}
