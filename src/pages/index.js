@@ -10,10 +10,22 @@ export default () => (
     <li><Link to='/posts'>Posts</Link></li>
     <li><Link to='/talks'>Talks</Link></li>
     <li>
-      <a href='https://github.com/ythecombinator/.space' target='_blank'>
+      <a href='https://github.com/ythecombinator' target='_blank'>
         GitHub
       </a>
       <img id='external-link' src={icon} alt='External link icon' />
     </li>
+    <li>
+      <a href='https://twitter.com/ythecombinator' target='_blank'>
+        Twitter
+      </a>
+      <img id='external-link' src={icon} alt='External link icon' />
+    </li>
+    <li>
+      <a href='https://appear.in/ythecombinator' target='_blank'>
+        Appear.in
+      </a>
+      <img id='external-link' src={icon} alt='External link icon' />
+    </li>     
   </Menu>
 )
