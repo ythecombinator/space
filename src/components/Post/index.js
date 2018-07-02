@@ -35,6 +35,23 @@ const StyledPost = styled.div`
     @media (min-width: 768px) {
       width: 60%;
     }
+    a {
+      color: #8bb9fb;
+      transition: all .3s ease-in-out;
+      text-decoration: none;
+      &:hover {
+        color: white;
+        background: #8bb9fb;
+      }
+    }
+    img {
+      max-width: 100%;
+    }
+    blockquote {
+      border-left: 5px solid #ccc;  
+      margin: 1.5em 10px;
+      padding: 0.5em 10px;        
+    }
   }
 `
 
