@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: 'Superstylin',
-    description: 'A Gatsby Starter with styled-components'
+    title: 'ythecombinator',
+    description: 'full-stack engineer focused on client-side architecture • into Swift & node.js'
   },
   plugins: [
     'gatsby-plugin-styled-components',
@@ -12,6 +12,13 @@ module.exports = {
         name: 'posts'
       }
     },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/src/talks`,
+        name: 'talks'
+      }
+    },    
     'gatsby-transformer-remark',
     'gatsby-plugin-react-helmet'
   ]

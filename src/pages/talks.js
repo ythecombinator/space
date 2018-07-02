@@ -10,9 +10,9 @@ export default ({ data }) => {
 
 // eslint-disable-next-line
 export const pageQuery = graphql`
-  query PostsQuery {
+  query TalksQuery {
     allMarkdownRemark(
-      filter: { fileAbsolutePath: {regex : "\/posts/"} },
+      filter: { fileAbsolutePath: {regex : "\/talks/"} },
       limit: 10
       sort: { fields: [frontmatter___date], order: ASC }
     ) {
