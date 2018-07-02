@@ -10,11 +10,11 @@ const StyledPostList = styled.ul`
     font-size: 1.1rem;
     font-family: 'Lato', sans-serif;
     font-weight: 600;
-    color: #f7a583;
+    color: #fb958b;
     text-decoration: none;
     padding: 10px;
     &:hover {
-      background: #f7a583;
+      background: #fb958b;
       color: white;
     }
   }

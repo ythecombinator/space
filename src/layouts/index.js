@@ -25,10 +25,10 @@ const TemplateWrapper = ({ children }) => (
     <Header>
       <h1><Link to='/'>ythecombinator's space</Link></h1>
       <h2>
-        <span>full-stack engineer focused on client-side architecture</span> • 
-        <span> into Swift and node.js</span> • 
-        <span> indie, folk, synthwave, Brazilian funk listener</span> • 
-        <span> craft brewing enthusiastic</span> •
+        <span>full-stack engineer focused on client-side architecture</span>
+        <span> into Swift and node.js</span>
+        <span> indie, folk, synthwave, Brazilian funk listener</span>
+        <span> craft brewing enthusiastic</span>
         <span> addicted to emojis and memes 🔝👌😂</span>
       </h2>
     </Header>

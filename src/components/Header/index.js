@@ -8,23 +8,23 @@ const StyledHeader = styled.div`
   flex-direction: column;
   align-items: center;
   h1 {
-    color: #f7a583;
+    color: #fb958b;
     font-size: 2rem;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    border-bottom: 4px solid #f7a583;
+    border-bottom: 4px solid #fb958b;
     display: inline-flex;
     @media (min-width: 768px) {
       font-size: 2.4rem;
     }
     a {
       transition: all .3s ease-in-out;
-      color: #f7a583;
+      color: #fb958b;
       text-decoration: none;
       padding: 0 8px;
       &:hover {
         color: white;
-        background: #f7a583;
+        background: #fb958b;
       }
     }
   }
@@ -41,7 +41,13 @@ const StyledHeader = styled.div`
       font-size: 1rem;
     }
     span {
-      color: #f7a583;
+      color: #fb958b;
+      &:not(:first-child) {
+        &:before {
+          color: #8bb9fb;
+          content: " • ";
+        }
+      }
     }
     i {
       position: absolute;
