@@ -22,7 +22,7 @@ const StyledMenu = styled.ul`
       font-size: 1.4rem;
     }
     img#external-link {
-      color: red;
+      color: #f7a583;
       width: 11px;
       height: 11px;
       display: inline-block;
@@ -31,7 +31,7 @@ const StyledMenu = styled.ul`
     }
   }
   a {
-    color: red;
+    color: #f7a583;
     text-decoration: none;
     &:hover {
       text-decoration: underline;

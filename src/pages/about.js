@@ -17,7 +17,7 @@ const StyledAbout = styled.div`
       font-size: 1.1rem;
     }
     a {
-      color: red;
+      color: #f7a583;
       text-decoration: none;
     }
   }
