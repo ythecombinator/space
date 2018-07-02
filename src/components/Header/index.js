@@ -4,6 +4,9 @@ import styled from 'styled-components'
 const StyledHeader = styled.div`
   margin-top: 4rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   h1 {
     color: #f7a583;
     font-size: 2rem;
@@ -31,6 +34,7 @@ const StyledHeader = styled.div`
     margin-left: -1.6rem;
     margin-top: -0.8rem;
     color: #1a1a1a;
+    max-width: 60%;
     font-size: 0.8rem;
     font-family: 'Poppins', sans-serif;
     @media (min-width: 768px) {
