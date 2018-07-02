@@ -1,5 +1,5 @@
 ---
-path: '/a-whole-day-playing-with-ipfs'
+path: '/posts/a-whole-day-playing-with-ipfs'
 date: '2017-12-15'
 title: 'A Whole Day Playing with IPFS'
 ---

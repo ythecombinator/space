@@ -1,5 +1,5 @@
 ---
-path: '/flisol-2015'
+path: '/talks/flisol-2015'
 date: '2015-04-25'
 title: 'An Introduction to Git & Github, FLISOL 2015'
 ---

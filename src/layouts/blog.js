@@ -10,6 +10,11 @@ const Main = styled.main`
   padding: 0 1rem;
 `
 
+const blogHeaderLinks = {
+  '/posts': <Link to="/">/posts</Link>,
+  '/talks': <Link to="/">/talks</Link>,
+}
+
 const TemplateWrapper = ({children, location}) => (
   <Main>
     <Helmet
@@ -22,7 +27,11 @@ const TemplateWrapper = ({children, location}) => (
       ]}
     />
     <BlogHeader>
-      <h1><Link to="/">{location.pathname}</Link></h1>
+      <h1>
+        {blogHeaderLinks[location.pathname] 
+          ? blogHeaderLinks[location.pathname]
+          : <Link to={`/${location.pathname.split('/')[1]}`}>{location.pathname}</Link> }
+      </h1>
     </BlogHeader>
 
     {children()}

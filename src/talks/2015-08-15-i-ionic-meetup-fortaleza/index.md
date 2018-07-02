@@ -1,5 +1,5 @@
 ---
-path: '/i-ionic-meetup-fortaleza'
+path: '/talks/i-ionic-meetup-fortaleza'
 date: '2015-08-15'
 title: 'An open source mobile project in two weeks, I Ionic Meetup Fortaleza'
 ---

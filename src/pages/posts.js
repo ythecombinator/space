@@ -4,7 +4,6 @@ import PostList from '../components/PostList'
 
 export default ({ data }) => {
   const posts = data.allMarkdownRemark.edges
-  console.log(data);
   return <PostList posts={posts} />
 }
 

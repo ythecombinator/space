@@ -1,5 +1,5 @@
 ---
-path: '/ix-pylestras'
+path: '/talks/ix-pylestras'
 date: '2015-05-30'
 title: 'Jumping on an adventure with metadata: Micro Data and Open Graph, IX Pylestras'
 ---

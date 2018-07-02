@@ -1,5 +1,5 @@
 ---
-path: '/3rd-cocoaheads-fortaleza'
+path: '/talks/3rd-cocoaheads-fortaleza'
 date: '2015-05-28'
 title: '(Super) Hybrid Applications with Ionic, 3rd Cocoaheads Fortaleza'
 ---
