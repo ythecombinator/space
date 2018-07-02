@@ -26,9 +26,13 @@ const StyledAbout = styled.div`
 export default () => (
   <StyledAbout>
     <p>
-      Superstylin is a <a href='https://www.gatsbyjs.org' target='_blank'>Gatsby</a> starter designed to get you up and running with <a href='https://www.styled-components.com' target='_blank'>styled-components</a> 💅<br />
-      You can think of this starter as a super simple boilerplate for your next static site.<br />
-      Feel free to explore the structure of this starter and tweak it for your own needs.
+      I'm a client-side architect–with an iOS/front-end and node.js background–currently working as a front-end engineer at Beakyn, a company whose mission is to help people better understand locations by building the most comprehensive geofence and Point of Interest (PoI) data in the America.
+    </p>
+    <p>
+      My areas of interest/passions include: JavaScript, Swift, architecture patterns (redux et al.), User Interfaces libraries and frameworks (React et al.), developer tooling, functional and reactive programming, unix philosophy, and User Interaction design.
+    </p>
+    <p>
+      I also try to help as much as I can Brazilian local communities like Dev I/O Foundation, Ionic Brazil, CocoaHeads Fortaleza, Lambda I/O Foundation, and many others!
     </p>
   </StyledAbout>
 )

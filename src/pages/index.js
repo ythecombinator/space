@@ -10,7 +10,7 @@ export default () => (
     <li><Link to='/posts'>Posts</Link></li>
     <li><Link to='/talks'>Talks</Link></li>
     <li>
-      <a href='https://github.com/bntzio/gatsby-starter-superstylin' target='_blank'>
+      <a href='https://github.com/ythecombinator/.space' target='_blank'>
         GitHub
       </a>
       <img id='external-link' src={icon} alt='External link icon' />

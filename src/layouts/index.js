@@ -14,7 +14,7 @@ const Main = styled.main`
 const TemplateWrapper = ({ children }) => (
   <Main>
     <Helmet
-      title='Superstylin | A Gatsby Starter with Style 🕶️'
+      title="ythecombinator's space"
       link={[
         {
           rel: 'stylesheet',
@@ -23,14 +23,20 @@ const TemplateWrapper = ({ children }) => (
       ]}
     />
     <Header>
-      <h1><Link to='/'>Superstylin'</Link></h1>
-      <h2>A <span>Gatsby Starter</span> with <span>Style</span> <i>🕶️</i></h2>
+      <h1><Link to='/'>ythecombinator's space</Link></h1>
+      <h2>
+        <span>full-stack engineer focused on client-side architecture</span> • 
+        <span> into Swift and node.js</span> • 
+        <span> indie, folk, synthwave, Brazilian funk listener</span> • 
+        <span> craft brewing enthusiastic</span> •
+        <span> addicted to emojis and memes 🔝👌😂</span>
+      </h2>
     </Header>
 
     {children()}
 
     <Footer>
-      <p>Made by <a href='https://twitter.com/bntzio' target='_blank'>@bntzio</a> with ❤️</p>
+      <p>Made with ❤️ while high on ☕ or 🍻 – or both 😂.</p>
     </Footer>
   </Main>
 )

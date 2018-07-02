@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-superstylin",
-  "version": "2.0.1",
-  "description": "A Gatsby starter with styled-components",
+  "name": "ythecombinator-space",
+  "version": "1.0.0",
+  "description": "ythecombinator's space.",
   "main": "n/a",
   "scripts": {
     "build": "gatsby build",
@@ -9,19 +9,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bntzio/gatsby-starter-superstylin.git"
+    "url": "git+https://github.com/ythecombinator/.space.git"
   },
   "keywords": [
+    "personal-website",
+    "pwa",
     "react",
-    "gatsby",
-    "styled-components"
+    "gatsby"
   ],
-  "author": "Enrique Benitez <bntz.io>",
+  "contributors": ["Enrique Benitez <bntz.io>", "Матвій Альбукерке <ythecombinator.space>"],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bntzio/gatsby-starter-superstylin/issues"
+    "url": "https://github.com/ythecombinator/.space/issues"
   },
-  "homepage": "https://github.com/bntzio/gatsby-starter-superstylin#readme",
+  "homepage": "https://github.com/ythecombinator/.space",
   "dependencies": {
     "gatsby": "^1.9.139",
     "gatsby-link": "^1.6.32",

@@ -1,6 +1,7 @@
 MIT License
 
-Copyright (c) 2018 Enrique Benitez <hello@bntz.io>
+Initial project Copyright (c) 2018 Enrique Benitez <hello@bntz.io>
+Changes Copyright (c) 2018 Matheus Albuquerque <hey@ythecombinator.space>.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

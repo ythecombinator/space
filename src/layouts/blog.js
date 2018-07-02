@@ -13,7 +13,7 @@ const Main = styled.main`
 const TemplateWrapper = ({children, location}) => (
   <Main>
     <Helmet
-      title='Superstylin | A Gatsby Starter with Style 🕶️'
+      title="ythecombinator's space"
       link={[
         {
           rel: 'stylesheet',

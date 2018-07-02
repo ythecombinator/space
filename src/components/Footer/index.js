@@ -8,7 +8,6 @@ const StyledFooter = styled.footer`
     color: #1d1d1d;
     font-size: 0.8rem;
     font-family: 'Lato', sans-serif;
-    font-style: italic;
     font-weight: 600;
     a {
       color: red;
