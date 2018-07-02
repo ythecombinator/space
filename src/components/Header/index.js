@@ -9,7 +9,6 @@ const StyledHeader = styled.div`
     font-size: 2rem;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    font-style: italic;
     border-bottom: 4px solid red;
     display: inline-flex;
     @media (min-width: 768px) {
