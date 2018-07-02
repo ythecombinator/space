@@ -96,7 +96,7 @@ Although we use a few good optimization techniques–e.g. this [lightweight Prot
 
 As it can be seen in the figure below, in an experiment during this PoC, a `2^13` bytes-sized RSA key wasn't able to encrypt even one of our `8` geodata chunks using URSA–which is, by the way, one of the most used OpenSSL bindings for Node.js.
 
-![Data too large.](https://cdn-images-1.medium.com/max/1600/1*FbQomLzZNt2dIwTovH458Q.png)
+![Data too large](./data-too-large.png)
 
 > The used RSA key was generated using genrsa from OpenSSL 0.9.8 running on darwin64-x86_64-llvm inside a MacBook Pro (8 GB 1867 MHz DDR3 | 2,7 GHz Intel Core i5).
 
