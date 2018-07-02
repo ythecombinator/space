@@ -22,7 +22,7 @@ const TemplateWrapper = ({children, location}) => (
       ]}
     />
     <BlogHeader>
-      <h1><Link to="/">Superstylin'</Link></h1>
+      <h1><Link to="/">{location.pathname}</Link></h1>
     </BlogHeader>
 
     {children()}
