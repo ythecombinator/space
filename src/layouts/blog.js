@@ -6,6 +6,8 @@ import styled from 'styled-components'
 
 import BlogHeader from '../components/BlogHeader'
 
+require("prism-themes/themes/prism-ghcolors.css");
+
 const Main = styled.main`
   padding: 0 1rem;
 `

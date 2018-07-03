@@ -33,9 +33,12 @@
     "gatsby-plugin-sharp": "^1.6.48",
     "gatsby-plugin-styled-components": "^2.0.9",
     "gatsby-remark-images": "^1.5.67",
+    "gatsby-remark-prismjs": "^2.0.4",
     "gatsby-source-filesystem": "^1.5.26",
     "gatsby-transformer-remark": "^1.7.34",
     "moment": "^2.21.0",
+    "prism-themes": "^1.0.1",
+    "prismjs": "^1.15.0",
     "react-helmet": "^5.2.0",
     "react-showdown": "^1.6.0",
     "styled-components": "2.4.0"
