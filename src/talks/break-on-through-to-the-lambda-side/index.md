@@ -14,7 +14,7 @@ We will see how old concepts of functional programming can make a huge differenc
 
 📍 Universidade de Fortaleza - Unifor
 
-🗓️ 27 February 2015
+🗓️ February 27, 2015
 
 👥 ≈ 30 people audience
 

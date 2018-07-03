@@ -14,7 +14,7 @@ This time [Abraão](https://github.com/AbraaoAlves) and I will talk on the impor
 
 📍 Centro Universitário 7 de Setembro - UNI7 Fortaleza
 
-🗓️ 04 June 2016
+🗓️ June 04, 2016
 
 👥 ≈ 150 people audience
 

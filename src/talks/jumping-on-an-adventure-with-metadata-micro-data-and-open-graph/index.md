@@ -14,7 +14,7 @@ An introduction to the importance of one of the key concepts behind the Semantic
 
 📍 Universidade de Fortaleza - Unifor
 
-🗓️ 30 May 2015
+🗓️ May 30, 2015
 
 👥 ≈ 40 people audience
 

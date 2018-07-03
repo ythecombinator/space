@@ -14,7 +14,7 @@ Have you ever stopped to think why something as old as functional programming is
 
 📍 Universidade de Fortaleza - Unifor
 
-🗓️ 26 September 2015
+🗓️ September 26, 2015
 
 👥 ≈ 50 people audience
 
@@ -22,7 +22,7 @@ Have you ever stopped to think why something as old as functional programming is
 
 📍 Universidade Federal do Ceará - Campus do Pici
 
-🗓️ 20 October 2015
+🗓️ October 20, 2015
 
 👥 ≈ 30 people audience
 
@@ -30,7 +30,7 @@ Have you ever stopped to think why something as old as functional programming is
 
 📍 Universidade de Fortaleza - Unifor.
 
-🗓️ 28 November 2015
+🗓️ November 28, 2015
 
 👥 ≈ 15 people audience
 

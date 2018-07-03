@@ -14,7 +14,7 @@ Somethings in the JavaScript world may require a considerable number of tasks: m
 
 📍 Universidade de Fortaleza - Unifor
 
-🗓️ 21 November 2015
+🗓️ November 21, 2015
 
 👥 ≈ 50 people audience
 

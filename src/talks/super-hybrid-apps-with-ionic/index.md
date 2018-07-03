@@ -14,7 +14,7 @@ title: '(Super) Hybrid Apps with Ionic'
 
 📍 Instituto Federal de Educação, Ciência e Tecnologia do Ceará, Campus Fortaleza
 
-🗓️ 28 May 2015
+🗓️ May 28, 2015
 
 👥 ≈ 40 people audience
 

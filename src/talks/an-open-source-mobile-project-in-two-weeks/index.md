@@ -14,7 +14,7 @@ In this talk I'll share some of the experiences I had while working on [Conf App
 
 📍 Universidade de Fortaleza - Unifor
 
-🗓️ 15 August 2015
+🗓️ August 15, 2015
 
 👥 ≈ 40 audience
 

@@ -14,7 +14,7 @@ This talk I will present a brief introduction to the concept of software version
 
 📍 Instituto Federal de Educação, Ciência e Tecnologia do Ceará, Campus Fortaleza
 
-🗓️ 25 April 2015
+🗓️ April 25, 2015
 
 👥 ≈ 60 audience
 
@@ -22,7 +22,7 @@ This talk I will present a brief introduction to the concept of software version
 
 📍 Instituto Federal de Educação, Ciência e Tecnologia do Ceará, Campus Fortaleza
 
-🗓️ 20 April 2016
+🗓️ April 20, 2016
 
 👥 ≈ 40 audience
 

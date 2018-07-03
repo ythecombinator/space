@@ -14,7 +14,7 @@ Just a small conversation which aims to integrate basic knowledge of areas relat
 
 📍 Instituto Federal de Educação, Ciência e Tecnologia do Ceará, Campus Fortaleza
 
-🗓️ 22 June 2016
+🗓️ June 22, 2016
 
 👥 ≈ 40 audience
 
@@ -22,7 +22,7 @@ Just a small conversation which aims to integrate basic knowledge of areas relat
 
 📍 Instituto Federal de Educação, Ciência e Tecnologia do Ceará, Campus Fortaleza
 
-🗓️ 07 July 2016
+🗓️ July 07, 2016
 
 👥 ≈ 40 people audience
 
