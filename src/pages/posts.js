@@ -12,7 +12,6 @@ export const pageQuery = graphql`
   query PostsQuery {
     allMarkdownRemark(
       filter: { fileAbsolutePath: {regex : "\/posts/"} },
-      limit: 10
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {

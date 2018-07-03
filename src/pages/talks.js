@@ -12,7 +12,6 @@ export const pageQuery = graphql`
   query TalksQuery {
     allMarkdownRemark(
       filter: { fileAbsolutePath: {regex : "\/talks/"} },
-      limit: 10
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {
