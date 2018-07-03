@@ -7,7 +7,7 @@ const StyledMenu = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 4rem 0;
+  margin: 2.5rem 0;
   li {
     font-size: 1.2rem;
     font-family: 'Lato', sans-serif;
