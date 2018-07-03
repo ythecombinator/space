@@ -47,6 +47,9 @@ const StyledPost = styled.div`
     img {
       max-width: 100%;
     }
+    pre {
+      overflow-x: scroll;
+    }
     blockquote {
       border-left: 5px solid #ccc;  
       margin: 1.5em 10px;
