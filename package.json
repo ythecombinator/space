@@ -5,7 +5,8 @@
   "main": "n/a",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop"
+    "develop": "gatsby develop",
+    "deploy": "yarn build && gh-pages -d public -b master"
   },
   "repository": {
     "type": "git",
@@ -44,6 +45,7 @@
     "styled-components": "2.4.0"
   },
   "devDependencies": {
+    "gh-pages": "^1.2.0",
     "standard": "^11.0.0"
   }
 }
