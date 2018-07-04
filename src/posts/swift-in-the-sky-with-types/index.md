@@ -4,7 +4,10 @@ date: '2016-03-28'
 title: 'Swift In The Sky With Types (pt-BR)'
 ---
 
-> Antes de tudo, algumas coisas a se levar em consideração:
+> Originally published [here](http://equinocios.com/swift/2016/03/28/swift-in-the-sky-with-types/). It'll
+be soon translated into English, I promise 😁.
+
+Antes de tudo, algumas coisas a se levar em consideração:
 
 1.   Esse post é baseado em experiências - e eu não sou nenhum tipo de *dono da
 verdade*: se você tem alguma opinião sobre isso - concordando, discordando,

@@ -4,7 +4,7 @@ date: '2017-12-15'
 title: 'A Whole Day Playing with IPFS'
 ---
 
-_Originally published [here](https://medium.com/beakyn/a-whole-day-playing-with-ipfs-95d2b6b3ea63)._
+> Originally published [here](https://medium.com/beakyn/a-whole-day-playing-with-ipfs-95d2b6b3ea63).
 
 This is pretty much a controversial decentralized web technologies research story but, before starting, there are a few things I'd like to ensure you all, my beloved readers, are aware of.
 
