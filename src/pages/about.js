@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import {Markdown} from 'react-showdown';
-import {data} from './about.data';
+import {data} from '../data/about';
 
 const StyledAbout = styled.div`
   display: flex;
