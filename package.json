@@ -1,16 +1,15 @@
 {
-  "name": "ythecombinator-space",
+  "name": "space",
   "version": "1.0.0",
   "description": "ythecombinator's space.",
   "main": "n/a",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
-    "deploy": "yarn build && gh-pages -d public -b master"
+    "develop": "gatsby develop"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ythecombinator/.space.git"
+    "url": "git+https://github.com/ythecombinator/space.git"
   },
   "keywords": [
     "personal-website",
@@ -24,9 +23,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ythecombinator/.space/issues"
+    "url": "https://github.com/ythecombinator/space/issues"
   },
-  "homepage": "https://github.com/ythecombinator/.space",
+  "homepage": "https://github.com/ythecombinator/space",
   "dependencies": {
     "gatsby": "^1.9.139",
     "gatsby-link": "^1.6.32",
@@ -45,7 +44,6 @@
     "styled-components": "2.4.0"
   },
   "devDependencies": {
-    "gh-pages": "^1.2.0",
     "standard": "^11.0.0"
   }
 }
