@@ -6,6 +6,7 @@ import Helmet from 'react-helmet'
 import styled from 'styled-components'
 
 import BlogHeader from '../components/BlogHeader'
+import GithubRibbon from '../components/GithubRibbon'
 
 import logo from '../assets/logo.png'
 import favicon from '../assets/favicon.png'
@@ -62,6 +63,9 @@ const TemplateWrapper = ({children, location}) => (
         }        
       ]}
     />
+
+    <GithubRibbon/>
+
     <BlogHeader>
       <h1>
         {blogHeaderLinks[location.pathname] 
