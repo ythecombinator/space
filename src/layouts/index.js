@@ -7,6 +7,8 @@ import styled from 'styled-components'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
+import favicon from '../assets/favicon.png'
+
 const Main = styled.main`
   padding: 0 1rem;
 `
@@ -19,7 +21,12 @@ const TemplateWrapper = ({ children }) => (
         {
           rel: 'stylesheet',
           href: 'https://fonts.googleapis.com/css?family=Lato|Poppins:700i'
-        }
+        },
+        {
+          rel: "shortcut icon", 
+          type: "image/png",
+          href: favicon,
+        }        
       ]}
     />
     <Header>

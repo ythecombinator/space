@@ -3,6 +3,8 @@ import Helmet from 'react-helmet'
 
 import Post from '../components/Post'
 
+import favicon from '../assets/favicon.png'
+
 export default function Template ({ data }) {
   const post = data.markdownRemark
 
@@ -10,6 +12,13 @@ export default function Template ({ data }) {
     <div>
       <Helmet
         title={post.frontmatter.title}
+        link={[
+          {
+            rel: "shortcut icon", 
+            type: "image/png",
+            href: favicon,
+          }        
+        ]}        
       />
       <Post postData={post} />
     </div>

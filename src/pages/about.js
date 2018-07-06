@@ -9,7 +9,7 @@ const StyledAbout = styled.div`
   align-items: center;
   margin: 3rem;
   h2 {
-    color: #e75e30;
+    color: #305ee7;
     font-family: 'Lato', sans-serif;
   }  
   h3 {

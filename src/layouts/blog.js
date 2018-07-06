@@ -8,6 +8,7 @@ import styled from 'styled-components'
 import BlogHeader from '../components/BlogHeader'
 
 import logo from '../assets/logo.png'
+import favicon from '../assets/favicon.png'
 
 require("prism-themes/themes/prism-ghcolors.css");
 
@@ -51,7 +52,12 @@ const TemplateWrapper = ({children, location}) => (
         {
           rel: 'stylesheet',
           href: 'https://fonts.googleapis.com/css?family=Lato|Poppins:700i'
-        }
+        },
+        {
+          rel: "shortcut icon", 
+          type: "image/png",
+          href: favicon,
+        }        
       ]}
     />
     <BlogHeader>
