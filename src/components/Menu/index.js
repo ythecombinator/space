@@ -21,6 +21,14 @@ const StyledMenu = styled.ul`
     @media (min-width: 768px) {
       font-size: 1.4rem;
     }
+    img#mail {
+      color: #fb958b;
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      margin-bottom: 6px;
+      margin-left: 4px;
+    }
     img#external-link {
       color: #fb958b;
       width: 11px;
