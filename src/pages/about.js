@@ -3,17 +3,19 @@ import styled from 'styled-components'
 import {Markdown} from 'react-showdown';
 import {data} from '../data/about';
 
+import {brightPink, brightCyan, brightBlue} from "../styles/colors";
+
 const StyledAbout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 3rem;
   h2 {
-    color: #305ee7;
+    color: ${brightBlue};
     font-family: 'Lato', sans-serif;
   }  
   h3 {
-    color: #30bae7;
+    color: ${brightCyan};
     font-family: 'Lato', sans-serif;
   }
   p {
@@ -27,7 +29,7 @@ const StyledAbout = styled.div`
       font-size: 1.1rem;
     }
     a {
-      color: #e7305e;
+      color: ${brightPink};
       text-decoration: none;
     }
   }
@@ -44,7 +46,7 @@ const StyledAbout = styled.div`
         font-size: 1.1rem;
       }
       a {
-        color: #e7305e;
+        color: ${brightPink};
         text-decoration: none;
       }
     }

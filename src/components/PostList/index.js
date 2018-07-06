@@ -2,6 +2,8 @@ import React from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
 
+import {brightPink} from "../../styles/colors";
+
 const StyledPostList = styled.ul`
   list-style-type: none;
   padding-left: 0;
@@ -10,11 +12,11 @@ const StyledPostList = styled.ul`
     font-size: 1.1rem;
     font-family: 'Lato', sans-serif;
     font-weight: 600;
-    color: #e7305e;
+    color: ${brightPink};
     text-decoration: none;
     padding: 10px;
     &:hover {
-      background: #e7305e;
+      background: ${brightPink};
       color: white;
     }
   }

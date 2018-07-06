@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import {brightPink} from "../../styles/colors";
+
 const StyledMenu = styled.ul`
   list-style-type: none;
   padding-left: 0;
@@ -22,7 +24,7 @@ const StyledMenu = styled.ul`
       font-size: 1.4rem;
     }
     img#mail {
-      color: #e7305e;
+      color: ${brightPink};
       width: 20px;
       height: 20px;
       display: inline-block;
@@ -30,7 +32,7 @@ const StyledMenu = styled.ul`
       margin-left: 4px;
     }
     img#external-link {
-      color: #e7305e;
+      color: ${brightPink};
       width: 11px;
       height: 11px;
       display: inline-block;
@@ -39,7 +41,7 @@ const StyledMenu = styled.ul`
     }
   }
   a {
-    color: #e7305e;
+    color: ${brightPink};
     text-decoration: none;
     &:hover {
       text-decoration: underline;

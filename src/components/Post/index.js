@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import moment from 'moment'
 
+import {brightCyan} from "../../styles/colors";
+
 const StyledPost = styled.div`
   padding: 2rem;
   width: 100%;
@@ -36,12 +38,12 @@ const StyledPost = styled.div`
       width: 60%;
     }
     a {
-      color: #30bae7;
+      color: ${brightCyan};
       transition: all .3s ease-in-out;
       text-decoration: none;
       &:hover {
         color: white;
-        background: #30bae7;
+        background: ${brightCyan};
       }
     }
     img {

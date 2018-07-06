@@ -10,6 +10,8 @@ import BlogHeader from '../components/BlogHeader'
 import logo from '../assets/logo.png'
 import favicon from '../assets/favicon.png'
 
+import {brightPink} from "../styles/colors";
+
 require("prism-themes/themes/prism-ghcolors.css");
 
 const Main = styled.main`
@@ -22,7 +24,7 @@ const Logo = styled.div`
   padding-bottom: 5px;
   &:hover {
     color: white;
-    background: #e7305e;
+    background: ${brightPink};
   }
   img: {
     padding: 0 1rem 4px 0;

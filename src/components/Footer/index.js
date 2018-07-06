@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import {brightPink} from "../../styles/colors";
+
 const StyledFooter = styled.footer`
   display: flex;
   justify-content: center;
@@ -10,7 +12,7 @@ const StyledFooter = styled.footer`
     font-family: 'Lato', sans-serif;
     font-weight: 600;
     a {
-      color: #e7305e;
+      color: ${brightPink};
       text-decoration: none;
     }
   }

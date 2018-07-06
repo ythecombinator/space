@@ -1,4 +1,4 @@
-// const colors = require("../../src/styles/colors");
+import {white, brightPink} from "../styles/colors";
 
 module.exports = {
   siteTitle: "ythecombinator",
@@ -18,7 +18,7 @@ module.exports = {
   manifestName: "ythecombinator | Full-Stack Engineer",
   manifestShortName: "Матвій",
   manifestStartUrl: "/",
-  // manifestBackgroundColor: colors.background,
-  // manifestThemeColor: colors.background,
+  manifestBackgroundColor: white,
+  manifestThemeColor: brightPink,
   manifestDisplay: "standalone",
 };

@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import {brightPink, brightCyan} from "../../styles/colors";
+
 const StyledHeader = styled.div`
   margin-top: 4rem;
   text-align: center;
@@ -8,23 +10,23 @@ const StyledHeader = styled.div`
   flex-direction: column;
   align-items: center;
   h1 {
-    color: #e7305e;
+    color: ${brightPink};
     font-size: 2rem;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    border-bottom: 4px solid #e7305e;
+    border-bottom: 4px solid ${brightPink};
     display: inline-flex;
     @media (min-width: 768px) {
       font-size: 2.4rem;
     }
     a {
       transition: all .3s ease-in-out;
-      color: #e7305e;
+      color: ${brightPink};
       text-decoration: none;
       padding: 0 8px;
       &:hover {
         color: white;
-        background: #e7305e;
+        background: ${brightPink};
       }
     }
   }
@@ -41,10 +43,10 @@ const StyledHeader = styled.div`
       font-size: 1rem;
     }
     span {
-      color: #e7305e;
+      color: ${brightPink};
       &:not(:first-child) {
         &:before {
-          color: #30bae7;
+          color: ${brightCyan};
           content: " • ";
         }
       }
