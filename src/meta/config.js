@@ -1,5 +1,3 @@
-import {white, brightPink} from "../styles/colors";
-
 module.exports = {
   siteTitle: "ythecombinator",
   shortSiteTitle: "Full-stack engineer",
@@ -18,7 +16,7 @@ module.exports = {
   manifestName: "ythecombinator | Full-Stack Engineer",
   manifestShortName: "Матвій",
   manifestStartUrl: "/",
-  manifestBackgroundColor: white,
-  manifestThemeColor: brightPink,
+  manifestBackgroundColor: 'white',
+  manifestThemeColor: '#e7305e',
   manifestDisplay: "standalone",
 };
