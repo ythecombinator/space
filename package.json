@@ -4,8 +4,9 @@
   "description": "ythecombinator's space.",
   "main": "n/a",
   "scripts": {
+    "dev": "gatsby develop",
     "build": "gatsby build",
-    "develop": "gatsby develop"
+    "start": "cd public && http-server ./ -p 8001"
   },
   "repository": {
     "type": "git",
@@ -46,6 +47,7 @@
     "styled-components": "2.4.0"
   },
   "devDependencies": {
+    "http-server": "^0.11.1",
     "standard": "^11.0.0"
   }
 }
