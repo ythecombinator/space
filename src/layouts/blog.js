@@ -1,4 +1,5 @@
 import React from 'react'
+import {Fragment} from 'react'
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
@@ -6,15 +7,40 @@ import styled from 'styled-components'
 
 import BlogHeader from '../components/BlogHeader'
 
+import logo from '../assets/logo.png'
+
 require("prism-themes/themes/prism-ghcolors.css");
 
 const Main = styled.main`
   padding: 0 1rem;
 `
 
+const Logo = styled.div`
+  display: flex;
+  align-items: center;
+  padding-bottom: 5px;
+  &:hover {
+    color: white;
+    background: #e7305e;
+  }
+  img: {
+    padding: 0 1rem 4px 0;
+  }
+`
+
 const blogHeaderLinks = {
-  '/posts': <Link to="/">/posts</Link>,
-  '/talks': <Link to="/">/talks</Link>,
+  '/posts': (
+    <Logo>
+      <img src={logo} height={30} />
+      <Link to="/">/posts</Link>
+    </Logo>
+  ),
+  '/talks': (
+    <Logo>
+      <img src={logo} height={30} />
+      <Link to="/">/talks</Link>
+    </Logo>
+  ),
 }
 
 const TemplateWrapper = ({children, location}) => (
@@ -32,7 +58,12 @@ const TemplateWrapper = ({children, location}) => (
       <h1>
         {blogHeaderLinks[location.pathname] 
           ? blogHeaderLinks[location.pathname]
-          : <Link to={`/${location.pathname.split('/')[1]}`}>{location.pathname}</Link> }
+          : (
+            <Logo>
+              <img src={logo} height={30} />
+              <Link to={`/${location.pathname.split('/')[1]}`}>{location.pathname}</Link>
+            </Logo>
+          )}
       </h1>
     </BlogHeader>
 

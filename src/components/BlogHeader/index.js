@@ -6,20 +6,23 @@ const StyledHeader = styled.div`
   margin-left: 1.4rem;
   margin-top: 1.4rem;
   h1 {
-    color: #fb958b;
+    color: #e7305e;
     font-size: 1.4rem;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    border-bottom: 4px solid #fb958b;
+    border-bottom: 4px solid #e7305e;
     display: inline-flex;
+    &:hover {
+      border-bottom: none;
+    }
     a {
       transition: all .3s ease-in-out;
       padding: 0 4px;
-      color: #fb958b;
+      color: #e7305e;
       text-decoration: none;
       &:hover {
         color: white;
-        background: #fb958b;
+        background: #e7305e;
       }
     }
   }

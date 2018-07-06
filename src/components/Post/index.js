@@ -36,12 +36,12 @@ const StyledPost = styled.div`
       width: 60%;
     }
     a {
-      color: #8bb9fb;
+      color: #30bae7;
       transition: all .3s ease-in-out;
       text-decoration: none;
       &:hover {
         color: white;
-        background: #8bb9fb;
+        background: #30bae7;
       }
     }
     img {

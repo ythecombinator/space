@@ -9,11 +9,11 @@ const StyledAbout = styled.div`
   align-items: center;
   margin: 3rem;
   h2 {
-    color: #958bfb;
+    color: #e75e30;
     font-family: 'Lato', sans-serif;
   }  
   h3 {
-    color: #8bb9fb;
+    color: #30bae7;
     font-family: 'Lato', sans-serif;
   }
   p {
@@ -27,7 +27,7 @@ const StyledAbout = styled.div`
       font-size: 1.1rem;
     }
     a {
-      color: #fb958b;
+      color: #e7305e;
       text-decoration: none;
     }
   }
@@ -44,7 +44,7 @@ const StyledAbout = styled.div`
         font-size: 1.1rem;
       }
       a {
-        color: #fb958b;
+        color: #e7305e;
         text-decoration: none;
       }
     }

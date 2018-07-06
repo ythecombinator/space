@@ -8,23 +8,23 @@ const StyledHeader = styled.div`
   flex-direction: column;
   align-items: center;
   h1 {
-    color: #fb958b;
+    color: #e7305e;
     font-size: 2rem;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    border-bottom: 4px solid #fb958b;
+    border-bottom: 4px solid #e7305e;
     display: inline-flex;
     @media (min-width: 768px) {
       font-size: 2.4rem;
     }
     a {
       transition: all .3s ease-in-out;
-      color: #fb958b;
+      color: #e7305e;
       text-decoration: none;
       padding: 0 8px;
       &:hover {
         color: white;
-        background: #fb958b;
+        background: #e7305e;
       }
     }
   }
@@ -41,10 +41,10 @@ const StyledHeader = styled.div`
       font-size: 1rem;
     }
     span {
-      color: #fb958b;
+      color: #e7305e;
       &:not(:first-child) {
         &:before {
-          color: #8bb9fb;
+          color: #30bae7;
           content: " • ";
         }
       }

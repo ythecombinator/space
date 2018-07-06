@@ -22,7 +22,7 @@ const StyledMenu = styled.ul`
       font-size: 1.4rem;
     }
     img#mail {
-      color: #fb958b;
+      color: #e7305e;
       width: 20px;
       height: 20px;
       display: inline-block;
@@ -30,7 +30,7 @@ const StyledMenu = styled.ul`
       margin-left: 4px;
     }
     img#external-link {
-      color: #fb958b;
+      color: #e7305e;
       width: 11px;
       height: 11px;
       display: inline-block;
@@ -39,7 +39,7 @@ const StyledMenu = styled.ul`
     }
   }
   a {
-    color: #fb958b;
+    color: #e7305e;
     text-decoration: none;
     &:hover {
       text-decoration: underline;

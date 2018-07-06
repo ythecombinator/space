@@ -10,7 +10,7 @@ const StyledFooter = styled.footer`
     font-family: 'Lato', sans-serif;
     font-weight: 600;
     a {
-      color: #fb958b;
+      color: #e7305e;
       text-decoration: none;
     }
   }
