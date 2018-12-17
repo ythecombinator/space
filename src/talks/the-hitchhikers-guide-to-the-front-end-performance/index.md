@@ -1,7 +1,7 @@
 ---
 path: '/talks/the-hitchhikers-guide-to-the-front-end-performance'
 date: '2018-12-06'
-title: 'The Hitchhiker's Guide to the Front-End Performance'
+title: "The Hitchhiker's Guide to the Front-End Performance"
 ---
 
 ### Description
@@ -32,4 +32,4 @@ In this talk I'll explain how to ship way faster front-end bundles and share a f
 
 ### Slides
 
-<div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 79.5798%;"><iframe src="//speakerdeck.com/player/117bbbe00ca940e59fdd839caa9fb4ff" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" allowfullscreen scrolling="no"></iframe></div>
+<div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.1987%;"><iframe src="//speakerdeck.com/player/6d3bd64849754dcc915b5af58edbcc11" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" allowfullscreen scrolling="no" allow="autoplay; encrypted-media"></iframe></div>
