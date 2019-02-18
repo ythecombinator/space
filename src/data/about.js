@@ -1,4 +1,4 @@
-export const data = `
+const intro = `
 ## Intro
 
 ✋ Hi folks! I'm just another constantly evolving full-stack developer draft who
@@ -19,7 +19,19 @@ my lectures, [here](/talks) they are.
 
 💻 As I mentioned, I also love open source, if you'd like to stalk me on GitHub, 
 [don't ever hesitate](https://github.com/ythecombinator).
+`;
 
+const travelling = `
+## Travelling
+
+As I started working as a remote developer (~ early 2018) besides travelling a lot
+more through my homeland, I decided to travel and live a little around the world for a 
+while – not staying long on any country. 
+
+These are the countries where I've already been to in this journey:
+`
+
+const experience = `
 ## Experience
 
 ### Engineering Leader, Front-End
@@ -96,4 +108,10 @@ technologies.
 - Server-side Swift frameworks and APIs (e.g. Vapor)
 - Unit and integration tests tools (e.g. XCTest, Quick, Nimble etc.)
 - SpriteKit and other game development focused APIs (e.g. GameCenter)
-`
+`;
+
+export const sections = {
+  intro,
+  travelling,
+  experience
+};
