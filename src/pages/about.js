@@ -7,7 +7,7 @@ import Map from "../components/Map";
 
 import { brightPink, brightCyan, brightBlue } from "../styles/colors";
 
-const { intro, travelling, experience } = sections;
+const { intro, travelling, working } = sections;
 
 const StyledAbout = styled.div`
   display: flex;
@@ -62,6 +62,6 @@ export default () => (
     <Markdown markup={intro} />
     <Markdown markup={travelling} />
     <Map map={map} data={visitedCountries} />
-    <Markdown markup={experience} />
+    <Markdown markup={working} />
   </StyledAbout>
 );

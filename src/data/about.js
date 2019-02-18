@@ -26,13 +26,13 @@ const travelling = `
 
 As I started working as a remote developer (~ early 2018) besides travelling a lot
 more through my homeland, I decided to travel and live a little around the world for a 
-while – not staying long on any country. 
+while – not staying for too long on any city. 
 
-These are the countries where I've already been to in this journey:
+These are the countries where I've been to in this journey:
 `
 
-const experience = `
-## Experience
+const working = `
+## Working
 
 ### Engineering Leader, Front-End
 
@@ -113,5 +113,5 @@ technologies.
 export const sections = {
   intro,
   travelling,
-  experience
+  working
 };
