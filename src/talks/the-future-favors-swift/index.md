@@ -1,7 +1,7 @@
 ---
-path: '/talks/the-future-favors-swift'
-date: '2017-02-21'
-title: 'The future favors Swift'
+path: "/talks/the-future-favors-swift"
+date: "2017-02-21"
+title: "The future favors Swift"
 ---
 
 ### Description
@@ -13,6 +13,8 @@ let theFuture: String = description.replacingOccurrences(of: "JavaScript", with:
 ### Events
 
 #### [10th CocoaHeads Fortaleza](http://www.cocoaheads.com.br/agendas/detalhes/181)
+
+🌎 Fortaleza, Brazil
 
 📍 Instituto Federal de Educação, Ciência e Tecnologia do Ceará, Campus Fortaleza
 

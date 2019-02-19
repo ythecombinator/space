@@ -1,6 +1,6 @@
 ---
-path: '/talks/react-16-dot-x-way-beyond-hooks'
-date: '2019-02-09'
+path: "/talks/react-16-dot-x-way-beyond-hooks"
+date: "2019-02-09"
 title: "React 16.x: Way Beyond Hooks"
 ---
 
@@ -13,6 +13,8 @@ In this talk, we’ll look at how they fit together with other minor changes tha
 ### Events
 
 #### [Front-End Day Ceará](https://www.sympla.com.br/front-end-day__424487)
+
+🌎 Fortaleza, Brazil
 
 📍 FB Ideias
 

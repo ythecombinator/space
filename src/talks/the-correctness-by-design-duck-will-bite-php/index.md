@@ -1,7 +1,7 @@
 ---
-path: '/talks/the-correctness-by-design-duck-will-bite-php'
-date: '2017-10-07'
-title: 'The correctness-by-design duck will bite PHP'
+path: "/talks/the-correctness-by-design-duck-will-bite-php"
+date: "2017-10-07"
+title: "The correctness-by-design duck will bite PHP"
 ---
 
 ### Description
@@ -11,6 +11,8 @@ In this talk, y'all will be introduced to Quack; a type-safe, multi-paradigm, me
 ### Events
 
 #### [PHPeste Fortaleza 2017](http://phpcomrapadura.org/phpeste-fortaleza-2017/)
+
+🌎 Fortaleza, Brazil
 
 📍 Universidade de Fortaleza - Unifor
 

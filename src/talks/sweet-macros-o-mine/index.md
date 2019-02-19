@@ -1,7 +1,7 @@
 ---
-path: '/talks/sweet-macros-o-mine'
-date: '2016-12-20'
-title: 'Sweet Macros O’ Mine'
+path: "/talks/sweet-macros-o-mine"
+date: "2016-12-20"
+title: "Sweet Macros O’ Mine"
 ---
 
 ### Description
@@ -11,6 +11,8 @@ A simple ~10 minutes pitch on which I share a few thoughts about extending langu
 ### Events
 
 #### Schools Dev Recruiting
+
+🌎 Fortaleza, Brazil
 
 📍 Instituto Federal de Educação, Ciência e Tecnologia do Ceará, Campus Fortaleza
 

@@ -1,7 +1,7 @@
 ---
-path: '/talks/rethinking-automation-npm-to-rule-them-all'
-date: '2015-11-21'
-title: 'Rethinking Automation: NPM to rule them all'
+path: "/talks/rethinking-automation-npm-to-rule-them-all"
+date: "2015-11-21"
+title: "Rethinking Automation: NPM to rule them all"
 ---
 
 ### Description
@@ -11,6 +11,8 @@ Somethings in the JavaScript world may require a considerable number of tasks: m
 ### Events
 
 #### [I Node User Group Ceará (NUG-CE) Meetup](http://nug-ce.org/)
+
+🌎 Fortaleza, Brazil
 
 📍 Universidade de Fortaleza - Unifor
 

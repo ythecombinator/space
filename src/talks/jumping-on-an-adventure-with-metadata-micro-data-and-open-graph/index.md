@@ -1,7 +1,7 @@
 ---
-path: '/talks/jumping-on-an-adventure-with-metadata-micro-data-and-open-graph'
-date: '2015-05-30'
-title: 'Jumping on an adventure with metadata: Micro Data and Open Graph'
+path: "/talks/jumping-on-an-adventure-with-metadata-micro-data-and-open-graph"
+date: "2015-05-30"
+title: "Jumping on an adventure with metadata: Micro Data and Open Graph"
 ---
 
 ### Description
@@ -11,6 +11,8 @@ An introduction to the importance of one of the key concepts behind the Semantic
 ### Events
 
 #### [IX Pylestras](http://pylestras.org/evento/ix-pylestras/)
+
+🌎 Fortaleza, Brazil
 
 📍 Universidade de Fortaleza - Unifor
 

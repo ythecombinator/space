@@ -1,7 +1,7 @@
 ---
-path: '/talks/spritekit-up-and-running'
-date: '2016-09-30'
-title: 'SpriteKit - Up and Running'
+path: "/talks/spritekit-up-and-running"
+date: "2016-09-30"
+title: "SpriteKit - Up and Running"
 ---
 
 ### Description
@@ -11,6 +11,8 @@ A simple practical workshop on understanding and implementing the basics concept
 ### Events
 
 #### [Apple Developer Academy](http://developeracademy.ifce.edu.br/)
+
+🌎 Fortaleza, Brazil
 
 📍 Instituto Federal de Educação, Ciência e Tecnologia do Ceará, Campus Fortaleza
 

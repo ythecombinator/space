@@ -1,7 +1,7 @@
 ---
-path: '/talks/designing-for-humans-like-you-and-me'
-date: '2016-06-22'
-title: 'Designing For Humans (like You & Me)'
+path: "/talks/designing-for-humans-like-you-and-me"
+date: "2016-06-22"
+title: "Designing For Humans (like You & Me)"
 ---
 
 ### Description
@@ -12,6 +12,8 @@ Just a small conversation which aims to integrate basic knowledge of areas relat
 
 #### [Apple Developer Academy](http://developeracademy.ifce.edu.br/)
 
+🌎 Fortaleza, Brazil
+
 📍 Instituto Federal de Educação, Ciência e Tecnologia do Ceará, Campus Fortaleza
 
 🗓️ June 22, 2016
@@ -19,6 +21,8 @@ Just a small conversation which aims to integrate basic knowledge of areas relat
 👥 ≈ 40 audience
 
 #### [9th CocoaHeads Fortaleza](http://www.cocoaheads.com.br/agendas/detalhes/151)
+
+🌎 Fortaleza, Brazil
 
 📍 Instituto Federal de Educação, Ciência e Tecnologia do Ceará, Campus Fortaleza
 

@@ -1,7 +1,7 @@
 ---
-path: '/talks/super-hybrid-apps-with-ionic'
-date: '2015-05-28'
-title: '(Super) Hybrid Apps with Ionic'
+path: "/talks/super-hybrid-apps-with-ionic"
+date: "2015-05-28"
+title: "(Super) Hybrid Apps with Ionic"
 ---
 
 ### Description
@@ -11,6 +11,8 @@ title: '(Super) Hybrid Apps with Ionic'
 ### Events
 
 #### [3rd CocoaHeads Fortaleza](http://www.cocoaheads.com.br/agendas/detalhes/79/)
+
+🌎 Fortaleza, Brazil
 
 📍 Instituto Federal de Educação, Ciência e Tecnologia do Ceará, Campus Fortaleza
 

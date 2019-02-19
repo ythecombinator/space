@@ -1,7 +1,7 @@
 ---
-path: '/talks/server-side-goes-serverless'
-date: '2017-05-19'
-title: 'Server-Side goes Serverless'
+path: "/talks/server-side-goes-serverless"
+date: "2017-05-19"
+title: "Server-Side goes Serverless"
 ---
 
 ### Description
@@ -11,6 +11,8 @@ This time we try to understand why the serverless architecture's been drawing so
 ### Events
 
 #### [Google I/O 2017 Extended Fortaleza](https://sites.google.com/view/io2017fortaleza)
+
+🌎 Fortaleza, Brazil
 
 📍 Casa da Cultura Digital - Fortaleza
 

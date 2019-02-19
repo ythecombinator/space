@@ -1,16 +1,18 @@
 ---
-path: '/talks/an-introduction-to-git-and-github'
-date: '2015-04-25'
-title: 'An Introduction to Git & Github'
+path: "/talks/an-introduction-to-git-and-github"
+date: "2015-04-25"
+title: "An Introduction to Git & Github"
 ---
 
 ### Description
 
-This talk I will present a brief introduction to the concept of software versioning and its importance. There will be also  presented the famous versioning control system created by [Linus Torvalds](https://github.com/torvalds) ([Git](https://git-scm.com/)) and the well known _social network for programmers_, [Github](https://github.com/), showing its importance to our professional career nowadays.
+This talk I will present a brief introduction to the concept of software versioning and its importance. There will be also presented the famous versioning control system created by [Linus Torvalds](https://github.com/torvalds) ([Git](https://git-scm.com/)) and the well known _social network for programmers_, [Github](https://github.com/), showing its importance to our professional career nowadays.
 
 ### Events
 
 #### [FLISOL 2015](http://flisolce.org/)
+
+🌎 Fortaleza, Brazil
 
 📍 Instituto Federal de Educação, Ciência e Tecnologia do Ceará, Campus Fortaleza
 
@@ -19,6 +21,8 @@ This talk I will present a brief introduction to the concept of software version
 👥 ≈ 60 audience
 
 #### [Apple Developer Academy](http://developeracademy.ifce.edu.br/)
+
+🌎 Fortaleza, Brazil
 
 📍 Instituto Federal de Educação, Ciência e Tecnologia do Ceará, Campus Fortaleza
 

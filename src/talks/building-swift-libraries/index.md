@@ -1,7 +1,7 @@
 ---
-path: '/talks/building-swift-libraries'
-date: '2017-09-18'
-title: 'Building Swift Libraries'
+path: "/talks/building-swift-libraries"
+date: "2017-09-18"
+title: "Building Swift Libraries"
 ---
 
 ### Description
@@ -11,6 +11,8 @@ In this talk, me and @macabeus shared some of the experiences and tips we've got
 ### Events
 
 #### [Apple Developer Academy](http://developeracademy.ifce.edu.br/)
+
+🌎 Fortaleza, Brazil
 
 📍 Instituto Federal de Educação, Ciência e Tecnologia do Ceará, Campus Fortaleza
 

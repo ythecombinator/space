@@ -1,7 +1,7 @@
 ---
-path: '/talks/playing-with-watchconnectivity-for-24-hours'
-date: '2016-07-05'
-title: 'Playing With WatchConnectivity for ~24 hours'
+path: "/talks/playing-with-watchconnectivity-for-24-hours"
+date: "2016-07-05"
+title: "Playing With WatchConnectivity for ~24 hours"
 ---
 
 ### Description
@@ -11,6 +11,8 @@ This is ~5 minutes pitch on which I share a few thoughts about playing with Watc
 ### Events
 
 #### [Apple Developer Academy](http://developeracademy.ifce.edu.br/)
+
+🌎 Fortaleza, Brazil
 
 📍 Instituto Federal de Educação, Ciência e Tecnologia do Ceará, Campus Fortaleza
 

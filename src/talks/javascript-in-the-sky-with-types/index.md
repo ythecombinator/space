@@ -1,16 +1,18 @@
 ---
-path: '/talks/javascript-in-the-sky-with-types'
-date: '2016-06-04'
-title: 'JavaScript In The Sky With Types'
+path: "/talks/javascript-in-the-sky-with-types"
+date: "2016-06-04"
+title: "JavaScript In The Sky With Types"
 ---
 
 ### Description
 
-This time [Abraão](https://github.com/AbraaoAlves) and I will talk on the importance of thinking about - and, obviously, understanding well - type systems and how your *JavaScripting time* can be better with [TypeScript](https://www.typescriptlang.org/) + other tools.
+This time [Abraão](https://github.com/AbraaoAlves) and I will talk on the importance of thinking about - and, obviously, understanding well - type systems and how your _JavaScripting time_ can be better with [TypeScript](https://www.typescriptlang.org/) + other tools.
 
 ### Events
 
 #### [CE.JS 2016](http://www.cejs.com.br/)
+
+🌎 Fortaleza, Brazil
 
 📍 Centro Universitário 7 de Setembro - UNI7 Fortaleza
 

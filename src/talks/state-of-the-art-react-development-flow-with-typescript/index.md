@@ -1,7 +1,7 @@
 ---
-path: '/talks/state-of-the-art-react-development-flow-with-typescript'
-date: '2018-10-25'
-title: 'State of the art React development flow with TypeScript'
+path: "/talks/state-of-the-art-react-development-flow-with-typescript"
+date: "2018-10-25"
+title: "State of the art React development flow with TypeScript"
 ---
 
 ### Description
@@ -11,6 +11,8 @@ title: 'State of the art React development flow with TypeScript'
 ### Events
 
 #### [ReactNYC: E0l50z-5RHw](https://www.meetup.com/ReactNYC/events/254152934/)
+
+🌎 New York City, United States
 
 📍 Capital One Commercial Labs
 

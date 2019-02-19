@@ -1,7 +1,7 @@
 ---
-path: '/talks/the-art-of-notifications'
-date: '2016-07-05'
-title: 'The Art of Notifications'
+path: "/talks/the-art-of-notifications"
+date: "2016-07-05"
+title: "The Art of Notifications"
 ---
 
 ### Description
@@ -11,6 +11,8 @@ A workshop on understanding and implementing local and push notifications in an 
 ### Events
 
 #### [Apple Developer Academy](http://developeracademy.ifce.edu.br/)
+
+🌎 Fortaleza, Brazil
 
 📍 Instituto Federal de Educação, Ciência e Tecnologia do Ceará, Campus Fortaleza
 
