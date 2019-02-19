@@ -43,6 +43,7 @@
     "prism-themes": "^1.0.1",
     "prismjs": "^1.15.0",
     "react-helmet": "^5.2.0",
+    "react-icon-base": "^2.1.2",
     "react-showdown": "^1.6.0",
     "react-simple-maps": "^0.12.1",
     "styled-components": "2.4.0"
