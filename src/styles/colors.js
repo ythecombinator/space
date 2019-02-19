@@ -1,26 +1,23 @@
 const baseColors = {
   white: "#fff",
-  veryDarkGrayishBlue: "#444b54",
-  mostlyDesaturatedDarkBlue: "#5b737d",
   grayishBlue: "#adbdc3",
-  darkGrayishOrange: "#938a77",
+  lightGrayishBlue: "#eceff1",
+  veryDarkGrayishBlue: "#444b54",
+  desaturatedDarkBlue: "#607d8b",
+  mostlyDesaturatedDarkBlue: "#5b737d",
   grayishOrange: "#b5afa2",
   lightGrayishOrange: "#d8d3cc",
-  veryDarkGrayishRed: "#544544",
-
-  primary: "#e7305e",
-  secondary: "#30bae7",
-  tertiary: "#305ee7",
-  desaturatedDarkBlue: "#607d8b",
-  lightGrayishBlue: "#eceff1"
+  darkGrayishOrange: "#938a77",
+  veryDarkGrayishRed: "#544544"
 };
 
 const colors = {
-  primary: baseColors.primary,
-  secondary: baseColors.secondary,
-  tertiary: baseColors.tertiary,
+  // Core
+  primary: baseColors.mostlyDesaturatedDarkBlue,
+  secondary: baseColors.darkGrayishOrange,
+  tertiary: baseColors.veryDarkGrayishRed,
+  // Other stuff
   white: baseColors.white,
-  statusBar: baseColors.veryDarkGrayishRed,
   background: baseColors.white,
   hero: baseColors.mostlyDesaturatedDarkBlue,
   text: {
