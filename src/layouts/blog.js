@@ -35,6 +35,12 @@ const Logo = styled.div`
 `;
 
 const blogHeaderLinks = {
+  "/about": (
+    <Logo>
+      <img src={logo} height={30} />
+      <Link to="/">/about</Link>
+    </Logo>
+  ),
   "/posts": (
     <Logo>
       <img src={logo} height={30} />
