@@ -1,38 +1,63 @@
-import React from 'react'
-import Link from 'gatsby-link'
+import React from "react";
+import styled from "styled-components";
+import { Markdown } from "react-showdown";
+import { sections, socialData, githubProfilePicture } from "../data/about";
 
-import Menu from '../components/Menu'
-import externalLinkIcon from '../assets/external-link.svg'
-import mailIcon from '../assets/mail.svg'
+import { colors } from "..//styles/colors";
+import Signature from "../components/Signature";
+import Hero from "../components/Hero";
+import SocialLinks from "../components/SocialLinks";
 
-export default () => (
-  <Menu>
-    <li><Link to='/about'>About</Link></li>
-    <li><Link to='/posts'>Posts</Link></li>
-    <li><Link to='/talks'>Talks</Link></li>
-    <li>
-      <a href='mailto:land@ythecombinator.space?subject=Let%27s%20have%20some%20coffee'>
-        land[AT]ythecombinator[DOT]space
-      </a>
-      <img id='mail' src={mailIcon} alt='Email' />
-    </li>
-    <li>
-      <a href='https://github.com/ythecombinator' target='_blank'>
-        GitHub
-      </a>
-      <img id='external-link' src={externalLinkIcon} alt='Github' />
-    </li>
-    <li>
-      <a href='https://twitter.com/ythecombinator' target='_blank'>
-        Twitter
-      </a>
-      <img id='external-link' src={externalLinkIcon} alt='Twitter' />
-    </li>
-    <li>
-      <a href='https://appear.in/ythecombinator' target='_blank'>
-        Appear.in
-      </a>
-      <img id='external-link' src={externalLinkIcon} alt='Appear.in' />
-    </li>     
-  </Menu>
-)
+const StyledContent = styled.div`
+  max-width: 22em;
+  margin: 90px;
+  transition: all 250ms ease;
+  font-family: source sans pro, sans-serif;
+  font-weight: 300;
+
+  :first-child {
+    margin-top: 0;
+  }
+
+  p {
+    cursor: default;
+    background: ${colors.background};
+    color: ${colors.text.regular};
+    font-size: 19px;
+    line-height: 1.6;
+  }
+
+  a {
+    color: ${colors.links.regular.text};
+    text-decoration: none;
+    border-bottom: solid 1px ${colors.links.regular.border};
+    transition: color 250ms linear;
+    &:hover {
+      color: ${colors.links.highlighted.text};
+      border-bottom: solid 1px ${colors.links.highlighted.border};
+      transition: color 500ms linear;
+    }
+  }
+
+  strong {
+    color: ${colors.text.highlighted};
+    font-weight: bold;
+  }
+
+  ul,
+  ol,
+  p {
+    margin: 1.5em 0;
+  }
+`;
+
+export default () => {
+  return (
+    <StyledContent>
+      <Hero source={githubProfilePicture} description="It's me, Matheus!" />
+      <Markdown markup={sections.shortIntro} />
+      <SocialLinks socialNetworks={socialData} />
+      <Signature name="ythecombinator" />
+    </StyledContent>
+  );
+};
