@@ -47,7 +47,8 @@ const TemplateWrapper = ({ children }) => (
       link={[
         {
           rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css?family=Lato|Poppins:700i"
+          href:
+            "https://fonts.googleapis.com/css?family=Source+Code+Pro:600,700"
         },
         {
           rel: "stylesheet",

@@ -12,7 +12,7 @@ const StyledHeader = styled.div`
   h1 {
     color: ${primary};
     font-size: 1.4rem;
-    font-family: "Poppins", sans-serif;
+    font-family: "Source Code Pro", monospace;
     font-weight: 700;
     border-bottom: 4px solid ${primary};
     display: inline-flex;

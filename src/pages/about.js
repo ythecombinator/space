@@ -27,7 +27,7 @@ const StyledAbout = styled.div`
     margin: 0;
     color: #333333;
     font-family: source sans pro, sans-serif;
-    font-weight: 400;
+    font-weight: 300;
     font-size: 1rem;
     line-height: 2rem;
     @media (min-width: 768px) {
@@ -44,7 +44,7 @@ const StyledAbout = styled.div`
     li {
       color: #333333;
       font-family: source sans pro, sans-serif;
-      font-weight: 400;
+      font-weight: 300;
       font-size: 1rem;
       line-height: 2rem;
       @media (min-width: 768px) {

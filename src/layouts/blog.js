@@ -36,17 +36,17 @@ const Logo = styled.div`
 const blogHeaderLinks = {
   "/about": (
     <Logo>
-      <Link to="/">🏠 /about</Link>
+      <Link to="/">🏠/about</Link>
     </Logo>
   ),
   "/posts": (
     <Logo>
-      <Link to="/">🏠 /posts</Link>
+      <Link to="/">🏠/posts</Link>
     </Logo>
   ),
   "/talks": (
     <Logo>
-      <Link to="/">🏠 /talks</Link>
+      <Link to="/">🏠/talks</Link>
     </Logo>
   )
 };
@@ -58,7 +58,8 @@ const TemplateWrapper = ({ children, location }) => (
       link={[
         {
           rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css?family=Lato|Poppins:700i"
+          href:
+            "https://fonts.googleapis.com/css?family=Source+Code+Pro:600,700"
         },
         {
           rel: "shortcut icon",
@@ -77,7 +78,7 @@ const TemplateWrapper = ({ children, location }) => (
         ) : (
           <Logo>
             <Link to={`/${location.pathname.split("/")[1]}`}>
-              🏠 {location.pathname}
+              🏠{location.pathname}
             </Link>
           </Logo>
         )}

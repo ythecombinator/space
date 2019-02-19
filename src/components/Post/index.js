@@ -30,6 +30,7 @@ const StyledPost = styled.div`
   }
   .postBody {
     font-family: source sans pro, sans-serif;
+    font-weight: 300;
     display: block;
     margin: 0 auto;
     width: 100%;
