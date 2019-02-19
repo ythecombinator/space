@@ -3,20 +3,15 @@ import styled from "styled-components";
 
 import { colors } from "../../styles/colors";
 
-const { primary } = colors;
+const { tertiary } = colors;
 
 const StyledFooter = styled.footer`
   display: flex;
   justify-content: center;
   p {
-    color: #1d1d1d;
+    color: ${tertiary};
     font-size: 0.8rem;
     font-family: source sans pro, sans-serif;
-    font-weight: 600;
-    a {
-      color: ${primary};
-      text-decoration: none;
-    }
   }
 `;
 

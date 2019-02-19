@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import Helmet from "react-helmet";
 import styled from "styled-components";
+import Footer from "../components/Footer";
 
 import BlogHeader from "../components/BlogHeader";
 import GithubRibbon from "../components/GithubRibbon";
@@ -85,6 +86,10 @@ const TemplateWrapper = ({ children, location }) => (
     </BlogHeader>
 
     {children()}
+
+    <Footer>
+      <p>Made with 💖 while high either on ☕ or 🍻 – or both 😂.</p>
+    </Footer>
   </Main>
 );
 
