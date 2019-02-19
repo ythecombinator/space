@@ -4,13 +4,14 @@ const shortIntro = `
 👨‍💻 I'm currently working as a Senior Front-End Engineer at Beakyn, 
 a NYC-based geodata company.
 
-✌️ I'm casually [writing](/posts), [travelling](/about), 
-[speaking](/talks) & advocating for craft brewing.
+✌️ I'm casually [speaking](/talks), [writing](/posts), 
+[travelling](/about) & advocating for craft brewing.
 
 📢 Feel free to reach me out on social networks, 
 [appear.in](https://appear.in/ythecombinator) or schedule something on  
 [my calendar](https://calendly.com/ythecombinator). Last but not least,
-you can write to me through [land@ythecombinator.space](land@ythecombinator.space).
+you can write to me through 
+[land@ythecombinator.space](mailto:land@ythecombinator.space).
 `;
 
 const intro = `
