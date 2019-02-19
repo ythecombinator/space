@@ -8,7 +8,7 @@ const StyledSocialLinks = styled.div`
   margin-left: -13px;
 
   a {
-    border: 0;
+    border: 0 !important;
     margin-right: 20px;
     display: inline-block;
     width: 48px;
@@ -19,7 +19,7 @@ const StyledSocialLinks = styled.div`
   }
 
   a:hover {
-    border: 0;
+    border: 0 !important;
   }
 
   i {
