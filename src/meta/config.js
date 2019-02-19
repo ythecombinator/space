@@ -16,7 +16,7 @@ module.exports = {
   manifestName: "ythecombinator | Full-Stack Engineer",
   manifestShortName: "Матвій",
   manifestStartUrl: "/",
-  manifestBackgroundColor: 'white',
-  manifestThemeColor: '#e7305e',
-  manifestDisplay: "standalone",
+  manifestBackgroundColor: "white",
+  manifestThemeColor: "#5b737d",
+  manifestDisplay: "standalone"
 };
