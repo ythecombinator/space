@@ -133,3 +133,25 @@ export const sections = {
   travelling,
   working
 };
+
+export const socialData = [
+  {
+    name: "twitter",
+    link: "https://twitter.com/ythecombinator"
+  },
+  {
+    name: "github",
+    link: "https://github.com/ythecombinator"
+  },
+  {
+    name: "linkedin",
+    link: "https://linkedin.com/in/ythecombinator"
+  },
+  {
+    name: "instagram",
+    link: "https://instagram.com/ythecombinator"
+  }
+];
+
+export const githubProfilePicture =
+  "https://avatars1.githubusercontent.com/u/2644563?s=460&v=4";
