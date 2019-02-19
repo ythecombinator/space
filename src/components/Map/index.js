@@ -7,11 +7,9 @@ import {
   Geography
 } from "react-simple-maps";
 
-import {
-  brightBlue,
-  desaturatedDarkBlue,
-  lightGrayishBlue
-} from "../../styles/colors";
+import { colors } from "../../styles/colors";
+
+const { tertiary, map } = colors;
 
 const hasBeenTo = (location, visited) => {
   return visited.includes(location);
@@ -21,14 +19,14 @@ const getStylesForLocation = (location, data) => {
   const isVisited = hasBeenTo(location, data);
   return isVisited
     ? {
-        fill: brightBlue,
-        stroke: desaturatedDarkBlue,
+        fill: tertiary,
+        stroke: map.stroke,
         strokeWidth: 0.75,
         outline: "none"
       }
     : {
-        fill: lightGrayishBlue,
-        stroke: desaturatedDarkBlue,
+        fill: map.fill,
+        stroke: map.stroke,
         strokeWidth: 0.75,
         outline: "none"
       };

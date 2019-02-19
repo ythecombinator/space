@@ -1,23 +1,25 @@
-import React from 'react'
-import {Fragment} from 'react'
-import PropTypes from 'prop-types'
-import Link from 'gatsby-link'
-import Helmet from 'react-helmet'
-import styled from 'styled-components'
+import React from "react";
+import { Fragment } from "react";
+import PropTypes from "prop-types";
+import Link from "gatsby-link";
+import Helmet from "react-helmet";
+import styled from "styled-components";
 
-import BlogHeader from '../components/BlogHeader'
-import GithubRibbon from '../components/GithubRibbon'
+import BlogHeader from "../components/BlogHeader";
+import GithubRibbon from "../components/GithubRibbon";
 
-import logo from '../assets/logo.png'
-import favicon from '../assets/favicon.png'
+import logo from "../assets/logo.png";
+import favicon from "../assets/favicon.png";
 
-import {brightPink} from "../styles/colors";
+import { colors } from "../styles/colors";
+
+const { primary } = colors;
 
 require("prism-themes/themes/prism-ghcolors.css");
 
 const Main = styled.main`
   padding: 0 1rem;
-`
+`;
 
 const Logo = styled.div`
   display: flex;
@@ -25,66 +27,68 @@ const Logo = styled.div`
   padding-bottom: 5px;
   &:hover {
     color: white;
-    background: ${brightPink};
+    background: ${primary};
   }
   img: {
     padding: 0 1rem 4px 0;
   }
-`
+`;
 
 const blogHeaderLinks = {
-  '/posts': (
+  "/posts": (
     <Logo>
       <img src={logo} height={30} />
       <Link to="/">/posts</Link>
     </Logo>
   ),
-  '/talks': (
+  "/talks": (
     <Logo>
       <img src={logo} height={30} />
       <Link to="/">/talks</Link>
     </Logo>
-  ),
-}
+  )
+};
 
-const TemplateWrapper = ({children, location}) => (
+const TemplateWrapper = ({ children, location }) => (
   <Main>
     <Helmet
       title="ythecombinator's space"
       link={[
         {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css?family=Lato|Poppins:700i'
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css?family=Lato|Poppins:700i"
         },
         {
-          rel: "shortcut icon", 
+          rel: "shortcut icon",
           type: "image/png",
-          href: favicon,
-        }        
+          href: favicon
+        }
       ]}
     />
 
-    <GithubRibbon/>
+    <GithubRibbon />
 
     <BlogHeader>
       <h1>
-        {blogHeaderLinks[location.pathname] 
-          ? blogHeaderLinks[location.pathname]
-          : (
-            <Logo>
-              <img src={logo} height={30} />
-              <Link to={`/${location.pathname.split('/')[1]}`}>{location.pathname}</Link>
-            </Logo>
-          )}
+        {blogHeaderLinks[location.pathname] ? (
+          blogHeaderLinks[location.pathname]
+        ) : (
+          <Logo>
+            <img src={logo} height={30} />
+            <Link to={`/${location.pathname.split("/")[1]}`}>
+              {location.pathname}
+            </Link>
+          </Logo>
+        )}
       </h1>
     </BlogHeader>
 
     {children()}
   </Main>
-)
+);
 
 TemplateWrapper.propTypes = {
   children: PropTypes.func
-}
+};
 
-export default TemplateWrapper
+export default TemplateWrapper;

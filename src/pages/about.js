@@ -5,8 +5,9 @@ import { sections } from "../data/about";
 import { map, data as visitedCountries } from "../data/map";
 import Map from "../components/Map";
 
-import { brightPink, brightCyan, brightBlue } from "../styles/colors";
+import { colors } from "../styles/colors";
 
+const { primary, secondary, tertiary } = colors;
 const { intro, travelling, working } = sections;
 
 const StyledAbout = styled.div`
@@ -15,11 +16,11 @@ const StyledAbout = styled.div`
   align-items: center;
   margin: 3rem;
   h2 {
-    color: ${brightBlue};
+    color: ${tertiary};
     font-family: "Lato", sans-serif;
   }
   h3 {
-    color: ${brightCyan};
+    color: ${secondary};
     font-family: "Lato", sans-serif;
   }
   p {
@@ -33,7 +34,7 @@ const StyledAbout = styled.div`
       font-size: 1.1rem;
     }
     a {
-      color: ${brightPink};
+      color: ${primary};
       text-decoration: none;
     }
   }
@@ -50,7 +51,7 @@ const StyledAbout = styled.div`
         font-size: 1.1rem;
       }
       a {
-        color: ${brightPink};
+        color: ${primary};
         text-decoration: none;
       }
     }

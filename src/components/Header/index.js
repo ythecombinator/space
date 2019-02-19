@@ -1,7 +1,9 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
-import {brightPink, brightCyan} from "../../styles/colors";
+import { colors } from "../../styles/colors";
+
+const { primary, secondary } = colors;
 
 const StyledHeader = styled.div`
   margin-top: 4rem;
@@ -10,23 +12,23 @@ const StyledHeader = styled.div`
   flex-direction: column;
   align-items: center;
   h1 {
-    color: ${brightPink};
+    color: ${primary};
     font-size: 2rem;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 700;
-    border-bottom: 4px solid ${brightPink};
+    border-bottom: 4px solid ${primary};
     display: inline-flex;
     @media (min-width: 768px) {
       font-size: 2.4rem;
     }
     a {
-      transition: all .3s ease-in-out;
-      color: ${brightPink};
+      transition: all 0.3s ease-in-out;
+      color: ${primary};
       text-decoration: none;
       padding: 0 8px;
       &:hover {
         color: white;
-        background: ${brightPink};
+        background: ${primary};
       }
     }
   }
@@ -38,15 +40,15 @@ const StyledHeader = styled.div`
     color: #1a1a1a;
     max-width: 60%;
     font-size: 0.8rem;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     @media (min-width: 768px) {
       font-size: 1rem;
     }
     span {
-      color: ${brightPink};
+      color: ${primary};
       &:not(:first-child) {
         &:before {
-          color: ${brightCyan};
+          color: ${secondary};
           content: " • ";
         }
       }
@@ -58,14 +60,10 @@ const StyledHeader = styled.div`
       margin-left: 4px;
     }
   }
-`
+`;
 
 const Header = ({ children }) => {
-  return (
-    <StyledHeader>
-      {children}
-    </StyledHeader>
-  )
-}
+  return <StyledHeader>{children}</StyledHeader>;
+};
 
-export default Header
+export default Header;

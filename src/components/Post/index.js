@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
-import moment from 'moment'
+import React from "react";
+import styled from "styled-components";
+import moment from "moment";
 
-import {brightCyan} from "../../styles/colors";
+import { secondary } from "../../styles/colors";
 
 const StyledPost = styled.div`
   padding: 2rem;
@@ -11,7 +11,7 @@ const StyledPost = styled.div`
 
   h1 {
     color: #1a1a1a;
-    font-family: 'Poppin', sans-serif;
+    font-family: "Poppin", sans-serif;
     font-weight: 700;
     text-align: center;
     font-size: 1.6rem;
@@ -20,14 +20,14 @@ const StyledPost = styled.div`
     }
   }
   p#date {
-    font-family: 'Poppin', sans-serif;
+    font-family: "Poppin", sans-serif;
     color: #737373;
     text-align: center;
     font-size: 0.8rem;
     font-weight: 400;
   }
   .postBody {
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     display: block;
     margin: 0 auto;
     width: 100%;
@@ -38,12 +38,12 @@ const StyledPost = styled.div`
       width: 60%;
     }
     a {
-      color: ${brightCyan};
-      transition: all .3s ease-in-out;
+      color: ${secondary};
+      transition: all 0.3s ease-in-out;
       text-decoration: none;
       &:hover {
         color: white;
-        background: ${brightCyan};
+        background: ${secondary};
       }
     }
     img {
@@ -53,26 +53,23 @@ const StyledPost = styled.div`
       overflow-x: scroll;
     }
     blockquote {
-      border-left: 5px solid #ccc;  
+      border-left: 5px solid #ccc;
       margin: 1.5em 10px;
-      padding: 0.5em 10px;        
+      padding: 0.5em 10px;
     }
   }
-`
+`;
 
 const Post = ({ postData }) => {
-  const { html, frontmatter } = postData
-  const m = moment(frontmatter.date, 'YYYY MM DD')
+  const { html, frontmatter } = postData;
+  const m = moment(frontmatter.date, "YYYY MM DD");
   return (
     <StyledPost>
       <h1>{frontmatter.title}</h1>
-      <p id='date'>Published on { m.format('MMM Do YYYY') }</p>
-      <div
-        className='postBody'
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
+      <p id="date">Published on {m.format("MMM Do YYYY")}</p>
+      <div className="postBody" dangerouslySetInnerHTML={{ __html: html }} />
     </StyledPost>
-  )
-}
+  );
+};
 
-export default Post
+export default Post;

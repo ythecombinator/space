@@ -1,7 +1,9 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
-import {brightPink} from "../../styles/colors";
+import { colors } from "../../styles/colors";
+
+const { primary } = colors;
 
 const StyledMenu = styled.ul`
   list-style-type: none;
@@ -12,7 +14,7 @@ const StyledMenu = styled.ul`
   margin: 2.5rem 0;
   li {
     font-size: 1.2rem;
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     font-weight: 600;
     &:nth-child(even) {
       margin: 0.6rem 0;
@@ -24,7 +26,7 @@ const StyledMenu = styled.ul`
       font-size: 1.4rem;
     }
     img#mail {
-      color: ${brightPink};
+      color: ${primary};
       width: 20px;
       height: 20px;
       display: inline-block;
@@ -32,7 +34,7 @@ const StyledMenu = styled.ul`
       margin-left: 4px;
     }
     img#external-link {
-      color: ${brightPink};
+      color: ${primary};
       width: 11px;
       height: 11px;
       display: inline-block;
@@ -41,20 +43,16 @@ const StyledMenu = styled.ul`
     }
   }
   a {
-    color: ${brightPink};
+    color: ${primary};
     text-decoration: none;
     &:hover {
       text-decoration: underline;
     }
   }
-`
+`;
 
 const Menu = ({ children }) => {
-  return (
-    <StyledMenu>
-      {children}
-    </StyledMenu>
-  )
-}
+  return <StyledMenu>{children}</StyledMenu>;
+};
 
-export default Menu
+export default Menu;

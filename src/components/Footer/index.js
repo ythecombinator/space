@@ -1,7 +1,9 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
-import {brightPink} from "../../styles/colors";
+import { colors } from "../../styles/colors";
+
+const { primary } = colors;
 
 const StyledFooter = styled.footer`
   display: flex;
@@ -9,21 +11,17 @@ const StyledFooter = styled.footer`
   p {
     color: #1d1d1d;
     font-size: 0.8rem;
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     font-weight: 600;
     a {
-      color: ${brightPink};
+      color: ${primary};
       text-decoration: none;
     }
   }
-`
+`;
 
 const Footer = ({ children }) => {
-  return (
-    <StyledFooter>
-      {children}
-    </StyledFooter>
-  )
-}
+  return <StyledFooter>{children}</StyledFooter>;
+};
 
-export default Footer
+export default Footer;
