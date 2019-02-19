@@ -8,7 +8,6 @@ import styled from "styled-components";
 import BlogHeader from "../components/BlogHeader";
 import GithubRibbon from "../components/GithubRibbon";
 
-import logo from "../assets/logo.png";
 import favicon from "../assets/favicon.png";
 
 import { colors } from "../styles/colors";
@@ -37,20 +36,17 @@ const Logo = styled.div`
 const blogHeaderLinks = {
   "/about": (
     <Logo>
-      <img src={logo} height={30} />
-      <Link to="/">/about</Link>
+      <Link to="/">🤟/about</Link>
     </Logo>
   ),
   "/posts": (
     <Logo>
-      <img src={logo} height={30} />
-      <Link to="/">/posts</Link>
+      <Link to="/">🤟/posts</Link>
     </Logo>
   ),
   "/talks": (
     <Logo>
-      <img src={logo} height={30} />
-      <Link to="/">/talks</Link>
+      <Link to="/">🤟/talks</Link>
     </Logo>
   )
 };
@@ -80,9 +76,8 @@ const TemplateWrapper = ({ children, location }) => (
           blogHeaderLinks[location.pathname]
         ) : (
           <Logo>
-            <img src={logo} height={30} />
             <Link to={`/${location.pathname.split("/")[1]}`}>
-              {location.pathname}
+              🤟{location.pathname}
             </Link>
           </Logo>
         )}
