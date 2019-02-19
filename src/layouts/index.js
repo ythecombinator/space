@@ -1,11 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Link from "gatsby-link";
 import Helmet from "react-helmet";
 import styled from "styled-components";
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import GithubRibbon from "../components/GithubRibbon";
 
 import favicon from "../assets/favicon.png";
