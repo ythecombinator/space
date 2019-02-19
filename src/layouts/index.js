@@ -1,18 +1,47 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Link from 'gatsby-link'
-import Helmet from 'react-helmet'
-import styled from 'styled-components'
+import React from "react";
+import PropTypes from "prop-types";
+import Link from "gatsby-link";
+import Helmet from "react-helmet";
+import styled from "styled-components";
 
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import GithubRibbon from '../components/GithubRibbon'
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import GithubRibbon from "../components/GithubRibbon";
 
-import favicon from '../assets/favicon.png'
+import favicon from "../assets/favicon.png";
 
 const Main = styled.main`
-  padding: 0 1rem;
-`
+  @media (max-width: 768px) {
+    body {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    ul,
+    ol,
+    p {
+      margin: 1.35em 0;
+    }
+  }
+
+  @media (max-width: 468px) {
+    body {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #222;
+    }
+
+    a {
+      color: #111;
+    }
+
+    ul,
+    ol,
+    p {
+      margin: 1.25em 0;
+    }
+  }
+`;
 
 const TemplateWrapper = ({ children }) => (
   <Main>
@@ -20,40 +49,31 @@ const TemplateWrapper = ({ children }) => (
       title="ythecombinator's space"
       link={[
         {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css?family=Lato|Poppins:700i'
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css?family=Lato|Poppins:700i"
         },
         {
-          rel: "shortcut icon", 
+          rel: "stylesheet",
+          href:
+            "https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,700"
+        },
+
+        {
+          rel: "shortcut icon",
           type: "image/png",
-          href: favicon,
-        }        
+          href: favicon
+        }
       ]}
     />
 
-    <GithubRibbon/>
-
-    <Header>
-      <h1><Link to='/'>ythecombinator's space</Link></h1>
-      <h2>
-        <span>full-stack engineer focused on client-side architecture</span>
-        <span> into Swift and node.js</span>
-        <span> indie, folk, synthwave, Brazilian funk listener</span>
-        <span> craft brewing enthusiastic</span>
-        <span> addicted to emojis and memes 🔝👌😂</span>
-      </h2>
-    </Header>
+    <GithubRibbon />
 
     {children()}
-
-    <Footer>
-      <p>Made with ❤️ while high on ☕ or 🍻 – or both 😂.</p>
-    </Footer>
   </Main>
-)
+);
 
 TemplateWrapper.propTypes = {
   children: PropTypes.func
-}
+};
 
-export default TemplateWrapper
+export default TemplateWrapper;
