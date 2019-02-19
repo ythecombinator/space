@@ -1,18 +1,16 @@
 const shortIntro = `
-🙋Hi folks! I'm Matheus – yet another constantly evolving full-stack
-developer draft who inhabits this world.
+🙋 Hi folks! I'm Matheus.
 
-👨‍💻 I'm also a client-side architect – with an iOS and node.js background
-– currently working as a front-end engineer at Beakyn, a NYC-based
-geodata company.
+👨‍💻 I'm currently working as a Senior Front-End Engineer at Beakyn, 
+a NYC-based geodata company.
 
-✌️Casually [writing](/posts), [travelling](/about#travelling), 
-[speaking](/talks), advocating for craft brewing & showing out 
-how addicted I am to emojis.
+✌️ I'm casually [writing](/posts), [travelling](/about), 
+[speaking](/talks) & advocating for craft brewing.
 
 📢 Feel free to reach me out on social networks, 
 [appear.in](https://appear.in/ythecombinator) or schedule something on  
-[my calendar](https://calendly.com/ythecombinator).
+[my calendar](https://calendly.com/ythecombinator). Last but not least,
+you can write to me through [land@ythecombinator.space](land@ythecombinator.space).
 `;
 
 const intro = `
