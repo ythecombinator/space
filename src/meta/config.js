@@ -7,14 +7,14 @@ module.exports = {
   siteImage: "preview.jpg",
   siteLanguage: "en",
   // author
-  authorName: "Матвій Альбукерке",
+  authorName: "Matheus Albuquerque",
   authorTwitterAccount: "ythecombinator",
   // info
-  infoTitle: "Матвій Альбукерке",
+  infoTitle: "Matheus Albuquerque",
   infoTitleNote: "It's me, Matheus.",
   // manifest.json
   manifestName: "ythecombinator | Full-Stack Engineer",
-  manifestShortName: "Матвій",
+  manifestShortName: "Matheus",
   manifestStartUrl: "/",
   manifestBackgroundColor: "white",
   manifestThemeColor: "#5b737d",
