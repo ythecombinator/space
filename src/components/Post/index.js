@@ -2,7 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import moment from "moment";
 
-import { secondary } from "../../styles/colors";
+import { colors } from "../../styles/colors";
+
+const { secondary, text, dates } = colors;
 
 const StyledPost = styled.div`
   padding: 2rem;
@@ -10,7 +12,7 @@ const StyledPost = styled.div`
   box-sizing: border-box;
 
   h1 {
-    color: #1a1a1a;
+    color: ${text.highlighted};
     font-family: "Poppin", sans-serif;
     font-weight: 700;
     text-align: center;
@@ -20,20 +22,20 @@ const StyledPost = styled.div`
     }
   }
   p#date {
-    font-family: "Poppin", sans-serif;
-    color: #737373;
+    font-family: source sans pro, sans-serif;
+    color: ${dates.regular};
     text-align: center;
     font-size: 0.8rem;
     font-weight: 400;
   }
   .postBody {
-    font-family: "Lato", sans-serif;
+    font-family: source sans pro, sans-serif;
     display: block;
     margin: 0 auto;
     width: 100%;
     font-size: 1.2rem;
     line-height: 1.8rem;
-    color: #414141;
+    color: ${text.regular};
     @media (min-width: 768px) {
       width: 60%;
     }

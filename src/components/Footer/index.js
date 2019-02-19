@@ -11,7 +11,7 @@ const StyledFooter = styled.footer`
   p {
     color: #1d1d1d;
     font-size: 0.8rem;
-    font-family: "Lato", sans-serif;
+    font-family: source sans pro, sans-serif;
     font-weight: 600;
     a {
       color: ${primary};

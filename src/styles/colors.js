@@ -24,6 +24,9 @@ const colors = {
     regular: baseColors.veryDarkGrayishBlue,
     highlighted: baseColors.veryDarkGrayishRed
   },
+  dates: {
+    regular: baseColors.veryDarkGrayishRed
+  },
   links: {
     regular: {
       text: baseColors.mostlyDesaturatedDarkBlue,

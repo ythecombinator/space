@@ -12,7 +12,7 @@ const StyledPostList = styled.ul`
   margin-left: 0.8rem;
   a {
     font-size: 1.1rem;
-    font-family: "Lato", sans-serif;
+    font-family: source sans pro, sans-serif;
     font-weight: 600;
     color: ${primary};
     text-decoration: none;

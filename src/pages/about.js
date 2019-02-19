@@ -17,16 +17,16 @@ const StyledAbout = styled.div`
   margin: 3rem;
   h2 {
     color: ${tertiary};
-    font-family: "Lato", sans-serif;
+    font-family: source sans pro, sans-serif;
   }
   h3 {
     color: ${secondary};
-    font-family: "Lato", sans-serif;
+    font-family: source sans pro, sans-serif;
   }
   p {
     margin: 0;
     color: #333333;
-    font-family: "Lato", sans-serif;
+    font-family: source sans pro, sans-serif;
     font-weight: 400;
     font-size: 1rem;
     line-height: 2rem;
@@ -39,11 +39,11 @@ const StyledAbout = styled.div`
     }
   }
   ul {
-    font-family: "Lato", sans-serif;
+    font-family: source sans pro, sans-serif;
     margin-top: 0.5rem;
     li {
       color: #333333;
-      font-family: "Lato", sans-serif;
+      font-family: source sans pro, sans-serif;
       font-weight: 400;
       font-size: 1rem;
       line-height: 2rem;

@@ -14,7 +14,7 @@ const StyledMenu = styled.ul`
   margin: 2.5rem 0;
   li {
     font-size: 1.2rem;
-    font-family: "Lato", sans-serif;
+    font-family: source sans pro, sans-serif;
     font-weight: 600;
     &:nth-child(even) {
       margin: 0.6rem 0;
