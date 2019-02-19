@@ -1,3 +1,20 @@
+const shortIntro = `
+🙋Hi folks! I'm Matheus – yet another constantly evolving full-stack
+developer draft who inhabits this world.
+
+👨‍💻 I'm also a client-side architect – with an iOS and node.js background
+– currently working as a front-end engineer at Beakyn, a NYC-based
+geodata company.
+
+✌️Casually [writing](/posts), [travelling](/about#travelling), 
+[speaking](/talks), advocating for craft brewing & showing out 
+how addicted I am to emojis.
+
+📢 Feel free to reach me out on social networks, 
+[appear.in](https://appear.in/ythecombinator) or schedule something on  
+[my calendar](https://calendly.com/ythecombinator).
+`;
+
 const intro = `
 ## Intro
 
@@ -29,7 +46,7 @@ more through my homeland, I decided to travel and live a little around the world
 while – not staying for too long on any city. 
 
 These are the countries where I've been to in this journey:
-`
+`;
 
 const working = `
 ## Working
@@ -111,6 +128,7 @@ technologies.
 `;
 
 export const sections = {
+  shortIntro,
   intro,
   travelling,
   working
