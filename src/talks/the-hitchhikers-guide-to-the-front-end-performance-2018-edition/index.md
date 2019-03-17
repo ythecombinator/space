@@ -1,7 +1,7 @@
 ---
-path: "/talks/the-hitchhikers-guide-to-the-front-end-performance"
+path: "/talks/the-hitchhikers-guide-to-the-front-end-performance-2018-edition"
 date: "2018-12-06"
-title: "The Hitchhiker's Guide to the Front-End Performance"
+title: "The Hitchhiker's Guide to the Front-End Performance, 2018 edition"
 ---
 
 ### Description
