@@ -1,3 +1,10 @@
+import featuredTalk1 from "../assets/talks/tdc_florianopolis-2019.jpg";
+import featuredTalk2 from "../assets/talks/natal_tech_conference-2019.jpg";
+import featuredTalk3 from "../assets/talks/react_nyc-2018.jpg";
+import featuredTalk4 from "../assets/talks/front_in_fortaleza-2018.jpg";
+import featuredTalk5 from "../assets/talks/cejs-2017.jpg";
+import featuredTalk6 from "../assets/talks/cejs-2016.jpg";
+
 const shortIntro = `
 🙋 Hi folks! I'm Matheus.
 
@@ -125,6 +132,41 @@ export const sections = {
   travelling,
   working
 };
+
+export const featuredTalks = [
+  {
+    event: "TDC 2019 | Florianópolis",
+    link: "/talks/the-state-of-the-state-react-state-management-in-2019",
+    image: featuredTalk1
+  },
+  {
+    event: "Natal Tech Conference | 2019",
+    link:
+      "/talks/the-hitchhikers-guide-to-the-front-end-performance-2019-edition",
+    image: featuredTalk2
+  },
+  {
+    event: "React NYC | October, 2018",
+    link: "/talks/state-of-the-art-react-development-flow-with-typescript",
+    image: featuredTalk3
+  },
+  {
+    event: "Front In Fortaleza | 2018",
+    link:
+      "/talks/the-hitchhikers-guide-to-the-front-end-performance-2018-edition",
+    image: featuredTalk4
+  },
+  {
+    event: "CEJS | 2017",
+    link: "/talks/sweet-macros-o-mine",
+    image: featuredTalk5
+  },
+  {
+    event: "CEJS | 2016",
+    link: "/talks/javascript-in-the-sky-with-types",
+    image: featuredTalk6
+  }
+];
 
 export const socialData = [
   {
