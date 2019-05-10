@@ -7,7 +7,6 @@ import Footer from "../components/Footer";
 
 import BlogHeader from "../components/BlogHeader";
 import GithubRibbon from "../components/GithubRibbon";
-import Dots from "../components/Dots";
 
 import favicon from "../assets/favicon.png";
 
@@ -71,7 +70,6 @@ const TemplateWrapper = ({ children, location }) => (
       ]}
     />
 
-    <Dots number={20} />
     <GithubRibbon />
 
     <BlogHeader>
