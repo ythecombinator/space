@@ -41,7 +41,15 @@ const colors = {
   map: {
     fill: baseColors.desaturatedDarkBlue,
     stroke: baseColors.lightGrayishBlue
-  }
+  },
+  dots: [
+    baseColors.grayishBlue,
+    baseColors.veryDarkGrayishBlue,
+    baseColors.desaturatedDarkBlue,
+    baseColors.lightGrayishBlue,
+    baseColors.grayishOrange,
+    baseColors.veryDarkGrayishRed
+  ]
 };
 
 export { colors };
