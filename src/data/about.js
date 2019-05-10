@@ -50,7 +50,7 @@ These are the countries where I've been to in this journey:
 const working = `
 ## Working
 
-### Engineering Leader, Front-End
+### Tech Lead, Front-End
 
 🏢 Beakyn Company
 
@@ -58,24 +58,15 @@ const working = `
 
 📅 Feb 2018 – Present
 
-📃 As an engineering leader on a few of the company's most recent projects, I’ve 
-been responsible for ensuring the team balances all of the following: working at 
-a speed guided by direction, not pace; delivering on its promises to potential
-customers, and applying my expertise as a guiding force growing and developing
-the team. 
+📃 As a tech lead on a few of the company's most recent projects, I’ve been responsible
+for ensuring the team balances all of the following: working at a speed guided by 
+direction, not pace; delivering on its promises to potential customers, and applying 
+my expertise as a guiding force growing and developing the team. 
 
-It's been an exciting role that does not have strict boundaries, giving me the
-opportunity to expand my impact where I see value to the engineering team and 
-our business and where I have the freedom to identify opportunities and create s
-olutions that enable fast UI innovation.
-
-At the same time, it demands a considerable background in software engineering, 
-front-end and back-end architecture, continuous integration and collaboration. 
-It challenges me to operate at a tactical and strategic level, while ensuring 
-the team manages high availability and stable infrastructure to maximize 
-performance. It requires a good insight into the software development lifecycle 
-for production services and experience as a leader of a talented and capable 
-engineering team as well.
+It's been an exciting role that does not have strict boundaries, giving me the 
+opportunity to expand my impact where I see value to the team and our business and 
+where I have the freedom to identify opportunities and create solutions that enable 
+fast UI innovation.
 
 ### Senior Software Engineer, Front-End
 
@@ -100,6 +91,8 @@ visualization platforms and assets curation systems.
 - Firebase services (Auth, Cloud Functions, Firestore etc.)
 - Authentication, authorization and accounting infrastructure (mostly with Auth0 and node.js)
 - Chat & Chatbots tooling (Intercom, Tokbox, Dialogflow etc.)
+
+<hr>
 
 ### Mobile Developer
 
