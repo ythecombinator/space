@@ -9,6 +9,10 @@ import Dots from "../components/Dots";
 import favicon from "../assets/favicon.png";
 
 const Main = styled.main`
+  body {
+    font-family: source sans pro, sans-serif;
+  }
+
   @media (max-width: 768px) {
     body {
       font-size: 16px;

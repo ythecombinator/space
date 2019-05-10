@@ -18,6 +18,7 @@ const { primary } = colors;
 require("prism-themes/themes/prism-ghcolors.css");
 
 const Main = styled.main`
+  font-family: source sans pro, sans-serif;
   padding: 0 1rem;
 `;
 
