@@ -1,9 +1,9 @@
-import featuredTalk1 from "../assets/talks/tdc_florianopolis-2019.jpg";
-import featuredTalk2 from "../assets/talks/natal_tech_conference-2019.jpg";
-import featuredTalk3 from "../assets/talks/react_nyc-2018.jpg";
-import featuredTalk4 from "../assets/talks/front_in_fortaleza-2018.jpg";
-import featuredTalk5 from "../assets/talks/cejs-2017.jpg";
-import featuredTalk6 from "../assets/talks/cejs-2016.jpg";
+import featuredTalk1 from "../assets/talks/tdc_florianopolis-2019.webp";
+import featuredTalk2 from "../assets/talks/natal_tech_conference-2019.webp";
+import featuredTalk3 from "../assets/talks/react_nyc-2018.webp";
+import featuredTalk4 from "../assets/talks/front_in_fortaleza-2018.webp";
+import featuredTalk5 from "../assets/talks/cejs-2017.webp";
+import featuredTalk6 from "../assets/talks/cejs-2016.webp";
 
 const shortIntro = `
 🙋 Hi folks! I'm Matheus.
