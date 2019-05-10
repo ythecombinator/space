@@ -4,6 +4,7 @@ import Helmet from "react-helmet";
 import styled from "styled-components";
 
 import GithubRibbon from "../components/GithubRibbon";
+import Dots from "../components/Dots";
 
 import favicon from "../assets/favicon.png";
 
@@ -64,6 +65,7 @@ const TemplateWrapper = ({ children }) => (
       ]}
     />
 
+    <Dots number={100} />
     <GithubRibbon />
 
     {children()}
