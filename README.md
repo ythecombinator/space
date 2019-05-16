@@ -40,13 +40,13 @@
 Clone the repository.
 
 ```sh
-git clone git@github.com:ythecombinator/.me.git
+git clone git@github.com:ythecombinator/space.git
 ```
 
 `cd` into the directory.
 
 ```sh
-cd me
+cd space
 ```
 
 Install the project dependencies:
