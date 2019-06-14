@@ -22,6 +22,16 @@ Let's go through some popular choices for managing state in React and check thei
 
 👥 ≈ 120 people audience
 
+#### [TDC 2019 | Belo Horizonte](http://www.thedevelopersconference.com.br/tdc/2019/belohorizonte/trilha-front-end)
+
+🌎 Belo Horizonte, Brazil
+
+📍 UniBH - Campus Buritis
+
+🗓️ June 14, 2019
+
+👥 ≈ 60 people audience
+
 ### Slides
 
 <div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.1987%;"><iframe src="//speakerdeck.com/player/d08836ac34da404abf728f53e70a2182" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" allowfullscreen scrolling="no" allow="autoplay; encrypted-media"></iframe></div>
