@@ -1,10 +1,13 @@
-import React from "react";
-import styled from "styled-components";
 import Link from "gatsby-link";
-
 import PostList from "../components/PostList";
-
+import React from "react";
 import { featuredTalks } from "../data/about";
+import styled from "styled-components";
+
+const StyledContainer = styled.div`
+  margin-left: calc(-1rem - 8px);
+  margin-right: calc(-1rem - 8px);
+`;
 
 const StyledCollection = styled.div`
   display: -webkit-box;
@@ -66,7 +69,7 @@ const StyledLink = styled(Link)`
 export default ({ data }) => {
   const posts = data.allMarkdownRemark.edges;
   return (
-    <div>
+    <StyledContainer>
       <StyledCollection>
         {featuredTalks.map(talk => (
           <StyledItem image={talk.image}>
@@ -77,7 +80,7 @@ export default ({ data }) => {
         ))}
       </StyledCollection>
       <PostList posts={posts} />
-    </div>
+    </StyledContainer>
   );
 };
 
