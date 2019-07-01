@@ -1,24 +1,23 @@
-const config = require("./src/meta/config");
-
 module.exports = {
   siteMetadata: {
-    title: 'ythecombinator',
-    description: 'full-stack engineer focused on client-side architecture • into Swift & node.js'
+    title: "ythecombinator",
+    description:
+      "full-stack engineer focused on client-side architecture • into Swift & node.js"
   },
   plugins: [
-    'gatsby-plugin-styled-components',
+    "gatsby-plugin-styled-components",
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/src/posts`,
-        name: 'posts'
+        name: "posts"
       }
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/src/talks`,
-        name: 'talks'
+        name: "talks"
       }
     },
     `gatsby-plugin-sharp`,
@@ -29,64 +28,58 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 1080,
-            },
+              maxWidth: 1080
+            }
           },
           {
-            resolve: `gatsby-remark-prismjs`,
-          }          
-        ],
-      },
-    },
-    'gatsby-plugin-react-helmet',
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: config.manifestName,
-        short_name: config.manifestShortName,
-        start_url: config.manifestStartUrl,
-        background_color: config.manifestBackgroundColor,
-        theme_color: config.manifestThemeColor,
-        display: config.manifestDisplay,
-        icons: [
-          {
-            src: "/icons/icon-48x48.png",
-            sizes: "48x48",
-            type: "image/png"
-          },
-          {
-            src: "/icons/icon-96x96.png",
-            sizes: "96x96",
-            type: "image/png"
-          },
-          {
-            src: "/icons/icon-144x144.png",
-            sizes: "144x144",
-            type: "image/png"
-          },
-          {
-            src: "/icons/icon-192x192.png",
-            sizes: "192x192",
-            type: "image/png"
-          },
-          {
-            src: "/icons/icon-256x256.png",
-            sizes: "256x256",
-            type: "image/png"
-          },
-          {
-            src: "/icons/icon-384x384.png",
-            sizes: "384x384",
-            type: "image/png"
-          },
-          {
-            src: "/icons/icon-512x512.png",
-            sizes: "512x512",
-            type: "image/png"
+            resolve: `gatsby-remark-prismjs`
           }
         ]
       }
     },
-    `gatsby-plugin-offline`,    
+    "gatsby-plugin-typescript",
+    "gatsby-plugin-typescript-checker",
+    "gatsby-plugin-styled-components",
+    "gatsby-plugin-react-helmet",
+    {
+      resolve: "gatsby-plugin-google-analytics",
+      options: {
+        trackingId: ""
+      }
+    },
+    {
+      resolve: "gatsby-plugin-nprogress",
+      options: {
+        color: "#5b737d",
+        showSpinner: false
+      }
+    },
+    {
+      resolve: "gatsby-plugin-google-fonts",
+      options: {
+        fonts: ["Poppins:300,400,600,700"],
+        display: "swap"
+      }
+    },
+    {
+      resolve: "gatsby-plugin-canonical-urls",
+      options: {
+        siteUrl: "https://www.ythecombinator.space"
+      }
+    },
+    "gatsby-plugin-sitemap",
+    {
+      resolve: "gatsby-plugin-manifest",
+      options: {
+        name: "Matheus' Space",
+        short_name: "ythecombinator",
+        start_url: "/",
+        background_color: "#ffffff",
+        theme_color: "#5b737d",
+        display: "standalone"
+      }
+    },
+    "gatsby-plugin-offline",
+    "gatsby-plugin-webpack-bundle-analyzer"
   ]
-}
+};
