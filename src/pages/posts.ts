@@ -1,17 +1,11 @@
-import React from 'react'
+import {graphql} from 'gatsby';
 
-import PostList from '../components/PostList'
+import Page from 'components/pages/posts';
 
-export default ({ data }) => {
-  const posts = data.allMarkdownRemark.edges
-  return <PostList posts={posts} />
-}
-
-// eslint-disable-next-line
 export const pageQuery = graphql`
   query PostsQuery {
     allMarkdownRemark(
-      filter: { fileAbsolutePath: {regex : "\/posts/"} },
+      filter: { fileAbsolutePath: { regex: "/posts/" } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {
@@ -25,4 +19,6 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
+
+export default Page;
