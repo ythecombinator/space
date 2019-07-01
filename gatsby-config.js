@@ -5,7 +5,6 @@ module.exports = {
       "full-stack engineer focused on client-side architecture • into Swift & node.js"
   },
   plugins: [
-    "gatsby-plugin-styled-components",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -44,7 +43,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
-        trackingId: ""
+        trackingId: "UA-58120604-10"
       }
     },
     {
