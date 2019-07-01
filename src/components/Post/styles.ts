@@ -1,8 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import moment from "moment";
+import styled from 'styled-components';
 
-import { colors } from "../../styles/colors";
+import {colors} from 'styles/colors';
 
 const { secondary, text, dates } = colors;
 
@@ -63,16 +61,4 @@ const StyledPost = styled.div`
   }
 `;
 
-const Post = ({ postData }) => {
-  const { html, frontmatter } = postData;
-  const m = moment(frontmatter.date, "YYYY MM DD");
-  return (
-    <StyledPost>
-      <h1>{frontmatter.title}</h1>
-      <p id="date">Published on {m.format("MMM Do YYYY")}</p>
-      <div className="postBody" dangerouslySetInnerHTML={{ __html: html }} />
-    </StyledPost>
-  );
-};
-
-export default Post;
+export { StyledPost };

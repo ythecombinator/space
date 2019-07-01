@@ -1,7 +1,4 @@
-import React from "react";
-import styled from "styled-components";
-
-import SocialLink from "./social-link";
+import styled from 'styled-components';
 
 const StyledSocialLinks = styled.div`
   margin-top: 60px;
@@ -42,17 +39,4 @@ const StyledSocialLinks = styled.div`
   }
 `;
 
-const SocialLinks = ({ socialNetworks }) => {
-  return (
-    <StyledSocialLinks>
-      {socialNetworks.map(socialNetwork => (
-        <SocialLink
-          key={`${socialNetwork.name}`}
-          socialNetwork={socialNetwork}
-        />
-      ))}
-    </StyledSocialLinks>
-  );
-};
-
-export default SocialLinks;
+export { StyledSocialLinks };

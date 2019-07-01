@@ -1,11 +1,10 @@
-import React from "react";
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { colors } from "../../styles/colors";
+import {colors} from 'styles/colors';
 
 const { primary } = colors;
 
-const StyledHeader = styled.div`
+const StyledBlogHeader = styled.div`
   text-align: left;
   margin-left: 1.4rem;
   margin-top: 1.4rem;
@@ -32,8 +31,4 @@ const StyledHeader = styled.div`
   }
 `;
 
-const Header = ({ children }) => {
-  return <StyledHeader>{children}</StyledHeader>;
-};
-
-export default Header;
+export { StyledBlogHeader };
