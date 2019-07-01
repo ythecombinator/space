@@ -1,12 +1,14 @@
-import featuredTalk1 from "../assets/talks/cejs-2016.webp";
-import featuredTalk2 from "../assets/talks/cejs-2017.webp";
-import featuredTalk3 from "../assets/talks/phpeste-2017.webp";
-import featuredTalk4 from "../assets/talks/front_in_fortaleza-2018.webp";
-import featuredTalk5 from "../assets/talks/react_nyc-2018.webp";
-import featuredTalk6 from "../assets/talks/natal_tech_conference-2019.webp";
-import featuredTalk7 from "../assets/talks/tdc_florianopolis-2019.webp";
-import featuredTalk8 from "../assets/talks/tdc_bh-2019-1.webp";
-import featuredTalk9 from "../assets/talks/tdc_bh-2019-2.webp";
+import {SocialNetwork} from 'model/SocialNetwork';
+
+import featuredTalk1 from 'assets/talks/cejs-2016.webp';
+import featuredTalk2 from 'assets/talks/cejs-2017.webp';
+import featuredTalk4 from 'assets/talks/front_in_fortaleza-2018.webp';
+import featuredTalk6 from 'assets/talks/natal_tech_conference-2019.webp';
+import featuredTalk3 from 'assets/talks/phpeste-2017.webp';
+import featuredTalk5 from 'assets/talks/react_nyc-2018.webp';
+import featuredTalk8 from 'assets/talks/tdc_bh-2019-1.webp';
+import featuredTalk9 from 'assets/talks/tdc_bh-2019-2.webp';
+import featuredTalk7 from 'assets/talks/tdc_florianopolis-2019.webp';
 
 const shortIntro = `
 🙋 Hi folks! I'm Matheus.
@@ -186,7 +188,7 @@ export const featuredTalks = [
   }
 ];
 
-export const socialData = [
+export const socialData: SocialNetwork[] = [
   {
     name: "twitter",
     link: "https://twitter.com/ythecombinator"
