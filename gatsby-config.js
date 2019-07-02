@@ -60,10 +60,22 @@ module.exports = {
       }
     },
     {
-      resolve: "gatsby-plugin-google-fonts",
+      resolve: "gatsby-plugin-prefetch-google-fonts",
       options: {
-        fonts: ["Poppins:300,400,600,700"],
-        display: "swap"
+        fonts: [
+          {
+            family: "Source Code Pro",
+            variants: ["600", "700"]
+          },
+          {
+            family: "Source Sans Pro",
+            variants: ["200", "300", "400", "700"]
+          },
+          {
+            family: "Poppins",
+            variants: ["600"]
+          }
+        ]
       }
     },
     "gatsby-plugin-sitemap",

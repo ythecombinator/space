@@ -13,7 +13,7 @@ const Styled404 = styled.div`
     padding-block-end: 1em;
     margin: 0;
     font-size: 1.1rem;
-    font-family: "Poppin", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 600;
     color: ${primary};
     @media (min-width: 768px) {

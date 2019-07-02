@@ -32,11 +32,6 @@ const TemplateWrapper: FunctionComponent<Props> = props => {
         title="ythecombinator's space"
         link={[
           {
-            rel: "stylesheet",
-            href:
-              "https://fonts.googleapis.com/css?family=Source+Code+Pro:600,700"
-          },
-          {
             rel: "shortcut icon",
             type: "image/png",
             href: favicon

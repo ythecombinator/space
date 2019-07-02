@@ -9,7 +9,7 @@ const StyledFooter = styled.footer`
   justify-content: center;
   p {
     color: ${tertiary};
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 300;
     font-family: source sans pro, sans-serif;
   }

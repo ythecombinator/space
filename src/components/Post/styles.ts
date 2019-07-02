@@ -11,7 +11,7 @@ const StyledPost = styled.div`
 
   h1 {
     color: ${text.highlighted};
-    font-family: "Poppin", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 700;
     text-align: center;
     font-size: 1.6rem;
