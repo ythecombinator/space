@@ -24,7 +24,7 @@ const TemplateWrapper: FunctionComponent = props => {
         ]}
       />
 
-      <Dots number={100} />
+      <Dots number={50} />
       <GithubRibbon />
 
       {children}

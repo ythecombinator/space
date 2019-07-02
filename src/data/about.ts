@@ -20,10 +20,10 @@ a NYC-based geodata company.
 [travelling](/about) & advocating for craft brewing.
 
 📢 Feel free to reach me out on social networks, 
-[appear.in](https://appear.in/ythecombinator) or schedule something on  
-[my calendar](https://calendly.com/ythecombinator). Last but not least,
-you can write to me through 
-[land@ythecombinator.space](mailto:land@ythecombinator.space).
+[appear.in](https://appear.in/ythecombinator) or schedule something 
+on [my calendar](https://calendly.com/ythecombinator). Last but not least,
+you can write to me 
+through [land@ythecombinator.space](mailto:land@ythecombinator.space).
 `;
 
 const intro = `

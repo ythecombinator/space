@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledSocialLinks = styled.div`
-  margin-top: 60px;
+  margin-top: 45px;
   margin-left: -13px;
 
   a {
