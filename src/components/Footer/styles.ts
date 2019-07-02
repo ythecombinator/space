@@ -10,6 +10,7 @@ const StyledFooter = styled.footer`
   p {
     color: ${tertiary};
     font-size: 0.8rem;
+    font-weight: 300;
     font-family: source sans pro, sans-serif;
   }
 `;
