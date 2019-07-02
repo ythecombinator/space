@@ -7,6 +7,8 @@ import BlogHeader from 'components/BlogHeader';
 import Footer from 'components/Footer';
 import GithubRibbon from 'components/GithubRibbon';
 
+import {stripTrailingSlash} from 'utils/string';
+
 import favicon from 'assets/favicon.png';
 
 import {StyledLogo, StyledMain} from './styles';
@@ -20,6 +22,9 @@ interface Props {
 
 const TemplateWrapper: FunctionComponent<Props> = props => {
   const { children, location } = props;
+
+  const currentPathname = stripTrailingSlash(location.pathname);
+  const previousPathname = currentPathname.split("/")[1];
 
   return (
     <StyledMain>
@@ -43,13 +48,11 @@ const TemplateWrapper: FunctionComponent<Props> = props => {
 
       <BlogHeader>
         <h1>
-          {blogHeaderLinks[location.pathname as HeaderLink] ? (
-            blogHeaderLinks[location.pathname as HeaderLink]
+          {blogHeaderLinks[currentPathname as HeaderLink] ? (
+            blogHeaderLinks[currentPathname as HeaderLink]
           ) : (
             <StyledLogo>
-              <Link to={`/${location.pathname.split("/")[1]}`}>
-                🏠{location.pathname}
-              </Link>
+              <Link to={`/${previousPathname}`}>🏠{currentPathname}</Link>
             </StyledLogo>
           )}
         </h1>
