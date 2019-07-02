@@ -41,6 +41,12 @@ module.exports = {
     "gatsby-plugin-styled-components",
     "gatsby-plugin-react-helmet",
     {
+      resolve: `gatsby-plugin-react-helmet-canonical-urls`,
+      options: {
+        siteUrl: "https://www.ythecombinator.space"
+      }
+    },
+    {
       resolve: "gatsby-plugin-google-analytics",
       options: {
         trackingId: "UA-58120604-10"
@@ -58,12 +64,6 @@ module.exports = {
       options: {
         fonts: ["Poppins:300,400,600,700"],
         display: "swap"
-      }
-    },
-    {
-      resolve: "gatsby-plugin-canonical-urls",
-      options: {
-        siteUrl: "https://www.ythecombinator.space"
       }
     },
     "gatsby-plugin-sitemap",
