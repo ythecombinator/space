@@ -15,10 +15,6 @@ const StyledLogo = styled.div`
   display: flex;
   align-items: center;
   padding-bottom: 5px;
-  &:hover {
-    color: white;
-    background: ${primary};
-  }
   img: {
     padding: 0 1rem 4px 0;
   }

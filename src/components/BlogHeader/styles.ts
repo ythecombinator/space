@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import {colors} from 'styles/colors';
 
-const { primary } = colors;
+const { primary, secondary } = colors;
 
 const StyledBlogHeader = styled.div`
   text-align: left;
@@ -16,7 +16,7 @@ const StyledBlogHeader = styled.div`
     border-bottom: 4px solid ${primary};
     display: inline-flex;
     &:hover {
-      border-bottom: none;
+      border-bottom: 4px solid ${secondary};
     }
     a {
       transition: all 0.3s ease-in-out;
@@ -24,8 +24,7 @@ const StyledBlogHeader = styled.div`
       color: ${primary};
       text-decoration: none;
       &:hover {
-        color: white;
-        background: ${primary};
+        color: ${secondary};
       }
     }
   }
