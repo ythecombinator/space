@@ -2,7 +2,8 @@ module.exports = {
   siteMetadata: {
     title: "ythecombinator",
     description:
-      "full-stack engineer focused on client-side architecture • into Swift & node.js"
+      "full-stack engineer focused on client-side architecture • into Swift & node.js",
+    siteUrl: "https://www.ythecombinator.space"
   },
   plugins: [
     {
