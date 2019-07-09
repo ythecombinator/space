@@ -12,12 +12,12 @@
 <br>
 <br>
 
-<a href="https://codebeat.co/projects/github-com-ythecombinator-me-master">
-	<img alt="codebeat badge" src="https://codebeat.co/badges/88ec80a1-e3b0-4e0f-9c76-4a717e68a252" />
+<a href="https://codebeat.co/projects/github-com-ythecombinator-space-master">
+	<img alt="codebeat badge" src="https://codebeat.co/badges/dd570532-fed8-4a1d-b75b-45b494bd153e" />
 </a>
 
-<a href="https://codeclimate.com/github/ythecombinator/.me">
-	<img src="https://codeclimate.com/github/ythecombinator/.me/badges/gpa.svg" />
+<a href="https://codeclimate.com/github/ythecombinator/space/maintainability">
+	<img src="https://api.codeclimate.com/v1/badges/7b042cb2e83e545d5d22/maintainability" />
 </a>
 
 <a href="https://david-dm.org/ythecombinator/space" title="dependencies status">
