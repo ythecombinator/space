@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import {colors} from 'styles/colors';
 
-const { secondary, text, dates } = colors;
+const { primary, secondary, text, dates } = colors;
 
 const StyledPost = styled.div`
   padding: 2rem;
@@ -57,6 +57,17 @@ const StyledPost = styled.div`
       border-left: 5px solid #ccc;
       margin: 1.5em 10px;
       padding: 0.5em 10px;
+    }
+    figure {
+      margin: 0;
+    }
+    figcaption {
+      font-style: italic;
+      text-align: center;
+      font-size: 0.8em;
+      line-height: 1.4em;
+      display: block;
+      color: ${primary};
     }
   }
 `;
