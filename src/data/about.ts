@@ -13,8 +13,8 @@ import featuredTalk7 from 'assets/talks/tdc_florianopolis-2019.webp';
 const shortIntro = `
 🙋 Hi folks! I'm Matheus.
 
-👨‍💻 I'm currently working as a Senior Front-End Engineer at Beakyn, 
-a NYC-based geodata company.
+👨‍💻 I'm currently working as a Front-End Engineer at [STRV](https://www.strv.com), 
+a San Francisco-based strategy, design, and engineering company.
 
 ✌️ I'm casually [speaking](/talks), [writing](/posts), 
 [travelling](/about) & advocating for craft brewing.
