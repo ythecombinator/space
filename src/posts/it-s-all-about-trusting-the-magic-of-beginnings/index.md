@@ -1,0 +1,52 @@
+---
+path: "/posts/it-s-all-about-trusting-the-magic-of-beginnings"
+date: "2019-07-15"
+title: "It's all about trusting the magic of beginnings"
+---
+
+> Originally published [here](https://dev.to/ythecombinator/it-s-all-about-trusting-the-magic-of-beginnings-3flf).
+
+After almost two years immersed in a lot of exciting challenges, it's time to move on.
+
+### My journey in a nutshell
+
+One of the funniest things, when I started working at [Beakyn](https://beakyn.com), was realizing that every single piece of code I wrote would run in thousands of computers around America. Up to that moment in my career, I had only worked on small local startups, where the impact of their products had way smaller proportions.
+
+At Beakyn, I had the chance to contribute to a couple of projects that impacted the whole assets inventory management and audience demographic analysis lifecycle of our client, [Outfront Media](https://www.outfrontmedia.com) – one of the largest outdoor media companies in America –, while helping to shape a culture of sharing and openness. And I'm so proud of the achievements we've made!
+
+<figure>
+    <img src="https://i.imgur.com/43P7ad2.jpg" alt="Our crew">
+    <figcaption>Dope team; always doing some crazy dope shit 👊 in the city that never sleeps 🗽</figcaption>
+</figure>
+
+I also had the opportunity to present [some of the cool things I learned](https://www.ythecombinator.space/talks) while working on our projects in conferences and meetups. This allowed me to grow my presentation skills (I know there is always a wide room for improvement here, tho) and to create a great network of contacts amongst our community.
+
+<figure>
+    <img src="https://i.imgur.com/A65WGOO.jpg" alt="A few talks">
+    <figcaption>I had never traveled that much to attend conferences 🛫 </figcaption>
+</figure>
+
+On the personal side, I feel that I have grown so much! My remote working routine allowed me not only to travel a lot more through my country – not staying for too long in any city – but to visit new ones and this made me meet tons of great people, get to know amazing cultures, experience great things – and capture all of [these moments](https://www.instagram.com/ythecombinator) in photos (which, by the way, showed me photography is a strong candidate to become the hobby I've been always looking for 📸).
+
+<figure>
+    <img src="https://i.imgur.com/AdwUSvS.jpg" alt="Ah, the sky...">
+    <figcaption>Watching the 🌅 by the window in a plane became one of my greatest moments of peace 🙏</figcaption>
+</figure>
+
+### The need for a change
+
+Earlier this year, though, I caught myself on LinkedIn, casually looking for a new job, and this made me think that it was time to move on. You know what they say... **when you're feeling attracted by other opportunities, it's a big sign you need a change**. I then applied to some companies and met a lot of great people during the interviews but one of them really had me from hello...
+
+### Coming next
+
+In the next few days, I'll be joining the Front-End division at [STRV](https://www.strv.com) – a mobile & web application development company that supplies start-ups all over the world with applications developed in such prestigious incubators like Y Combinator, 500 Startups, and others.
+
+I must say that I couldn't be more excited about it, but a lot of things need to happen before I move definitively to the Czechia. Meanwhile, I'll be working remotely.
+
+I'm very enthusiastic about what's coming down the line. I really hope to make an impact on the projects, make lots of new friends and bring the best of me for this company and all of its clients and partners.
+
+I also hope to keep pushing great things to production, attend conferences, open-source stuff and help to grow the React.js (and front-end) community.
+
+For those who made it to the end of this post and are somehow part of this journey, thank you so much for everything. I learned more than ever during this time. I really appreciate all kinds of learning and experiences you guys provided to me.
+
+Wish me luck! 🤞🎆
