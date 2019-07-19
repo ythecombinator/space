@@ -14,6 +14,16 @@ In this talk, we’ll look at how they fit together with other minor changes tha
 
 ### Events
 
+#### [TDC 2019 | São Paulo](http://www.thedevelopersconference.com.br/tdc/2019/saopaulo/trilha-javascript)
+
+🌎 São Paulo, Brazil
+
+📍 Universidade Anhembi Morumbi
+
+🗓️ July 19, 2019
+
+👥 ≈ 120 people audience
+
 #### [TDC 2019 | Belo Horizonte](http://www.thedevelopersconference.com.br/tdc/2019/belohorizonte/trilha-javascript)
 
 🌎 Belo Horizonte, Brazil
