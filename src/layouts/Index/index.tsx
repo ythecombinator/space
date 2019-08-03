@@ -1,9 +1,11 @@
-import React, {FunctionComponent} from 'react';
+import React, {FunctionComponent, useEffect} from 'react';
 
 import Helmet from 'react-helmet';
 
 import Dots from 'components/Dots';
 import GithubRibbon from 'components/GithubRibbon';
+
+import {getRandomEmojiElement} from 'utils/emoji';
 
 import favicon from 'assets/favicon.png';
 
@@ -11,6 +13,19 @@ import {StyledMain} from './styles';
 
 const TemplateWrapper: FunctionComponent = props => {
   const { children } = props;
+
+  useEffect(() => {
+    document.addEventListener("mousemove", e => {
+      const element = getRandomEmojiElement(e.pageX, e.pageY);
+
+      document.body.appendChild(element);
+
+      setTimeout(() => {
+        document.body.removeChild(element);
+      }, 100);
+    });
+  });
+
   return (
     <StyledMain>
       <Helmet
