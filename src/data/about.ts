@@ -9,6 +9,9 @@ import featuredTalk5 from 'assets/talks/react_nyc-2018.webp';
 import featuredTalk8 from 'assets/talks/tdc_bh-2019-1.webp';
 import featuredTalk9 from 'assets/talks/tdc_bh-2019-2.webp';
 import featuredTalk7 from 'assets/talks/tdc_florianopolis-2019.webp';
+import featuredTalk10 from 'assets/talks/tdc_sp-2019-1.webp';
+import featuredTalk11 from 'assets/talks/tdc_sp-2019-2.webp';
+import featuredTalk12 from 'assets/talks/the_conf.webp';
 
 const shortIntro = `
 🙋 Hi folks! I'm Matheus.
@@ -139,6 +142,21 @@ export const sections = {
 };
 
 export const featuredTalks = [
+  {
+    event: "The Conf | 2019",
+    link: "/talks/the-day-i-reverse-engineered-a-gameboy-advance-game",
+    image: featuredTalk12
+  },
+  {
+    event: "TDC 2019 | São Paulo",
+    link: "/talks/react-16-dot-x-way-beyond-hooks-revisited",
+    image: featuredTalk11
+  },
+  {
+    event: "TDC 2019 | São Paulo",
+    link: "/talks/react-16-dot-x-way-beyond-hooks-revisited",
+    image: featuredTalk10
+  },
   {
     event: "TDC 2019 | Belo Horizonte",
     link: "/talks/the-state-of-the-state-react-state-management-in-2019",
