@@ -2,4 +2,8 @@ const getRandomItem = <T>(items: T[]) => {
   return items[Math.floor(Math.random() * items.length)];
 };
 
-export { getRandomItem };
+const shuffleItems = <T>(items: T[]) => {
+  return items.sort(() => Math.random() - 0.5);
+};
+
+export { getRandomItem, shuffleItems };
