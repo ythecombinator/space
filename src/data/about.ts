@@ -1,14 +1,14 @@
 import {SocialNetwork} from 'model/SocialNetwork';
 
-import featuredTalk1 from 'assets/talks/cejs-2016.webp';
-import featuredTalk2 from 'assets/talks/cejs-2017.webp';
-import featuredTalk4 from 'assets/talks/front_in_fortaleza-2018.webp';
-import featuredTalk6 from 'assets/talks/natal_tech_conference-2019.webp';
-import featuredTalk3 from 'assets/talks/phpeste-2017.webp';
-import featuredTalk5 from 'assets/talks/react_nyc-2018.webp';
-import featuredTalk8 from 'assets/talks/tdc_bh-2019-1.webp';
-import featuredTalk9 from 'assets/talks/tdc_bh-2019-2.webp';
-import featuredTalk7 from 'assets/talks/tdc_florianopolis-2019.webp';
+import featuredTalk01 from 'assets/talks/cejs-2016.webp';
+import featuredTalk02 from 'assets/talks/cejs-2017.webp';
+import featuredTalk04 from 'assets/talks/front_in_fortaleza-2018.webp';
+import featuredTalk06 from 'assets/talks/natal_tech_conference-2019.webp';
+import featuredTalk03 from 'assets/talks/phpeste-2017.webp';
+import featuredTalk05 from 'assets/talks/react_nyc-2018.webp';
+import featuredTalk08 from 'assets/talks/tdc_bh-2019-1.webp';
+import featuredTalk09 from 'assets/talks/tdc_bh-2019-2.webp';
+import featuredTalk07 from 'assets/talks/tdc_florianopolis-2019.webp';
 import featuredTalk10 from 'assets/talks/tdc_sp-2019-1.webp';
 import featuredTalk11 from 'assets/talks/tdc_sp-2019-2.webp';
 import featuredTalk12 from 'assets/talks/the_conf.webp';
@@ -145,64 +145,76 @@ export const featuredTalks = [
   {
     event: "The Conf | 2019",
     link: "/talks/the-day-i-reverse-engineered-a-gameboy-advance-game",
-    image: featuredTalk12
+    image: featuredTalk12,
+    key: "featuredTalk12"
   },
   {
     event: "TDC 2019 | São Paulo",
     link: "/talks/react-16-dot-x-way-beyond-hooks-revisited",
-    image: featuredTalk11
+    image: featuredTalk11,
+    key: "featuredTalk11"
   },
   {
     event: "TDC 2019 | São Paulo",
     link: "/talks/react-16-dot-x-way-beyond-hooks-revisited",
-    image: featuredTalk10
+    image: featuredTalk10,
+    key: "featuredTalk10"
   },
   {
     event: "TDC 2019 | Belo Horizonte",
     link: "/talks/the-state-of-the-state-react-state-management-in-2019",
-    image: featuredTalk9
+    image: featuredTalk09,
+    key: "featuredTalk09"
   },
   {
     event: "TDC 2019 | Belo Horizonte",
     link: "/talks/react-16-dot-x-way-beyond-hooks-revisited",
-    image: featuredTalk8
+    image: featuredTalk08,
+    key: "featuredTalk08"
   },
   {
     event: "TDC 2019 | Florianópolis",
     link: "/talks/the-state-of-the-state-react-state-management-in-2019",
-    image: featuredTalk7
+    image: featuredTalk07,
+    key: "featuredTalk07"
   },
   {
     event: "Natal Tech Conference | 2019",
     link:
       "/talks/the-hitchhikers-guide-to-the-front-end-performance-2019-edition",
-    image: featuredTalk6
+    image: featuredTalk06,
+    key: "featuredTalk06"
   },
   {
     event: "React NYC | October, 2018",
     link: "/talks/state-of-the-art-react-development-flow-with-typescript",
-    image: featuredTalk5
+    image: featuredTalk05,
+    key: "featuredTalk05"
   },
   {
     event: "Front In Fortaleza | 2018",
     link:
       "/talks/the-hitchhikers-guide-to-the-front-end-performance-2018-edition",
-    image: featuredTalk4
+    image: featuredTalk04,
+    key: "featuredTalk04"
   },
   {
     event: "PHPeste | 2017",
     link: "/talks/the-correctness-by-design-duck-will-bite-php",
-    image: featuredTalk3
+    image: featuredTalk03,
+    key: "featuredTalk03"
   },
   {
     event: "CEJS | 2017",
     link: "/talks/sweet-macros-o-mine",
-    image: featuredTalk2
+    image: featuredTalk02,
+    key: "featuredTalk02"
   },
   {
     event: "CEJS | 2016",
     link: "/talks/javascript-in-the-sky-with-types",
-    image: featuredTalk1
+    image: featuredTalk01,
+    key: "featuredTalk01"
   }
 ];
 

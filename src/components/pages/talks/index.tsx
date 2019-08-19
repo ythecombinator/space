@@ -25,7 +25,7 @@ const PageWrapper: FunctionComponent<Props> = props => {
       <StyledContainer>
         <StyledCollection>
           {talks.map(talk => (
-            <StyledItem image={talk.image}>
+            <StyledItem image={talk.image} key={talk.key}>
               <StyledContent>
                 <StyledLink to={talk.link}>{talk.event}</StyledLink>
               </StyledContent>
