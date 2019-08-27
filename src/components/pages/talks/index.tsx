@@ -6,15 +6,13 @@ import PostList from 'components/PostList';
 
 import {PageProps} from 'model/PageProps';
 
-import {shuffleItems} from 'utils/array';
-
 import {featuredTalks} from 'data/about';
 
 import {StyledCollection, StyledContainer, StyledContent, StyledItem, StyledLink} from './styles';
 
 interface Props extends PageProps {}
 
-const talks = shuffleItems(featuredTalks).slice(0, 9);
+const talks = featuredTalks.slice(0, 9);
 
 const PageWrapper: FunctionComponent<Props> = props => {
   const { data, location } = props;
