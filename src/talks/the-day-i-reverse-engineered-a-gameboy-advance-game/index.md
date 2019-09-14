@@ -1,6 +1,6 @@
 ---
 path: "/talks/the-day-i-reverse-engineered-a-gameboy-advance-game"
-date: "2019-09-17"
+date: "2019-08-17"
 title: "The Day I Reverse Engineered a Gameboy Advance Game"
 ---
 
