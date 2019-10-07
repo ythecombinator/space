@@ -1,7 +1,7 @@
 ---
-path: "/talks/the-hitchhikers-guide-to-the-front-end-performance-2018-edition"
+path: "/talks/the-hitchhikers-guide-to-the-front-end-performance"
 date: "2018-12-06"
-title: "The Hitchhiker's Guide to the Front-End Performance, 2018 edition"
+title: "The Hitchhiker's Guide to the Front-End Performance"
 ---
 
 ### Description
@@ -14,15 +14,25 @@ In this talk I'll explain how to ship way faster front-end bundles and share a f
 
 ### Events
 
-#### [Front In Fortaleza](http://frontinfortaleza.com.br)
+#### [TDC 2019 | Belo Horizonte](http://www.thedevelopersconference.com.br/tdc/2019/belohorizonte/trilha-javascript)
 
-🌎 Fortaleza, Brazil
+🌎 Belo Horizonte, Brazil
 
-📍 Centro Universitário 7 de Setembro
+📍 UniBH - Campus Buritis
 
-🗓️ September 15, 2018
+🗓️ June 14, 2019
 
-👥 ≈ 150 people audience
+👥 ≈ 60 people audience
+
+#### [Natal Tech Conference](https://www.meetup.com/pt-BR/GDG-Natal/events/258558498/)
+
+🌎 Natal, Brazil
+
+📍 Sebrae - RN
+
+🗓️ March 16, 2019
+
+👥 ≈ 100 people audience
 
 #### [TDC 2018 | Porto Alegre](http://www.thedevelopersconference.com.br/tdc/2018/portoalegre/trilha-web-frontend)
 
@@ -34,6 +44,22 @@ In this talk I'll explain how to ship way faster front-end bundles and share a f
 
 👥 ≈ 60 people audience
 
+#### [Front In Fortaleza](http://frontinfortaleza.com.br)
+
+🌎 Fortaleza, Brazil
+
+📍 Centro Universitário 7 de Setembro
+
+🗓️ September 15, 2018
+
+👥 ≈ 150 people audience
+
 ### Slides
+
+#### 2019
+
+<div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.1987%;"><iframe src="//speakerdeck.com/player/9cae5387394947a2873b568583b6f3e7" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" allowfullscreen scrolling="no" allow="autoplay; encrypted-media"></iframe></div>
+
+#### 2018
 
 <div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.1987%;"><iframe src="//speakerdeck.com/player/6d3bd64849754dcc915b5af58edbcc11" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" allowfullscreen scrolling="no" allow="autoplay; encrypted-media"></iframe></div>

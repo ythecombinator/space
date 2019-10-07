@@ -12,16 +12,6 @@ Let's go through some popular choices for managing state in React and check thei
 
 ### Events
 
-#### [TDC 2019 | Florianópolis](http://www.thedevelopersconference.com.br/tdc/2019/florianopolis/trilha-web-frontend)
-
-🌎 Florianópolis, Brazil
-
-📍 Centro de Convenções CentroSul
-
-🗓️ April 25, 2019
-
-👥 ≈ 120 people audience
-
 #### [TDC 2019 | Belo Horizonte](http://www.thedevelopersconference.com.br/tdc/2019/belohorizonte/trilha-front-end)
 
 🌎 Belo Horizonte, Brazil
@@ -31,6 +21,16 @@ Let's go through some popular choices for managing state in React and check thei
 🗓️ June 14, 2019
 
 👥 ≈ 60 people audience
+
+#### [TDC 2019 | Florianópolis](http://www.thedevelopersconference.com.br/tdc/2019/florianopolis/trilha-web-frontend)
+
+🌎 Florianópolis, Brazil
+
+📍 Centro de Convenções CentroSul
+
+🗓️ April 25, 2019
+
+👥 ≈ 120 people audience
 
 ### Slides
 

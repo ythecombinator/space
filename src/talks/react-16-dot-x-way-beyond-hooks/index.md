@@ -12,6 +12,26 @@ In this talk, we’ll look at how they fit together with other minor changes tha
 
 ### Events
 
+#### [TDC 2019 | São Paulo](http://www.thedevelopersconference.com.br/tdc/2019/saopaulo/trilha-javascript)
+
+🌎 São Paulo, Brazil
+
+📍 Universidade Anhembi Morumbi
+
+🗓️ July 19, 2019
+
+👥 ≈ 120 people audience
+
+#### [TDC 2019 | Belo Horizonte](http://www.thedevelopersconference.com.br/tdc/2019/belohorizonte/trilha-javascript)
+
+🌎 Belo Horizonte, Brazil
+
+📍 UniBH - Campus Buritis
+
+🗓️ June 14, 2019
+
+👥 ≈ 60 people audience
+
 #### [Front-End Day Ceará](https://www.sympla.com.br/front-end-day__424487)
 
 🌎 Fortaleza, Brazil
@@ -23,5 +43,11 @@ In this talk, we’ll look at how they fit together with other minor changes tha
 👥 ≈ 50 people audience
 
 ### Slides
+
+#### Revisited
+
+<div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.1972%;"><iframe src="//speakerdeck.com/player/07f891d8ecc6455fa1dd39f885c47016" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" allowfullscreen scrolling="no" allow="autoplay; encrypted-media"></iframe></div>
+
+#### Original
 
 <div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.1987%;"><iframe src="//speakerdeck.com/player/27390ccd867941d2af92ae9d2871ff4a" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" allowfullscreen scrolling="no" allow="autoplay; encrypted-media"></iframe></div>

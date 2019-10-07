@@ -17,6 +17,16 @@ We need to understand the architecture behind ARM hardware, apply reverse engine
 
 ### Events
 
+#### [BalCCon Computer Congress – BalCCon2k19](https://2k19.balccon.org)
+
+🌎 Novi Sad, Serbia
+
+📍 Congress Centre
+
+🗓️ September 14, 2019
+
+👥 ≈ 100 people audience
+
 #### [The Conf](https://www.theconf.club)
 
 🌎 São Paulo, Brazil
@@ -28,5 +38,11 @@ We need to understand the architecture behind ARM hardware, apply reverse engine
 👥 ≈ 200 people audience
 
 ### Slides
+
+#### Revisited
+
+<div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.1972%;"><iframe src="//speakerdeck.com/player/da8074dc970c40bc92434f14b2770459" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" allowfullscreen scrolling="no" allow="encrypted-media"></iframe></div>
+
+#### Original
 
 <div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.1972%;"><iframe src="//speakerdeck.com/player/ef265c74f1ed40a4b5e496b3f3b0cb97" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" allowfullscreen scrolling="no" allow="encrypted-media"></iframe></div>

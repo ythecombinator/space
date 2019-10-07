@@ -10,15 +10,15 @@ Have you ever stopped to think why something as old as functional programming is
 
 ### Events
 
-#### [Unidev 2](http://unidevce.github.io/)
+#### [I Lambda I/O Fortaleza Meetup](http://lambda-io-fortaleza.github.io/)
 
 🌎 Fortaleza, Brazil
 
-📍 Universidade de Fortaleza - Unifor
+📍 Universidade de Fortaleza - Unifor.
 
-🗓️ September 26, 2015
+🗓️ November 28, 2015
 
-👥 ≈ 50 people audience
+👥 ≈ 15 people audience
 
 #### [SETIC 2015](http://www.seti.ufc.br/)
 
@@ -30,15 +30,15 @@ Have you ever stopped to think why something as old as functional programming is
 
 👥 ≈ 30 people audience
 
-#### [I Lambda I/O Fortaleza Meetup](http://lambda-io-fortaleza.github.io/)
+#### [Unidev 2](http://unidevce.github.io/)
 
 🌎 Fortaleza, Brazil
 
-📍 Universidade de Fortaleza - Unifor.
+📍 Universidade de Fortaleza - Unifor
 
-🗓️ November 28, 2015
+🗓️ September 26, 2015
 
-👥 ≈ 15 people audience
+👥 ≈ 50 people audience
 
 ### Slides
 
