@@ -65,13 +65,33 @@ These are the countries where I've been to in this journey:
 const working = `
 ## Working
 
+### Software Engineer, Front-End
+
+🏢 [STRV](https://www.strv.com/)
+
+🌎 Prague, Czech Republic
+
+📅 July 2019 – Present
+
+📃 Working to grow the business and, mostly, help our clients meeting their 
+business goals, without leaving quality aside.
+
+👨‍💻 Mostly working with:
+
+- React.js and Next.js
+- React Native
+- redux and related tooling (e.g. redux-saga, redux-act, reselect etc.)
+- JavaScript and TypeScript
+
+<hr>
+
 ### Tech Lead, Front-End
 
-🏢 Beakyn Company
+🏢 [Beakyn Company](https://beakyn.com/)
 
 🌎 New York City, USA (Remote)
 
-📅 Feb 2018 – Present
+📅 Feb 2018 – Aug 2019
 
 📃 As a tech lead on a few of the company's most recent projects, I’ve been responsible
 for ensuring the team balances all of the following: working at a speed guided by 
@@ -85,11 +105,11 @@ fast UI innovation.
 
 ### Senior Software Engineer, Front-End
 
-🏢 Beakyn Company
+🏢 [Beakyn Company](https://beakyn.com/)
 
 🌎 New York City, USA (Remote)
 
-📅 Sep 2017 – Present
+📅 Sep 2017 – Feb 2018
 
 📃 Working to grow the business and, mostly, help our clients meeting their 
 business goals, without leaving quality aside in large-scale geographic data 
@@ -97,7 +117,7 @@ visualization platforms and assets curation systems.
 
 👨‍💻 Mostly working with:
 
-- React and Next.js
+- React.js and Next.js
 - React Native and iOS native development
 - redux and related tooling (e.g. redux-saga, redux-act, reselect etc.)
 - JavaScript and TypeScript
@@ -111,11 +131,11 @@ visualization platforms and assets curation systems.
 
 ### Mobile Developer
 
-🏢 Apple Developer Academy
+🏢 [Apple Developer Academy](http://developeracademy.ifce.edu.br/)
 
 🌎 Fortaleza, Brazil
 
-📅 Jan 2016 – Sep 2017
+📅 Jan 2016 – Dec 2017
 
 📃 I've been a macOS, iOS, watchOS, tvOS development intern with a Full-Stack 
 development and User Interaction design background in the Apple Developer 
