@@ -27,6 +27,10 @@ We need to understand the architecture behind ARM hardware, apply reverse engine
 
 👥 ≈ 100 people audience
 
+📺 Watch it [here](https://www.youtube.com/watch?v=xh0V1jRVnQI):
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xh0V1jRVnQI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 #### [The Conf](https://www.theconf.club)
 
 🌎 São Paulo, Brazil
@@ -36,6 +40,10 @@ We need to understand the architecture behind ARM hardware, apply reverse engine
 🗓️ August 17, 2019
 
 👥 ≈ 200 people audience
+
+📺 Watch it [here](https://www.youtube.com/watch?v=X88pmwSltAY):
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/X88pmwSltAY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Slides
 
