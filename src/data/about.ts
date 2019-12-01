@@ -3,6 +3,8 @@ import {SocialNetwork} from 'model/SocialNetwork';
 import featuredTalk01 from 'assets/talks/cejs-2016.webp';
 import featuredTalk02 from 'assets/talks/cejs-2017.webp';
 import featuredTalk04 from 'assets/talks/front_in_fortaleza-2018.webp';
+import featuredTalk13 from 'assets/talks/frontend_talks_brn-2019.webp';
+import featuredTalk14 from 'assets/talks/frontend_talks_prg-2019.webp';
 import featuredTalk06 from 'assets/talks/natal_tech_conference-2019.webp';
 import featuredTalk03 from 'assets/talks/phpeste-2017.webp';
 import featuredTalk05 from 'assets/talks/react_nyc-2018.webp';
@@ -162,6 +164,20 @@ export const sections = {
 };
 
 export const featuredTalks = [
+  {
+    event: "Frontend Talks PRG",
+    link:
+      "/talks/code-sharing-at-scale-one-codebase-for-web-mobile-and-desktop",
+    image: featuredTalk14,
+    key: "featuredTalk14"
+  },
+  {
+    event: "Frontend Talks BRN",
+    link:
+      "/talks/code-sharing-at-scale-one-codebase-for-web-mobile-and-desktop",
+    image: featuredTalk13,
+    key: "featuredTalk13"
+  },
   {
     event: "The Conf | 2019",
     link: "/talks/the-day-i-reverse-engineered-a-gameboy-advance-game",
