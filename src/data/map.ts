@@ -1,4 +1,4 @@
-export const data = ["Argentina", "Brazil", "Canada", "France", "Paraguay", "Serbia", "Switzerland", "United States", "Uruguay"];
+export const data = ["Argentina", "Brazil", "Canada", "Czech Rep.", "France", "Paraguay", "Serbia", "Switzerland", "United States", "Uruguay"];
 
 export const map = {
   arcs: [
