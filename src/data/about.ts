@@ -1,19 +1,19 @@
 import {SocialNetwork} from 'model/SocialNetwork';
 
-import featuredTalk01 from 'assets/talks/cejs-2016.webp';
-import featuredTalk02 from 'assets/talks/cejs-2017.webp';
-import featuredTalk04 from 'assets/talks/front_in_fortaleza-2018.webp';
-import featuredTalk13 from 'assets/talks/frontend_talks_brn-2019.webp';
-import featuredTalk14 from 'assets/talks/frontend_talks_prg-2019.webp';
-import featuredTalk06 from 'assets/talks/natal_tech_conference-2019.webp';
-import featuredTalk03 from 'assets/talks/phpeste-2017.webp';
-import featuredTalk05 from 'assets/talks/react_nyc-2018.webp';
-import featuredTalk08 from 'assets/talks/tdc_bh-2019-1.webp';
-import featuredTalk09 from 'assets/talks/tdc_bh-2019-2.webp';
-import featuredTalk07 from 'assets/talks/tdc_florianopolis-2019.webp';
-import featuredTalk10 from 'assets/talks/tdc_sp-2019-1.webp';
-import featuredTalk11 from 'assets/talks/tdc_sp-2019-2.webp';
-import featuredTalk12 from 'assets/talks/the_conf.webp';
+import featuredTalk01 from 'assets/talks/cejs-2016.jpg';
+import featuredTalk02 from 'assets/talks/cejs-2017.jpg';
+import featuredTalk04 from 'assets/talks/front_in_fortaleza-2018.jpg';
+import featuredTalk13 from 'assets/talks/frontend_talks_brn-2019.jpg';
+import featuredTalk14 from 'assets/talks/frontend_talks_prg-2019.jpg';
+import featuredTalk06 from 'assets/talks/natal_tech_conference-2019.jpg';
+import featuredTalk03 from 'assets/talks/phpeste-2017.jpg';
+import featuredTalk05 from 'assets/talks/react_nyc-2018.jpg';
+import featuredTalk08 from 'assets/talks/tdc_bh-2019-1.jpg';
+import featuredTalk09 from 'assets/talks/tdc_bh-2019-2.jpg';
+import featuredTalk07 from 'assets/talks/tdc_florianopolis-2019.jpg';
+import featuredTalk10 from 'assets/talks/tdc_sp-2019-1.jpg';
+import featuredTalk11 from 'assets/talks/tdc_sp-2019-2.jpg';
+import featuredTalk12 from 'assets/talks/the_conf.jpg';
 
 const shortIntro = `
 🙋 Hi folks! I'm Matheus.
