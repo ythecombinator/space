@@ -6,13 +6,16 @@ import PostList from 'components/PostList';
 
 import {PageProps} from 'model/PageProps';
 
+import {shuffleItems} from 'utils/array';
+import NoSSR from 'utils/NoSSR';
+
 import {featuredTalks} from 'data/about';
 
 import {StyledCollection, StyledContainer, StyledContent, StyledItem, StyledLink} from './styles';
 
 interface Props extends PageProps {}
 
-const talks = featuredTalks.slice(0, 9);
+const talks = shuffleItems(featuredTalks).slice(0, 9);
 
 const PageWrapper: FunctionComponent<Props> = props => {
   const { data, location } = props;
@@ -23,11 +26,13 @@ const PageWrapper: FunctionComponent<Props> = props => {
       <StyledContainer>
         <StyledCollection>
           {talks.map(talk => (
-            <StyledItem image={talk.image} key={talk.key}>
-              <StyledContent>
-                <StyledLink to={talk.link}>{talk.event}</StyledLink>
-              </StyledContent>
-            </StyledItem>
+            <NoSSR>
+              <StyledItem image={talk.image} key={talk.key}>
+                <StyledContent>
+                  <StyledLink to={talk.link}>{talk.event}</StyledLink>
+                </StyledContent>
+              </StyledItem>
+            </NoSSR>
           ))}
         </StyledCollection>
         <PostList posts={posts} />
