@@ -4,8 +4,6 @@ date: "2019-07-15"
 title: "It's all about trusting the magic of beginnings"
 ---
 
-> Originally published [here](https://dev.to/ythecombinator/it-s-all-about-trusting-the-magic-of-beginnings-3flf).
-
 After almost two years immersed in a lot of exciting challenges, it's time to move on.
 
 ### My journey in a nutshell

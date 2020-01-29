@@ -1,7 +1,7 @@
 ---
-path: '/posts/a-whole-day-playing-with-ipfs'
-date: '2017-12-15'
-title: 'A Whole Day Playing with IPFS'
+path: "/posts/a-whole-day-playing-with-ipfs"
+date: "2017-12-15"
+title: "A Whole Day Playing with IPFS"
 ---
 
 > Originally published [here](https://medium.com/beakyn/a-whole-day-playing-with-ipfs-95d2b6b3ea63).
@@ -126,30 +126,30 @@ IPNS ↝ I do believe that better understanding naming resolution under-the-hood
 
 ### References & Further Reading
 
-1.  Amazon Web Services Reports. (2017). [Summary of the Amazon S3 Service Disruption in the Northern Virginia (US-EAST-1) Region](https://aws.amazon.com/pt/message/41926/).
+- Amazon Web Services Reports. (2017). [Summary of the Amazon S3 Service Disruption in the Northern Virginia (US-EAST-1) Region](https://aws.amazon.com/pt/message/41926/).
 
-1.  Benet, J. (2015). [IPFS — Content Addressed, Versioned, P2P File System](https://github.com/ipfs/papers/blob/master/ipfs-cap2pfs/ipfs-p2p-file-system.pdf).
+- Benet, J. (2015). [IPFS — Content Addressed, Versioned, P2P File System](https://github.com/ipfs/papers/blob/master/ipfs-cap2pfs/ipfs-p2p-file-system.pdf).
 
-1.  Dave Longley (2013). [Failed to encrypt buffer with length 256 with 2048 bit RSA · Issue #14]( Failed to encrypt buffer with length 256 with 2048 bit RSA · Issue #14).
+- Dave Longley (2013). [Failed to encrypt buffer with length 256 with 2048 bit RSA · Issue #14]( Failed to encrypt buffer with length 256 with 2048 bit RSA · Issue #14).
 
-1.  Hartmann, C. (2014). [Encrypt and decrypt content with Nodejs](Encrypt and decrypt content with Nodejs.).
+- Hartmann, C. (2014). [Encrypt and decrypt content with Nodejs](Encrypt and decrypt content with Nodejs.).
 
-1.  IPFS (2016). [Questions after first learning about IPFS · Issue #154](https://github.com/ipfs/faq/issues/154).
+- IPFS (2016). [Questions after first learning about IPFS · Issue #154](https://github.com/ipfs/faq/issues/154).
 
-1.  IPFS (2016). [Is it possible to store private objects in ipfs without encrypting them? · Issue #181](https://github.com/ipfs/faq/issues/181).
+- IPFS (2016). [Is it possible to store private objects in ipfs without encrypting them? · Issue #181](https://github.com/ipfs/faq/issues/181).
 
-1.  IPFS (2016). [Private/personal use of ipfs? · Issue #4](https://github.com/ipfs/faq/issues/4).
+- IPFS (2016). [Private/personal use of ipfs? · Issue #4](https://github.com/ipfs/faq/issues/4).
 
-1.  IPFS (2016). [Keystore/encryption/ipfs usecase for a file-sharing application · Issue #3866](https://github.com/ipfs/go-ipfs/issues/3866).
+- IPFS (2016). [Keystore/encryption/ipfs usecase for a file-sharing application · Issue #3866](https://github.com/ipfs/go-ipfs/issues/3866).
 
-1.  Macabeus, B. (2017). [IPFS​ ​and​ ​IPNS​ ​protocols​ ​as​ ​way​ ​for​ ​controller​ ​of​ ​botnet:​ ​a​ ​proof of​ ​concept](http://macalogs.com.br/prova-de-conceito-protocolos-ipfs-e-ipns-como-meio-para-o-controle-de-botnet.html).
+- Macabeus, B. (2017). [IPFS​ ​and​ ​IPNS​ ​protocols​ ​as​ ​way​ ​for​ ​controller​ ​of​ ​botnet:​ ​a​ ​proof of​ ​concept](http://macalogs.com.br/prova-de-conceito-protocolos-ipfs-e-ipns-como-meio-para-o-controle-de-botnet.html).
 
-1.  Mutunhire, T. (2017). [Writing to Files in Node.js](http://stackabuse.com/writing-to-files-in-node-js/).
+- Mutunhire, T. (2017). [Writing to Files in Node.js](http://stackabuse.com/writing-to-files-in-node-js/).
 
-1.  OrbitDB (2017). [orbitdb/orbit](https://github.com/orbitdb/orbit).
+- OrbitDB (2017). [orbitdb/orbit](https://github.com/orbitdb/orbit).
 
-1.  Reed, J. (2017). [Privacy and anonymity in IPFS/IPNS](https://discuss.ipfs.io/t/privacy-and-anonymity-in-ipfs-ipns/1068/4).
+- Reed, J. (2017). [Privacy and anonymity in IPFS/IPNS](https://discuss.ipfs.io/t/privacy-and-anonymity-in-ipfs-ipns/1068/4).
 
-1.  The Golem Project. (2016). [The Golem Project Crowdfunding Whitepaper](https://golem.network/doc/Golemwhitepaper.pdf).
+- The Golem Project. (2016). [The Golem Project Crowdfunding Whitepaper](https://golem.network/doc/Golemwhitepaper.pdf).
 
-1.  Zumwalt, M., Johnson, J., Benet, J., Gierth, L. and Fisher, L. (2017). [The Decentralized Web Primer](https://www.gitbook.com/book/flyingzumwalt/decentralized-web-primer/details).
+- Zumwalt, M., Johnson, J., Benet, J., Gierth, L. and Fisher, L. (2017). [The Decentralized Web Primer](https://www.gitbook.com/book/flyingzumwalt/decentralized-web-primer/details).
