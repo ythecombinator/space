@@ -17,11 +17,12 @@ const Post: FunctionComponent<Props> = props => {
   const { html, frontmatter } = props.postData;
 
   const date = format(frontmatter.date);
+  const isBlogEntry = frontmatter.type === "blog_entry";
 
   return (
     <StyledPost>
       <h1>{frontmatter.title}</h1>
-      <p id="date">Published on {date}</p>
+      {isBlogEntry && <p id="date">Published on {date}</p>}
       <div className="postBody" dangerouslySetInnerHTML={{ __html: html }} />
     </StyledPost>
   );

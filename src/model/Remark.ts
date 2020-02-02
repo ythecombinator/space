@@ -1,9 +1,12 @@
+type PostType = "blog_entry" | "talk";
+
 export interface Frontmatter {
   title: string;
   description: string;
   image: string;
   date: string;
   path: string;
+  type: PostType;
 }
 
 interface Node {

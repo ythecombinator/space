@@ -14,13 +14,14 @@ import favicon from 'assets/favicon.png';
 interface Props extends TemplateProps {}
 
 export const postQuery = graphql`
-  query BlogPostByPath($path: String!) {
+  query PostByPath($path: String!) {
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       frontmatter {
         path
         title
         date
+        type
       }
     }
   }
