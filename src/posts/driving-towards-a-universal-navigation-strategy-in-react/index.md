@@ -2,6 +2,7 @@
 path: "/posts/driving-towards-a-universal-navigation-strategy-in-react"
 date: "2020-01-13"
 title: "Driving towards a universal navigation strategy in React"
+type: "blog_entry"
 ---
 
 When I joined [STRV](https://www.strv.com), they had a specific request for me; to build a front-end app for iOS, Android, and Web, sharing component and business logic amongst all the platforms.

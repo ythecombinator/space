@@ -2,6 +2,7 @@
 path: "/posts/it-s-all-about-trusting-the-magic-of-beginnings"
 date: "2019-07-15"
 title: "It's all about trusting the magic of beginnings"
+type: "blog_entry"
 ---
 
 After almost two years immersed in a lot of exciting challenges, it's time to move on.

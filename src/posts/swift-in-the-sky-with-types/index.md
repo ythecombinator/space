@@ -2,6 +2,7 @@
 path: "/posts/swift-in-the-sky-with-types"
 date: "2016-03-28"
 title: "Swift In The Sky With Types (pt-BR)"
+type: "blog_entry"
 ---
 
 > Originally published [here](http://equinocios.com/swift/2016/03/28/swift-in-the-sky-with-types/). It'll

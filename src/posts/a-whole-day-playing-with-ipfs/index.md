@@ -2,6 +2,7 @@
 path: "/posts/a-whole-day-playing-with-ipfs"
 date: "2017-12-15"
 title: "A Whole Day Playing with IPFS"
+type: "blog_entry"
 ---
 
 > Originally published [here](https://medium.com/beakyn/a-whole-day-playing-with-ipfs-95d2b6b3ea63).
