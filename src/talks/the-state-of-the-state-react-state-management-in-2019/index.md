@@ -2,6 +2,7 @@
 path: "/talks/the-state-of-the-state-react-state-management-in-2019"
 date: "2019-04-25"
 title: "The state of the state: React state management in 2019"
+type: "talk"
 ---
 
 ### Description

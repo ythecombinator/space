@@ -2,6 +2,7 @@
 path: "/talks/state-of-the-art-react-development-flow-with-typescript"
 date: "2018-10-25"
 title: "State of the art React development flow with TypeScript"
+type: "talk"
 ---
 
 ### Description

@@ -2,6 +2,7 @@
 path: "/talks/spritekit-up-and-running"
 date: "2016-09-30"
 title: "SpriteKit - Up and Running"
+type: "talk"
 ---
 
 ### Description

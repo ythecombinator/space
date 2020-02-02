@@ -2,6 +2,7 @@
 path: "/talks/break-on-through-to-the-lambda-side"
 date: "2016-02-27"
 title: "Break On Through (To The λ Side)"
+type: "talk"
 ---
 
 ### Description

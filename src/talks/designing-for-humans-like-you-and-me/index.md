@@ -2,6 +2,7 @@
 path: "/talks/designing-for-humans-like-you-and-me"
 date: "2016-06-22"
 title: "Designing For Humans (like You & Me)"
+type: "talk"
 ---
 
 ### Description

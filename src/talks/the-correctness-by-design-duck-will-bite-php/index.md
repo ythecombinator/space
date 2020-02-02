@@ -2,6 +2,7 @@
 path: "/talks/the-correctness-by-design-duck-will-bite-php"
 date: "2017-10-07"
 title: "The correctness-by-design duck will bite PHP"
+type: "talk"
 ---
 
 ### Description

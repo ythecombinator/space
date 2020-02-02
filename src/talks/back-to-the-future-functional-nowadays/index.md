@@ -2,6 +2,7 @@
 path: "/talks/back-to-the-future-functional-nowadays"
 date: "2015-09-26"
 title: "Back to the Future: Functional Nowadays"
+type: "talk"
 ---
 
 ### Description

@@ -2,6 +2,7 @@
 path: "/talks/the-future-favors-swift"
 date: "2017-02-21"
 title: "The future favors Swift"
+type: "talk"
 ---
 
 ### Description

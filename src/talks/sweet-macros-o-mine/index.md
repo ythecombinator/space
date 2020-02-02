@@ -2,6 +2,7 @@
 path: "/talks/sweet-macros-o-mine"
 date: "2016-12-20"
 title: "Sweet Macros O’ Mine"
+type: "talk"
 ---
 
 ### Description

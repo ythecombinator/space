@@ -2,6 +2,7 @@
 path: "/talks/playing-with-watchconnectivity-for-24-hours"
 date: "2016-07-05"
 title: "Playing With WatchConnectivity for ~24 hours"
+type: "talk"
 ---
 
 ### Description

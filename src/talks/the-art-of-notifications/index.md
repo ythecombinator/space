@@ -2,6 +2,7 @@
 path: "/talks/the-art-of-notifications"
 date: "2016-07-05"
 title: "The Art of Notifications"
+type: "talk"
 ---
 
 ### Description

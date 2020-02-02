@@ -2,6 +2,7 @@
 path: "/talks/super-hybrid-apps-with-ionic"
 date: "2015-05-28"
 title: "(Super) Hybrid Apps with Ionic"
+type: "talk"
 ---
 
 ### Description

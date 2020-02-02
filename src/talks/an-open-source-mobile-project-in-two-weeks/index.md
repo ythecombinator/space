@@ -2,6 +2,7 @@
 path: "/talks/an-open-source-mobile-project-in-two-weeks"
 date: "2015-08-15"
 title: "An open source mobile project in two weeks"
+type: "talk"
 ---
 
 ### Description

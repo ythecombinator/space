@@ -2,6 +2,7 @@
 path: "/talks/react-16-dot-x-way-beyond-hooks"
 date: "2019-02-09"
 title: "React 16.x: Way Beyond Hooks"
+type: "talk"
 ---
 
 ### Description

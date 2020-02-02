@@ -2,6 +2,7 @@
 path: "/talks/building-swift-libraries"
 date: "2017-09-18"
 title: "Building Swift Libraries"
+type: "talk"
 ---
 
 ### Description

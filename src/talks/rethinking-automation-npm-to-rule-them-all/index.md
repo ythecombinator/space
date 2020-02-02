@@ -2,6 +2,7 @@
 path: "/talks/rethinking-automation-npm-to-rule-them-all"
 date: "2015-11-21"
 title: "Rethinking Automation: NPM to rule them all"
+type: "talk"
 ---
 
 ### Description

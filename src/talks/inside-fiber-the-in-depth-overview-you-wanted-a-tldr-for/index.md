@@ -2,6 +2,7 @@
 path: "/talks/inside-fiber-the-in-depth-overview-you-wanted-a-tldr-for"
 date: "2020-01-28"
 title: "Inside Fiber: the in-depth overview you wanted a TLDR for"
+type: "talk"
 ---
 
 ### Description

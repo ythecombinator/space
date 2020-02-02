@@ -2,6 +2,7 @@
 path: "/talks/the-hitchhikers-guide-to-the-front-end-performance"
 date: "2018-12-06"
 title: "The Hitchhiker's Guide to the Front-End Performance"
+type: "talk"
 ---
 
 ### Description

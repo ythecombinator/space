@@ -2,6 +2,7 @@
 path: "/talks/server-side-goes-serverless"
 date: "2017-05-19"
 title: "Server-Side goes Serverless"
+type: "talk"
 ---
 
 ### Description

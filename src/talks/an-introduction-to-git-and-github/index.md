@@ -2,6 +2,7 @@
 path: "/talks/an-introduction-to-git-and-github"
 date: "2015-04-25"
 title: "An Introduction to Git & Github"
+type: "talk"
 ---
 
 ### Description

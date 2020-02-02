@@ -2,6 +2,7 @@
 path: "/talks/code-sharing-at-scale-one-codebase-for-web-mobile-and-desktop"
 date: "2019-11-26"
 title: "Code sharing at scale: one codebase for web, mobile and desktop"
+type: "talk"
 ---
 
 ### Description
