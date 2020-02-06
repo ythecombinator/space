@@ -7,6 +7,8 @@ type: "talk"
 
 ### Description
 
+![Duration: Regular](https://img.shields.io/badge/duration-regular-yellowgreen?style=for-the-badge)
+
 This time [Abraão](https://github.com/AbraaoAlves) and I will talk on the importance of thinking about - and, obviously, understanding well - type systems and how your _JavaScripting time_ can be better with [TypeScript](https://www.typescriptlang.org/) + other tools.
 
 ### Events

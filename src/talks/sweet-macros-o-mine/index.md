@@ -7,6 +7,9 @@ type: "talk"
 
 ### Description
 
+![Duration: Regular](https://img.shields.io/badge/duration-regular-yellowgreen?style=for-the-badge)
+![Duration: Lightning](https://img.shields.io/badge/duration-lightning-orange?style=for-the-badge)
+
 A simple ~10 minutes pitch on which I share a few thoughts about extending languages by taking advantage of macros and my experience playing with Sweet.js.
 
 ### Events

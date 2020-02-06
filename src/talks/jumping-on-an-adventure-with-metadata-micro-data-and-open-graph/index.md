@@ -7,6 +7,8 @@ type: "talk"
 
 ### Description
 
+![Duration: Regular](https://img.shields.io/badge/duration-regular-yellowgreen?style=for-the-badge)
+
 An introduction to the importance of one of the key concepts behind the Semantic Web: metadata. I will cover two of the most used patterns: Microdata and the Open Graph, and how metadata can help your project to have information organized in a way that not only humans understand it, regardless of the technology used on the back end.
 
 ### Events

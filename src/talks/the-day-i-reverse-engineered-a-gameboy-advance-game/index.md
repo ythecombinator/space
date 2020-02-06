@@ -7,6 +7,9 @@ type: "talk"
 
 ### Description
 
+![Duration: Full](https://img.shields.io/badge/duration-full-brightgreen?style=for-the-badge)
+![Duration: Regular](https://img.shields.io/badge/duration-regular-yellowgreen?style=for-the-badge)
+
 > Shared stage with [Macabeus](https://github.com/macabeus) 🎆
 
 Gameboy Advance was one of the most popular video game platforms of its time and, because of it, many people worked together as a community to study and to document its architecture and develop ROM hacking and other interesting tools.

@@ -7,6 +7,8 @@ type: "talk"
 
 ### Description
 
+![Duration: Lightning](https://img.shields.io/badge/duration-lightning-orange?style=for-the-badge)
+
 This is ~5 minutes pitch on which I share a few thoughts about playing with WatchConnectivity APIs - and other cool stuff - for the first 24 hours in order to make an unofficial app for the CocoaHeads Conference.
 
 ### Events

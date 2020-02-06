@@ -7,6 +7,8 @@ type: "talk"
 
 ### Description
 
+![Duration: Regular](https://img.shields.io/badge/duration-regular-yellowgreen?style=for-the-badge)
+
 let description: String = "A few years ago, everyone heard things such as 'What is this JavaScript thing that has attracted all devs to its pluralistic and cross-platform universe?' or 'If you know JavaScript, you can go anywhere!'. So we witnessed a language, originally proposed for a single platform, to take browsers, servers, mobile, embedded systems and more!"
 
 let theFuture: String = description.replacingOccurrences(of: "JavaScript", with: "Swift")

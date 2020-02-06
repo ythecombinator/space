@@ -7,6 +7,8 @@ type: "talk"
 
 ### Description
 
+![Duration: Regular](https://img.shields.io/badge/duration-regular-yellowgreen?style=for-the-badge)
+
 This time we try to understand why the serverless architecture's been drawing so much attention from developers lately by seeing how this model can help significantly reduce the operational costs and complexity of our applications.
 
 ### Events

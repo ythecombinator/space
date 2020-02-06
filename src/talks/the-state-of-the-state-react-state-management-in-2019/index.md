@@ -7,6 +7,9 @@ type: "talk"
 
 ### Description
 
+![Duration: Full](https://img.shields.io/badge/duration-full-brightgreen?style=for-the-badge)
+![Duration: Regular](https://img.shields.io/badge/duration-regular-yellowgreen?style=for-the-badge)
+
 There's always been a large variety of ways to manage state in React. Redux has always been a popular choice, but with React 16 and recently released libraries, there are now even more options. What are these options, and why would you use any of these over any others?
 
 Let's go through some popular choices for managing state in React and check their pros and cons and how opting in for each of these may help (or not) to scale your data flow.

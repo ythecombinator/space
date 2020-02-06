@@ -7,6 +7,9 @@ type: "talk"
 
 ### Description
 
+![Duration: Full](https://img.shields.io/badge/duration-full-brightgreen?style=for-the-badge)
+![Duration: Regular](https://img.shields.io/badge/duration-regular-yellowgreen?style=for-the-badge)
+
 A workshop on understanding and implementing local and push notifications in an iOS app.
 
 ### Events

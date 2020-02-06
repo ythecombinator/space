@@ -7,6 +7,9 @@ type: "talk"
 
 ### Description
 
+![Duration: Full](https://img.shields.io/badge/duration-full-brightgreen?style=for-the-badge)
+![Duration: Regular](https://img.shields.io/badge/duration-regular-yellowgreen?style=for-the-badge)
+
 Just a small conversation which aims to integrate basic knowledge of areas related to user feedback research, experience journeys creation, user behavior analysis - among others -, with the aim of presenting basic aspects of user interfaces under the bias of understanding them based on our cognitive functions.
 
 ### Events

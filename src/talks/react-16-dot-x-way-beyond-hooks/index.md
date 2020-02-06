@@ -7,6 +7,9 @@ type: "talk"
 
 ### Description
 
+![Duration: Full](https://img.shields.io/badge/duration-full-brightgreen?style=for-the-badge)
+![Duration: Regular](https://img.shields.io/badge/duration-regular-yellowgreen?style=for-the-badge)
+
 At the stage of the last ReactConf, Dan Abramov unveiled a new API for React called Hooks. And it's only part of the noise when new big features come all the "Should I refactor my whole app?" discussions. But besides hooks, you might have heard about other cool stuff like Suspense and Concurrent Rendering.
 
 In this talk, we’ll look at how they fit together with other minor changes that have been recently announced and the expected timeline for their availability.

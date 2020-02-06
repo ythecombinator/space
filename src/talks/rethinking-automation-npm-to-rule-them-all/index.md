@@ -7,6 +7,8 @@ type: "talk"
 
 ### Description
 
+![Duration: Regular](https://img.shields.io/badge/duration-regular-yellowgreen?style=for-the-badge)
+
 Somethings in the JavaScript world may require a considerable number of tasks: managing assets, styles compilation and minification, JavaScript files concatenation, minification and compression etc. We have many amazing tools to help us in these processes: [Grunt](http://gruntjs.com/) and [Gulp](http://gulpjs.com/) are the most popular these days - but are they really necessary?
 
 ### Events

@@ -7,6 +7,9 @@ type: "talk"
 
 ### Description
 
+![Duration: Regular](https://img.shields.io/badge/duration-regular-yellowgreen?style=for-the-badge)
+![Duration: Lightning](https://img.shields.io/badge/duration-lightning-orange?style=for-the-badge)
+
 "TypeError: Cannot read property something of undefined" errors shouldn't follow your code and avoiding them with TypeScript shouldn't bring verbosity or too many type annotations. There are ways of making your typings concise and reducing boilerplate with stuff like type inference, control flow analysis and a few TypeScript libraries. In this talk, we'll follow a few recipes on how to use React (and part of its ecosystem, like Redux) in a functional way with TypeScript to make your code completely type-safe according to our new declare once, infer everywhere™ philosophy.
 
 ### Events

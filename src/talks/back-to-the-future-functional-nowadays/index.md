@@ -7,6 +7,8 @@ type: "talk"
 
 ### Description
 
+![Duration: Regular](https://img.shields.io/badge/duration-regular-yellowgreen?style=for-the-badge)
+
 Have you ever stopped to think why something as old as functional programming is so buzzed nowadays? Join me and [Ian](http://akaian.com/) on this journey with where we will explain this and the importance of using functional concepts nowadays.
 
 ### Events

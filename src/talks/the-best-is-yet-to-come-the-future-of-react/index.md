@@ -7,6 +7,10 @@ type: "talk"
 
 ### Description
 
+![Duration: Full](https://img.shields.io/badge/duration-full-brightgreen?style=for-the-badge)
+![Duration: Regular](https://img.shields.io/badge/duration-regular-yellowgreen?style=for-the-badge)
+![Duration: Lightning](https://img.shields.io/badge/duration-lightning-orange?style=for-the-badge)
+
 A wise man once said: "React is such a good idea that we will spend the rest of the decade continuing to explore its implications and applications”.
 
 In 2017, React Fiber was the thing in the community. In 2018, hooks – and the completely new mindset they brought along – took that role with a little help of Concurrent React.

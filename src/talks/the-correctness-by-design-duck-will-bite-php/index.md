@@ -7,6 +7,9 @@ type: "talk"
 
 ### Description
 
+![Duration: Full](https://img.shields.io/badge/duration-full-brightgreen?style=for-the-badge)
+![Duration: Regular](https://img.shields.io/badge/duration-regular-yellowgreen?style=for-the-badge)
+
 In this talk, y'all will be introduced to Quack; a type-safe, multi-paradigm, metaprogrammable and extensible programming language which enables you to write consistent and legible code and learn how a language that targets PHP and whose compiler is entirely written in PHP can help you coding better.
 
 ### Events

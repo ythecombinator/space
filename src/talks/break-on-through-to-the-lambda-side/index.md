@@ -7,6 +7,8 @@ type: "talk"
 
 ### Description
 
+![Duration: Regular](https://img.shields.io/badge/duration-regular-yellowgreen?style=for-the-badge)
+
 We will see how old concepts of functional programming can make a huge difference nowadays for JS developers through [LiveScript](http://livescript.net/): a preprocessor which brings many syntax enhancements and other features and became a great alternative to start in the functional world. After this _NUG-CE_ - equipped with _first-class functions_, _high-order functions_, _currying_, _composition_, _pipes_ and other things - you'll probably never write the same code again.
 
 ### Events

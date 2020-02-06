@@ -7,6 +7,8 @@ type: "talk"
 
 ### Description
 
+![Duration: Regular](https://img.shields.io/badge/duration-regular-yellowgreen?style=for-the-badge)
+
 [Abraão](https://github.com/AbraaoAlves) and I will make an overview of the features of [Ionic](http://ionicframework.com/): a framework for creating hybrid apps that has been growing more and more. It's free and open source and offers a HTML, CSS and JS library optimized for smartphones - as well as great tools that give us a great alternative for mobile development.
 
 ### Events

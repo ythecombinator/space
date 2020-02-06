@@ -7,6 +7,9 @@ type: "talk"
 
 ### Description
 
+![Duration: Full](https://img.shields.io/badge/duration-full-brightgreen?style=for-the-badge)
+![Duration: Regular](https://img.shields.io/badge/duration-regular-yellowgreen?style=for-the-badge)
+
 This talk I will present a brief introduction to the concept of software versioning and its importance. There will be also presented the famous versioning control system created by [Linus Torvalds](https://github.com/torvalds) ([Git](https://git-scm.com/)) and the well known _social network for programmers_, [Github](https://github.com/), showing its importance to our professional career nowadays.
 
 ### Events

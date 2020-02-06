@@ -7,6 +7,9 @@ type: "talk"
 
 ### Description
 
+![Duration: Full](https://img.shields.io/badge/duration-full-brightgreen?style=for-the-badge)
+![Duration: Regular](https://img.shields.io/badge/duration-regular-yellowgreen?style=for-the-badge)
+
 In this talk, me and @macabeus shared some of the experiences and tips we've got while refactoring production-ready iOS/tvOS/server-side apps into small libraries in order to help our code gain readability, testability and maintainability–and our team, productivity.
 
 ### Events

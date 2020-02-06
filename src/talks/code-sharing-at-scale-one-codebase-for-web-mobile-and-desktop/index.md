@@ -7,6 +7,10 @@ type: "talk"
 
 ### Description
 
+![Duration: Full](https://img.shields.io/badge/duration-full-brightgreen?style=for-the-badge)
+![Duration: Regular](https://img.shields.io/badge/duration-regular-yellowgreen?style=for-the-badge)
+![Duration: Lightning](https://img.shields.io/badge/duration-lightning-orange?style=for-the-badge)
+
 React.js and React-Native allow a "learn once write anywhere paradigm". This is great because one tech team can build both your web app and native mobile experience. The problem is developers hate writing things twice. There have been a couple of efforts to build a unifying technology to write an application once and have it work on both web and native. Yet this is not always the best approach. This talk will cover identifying the best candidates for shared code, sharing both UI components and UI-less business logic.
 
 I also intend to share a couple of lessons learne while building an app with code sharing as a primary objective — from project setup, through shared infrastructure, all the way up to shared components and styling — and how you can achieve the same thing. Last but not least, I'll share a couple of thoughts on what's coming down the line!
