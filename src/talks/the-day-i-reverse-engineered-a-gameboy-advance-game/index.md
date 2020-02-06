@@ -18,6 +18,16 @@ We need to understand the architecture behind ARM hardware, apply reverse engine
 
 ### Events
 
+#### [HalfStack Conf • Newquay](https://halfstackconf.com/newquay/)
+
+🌎 Newquay, England
+
+📍 C-Space Newquay
+
+🗓️ July 03, 2020
+
+👥 _Coming soon_
+
 #### [BalCCon Computer Congress – BalCCon2k19](https://2k19.balccon.org)
 
 🌎 Novi Sad, Serbia
