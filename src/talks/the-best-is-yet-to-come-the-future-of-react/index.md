@@ -1,0 +1,56 @@
+---
+path: "/talks/the-best-is-yet-to-come-the-future-of-react"
+date: "2020-02-04"
+title: "The best is yet to come: the Future of React"
+type: "talk"
+---
+
+### Description
+
+A wise man once said: "React is such a good idea that we will spend the rest of the decade continuing to explore its implications and applications”.
+
+In 2017, React Fiber was the thing in the community. In 2018, hooks – and the completely new mindset they brought along – took that role with a little help of Concurrent React.
+
+But there are a few other big things happening out there: React Fire, React Flare and the Scheduler. These go from completely rethinking the event system to bringing cooperative scheduling to the browser environment, and much more!
+
+In this talk, we’ll look at what are these, how they fit together with other changes and, hopefully, by the end of the talk, you'll be just as enthusiastic as I am about what's coming down the line.
+
+Last but not least, we'll take a glimpse into the future of the Web platform.
+
+### Events
+
+#### [JavaScript fwdays'20](https://fwdays.com/en/event/js-fwdays-2020)
+
+🌎 Kiev, Ukraine
+
+📍 Mercure Congress Hall
+
+🗓️ March 14, 2020
+
+👥 _Coming soon_
+
+#### [Frontend Talks PRG • February, 2020](https://www.eventbrite.com/e/frontend-talks-prg-tickets-90832890621)
+
+🌎 Prague, Czech Republic
+
+📍 STRV
+
+🗓️ February 06, 2020
+
+👥 _Coming soon_
+
+#### [Frontend Talks BRN • February, 2020](https://www.eventbrite.com/e/frontend-talks-brn-tickets-90827921759)
+
+🌎 Brno, Czech Republic
+
+📍 STRV
+
+🗓️ February 04, 2020
+
+👥 ≈ 40 people audience
+
+### Slides
+
+#### Lightning
+
+<div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.1972%;"><iframe src="https://speakerdeck.com/player/589d7fbec93548f094a03354c7639982" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" allowfullscreen scrolling="no" allow="encrypted-media"></iframe></div>
