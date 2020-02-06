@@ -13,7 +13,7 @@ I also intend to share a couple of lessons learne while building an app with cod
 
 ### Events
 
-#### [Frontend Talks PRG](https://www.facebook.com/events/2488682244735440)
+#### [Frontend Talks PRG • November, 2019](https://www.eventbrite.com/e/frontend-talks-prg-tickets-81309431699)
 
 🌎 Prague, Czech Republic
 
@@ -23,7 +23,7 @@ I also intend to share a couple of lessons learne while building an app with cod
 
 👥 ≈ 120 people audience
 
-#### [Frontend Talks BRN](https://www.facebook.com/events/1230007400531030)
+#### [Frontend Talks BRN • November, 2019](https://www.eventbrite.com/e/frontend-talks-brn-tickets-81300517035)
 
 🌎 Brno, Czech Republic
 
