@@ -165,89 +165,89 @@ export const sections = {
 
 export const featuredTalks = [
   {
-    event: "Frontend Talks PRG",
+    event: "Frontend Talks PRG • November, 2019",
     link:
       "/talks/code-sharing-at-scale-one-codebase-for-web-mobile-and-desktop",
     image: featuredTalk14,
     key: "featuredTalk14"
   },
   {
-    event: "Frontend Talks BRN",
+    event: "Frontend Talks BRN • November, 2019",
     link:
       "/talks/code-sharing-at-scale-one-codebase-for-web-mobile-and-desktop",
     image: featuredTalk13,
     key: "featuredTalk13"
   },
   {
-    event: "The Conf | 2019",
+    event: "The Conf • 2019",
     link: "/talks/the-day-i-reverse-engineered-a-gameboy-advance-game",
     image: featuredTalk12,
     key: "featuredTalk12"
   },
   {
-    event: "TDC 2019 | São Paulo",
+    event: "TDC 2019 • São Paulo",
     link: "/talks/react-16-dot-x-way-beyond-hooks-revisited",
     image: featuredTalk11,
     key: "featuredTalk11"
   },
   {
-    event: "TDC 2019 | São Paulo",
+    event: "TDC 2019 • São Paulo",
     link: "/talks/react-16-dot-x-way-beyond-hooks-revisited",
     image: featuredTalk10,
     key: "featuredTalk10"
   },
   {
-    event: "TDC 2019 | Belo Horizonte",
+    event: "TDC 2019 • Belo Horizonte",
     link: "/talks/the-state-of-the-state-react-state-management-in-2019",
     image: featuredTalk09,
     key: "featuredTalk09"
   },
   {
-    event: "TDC 2019 | Belo Horizonte",
+    event: "TDC 2019 • Belo Horizonte",
     link: "/talks/react-16-dot-x-way-beyond-hooks-revisited",
     image: featuredTalk08,
     key: "featuredTalk08"
   },
   {
-    event: "TDC 2019 | Florianópolis",
+    event: "TDC 2019 • Florianópolis",
     link: "/talks/the-state-of-the-state-react-state-management-in-2019",
     image: featuredTalk07,
     key: "featuredTalk07"
   },
   {
-    event: "Natal Tech Conference | 2019",
+    event: "Natal Tech Conference • 2019",
     link:
       "/talks/the-hitchhikers-guide-to-the-front-end-performance-2019-edition",
     image: featuredTalk06,
     key: "featuredTalk06"
   },
   {
-    event: "React NYC | October, 2018",
+    event: "React NYC • October, 2018",
     link: "/talks/state-of-the-art-react-development-flow-with-typescript",
     image: featuredTalk05,
     key: "featuredTalk05"
   },
   {
-    event: "Front In Fortaleza | 2018",
+    event: "Front In Fortaleza • 2018",
     link:
       "/talks/the-hitchhikers-guide-to-the-front-end-performance-2018-edition",
     image: featuredTalk04,
     key: "featuredTalk04"
   },
   {
-    event: "PHPeste | 2017",
+    event: "PHPeste • 2017",
     link: "/talks/the-correctness-by-design-duck-will-bite-php",
     image: featuredTalk03,
     key: "featuredTalk03"
   },
   {
-    event: "CEJS | 2017",
+    event: "CEJS • 2017",
     link: "/talks/sweet-macros-o-mine",
     image: featuredTalk02,
     key: "featuredTalk02"
   },
   {
-    event: "CEJS | 2016",
+    event: "CEJS • 2016",
     link: "/talks/javascript-in-the-sky-with-types",
     image: featuredTalk01,
     key: "featuredTalk01"
