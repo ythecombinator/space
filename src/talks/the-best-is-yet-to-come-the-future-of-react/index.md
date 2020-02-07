@@ -41,7 +41,7 @@ Last but not least, we'll take a glimpse into the future of the Web platform.
 
 🗓️ February 06, 2020
 
-👥 _Coming soon_
+👥 ≈ 140 people audience
 
 #### [Frontend Talks BRN • February, 2020](https://www.eventbrite.com/e/frontend-talks-brn-tickets-90827921759)
 
