@@ -38,6 +38,9 @@ const StyledPost = styled.div`
     @media (min-width: 768px) {
       width: 60%;
     }
+    h4 {
+      color: ${secondary};
+    }
     a {
       color: ${secondary};
       transition: all 0.3s ease-in-out;
