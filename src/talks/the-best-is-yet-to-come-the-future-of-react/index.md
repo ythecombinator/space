@@ -58,3 +58,9 @@ Last but not least, we'll take a glimpse into the future of the Web platform.
 #### Lightning
 
 <div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.1972%;"><iframe src="https://speakerdeck.com/player/589d7fbec93548f094a03354c7639982" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" allowfullscreen scrolling="no" allow="encrypted-media"></iframe></div>
+
+### Watch it
+
+#### Frontend Talks PRG • February, 2020
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zFH1IIW1OEQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

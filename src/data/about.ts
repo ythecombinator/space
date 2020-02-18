@@ -4,7 +4,9 @@ import featuredTalk01 from 'assets/talks/cejs-2016.jpg';
 import featuredTalk02 from 'assets/talks/cejs-2017.jpg';
 import featuredTalk04 from 'assets/talks/front_in_fortaleza-2018.jpg';
 import featuredTalk13 from 'assets/talks/frontend_talks_brn-2019.jpg';
+import featuredTalk15 from 'assets/talks/frontend_talks_brn-2020.jpg';
 import featuredTalk14 from 'assets/talks/frontend_talks_prg-2019.jpg';
+import featuredTalk16 from 'assets/talks/frontend_talks_prg-2020.jpg';
 import featuredTalk06 from 'assets/talks/natal_tech_conference-2019.jpg';
 import featuredTalk03 from 'assets/talks/phpeste-2017.jpg';
 import featuredTalk05 from 'assets/talks/react_nyc-2018.jpg';
@@ -164,6 +166,18 @@ export const sections = {
 };
 
 export const featuredTalks = [
+  {
+    event: "Frontend Talks PRG • February, 2020",
+    link: "/talks/the-best-is-yet-to-come-the-future-of-react",
+    image: featuredTalk16,
+    key: "featuredTalk16"
+  },
+  {
+    event: "Frontend Talks BRN • February, 2020",
+    link: "/talks/the-best-is-yet-to-come-the-future-of-react",
+    image: featuredTalk15,
+    key: "featuredTalk15"
+  },
   {
     event: "Frontend Talks PRG • November, 2019",
     link:
