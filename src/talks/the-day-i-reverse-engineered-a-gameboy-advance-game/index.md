@@ -41,10 +41,6 @@ We need to understand the architecture behind ARM hardware, apply reverse engine
 
 👥 ≈ 100 people audience
 
-📺 Watch it [here](https://www.youtube.com/watch?v=xh0V1jRVnQI):
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/xh0V1jRVnQI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 #### [The Conf](https://www.theconf.club)
 
 🌎 São Paulo, Brazil
@@ -55,10 +51,6 @@ We need to understand the architecture behind ARM hardware, apply reverse engine
 
 👥 ≈ 200 people audience
 
-📺 Watch it [here](https://www.youtube.com/watch?v=X88pmwSltAY):
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/X88pmwSltAY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 ### Slides
 
 #### Revisited
@@ -68,3 +60,13 @@ We need to understand the architecture behind ARM hardware, apply reverse engine
 #### Original
 
 <div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.1972%;"><iframe src="//speakerdeck.com/player/ef265c74f1ed40a4b5e496b3f3b0cb97" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" allowfullscreen scrolling="no" allow="encrypted-media"></iframe></div>
+
+### Watch it
+
+#### BalCCon Computer Congress – BalCCon2k19
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xh0V1jRVnQI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+#### The Conf
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/X88pmwSltAY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
