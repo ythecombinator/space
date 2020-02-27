@@ -18,6 +18,16 @@ Last but not least, we'll go through a few magic words we hear a lot, like corou
 
 ### Events
 
+#### [Manchester Web Meetup #14](https://www.meetup.com/Manchester-Web-Meetup/events/268976216/)
+
+🌎 Manchester, United Kingdom
+
+📍 On The Beach
+
+🗓️ March 18, 2020
+
+👥 _Coming soon_
+
 #### [PragueJS 2020 #1](https://www.meetup.com/praguejs/events/267847596/)
 
 🌎 Prague, Czech Republic
