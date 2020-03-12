@@ -23,13 +23,23 @@ Last but not least, we'll take a glimpse into the future of the Web platform.
 
 ### Events
 
+#### [enterJS](https://enterjs.de/lecture.php?id=11377&source=)
+
+🌎 Darmstadt, Germany
+
+📍Darmstadtium - Science and Congress Center
+
+🗓️ June 23–26, 2020
+
+👥 _Coming soon_
+
 #### [JavaScript fwdays'20](https://fwdays.com/en/event/js-fwdays-2020)
 
 🌎 Kiev, Ukraine
 
 📍 Mercure Congress Hall
 
-🗓️ March 14, 2020
+🗓️ _Postponed due to COVID-19_ 🦠
 
 👥 _Coming soon_
 
