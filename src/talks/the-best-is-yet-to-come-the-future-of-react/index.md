@@ -35,13 +35,11 @@ Last but not least, we'll take a glimpse into the future of the Web platform.
 
 #### [JavaScript fwdays'20](https://fwdays.com/en/event/js-fwdays-2020)
 
-🌎 Kiev, Ukraine
+🌎 <strike>Kiev, Ukraine</strike> Online
 
-📍 Mercure Congress Hall
+📍 <strike>Mercure Congress Hall</strike> Online
 
-🗓️ _Postponed due to COVID-19_ 🦠
-
-👥 _Coming soon_
+🗓️ March 14, 2020
 
 #### [Frontend Talks PRG • February, 2020](https://www.eventbrite.com/e/frontend-talks-prg-tickets-90832890621)
 
@@ -64,6 +62,10 @@ Last but not least, we'll take a glimpse into the future of the Web platform.
 👥 ≈ 40 people audience
 
 ### Slides
+
+#### Full
+
+<div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.1972%;"><iframe src="https://speakerdeck.com/player/89342214f1094aca89532073a39ce6aa" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" allowfullscreen scrolling="no" allow="encrypted-media"></iframe></div>
 
 #### Lightning
 

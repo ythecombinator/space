@@ -24,7 +24,7 @@ Last but not least, we'll go through a few magic words we hear a lot, like corou
 
 📍 On The Beach
 
-🗓️ March 18, 2020
+🗓️ June 17, 2020
 
 👥 _Coming soon_
 

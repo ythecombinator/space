@@ -20,6 +20,16 @@ Last but not least, we'll take a glimpse into the future of the Web platform.
 
 ### Events
 
+#### [JSFest](https://jsfest.com.ua/indexe.html)
+
+🌎 Kiev, Ukraine
+
+📍 Mercure Congress Centre
+
+🗓️ October 30-31, 2020
+
+👥 _Coming soon_
+
 #### [enterJS](https://enterjs.de/lecture.php?id=11376&source=)
 
 🌎 Darmstadt, Germany
@@ -27,15 +37,5 @@ Last but not least, we'll take a glimpse into the future of the Web platform.
 📍Darmstadtium - Science and Congress Center
 
 🗓️ June 23–26, 2020
-
-👥 _Coming soon_
-
-#### [JSFest](https://jsfest.com.ua/indexe.html)
-
-🌎 Kiev, Ukraine
-
-📍 Mercure Congress Centre
-
-🗓️ _Postponed due to COVID-19_ 🦠
 
 👥 _Coming soon_
