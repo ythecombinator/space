@@ -1,5 +1,12 @@
 import {SocialNetwork} from 'model/SocialNetwork';
 
+// Client Tumbnails
+import blau from 'assets/clients/blau.png';
+import lp from 'assets/clients/lp.png';
+import minted from 'assets/clients/minted.png';
+import ofm from 'assets/clients/ofm.png';
+import surge from 'assets/clients/surge.png';
+// Talks Tumbnails
 import featuredTalk01 from 'assets/talks/cejs-2016.jpg';
 import featuredTalk02 from 'assets/talks/cejs-2017.jpg';
 import featuredTalk04 from 'assets/talks/front_in_fortaleza-2018.jpg';
@@ -17,13 +24,38 @@ import featuredTalk10 from 'assets/talks/tdc_sp-2019-1.jpg';
 import featuredTalk11 from 'assets/talks/tdc_sp-2019-2.jpg';
 import featuredTalk12 from 'assets/talks/the_conf.jpg';
 
+const clients = `
+## Clients
+
+On my journey as a Front-End Software Engineer focused on new and scalable technologies, I've worked with different software design & engineering companies that helped a wide range of clients on digital transformation, strategy, and more.
+
+I always aim to help them meet their business goals, without leaving quality aside. Here are some of them:
+`;
+
+const openSource = `
+## Open Source
+
+I am passionate about open-source software and giving back to others. I admit I am not quite often focusing on OSS, though, but here are some highlighted projects from my Github:
+`;
+
+export const projectThumbnails = {
+  lp,
+  minted,
+  ofm,
+  surge,
+  blau
+};
+
+export type ProjectThumbnails = keyof typeof projectThumbnails;
+
 const shortIntro = `
-🙋 Hi folks! I'm Matheus.
+🙋‍♂️ Hi folks! I'm Matheus.
 
 👨‍💻 I'm currently working as a Front-End Engineer at [STRV](https://www.strv.com), 
-a San Francisco-based strategy, design, and engineering company.
+a Prague-based strategy, design, and engineering company. Here, there are a few 
+[projects](/projects) (client & OSS) I've helped to build.
 
-✌️ I'm casually [speaking](/talks), [writing](/posts), 
+✌️ Also, I'm casually [speaking](/talks), [writing](/posts), 
 [travelling](/about) & advocating for craft brewing.
 
 📢 Feel free to reach me out on social networks, 
@@ -97,7 +129,7 @@ business goals, without leaving quality aside.
 
 📅 Feb 2018 – Aug 2019
 
-📃 As a tech lead on a few of the company's most recent projects, I’ve been responsible
+📃 As a tech lead on a few of the company's most recent clients, I’ve been responsible
 for ensuring the team balances all of the following: working at a speed guided by 
 direction, not pace; delivering on its promises to potential customers, and applying 
 my expertise as a guiding force growing and developing the team. 
@@ -159,6 +191,8 @@ technologies.
 `;
 
 export const sections = {
+  clients,
+  openSource,
   shortIntro,
   intro,
   travelling,

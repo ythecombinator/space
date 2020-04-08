@@ -52,4 +52,4 @@ const colors = {
   ]
 };
 
-export { colors };
+export { baseColors, colors };

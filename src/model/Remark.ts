@@ -7,6 +7,7 @@ export interface Frontmatter {
   date: string;
   path: string;
   type: PostType;
+  thumbnail?: string;
 }
 
 interface Node {

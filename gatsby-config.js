@@ -20,6 +20,13 @@ module.exports = {
         name: "talks"
       }
     },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: `${__dirname}/src/projects`,
+        name: "projects"
+      }
+    },
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-transformer-remark`,
