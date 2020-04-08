@@ -19,6 +19,11 @@ const blogHeaderLinks = {
     <StyledLogo>
       <Link to="/">🏠/talks</Link>
     </StyledLogo>
+  ),
+  "/projects": (
+    <StyledLogo>
+      <Link to="/">🏠/projects</Link>
+    </StyledLogo>
   )
 };
 

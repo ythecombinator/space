@@ -25,6 +25,7 @@ exports.onCreatePage = async ({ page, actions }) => {
     if (
       page.path.match(/^\/posts/) ||
       page.path.match(/^\/talks/) ||
+      page.path.match(/^\/projects/) ||
       page.path.match(/^\/about/)
     ) {
       createPage(page);
