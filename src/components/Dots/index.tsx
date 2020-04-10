@@ -1,19 +1,19 @@
 import React, {FunctionComponent} from 'react';
 
-import {StyledBottomDot, StyledTopDot} from './styles';
+import * as Styled from './styles';
 import {generateDot} from './utils';
 
 interface Props {
   number: number;
 }
 
-const Dots: FunctionComponent<Props> = props => {
+const Dots: FunctionComponent<Props> = (props) => {
   const dots = Array.from({ length: props.number }, generateDot);
 
   return (
     <div>
       {dots.map((dot, i) => (
-        <StyledTopDot
+        <Styled.TopDot
           key={`top-dot-${dot.y}-${dot.x}-${i}`}
           x={dot.x}
           y={dot.y}
@@ -24,7 +24,7 @@ const Dots: FunctionComponent<Props> = props => {
       ))}
 
       {dots.map((dot, i) => (
-        <StyledBottomDot
+        <Styled.BottomDot
           key={`bottom-dot-${dot.y}-${dot.x}-${i}`}
           x={dot.x}
           y={dot.y}

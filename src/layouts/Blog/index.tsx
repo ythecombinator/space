@@ -11,7 +11,7 @@ import {stripTrailingSlash} from 'utils/string';
 
 import favicon from 'assets/favicon.png';
 
-import {StyledLogo, StyledMain} from './styles';
+import * as Styled from './styles';
 import {blogHeaderLinks, HeaderLink} from './utils';
 
 require("prism-themes/themes/prism-ghcolors.css");
@@ -20,22 +20,22 @@ interface Props {
   location: Location;
 }
 
-const TemplateWrapper: FunctionComponent<Props> = props => {
+const TemplateWrapper: FunctionComponent<Props> = (props) => {
   const { children, location } = props;
 
   const currentPathname = stripTrailingSlash(location.pathname);
   const previousPathname = currentPathname.split("/")[1];
 
   return (
-    <StyledMain>
+    <Styled.Main>
       <Helmet
         title="ythecombinator's space"
         link={[
           {
             rel: "shortcut icon",
             type: "image/png",
-            href: favicon
-          }
+            href: favicon,
+          },
         ]}
       />
 
@@ -46,9 +46,9 @@ const TemplateWrapper: FunctionComponent<Props> = props => {
           {blogHeaderLinks[currentPathname as HeaderLink] ? (
             blogHeaderLinks[currentPathname as HeaderLink]
           ) : (
-            <StyledLogo>
+            <Styled.Logo>
               <Link to={`/${previousPathname}`}>🏠{currentPathname}</Link>
-            </StyledLogo>
+            </Styled.Logo>
           )}
         </h1>
       </BlogHeader>
@@ -58,7 +58,7 @@ const TemplateWrapper: FunctionComponent<Props> = props => {
       <Footer>
         <p>Made with 💖 while high either on ☕ or 🍻 – or both 😂.</p>
       </Footer>
-    </StyledMain>
+    </Styled.Main>
   );
 };
 

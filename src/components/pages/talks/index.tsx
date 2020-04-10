@@ -11,32 +11,32 @@ import NoSSR from 'utils/NoSSR';
 
 import {featuredTalks} from 'data/about';
 
-import {StyledCollection, StyledContainer, StyledContent, StyledItem, StyledLink} from './styles';
+import * as Styled from './styles';
 
 interface Props extends PageProps {}
 
 const talks = shuffleItems(featuredTalks).slice(0, 9);
 
-const PageWrapper: FunctionComponent<Props> = props => {
+const PageWrapper: FunctionComponent<Props> = (props) => {
   const { data, location } = props;
   const posts = data.allMarkdownRemark.edges;
 
   return (
     <Layout location={location}>
-      <StyledContainer>
-        <StyledCollection>
-          {talks.map(talk => (
+      <Styled.Container>
+        <Styled.Collection>
+          {talks.map((talk) => (
             <NoSSR>
-              <StyledItem image={talk.image} key={talk.key}>
-                <StyledContent>
-                  <StyledLink to={talk.link}>{talk.event}</StyledLink>
-                </StyledContent>
-              </StyledItem>
+              <Styled.Item image={talk.image} key={talk.key}>
+                <Styled.Content>
+                  <Styled.Link to={talk.link}>{talk.event}</Styled.Link>
+                </Styled.Content>
+              </Styled.Item>
             </NoSSR>
           ))}
-        </StyledCollection>
+        </Styled.Collection>
         <PostList posts={posts} />
-      </StyledContainer>
+      </Styled.Container>
     </Layout>
   );
 };

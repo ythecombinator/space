@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledMap = styled.div`
+export const Map = styled.div`
   width: 100%;
   max-width: 980px;
   margin: 1rem auto;
@@ -8,5 +8,3 @@ const StyledMap = styled.div`
   display: flex;
   justify-content: center;
 `;
-
-export { StyledMap };

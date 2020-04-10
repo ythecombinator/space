@@ -6,17 +6,17 @@ import Link from 'gatsby-link';
 
 import image from 'assets/404.jpg';
 
-import {Styled404} from './styles';
+import * as Styled from './styles';
 
 const PageWrapper: FunctionComponent = () => (
   <Layout>
-    <Styled404>
+    <Styled.Container>
       <p>Yikes! You shouldn't be here! 😬</p>
       <img src={image} />
       <Link to="/">
         <p>Click here to safely go 🏠.</p>
       </Link>
-    </Styled404>
+    </Styled.Container>
   </Layout>
 );
 

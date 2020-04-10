@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledSocialLinks = styled.div`
+export const Container = styled.div`
   margin-top: 45px;
   margin-left: -13px;
 
@@ -38,5 +38,3 @@ const StyledSocialLinks = styled.div`
     transition: all 250ms ease;
   }
 `;
-
-export { StyledSocialLinks };

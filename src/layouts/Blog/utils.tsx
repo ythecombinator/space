@@ -2,29 +2,29 @@ import React from 'react';
 
 import Link from 'gatsby-link';
 
-import {StyledLogo} from './styles';
+import * as Styled from './styles';
 
 const blogHeaderLinks = {
   "/about": (
-    <StyledLogo>
+    <Styled.Logo>
       <Link to="/">🏠/about</Link>
-    </StyledLogo>
+    </Styled.Logo>
   ),
   "/posts": (
-    <StyledLogo>
+    <Styled.Logo>
       <Link to="/">🏠/posts</Link>
-    </StyledLogo>
+    </Styled.Logo>
   ),
   "/talks": (
-    <StyledLogo>
+    <Styled.Logo>
       <Link to="/">🏠/talks</Link>
-    </StyledLogo>
+    </Styled.Logo>
   ),
   "/projects": (
-    <StyledLogo>
+    <Styled.Logo>
       <Link to="/">🏠/projects</Link>
-    </StyledLogo>
-  )
+    </Styled.Logo>
+  ),
 };
 
 export type HeaderLink = keyof typeof blogHeaderLinks;

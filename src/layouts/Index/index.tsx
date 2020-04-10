@@ -9,13 +9,13 @@ import {getRandomEmojiElement} from 'utils/emoji';
 
 import favicon from 'assets/favicon.png';
 
-import {StyledMain} from './styles';
+import * as Styled from './styles';
 
-const TemplateWrapper: FunctionComponent = props => {
+const TemplateWrapper: FunctionComponent = (props) => {
   const { children } = props;
 
   useEffect(() => {
-    document.addEventListener("mousemove", e => {
+    document.addEventListener("mousemove", (e) => {
       const element = getRandomEmojiElement(e.pageX, e.pageY);
 
       document.body.appendChild(element);
@@ -27,15 +27,15 @@ const TemplateWrapper: FunctionComponent = props => {
   });
 
   return (
-    <StyledMain>
+    <Styled.Main>
       <Helmet
         title="ythecombinator's space"
         link={[
           {
             rel: "shortcut icon",
             type: "image/png",
-            href: favicon
-          }
+            href: favicon,
+          },
         ]}
       />
 
@@ -43,7 +43,7 @@ const TemplateWrapper: FunctionComponent = props => {
       <GithubRibbon />
 
       {children}
-    </StyledMain>
+    </Styled.Main>
   );
 };
 

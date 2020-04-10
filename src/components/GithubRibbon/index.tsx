@@ -1,10 +1,10 @@
 import React from 'react';
 
-import {StyledGithubRibbon} from './styles';
+import * as Styled from './styles';
 
 const GithubRibbon = () => {
   return (
-    <StyledGithubRibbon>
+    <Styled.Container>
       <a href="https://github.com/ythecombinator/space" target="_blank">
         <svg id="octocat" viewBox="0 0 250 250">
           <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z" />
@@ -18,7 +18,7 @@ const GithubRibbon = () => {
           />
         </svg>
       </a>
-    </StyledGithubRibbon>
+    </Styled.Container>
   );
 };
 

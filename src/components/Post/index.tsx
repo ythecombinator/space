@@ -4,7 +4,7 @@ import {Frontmatter} from 'model/Remark';
 
 import {format} from 'utils/date';
 
-import {StyledPost} from './styles';
+import * as Styled from './styles';
 
 interface Props {
   postData: {
@@ -13,18 +13,18 @@ interface Props {
   };
 }
 
-const Post: FunctionComponent<Props> = props => {
+const Post: FunctionComponent<Props> = (props) => {
   const { html, frontmatter } = props.postData;
 
   const date = format(frontmatter.date);
   const isBlogEntry = frontmatter.type === "blog_entry";
 
   return (
-    <StyledPost>
+    <Styled.Post>
       <h1>{frontmatter.title}</h1>
       {isBlogEntry && <p id="date">Published on {date}</p>}
       <div className="postBody" dangerouslySetInnerHTML={{ __html: html }} />
-    </StyledPost>
+    </Styled.Post>
   );
 };
 

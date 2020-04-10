@@ -4,7 +4,7 @@ import {colors} from 'styles/colors';
 
 const { tertiary } = colors;
 
-const StyledFooter = styled.footer`
+export const Footer = styled.footer`
   display: flex;
   justify-content: center;
   p {
@@ -14,5 +14,3 @@ const StyledFooter = styled.footer`
     font-family: source sans pro, sans-serif;
   }
 `;
-
-export { StyledFooter };

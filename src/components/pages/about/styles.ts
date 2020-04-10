@@ -4,7 +4,7 @@ import {colors} from 'styles/colors';
 
 const { primary, secondary, tertiary } = colors;
 
-const StyledAbout = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,5 +51,3 @@ const StyledAbout = styled.div`
     }
   }
 `;
-
-export { StyledAbout };

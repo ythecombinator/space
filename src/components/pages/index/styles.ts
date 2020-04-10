@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import {colors} from 'styles/colors';
 
-const StyledContent = styled.div`
+export const Content = styled.div`
   max-width: 22em;
   margin: 90px;
   transition: all 250ms ease;
@@ -44,5 +44,3 @@ const StyledContent = styled.div`
     margin: 1.5em 0;
   }
 `;
-
-export { StyledContent };

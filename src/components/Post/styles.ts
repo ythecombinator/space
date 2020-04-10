@@ -4,7 +4,7 @@ import {colors} from 'styles/colors';
 
 const { primary, secondary, text, dates } = colors;
 
-const StyledPost = styled.div`
+export const Post = styled.div`
   padding: 2rem;
   width: 100%;
   box-sizing: border-box;
@@ -74,5 +74,3 @@ const StyledPost = styled.div`
     }
   }
 `;
-
-export { StyledPost };

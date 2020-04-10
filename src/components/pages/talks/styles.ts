@@ -1,16 +1,16 @@
-import Link from 'gatsby-link';
+import GatsbyLink from 'gatsby-link';
 import styled from 'styled-components';
 
-interface StyledItemProps {
+interface ItemProps {
   image: string;
 }
 
-const StyledContainer = styled.div`
+export const Container = styled.div`
   margin-left: calc(-1rem - 8px);
   margin-right: calc(-1rem - 8px);
 `;
 
-const StyledCollection = styled.div`
+export const Collection = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -18,16 +18,16 @@ const StyledCollection = styled.div`
   flex-wrap: wrap;
 `;
 
-const StyledItem = styled.div<StyledItemProps>`
+export const Item = styled.div<ItemProps>`
   width: 33.33%;
   height: 250px;
-  background-image: ${props => `url(${props.image})`};
+  background-image: ${(props) => `url(${props.image})`};
   background-position: 50% 50%;
   background-size: cover;
   position: relative;
 `;
 
-const StyledContent = styled.div`
+export const Content = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -52,7 +52,7 @@ const StyledContent = styled.div`
   }
 `;
 
-const StyledLink = styled(Link)`
+export const Link = styled(GatsbyLink)`
   color: white;
   text-transform: uppercase;
   text-decoration: none;
@@ -66,11 +66,3 @@ const StyledLink = styled(Link)`
     text-decoration: none;
   }
 `;
-
-export {
-  StyledLink,
-  StyledContent,
-  StyledItem,
-  StyledCollection,
-  StyledContainer
-};

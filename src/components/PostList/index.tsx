@@ -4,17 +4,17 @@ import Link from 'gatsby-link';
 
 import {EdgesEntity} from 'model/Remark';
 
-import {StyledPostList} from './styles';
+import * as Styled from './styles';
 
 interface Props {
   posts: EdgesEntity[];
 }
 
-const PostList: FunctionComponent<Props> = props => {
+const PostList: FunctionComponent<Props> = (props) => {
   const { posts } = props;
 
   return (
-    <StyledPostList>
+    <Styled.PostList>
       {posts.map(({ node: post }) => {
         return (
           <h2 key={post.id}>
@@ -22,7 +22,7 @@ const PostList: FunctionComponent<Props> = props => {
           </h2>
         );
       })}
-    </StyledPostList>
+    </Styled.PostList>
   );
 };
 

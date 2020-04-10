@@ -10,17 +10,17 @@ import SocialLinks from 'components/SocialLinks';
 
 import {githubProfilePicture, sections, socialData} from 'data/about';
 
-import {StyledContent} from './styles';
+import * as Styled from './styles';
 
 const PageWrapper: FunctionComponent = () => {
   return (
     <Layout>
-      <StyledContent>
+      <Styled.Content>
         <Hero source={githubProfilePicture} description="It's me, Matheus!" />
         <Markdown markup={sections.shortIntro} />
         <SocialLinks socialNetworks={socialData} />
         <Signature name="ythecombinator" />
-      </StyledContent>
+      </Styled.Content>
     </Layout>
   );
 };

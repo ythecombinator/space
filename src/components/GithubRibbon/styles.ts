@@ -4,7 +4,7 @@ import {colors} from 'styles/colors';
 
 const { primary, white } = colors;
 
-const StyledGithubRibbon = styled.div`
+export const Container = styled.div`
   #octocat {
     border: 0;
     color: ${primary};
@@ -38,5 +38,3 @@ const StyledGithubRibbon = styled.div`
     }
   }
 `;
-
-export { StyledGithubRibbon };

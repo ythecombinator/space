@@ -10,7 +10,7 @@ import {
 
 import {Geography as GeographyType} from 'model/Geography';
 
-import {StyledMap} from './styles';
+import * as Styled from './styles';
 import {getStylesForLocation} from './utils';
 
 interface Props {
@@ -18,10 +18,10 @@ interface Props {
   data: string[];
 }
 
-const Map: FunctionComponent<Props> = props => {
+const Map: FunctionComponent<Props> = (props) => {
   const { map, data } = props;
   return (
-    <StyledMap>
+    <Styled.Map>
       <ComposableMap>
         <ZoomableGroup disablePanning>
           <Geographies geography={map}>
@@ -40,7 +40,7 @@ const Map: FunctionComponent<Props> = props => {
                     style={{
                       default: styles,
                       hover: styles,
-                      pressed: styles
+                      pressed: styles,
                     }}
                   />
                 );
@@ -49,7 +49,7 @@ const Map: FunctionComponent<Props> = props => {
           </Geographies>
         </ZoomableGroup>
       </ComposableMap>
-    </StyledMap>
+    </Styled.Map>
   );
 };
 

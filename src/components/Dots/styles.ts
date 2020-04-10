@@ -8,24 +8,22 @@ interface Props {
   y: number;
 }
 
-const StyledDot = styled.div<Props>`
+const Dot = styled.div<Props>`
   position: absolute;
   border-radius: 50%;
   z-index: -1;
-  height: ${props => `${props.size}rem`};
-  width: ${props => `${props.size}rem`};
-  opacity: ${props => `${props.opacity}`};
-  background-color: ${props => `${props.color}`};
+  height: ${(props) => `${props.size}rem`};
+  width: ${(props) => `${props.size}rem`};
+  opacity: ${(props) => `${props.opacity}`};
+  background-color: ${(props) => `${props.color}`};
 `;
 
-const StyledTopDot = styled(StyledDot)`
-  left: ${props => `${props.x}%`};
-  top: ${props => `${props.y}%`};
+export const TopDot = styled(Dot)`
+  left: ${(props) => `${props.x}%`};
+  top: ${(props) => `${props.y}%`};
 `;
 
-const StyledBottomDot = styled(StyledDot)`
-  right: ${props => `${props.x}%`};
-  bottom: ${props => `${props.y}%`};
+export const BottomDot = styled(Dot)`
+  right: ${(props) => `${props.x}%`};
+  bottom: ${(props) => `${props.y}%`};
 `;
-
-export { StyledTopDot, StyledBottomDot };

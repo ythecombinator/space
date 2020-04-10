@@ -4,7 +4,7 @@ import {colors} from 'styles/colors';
 
 const { primary } = colors;
 
-const StyledPostList = styled.ul`
+export const PostList = styled.ul`
   list-style-type: none;
   padding-left: 0;
   margin-left: 0.8rem;
@@ -21,5 +21,3 @@ const StyledPostList = styled.ul`
     }
   }
 `;
-
-export { StyledPostList };

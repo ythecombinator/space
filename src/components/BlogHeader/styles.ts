@@ -4,7 +4,7 @@ import {colors} from 'styles/colors';
 
 const { primary, secondary } = colors;
 
-const StyledBlogHeader = styled.div`
+export const BlogHeader = styled.div`
   text-align: left;
   margin-left: 1.4rem;
   margin-top: 1.4rem;
@@ -29,5 +29,3 @@ const StyledBlogHeader = styled.div`
     }
   }
 `;
-
-export { StyledBlogHeader };

@@ -4,7 +4,7 @@ import {colors} from 'styles/colors';
 
 const { primary } = colors;
 
-const Styled404 = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,5 +44,3 @@ const Styled404 = styled.div`
     }
   }
 `;
-
-export { Styled404 };

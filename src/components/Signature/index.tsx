@@ -1,14 +1,14 @@
 import React, {FunctionComponent} from 'react';
 
-import {StyledSignature} from './styles';
+import * as Styled from './styles';
 
 interface Props {
   name: string;
 }
 
-const Signature: FunctionComponent<Props> = props => {
+const Signature: FunctionComponent<Props> = (props) => {
   const { name } = props;
-  return <StyledSignature>{`— @${name}`}</StyledSignature>;
+  return <Styled.Container>{`— @${name}`}</Styled.Container>;
 };
 
 export default Signature;
