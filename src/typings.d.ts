@@ -1,3 +1,10 @@
+// Image extensions
+declare module "*.png";
+declare module "*.jpg";
+declare module "*.webp";
+declare module "*.svg";
+
+// Libraries with no declaration files published
 declare module "@theme-ui/components";
 declare module "@theme-ui/color";
 declare module "@theme-ui/presets";
