@@ -101,4 +101,4 @@ be also licensed under the same.
 
 ## Credits
 
-Built on the top of the amazing [Superstylin' v2](https://github.com/bntzio/gatsby-starter-superstylin). A big thanks to [Enrique Benitez](https://github.com/bntzio)!
+Built on the top of the amazing [@lekoarts/gatsby-theme-minimal-blog](https://github.com/LekoArts/gatsby-themes/tree/master/themes/gatsby-theme-minimal-blog). A big thanks to [Lennart](https://www.lekoarts.de/)!
