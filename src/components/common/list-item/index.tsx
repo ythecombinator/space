@@ -16,7 +16,7 @@ interface Props {
   showTags?: boolean;
 }
 
-const BlogListItem: FunctionComponent<Props> = (props) => {
+const ListItem: FunctionComponent<Props> = (props) => {
   const { item, showTags = true } = props;
   const isBlogPost = item.__typename === "MdxPost";
 
@@ -45,4 +45,4 @@ const BlogListItem: FunctionComponent<Props> = (props) => {
   );
 };
 
-export default BlogListItem;
+export default ListItem;

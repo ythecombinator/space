@@ -34,7 +34,7 @@ const Tag: FunctionComponent<PageProps> = (props) => {
           View all tags
         </Styled.a>
       </Flex>
-      <Listing posts={data.allPost.nodes} sx={styles.listing} />
+      <Listing items={data.allPost.nodes} sx={styles.listing} />
     </Layout>
   );
 };

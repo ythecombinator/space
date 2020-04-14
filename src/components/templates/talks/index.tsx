@@ -35,7 +35,7 @@ const Talks: FunctionComponent<PageProps> = (props) => {
           </NoSSR>
         ))}
       </styles.Collection>
-      <Listing posts={props.data.allTalk.nodes} sx={styles.listing} />
+      <Listing items={props.data.allTalk.nodes} sx={styles.listing} />
     </Layout>
   );
 };

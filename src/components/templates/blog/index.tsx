@@ -33,7 +33,7 @@ const Blog: FunctionComponent<PageProps> = (props) => {
           View all tags
         </Styled.a>
       </Flex>
-      <Listing posts={props.data.allPost.nodes} sx={styles.listing} />
+      <Listing items={props.data.allPost.nodes} sx={styles.listing} />
     </Layout>
   );
 };
