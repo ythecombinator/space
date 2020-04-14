@@ -1,4 +1,4 @@
-import {Repository} from 'model/Github';
+import {Repository, SortingCriteria} from 'model/Github';
 
 const fetchGithubRepos = async (page: number) => {
   const response = await fetch(
@@ -10,12 +10,25 @@ const fetchGithubRepos = async (page: number) => {
   return data as Repository[];
 };
 
-const sortGithubReposResponse = (a: Repository, b: Repository) =>
+const sortByStargazers = (a: Repository, b: Repository) =>
   a.stargazers_count < b.stargazers_count
     ? 1
     : b.stargazers_count < a.stargazers_count
     ? -1
     : 0;
+
+const filterPinnedRepos = (repo: Repository) => {
+  const pinned = [
+    "react-native-web-monorepo-navigation",
+    "space",
+    "flat-palettes",
+    "vapor-x-hub-middleware",
+    "GammaFn",
+    "resistance.js",
+  ];
+
+  return pinned.includes(repo.name);
+};
 
 export const fetchAllGithubRepos = async (
   offset = 1
@@ -29,8 +42,23 @@ export const fetchAllGithubRepos = async (
   }
 };
 
-export const filterGithubReposResponse = async (repos: Repository[]) => {
-  const selectedRepos = repos.sort(sortGithubReposResponse).slice(0, 12);
+export const filterGithubReposResponse = async (
+  repos: Repository[],
+  criteria: SortingCriteria
+) => {
+  let selectedRepos = [] as Repository[];
+
+  switch (criteria) {
+    case "starred": {
+      selectedRepos = repos.sort(sortByStargazers).slice(0, 12);
+      break;
+    }
+    case "pinned": {
+      selectedRepos = repos.filter(filterPinnedRepos).sort(sortByStargazers);
+      break;
+    }
+  }
+
   return selectedRepos;
 };
 
@@ -294,7 +322,7 @@ const languageColors = {
   q: "#0040cd",
   sed: "#64b970",
   wdl: "#42f1f4",
-  wisp: "#7582D1"
+  wisp: "#7582D1",
 };
 
 type LanguageColors = keyof typeof languageColors;
