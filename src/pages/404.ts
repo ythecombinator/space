@@ -1,3 +1,3 @@
-import Page from 'components/pages/404';
+import Page from 'components/templates/404';
 
 export default Page;
