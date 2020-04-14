@@ -8,16 +8,15 @@ import Layout from 'components/common/layout';
 import Listing from 'components/common/listing';
 import SEO from 'components/common/seo';
 
-import {shuffleItems} from 'utils/array';
 import NoSSR from 'utils/NoSSR';
 
 import {PageProps} from 'model/PageProps';
 
 import * as styles from './styles';
-import {featuredTalks} from './utils';
+import {getFeaturedTalks} from './utils';
 
 const Talks: FunctionComponent<PageProps> = (props) => {
-  const talks = shuffleItems(featuredTalks).slice(0, 9);
+  const talks = getFeaturedTalks();
 
   return (
     <Layout>

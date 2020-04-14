@@ -1,3 +1,5 @@
+import {shuffleItems} from 'utils/array';
+
 import featuredTalk01 from './assets/cejs-2016.jpg';
 import featuredTalk02 from './assets/cejs-2017.jpg';
 import featuredTalk04 from './assets/front_in_fortaleza-2018.jpg';
@@ -15,7 +17,7 @@ import featuredTalk10 from './assets/tdc_sp-2019-1.jpg';
 import featuredTalk11 from './assets/tdc_sp-2019-2.jpg';
 import featuredTalk12 from './assets/the_conf.jpg';
 
-export const featuredTalks = [
+const featuredTalks = [
   {
     event: "Frontend Talks PRG • February, 2020",
     link: "/talks/the-best-is-yet-to-come-the-future-of-react",
@@ -80,8 +82,7 @@ export const featuredTalks = [
   },
   {
     event: "Natal Tech Conference • 2019",
-    link:
-      "/talks/the-hitchhikers-guide-to-the-front-end-performance-2019-edition",
+    link: "/talks/the-hitchhikers-guide-to-the-front-end-performance",
     image: featuredTalk06,
     key: "featuredTalk06",
   },
@@ -93,8 +94,7 @@ export const featuredTalks = [
   },
   {
     event: "Front In Fortaleza • 2018",
-    link:
-      "/talks/the-hitchhikers-guide-to-the-front-end-performance-2018-edition",
+    link: "/talks/the-hitchhikers-guide-to-the-front-end-performance",
     image: featuredTalk04,
     key: "featuredTalk04",
   },
@@ -117,3 +117,5 @@ export const featuredTalks = [
     key: "featuredTalk01",
   },
 ];
+
+export const getFeaturedTalks = () => shuffleItems(featuredTalks).slice(0, 9);
