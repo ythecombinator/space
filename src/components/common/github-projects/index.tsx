@@ -2,7 +2,7 @@ import React, {FunctionComponent, memo, useEffect, useState} from 'react';
 
 import {css, useColorMode} from 'theme-ui';
 
-import Loading from 'components/common/Loading';
+import Loading from 'components/common/loading';
 
 import {fetchAllGithubRepos, filterGithubReposResponse, getColorForLanguage} from 'utils/github';
 
