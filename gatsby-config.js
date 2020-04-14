@@ -1,104 +1,71 @@
+const { getConfig } = require(`./utils/config`);
+
+const config = getConfig();
+
 module.exports = {
   siteMetadata: {
-    title: "ythecombinator",
-    description:
-      "full-stack engineer focused on client-side architecture • into Swift & node.js",
-    siteUrl: "https://www.ythecombinator.space"
+    siteTitle: `@ythecombinator`,
+    siteTitleAlt: `Matheus Albuquerque`,
+    siteHeadline: `Senior Software Engineer, Front-End based in Prague`,
+    siteUrl: `https://www.ythecombinator.space`,
+    siteDescription: `Traveler • Consultant • Speaker Padawan • Software Engineer, Front-End`,
+    siteLanguage: `en`,
+    siteImage: `/banner.jpg`,
+    author: `@ythecombinator`,
   },
   plugins: [
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/posts`,
-        name: "posts"
-      }
+        name: config.postsContentPath,
+        path: config.postsContentPath,
+      },
     },
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/talks`,
-        name: "talks"
-      }
+        name: config.talksContentPath,
+        path: config.talksContentPath,
+      },
     },
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/projects`,
-        name: "projects"
-      }
+        name: config.pagesContentPath,
+        path: config.pagesContentPath,
+      },
     },
-    `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: `gatsby-plugin-mdx`,
       options: {
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 960,
+              quality: 90,
+              linkImagesToOriginal: false,
+            },
+          },
+        ],
         plugins: [
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 1080
-            }
+              maxWidth: 960,
+              quality: 90,
+              linkImagesToOriginal: false,
+            },
           },
-          {
-            resolve: `gatsby-remark-prismjs`
-          }
-        ]
-      }
+        ],
+      },
     },
-    "gatsby-plugin-typescript",
-    "gatsby-plugin-typescript-checker",
-    "gatsby-plugin-styled-components",
-    "gatsby-plugin-react-helmet",
-    {
-      resolve: `gatsby-plugin-react-helmet-canonical-urls`,
-      options: {
-        siteUrl: "https://www.ythecombinator.space"
-      }
-    },
-    {
-      resolve: "gatsby-plugin-google-analytics",
-      options: {
-        trackingId: "UA-58120604-10"
-      }
-    },
-    {
-      resolve: "gatsby-plugin-nprogress",
-      options: {
-        color: "#5b737d",
-        showSpinner: false
-      }
-    },
-    {
-      resolve: "gatsby-plugin-prefetch-google-fonts",
-      options: {
-        fonts: [
-          {
-            family: "Source Code Pro",
-            variants: ["600", "700"]
-          },
-          {
-            family: "Source Sans Pro",
-            variants: ["200", "300", "400", "700"]
-          },
-          {
-            family: "Poppins",
-            variants: ["600"]
-          }
-        ]
-      }
-    },
-    "gatsby-plugin-sitemap",
-    {
-      resolve: "gatsby-plugin-manifest",
-      options: {
-        name: "Matheus' Space",
-        short_name: "ythecombinator",
-        start_url: "/",
-        background_color: "#ffffff",
-        theme_color: "#5b737d",
-        display: "standalone"
-      }
-    },
-    "gatsby-plugin-offline",
-    "gatsby-plugin-webpack-bundle-analyzer"
-  ]
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-typescript`,
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-catch-links`,
+    `gatsby-plugin-theme-ui`,
+  ].filter(Boolean),
 };

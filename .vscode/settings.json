@@ -15,51 +15,39 @@
   "importSorter.importStringConfiguration.tabSize": 2,
   "importSorter.importStringConfiguration.trailingComma": "multiLine",
   "importSorter.generalConfiguration.sortOnBeforeSave": true,
+  "importSorter.sortConfiguration.customOrderingRules.defaultOrderLevel": 15,
   "importSorter.sortConfiguration.customOrderingRules.rules": [
     {
       "regex": "^(react)$",
       "orderLevel": 10
     },
     {
-      "regex": "^(layouts)",
-      "orderLevel": 15
-    },
-    {
-      "regex": "^(templates)",
+      "regex": "^(components)",
       "orderLevel": 20
     },
     {
-      "regex": "^(components)",
-      "orderLevel": 25
-    },
-    {
-      "regex": "^(pages)",
+      "regex": "^(hooks)",
       "orderLevel": 30
-    },
-    {
-      "regex": "^(model)",
-      "orderLevel": 35
     },
     {
       "regex": "^(utils)",
       "orderLevel": 40
     },
-
     {
-      "regex": "^(styles)",
-      "orderLevel": 45
-    },
-    {
-      "regex": "^(data)",
+      "regex": "^(model)",
       "orderLevel": 50
     },
     {
-      "regex": "^(assets)",
-      "orderLevel": 55
+      "regex": "^(styles)",
+      "orderLevel": 60
+    },
+    {
+      "regex": "^(sections)",
+      "orderLevel": 80
     },
     {
       "regex": "^[.]",
-      "orderLevel": 60
+      "orderLevel": 90
     }
   ],
   "importSorter.importStringConfiguration.spacingPerImportExpression.afterStartingBracket": 0,
