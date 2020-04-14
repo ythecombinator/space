@@ -5,7 +5,7 @@ interface Props {
   fallback?: JSX.Element;
 }
 
-const NoSSR: FunctionComponent<Props> = props => {
+const NoSSR: FunctionComponent<Props> = (props) => {
   const { children, defer = false, fallback = null } = props;
   const [mountedState, setMountedState] = useState(false);
 
