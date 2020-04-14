@@ -13,14 +13,11 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "assets/*": ["src/assets/*"],
-      "data/*": ["src/data/*"],
       "components/*": ["src/components/*"],
-      "layouts/*": ["src/layouts/*"],
+      "hooks/*": ["src/hooks/*"],
       "model/*": ["src/model/*"],
-      "pages/*": ["src/pages/*"],
       "styles/*": ["src/styles/*"],
-      "templates/*": ["src/templates/*"],
+      "sections/*": ["src/sections/*"],
       "utils/*": ["src/utils/*"]
     }
   }
