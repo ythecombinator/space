@@ -1,10 +1,12 @@
 import React, {FunctionComponent, memo, useEffect, useState} from 'react';
 
-import {css, useColorMode} from 'theme-ui';
+import {useColorMode} from 'theme-ui';
 
 import Loading from 'components/common/loading';
 
-import {fetchAllGithubRepos, filterGithubReposResponse, getColorForLanguage} from 'utils/github';
+import useGithubRepos from 'hooks/use-github-repos';
+
+import {getColorForLanguage} from 'utils/github';
 
 import {Repository, SortingCriteria} from 'model/Github';
 
@@ -16,28 +18,17 @@ interface Props {
 
 const GithubProjects: FunctionComponent<Props> = (props) => {
   const { criteria } = props;
-  const [repos, setRepos] = useState([] as Repository[]);
-  const [loadedRepos, setLoadedRepos] = useState(false);
 
   const [colorMode] = useColorMode();
   const isDark = colorMode === `dark`;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const allRepos = await fetchAllGithubRepos();
-      const selectedRepos = await filterGithubReposResponse(allRepos, criteria);
-      setRepos(selectedRepos);
-      setLoadedRepos(true);
-    };
-
-    fetchData();
-  }, []);
+  const { data, looaded } = useGithubRepos(criteria);
 
   return (
     <div>
-      {loadedRepos ? (
+      {looaded ? (
         <Styled.Container>
-          {repos.map((repo: Repository) => {
+          {data.map((repo: Repository) => {
             const {
               name,
               language,

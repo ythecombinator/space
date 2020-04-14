@@ -44,6 +44,7 @@
     "react-icons": "^3.9.0",
     "react-live": "^2.2.2",
     "react-simple-maps": "^0.12.1",
+    "swr": "^0.2.0",
     "theme-ui": "^0.2.52",
     "typeface-ibm-plex-sans": "^0.0.75",
     "utility-types": "^3.10.0"
