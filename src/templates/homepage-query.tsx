@@ -20,5 +20,15 @@ export const query = graphql`
         }
       }
     }
+    allTalk(sort: { fields: date, order: DESC }, limit: 3) {
+      nodes {
+        slug
+        title
+        date(formatString: $formatString)
+        excerpt
+        timeToRead
+        description
+      }
+    }
   }
 `;

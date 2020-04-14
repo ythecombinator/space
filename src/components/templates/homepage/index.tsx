@@ -23,20 +23,27 @@ import Projects from 'sections/projects';
 import * as styles from './styles';
 
 const Homepage: FunctionComponent<PageProps> = (props) => {
-  const { basePath, postsPath } = useConfig();
+  const { basePath, postsPath, talksPath } = useConfig();
 
   return (
     <Layout>
       <section sx={styles.section}>
         <Hero />
       </section>
-      {/* Last Posts */}
+      {/* Latest Posts */}
       <Title text="Latest Posts">
         <Link to={replaceSlashes(`/${basePath}/${postsPath}`)}>
           Read all posts
         </Link>
       </Title>
-      <Listing posts={props.data.allPost.nodes} showTags={false} />
+      <Listing items={props.data.allPost.nodes} showTags={false} />
+      {/* Latest Talks */}
+      <Title text="Latest Talks">
+        <Link to={replaceSlashes(`/${basePath}/${talksPath}`)}>
+          View all talks
+        </Link>
+      </Title>
+      <Listing items={props.data.allTalk.nodes} showTags={false} />
       {/* Pinned Repos */}
       <Title text="Featured Projects">
         <Link to="/projects">Check all projects</Link>
