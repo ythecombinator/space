@@ -7,7 +7,7 @@ import 'typeface-ibm-plex-sans';
 import SEO from 'components/common/seo';
 import SkipNavLink from 'components/common/skip-nav';
 
-import CodeStyles from 'styles/code';
+import codeStyles from 'styles/code';
 
 import Footer from '../footer';
 import Header from '../header';
@@ -45,7 +45,11 @@ const Layout: FunctionComponent<Props> = (props) => {
       <SkipNavLink>Skip to content</SkipNavLink>
       <Container>
         <Header />
-        <Main id="skip-nav" css={css({ ...CodeStyles })} className={className}>
+        <Main
+          id="skip-nav"
+          css={css({ ...codeStyles } as any)}
+          className={className}
+        >
           {children}
         </Main>
         <Footer />

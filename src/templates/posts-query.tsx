@@ -1,6 +1,6 @@
 import {graphql} from 'gatsby';
 
-import BlogComponent from 'components/templates/blog';
+import BlogComponent from 'components/templates/posts';
 
 export default BlogComponent;
 

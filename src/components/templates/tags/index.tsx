@@ -12,6 +12,7 @@ import SEO from 'components/common/seo';
 import useConfig from 'hooks/use-config';
 
 import {replaceSlashes} from 'utils/string';
+import {StyledGatsbyLink} from 'utils/theme-ui';
 
 import {PageProps} from 'model/PageProps';
 
@@ -31,7 +32,7 @@ const Tags: FunctionComponent<PageProps> = (props) => {
             mb={[1, 1, 2]}
             sx={{ alignItems: `center` }}
           >
-            <Styled.a
+            <StyledGatsbyLink
               as={Link}
               sx={styles.a}
               to={replaceSlashes(
@@ -40,7 +41,7 @@ const Tags: FunctionComponent<PageProps> = (props) => {
             >
               {listItem.fieldValue}
               <span sx={styles.span}>({listItem.totalCount})</span>
-            </Styled.a>
+            </StyledGatsbyLink>
           </Flex>
         ))}
       </Box>

@@ -55,7 +55,7 @@
     "@types/react-dom": "16.9.6",
     "@types/react-helmet": "^5.0.15",
     "@types/react-simple-maps": "^0.12.2",
-    "@types/theme-ui": "^0.3.1",
+    "@types/theme-ui": "^0.2.8",
     "tslint": "^6.1.1",
     "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^4.2.0",

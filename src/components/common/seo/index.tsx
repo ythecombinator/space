@@ -32,6 +32,7 @@ const SEO: FunctionComponent<Props> = (props) => {
     url: `${siteUrl}${pathname || ``}`,
     image: `${siteUrl}${image || defaultImage}`,
   };
+
   return (
     <Helmet
       title={title}

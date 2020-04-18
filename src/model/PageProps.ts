@@ -43,6 +43,12 @@ export interface Data {
 
 export interface AllQuery {
   nodes: NodesEntity[];
+  group: GroupEntity[];
+}
+
+export interface GroupEntity {
+  fieldValue: string;
+  totalCount: number;
 }
 
 export interface NodesEntity {

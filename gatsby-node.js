@@ -340,7 +340,7 @@ exports.onCreateNode = ({
 
 // These template are only data-fetching wrappers that import components
 const homepageTemplate = require.resolve(`./src/templates/homepage-query.tsx`);
-const blogTemplate = require.resolve(`./src/templates/blog-query.tsx`);
+const postsTemplate = require.resolve(`./src/templates/posts-query.tsx`);
 const talksTemplate = require.resolve(`./src/templates/talks-query.tsx`);
 const postTemplate = require.resolve(`./src/templates/post-query.tsx`);
 const talkTemplate = require.resolve(`./src/templates/talk-query.tsx`);
@@ -363,7 +363,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   createPage({
     path: `/${basePath}/${postsPath}`.replace(/\/\/+/g, `/`),
-    component: blogTemplate,
+    component: postsTemplate,
     context: {
       formatString,
     },
