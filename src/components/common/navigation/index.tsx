@@ -7,6 +7,7 @@ import {jsx, Styled} from 'theme-ui';
 import useConfig from 'hooks/use-config';
 
 import {replaceSlashes} from 'utils/string';
+import {StyledGatsbyLink} from 'utils/theme-ui';
 
 import * as styles from './styles';
 
@@ -25,14 +26,14 @@ const Navigation = ({ nav }: Props) => {
       {nav && nav.length > 0 && (
         <nav sx={styles.nav}>
           {nav.map((item) => (
-            <Styled.a
+            <StyledGatsbyLink
               key={item.slug}
               as={Link}
               activeClassName="active"
               to={replaceSlashes(`/${basePath}/${item.slug}`)}
             >
               {item.title}
-            </Styled.a>
+            </StyledGatsbyLink>
           ))}
         </nav>
       )}

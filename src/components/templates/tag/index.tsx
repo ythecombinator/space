@@ -12,6 +12,7 @@ import SEO from 'components/common/seo';
 import useConfig from 'hooks/use-config';
 
 import {replaceSlashes} from 'utils/string';
+import {StyledGatsbyLink} from 'utils/theme-ui';
 
 import {PageProps} from 'model/PageProps';
 
@@ -26,13 +27,13 @@ const Tag: FunctionComponent<PageProps> = (props) => {
       <SEO title={`Tag: ${pageContext.name}`} />
       <Flex sx={styles.flex}>
         <Styled.h2>{pageContext.name}</Styled.h2>
-        <Styled.a
+        <StyledGatsbyLink
           as={Link}
           sx={styles.a}
           to={replaceSlashes(`/${basePath}/${tagsPath}`)}
         >
           View all tags
-        </Styled.a>
+        </StyledGatsbyLink>
       </Flex>
       <Listing items={data.allPost.nodes} sx={styles.listing} />
     </Layout>

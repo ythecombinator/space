@@ -6,6 +6,8 @@ import {Styled as Style} from 'theme-ui';
 
 import SEO from 'components/common/seo';
 
+import {StyledGatsbyLink} from 'utils/theme-ui';
+
 import animation from './assets/animation.webm';
 import fallback from './assets/fallback.mp4';
 import * as Styled from './styles';
@@ -30,9 +32,9 @@ const Error = () => {
         <Style.h3 style={{ color: "white" }}>
           Yikes! You shouldn't be here! 😬
         </Style.h3>
-        <Style.a as={Link} to="/">
+        <StyledGatsbyLink as={Link} to="/">
           Click here to safely go 🏠
-        </Style.a>
+        </StyledGatsbyLink>
       </Styled.Content>
     </Styled.Container>
   );

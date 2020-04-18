@@ -1,11 +1,11 @@
-import React, {FunctionComponent} from 'react';
+import React, {ComponentType, FunctionComponent} from 'react';
 
-import {Link} from 'gatsby';
-import {Styled} from 'theme-ui';
+import {Link as GatsbyLink} from 'gatsby';
 
 import useConfig from 'hooks/use-config';
 
 import {replaceSlashes} from 'utils/string';
+import {StyledGatsbyLink} from 'utils/theme-ui';
 
 interface Props {
   tags: {
@@ -23,12 +23,12 @@ const ItemTags: FunctionComponent<Props> = (props) => {
       {tags.map((tag, i) => (
         <React.Fragment key={tag.slug}>
           {!!i && `, `}
-          <Styled.a
-            as={Link}
+          <StyledGatsbyLink
+            as={GatsbyLink}
             to={replaceSlashes(`/${basePath}/${tagsPath}/${tag.slug}`)}
           >
             {tag.name}
-          </Styled.a>
+          </StyledGatsbyLink>
         </React.Fragment>
       ))}
     </React.Fragment>

@@ -7,6 +7,8 @@ import {jsx, Styled} from 'theme-ui';
 
 import ItemTags from 'components/common/item-tags';
 
+import {StyledGatsbyLink} from 'utils/theme-ui';
+
 import {NodesEntity} from 'model/PageProps';
 
 import * as styles from './styles';
@@ -22,14 +24,9 @@ const ListItem: FunctionComponent<Props> = (props) => {
 
   return (
     <Box mb={4}>
-      <Styled.a
-        as={Link}
-        sx={styles.title}
-        //@ts-ignore
-        to={item.slug}
-      >
+      <StyledGatsbyLink as={Link} sx={styles.title} to={item.slug}>
         {item.title}
-      </Styled.a>
+      </StyledGatsbyLink>
       {isBlogPost && (
         <p sx={styles.description}>
           <time>{item.date}</time>
