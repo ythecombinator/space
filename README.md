@@ -1,5 +1,5 @@
 <h1 align="center">
-	<img src="static/preview.png" alt="It's me, matt!" width="800px">
+	<img src="preview.png" alt="It's me, matt!" width="800px">
 	<br>
 	<br>
 </h1>
