@@ -4,14 +4,6 @@ import {Helmet} from 'react-helmet';
 
 import useSiteMetadata from 'hooks/use-site-metadata';
 
-const defaultProps = {
-  title: ``,
-  description: false,
-  pathname: false,
-  image: false,
-  children: null,
-};
-
 interface Props {
   title?: string;
   description?: string;
@@ -62,28 +54,9 @@ const SEO: FunctionComponent<Props> = (props) => {
       <meta name="twitter:image" content={seo.image} />
       <meta name="twitter:image:alt" content={seo.description} />
       <meta name="twitter:creator" content={author} />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="32x32"
-        href="/favicon-32x32.png"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="16x16"
-        href="/favicon-16x16.png"
-      />
-      <link
-        rel="apple-touch-icon"
-        sizes="180x180"
-        href="/apple-touch-icon.png"
-      />
       {children}
     </Helmet>
   );
 };
 
 export default SEO;
-
-SEO.defaultProps = defaultProps;
