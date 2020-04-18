@@ -8,7 +8,7 @@ module.exports = {
     siteTitleAlt: `Matheus Albuquerque`,
     siteHeadline: `Senior Software Engineer, Front-End based in Prague`,
     siteUrl: `https://www.ythecombinator.space`,
-    siteDescription: `Traveler • Consultant • Speaker Padawan • Software Engineer, Front-End`,
+    siteDescription: `Software Engineer, Front-End • Consultant • Speaker • Traveler`,
     siteLanguage: `en`,
     siteImage: `/banner.jpg`,
     author: `@ythecombinator`,
@@ -67,5 +67,17 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-theme-ui`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Matheus Albuquerque`,
+        short_name: `@ythecombinator`,
+        start_url: `/`,
+        background_color: `#2D3748`,
+        theme_color: `#FFFFFF`,
+        display: `standalone`,
+        icon: `src/images/icon.png`,
+      },
+    },
   ].filter(Boolean),
 };
