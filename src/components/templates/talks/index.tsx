@@ -2,7 +2,7 @@
 import {createRef, FunctionComponent} from 'react';
 
 import {Flex} from '@theme-ui/components';
-import {jsx, Styled} from 'theme-ui';
+import {jsx, Styled as StyledTheme} from 'theme-ui';
 
 import Layout from 'components/common/layout';
 import Listing from 'components/common/listing';
@@ -12,7 +12,7 @@ import NoSSR from 'utils/NoSSR';
 
 import {PageProps} from 'model/PageProps';
 
-import * as styles from './styles';
+import * as Styled from './styles';
 import {getFeaturedTalks} from './utils';
 
 const Talks: FunctionComponent<PageProps> = (props) => {
@@ -21,21 +21,21 @@ const Talks: FunctionComponent<PageProps> = (props) => {
   return (
     <Layout>
       <SEO title="Talks" />
-      <Flex sx={styles.flex}>
-        <Styled.h2>Talks</Styled.h2>
+      <Flex sx={Styled.flex}>
+        <StyledTheme.h2>Talks</StyledTheme.h2>
       </Flex>
-      <styles.Collection>
+      <Styled.Collection>
         {talks.map((talk) => (
           <NoSSR>
-            <styles.Item image={talk.image} key={talk.key}>
-              <styles.Content>
-                <styles.Link to={talk.link}>{talk.event}</styles.Link>
-              </styles.Content>
-            </styles.Item>
+            <Styled.Item image={talk.image} key={talk.key}>
+              <Styled.Content>
+                <Styled.Link to={talk.link}>{talk.event}</Styled.Link>
+              </Styled.Content>
+            </Styled.Item>
           </NoSSR>
         ))}
-      </styles.Collection>
-      <Listing items={props.data.allTalk.nodes} sx={styles.listing} />
+      </Styled.Collection>
+      <Listing items={props.data.allTalk.nodes} sx={Styled.listing} />
     </Layout>
   );
 };
