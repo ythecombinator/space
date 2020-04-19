@@ -13,6 +13,7 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "assets/*": ["src/assets/*"],
       "components/*": ["src/components/*"],
       "hooks/*": ["src/hooks/*"],
       "model/*": ["src/model/*"],
