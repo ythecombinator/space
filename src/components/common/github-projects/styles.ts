@@ -24,21 +24,16 @@ export const Container = styled.div`
 export const Card = styled.div<Props>`
   width: 100%;
   border-radius: 5px;
-  background-color: ${(props) =>
-    getColorScheme(props.isDark).primaryBackgroundColor};
 
   :hover {
     transform: translateY(0.5rem);
   }
 `;
 
-export const Top = styled.div`
-  background-color: ${gray[7]};
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  height: 10px;
+export const Top = styled.div<Props>`
+  background-color: ${(props) =>
+    getColorScheme(props.isDark).secondaryBackgroundColor};
+  height: 5px;
 `;
 
 export const Main = styled.div`

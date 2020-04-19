@@ -39,7 +39,7 @@ const GithubProjects: FunctionComponent<Props> = (props) => {
 
             return (
               <Styled.Card isDark={isDark}>
-                <Styled.Top />
+                <Styled.Top isDark={isDark} />
                 <Styled.Main>
                   <Styled.Content>
                     <Styled.Title href={html_url} isDark={isDark}>
