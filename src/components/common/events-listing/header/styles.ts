@@ -12,7 +12,7 @@ export const Header = styled.header<HeaderProps>`
   background-image: ${(props) => `url(${props.image})`};
 `;
 
-export const Title = styled.a`
+export const Title = styled.p`
   text-transform: uppercase;
   margin: 0;
   background: ${(props) => props.theme.colors.background};
