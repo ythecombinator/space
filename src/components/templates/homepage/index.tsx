@@ -30,13 +30,6 @@ const Homepage: FunctionComponent<PageProps> = (props) => {
       <section sx={styles.section}>
         <Hero />
       </section>
-      {/* Latest Posts */}
-      <Title text="Latest Posts">
-        <Link to={replaceSlashes(`/${basePath}/${postsPath}`)}>
-          Read all posts
-        </Link>
-      </Title>
-      <Listing items={props.data.allPost.nodes} showTags={false} />
       {/* Latest Talks */}
       <Title text="Latest Talks">
         <Link to={replaceSlashes(`/${basePath}/${talksPath}`)}>
@@ -44,6 +37,13 @@ const Homepage: FunctionComponent<PageProps> = (props) => {
         </Link>
       </Title>
       <Listing items={props.data.allTalk.nodes} showTags={false} />
+      {/* Latest Posts */}
+      <Title text="Latest Posts">
+        <Link to={replaceSlashes(`/${basePath}/${postsPath}`)}>
+          Read all posts
+        </Link>
+      </Title>
+      <Listing items={props.data.allPost.nodes} showTags={false} />
       {/* Pinned Repos */}
       <Title text="Featured Projects">
         <Link to="/projects">Check all projects</Link>
