@@ -4,19 +4,27 @@ date: "2015-05-30"
 title: "Jumping on an adventure with metadata: Micro Data and Open Graph"
 ---
 
+import EventsListing from "components/common/events-listing";
+
+import fortaleza from "assets/cities/fortaleza.jpg";
+
 An introduction to the importance of one of the key concepts behind the Semantic Web: metadata. I will cover two of the most used patterns: Microdata and the Open Graph, and how metadata can help your project to have information organized in a way that not only humans understand it, regardless of the technology used on the back end.
 
 ### Events
 
-#### [IX Pylestras](http://pylestras.org/evento/ix-pylestras/)
-
-🌎 Fortaleza, Brazil
-
-📍 Universidade de Fortaleza - Unifor
-
-🗓️ May 30, 2015
-
-👥 ≈ 40 people audience
+<EventsListing
+  data={[
+    {
+      name: "IX Pylestras",
+      link: "http://pylestras.org/evento/ix-pylestras/",
+      city: "Fortaleza, Brazil",
+      place: "Universidade de Fortaleza - Unifor",
+      thumbnail: fortaleza,
+      date: "May 30, 2015",
+      audience: 40,
+    },
+  ]}
+/>
 
 ### Slides
 

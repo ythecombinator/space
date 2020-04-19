@@ -4,19 +4,27 @@ slug: "/talks/an-open-source-mobile-project-in-two-weeks"
 date: "2015-08-15"
 ---
 
+import EventsListing from "components/common/events-listing";
+
+import fortaleza from "assets/cities/fortaleza.jpg";
+
 In this talk I'll share some of the experiences I had while working on [Conf App Boilerplate](https://github.com/devevents/conf-app-boilerplate) - which aimed to be used to develop the [Front In Fortaleza mobile app](https://play.google.com/store/apps/details?id=com.devevents.frontinfortaleza) in _two weeks_. You'll see how we used trending technologies like [Jade](http://jade-lang.com/), [SASS](http://sass-lang.com/), [Typescript](http://www.typescriptlang.org/), [Gulp](http://gulpjs.com/) - and many others -, to help our code gain in aspects of readability and maintainability - and our team, productivity.
 
 ### Events
 
-#### [I Ionic Meetup Fortaleza](http://www.meetup.com/pt/Ionic-Ceara/events/224620543/)
-
-🌎 Fortaleza, Brazil
-
-📍 Universidade de Fortaleza - Unifor
-
-🗓️ August 15, 2015
-
-👥 ≈ 40 audience
+<EventsListing
+  data={[
+    {
+      name: "I Ionic Meetup Fortaleza",
+      link: "http://www.meetup.com/pt/Ionic-Ceara/events/224620543/",
+      city: "Fortaleza, Brazil",
+      place: "Universidade de Fortaleza - Unifor",
+      thumbnail: fortaleza,
+      date: "August 15, 2015",
+      audience: 40,
+    },
+  ]}
+/>
 
 ### Slides
 

@@ -4,6 +4,13 @@ date: "2018-12-06"
 title: "The Hitchhiker's Guide to the Front-End Performance"
 ---
 
+import EventsListing from "components/common/events-listing";
+
+import fortaleza from "assets/cities/fortaleza.jpg";
+import natal from "assets/cities/natal.jpg";
+import portoAlegre from "assets/cities/porto-alegre.jpg";
+import beloHorizonte from "assets/cities/belo-horizonte.jpg";
+
 Optimizing applications to offer the best user experience isn't something trivial even for the most skilled front-end developers; given Murphy's law, browsers don't always know what critical resources they should load first, huge code bundles and users' slow network connections make them wait more seconds than they want to and, once the whole download is finished, we know that JavaScript can even take a few more seconds to process.
 
 Thankfully there's a lot we can do to give our users a much better experience: preloading, prefetching, code splitting, common chunks, dynamic imports, service workers, web workers, JavaScript compile-time optimization and so on. Yet, in a world where all we hear is PWA hype driven development ™, how these different pieces of the web interact to bring our users a real meaningful better experience is often not well understood, explained or put in practice.
@@ -12,45 +19,48 @@ In this talk I'll explain how to ship way faster front-end bundles and share a f
 
 ### Events
 
-#### [TDC 2019 | Belo Horizonte](http://www.thedevelopersconference.com.br/tdc/2019/belohorizonte/trilha-javascript)
-
-🌎 Belo Horizonte, Brazil
-
-📍 UniBH - Campus Buritis
-
-🗓️ June 14, 2019
-
-👥 ≈ 60 people audience
-
-#### [Natal Tech Conference](https://www.meetup.com/pt-BR/GDG-Natal/events/258558498/)
-
-🌎 Natal, Brazil
-
-📍 Sebrae - RN
-
-🗓️ March 16, 2019
-
-👥 ≈ 100 people audience
-
-#### [TDC 2018 | Porto Alegre](http://www.thedevelopersconference.com.br/tdc/2018/portoalegre/trilha-web-frontend)
-
-🌎 Porto Alegre, Brazil
-
-📍 UniRitter
-
-🗓️ December 6, 2018
-
-👥 ≈ 60 people audience
-
-#### [Front In Fortaleza](http://frontinfortaleza.com.br)
-
-🌎 Fortaleza, Brazil
-
-📍 Centro Universitário 7 de Setembro
-
-🗓️ September 15, 2018
-
-👥 ≈ 150 people audience
+<EventsListing
+  data={[
+    {
+      name: "TDC 2019 | Belo Horizonte",
+      link:
+        "http://www.thedevelopersconference.com.br/tdc/2019/belohorizonte/trilha-javascript",
+      city: "Belo Horizonte, Brazil",
+      place: "UniBH - Campus Buritis",
+      thumbnail: beloHorizonte,
+      date: "June 14, 2019",
+      audience: 60,
+    },
+    {
+      name: "Natal Tech Conference",
+      link: "https://www.meetup.com/pt-BR/GDG-Natal/events/258558498/",
+      city: "Natal, Brazil",
+      place: "Sebrae - RN",
+      thumbnail: natal,
+      date: "March 16, 2019",
+      audience: 100,
+    },
+    {
+      name: "TDC 2018 | Porto Alegre",
+      link:
+        "http://www.thedevelopersconference.com.br/tdc/2018/portoalegre/trilha-web-frontend",
+      city: "Porto Alegre, Brazil",
+      place: "UniRitter",
+      thumbnail: portoAlegre,
+      date: "December 6, 2018",
+      audience: 60,
+    },
+    {
+      name: "Front In Fortaleza",
+      link: "http://frontinfortaleza.com.br",
+      city: "Fortaleza, Brazil",
+      place: "Centro Universitário 7 de Setembro",
+      thumbnail: fortaleza,
+      date: "September 15, 2018",
+      audience: 150,
+    },
+  ]}
+/>
 
 ### Slides
 

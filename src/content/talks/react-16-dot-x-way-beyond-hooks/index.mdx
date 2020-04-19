@@ -4,41 +4,51 @@ date: "2019-02-09"
 title: "React 16.x: Way Beyond Hooks"
 ---
 
+import EventsListing from "components/common/events-listing";
+
+import fortaleza from "assets/cities/fortaleza.jpg";
+import saoPaulo from "assets/cities/sao-paulo.jpg";
+import beloHorizonte from "assets/cities/belo-horizonte.jpg";
+
 At the stage of the last ReactConf, Dan Abramov unveiled a new API for React called Hooks. And it's only part of the noise when new big features come all the "Should I refactor my whole app?" discussions. But besides hooks, you might have heard about other cool stuff like Suspense and Concurrent Rendering.
 
 In this talk, we’ll look at how they fit together with other minor changes that have been recently announced and the expected timeline for their availability.
 
 ### Events
 
-#### [TDC 2019 | São Paulo](http://www.thedevelopersconference.com.br/tdc/2019/saopaulo/trilha-javascript)
-
-🌎 São Paulo, Brazil
-
-📍 Universidade Anhembi Morumbi
-
-🗓️ July 19, 2019
-
-👥 ≈ 120 people audience
-
-#### [TDC 2019 | Belo Horizonte](http://www.thedevelopersconference.com.br/tdc/2019/belohorizonte/trilha-javascript)
-
-🌎 Belo Horizonte, Brazil
-
-📍 UniBH - Campus Buritis
-
-🗓️ June 14, 2019
-
-👥 ≈ 60 people audience
-
-#### [Front-End Day Ceará](https://www.sympla.com.br/front-end-day__424487)
-
-🌎 Fortaleza, Brazil
-
-📍 FB Ideias
-
-🗓️ February 9, 2019
-
-👥 ≈ 50 people audience
+<EventsListing
+  data={[
+    {
+      name: "TDC 2019 | São Paulo",
+      link:
+        "http://www.thedevelopersconference.com.br/tdc/2019/saopaulo/trilha-javascript",
+      city: "São Paulo, Brazil",
+      place: "Universidade Anhembi Morumbi",
+      thumbnail: saoPaulo,
+      date: "July 19, 2019",
+      audience: 120,
+    },
+    {
+      name: "TDC 2019 | Belo Horizonte",
+      link:
+        "http://www.thedevelopersconference.com.br/tdc/2019/belohorizonte/trilha-javascript",
+      city: "Belo Horizonte, Brazil",
+      place: "UniBH - Campus Buritis",
+      thumbnail: beloHorizonte,
+      date: "June 14, 2019",
+      audience: 60,
+    },
+    {
+      name: "Front-End Day Ceará",
+      link: "https://www.sympla.com.br/front-end-day__424487",
+      city: "Fortaleza, Brazil",
+      place: "FB Ideias",
+      thumbnail: fortaleza,
+      date: "February 9, 2019",
+      audience: 50,
+    },
+  ]}
+/>
 
 ### Slides
 

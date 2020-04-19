@@ -4,31 +4,41 @@ date: "2019-04-25"
 title: "The state of the state: React state management in 2019"
 ---
 
+import EventsListing from "components/common/events-listing";
+
+import florianopolis from "assets/cities/florianopolis.jpg";
+import beloHorizonte from "assets/cities/belo-horizonte.jpg";
+
 There's always been a large variety of ways to manage state in React. Redux has always been a popular choice, but with React 16 and recently released libraries, there are now even more options. What are these options, and why would you use any of these over any others?
 
 Let's go through some popular choices for managing state in React and check their pros and cons and how opting in for each of these may help (or not) to scale your data flow.
 
 ### Events
 
-#### [TDC 2019 | Belo Horizonte](http://www.thedevelopersconference.com.br/tdc/2019/belohorizonte/trilha-front-end)
-
-🌎 Belo Horizonte, Brazil
-
-📍 UniBH - Campus Buritis
-
-🗓️ June 14, 2019
-
-👥 ≈ 60 people audience
-
-#### [TDC 2019 | Florianópolis](http://www.thedevelopersconference.com.br/tdc/2019/florianopolis/trilha-web-frontend)
-
-🌎 Florianópolis, Brazil
-
-📍 Centro de Convenções CentroSul
-
-🗓️ April 25, 2019
-
-👥 ≈ 120 people audience
+<EventsListing
+  data={[
+    {
+      name: "TDC 2019 | Belo Horizonte",
+      link:
+        "http://www.thedevelopersconference.com.br/tdc/2019/belohorizonte/trilha-front-end",
+      city: "Belo Horizonte, Brazil",
+      place: "UniBH - Campus Buritis",
+      thumbnail: beloHorizonte,
+      date: "June 14, 2019",
+      audience: 60,
+    },
+    {
+      name: "TDC 2019 | Florianópolis",
+      link:
+        "http://www.thedevelopersconference.com.br/tdc/2019/florianopolis/trilha-web-frontend",
+      city: "Florianópolis, Brazil",
+      place: "Centro de Convenções CentroSul",
+      thumbnail: florianopolis,
+      date: " April 25, 2019",
+      audience: 120,
+    },
+  ]}
+/>
 
 ### Slides
 

@@ -4,29 +4,36 @@ date: "2016-06-22"
 slug: "/talks/designing-for-humans-like-you-and-me"
 ---
 
+import EventsListing from "components/common/events-listing";
+
+import fortaleza from "assets/cities/fortaleza.jpg";
+
 Just a small conversation which aims to integrate basic knowledge of areas related to user feedback research, experience journeys creation, user behavior analysis - among others -, with the aim of presenting basic aspects of user interfaces under the bias of understanding them based on our cognitive functions.
 
 ### Events
 
-#### [9th CocoaHeads Fortaleza](http://www.cocoaheads.com.br/agendas/detalhes/151)
-
-🌎 Fortaleza, Brazil
-
-📍 Instituto Federal de Educação, Ciência e Tecnologia do Ceará, Campus Fortaleza
-
-🗓️ July 07, 2016
-
-👥 ≈ 40 people audience
-
-#### [Apple Developer Academy](http://developeracademy.ifce.edu.br/)
-
-🌎 Fortaleza, Brazil
-
-📍 Instituto Federal de Educação, Ciência e Tecnologia do Ceará, Campus Fortaleza
-
-🗓️ June 22, 2016
-
-👥 ≈ 40 audience
+<EventsListing
+  data={[
+    {
+      name: "9th CocoaHeads Fortaleza",
+      link: "http://www.cocoaheads.com.br/agendas/detalhes/151",
+      city: "Fortaleza, Brazil",
+      place: "IFCE Campus de Fortaleza",
+      thumbnail: fortaleza,
+      date: "July 07, 2016",
+      audience: 40,
+    },
+    {
+      name: "Apple Developer Academy",
+      link: "http://developeracademy.ifce.edu.br/",
+      city: "Fortaleza, Brazil",
+      place: "IFCE Campus de Fortaleza",
+      thumbnail: fortaleza,
+      date: "June 22, 2016",
+      audience: 40,
+    },
+  ]}
+/>
 
 ### Slides
 

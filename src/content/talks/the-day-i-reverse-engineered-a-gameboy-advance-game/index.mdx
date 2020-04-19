@@ -4,6 +4,12 @@ date: "2019-08-17"
 title: "The Day I Reverse Engineered a Gameboy Advance Game"
 ---
 
+import EventsListing from "components/common/events-listing";
+
+import saoPaulo from "assets/cities/sao-paulo.jpg";
+import noviSad from "assets/cities/novi-sad.jpg";
+import newquay from "assets/cities/newquay.jpg";
+
 > Shared stage with [Macabeus](https://github.com/macabeus) 🎆
 
 Gameboy Advance was one of the most popular video game platforms of its time and, because of it, many people worked together as a community to study and to document its architecture and develop ROM hacking and other interesting tools.
@@ -15,35 +21,38 @@ We need to understand the architecture behind ARM hardware, apply reverse engine
 
 ### Events
 
-#### [HalfStack Conf • Newquay](https://halfstackconf.com/newquay/)
-
-🌎 Newquay, England
-
-📍 C-Space Newquay
-
-🗓️ July 03, 2020
-
-👥 _Coming soon_
-
-#### [BalCCon Computer Congress – BalCCon2k19](https://2k19.balccon.org)
-
-🌎 Novi Sad, Serbia
-
-📍 Congress Centre
-
-🗓️ September 14, 2019
-
-👥 ≈ 100 people audience
-
-#### [The Conf](https://www.theconf.club)
-
-🌎 São Paulo, Brazil
-
-📍 Rebouças Convention Center
-
-🗓️ August 17, 2019
-
-👥 ≈ 200 people audience
+<EventsListing
+  data={[
+    {
+      name: "HalfStack Conf • Newquay",
+      link: "https://halfstackconf.com/newquay/",
+      city: "Newquay, England",
+      place: "C-Space Newquay",
+      thumbnail: newquay,
+      date: "July 03, 2020",
+    },
+    {
+      name: "BalCCon Computer Congress – BalCCon2k19",
+      link: "https://2k19.balccon.org",
+      video: "https://www.youtube.com/watch?v=xh0V1jRVnQI",
+      city: "Novi Sad, Serbia",
+      place: "Congress Centre",
+      thumbnail: noviSad,
+      date: "September 14, 2019",
+      audience: 100,
+    },
+    {
+      name: "The Conf",
+      link: "https://www.theconf.club",
+      video: "https://www.youtube.com/watch?v=X88pmwSltAY",
+      city: "São Paulo, Brazil",
+      place: "Rebouças Convention Center",
+      thumbnail: saoPaulo,
+      date: "August 17, 2019",
+      audience: 200,
+    },
+  ]}
+/>
 
 ### Slides
 
@@ -70,27 +79,3 @@ We need to understand the architecture behind ARM hardware, apply reverse engine
     allow="encrypted-media"
   ></iframe>
 </div>
-
-### Watch it
-
-#### BalCCon Computer Congress – BalCCon2k19
-
-<iframe
-  width="560"
-  height="315"
-  src="https://www.youtube.com/embed/xh0V1jRVnQI"
-  frameborder="0"
-  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-  allowfullscreen
-></iframe>
-
-#### The Conf
-
-<iframe
-  width="560"
-  height="315"
-  src="https://www.youtube.com/embed/X88pmwSltAY"
-  frameborder="0"
-  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-  allowfullscreen
-></iframe>

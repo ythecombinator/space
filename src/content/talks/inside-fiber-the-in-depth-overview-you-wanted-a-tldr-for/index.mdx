@@ -4,6 +4,11 @@ date: "2020-01-28"
 title: "Inside Fiber: the in-depth overview you wanted a TLDR for"
 ---
 
+import EventsListing from "components/common/events-listing";
+
+import manchester from "assets/cities/manchester.jpg";
+import prague from "assets/cities/prague.jpg";
+
 At the core of React.js, lies reconciliation; the mechanism that tracks changes in a component state and projects the updated state to the screen. Starting from version 16, the core team rolled out a new implementation of that internal instances tree (components, DOM nodes, etc.) and the algorithm that manages it code-named Fiber.
 
 In this talk, I want to provide an in-depth overview of important concepts and relevant data structures. We'll then explore how React uses the algorithm to perform initial render and process updates and a few details of the scheduler, the child reconciliation process, and the mechanism of building an effects list.
@@ -12,25 +17,27 @@ Last but not least, we'll go through a few magic words we hear a lot, like corou
 
 ### Events
 
-#### [Manchester Web Meetup #14](https://www.meetup.com/Manchester-Web-Meetup/events/268976216/)
-
-🌎 Manchester, United Kingdom
-
-📍 On The Beach
-
-🗓️ June 17, 2020
-
-👥 _Coming soon_
-
-#### [PragueJS 2020 #1](https://www.meetup.com/praguejs/events/267847596/)
-
-🌎 Prague, Czech Republic
-
-📍 Studio F
-
-🗓️ January 28, 2020
-
-👥 ≈ 60 people audience
+<EventsListing
+  data={[
+    {
+      name: "Manchester Web Meetup #14",
+      link: "https://www.meetup.com/Manchester-Web-Meetup/events/268976216/",
+      city: "Manchester, United Kingdom",
+      place: "On The Beach",
+      thumbnail: manchester,
+      date: "June 17, 2020",
+    },
+    {
+      name: "PragueJS 2020 #1",
+      link: "https://www.meetup.com/praguejs/events/267847596/",
+      city: "Prague, Czech Republic",
+      place: "Studio F",
+      thumbnail: prague,
+      date: "January 28, 2020",
+      audience: 60,
+    },
+  ]}
+/>
 
 ### Slides
 

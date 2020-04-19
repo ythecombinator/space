@@ -4,6 +4,10 @@ slug: "/talks/deep-diving-on-concurrent-react"
 date: "2020-04-03"
 ---
 
+import EventsListing from "components/common/events-listing";
+
+import darmstadt from "assets/cities/darmstadt.jpg";
+
 Writing fluid user interfaces becomes increasingly challenging as the application complexity increases. Thankfully, the React core team has been putting a lot of effort to improve this since the React Fiber rewrite – and, more recently, with features like Time Slicing, Suspense and a few new libraries resulting from Fiber.
 
 Yet, in a world where all we hear are hooks™, the way these different pieces of the Concurrent React umbrella work is not always well detailed.
@@ -14,22 +18,15 @@ Last but not least, we'll take a glimpse into the future of the Web platform.
 
 ### Events
 
-#### [JSFest](https://jsfest.com.ua/indexe.html)
-
-🌎 Kiev, Ukraine
-
-📍 Mercure Congress Centre
-
-🗓️ October 30-31, 2020
-
-👥 _Coming soon_
-
-#### [enterJS](https://enterjs.de/lecture.php?id=11376&source=)
-
-🌎 Darmstadt, Germany
-
-📍Darmstadtium - Science and Congress Center
-
-🗓️ June 23–26, 2020
-
-👥 _Coming soon_
+<EventsListing
+  data={[
+    {
+      name: "enterJS",
+      link: "https://enterjs.de/lecture.php?id=11377&source=",
+      city: "Darmstadt, Germany",
+      place: "Darmstadtium - Science and Congress Center",
+      thumbnail: darmstadt,
+      date: "June 23–26, 2020",
+    },
+  ]}
+/>
