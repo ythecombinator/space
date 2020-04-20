@@ -3,9 +3,33 @@ title: Clients
 slug: "/clients"
 ---
 
+import CompanySlider from "components/common/company-slider";
+
+import dogology from "assets/clients/dogology.png";
+import lp from "assets/clients/lp.png";
+import minted from "assets/clients/minted.png";
+import ofm from "assets/clients/ofm.png";
+import surge from "assets/clients/surge.png";
+
 On my journey as a Front-End Software Engineer focused on new and scalable technologies, I've worked with different software design & engineering companies that helped a wide range of clients on digital transformation, strategy, and more.
 
 I always aim to help them meet their business goals, without leaving quality aside. Here are some of them:
+
+<CompanySlider
+  data={[
+    {
+      name: "Outfront Media",
+      url: "https://www.outfrontmedia.com",
+      thumbnail: ofm,
+    },
+    { name: "Minted", url: "https://www.minted.com", thumbnail: minted },
+    { name: "Surge", url: "https://www.surgeapp.co/", thumbnail: surge },
+    { name: "LivePenalty", url: "https://www.livepenalty.com/", thumbnail: lp },
+    { name: "Dogology", url: "https://dogology.com/", thumbnail: dogology },
+  ]}
+/>
+
+And here are a few more details on our cooperation:
 
 ### [Outfront Media](https://www.outfrontmedia.com/)
 
