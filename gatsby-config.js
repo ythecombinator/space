@@ -10,7 +10,7 @@ module.exports = {
     siteUrl: `https://www.ythecombinator.space`,
     siteDescription: `Software Engineer, Front-End • Consultant • Speaker • Traveler`,
     siteLanguage: `en`,
-    siteImage: `/banner.jpg`,
+    siteImage: `/banner.png`,
     author: `@ythecombinator`,
   },
   plugins: [
