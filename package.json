@@ -37,7 +37,7 @@
     "mdx-utils": "^0.2.0",
     "prism-react-renderer": "^1.0.2",
     "prism-themes": "^1.4.0",
-    "prismjs": "^1.20.0",
+    "prismjs": "^1.21.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0",
