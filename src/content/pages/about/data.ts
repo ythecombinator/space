@@ -1,9 +1,11 @@
 export const data = [
   "Argentina",
+  "Austria",
   "Brazil",
   "Canada",
   "Czech Rep.",
   "France",
+  "Germany",
   "Paraguay",
   "Serbia",
   "Switzerland",
