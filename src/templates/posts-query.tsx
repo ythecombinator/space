@@ -6,7 +6,7 @@ export default BlogComponent;
 
 export const query = graphql`
   query($formatString: String!) {
-    allPost(sort: { fields: date, order: DESC }) {
+    allPost(sort: { fields: date, order: DESC }, limit: 10) {
       nodes {
         slug
         title
