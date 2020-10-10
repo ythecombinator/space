@@ -6,11 +6,13 @@ export const data = [
   "Czech Rep.",
   "France",
   "Germany",
+  "Italy",
   "Paraguay",
   "Serbia",
   "Switzerland",
   "United States",
   "Uruguay",
+  "Vatican",
 ];
 
 export const map = {
