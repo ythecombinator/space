@@ -3,12 +3,14 @@ import React, {FunctionComponent} from 'react';
 import {
   FaAngellist,
   FaDev,
+  FaDeviantart,
   FaGithub,
   FaInstagram,
   FaLinkedinIn,
   FaSpeakerDeck,
   FaTwitter,
 } from 'react-icons/fa';
+import {RiUnsplashFill} from 'react-icons/ri';
 
 import {Identifier} from 'model/SocialNetworks';
 
@@ -48,6 +50,14 @@ const SocialIcon: FunctionComponent<Props> = (props) => {
     }
     case "instagram": {
       Icon = FaInstagram;
+      break;
+    }
+    case "unsplash": {
+      Icon = RiUnsplashFill;
+      break;
+    }
+    case "deviantart": {
+      Icon = FaDeviantart;
       break;
     }
   }

@@ -5,4 +5,6 @@ export type Identifier =
   | `linkedin`
   | `angel.co`
   | `instagram`
+  | `unsplash`
+  | `deviantart`
   | `devto`;

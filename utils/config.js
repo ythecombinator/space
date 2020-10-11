@@ -31,10 +31,17 @@ const getConfig = () => {
       name: `angel.co`,
       url: `https://angel.co/u/ythecombinator`,
     },
-
     {
       name: `instagram`,
       url: `https://www.instagram.com/ythecombinator`,
+    },
+    {
+      name: `unsplash`,
+      url: `https://unsplash.com/@ythecombinator`,
+    },
+    {
+      name: `deviantart`,
+      url: `https://www.deviantart.com/ythecombinator`,
     },
   ];
   const navigation = [
