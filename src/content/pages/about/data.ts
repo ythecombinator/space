@@ -8,6 +8,7 @@ export const data = [
   "Germany",
   "Italy",
   "Paraguay",
+  "Portugal",
   "Serbia",
   "Switzerland",
   "United States",
