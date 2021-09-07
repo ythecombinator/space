@@ -134,3 +134,6 @@ $RECYCLE.BIN/
 ### Gatsby ###
 public
 .cache
+
+### Netlify Functions ###
+.netlify
