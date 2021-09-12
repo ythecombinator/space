@@ -47,7 +47,7 @@
     "react-icons": "3.11.0",
     "react-live": "2.2.2",
     "react-photo-gallery": "^8.0.0",
-    "react-simple-maps": "^2.3.0",
+    "react-simple-maps": "2.1.2",
     "react-tooltip": "^4.2.21",
     "swr": "0.3.5",
     "theme-ui": "0.2.52",

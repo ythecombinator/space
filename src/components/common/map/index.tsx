@@ -1,59 +1,88 @@
-import React, {FunctionComponent} from 'react';
+/** @jsx jsx */
+import {Suspense} from 'react';
 
-import {
-  ComposableMap,
-  Geographies,
-  GeographiesProps,
-  Geography,
-  ZoomableGroup,
-} from 'react-simple-maps';
-import {jsx, useColorMode} from 'theme-ui';
+import {ComposableMap, Geographies, Geography} from 'react-simple-maps';
+import ReactTooltip from 'react-tooltip';
+import {jsx, Styled, useColorMode} from 'theme-ui';
 
-import * as Styled from './styles';
-import {getStylesForLocation} from './utils';
+import useMapData from 'hooks/use-map-data';
 
-interface Props {
-  map: GeographiesProps["geography"];
-  data: string[];
-}
+import {getStylesForLocation, hasBeenVisited} from './utils';
 
-const Map: FunctionComponent<Props> = (props) => {
-  const { map, data } = props;
+const geoUrl =
+  "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
 
+const Map = () => {
+  const data = useMapData();
   const [colorMode] = useColorMode();
 
   return (
-    <Styled.Container>
-      <ComposableMap>
-        <ZoomableGroup disablePanning>
-          <Geographies geography={map}>
-            {(geographies, projection) =>
-              geographies.map((geography, i) => {
-                const styles = getStylesForLocation(
-                  (geography as any).properties.name,
-                  data,
-                  colorMode
-                );
+    <div>
+      <Styled.p>These are some numbers so far:</Styled.p>
 
-                return (
-                  <Geography
-                    key={i}
-                    geography={geography}
-                    projection={projection}
-                    style={{
-                      default: styles,
-                      hover: styles,
-                      pressed: styles,
-                    }}
-                  />
-                );
-              })
-            }
-          </Geographies>
-        </ZoomableGroup>
+      <Styled.ul>
+        <Styled.li>
+          {data.currentLocation.flag} {` `} I'm currently based in{" "}
+          <Styled.b>{data.currentLocation.name}</Styled.b>
+        </Styled.li>
+        <Styled.li>
+          🌎 I've been to {data.citiesCount} cities, in{" "}
+          <Styled.b data-tip data-for="collected-flags">
+            {data.countries.length} countries
+          </Styled.b>
+          , in {data.continentsCount} continents
+        </Styled.li>
+        <Styled.li>
+          🗺️ That makes it{" "}
+          <Styled.b>{data.worldPercentage}% of the world</Styled.b>
+        </Styled.li>
+        <Styled.li>
+          🤓 This data is synced with my{" "}
+          <Styled.a
+            href="https://www.polarsteps.com/ythecombinator"
+            target="_blank"
+          >
+            Polarsteps profile
+          </Styled.a>
+        </Styled.li>
+      </Styled.ul>
+
+      <ReactTooltip id="collected-flags">
+        <Styled.p>
+          Flags collected:{" "}
+          {data.countries.map((country) => (
+            <span>
+              {country.flag} {` `}
+            </span>
+          ))}
+        </Styled.p>
+      </ReactTooltip>
+
+      <ComposableMap projectionConfig={{ scale: 200 }}>
+        <Geographies geography={geoUrl}>
+          {({ geographies }) =>
+            geographies.map((geo) => {
+              const visited = hasBeenVisited(
+                geo.properties.ISO_A2,
+                data.countries
+              );
+              const styles = getStylesForLocation(visited, colorMode);
+
+              return (
+                <Geography key={geo.rsmKey} geography={geo} style={styles} />
+              );
+            })
+          }
+        </Geographies>
       </ComposableMap>
-    </Styled.Container>
+    </div>
   );
 };
 
-export default Map;
+export default () => {
+  return (
+    <Suspense fallback={<div />}>
+      <Map />
+    </Suspense>
+  );
+};
