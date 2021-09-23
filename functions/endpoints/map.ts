@@ -2,11 +2,14 @@ import {Handler} from '@netlify/functions';
 import {flag, name} from 'country-emoji';
 import fetch from 'node-fetch';
 
+import config from '../config';
 import {Response} from '../models/polarsteps';
+
+const { polarstepsBaseUrl, polarstepsUser } = config.variables;
 
 const handler: Handler = async () => {
   const response = await fetch(
-    "https://api.polarsteps.com/users/byusername/ythecombinator"
+    `${polarstepsBaseUrl}/users/byusername/${polarstepsUser}`
   );
   const data = (await response.json()) as Response;
 
