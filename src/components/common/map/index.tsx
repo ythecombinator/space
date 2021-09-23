@@ -7,6 +7,7 @@ import {jsx, Styled, useColorMode} from 'theme-ui';
 
 import useMapData from 'hooks/use-map-data';
 
+import Loading from '../loading';
 import {getStylesForLocation, hasBeenVisited} from './utils';
 
 const geoUrl =
@@ -81,7 +82,7 @@ const Map = () => {
 
 export default () => {
   return (
-    <Suspense fallback={<div />}>
+    <Suspense fallback={<Loading />}>
       <Map />
     </Suspense>
   );
