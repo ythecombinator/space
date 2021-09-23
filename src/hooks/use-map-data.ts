@@ -1,22 +1,14 @@
-import {useEffect, useState} from 'react';
-
 import useSwr from 'swr';
 
-import {MapData} from 'model/Map';
+import {fetchMapData} from 'utils/map';
 
 const fetchData = async () => {
-  const rawResponse = await fetch(
-    "https://cors-anywhere.herokuapp.com/https://www.ythecombinator.space/.netlify/functions/map"
-  );
-  const response = await rawResponse.json();
-
-  return response as MapData;
+  const response = await fetchMapData();
+  return response;
 };
 
 const useMapData = () => {
-  const { data } = useSwr("sdsd", fetchData, { suspense: true });
-  console.log("data", data);
-
+  const { data } = useSwr("map", fetchData, { suspense: true });
   return data!;
 };
 
