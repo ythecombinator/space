@@ -7,6 +7,8 @@ import {jsx, Styled, useColorMode} from 'theme-ui';
 
 import useMapData from 'hooks/use-map-data';
 
+import NoSSR from 'utils/NoSSR';
+
 import Loading from '../loading';
 import {getStylesForLocation, hasBeenVisited} from './utils';
 
@@ -82,8 +84,10 @@ const Map = () => {
 
 export default () => {
   return (
-    <Suspense fallback={<Loading />}>
-      <Map />
-    </Suspense>
+    <NoSSR>
+      <Suspense fallback={<Loading />}>
+        <Map />
+      </Suspense>
+    </NoSSR>
   );
 };
