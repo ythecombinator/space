@@ -21,8 +21,8 @@ const Body: FunctionComponent<Props> = (props) => {
       <Styled.Title href={link}>{name}</Styled.Title>
 
       <Styled.Content>
-        <p>📍 {place} </p>
-        {audience ? <p>👥 ≈ {audience} people audience</p> : <p>👥 N/A</p>}
+        <Styled.Info>📍 {place}</Styled.Info>
+        <Styled.Info>👥 {audience ? `≈ ${audience}` : "N/A"}</Styled.Info>
       </Styled.Content>
 
       {video && <Button video={video} />}
