@@ -1,0 +1,66 @@
+{
+  "private": true,
+  "name": "theme-ui-next-boilerplate",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Frederick Morin (https://freddydumont.com)",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "typecheck": "tsc --noEmit --pretty ",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@emotion/css": "^11.9.0",
+    "@emotion/react": "^11.9.0",
+    "@emotion/server": "^11.4.0",
+    "@emotion/styled": "^11.8.1",
+    "@mdx-js/loader": "^1.6.22",
+    "@mdx-js/react": "^1.6.22",
+    "@next/mdx": "^12.1.6",
+    "@theme-ui/css": "^0.14.4",
+    "@theme-ui/presets": "^0.14.2",
+    "@theme-ui/style-guide": "^0.14.5",
+    "next": "^12.1.6",
+    "next-nprogress-emotion": "^2.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "theme-ui": "^0.14.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.0",
+    "@emotion/jest": "^11.9.1",
+    "@testing-library/cypress": "^8.0.2",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^12.1.5",
+    "@types/jest": "^27.5.0",
+    "@types/node": "^17.0.35",
+    "@types/react": "^17.0.43",
+    "babel-jest": "^27.5.1",
+    "cypress": "^9.6.1",
+    "eslint": "^8.16.0",
+    "eslint-config-next": "12.1.6",
+    "eslint-plugin-cypress": "^2.12.1",
+    "husky": "^8.0.1",
+    "jest": "^27.5.1",
+    "lint-staged": "^12.4.1",
+    "prettier": "^2.6.2",
+    "typescript": "^4.6.4"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js}": [
+      "yarn lint --max-warnings 0"
+    ],
+    "*.{ts,tsx,js,css,json,md,mdx}": [
+      "prettier --write"
+    ]
+  }
+}
