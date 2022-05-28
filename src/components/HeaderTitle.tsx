@@ -1,13 +1,18 @@
 import Link from 'next/link';
 
 import { replaceSlashes } from 'src/utils/string';
-import { basePath, siteTitle } from 'src/utils/config';
+import { NavigationPath, siteTitle } from 'src/config/constants';
 import Logo from 'src/components/Logo';
+import { FC } from 'react';
 
-const HeaderTitle = () => {
+/*~
+ * COMPONENT
+ */
+
+const HeaderTitle: FC = () => {
   return (
     <Link
-      href={replaceSlashes(`/${basePath}`)}
+      href={replaceSlashes(`/${NavigationPath.base}`)}
       aria-label={`${siteTitle} - Back to home`}
       sx={{ color: `heading`, textDecoration: `none` }}
     >

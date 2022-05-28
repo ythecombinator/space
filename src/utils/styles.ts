@@ -1,8 +1,6 @@
 import styled, { CreateStyled } from '@emotion/styled';
 import { tailwind } from '@theme-ui/presets';
 
-import { Theme } from 'types/theme';
-
 const { gray } = tailwind.colors;
 
 export const getColorScheme = (isDark: boolean) => {

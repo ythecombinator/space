@@ -1,31 +1,39 @@
 import { Heading } from 'theme-ui';
 
 import Layout from 'src/components/Layout';
+import { FC } from 'react';
 
-type PageProps = {
-  data: {
-    page: {
-      title: string;
-      slug: string;
-      excerpt: string;
-      body: string;
-    };
-  };
-  [key: string]: any;
+/*~
+ * TYPES
+ */
+
+export type PageLayoutProps = {
+  title: string;
+  slug: string;
+  excerpt: string;
+  body: string;
 };
 
-const Page = ({ data: { page } }: PageProps) => (
-  <Layout>
-    {/* TODO */}
-    {/* <Seo title={page.title} description={page.excerpt} /> */}
-    <Heading as="h1" variant="styles.h1">
-      {page.title}
-    </Heading>
-    <section sx={{ my: 5, variant: `layout.content` }}>
-      {/* TODO */}
-      {/* <MDXRenderer>{page.body}</MDXRenderer> */}
-    </section>
-  </Layout>
-);
+/*~
+ * COMPONENT
+ */
 
-export default Page;
+const PageLayout: FC<PageLayoutProps> = (props) => {
+  const { title } = props;
+
+  return (
+    <Layout>
+      {/* TODO */}
+      {/* <Seo title={page.title} description={page.excerpt} /> */}
+      <Heading as="h1" variant="styles.h1">
+        {title}
+      </Heading>
+      <section sx={{ my: 5, variant: `layout.content` }}>
+        {/* TODO */}
+        {/* <MDXRenderer>{page.body}</MDXRenderer> */}
+      </section>
+    </Layout>
+  );
+};
+
+export default PageLayout;

@@ -1,31 +1,43 @@
-import * as React from 'react';
 import { replaceSlashes } from 'src/utils/string';
-import { basePath, tagsPath } from 'src/utils/config';
+import { NavigationPath } from 'src/config/constants';
 import Link from 'next/link';
+import { FC, Fragment } from 'react';
 
-type TagsProps = {
+/*~
+ * TYPES
+ */
+
+export type TagsProps = {
   tags: {
     name: string;
     slug: string;
   }[];
 };
 
-const ItemTags = ({ tags }: TagsProps) => {
+/*~
+ * COMPONENT
+ */
+
+const ListingItemTags: FC<TagsProps> = (props) => {
+  const { tags } = props;
+
   return (
-    <React.Fragment>
+    <Fragment>
       {tags.map((tag, i) => (
-        <React.Fragment key={tag.slug}>
+        <Fragment key={tag.slug}>
           {!!i && `, `}
           <Link
-            sx={(t) => ({ ...t.styles?.a })}
-            href={replaceSlashes(`/${basePath}/${tagsPath}/${tag.slug}`)}
+            sx={(theme) => ({ ...theme.styles?.a })}
+            href={replaceSlashes(
+              `/${NavigationPath.base}/${NavigationPath.tags}/${tag.slug}`
+            )}
           >
             {tag.name}
           </Link>
-        </React.Fragment>
+        </Fragment>
       ))}
-    </React.Fragment>
+    </Fragment>
   );
 };
 
-export default ItemTags;
+export default ListingItemTags;

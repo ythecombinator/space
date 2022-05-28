@@ -1,39 +1,24 @@
 import Layout from 'src/components/Layout';
-import Title from 'src/components/Title';
-import { MDXRemote } from 'next-mdx-remote';
 
 import { visuallyHidden } from 'src/styles/utils';
-import Link from 'next/link';
-import { replaceSlashes } from 'src/utils/string';
-import { basePath, blogPath, siteTitle } from 'src/utils/config';
-import Listing from 'src/components/Listing';
-import List from 'src/components/List';
-import { defaults } from 'src/utils/mdx';
+import { siteTitle } from 'src/config/constants';
+import { FC } from 'react';
 
-// // @ts-ignore
-// import Hero from 'src/content/hero.mdx';
-// // @ts-ignore
-// import Bottom from 'src/content/bottom.mdx';
+/*~
+ * TYPES
+ */
 
-type PostsProps = {
-  hero: string;
-  posts?: {
-    slug: string;
-    title: string;
-    date: string;
-    excerpt: string;
-    description: string;
-    timeToRead?: number;
-    tags?: {
-      name: string;
-      slug: string;
-    }[];
-  }[];
-  [key: string]: any;
+export type HomeLayoutProps = {
+  heroSection: JSX.Element;
 };
 
-const Homepage = (props: PostsProps) => {
-  const { hero } = props;
+/*~
+ * COMPONENT
+ */
+
+const HomeLayout: FC<HomeLayoutProps> = (props) => {
+  const { children, heroSection } = props;
+
   return (
     <Layout>
       <h1 sx={visuallyHidden}>{siteTitle}</h1>
@@ -44,18 +29,11 @@ const Homepage = (props: PostsProps) => {
           variant: `section_hero`,
         }}
       >
-        {/* <Hero /> */}
-        <MDXRemote {...hero} components={defaults} />
+        {heroSection}
       </section>
-      <Title text="Latest Posts">
-        <Link href={replaceSlashes(`/${basePath}/${blogPath}`)}>
-          Read all posts
-        </Link>
-      </Title>
-      {/* <Listing posts={posts} showTags={false} /> */}
-      <List>{/* <Bottom /> */}</List>
+      {children}
     </Layout>
   );
 };
 
-export default Homepage;
+export default HomeLayout;

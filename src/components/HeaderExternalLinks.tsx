@@ -1,20 +1,21 @@
-import * as React from 'react';
-import { externalLinks } from 'src/utils/config';
 import { Link as TLink } from 'theme-ui';
+import { externalLinks } from 'src/config/constants';
+import HeaderExternalLinkIcon from 'src/components/HeaderExternalLinkIcon';
+import { FC } from 'react';
 
-const HeaderExternalLinks = () => {
+/*~
+ * COMPONENT
+ */
+
+const HeaderExternalLinks: FC = () => {
   return (
-    <React.Fragment>
-      {externalLinks && externalLinks.length > 0 && (
-        <div sx={{ 'a:not(:first-of-type)': { ml: 3 }, fontSize: [1, `18px`] }}>
-          {externalLinks.map((link) => (
-            <TLink key={link.url} href={link.url}>
-              {link.name}
-            </TLink>
-          ))}
-        </div>
-      )}
-    </React.Fragment>
+    <div sx={{ 'a:not(:first-of-type)': { ml: 3 }, fontSize: [1, `18px`] }}>
+      {externalLinks.map((link) => (
+        <TLink key={link.url} href={link.url}>
+          <HeaderExternalLinkIcon identifier={link.name} />
+        </TLink>
+      ))}
+    </div>
   );
 };
 

@@ -1,4 +1,11 @@
-export const externalLinks = [
+import { HeaderExternalLinkIconIdentifier } from 'src/components/HeaderExternalLinkIcon';
+
+export const siteTitle = 'ythecombinator';
+
+export const externalLinks: Array<{
+  name: HeaderExternalLinkIconIdentifier;
+  url: string;
+}> = [
   {
     name: `twitter`,
     url: `https://twitter.com/ythecombinator`,
@@ -37,31 +44,34 @@ export const externalLinks = [
   },
 ];
 
-export const navigation = [
+export enum NavigationPath {
+  base = '/',
+  about = '/about',
+  posts = '/posts',
+  talks = '/talks',
+  projects = '/projects',
+  tags = '/tags',
+}
+
+export const navigationItems = [
   {
     title: `About`,
-    slug: `/about`,
+    slug: NavigationPath.about,
   },
   {
     title: `Posts`,
-    slug: `/posts`,
+    slug: NavigationPath.posts,
   },
   {
     title: `Talks`,
-    slug: `/talks`,
-  },
-  {
-    title: `Clients`,
-    slug: `/clients`,
+    slug: NavigationPath.talks,
   },
   {
     title: `Projects`,
-    slug: `/projects`,
+    slug: NavigationPath.projects,
   },
 ];
 
-export const basePath = '/';
-export const blogPath = '/posts';
-export const tagsPath = '/tags';
-
-export const siteTitle = 'ythecombinator';
+export enum SourcePath {
+  content = 'src/content',
+}

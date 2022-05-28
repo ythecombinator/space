@@ -1,10 +1,18 @@
-import { FunctionComponent } from 'react';
+import { FC } from 'react';
 import { tailwind } from '@theme-ui/presets';
 import { useColorMode } from 'theme-ui';
 
+/*~
+ * UTILS
+ */
+
 const { gray } = tailwind.colors;
 
-const Logo: FunctionComponent = () => {
+/*~
+ * COMPONENT
+ */
+
+const Logo: FC = () => {
   const [colorMode] = useColorMode();
   const isDark = colorMode === `dark`;
 

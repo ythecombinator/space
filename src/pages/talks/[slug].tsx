@@ -1,6 +1,6 @@
 import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next';
 import { ParsedUrlQuery } from 'querystring';
-import { h1, Themed } from 'theme-ui';
+import { Themed } from 'theme-ui';
 
 import ContentfulService from 'src/services/contentful';
 import {

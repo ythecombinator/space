@@ -1,11 +1,16 @@
-import { navigation } from 'src/utils/config';
+import { FC } from 'react';
+import { navigationItems } from 'src/config/constants';
 import { useColorMode, Flex } from 'theme-ui';
 import ColorModeToggle from './ColorModeToggle';
 import HeaderExternalLinks from './HeaderExternalLinks';
 import HeaderTitle from './HeaderTitle';
 import Navigation from './Navigation';
 
-const Header = () => {
+/*~
+ * COMPONENT
+ */
+
+const Header: FC = () => {
   const [colorMode, setColorMode] = useColorMode();
   const isDark = colorMode === `dark`;
 
@@ -21,7 +26,7 @@ const Header = () => {
         <ColorModeToggle isDark={isDark} toggle={toggleColorMode} />
       </Flex>
       <div
-        sx={{
+        sx={(theme) => ({
           boxSizing: `border-box`,
           display: `flex`,
           variant: `dividers.bottom`,
@@ -29,11 +34,11 @@ const Header = () => {
           justifyContent: `space-between`,
           mt: 3,
           color: `secondary`,
-          a: { color: `secondary`, ':hover': { color: `heading` } },
+          a: { ...theme.styles?.a },
           flexFlow: `wrap`,
-        }}
+        })}
       >
-        <Navigation nav={navigation} />
+        <Navigation items={navigationItems} />
         <HeaderExternalLinks />
       </div>
     </header>

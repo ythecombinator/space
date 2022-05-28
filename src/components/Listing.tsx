@@ -1,28 +1,30 @@
-import ListingItem from './ListingItem';
+import { FC } from 'react';
+import ListingItem, { ListingItemRenderable } from './ListingItem';
 
-type ListingProps = {
-  posts: {
-    slug: string;
-    title: string;
-    date: string;
-    excerpt: string;
-    description: string;
-    timeToRead?: number;
-    tags?: {
-      name: string;
-      slug: string;
-    }[];
-  }[];
+/*~
+ * TYPES
+ */
+
+export type ListingProps = {
+  items: ListingItemRenderable[];
   className?: string;
   showTags?: boolean;
 };
 
-const Listing = ({ posts, className = ``, showTags = true }: ListingProps) => (
-  <section sx={{ mb: [5, 6, 7] }} className={className}>
-    {posts.map((post) => (
-      <ListingItem key={post.slug} post={post} showTags={showTags} />
-    ))}
-  </section>
-);
+/*~
+ * COMPONENT
+ */
+
+const Listing: FC<ListingProps> = (props) => {
+  const { items, className = ``, showTags = true } = props;
+
+  return (
+    <section sx={{ mb: [5, 6, 7] }} className={className}>
+      {items.map((item) => (
+        <ListingItem key={item.slug} item={item} showTags={showTags} />
+      ))}
+    </section>
+  );
+};
 
 export default Listing;

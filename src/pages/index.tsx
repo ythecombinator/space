@@ -1,38 +1,48 @@
-import { readFileSync } from 'fs';
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
-import { serialize } from 'next-mdx-remote/serialize';
-import { resolve } from 'path';
+import Link from 'next/link';
+import MDXRenderer from 'src/components/MDXRenderer';
+import Title from 'src/components/Title';
+import { NavigationPath } from 'src/config/constants';
 import HomepageLayout from 'src/layouts/Home';
+import { getFileContents } from 'src/utils/mdx';
+import { replaceSlashes } from 'src/utils/string';
 
 /*~
  * TYPES
  */
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>;
+export type HomePageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 /*~
  * NEXTJS
  */
 
-export const getStaticProps: GetStaticProps = async () => {
-  const postFilePath = resolve('src/content/hero.mdx');
-  const fileContents = readFileSync(postFilePath).toString();
-  console.log('fileContents', fileContents);
-
-  const mdxSource = await serialize(fileContents.toString());
-
-  return { props: { source: mdxSource } };
-};
+export async function getStaticProps() {
+  const heroContent = await getFileContents('hero');
+  return { props: { heroContent } };
+}
 
 /*~
  * PAGE
  */
 
-const HomePage: NextPage<Props> = (props) => {
-  const { source } = props;
-  console.log('source', source);
+const HomePage: NextPage<HomePageProps> = (props) => {
+  const { heroContent } = props;
 
-  return <HomepageLayout hero={source} />;
+  return (
+    <HomepageLayout heroSection={<MDXRenderer {...heroContent} />}>
+      <Title text="Latest Posts">
+        <Link
+          href={replaceSlashes(
+            `/${NavigationPath.base}/${NavigationPath.posts}`
+          )}
+        >
+          Read all posts
+        </Link>
+      </Title>
+      {/* <Listing posts={posts} showTags={false} /> */}
+    </HomepageLayout>
+  );
 };
 
 export default HomePage;
