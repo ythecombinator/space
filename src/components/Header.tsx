@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { navigationItems } from 'src/config/constants';
+import { navigationItems } from 'config/constants';
 import { useColorMode, Flex } from 'theme-ui';
 import ColorModeToggle from './ColorModeToggle';
 import HeaderExternalLinks from './HeaderExternalLinks';

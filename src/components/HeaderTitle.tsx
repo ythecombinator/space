@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
-import { replaceSlashes } from 'src/utils/string';
-import { NavigationPath, siteTitle } from 'src/config/constants';
-import Logo from 'src/components/Logo';
+import { replaceSlashes } from 'utils/string';
+import { NavigationPath, siteTitle } from 'config/constants';
+import Logo from 'components/Logo';
 import { FC } from 'react';
 
 /*~

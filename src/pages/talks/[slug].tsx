@@ -2,17 +2,17 @@ import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import { Themed } from 'theme-ui';
 
-import ContentfulService from 'src/services/contentful';
+import ContentfulService from 'services/contentful';
 import {
   TalkBySlugDocument,
   TalkBySlugQuery,
   TalkSlugsDocument,
   TalkSlugsQuery,
-} from 'src/schema';
+} from 'schema';
 
 import { talkDocumentTransformer } from './utils';
-import SessionList from 'src/components/SessionList';
-import Layout from 'src/components/Layout';
+import SessionList from 'components/SessionList';
+import Layout from 'components/Layout';
 
 /*~
  * TYPES

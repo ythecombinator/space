@@ -1,4 +1,4 @@
-import styled from 'src/utils/styles';
+import styled from 'utils/styles';
 
 interface HeaderProps {
   image: string;

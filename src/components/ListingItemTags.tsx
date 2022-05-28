@@ -1,5 +1,5 @@
-import { replaceSlashes } from 'src/utils/string';
-import { NavigationPath } from 'src/config/constants';
+import { replaceSlashes } from 'utils/string';
+import { NavigationPath } from 'config/constants';
 import Link from 'next/link';
 import { FC, Fragment } from 'react';
 

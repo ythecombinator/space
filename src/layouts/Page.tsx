@@ -1,6 +1,6 @@
 import { Heading } from 'theme-ui';
 
-import Layout from 'src/components/Layout';
+import Layout from 'components/Layout';
 import { FC } from 'react';
 
 /*~

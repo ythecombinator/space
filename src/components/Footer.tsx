@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { siteTitle } from 'src/config/constants';
+import { siteTitle } from 'config/constants';
 
 /*~
  * COMPONENT

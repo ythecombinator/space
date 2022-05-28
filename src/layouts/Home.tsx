@@ -1,7 +1,7 @@
-import Layout from 'src/components/Layout';
+import Layout from 'components/Layout';
 
-import { visuallyHidden } from 'src/styles/utils';
-import { siteTitle } from 'src/config/constants';
+import { visuallyHidden } from 'styles/utils';
+import { siteTitle } from 'config/constants';
 import { FC } from 'react';
 
 /*~

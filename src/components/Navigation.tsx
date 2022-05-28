@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { FC } from 'react';
-import { NavigationPath } from 'src/config/constants';
-import { replaceSlashes } from 'src/utils/string';
+import { NavigationPath } from 'config/constants';
+import { replaceSlashes } from 'utils/string';
 
 /*~
  * TYPES

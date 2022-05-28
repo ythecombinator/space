@@ -1,6 +1,6 @@
 import { Link as TLink } from 'theme-ui';
-import { externalLinks } from 'src/config/constants';
-import HeaderExternalLinkIcon from 'src/components/HeaderExternalLinkIcon';
+import { externalLinks } from 'config/constants';
+import HeaderExternalLinkIcon from 'components/HeaderExternalLinkIcon';
 import { FC } from 'react';
 
 /*~

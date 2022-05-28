@@ -1,4 +1,4 @@
-import { City, Session as SchemaSession, TalkBySlugQuery } from 'src/schema';
+import { City, Session as SchemaSession, TalkBySlugQuery } from 'schema';
 
 /*~
  * TYPES

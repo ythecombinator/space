@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import * as React from 'react';
 import { Box } from 'theme-ui';
-import ListingItemTags from 'src/components/ListingItemTags';
+import ListingItemTags from 'components/ListingItemTags';
 import { FC } from 'react';
 
 /*~

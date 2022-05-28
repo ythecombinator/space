@@ -1,4 +1,4 @@
-import type { ThemeUICSSObject } from "theme-ui"
+import type { ThemeUICSSObject } from 'theme-ui';
 
 export const visuallyHidden: ThemeUICSSObject = {
   // include `px` so we can use it with `sx`
@@ -11,4 +11,4 @@ export const visuallyHidden: ThemeUICSSObject = {
   position: `absolute`,
   whiteSpace: `nowrap`,
   width: `1px`,
-}
+};

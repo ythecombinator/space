@@ -3,7 +3,7 @@ import { Global } from '@emotion/react';
 import { Box, Container, get } from 'theme-ui';
 import Header from './Header';
 import Footer from './Footer';
-import CodeStyles from 'src/styles/code';
+import CodeStyles from 'styles/code';
 import NProgress from 'next-nprogress-emotion';
 import { FC } from 'react';
 

@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -18,24 +14,9 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "jsxImportSource": "theme-ui", // https://testing-library.com/docs/react-testing-library/setup#configuring-jest-with-test-utils
-    "baseUrl": ".",
-    "paths": {
-      "test-utils": [
-        "test/test-utils"
-      ]
-    },
+    "baseUrl": "./src",
     "incremental": true
   },
-  "exclude": [
-    "node_modules",
-    "cypress",
-    "coverage",
-    ".github",
-    "test"
-  ],
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+  "exclude": ["node_modules", "cypress", "coverage", ".github", "test"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }

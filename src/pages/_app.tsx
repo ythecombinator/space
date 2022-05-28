@@ -1,7 +1,7 @@
 import App from 'next/app';
 import { ThemeProvider } from 'theme-ui';
 
-import theme from 'src/styles/theme';
+import theme from 'styles/theme';
 
 class MyApp extends App {
   render() {
