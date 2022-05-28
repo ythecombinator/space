@@ -1,8 +1,6 @@
 import App from 'next/app';
-import { ThemeProvider, Container } from 'theme-ui';
-import NProgress from 'next-nprogress-emotion';
+import { ThemeProvider } from 'theme-ui';
 
-import Header from '../components/Header';
 import theme from '../theme';
 
 class MyApp extends App {
@@ -10,11 +8,7 @@ class MyApp extends App {
     const { Component, pageProps } = this.props;
     return (
       <ThemeProvider theme={theme}>
-        <Header />
-        <NProgress />
-        <Container>
-          <Component {...pageProps} />
-        </Container>
+        <Component {...pageProps} />
       </ThemeProvider>
     );
   }
