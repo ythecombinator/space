@@ -1,11 +1,15 @@
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import Link from 'next/link';
-import MDXRenderer from 'components/MDXRenderer';
-import Title from 'components/Title';
+
 import { NavigationPath } from 'config/constants';
-import HomepageLayout from 'layouts/Home';
+
 import { getFileContents } from 'utils/mdx';
 import { replaceSlashes } from 'utils/string';
+
+import HomepageLayout from 'layouts/Home';
+
+import MDXRenderer from 'components/MDXRenderer';
+import Title from 'components/Title';
 
 /*~
  * TYPES

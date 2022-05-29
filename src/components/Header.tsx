@@ -1,10 +1,12 @@
 import { FC } from 'react';
+import { Flex, useColorMode } from 'theme-ui';
+
 import { navigationItems } from 'config/constants';
-import { useColorMode, Flex } from 'theme-ui';
-import ColorModeToggle from './ColorModeToggle';
-import HeaderExternalLinks from './HeaderExternalLinks';
-import HeaderTitle from './HeaderTitle';
-import Navigation from './Navigation';
+
+import ColorModeToggle from 'components/ColorModeToggle';
+import HeaderExternalLinks from 'components/HeaderExternalLinks';
+import HeaderTitle from 'components/HeaderTitle';
+import Navigation from 'components/Navigation';
 
 /*~
  * COMPONENT

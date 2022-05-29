@@ -1,5 +1,5 @@
-import { FC } from 'react';
 import { tailwind } from '@theme-ui/presets';
+import { FC } from 'react';
 import { useColorMode } from 'theme-ui';
 
 /*~

@@ -1,7 +1,8 @@
-import { resolve } from 'path';
 import { readFileSync } from 'fs';
-import { SourcePath } from 'config/constants';
 import { serialize } from 'next-mdx-remote/serialize';
+import { resolve } from 'path';
+
+import { SourcePath } from 'config/constants';
 
 export const getFileContents = async (fileName: string) => {
   const filePath = resolve(`${SourcePath.content}/${fileName}.mdx`);

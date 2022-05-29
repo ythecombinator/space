@@ -1,6 +1,6 @@
-import { merge } from 'theme-ui';
 import { transparentize } from '@theme-ui/color';
 import { tailwind } from '@theme-ui/presets';
+import { merge } from 'theme-ui';
 
 const theme = merge(tailwind, {
   initialColorModeName: 'light',

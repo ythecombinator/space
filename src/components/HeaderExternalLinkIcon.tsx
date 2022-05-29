@@ -1,15 +1,14 @@
 import { FC } from 'react';
-
 import {
-  SiTwitter,
-  SiGithub,
-  SiDevdotto,
-  SiSpeakerdeck,
-  SiLinkedin,
   SiAngellist,
-  SiInstagram,
-  SiUnsplash,
+  SiDevdotto,
   SiDeviantart,
+  SiGithub,
+  SiInstagram,
+  SiLinkedin,
+  SiSpeakerdeck,
+  SiTwitter,
+  SiUnsplash,
 } from 'react-icons/si';
 
 /*~

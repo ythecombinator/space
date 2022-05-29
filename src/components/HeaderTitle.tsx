@@ -1,9 +1,11 @@
 import Link from 'next/link';
+import { FC } from 'react';
+
+import { NavigationPath, siteTitle } from 'config/constants';
 
 import { replaceSlashes } from 'utils/string';
-import { NavigationPath, siteTitle } from 'config/constants';
+
 import Logo from 'components/Logo';
-import { FC } from 'react';
 
 /*~
  * COMPONENT

@@ -16,6 +16,7 @@ const locationTransformer = (city: City) => ({
 });
 
 const sessionTransformer = (session: SchemaSession) => ({
+  id: session.sys.id,
   eventName: session.event?.name,
   eventStartingDate: session.event?.startingDate,
   eventEndingDate: session.event?.endingDate,

@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { FC } from 'react';
+
 import { NavigationPath } from 'config/constants';
+
 import { replaceSlashes } from 'utils/string';
 
 /*~

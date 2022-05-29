@@ -2238,7 +2238,7 @@ export type TalkBySlugQueryVariables = Exact<{
 }>;
 
 
-export type TalkBySlugQuery = { __typename?: 'Query', talkCollection?: { __typename?: 'TalkCollection', items: Array<{ __typename?: 'Talk', title?: string | null, abstract?: { __typename?: 'TalkAbstract', json: any } | null, sessionsCollection?: { __typename?: 'TalkSessionsCollection', items: Array<{ __typename?: 'Session', slides?: string | null, recording?: string | null, online?: boolean | null, audience?: number | null, event?: { __typename?: 'Event', name?: string | null, website?: string | null, startingDate?: any | null, endingDate?: any | null, city?: { __typename?: 'City', name?: string | null, photo?: { __typename?: 'Asset', url?: string | null } | null, country?: { __typename?: 'Country', name?: string | null, flag?: string | null } | null } | null } | null } | null> } | null } | null> } | null };
+export type TalkBySlugQuery = { __typename?: 'Query', talkCollection?: { __typename?: 'TalkCollection', items: Array<{ __typename?: 'Talk', title?: string | null, abstract?: { __typename?: 'TalkAbstract', json: any } | null, sessionsCollection?: { __typename?: 'TalkSessionsCollection', items: Array<{ __typename?: 'Session', slides?: string | null, recording?: string | null, online?: boolean | null, audience?: number | null, sys: { __typename?: 'Sys', id: string }, event?: { __typename?: 'Event', name?: string | null, website?: string | null, startingDate?: any | null, endingDate?: any | null, city?: { __typename?: 'City', name?: string | null, photo?: { __typename?: 'Asset', url?: string | null } | null, country?: { __typename?: 'Country', name?: string | null, flag?: string | null } | null } | null } | null } | null> } | null } | null> } | null };
 
 export type TalkSlugsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2256,6 +2256,9 @@ export const TalkBySlugDocument = gql`
       }
       sessionsCollection {
         items {
+          sys {
+            id
+          }
           slides
           recording
           online

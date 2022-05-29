@@ -10,6 +10,9 @@ export const talkQuery = gql`
         }
         sessionsCollection {
           items {
+            sys {
+              id
+            }
             slides
             recording
             online

@@ -1,8 +1,10 @@
+import { FC } from 'react';
+
+import { siteTitle } from 'config/constants';
+
 import Layout from 'components/Layout';
 
 import { visuallyHidden } from 'styles/utils';
-import { siteTitle } from 'config/constants';
-import { FC } from 'react';
 
 /*~
  * TYPES

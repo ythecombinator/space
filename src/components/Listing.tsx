@@ -1,5 +1,6 @@
 import { FC } from 'react';
-import ListingItem, { ListingItemRenderable } from './ListingItem';
+
+import ListingItem, { ListingItemRenderable } from 'components/ListingItem';
 
 /*~
  * TYPES

@@ -1,11 +1,13 @@
-import * as React from 'react';
 import { Global } from '@emotion/react';
-import { Box, Container, get } from 'theme-ui';
-import Header from './Header';
-import Footer from './Footer';
-import CodeStyles from 'styles/code';
 import NProgress from 'next-nprogress-emotion';
+import * as React from 'react';
 import { FC } from 'react';
+import { Box, Container, get } from 'theme-ui';
+
+import Footer from 'components/Footer';
+import Header from 'components/Header';
+
+import CodeStyles from 'styles/code';
 
 /*~
  * TYPES

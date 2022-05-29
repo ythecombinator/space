@@ -1,18 +1,23 @@
 import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next';
 import { ParsedUrlQuery } from 'querystring';
-import { Themed } from 'theme-ui';
-
-import ContentfulService from 'services/contentful';
 import {
   TalkBySlugDocument,
   TalkBySlugQuery,
   TalkSlugsDocument,
   TalkSlugsQuery,
 } from 'schema';
+import { Themed } from 'theme-ui';
+
+import ContentfulService from 'services/contentful';
+
+import Card from 'components/Card';
+import CardBody from 'components/CardBody';
+import CardHeader from 'components/CardHeader';
+import CardLink from 'components/CardLink';
+import CardList from 'components/CardList';
+import Layout from 'components/Layout';
 
 import { talkDocumentTransformer } from './utils';
-import SessionList from 'components/SessionList';
-import Layout from 'components/Layout';
 
 /*~
  * TYPES
@@ -69,7 +74,47 @@ const TalkPage: NextPage<Props> = (props) => {
   return (
     <Layout>
       <Themed.h2>{title}</Themed.h2>
-      <SessionList sessions={sessions} />
+      <CardList>
+        {sessions.map((session) => {
+          const {
+            id,
+            eventName,
+            eventStartingDate,
+            location,
+            recording,
+            slides,
+            audience,
+          } = session;
+
+          return (
+            <Card key={id}>
+              <CardHeader backgroundImage={location.photo!}>
+                {location.name}
+              </CardHeader>
+              <CardBody
+                title={eventName!}
+                subtitle={eventStartingDate}
+                contents={
+                  <div>
+                    <p>👥 ~{audience} people watching</p>
+                  </div>
+                }
+              >
+                {slides && (
+                  <CardLink href={slides}>
+                    🖥️ View the presentation deck
+                  </CardLink>
+                )}
+                {recording && (
+                  <CardLink href={recording}>
+                    📺 Watch the video recording
+                  </CardLink>
+                )}
+              </CardBody>
+            </Card>
+          );
+        })}
+      </CardList>
     </Layout>
   );
 };
