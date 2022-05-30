@@ -21,7 +21,9 @@ const sessionTransformer = (session: SchemaSession) => ({
   eventStartingDate: session.event?.startingDate,
   eventEndingDate: session.event?.endingDate,
   location: locationTransformer(session.event?.city as City),
-  audience: session.audience,
+  audience: formatAudience(session.audience),
+  language: formatLanguage(session.language),
+  online: session.online,
   slides: session.slides,
   recording: session.recording,
 });
@@ -41,5 +43,8 @@ export const talkDocumentTransformer = (result: TalkBySlugQuery) => {
  * FORMATTERS
  */
 
-export const formatAudience = (data: Session['audience']) =>
+export const formatAudience = (data: SchemaSession['audience']) =>
   data ? `~${data} people audience` : 'No audience data';
+
+export const formatLanguage = (data: SchemaSession['language']) =>
+  `Presented in ${data?.language}`;

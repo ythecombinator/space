@@ -13,6 +13,11 @@ export const talkQuery = gql`
             sys {
               id
             }
+            language {
+              flag
+              language
+            }
+            online
             slides
             recording
             online

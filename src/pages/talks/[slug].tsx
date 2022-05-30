@@ -11,16 +11,10 @@ import { Themed } from 'theme-ui';
 
 import ContentfulService from 'services/contentful';
 
-import { format } from 'utils/date';
-
-import Card from 'components/Card';
-import CardBody from 'components/CardBody';
-import CardHeader from 'components/CardHeader';
-import CardLink from 'components/CardLink';
-import CardList from 'components/CardList';
 import Layout from 'components/Layout';
+import SessionListing from 'components/talks/SessionListing';
 
-import { formatAudience, talkDocumentTransformer } from './talks.utils';
+import { talkDocumentTransformer } from './talks.utils';
 
 /*~
  * TYPES
@@ -81,50 +75,7 @@ const TalkPage: NextPage<Props> = (props) => {
       {documentToReactComponents(abstract)}
 
       <Themed.h3>Sessions</Themed.h3>
-      <CardList>
-        {sessions.map((session) => {
-          const {
-            id,
-            eventName,
-            eventStartingDate,
-            eventEndingDate,
-            location,
-            recording,
-            slides,
-            audience,
-          } = session;
-
-          return (
-            <Card key={id}>
-              <CardHeader backgroundImage={location.photo!}>
-                {location.name}
-              </CardHeader>
-              <CardBody
-                title={eventName!}
-                subtitle={`${format(eventStartingDate)} - ${format(
-                  eventEndingDate
-                )}`}
-                contents={
-                  <section>
-                    <Themed.p>👥 {formatAudience(audience)}</Themed.p>
-                  </section>
-                }
-              >
-                {slides && (
-                  <CardLink href={slides}>
-                    🖥️ View the presentation deck
-                  </CardLink>
-                )}
-                {recording && (
-                  <CardLink href={recording}>
-                    📺 Watch the video recording
-                  </CardLink>
-                )}
-              </CardBody>
-            </Card>
-          );
-        })}
-      </CardList>
+      <SessionListing items={sessions} />
     </Layout>
   );
 };
