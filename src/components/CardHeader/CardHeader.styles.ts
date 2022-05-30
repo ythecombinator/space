@@ -17,8 +17,6 @@ export const header = (props: HeaderProps) =>
     height: 150,
     width: '100%',
     padding: 15,
-    borderTopLeftRadius: 12,
-    borderTopRightRadius: 12,
     ...headerBackground(props),
   } as ThemeUIStyleObject);
 
