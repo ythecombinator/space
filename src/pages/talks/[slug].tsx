@@ -1,3 +1,4 @@
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import {
@@ -10,6 +11,8 @@ import { Themed } from 'theme-ui';
 
 import ContentfulService from 'services/contentful';
 
+import { format } from 'utils/date';
+
 import Card from 'components/Card';
 import CardBody from 'components/CardBody';
 import CardHeader from 'components/CardHeader';
@@ -17,7 +20,7 @@ import CardLink from 'components/CardLink';
 import CardList from 'components/CardList';
 import Layout from 'components/Layout';
 
-import { talkDocumentTransformer } from './utils';
+import { formatAudience, talkDocumentTransformer } from './talks.utils';
 
 /*~
  * TYPES
@@ -69,17 +72,22 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
  */
 
 const TalkPage: NextPage<Props> = (props) => {
-  const { title, sessions } = props;
+  const { title, abstract, sessions } = props;
 
   return (
     <Layout>
       <Themed.h2>{title}</Themed.h2>
+
+      {documentToReactComponents(abstract)}
+
+      <Themed.h3>Sessions</Themed.h3>
       <CardList>
         {sessions.map((session) => {
           const {
             id,
             eventName,
             eventStartingDate,
+            eventEndingDate,
             location,
             recording,
             slides,
@@ -93,10 +101,12 @@ const TalkPage: NextPage<Props> = (props) => {
               </CardHeader>
               <CardBody
                 title={eventName!}
-                subtitle={eventStartingDate}
+                subtitle={`${format(eventStartingDate)} - ${format(
+                  eventEndingDate
+                )}`}
                 contents={
                   <section>
-                    <Themed.p>👥 ~{audience} people watching</Themed.p>
+                    <Themed.p>👥 {formatAudience(audience)}</Themed.p>
                   </section>
                 }
               >

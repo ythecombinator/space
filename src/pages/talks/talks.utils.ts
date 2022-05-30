@@ -36,3 +36,10 @@ export const talkDocumentTransformer = (result: TalkBySlugQuery) => {
     sessions: sessions.map(sessionTransformer),
   };
 };
+
+/*~
+ * FORMATTERS
+ */
+
+export const formatAudience = (data: Session['audience']) =>
+  data ? `~${data} people audience` : 'No audience data';
