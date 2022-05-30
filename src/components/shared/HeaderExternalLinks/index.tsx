@@ -3,7 +3,7 @@ import { Link as TLink } from 'theme-ui';
 
 import { externalLinks } from 'config/constants';
 
-import HeaderExternalLinkIcon from 'components/HeaderExternalLinkIcon';
+import HeaderExternalLinkIcon from 'components/shared/HeaderExternalLinkIcon';
 
 import * as styles from './HeaderExternalLinks.styles';
 

@@ -3,8 +3,8 @@ import NProgress from 'next-nprogress-emotion';
 import { FC, Fragment } from 'react';
 import { Box, Container } from 'theme-ui';
 
-import Footer from 'components/Footer';
-import Header from 'components/Header';
+import Footer from 'components/shared/Footer';
+import Header from 'components/shared/Header';
 
 import CodeStyles from 'styles/code';
 

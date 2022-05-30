@@ -3,10 +3,10 @@ import { FC } from 'react';
 
 import { format } from 'utils/date';
 
-import Card from 'components/Card';
-import CardBody from 'components/CardBody';
-import CardHeader from 'components/CardHeader';
-import CardLink from 'components/CardLink';
+import Card from 'components/shared/Card';
+import CardBody from 'components/shared/CardBody';
+import CardHeader from 'components/shared/CardHeader';
+import CardLink from 'components/shared/CardLink';
 
 /*~
  * TYPES

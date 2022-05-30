@@ -1,4 +1,4 @@
-import { HeaderExternalLinkIconIdentifier } from 'components/HeaderExternalLinkIcon';
+import { HeaderExternalLinkIconIdentifier } from 'components/shared/HeaderExternalLinkIcon';
 
 export const siteTitle = 'ythecombinator';
 

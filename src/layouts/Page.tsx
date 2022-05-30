@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Heading } from 'theme-ui';
 
-import Layout from 'components/Layout';
+import Layout from 'components/shared/Layout';
 
 /*~
  * TYPES

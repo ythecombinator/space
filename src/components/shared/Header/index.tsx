@@ -3,10 +3,10 @@ import { Flex, useColorMode } from 'theme-ui';
 
 import { navigationItems } from 'config/constants';
 
-import ColorModeToggle from 'components/ColorModeToggle';
-import HeaderExternalLinks from 'components/HeaderExternalLinks';
-import HeaderTitle from 'components/HeaderTitle';
 import Navigation from 'components/Navigation';
+import ColorModeToggle from 'components/shared/ColorModeToggle';
+import HeaderExternalLinks from 'components/shared/HeaderExternalLinks';
+import HeaderTitle from 'components/shared/HeaderTitle';
 
 import * as styles from './Header.styles';
 

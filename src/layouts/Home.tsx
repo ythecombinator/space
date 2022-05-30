@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { siteTitle } from 'config/constants';
 
-import Layout from 'components/Layout';
+import Layout from 'components/shared/Layout';
 
 import { visuallyHidden } from 'styles/utils';
 
