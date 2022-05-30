@@ -95,9 +95,9 @@ const TalkPage: NextPage<Props> = (props) => {
                 title={eventName!}
                 subtitle={eventStartingDate}
                 contents={
-                  <div>
-                    <p>👥 ~{audience} people watching</p>
-                  </div>
+                  <section>
+                    <Themed.p>👥 ~{audience} people watching</Themed.p>
+                  </section>
                 }
               >
                 {slides && (

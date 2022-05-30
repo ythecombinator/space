@@ -9,7 +9,7 @@ export const container: ThemeUIStyleObject = {
 export const subtitle: ThemeUIStyleObject = {
   fontWeight: 600,
   margin: '0.1rem',
-  color: 'colors.secondary',
+  color: (theme) => theme.colors?.secondary,
 };
 
 export const content: ThemeUIStyleObject = {

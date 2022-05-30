@@ -1,5 +1,7 @@
 import { FunctionComponent } from 'react';
 
+import { useGradient } from 'styles/utils';
+
 import * as styles from './Card.styles';
 
 /*~
@@ -14,9 +16,12 @@ export type CardProps = {};
 
 const Card: FunctionComponent<CardProps> = (props) => {
   const { children } = props;
+  const gradient = useGradient();
+
+  console.log('gradient', gradient[0]);
 
   return (
-    <article sx={styles.container}>
+    <article sx={styles.container(gradient[0], gradient[1])}>
       <div sx={styles.wrapper}>{children}</div>
     </article>
   );

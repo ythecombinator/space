@@ -1,5 +1,5 @@
-import styled, { CreateStyled } from '@emotion/styled';
 import { tailwind } from '@theme-ui/presets';
+import fetch from 'node-fetch';
 
 const { gray } = tailwind.colors;
 
@@ -22,4 +22,13 @@ export const getColorScheme = (isDark: boolean) => {
   };
 };
 
-export default styled as CreateStyled;
+export const fetchGradients = async () => {
+  const url =
+    'https://raw.githubusercontent.com/ghosh/uiGradients/master/gradients.json';
+  const settings = { method: 'Get' };
+
+  const res = await fetch(url, settings);
+  const colors = await res.json();
+
+  console.log('colors', colors);
+};

@@ -8,6 +8,8 @@ import HeaderExternalLinks from 'components/HeaderExternalLinks';
 import HeaderTitle from 'components/HeaderTitle';
 import Navigation from 'components/Navigation';
 
+import * as styles from './Header.styles';
+
 /*~
  * COMPONENT
  */
@@ -22,24 +24,12 @@ const Header: FC = () => {
   };
 
   return (
-    <header sx={{ mb: [5, 6] }}>
-      <Flex sx={{ alignItems: `center`, justifyContent: `space-between` }}>
+    <header sx={styles.header}>
+      <Flex sx={styles.flex}>
         <HeaderTitle />
         <ColorModeToggle isDark={isDark} toggle={toggleColorMode} />
       </Flex>
-      <div
-        sx={(theme) => ({
-          boxSizing: `border-box`,
-          display: `flex`,
-          variant: `dividers.bottom`,
-          alignItems: `center`,
-          justifyContent: `space-between`,
-          mt: 3,
-          color: `secondary`,
-          a: { ...theme.styles?.a },
-          flexFlow: `wrap`,
-        })}
-      >
+      <div sx={styles.container}>
         <Navigation items={navigationItems} />
         <HeaderExternalLinks />
       </div>

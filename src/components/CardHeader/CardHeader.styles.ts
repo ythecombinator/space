@@ -17,14 +17,16 @@ export const header = (props: HeaderProps) =>
     height: 150,
     width: '100%',
     padding: 15,
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
     ...headerBackground(props),
   } as ThemeUIStyleObject);
 
 export const title: ThemeUIStyleObject = {
   textTransform: 'uppercase',
   margin: 0,
-  backgroundColor: 'colors.background',
-  color: 'colors.texts',
+  backgroundColor: (theme) => theme.colors?.background,
+  color: (theme) => theme.colors?.text,
   boxSizing: 'border-box',
   display: 'inline-block',
   fontSize: 16,

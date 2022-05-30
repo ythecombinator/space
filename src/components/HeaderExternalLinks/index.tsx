@@ -5,13 +5,15 @@ import { externalLinks } from 'config/constants';
 
 import HeaderExternalLinkIcon from 'components/HeaderExternalLinkIcon';
 
+import * as styles from './HeaderExternalLinks.styles';
+
 /*~
  * COMPONENT
  */
 
 const HeaderExternalLinks: FC = () => {
   return (
-    <div sx={{ 'a:not(:first-of-type)': { ml: 3 }, fontSize: [1, `18px`] }}>
+    <div sx={styles.container}>
       {externalLinks.map((link) => (
         <TLink key={link.url} href={link.url}>
           <HeaderExternalLinkIcon identifier={link.name} />

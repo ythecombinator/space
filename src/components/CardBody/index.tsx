@@ -1,6 +1,5 @@
 import { FC } from 'react';
-
-import CardLink from 'components/CardLink';
+import { Themed } from 'theme-ui';
 
 import * as styles from './CardBody.styles';
 
@@ -22,15 +21,12 @@ const CardBody: FC<CardBodyProps> = (props) => {
   const { title, subtitle, contents, children } = props;
 
   return (
-    <div sx={styles.container}>
-      <p sx={styles.subtitle}>{subtitle}</p>
-
-      <p sx={styles.title}>{title}</p>
-
+    <Themed.div sx={styles.container}>
+      <Themed.h6 sx={styles.subtitle}>{subtitle}</Themed.h6>
+      <Themed.h4 sx={styles.title}>{title}</Themed.h4>
       <div sx={styles.content}>{contents}</div>
-
       {children}
-    </div>
+    </Themed.div>
   );
 };
 

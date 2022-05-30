@@ -2,26 +2,15 @@ import { FC } from 'react';
 
 import { siteTitle } from 'config/constants';
 
+import * as styles from './Footer.styles';
+
 /*~
  * COMPONENT
  */
 
 const Footer: FC = () => {
   return (
-    <footer
-      sx={{
-        boxSizing: `border-box`,
-        display: `flex`,
-        justifyContent: `space-between`,
-        mt: [6],
-        color: `secondary`,
-        a: {
-          variant: `links.secondary`,
-        },
-        flexDirection: [`column`, `column`, `row`],
-        variant: `dividers.top`,
-      }}
-    >
+    <footer sx={styles.footer}>
       <div>
         &copy; {new Date().getFullYear()} by {siteTitle}. All rights reserved.
       </div>

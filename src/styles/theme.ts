@@ -1,6 +1,6 @@
 import { transparentize } from '@theme-ui/color';
 import { tailwind } from '@theme-ui/presets';
-import { merge } from 'theme-ui';
+import { merge, ThemeUIStyleObject } from 'theme-ui';
 
 const theme = merge(tailwind, {
   initialColorModeName: 'light',
@@ -76,7 +76,7 @@ const theme = merge(tailwind, {
     a: {
       color: '#5f6c80',
       textDecoration: 'none',
-      'text-underline-offset': 7,
+      textUnderlineOffset: 7,
       transition: 'all 0.3s ease-in-out',
     },
     h1: {
@@ -215,5 +215,7 @@ const theme = merge(tailwind, {
     },
   },
 });
+
+export const buildStyleObject = (props: ThemeUIStyleObject) => props;
 
 export default theme;

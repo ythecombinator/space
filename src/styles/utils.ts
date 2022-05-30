@@ -1,4 +1,9 @@
+import { useRef } from 'react';
 import type { ThemeUICSSObject } from 'theme-ui';
+
+import { randomElement } from 'utils/array';
+
+import gradients from './gradients';
 
 export const visuallyHidden: ThemeUICSSObject = {
   // include `px` so we can use it with `sx`
@@ -11,4 +16,11 @@ export const visuallyHidden: ThemeUICSSObject = {
   position: `absolute`,
   whiteSpace: `nowrap`,
   width: `1px`,
+};
+
+export const useGradient = () => {
+  const color = randomElement(gradients);
+  const ref = useRef(color);
+
+  return ref.current;
 };
