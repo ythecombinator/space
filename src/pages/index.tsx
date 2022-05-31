@@ -6,7 +6,7 @@ import { NavigationPath } from 'config/constants';
 import { getFileContents } from 'utils/mdx';
 import { replaceSlashes } from 'utils/string';
 
-import HomepageLayout from 'layouts/Home';
+import HomepageLayout from 'components/layouts/Home';
 
 import MDXRenderer from 'components/MDXRenderer';
 import Title from 'components/Title';
