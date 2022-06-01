@@ -8,7 +8,7 @@ import ListingItem, { ListingItemProps } from 'components/ListingItem';
 
 export type ListingProps = {
   path: string;
-  items: ListingItemProps[];
+  items: Omit<ListingItemProps, 'path'>[];
 };
 
 /*~
