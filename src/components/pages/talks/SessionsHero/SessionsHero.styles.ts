@@ -7,7 +7,7 @@ export const collection = buildStyleObject({
   position: 'relative',
   width: '100vw',
   left: '50%',
-  marginTop: ['4rem', '100px'],
+  marginTop: '1rem',
   marginLeft: '-50vw',
 });
 

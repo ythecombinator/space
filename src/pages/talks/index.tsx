@@ -81,9 +81,16 @@ const TalksPage: NextPage<Props> = (props) => {
         topics also include programming languages and iOS engineering. In total,
         I've given x sessions in y events in z cities.
       </Themed.p>
+
+      {/* Featured */}
+      <Themed.h3>Featured Talks</Themed.h3>
       <SessionsHero items={heroSessions} />
+
+      {/* Upcoming */}
       <Themed.h3>Upcoming Talks</Themed.h3>
       <UpcomingTalks items={upcomingTalks} />
+
+      {/* All */}
       <Themed.h3>All Talks</Themed.h3>
       <Listing path="talks" items={allTalks} />
     </Layout>

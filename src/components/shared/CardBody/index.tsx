@@ -1,6 +1,9 @@
 import { FC } from 'react';
 import { Themed } from 'theme-ui';
 
+import CardFooter from '../CardFooter';
+import CardSubtitle from '../CardSubtitle';
+import CardTitle from '../CardTitle';
 import * as styles from './CardBody.styles';
 
 /*~
@@ -22,9 +25,9 @@ const CardBody: FC<CardBodyProps> = (props) => {
 
   return (
     <Themed.div sx={styles.container}>
-      <Themed.h6 sx={styles.subtitle}>{subtitle}</Themed.h6>
-      <Themed.h4 sx={styles.title}>{title}</Themed.h4>
-      <div sx={styles.content}>{contents}</div>
+      <CardSubtitle>{subtitle}</CardSubtitle>
+      <CardTitle>{title}</CardTitle>
+      <CardFooter>{contents}</CardFooter>
       {children}
     </Themed.div>
   );

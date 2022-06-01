@@ -5,6 +5,7 @@ import { Themed } from 'theme-ui';
 import Card from 'components/shared/Card';
 import CardBody from 'components/shared/CardBody';
 import CardHeader from 'components/shared/CardHeader';
+import CardSubtitle from 'components/shared/CardSubtitle';
 
 /*~
  * TYPES
@@ -32,7 +33,7 @@ const UpcomingTalk: FC<UpcomingTalkProps> = (props) => {
         {eventLocation}
       </CardHeader>
       <CardBody title={eventName} subtitle={eventDate}>
-        <Themed.h6>{talkTitle}</Themed.h6>
+        <CardSubtitle>{talkTitle}</CardSubtitle>
       </CardBody>
     </Card>
   );
