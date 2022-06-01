@@ -4,6 +4,7 @@ import Card from 'components/shared/Card';
 import CardBody from 'components/shared/CardBody';
 import CardHeader from 'components/shared/CardHeader';
 import CardSubtitle from 'components/shared/CardSubtitle';
+import CardTitle from 'components/shared/CardTitle';
 
 /*~
  * TYPES
@@ -37,7 +38,9 @@ const UpcomingTalk: FC<UpcomingTalkProps> = (props) => {
       <CardHeader backgroundImage={eventLocationImage}>
         {eventLocation}
       </CardHeader>
-      <CardBody title={eventName} subtitle={eventDate}>
+      <CardBody>
+        <CardSubtitle>{eventDate}</CardSubtitle>
+        <CardTitle>{eventName}</CardTitle>
         <CardSubtitle>{talkTitle}</CardSubtitle>
       </CardBody>
     </Card>

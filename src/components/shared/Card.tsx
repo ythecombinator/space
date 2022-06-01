@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren } from 'react';
+import { FC, FunctionComponent, PropsWithChildren } from 'react';
 
 import { buildStyleObject } from 'styles/theme';
 import { useGradient } from 'styles/utils';
@@ -25,7 +25,7 @@ const buildStyles = (firstColor: string, secondColor: string, width: number) =>
       maxWidth: width,
       display: 'block',
       transition: '0.25s',
-      height: 'fit-content',
+      height: '100%',
 
       ':hover': {
         transform: 'translateY(0.5rem)',
@@ -46,7 +46,7 @@ const buildStyles = (firstColor: string, secondColor: string, width: number) =>
  * COMPONENT
  */
 
-const Card = (props: CardProps) => {
+const Card: FC<CardProps> = (props) => {
   const { children, width = 400 } = props;
 
   const gradient = useGradient();

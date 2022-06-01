@@ -149,7 +149,7 @@ const theme = merge(tailwind, {
   layout: {
     container: {
       padding: [3, 4],
-      maxWidth: 800,
+      maxWidth: 980,
     },
   },
   text: {

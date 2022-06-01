@@ -11,11 +11,7 @@ import { buildStyleObject } from 'styles/theme';
  * TYPES
  */
 
-export type CardBodyProps = PropsWithChildren<{
-  title: string;
-  subtitle: string;
-  contents?: JSX.Element;
-}>;
+export type CardBodyProps = PropsWithChildren<{}>;
 
 /*~
  * STYLES
@@ -34,16 +30,8 @@ const styles = buildStyleObject({
  */
 
 const CardBody = (props: CardBodyProps) => {
-  const { title, subtitle, contents, children } = props;
-
-  return (
-    <Themed.div sx={styles.container}>
-      <CardSubtitle>{subtitle}</CardSubtitle>
-      <CardTitle>{title}</CardTitle>
-      <CardFooter>{contents}</CardFooter>
-      {children}
-    </Themed.div>
-  );
+  const { children } = props;
+  return <Themed.div sx={styles.container}>{children}</Themed.div>;
 };
 
 export default CardBody;

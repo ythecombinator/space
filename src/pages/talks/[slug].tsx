@@ -10,12 +10,15 @@ import {
 import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import { Themed } from 'theme-ui';
+import { DeepNonNullable } from 'utility-types';
 
 import ContentfulService from 'services/contentful';
 
+import { format } from 'utils/date';
+
 import Layout from 'components/shared/Layout';
 
-import SessionListing from 'components/pages/talks/SessionListing';
+import EventsList from 'components/pages/talks/EventsList';
 
 /*~
  * TYPES
@@ -31,27 +34,27 @@ export type Props = InferGetStaticPropsType<typeof getStaticProps>;
  * UTILS
  */
 
-const locationTransformer = (city: City) => ({
-  name: `${city.country?.flag} ${city.name}, ${city.country?.name}`,
-  photo: city.photo?.url,
-});
+const locationTransformer = (city: City) =>
+  `${city.country?.flag} ${city.name}, ${city.country?.name}`;
 
-const sessionTransformer = (session: Session) => ({
+const sessionTransformer = (session: DeepNonNullable<Session>) => ({
   id: session.sys.id,
   eventName: session.event?.name,
-  eventStartingDate: session.event?.startingDate,
-  eventEndingDate: session.event?.endingDate,
-  location: locationTransformer(session.event?.city as City),
-  audience: formatAudience(session.audience),
-  language: formatLanguage(session.language),
-  online: session.online,
-  slides: session.slides,
-  recording: session.recording,
+  eventLocation: locationTransformer(session.event?.city),
+  eventStartingDate: format(session.event?.startingDate),
+  eventEndingDate: format(session.event?.endingDate),
+  sessionAudience: formatAudience(session.audience),
+  sessionLanguage: formatLanguage(session.language),
+  sessionOnline: session.online,
+  sessionSlides: session.slides,
+  sessionRecording: session.recording,
 });
 
 export const talkDocumentTransformer = (result: GetTalkQuery) => {
   const talk = result.talkCollection?.items[0];
-  const sessions = talk?.sessionsCollection?.items as Session[];
+  const sessions = talk?.sessionsCollection?.items as Array<
+    DeepNonNullable<Session>
+  >;
 
   return {
     title: talk?.title,
@@ -61,7 +64,7 @@ export const talkDocumentTransformer = (result: GetTalkQuery) => {
 };
 
 export const formatAudience = (data: Session['audience']) =>
-  data ? `~${data} people audience` : 'No audience data';
+  data ? `Est. ${data} people audience` : 'No audience data';
 
 export const formatLanguage = (data: Session['language']) =>
   `Presented in ${data?.language}`;
@@ -115,7 +118,7 @@ const TalkPage: NextPage<Props> = (props) => {
       {documentToReactComponents(abstract)}
 
       <Themed.h3>Sessions</Themed.h3>
-      <SessionListing items={sessions} />
+      <EventsList items={sessions} />
     </Layout>
   );
 };
