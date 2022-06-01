@@ -2,6 +2,8 @@ import { HeaderExternalLinkIconIdentifier } from 'components/shared/HeaderExtern
 
 export const siteTitle = 'ythecombinator';
 
+export const siteOwner = 'Matheus Albuquerque';
+
 export const externalLinks: Array<{
   name: HeaderExternalLinkIconIdentifier;
   url: string;

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { siteTitle } from 'config/constants';
+import { siteOwner } from 'config/constants';
 
 import * as styles from './Footer.styles';
 
@@ -11,10 +11,7 @@ import * as styles from './Footer.styles';
 const Footer: FC = () => {
   return (
     <footer sx={styles.footer}>
-      <div>
-        &copy; {new Date().getFullYear()} by {siteTitle}. All rights reserved.
-      </div>
-      <div>Made with 💖 while high either on ☕ or 🍻 — or both.</div>
+      &copy; {new Date().getFullYear()} by {siteOwner}. All rights reserved.
     </footer>
   );
 };
