@@ -1,12 +1,16 @@
 import { buildStyleObject } from 'styles/theme';
 
-export const container = (firstColor: string, secondColor: string) =>
+export const container = (
+  firstColor: string,
+  secondColor: string,
+  width: number
+) =>
   buildStyleObject({
     padding: ['1rem', '3px'],
     margin: '10px',
     position: 'relative',
-    minWidth: 400,
-    maxWidth: 400,
+    minWidth: width,
+    maxWidth: width,
     display: 'block',
     transition: '0.25s',
     height: 'fit-content',

@@ -8,19 +8,21 @@ import * as styles from './Card.styles';
  * TYPES
  */
 
-export type CardProps = {};
+export type CardProps = {
+  width?: number;
+};
 
 /*~
  * COMPONENT
  */
 
 const Card: FunctionComponent<CardProps> = (props) => {
-  const { children } = props;
+  const { children, width = 400 } = props;
   const gradient = useGradient();
 
   return (
-    <article sx={styles.container(gradient[0], gradient[1])}>
-      <div sx={styles.wrapper}>{children}</div>
+    <article sx={styles.container(gradient[0], gradient[1], width)}>
+      {children}
     </article>
   );
 };

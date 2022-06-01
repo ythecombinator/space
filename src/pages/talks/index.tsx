@@ -50,6 +50,7 @@ export async function getStaticProps() {
 
   const allTalks = allTalksDocumentTransformer(allTalksDocument.data);
 
+  // Final props
   return {
     props: { upcomingTalks, allTalks },
     // revalidate: 86400,
