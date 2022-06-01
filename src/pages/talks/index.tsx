@@ -46,12 +46,13 @@ const TalksPage: NextPage<Props> = (props) => {
     <Layout>
       <Themed.h2>Talks</Themed.h2>
       <Themed.p>
-        I've been writing online since 2014, mostly about web development and
-        tech careers. In total, I've written 63 articles on my blog. Use the
-        search below to filter by title.
+        I've been speaking and learning in public since 2015, mostly about web
+        performance, JavaScript/TypeScript, React, and their ecosystem. Other
+        topics also include programming languages and iOS engineering. In total,
+        I've given x sessions in y events in z cities.
       </Themed.p>
       <Themed.h3>All Talks</Themed.h3>
-      <Listing items={items} />
+      <Listing path="talks/" items={items} />
     </Layout>
   );
 };

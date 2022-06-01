@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import * as React from 'react';
 import { FC } from 'react';
-import { Box, Themed } from 'theme-ui';
+import { Box, Flex, Themed } from 'theme-ui';
 
 import ListingItemTags from 'components/ListingItemTags';
 import Tag from 'components/shared/Tag';
@@ -12,6 +12,7 @@ import Tag from 'components/shared/Tag';
 
 export type ListingItemProps = {
   slug: string;
+  path: string;
   title: string;
   subtitle?: string;
   headline: string;
@@ -26,7 +27,7 @@ export type ListingItemProps = {
  */
 
 const ListingItem: FC<ListingItemProps> = (props) => {
-  const { title, subtitle, headline, tags, slug } = props;
+  const { title, subtitle, headline, tags, slug, path } = props;
 
   return (
     <Box my={4}>
@@ -34,14 +35,22 @@ const ListingItem: FC<ListingItemProps> = (props) => {
         sx={{
           a: { color: 'secondary' },
           fontSize: [1, 1, 2],
+          mb: 2,
         }}
       >
-        <Link href={slug}>{title}</Link>
+        <Link href={`${path}/${slug}`}>{title}</Link>
       </Themed.h5>
+
+      {/* Tags */}
+
+      <Flex>
+        {tags.map((tag) => (
+          <Tag key={tag.id} name={tag.name} id={tag.id} />
+        ))}
+      </Flex>
+
+      {/* Headline */}
       <Themed.p>{headline}</Themed.p>
-      {tags.map((tag) => (
-        <Tag key={tag.id} name={tag.name} id={tag.id} />
-      ))}
     </Box>
   );
 };

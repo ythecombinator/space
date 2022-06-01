@@ -1,6 +1,8 @@
 import { FC } from 'react';
-import { SiUnsplash } from 'react-icons/si';
-import { Box, Flex, Themed } from 'theme-ui';
+import { Box, Flex, useColorMode } from 'theme-ui';
+
+import * as styles from './Tag.styles';
+import { TagColor, TagIcon } from './tag.utils';
 
 /*~
  * TYPES
@@ -18,26 +20,16 @@ export type TagProps = {
 const Tag: FC<TagProps> = (props) => {
   const { id, name } = props;
 
-  return (
-    <Box
-      sx={{
-        display: 'inline-flex',
-        padding: [0, 2],
-        margin: 1,
-        borderRadius: 99,
-        backgroundColor: 'red',
-        color: (theme) => theme.colors?.background,
-        cursor: 'pointer',
+  const [colorMode] = useColorMode();
 
-        '&:hover': { backgroundColor: 'red' },
-        '&:active': { backgroundColor: 'red' },
-      }}
-    >
-      <Flex sx={{ alignItems: 'center', margin: 2 }}>
-        <SiUnsplash />
-        <Themed.p sx={{ marginY: 0, marginX: 1, fontSize: '16px' }}>
-          {name}
-        </Themed.p>
+  const icon = TagIcon[id];
+  const color = TagColor[id];
+
+  return (
+    <Box sx={styles.boxContainer(color, colorMode)}>
+      <Flex sx={styles.flexContainer}>
+        {icon}
+        <p sx={styles.tagName}>{name}</p>
       </Flex>
     </Box>
   );

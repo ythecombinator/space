@@ -7,6 +7,7 @@ import ListingItem, { ListingItemProps } from 'components/ListingItem';
  */
 
 export type ListingProps = {
+  path: string;
   items: ListingItemProps[];
 };
 
@@ -15,7 +16,7 @@ export type ListingProps = {
  */
 
 const Listing: FC<ListingProps> = (props) => {
-  const { items } = props;
+  const { path, items } = props;
 
   return (
     <section sx={{ mb: [5, 6, 7] }}>
@@ -28,6 +29,7 @@ const Listing: FC<ListingProps> = (props) => {
             headline={headline}
             subtitle={subtitle}
             slug={slug}
+            path={path}
             tags={tags}
           />
         );
