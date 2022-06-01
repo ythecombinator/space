@@ -1,12 +1,12 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import {
+  GetAllTalkSlugsDocument,
+  GetAllTalkSlugsQuery,
+  GetTalkDocument,
+  GetTalkQuery,
+} from 'graphql/schema';
 import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next';
 import { ParsedUrlQuery } from 'querystring';
-import {
-  TalkBySlugDocument,
-  TalkBySlugQuery,
-  TalkSlugsDocument,
-  TalkSlugsQuery,
-} from 'schema';
 import { Themed } from 'theme-ui';
 
 import ContentfulService from 'services/contentful';
@@ -14,7 +14,7 @@ import ContentfulService from 'services/contentful';
 import SessionListing from 'components/pages/talks/SessionListing';
 import Layout from 'components/shared/Layout';
 
-import { talkDocumentTransformer } from './talks.utils';
+import { talkDocumentTransformer } from './utils';
 
 /*~
  * TYPES
@@ -32,8 +32,8 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 export async function getStaticPaths() {
   const { data: talkSlugsDocument } =
-    await ContentfulService.query<TalkSlugsQuery>({
-      query: TalkSlugsDocument,
+    await ContentfulService.query<GetAllTalkSlugsQuery>({
+      query: GetAllTalkSlugsDocument,
     });
 
   return {
@@ -46,8 +46,8 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context: GetStaticPropsContext<Params>) {
   const { data: talkBySlugDocument } =
-    await ContentfulService.query<TalkBySlugQuery>({
-      query: TalkBySlugDocument,
+    await ContentfulService.query<GetTalkQuery>({
+      query: GetTalkDocument,
       variables: {
         slug: context.params?.slug,
       },

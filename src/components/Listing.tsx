@@ -1,15 +1,13 @@
 import { FC } from 'react';
 
-import ListingItem, { ListingItemRenderable } from 'components/ListingItem';
+import ListingItem, { ListingItemProps } from 'components/ListingItem';
 
 /*~
  * TYPES
  */
 
 export type ListingProps = {
-  items: ListingItemRenderable[];
-  className?: string;
-  showTags?: boolean;
+  items: ListingItemProps[];
 };
 
 /*~
@@ -17,13 +15,23 @@ export type ListingProps = {
  */
 
 const Listing: FC<ListingProps> = (props) => {
-  const { items, className = ``, showTags = true } = props;
+  const { items } = props;
 
   return (
-    <section sx={{ mb: [5, 6, 7] }} className={className}>
-      {items.map((item) => (
-        <ListingItem key={item.slug} item={item} showTags={showTags} />
-      ))}
+    <section sx={{ mb: [5, 6, 7] }}>
+      {items.map((item) => {
+        const { title, subtitle, headline, slug, tags } = item;
+        return (
+          <ListingItem
+            key={item.slug}
+            title={title}
+            headline={headline}
+            subtitle={subtitle}
+            slug={slug}
+            tags={tags}
+          />
+        );
+      })}
     </section>
   );
 };

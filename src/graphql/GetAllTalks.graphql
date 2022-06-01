@@ -1,0 +1,14 @@
+query GetAllTalks {
+  talkCollection {
+    items {
+      title
+      slug
+      contentfulMetadata {
+        tags {
+          id
+          name
+        }
+      }
+    }
+  }
+}

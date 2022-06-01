@@ -7,11 +7,11 @@ documents:
   - "src/**/!(*.d).{ts,tsx}"
   - "src/**/*.graphql"
 generates:
-  src/schema.ts:
+  src/graphql/schema.ts:
     plugins:
       - typescript
       - typescript-operations
       - typescript-react-apollo
-  schema.graphql:
+  src/graphql/schema.graphql:
     plugins:
       - schema-ast

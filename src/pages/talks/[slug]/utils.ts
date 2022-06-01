@@ -1,4 +1,4 @@
-import { City, Session as SchemaSession, TalkBySlugQuery } from 'schema';
+import { City, GetTalkQuery, Session as SchemaSession } from 'graphql/schema';
 
 /*~
  * TYPES
@@ -28,7 +28,7 @@ const sessionTransformer = (session: SchemaSession) => ({
   recording: session.recording,
 });
 
-export const talkDocumentTransformer = (result: TalkBySlugQuery) => {
+export const talkDocumentTransformer = (result: GetTalkQuery) => {
   const talk = result.talkCollection?.items[0];
   const sessions = talk?.sessionsCollection?.items as SchemaSession[];
 

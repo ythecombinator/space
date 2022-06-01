@@ -1,30 +1,24 @@
 import Link from 'next/link';
 import * as React from 'react';
 import { FC } from 'react';
-import { Box } from 'theme-ui';
+import { Box, Themed } from 'theme-ui';
 
 import ListingItemTags from 'components/ListingItemTags';
+import Tag from 'components/shared/Tag';
 
 /*~
  * TYPES
  */
 
-export type ListingItemRenderable = {
+export type ListingItemProps = {
   slug: string;
   title: string;
-  date: string;
-  excerpt: string;
-  description: string;
-  timeToRead?: number;
-  tags?: {
+  subtitle?: string;
+  headline: string;
+  tags: {
     name: string;
-    slug: string;
+    id: string;
   }[];
-};
-
-export type ListingItemProps = {
-  item: ListingItemRenderable;
-  showTags?: boolean;
 };
 
 /*~
@@ -32,36 +26,22 @@ export type ListingItemProps = {
  */
 
 const ListingItem: FC<ListingItemProps> = (props) => {
-  const { item, showTags = true } = props;
+  const { title, subtitle, headline, tags, slug } = props;
 
   return (
-    <Box mb={4}>
-      <Link
-        href={item.slug}
-        sx={(theme) => ({
-          ...theme.styles?.a,
-          fontSize: [1, 2, 3],
-          color: `text`,
-        })}
-      >
-        {item.title}
-      </Link>
-      <p
+    <Box my={4}>
+      <Themed.h5
         sx={{
-          color: `secondary`,
-          mt: 1,
-          a: { color: `secondary` },
+          a: { color: 'secondary' },
           fontSize: [1, 1, 2],
         }}
       >
-        <time>{item.date}</time>
-        {item.tags && showTags && (
-          <React.Fragment>
-            {` — `}
-            <ListingItemTags tags={item.tags} />
-          </React.Fragment>
-        )}
-      </p>
+        <Link href={slug}>{title}</Link>
+      </Themed.h5>
+      <Themed.p>{headline}</Themed.p>
+      {tags.map((tag) => (
+        <Tag key={tag.id} name={tag.name} id={tag.id} />
+      ))}
     </Box>
   );
 };
