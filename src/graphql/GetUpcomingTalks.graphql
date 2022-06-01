@@ -1,0 +1,27 @@
+query GetUpcomingTalks($eventStartingDate: DateTime!) {
+  eventCollection(limit: 5, where: { startingDate_gt: $eventStartingDate }) {
+    items {
+      name
+      city {
+        name
+        photo {
+          url
+        }
+        country {
+          flag
+          name
+        }
+      }
+      startingDate
+      endingDate
+      sessionsCollection {
+        items {
+          talk {
+            title
+            slug
+          }
+        }
+      }
+    }
+  }
+}

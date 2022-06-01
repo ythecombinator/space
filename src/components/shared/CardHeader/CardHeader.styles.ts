@@ -9,6 +9,7 @@ const headerBackground = (props: HeaderProps) =>
     ? {
         backgroundSize: 'cover',
         backgroundImage: `url(${props.backgroundImage})`,
+        backgroundPosition: 'center',
       }
     : {}) as ThemeUIStyleObject;
 

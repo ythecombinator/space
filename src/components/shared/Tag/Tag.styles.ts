@@ -1,6 +1,6 @@
 import { buildStyleObject } from 'styles/theme';
 
-import { transformColor } from './tag.utils';
+import { transformColor } from './Tag.utils';
 
 export const boxContainer = (color: string, colorMode: string) =>
   buildStyleObject({

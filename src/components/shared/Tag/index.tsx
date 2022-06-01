@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Box, Flex, useColorMode } from 'theme-ui';
 
 import * as styles from './Tag.styles';
-import { TagColor, TagIcon } from './tag.utils';
+import { TagColor, TagIcon } from './Tag.utils';
 
 /*~
  * TYPES

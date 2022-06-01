@@ -1,6 +1,6 @@
 Talks
 
-- Inside Fiber: the in-depth overview you wanted a TLDR for
+- ✅ Inside Fiber: the in-depth overview you wanted a TLDR for
 - ✅ The best is yet to come: the Future of React
 - ✅ Code sharing at scale: one codebase for web, mobile and desktop
 - The Day I Reverse Engineered a Gameboy Advance Game

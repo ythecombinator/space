@@ -1,4 +1,9 @@
-import { GetAllTalksDocument, GetAllTalksQuery } from 'graphql/schema';
+import {
+  GetAllTalksDocument,
+  GetAllTalksQuery,
+  GetUpcomingTalksDocument,
+  GetUpcomingTalksQuery,
+} from 'graphql/schema';
 import { InferGetStaticPropsType, NextPage } from 'next';
 import { Themed } from 'theme-ui';
 
@@ -6,10 +11,13 @@ import ContentfulService from 'services/contentful';
 
 import Listing from 'components/Listing';
 import SessionsHero from 'components/pages/talks/SessionsHero';
-import UpcomingSessions from 'components/pages/talks/UpcomingSessions';
+import UpcomingTalks from 'components/pages/talks/UpcomingTalks';
 import Layout from 'components/shared/Layout';
 
-import { talksDocumentTransformer } from './utils';
+import {
+  allTalksDocumentTransformer,
+  upcomingTalksDocumentTransformer,
+} from './utils';
 
 /*~
  * TYPES
@@ -22,16 +30,29 @@ export type Props = InferGetStaticPropsType<typeof getStaticProps>;
  */
 
 export async function getStaticProps() {
-  const { data: talksDocument } =
-    await ContentfulService.query<GetAllTalksQuery>({
-      query: GetAllTalksDocument,
+  // "Upcoming Talks" section
+  const upcomingTalksDocument =
+    await ContentfulService.query<GetUpcomingTalksQuery>({
+      query: GetUpcomingTalksDocument,
+      variables: {
+        eventStartingDate: new Date().toISOString(),
+      },
     });
 
-  const items = talksDocumentTransformer(talksDocument);
+  const upcomingTalks = upcomingTalksDocumentTransformer(
+    upcomingTalksDocument.data
+  );
+
+  // "All Talks" section
+  const allTalksDocument = await ContentfulService.query<GetAllTalksQuery>({
+    query: GetAllTalksDocument,
+  });
+
+  const allTalks = allTalksDocumentTransformer(allTalksDocument.data);
 
   return {
-    props: { items },
-    revalidate: 86400,
+    props: { upcomingTalks, allTalks },
+    // revalidate: 86400,
   };
 }
 
@@ -48,37 +69,8 @@ const heroSessions = [
   { eventName: 'Opa', talkSlug: 'Opa', key: 'sssssfsddsd' },
 ];
 
-const upcomingSessions = [
-  {
-    eventName: 'Opa',
-    id: 'osdfuijsjdi',
-    eventStartingDate: 'sdsad',
-    eventEndingDate: 'DDSDAS',
-    locationName: 'fdsd',
-    locationPhoto: 'fdsd',
-  },
-  {
-    eventName: 'Opa',
-    id: 'sdasd',
-    eventStartingDate: 'sdsad',
-    eventEndingDate: 'DDSDAS',
-    locationName: 'fdsd',
-    locationPhoto: 'fdsd',
-  },
-  {
-    eventName: 'Opa',
-    id: 'sssdsd',
-    eventStartingDate: 'sdsad',
-    eventEndingDate: 'DDSDAS',
-    locationName: 'fdsd',
-    locationPhoto: 'fdsd',
-  },
-];
-
 const TalksPage: NextPage<Props> = (props) => {
-  const { items } = props;
-
-  console.log('items', items);
+  const { upcomingTalks, allTalks } = props;
 
   return (
     <Layout>
@@ -91,9 +83,9 @@ const TalksPage: NextPage<Props> = (props) => {
       </Themed.p>
       <SessionsHero items={heroSessions} />
       <Themed.h3>Upcoming Talks</Themed.h3>
-      <UpcomingSessions items={upcomingSessions} />
+      <UpcomingTalks items={upcomingTalks} />
       <Themed.h3>All Talks</Themed.h3>
-      <Listing path="talks/" items={items} />
+      <Listing path="talks" items={allTalks} />
     </Layout>
   );
 };

@@ -1411,6 +1411,7 @@ export type Session = Entry & {
   audience?: Maybe<Scalars['Int']>;
   contentfulMetadata: ContentfulMetadata;
   event?: Maybe<Event>;
+  featured?: Maybe<Scalars['Boolean']>;
   language?: Maybe<Language>;
   linkedFrom?: Maybe<SessionLinkingCollections>;
   online?: Maybe<Scalars['Boolean']>;
@@ -1432,6 +1433,12 @@ export type SessionAudienceArgs = {
 export type SessionEventArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/session) */
+export type SessionFeaturedArgs = {
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -1501,6 +1508,9 @@ export type SessionFilter = {
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
   event?: InputMaybe<CfEventNestedFilter>;
   event_exists?: InputMaybe<Scalars['Boolean']>;
+  featured?: InputMaybe<Scalars['Boolean']>;
+  featured_exists?: InputMaybe<Scalars['Boolean']>;
+  featured_not?: InputMaybe<Scalars['Boolean']>;
   language?: InputMaybe<CfLanguageNestedFilter>;
   language_exists?: InputMaybe<Scalars['Boolean']>;
   online?: InputMaybe<Scalars['Boolean']>;
@@ -1566,6 +1576,8 @@ export type SessionLinkingCollectionsTalkCollectionArgs = {
 export enum SessionOrder {
   AudienceAsc = 'audience_ASC',
   AudienceDesc = 'audience_DESC',
+  FeaturedAsc = 'featured_ASC',
+  FeaturedDesc = 'featured_DESC',
   OnlineAsc = 'online_ASC',
   OnlineDesc = 'online_DESC',
   RecordingAsc = 'recording_ASC',
@@ -1639,7 +1651,6 @@ export type Talk = Entry & {
   linkedFrom?: Maybe<TalkLinkingCollections>;
   sessionsCollection?: Maybe<TalkSessionsCollection>;
   slug?: Maybe<Scalars['String']>;
-  stackCollection?: Maybe<TalkStackCollection>;
   sys: Sys;
   title?: Maybe<Scalars['String']>;
 };
@@ -1669,15 +1680,6 @@ export type TalkSessionsCollectionArgs = {
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/talk) */
 export type TalkSlugArgs = {
   locale?: InputMaybe<Scalars['String']>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/talk) */
-export type TalkStackCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -1734,7 +1736,6 @@ export type TalkFilter = {
   slug_not?: InputMaybe<Scalars['String']>;
   slug_not_contains?: InputMaybe<Scalars['String']>;
   slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  stackCollection_exists?: InputMaybe<Scalars['Boolean']>;
   sys?: InputMaybe<SysFilter>;
   title?: InputMaybe<Scalars['String']>;
   title_contains?: InputMaybe<Scalars['String']>;
@@ -1785,14 +1786,6 @@ export enum TalkOrder {
 export type TalkSessionsCollection = {
   __typename?: 'TalkSessionsCollection';
   items: Array<Maybe<Session>>;
-  limit: Scalars['Int'];
-  skip: Scalars['Int'];
-  total: Scalars['Int'];
-};
-
-export type TalkStackCollection = {
-  __typename?: 'TalkStackCollection';
-  items: Array<Maybe<Technology>>;
   limit: Scalars['Int'];
   skip: Scalars['Int'];
   total: Scalars['Int'];
@@ -1858,20 +1851,11 @@ export type TechnologyFilter = {
 export type TechnologyLinkingCollections = {
   __typename?: 'TechnologyLinkingCollections';
   entryCollection?: Maybe<EntryCollection>;
-  talkCollection?: Maybe<TalkCollection>;
   titleCollection?: Maybe<TitleCollection>;
 };
 
 
 export type TechnologyLinkingCollectionsEntryCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-};
-
-
-export type TechnologyLinkingCollectionsTalkCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
@@ -2222,7 +2206,6 @@ export type CfTalkNestedFilter = {
   slug_not?: InputMaybe<Scalars['String']>;
   slug_not_contains?: InputMaybe<Scalars['String']>;
   slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  stackCollection_exists?: InputMaybe<Scalars['Boolean']>;
   sys?: InputMaybe<SysFilter>;
   title?: InputMaybe<Scalars['String']>;
   title_contains?: InputMaybe<Scalars['String']>;
@@ -2249,6 +2232,13 @@ export type GetTalkQueryVariables = Exact<{
 
 
 export type GetTalkQuery = { __typename?: 'Query', talkCollection?: { __typename?: 'TalkCollection', items: Array<{ __typename?: 'Talk', title?: string | null, abstract?: { __typename?: 'TalkAbstract', json: any } | null, sessionsCollection?: { __typename?: 'TalkSessionsCollection', items: Array<{ __typename?: 'Session', online?: boolean | null, slides?: string | null, recording?: string | null, audience?: number | null, sys: { __typename?: 'Sys', id: string }, language?: { __typename?: 'Language', flag?: string | null, language?: string | null } | null, event?: { __typename?: 'Event', name?: string | null, website?: string | null, startingDate?: any | null, endingDate?: any | null, city?: { __typename?: 'City', name?: string | null, photo?: { __typename?: 'Asset', url?: string | null } | null, country?: { __typename?: 'Country', name?: string | null, flag?: string | null } | null } | null } | null } | null> } | null } | null> } | null };
+
+export type GetUpcomingTalksQueryVariables = Exact<{
+  eventStartingDate: Scalars['DateTime'];
+}>;
+
+
+export type GetUpcomingTalksQuery = { __typename?: 'Query', eventCollection?: { __typename?: 'EventCollection', items: Array<{ __typename?: 'Event', name?: string | null, startingDate?: any | null, endingDate?: any | null, city?: { __typename?: 'City', name?: string | null, photo?: { __typename?: 'Asset', url?: string | null } | null, country?: { __typename?: 'Country', flag?: string | null, name?: string | null } | null } | null, sessionsCollection?: { __typename?: 'EventSessionsCollection', items: Array<{ __typename?: 'Session', talk?: { __typename?: 'Talk', title?: string | null, slug?: string | null } | null } | null> } | null } | null> } | null };
 
 
 export const GetAllTalkSlugsDocument = gql`
@@ -2402,3 +2392,60 @@ export function useGetTalkLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Ge
 export type GetTalkQueryHookResult = ReturnType<typeof useGetTalkQuery>;
 export type GetTalkLazyQueryHookResult = ReturnType<typeof useGetTalkLazyQuery>;
 export type GetTalkQueryResult = Apollo.QueryResult<GetTalkQuery, GetTalkQueryVariables>;
+export const GetUpcomingTalksDocument = gql`
+    query GetUpcomingTalks($eventStartingDate: DateTime!) {
+  eventCollection(limit: 5, where: {startingDate_gt: $eventStartingDate}) {
+    items {
+      name
+      city {
+        name
+        photo {
+          url
+        }
+        country {
+          flag
+          name
+        }
+      }
+      startingDate
+      endingDate
+      sessionsCollection {
+        items {
+          talk {
+            title
+            slug
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetUpcomingTalksQuery__
+ *
+ * To run a query within a React component, call `useGetUpcomingTalksQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUpcomingTalksQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUpcomingTalksQuery({
+ *   variables: {
+ *      eventStartingDate: // value for 'eventStartingDate'
+ *   },
+ * });
+ */
+export function useGetUpcomingTalksQuery(baseOptions: Apollo.QueryHookOptions<GetUpcomingTalksQuery, GetUpcomingTalksQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetUpcomingTalksQuery, GetUpcomingTalksQueryVariables>(GetUpcomingTalksDocument, options);
+      }
+export function useGetUpcomingTalksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUpcomingTalksQuery, GetUpcomingTalksQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetUpcomingTalksQuery, GetUpcomingTalksQueryVariables>(GetUpcomingTalksDocument, options);
+        }
+export type GetUpcomingTalksQueryHookResult = ReturnType<typeof useGetUpcomingTalksQuery>;
+export type GetUpcomingTalksLazyQueryHookResult = ReturnType<typeof useGetUpcomingTalksLazyQuery>;
+export type GetUpcomingTalksQueryResult = Apollo.QueryResult<GetUpcomingTalksQuery, GetUpcomingTalksQueryVariables>;

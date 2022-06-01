@@ -834,6 +834,7 @@ type Session implements Entry {
   audience(locale: String): Int
   contentfulMetadata: ContentfulMetadata!
   event(locale: String, preview: Boolean): Event
+  featured(locale: String): Boolean
   language(locale: String, preview: Boolean): Language
   linkedFrom(allowedLocales: [String]): SessionLinkingCollections
   online(locale: String): Boolean
@@ -866,6 +867,9 @@ input SessionFilter {
   contentfulMetadata: ContentfulMetadataFilter
   event: cfEventNestedFilter
   event_exists: Boolean
+  featured: Boolean
+  featured_exists: Boolean
+  featured_not: Boolean
   language: cfLanguageNestedFilter
   language_exists: Boolean
   online: Boolean
@@ -906,6 +910,8 @@ type SessionLinkingCollections {
 enum SessionOrder {
   audience_ASC
   audience_DESC
+  featured_ASC
+  featured_DESC
   online_ASC
   online_DESC
   recording_ASC
@@ -979,7 +985,6 @@ type Talk implements Entry {
   linkedFrom(allowedLocales: [String]): TalkLinkingCollections
   sessionsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): TalkSessionsCollection
   slug(locale: String): String
-  stackCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): TalkStackCollection
   sys: Sys!
   title(locale: String): String
 }
@@ -1027,7 +1032,6 @@ input TalkFilter {
   slug_not: String
   slug_not_contains: String
   slug_not_in: [String]
-  stackCollection_exists: Boolean
   sys: SysFilter
   title: String
   title_contains: String
@@ -1060,13 +1064,6 @@ enum TalkOrder {
 
 type TalkSessionsCollection {
   items: [Session]!
-  limit: Int!
-  skip: Int!
-  total: Int!
-}
-
-type TalkStackCollection {
-  items: [Technology]!
   limit: Int!
   skip: Int!
   total: Int!
@@ -1113,7 +1110,6 @@ input TechnologyFilter {
 
 type TechnologyLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  talkCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): TalkCollection
   titleCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): TitleCollection
 }
 
@@ -1387,7 +1383,6 @@ input cfTalkNestedFilter {
   slug_not: String
   slug_not_contains: String
   slug_not_in: [String]
-  stackCollection_exists: Boolean
   sys: SysFilter
   title: String
   title_contains: String

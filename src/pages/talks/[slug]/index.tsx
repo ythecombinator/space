@@ -57,7 +57,7 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
 
   return {
     props: { ...talkData },
-    revalidate: 86400,
+    // revalidate: 86400,
   };
 }
 

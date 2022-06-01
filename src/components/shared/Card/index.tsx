@@ -18,8 +18,6 @@ const Card: FunctionComponent<CardProps> = (props) => {
   const { children } = props;
   const gradient = useGradient();
 
-  console.log('gradient', gradient[0]);
-
   return (
     <article sx={styles.container(gradient[0], gradient[1])}>
       <div sx={styles.wrapper}>{children}</div>
