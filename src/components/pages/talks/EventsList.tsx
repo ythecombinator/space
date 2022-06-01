@@ -19,7 +19,16 @@ const EventsList = (props: EventsListProps) => {
 
   return (
     <section sx={{ mb: [5, 6, 7] }}>
-      <Grid gap={4} columns={[3, '1fr 1fr 1fr']}>
+      <Grid
+        gap={4}
+        columns={[3, '1fr 1fr 1fr']}
+        sx={{
+          '@media screen and (max-width: 768px)': {
+            gridTemplateColumns: 'repeat(1, 1fr)',
+            justifyItems: 'center',
+          },
+        }}
+      >
         {items.map((item) => {
           const {
             eventName,
