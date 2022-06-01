@@ -1,6 +1,4 @@
-import { UpcomingTalk as TUpcomingTalk } from 'pages/talks/utils';
 import { FC } from 'react';
-import { Themed } from 'theme-ui';
 
 import Card from 'components/shared/Card';
 import CardBody from 'components/shared/CardBody';
@@ -11,7 +9,14 @@ import CardSubtitle from 'components/shared/CardSubtitle';
  * TYPES
  */
 
-export type UpcomingTalkProps = TUpcomingTalk;
+export type UpcomingTalkProps = {
+  talkTitle: string;
+  talkSlug: string;
+  eventDate: string;
+  eventLocation: string;
+  eventLocationImage: string;
+  eventName: string;
+};
 
 /*~
  * COMPONENT

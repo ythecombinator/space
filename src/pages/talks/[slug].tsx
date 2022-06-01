@@ -4,6 +4,8 @@ import {
   GetAllTalkSlugsQuery,
   GetTalkDocument,
   GetTalkQuery,
+  City,
+  Session,
 } from 'graphql/schema';
 import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next';
 import { ParsedUrlQuery } from 'querystring';
@@ -15,8 +17,6 @@ import Layout from 'components/shared/Layout';
 
 import SessionListing from 'components/pages/talks/SessionListing';
 
-import { talkDocumentTransformer } from './utils';
-
 /*~
  * TYPES
  */
@@ -25,7 +25,46 @@ interface Params extends ParsedUrlQuery {
   slug: string;
 }
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>;
+export type Props = InferGetStaticPropsType<typeof getStaticProps>;
+
+/*~
+ * UTILS
+ */
+
+const locationTransformer = (city: City) => ({
+  name: `${city.country?.flag} ${city.name}, ${city.country?.name}`,
+  photo: city.photo?.url,
+});
+
+const sessionTransformer = (session: Session) => ({
+  id: session.sys.id,
+  eventName: session.event?.name,
+  eventStartingDate: session.event?.startingDate,
+  eventEndingDate: session.event?.endingDate,
+  location: locationTransformer(session.event?.city as City),
+  audience: formatAudience(session.audience),
+  language: formatLanguage(session.language),
+  online: session.online,
+  slides: session.slides,
+  recording: session.recording,
+});
+
+export const talkDocumentTransformer = (result: GetTalkQuery) => {
+  const talk = result.talkCollection?.items[0];
+  const sessions = talk?.sessionsCollection?.items as Session[];
+
+  return {
+    title: talk?.title,
+    abstract: talk?.abstract?.json,
+    sessions: sessions.map(sessionTransformer),
+  };
+};
+
+export const formatAudience = (data: Session['audience']) =>
+  data ? `~${data} people audience` : 'No audience data';
+
+export const formatLanguage = (data: Session['language']) =>
+  `Presented in ${data?.language}`;
 
 /*~
  * NEXTJS
