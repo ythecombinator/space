@@ -2,14 +2,14 @@ import { FC } from 'react';
 
 import UpcomingTalk, {
   UpcomingTalkProps,
-} from 'components/pages/talks/UpcomingTalk';
+} from 'components/pages/talks/UpcomingTalksItem';
 import CardList from 'components/shared/CardList';
 
 /*~
  * TYPES
  */
 
-export type UpcomingTalksProps = {
+export type UpcomingTalksListProps = {
   items: UpcomingTalkProps[];
 };
 
@@ -17,7 +17,7 @@ export type UpcomingTalksProps = {
  * COMPONENT
  */
 
-const UpcomingTalks: FC<UpcomingTalksProps> = (props) => {
+const UpcomingTalksList: FC<UpcomingTalksListProps> = (props) => {
   const { items } = props;
 
   return (
@@ -34,6 +34,7 @@ const UpcomingTalks: FC<UpcomingTalksProps> = (props) => {
 
         return (
           <UpcomingTalk
+            key={eventName}
             talkTitle={talkTitle}
             talkSlug={talkSlug}
             eventDate={eventDate}
@@ -47,4 +48,4 @@ const UpcomingTalks: FC<UpcomingTalksProps> = (props) => {
   );
 };
 
-export default UpcomingTalks;
+export default UpcomingTalksList;

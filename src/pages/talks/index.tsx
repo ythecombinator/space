@@ -9,9 +9,9 @@ import { Themed } from 'theme-ui';
 
 import ContentfulService from 'services/contentful';
 
-import Listing from 'components/Listing';
-import SessionsHero from 'components/pages/talks/SessionsHero';
-import UpcomingTalks from 'components/pages/talks/UpcomingTalks';
+import AllTalksList from 'components/pages/talks/AllTalksList';
+import FeaturedTalksList from 'components/pages/talks/FeaturedTalksList';
+import UpcomingTalksList from 'components/pages/talks/UpcomingTalksList';
 import Layout from 'components/shared/Layout';
 
 import {
@@ -61,7 +61,7 @@ export async function getStaticProps() {
  * PAGE
  */
 
-const heroSessions = [
+const featuredTalks = [
   { eventName: 'Opa', talkSlug: 'Opa', key: 'osdfuijsjdi' },
   { eventName: 'Opa', talkSlug: 'Opa', key: 'sdasd' },
   { eventName: 'Opa', talkSlug: 'Opa', key: 'sssdsd' },
@@ -85,15 +85,15 @@ const TalksPage: NextPage<Props> = (props) => {
 
       {/* Featured */}
       <Themed.h3>Featured Talks</Themed.h3>
-      <SessionsHero items={heroSessions} />
+      <FeaturedTalksList items={featuredTalks} />
 
       {/* Upcoming */}
       <Themed.h3>Upcoming Talks</Themed.h3>
-      <UpcomingTalks items={upcomingTalks} />
+      <UpcomingTalksList items={upcomingTalks} />
 
       {/* All */}
       <Themed.h3>All Talks</Themed.h3>
-      <Listing path="talks" items={allTalks} />
+      <AllTalksList items={allTalks} />
     </Layout>
   );
 };

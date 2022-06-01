@@ -1,20 +1,18 @@
 import Link from 'next/link';
-import * as React from 'react';
 import { FC } from 'react';
 import { Box, Flex, Themed } from 'theme-ui';
 
-import ListingItemTags from 'components/ListingItemTags';
+import { NavigationPath } from 'config/constants';
+
 import Tag from 'components/shared/Tag';
 
 /*~
  * TYPES
  */
 
-export type ListingItemProps = {
+export type AllTalksItemProps = {
   slug: string;
-  path: string;
   title: string;
-  subtitle?: string;
   headline: string;
   tags: {
     name: string;
@@ -26,8 +24,8 @@ export type ListingItemProps = {
  * COMPONENT
  */
 
-const ListingItem: FC<ListingItemProps> = (props) => {
-  const { title, subtitle, headline, tags, slug, path } = props;
+const AllTalksItem: FC<AllTalksItemProps> = (props) => {
+  const { title, headline, tags, slug } = props;
 
   return (
     <Box my={4}>
@@ -38,7 +36,7 @@ const ListingItem: FC<ListingItemProps> = (props) => {
           mb: 2,
         }}
       >
-        <Link href={`${path}/${slug}`}>{title}</Link>
+        <Link href={`${NavigationPath.talks}/${slug}`}>{title}</Link>
       </Themed.h5>
 
       {/* Tags */}
@@ -55,4 +53,4 @@ const ListingItem: FC<ListingItemProps> = (props) => {
   );
 };
 
-export default ListingItem;
+export default AllTalksItem;
