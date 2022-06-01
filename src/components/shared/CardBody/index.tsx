@@ -10,7 +10,7 @@ import * as styles from './CardBody.styles';
 export type CardBodyProps = {
   title: string;
   subtitle: string;
-  contents: JSX.Element;
+  contents?: JSX.Element;
 };
 
 /*~
