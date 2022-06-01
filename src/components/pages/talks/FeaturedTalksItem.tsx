@@ -17,8 +17,8 @@ export type FeaturedTalksItemProps = {
  * STYLES
  */
 
-const styles = {
-  item: buildStyleObject({
+const styles = buildStyleObject({
+  item: {
     filter: 'grayscale(95%)',
     width: '33.33%',
     height: '250px',
@@ -28,8 +28,8 @@ const styles = {
     backgroundSize: 'cover',
     position: 'relative',
     ':hover': { filter: 'none' },
-  }),
-  content: buildStyleObject({
+  },
+  content: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -42,16 +42,16 @@ const styles = {
     top: '0',
     left: '0',
     ':hover': { opacity: 1 },
-  }),
-  link: buildStyleObject({
+  },
+  link: {
     textTransform: 'uppercase',
     textDecoration: 'none',
     letterSpacing: '1px',
     padding: '10px 25px',
     backgroundColor: (theme) => theme.colors?.background,
     color: (theme) => theme.colors?.text,
-  }),
-};
+  },
+});
 
 /*~
  * COMPONENT

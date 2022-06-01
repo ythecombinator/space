@@ -18,8 +18,8 @@ export type FeaturedTalksListProps = {
  * STYLES
  */
 
-const styles = {
-  collection: buildStyleObject({
+const styles = buildStyleObject({
+  collection: {
     display: 'flex',
     msFlexWrap: 'wrap',
     flexWrap: 'wrap',
@@ -28,8 +28,8 @@ const styles = {
     left: '50%',
     marginTop: '1rem',
     marginLeft: '-50vw',
-  }),
-};
+  },
+});
 
 /*~
  * COMPONENT

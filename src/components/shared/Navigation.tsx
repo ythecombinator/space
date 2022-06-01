@@ -1,36 +1,44 @@
 import Link from 'next/link';
-import { FC } from 'react';
+import { PropsWithChildren } from 'react';
 
 import { NavigationPath } from 'config/constants';
 
 import { replaceSlashes } from 'utils/string';
 
+import { buildStyleObject } from 'styles/theme';
+
 /*~
  * TYPES
  */
 
-export type NavigationProps = {
-  items: {
+export type NavigationProps = PropsWithChildren<{
+  items: Array<{
     title: string;
     slug: string;
-  }[];
-};
+  }>;
+}>;
+
+/*~
+ * STYLES
+ */
+
+const styles = buildStyleObject({
+  nav: {
+    'a:not(:last-of-type)': { mr: 3 },
+    fontSize: [1, `18px`],
+    '.active': { color: `heading` },
+  },
+});
 
 /*~
  * COMPONENT
  */
 
-const Navigation: FC<NavigationProps> = (props) => {
+const Navigation = (props: NavigationProps) => {
   const { items } = props;
 
   return (
-    <nav
-      sx={{
-        'a:not(:last-of-type)': { mr: 3 },
-        fontSize: [1, `18px`],
-        '.active': { color: `heading` },
-      }}
-    >
+    <nav sx={styles.nav}>
       {items.map((item) => (
         <Link
           // TODO:

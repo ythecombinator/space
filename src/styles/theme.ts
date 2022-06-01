@@ -216,6 +216,8 @@ const theme = merge(tailwind, {
   },
 });
 
-export const buildStyleObject = (props: ThemeUIStyleObject) => props;
+export type StyleObjectConfig<T> = Record<keyof T, ThemeUIStyleObject>;
+
+export const buildStyleObject = <T>(styles: StyleObjectConfig<T>) => styles;
 
 export default theme;

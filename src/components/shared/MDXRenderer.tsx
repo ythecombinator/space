@@ -1,7 +1,8 @@
 import { Avatar, AvatarProps, Text, TextProps } from '@theme-ui/components';
-import Title, { TitleProps } from 'components/Title';
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote';
-import { FC, FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
+
+import Title, { TitleProps } from 'components/shared/Title';
 
 /*~
  * TYPES
@@ -11,7 +12,7 @@ type AvatarWrapperComponent = FunctionComponent<AvatarProps>;
 type TextWrapperComponent = FunctionComponent<TextProps>;
 type TitleWrapperComponent = FunctionComponent<TitleProps>;
 
-type MDXRendererProps = MDXRemoteProps;
+export type MDXRendererProps = PropsWithChildren<MDXRemoteProps>;
 
 /*~
  * UTILS
@@ -41,7 +42,7 @@ const defaultComponents = {
  * COMPONENT
  */
 
-const MDXRenderer: FC<MDXRendererProps> = (props) => {
+const MDXRenderer = (props: MDXRendererProps) => {
   return <MDXRemote {...props} components={defaultComponents} />;
 };
 

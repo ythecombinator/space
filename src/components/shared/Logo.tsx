@@ -1,19 +1,10 @@
-import { tailwind } from '@theme-ui/presets';
-import { FC } from 'react';
-
 import { useGradient } from 'styles/utils';
-
-/*~
- * UTILS
- */
-
-const { gray } = tailwind.colors;
 
 /*~
  * COMPONENT
  */
 
-const Logo: FC = () => {
+const Logo = () => {
   const gradient = useGradient();
 
   return (

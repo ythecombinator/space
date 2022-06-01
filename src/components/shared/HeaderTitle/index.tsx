@@ -8,7 +8,7 @@ import { replaceSlashes } from 'utils/string';
 
 import * as styles from './HeaderTitle.styles';
 
-const Logo = dynamic(() => import('components/Logo'), { ssr: false });
+const Logo = dynamic(() => import('components/shared/Logo'), { ssr: false });
 
 /*~
  * COMPONENT
