@@ -1,8 +1,7 @@
 import { Avatar, AvatarProps, Text, TextProps } from '@theme-ui/components';
+import Title, { TitleProps } from 'components/Title';
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote';
 import { FC, FunctionComponent } from 'react';
-
-import Title, { TitleProps } from 'components/Title';
 
 /*~
  * TYPES

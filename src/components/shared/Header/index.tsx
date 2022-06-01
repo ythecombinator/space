@@ -1,9 +1,9 @@
+import Navigation from 'components/Navigation';
 import { FC } from 'react';
 import { Flex, useColorMode } from 'theme-ui';
 
 import { navigationItems } from 'config/constants';
 
-import Navigation from 'components/Navigation';
 import ColorModeToggle from 'components/shared/ColorModeToggle';
 import HeaderExternalLinks from 'components/shared/HeaderExternalLinks';
 import HeaderTitle from 'components/shared/HeaderTitle';

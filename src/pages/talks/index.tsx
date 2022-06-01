@@ -9,10 +9,11 @@ import { Themed } from 'theme-ui';
 
 import ContentfulService from 'services/contentful';
 
+import Layout from 'components/shared/Layout';
+
 import AllTalksList from 'components/pages/talks/AllTalksList';
 import FeaturedTalksList from 'components/pages/talks/FeaturedTalksList';
 import UpcomingTalksList from 'components/pages/talks/UpcomingTalksList';
-import Layout from 'components/shared/Layout';
 
 import {
   allTalksDocumentTransformer,

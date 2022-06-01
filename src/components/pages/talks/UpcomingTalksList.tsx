@@ -1,9 +1,10 @@
 import { FC } from 'react';
 
+import CardList from 'components/shared/CardList';
+
 import UpcomingTalk, {
   UpcomingTalkProps,
 } from 'components/pages/talks/UpcomingTalksItem';
-import CardList from 'components/shared/CardList';
 
 /*~
  * TYPES

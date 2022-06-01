@@ -11,8 +11,9 @@ import { Themed } from 'theme-ui';
 
 import ContentfulService from 'services/contentful';
 
-import SessionListing from 'components/pages/talks/SessionListing';
 import Layout from 'components/shared/Layout';
+
+import SessionListing from 'components/pages/talks/SessionListing';
 
 import { talkDocumentTransformer } from './utils';
 

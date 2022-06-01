@@ -10,8 +10,9 @@
     "^services/(.*)$",
     "^schema/(.*)$",
     "^utils/(.*)$",
-    "^layouts/(.*)$",
-    "^components/(.*)$",
+    "^components/shared/(.*)$",
+    "^components/layouts/(.*)$",
+    "^components/pages/(.*)$",
     "^styles/(.*)$",
     "^[./]"
   ],

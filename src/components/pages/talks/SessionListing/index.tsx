@@ -1,8 +1,9 @@
 import { Session } from 'pages/talks/talks.utils';
 import { FC } from 'react';
 
-import SessionListingItem from 'components/pages/talks/SessionListingItem';
 import CardList from 'components/shared/CardList';
+
+import SessionListingItem from 'components/pages/talks/SessionListingItem';
 
 /*~
  * TYPES
