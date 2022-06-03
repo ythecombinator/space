@@ -1,4 +1,4 @@
-Talks
+## Talks
 
 - ✅ Inside Fiber: the in-depth overview you wanted a TLDR for
 - ✅ The best is yet to come: the Future of React
@@ -25,3 +25,12 @@ Talks
 - Jumping on an adventure with metadata: Micro Data and Open Graph
 - (Super) Hybrid Apps with Ionic
 - An Introduction to Git & Github
+
+## Versions
+
+1. Ghost CMS
+2. 07.2017 - Next.js V3 + Superstylin
+3. 07.2018 - Gatsby V1 + Superstylin
+4. 05.2019 - Gatsby V1 + rstacruz
+5. 03.2020 - Gatsby V2 + gatsby-theme-minimal-blog
+6. 06.2022 - Next.js V12 + gatsby-theme-minimal-blog

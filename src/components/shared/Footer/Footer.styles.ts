@@ -4,7 +4,7 @@ export const footer = buildStyleObject({
   boxSizing: `border-box`,
   display: `flex`,
   justifyContent: `space-between`,
-  mt: [6],
+  mt: 3,
   color: `secondary`,
   a: {
     variant: `links.secondary`,

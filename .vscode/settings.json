@@ -2,12 +2,12 @@
   "search.exclude": {
     "**/node_modules": true,
     "**/.netlify": true,
-    "**/.cache": true
+    "**/.next": true
   },
   "files.exclude": {
     "**/node_modules": true,
     "**/.netlify": true,
-    "**/.cache": true
+    "**/.next": true
   },
   "editor.formatOnSave": true
 }

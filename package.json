@@ -1,9 +1,10 @@
 {
   "private": true,
-  "name": "theme-ui-next-boilerplate",
-  "version": "1.0.0",
+  "name": "ythecombinator-space",
+  "description": "Matheus' personal page.",
+  "version": "6.0.0",
   "main": "index.js",
-  "author": "Frederick Morin (https://freddydumont.com)",
+  "author": "Matheus Albuquerque",
   "license": "MIT",
   "scripts": {
     "dev": "next",
