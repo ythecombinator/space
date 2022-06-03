@@ -1,17 +1,10 @@
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K];
-};
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]?: Maybe<T[SubKey]>;
-};
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]: Maybe<T[SubKey]>;
-};
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -57,46 +50,55 @@ export type Asset = {
   width?: Maybe<Scalars['Int']>;
 };
 
+
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetContentTypeArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetDescriptionArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetFileNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetHeightArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
+
 
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetSizeArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetTitleArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetUrlArgs = {
   locale?: InputMaybe<Scalars['String']>;
   transform?: InputMaybe<ImageTransformOptions>;
 };
+
 
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetWidthArgs = {
@@ -188,12 +190,14 @@ export type AssetLinkingCollections = {
   eventCollection?: Maybe<EventCollection>;
 };
 
+
 export type AssetLinkingCollectionsCityCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
 
 export type AssetLinkingCollectionsCompanyCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -202,12 +206,14 @@ export type AssetLinkingCollectionsCompanyCollectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
 };
 
+
 export type AssetLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
 
 export type AssetLinkingCollectionsEventCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -236,7 +242,7 @@ export enum AssetOrder {
   UrlAsc = 'url_ASC',
   UrlDesc = 'url_DESC',
   WidthAsc = 'width_ASC',
-  WidthDesc = 'width_DESC',
+  WidthDesc = 'width_DESC'
 }
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/city) */
@@ -251,26 +257,31 @@ export type City = Entry & {
   sys: Sys;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/city) */
 export type CityCountryArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/city) */
 export type CityLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/city) */
 export type CityLocationArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/city) */
 export type CityNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/city) */
 export type CityPhotoArgs = {
@@ -313,6 +324,7 @@ export type CityLinkingCollections = {
   eventCollection?: Maybe<EventCollection>;
 };
 
+
 export type CityLinkingCollectionsCompanyCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
@@ -320,12 +332,14 @@ export type CityLinkingCollectionsCompanyCollectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
 };
 
+
 export type CityLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
 
 export type CityLinkingCollectionsEventCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -344,7 +358,7 @@ export enum CityOrder {
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/company) */
@@ -358,22 +372,26 @@ export type Company = Entry & {
   sys: Sys;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/company) */
 export type CompanyCityArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/company) */
 export type CompanyLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/company) */
 export type CompanyLogoArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/company) */
 export type CompanyNameArgs = {
@@ -411,12 +429,14 @@ export type CompanyLinkingCollections = {
   titleCollection?: Maybe<TitleCollection>;
 };
 
+
 export type CompanyLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
 
 export type CompanyLinkingCollectionsTitleCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -435,7 +455,7 @@ export enum CompanyOrder {
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
 export type ContentfulMetadata = {
@@ -474,15 +494,18 @@ export type Country = Entry & {
   sys: Sys;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/country) */
 export type CountryFlagArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/country) */
 export type CountryLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/country) */
 export type CountryNameArgs = {
@@ -524,12 +547,14 @@ export type CountryLinkingCollections = {
   entryCollection?: Maybe<EntryCollection>;
 };
 
+
 export type CountryLinkingCollectionsCityCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
 
 export type CountryLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -550,7 +575,7 @@ export enum CountryOrder {
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
 export type Entry = {
@@ -581,7 +606,7 @@ export enum EntryOrder {
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/event) */
@@ -599,26 +624,31 @@ export type Event = Entry & {
   website?: Maybe<Scalars['String']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/event) */
 export type EventCityArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/event) */
 export type EventEndingDateArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/event) */
 export type EventLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/event) */
 export type EventNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/event) */
 export type EventPhotosCollectionArgs = {
@@ -628,6 +658,7 @@ export type EventPhotosCollectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/event) */
 export type EventSessionsCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -636,10 +667,12 @@ export type EventSessionsCollectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/event) */
 export type EventStartingDateArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/event) */
 export type EventWebsiteArgs = {
@@ -703,12 +736,14 @@ export type EventLinkingCollections = {
   sessionCollection?: Maybe<SessionCollection>;
 };
 
+
 export type EventLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
 
 export type EventLinkingCollectionsSessionCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -733,7 +768,7 @@ export enum EventOrder {
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
   WebsiteAsc = 'website_ASC',
-  WebsiteDesc = 'website_DESC',
+  WebsiteDesc = 'website_DESC'
 }
 
 export type EventSessionsCollection = {
@@ -763,7 +798,7 @@ export enum ImageFormat {
    */
   Png8 = 'PNG8',
   /** WebP image format. */
-  Webp = 'WEBP',
+  Webp = 'WEBP'
 }
 
 export enum ImageResizeFocus {
@@ -788,7 +823,7 @@ export enum ImageResizeFocus {
   /** Focus the resizing on the top left. */
   TopLeft = 'TOP_LEFT',
   /** Focus the resizing on the top right. */
-  TopRight = 'TOP_RIGHT',
+  TopRight = 'TOP_RIGHT'
 }
 
 export enum ImageResizeStrategy {
@@ -806,7 +841,7 @@ export enum ImageResizeStrategy {
   /** Resizes the image to the specified dimensions, changing the original aspect ratio if needed. */
   Scale = 'SCALE',
   /** Creates a thumbnail from the image. */
-  Thumb = 'THUMB',
+  Thumb = 'THUMB'
 }
 
 export type ImageTransformOptions = {
@@ -850,20 +885,24 @@ export type Language = Entry & {
   sys: Sys;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/language) */
 export type LanguageCodeArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/language) */
 export type LanguageFlagArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/language) */
 export type LanguageLanguageArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/language) */
 export type LanguageLinkedFromArgs = {
@@ -913,6 +952,7 @@ export type LanguageLinkingCollections = {
   sessionCollection?: Maybe<SessionCollection>;
 };
 
+
 export type LanguageLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
@@ -920,12 +960,14 @@ export type LanguageLinkingCollectionsEntryCollectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
 };
 
+
 export type LanguageLinkingCollectionsPostCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
 
 export type LanguageLinkingCollectionsSessionCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -948,7 +990,7 @@ export enum LanguageOrder {
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
 export type Location = {
@@ -972,15 +1014,18 @@ export type Post = Entry & {
   updated?: Maybe<Scalars['DateTime']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/post) */
 export type PostCanonicalArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/post) */
 export type PostContentArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/post) */
 export type PostLanguageArgs = {
@@ -988,25 +1033,30 @@ export type PostLanguageArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/post) */
 export type PostLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/post) */
 export type PostPostedArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/post) */
 export type PostSlugArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/post) */
 export type PostTitleArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/post) */
 export type PostUpdatedArgs = {
@@ -1102,6 +1152,7 @@ export type PostLinkingCollections = {
   entryCollection?: Maybe<EntryCollection>;
 };
 
+
 export type PostLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
@@ -1127,7 +1178,7 @@ export enum PostOrder {
   TitleAsc = 'title_ASC',
   TitleDesc = 'title_DESC',
   UpdatedAsc = 'updated_ASC',
-  UpdatedDesc = 'updated_DESC',
+  UpdatedDesc = 'updated_DESC'
 }
 
 export type Query = {
@@ -1157,11 +1208,13 @@ export type Query = {
   titleCollection?: Maybe<TitleCollection>;
 };
 
+
 export type QueryAssetArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
+
 
 export type QueryAssetCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1172,11 +1225,13 @@ export type QueryAssetCollectionArgs = {
   where?: InputMaybe<AssetFilter>;
 };
 
+
 export type QueryCityArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
+
 
 export type QueryCityCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1187,11 +1242,13 @@ export type QueryCityCollectionArgs = {
   where?: InputMaybe<CityFilter>;
 };
 
+
 export type QueryCompanyArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
+
 
 export type QueryCompanyCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1202,11 +1259,13 @@ export type QueryCompanyCollectionArgs = {
   where?: InputMaybe<CompanyFilter>;
 };
 
+
 export type QueryCountryArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
+
 
 export type QueryCountryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1217,6 +1276,7 @@ export type QueryCountryCollectionArgs = {
   where?: InputMaybe<CountryFilter>;
 };
 
+
 export type QueryEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
@@ -1226,11 +1286,13 @@ export type QueryEntryCollectionArgs = {
   where?: InputMaybe<EntryFilter>;
 };
 
+
 export type QueryEventArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
+
 
 export type QueryEventCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1241,11 +1303,13 @@ export type QueryEventCollectionArgs = {
   where?: InputMaybe<EventFilter>;
 };
 
+
 export type QueryLanguageArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
+
 
 export type QueryLanguageCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1256,11 +1320,13 @@ export type QueryLanguageCollectionArgs = {
   where?: InputMaybe<LanguageFilter>;
 };
 
+
 export type QueryPostArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
+
 
 export type QueryPostCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1271,11 +1337,13 @@ export type QueryPostCollectionArgs = {
   where?: InputMaybe<PostFilter>;
 };
 
+
 export type QuerySessionArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
+
 
 export type QuerySessionCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1286,11 +1354,13 @@ export type QuerySessionCollectionArgs = {
   where?: InputMaybe<SessionFilter>;
 };
 
+
 export type QueryTalkArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
+
 
 export type QueryTalkCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1301,11 +1371,13 @@ export type QueryTalkCollectionArgs = {
   where?: InputMaybe<TalkFilter>;
 };
 
+
 export type QueryTechnologyArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
+
 
 export type QueryTechnologyCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1316,11 +1388,13 @@ export type QueryTechnologyCollectionArgs = {
   where?: InputMaybe<TechnologyFilter>;
 };
 
+
 export type QueryTitleArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
+
 
 export type QueryTitleCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1348,10 +1422,12 @@ export type Session = Entry & {
   title?: Maybe<Scalars['String']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/session) */
 export type SessionAudienceArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/session) */
 export type SessionEventArgs = {
@@ -1359,10 +1435,12 @@ export type SessionEventArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/session) */
 export type SessionFeaturedArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/session) */
 export type SessionLanguageArgs = {
@@ -1370,31 +1448,37 @@ export type SessionLanguageArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/session) */
 export type SessionLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/session) */
 export type SessionOnlineArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/session) */
 export type SessionRecordingArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/session) */
 export type SessionSlidesArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/session) */
 export type SessionTalkArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/session) */
 export type SessionTitleArgs = {
@@ -1465,6 +1549,7 @@ export type SessionLinkingCollections = {
   talkCollection?: Maybe<TalkCollection>;
 };
 
+
 export type SessionLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
@@ -1472,12 +1557,14 @@ export type SessionLinkingCollectionsEntryCollectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
 };
 
+
 export type SessionLinkingCollectionsEventCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
 
 export type SessionLinkingCollectionsTalkCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1506,7 +1593,7 @@ export enum SessionOrder {
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
   TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC',
+  TitleDesc = 'title_DESC'
 }
 
 export type Sys = {
@@ -1568,15 +1655,18 @@ export type Talk = Entry & {
   title?: Maybe<Scalars['String']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/talk) */
 export type TalkAbstractArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/talk) */
 export type TalkLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/talk) */
 export type TalkSessionsCollectionArgs = {
@@ -1586,10 +1676,12 @@ export type TalkSessionsCollectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/talk) */
 export type TalkSlugArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/talk) */
 export type TalkTitleArgs = {
@@ -1660,12 +1752,14 @@ export type TalkLinkingCollections = {
   sessionCollection?: Maybe<SessionCollection>;
 };
 
+
 export type TalkLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
 
 export type TalkLinkingCollectionsSessionCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1686,7 +1780,7 @@ export enum TalkOrder {
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
   TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC',
+  TitleDesc = 'title_DESC'
 }
 
 export type TalkSessionsCollection = {
@@ -1707,15 +1801,18 @@ export type Technology = Entry & {
   title?: Maybe<Scalars['String']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/technology) */
 export type TechnologyLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/technology) */
 export type TechnologySlugArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/technology) */
 export type TechnologyTitleArgs = {
@@ -1757,12 +1854,14 @@ export type TechnologyLinkingCollections = {
   titleCollection?: Maybe<TitleCollection>;
 };
 
+
 export type TechnologyLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
 
 export type TechnologyLinkingCollectionsTitleCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1783,7 +1882,7 @@ export enum TechnologyOrder {
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
   TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC',
+  TitleDesc = 'title_DESC'
 }
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/title) */
@@ -1801,20 +1900,24 @@ export type Title = Entry & {
   title?: Maybe<Scalars['String']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/title) */
 export type TitleDescriptionArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/title) */
 export type TitleEndingDateArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/title) */
 export type TitleLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/title) */
 export type TitleOrganizationArgs = {
@@ -1822,10 +1925,12 @@ export type TitleOrganizationArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/title) */
 export type TitleRolesArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/title) */
 export type TitleStackCollectionArgs = {
@@ -1835,10 +1940,12 @@ export type TitleStackCollectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/title) */
 export type TitleStartingDateArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/title) */
 export type TitleTitleArgs = {
@@ -1925,6 +2032,7 @@ export type TitleLinkingCollections = {
   entryCollection?: Maybe<EntryCollection>;
 };
 
+
 export type TitleLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
@@ -1946,7 +2054,7 @@ export enum TitleOrder {
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
   TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC',
+  TitleDesc = 'title_DESC'
 }
 
 export type TitleStackCollection = {
@@ -2108,134 +2216,45 @@ export type CfTalkNestedFilter = {
   title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-export type GetAllTalkSlugsQueryVariables = Exact<{ [key: string]: never }>;
+export type GetAllTalkSlugsQueryVariables = Exact<{ [key: string]: never; }>;
 
-export type GetAllTalkSlugsQuery = {
-  __typename?: 'Query';
-  talkCollection?: {
-    __typename?: 'TalkCollection';
-    items: Array<{ __typename?: 'Talk'; slug?: string | null } | null>;
-  } | null;
-};
 
-export type GetAllTalksQueryVariables = Exact<{ [key: string]: never }>;
+export type GetAllTalkSlugsQuery = { __typename?: 'Query', talkCollection?: { __typename?: 'TalkCollection', items: Array<{ __typename?: 'Talk', slug?: string | null } | null> } | null };
 
-export type GetAllTalksQuery = {
-  __typename?: 'Query';
-  talkCollection?: {
-    __typename?: 'TalkCollection';
-    items: Array<{
-      __typename?: 'Talk';
-      title?: string | null;
-      slug?: string | null;
-      contentfulMetadata: {
-        __typename?: 'ContentfulMetadata';
-        tags: Array<{
-          __typename?: 'ContentfulTag';
-          id?: string | null;
-          name?: string | null;
-        } | null>;
-      };
-    } | null>;
-  } | null;
-};
+export type GetAllTalksQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAllTalksQuery = { __typename?: 'Query', talkCollection?: { __typename?: 'TalkCollection', items: Array<{ __typename?: 'Talk', title?: string | null, slug?: string | null, contentfulMetadata: { __typename?: 'ContentfulMetadata', tags: Array<{ __typename?: 'ContentfulTag', id?: string | null, name?: string | null } | null> } } | null> } | null };
 
 export type GetTalkQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
-export type GetTalkQuery = {
-  __typename?: 'Query';
-  talkCollection?: {
-    __typename?: 'TalkCollection';
-    items: Array<{
-      __typename?: 'Talk';
-      title?: string | null;
-      abstract?: { __typename?: 'TalkAbstract'; json: any } | null;
-      sessionsCollection?: {
-        __typename?: 'TalkSessionsCollection';
-        items: Array<{
-          __typename?: 'Session';
-          online?: boolean | null;
-          slides?: string | null;
-          recording?: string | null;
-          audience?: number | null;
-          sys: { __typename?: 'Sys'; id: string };
-          language?: {
-            __typename?: 'Language';
-            flag?: string | null;
-            language?: string | null;
-          } | null;
-          event?: {
-            __typename?: 'Event';
-            name?: string | null;
-            website?: string | null;
-            startingDate?: any | null;
-            endingDate?: any | null;
-            city?: {
-              __typename?: 'City';
-              name?: string | null;
-              photo?: { __typename?: 'Asset'; url?: string | null } | null;
-              country?: {
-                __typename?: 'Country';
-                name?: string | null;
-                flag?: string | null;
-              } | null;
-            } | null;
-          } | null;
-        } | null>;
-      } | null;
-    } | null>;
-  } | null;
-};
+
+export type GetTalkQuery = { __typename?: 'Query', talkCollection?: { __typename?: 'TalkCollection', items: Array<{ __typename?: 'Talk', title?: string | null, abstract?: { __typename?: 'TalkAbstract', json: any } | null, sessionsCollection?: { __typename?: 'TalkSessionsCollection', items: Array<{ __typename?: 'Session', online?: boolean | null, slides?: string | null, recording?: string | null, audience?: number | null, sys: { __typename?: 'Sys', id: string }, language?: { __typename?: 'Language', flag?: string | null, language?: string | null } | null, event?: { __typename?: 'Event', name?: string | null, website?: string | null, startingDate?: any | null, endingDate?: any | null, city?: { __typename?: 'City', name?: string | null, photo?: { __typename?: 'Asset', url?: string | null } | null, country?: { __typename?: 'Country', name?: string | null, flag?: string | null } | null } | null } | null } | null> } | null } | null> } | null };
+
+export type GetTalksStatsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetTalksStatsQuery = { __typename?: 'Query', talkCollection?: { __typename?: 'TalkCollection', total: number } | null, eventCollection?: { __typename?: 'EventCollection', total: number } | null, cityCollection?: { __typename?: 'CityCollection', total: number } | null, countryCollection?: { __typename?: 'CountryCollection', total: number } | null };
 
 export type GetUpcomingTalksQueryVariables = Exact<{
   eventStartingDate: Scalars['DateTime'];
 }>;
 
-export type GetUpcomingTalksQuery = {
-  __typename?: 'Query';
-  eventCollection?: {
-    __typename?: 'EventCollection';
-    items: Array<{
-      __typename?: 'Event';
-      name?: string | null;
-      startingDate?: any | null;
-      endingDate?: any | null;
-      city?: {
-        __typename?: 'City';
-        name?: string | null;
-        photo?: { __typename?: 'Asset'; url?: string | null } | null;
-        country?: {
-          __typename?: 'Country';
-          flag?: string | null;
-          name?: string | null;
-        } | null;
-      } | null;
-      sessionsCollection?: {
-        __typename?: 'EventSessionsCollection';
-        items: Array<{
-          __typename?: 'Session';
-          talk?: {
-            __typename?: 'Talk';
-            title?: string | null;
-            slug?: string | null;
-          } | null;
-        } | null>;
-      } | null;
-    } | null>;
-  } | null;
-};
+
+export type GetUpcomingTalksQuery = { __typename?: 'Query', eventCollection?: { __typename?: 'EventCollection', items: Array<{ __typename?: 'Event', name?: string | null, startingDate?: any | null, endingDate?: any | null, city?: { __typename?: 'City', name?: string | null, photo?: { __typename?: 'Asset', url?: string | null } | null, country?: { __typename?: 'Country', flag?: string | null, name?: string | null } | null } | null, sessionsCollection?: { __typename?: 'EventSessionsCollection', items: Array<{ __typename?: 'Session', talk?: { __typename?: 'Talk', title?: string | null, slug?: string | null } | null } | null> } | null } | null> } | null };
+
 
 export const GetAllTalkSlugsDocument = gql`
-  query GetAllTalkSlugs {
-    talkCollection {
-      items {
-        slug
-      }
+    query GetAllTalkSlugs {
+  talkCollection {
+    items {
+      slug
     }
   }
-`;
+}
+    `;
 
 /**
  * __useGetAllTalkSlugsQuery__
@@ -2252,56 +2271,33 @@ export const GetAllTalkSlugsDocument = gql`
  *   },
  * });
  */
-export function useGetAllTalkSlugsQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    GetAllTalkSlugsQuery,
-    GetAllTalkSlugsQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetAllTalkSlugsQuery, GetAllTalkSlugsQueryVariables>(
-    GetAllTalkSlugsDocument,
-    options
-  );
-}
-export function useGetAllTalkSlugsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetAllTalkSlugsQuery,
-    GetAllTalkSlugsQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    GetAllTalkSlugsQuery,
-    GetAllTalkSlugsQueryVariables
-  >(GetAllTalkSlugsDocument, options);
-}
-export type GetAllTalkSlugsQueryHookResult = ReturnType<
-  typeof useGetAllTalkSlugsQuery
->;
-export type GetAllTalkSlugsLazyQueryHookResult = ReturnType<
-  typeof useGetAllTalkSlugsLazyQuery
->;
-export type GetAllTalkSlugsQueryResult = Apollo.QueryResult<
-  GetAllTalkSlugsQuery,
-  GetAllTalkSlugsQueryVariables
->;
+export function useGetAllTalkSlugsQuery(baseOptions?: Apollo.QueryHookOptions<GetAllTalkSlugsQuery, GetAllTalkSlugsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAllTalkSlugsQuery, GetAllTalkSlugsQueryVariables>(GetAllTalkSlugsDocument, options);
+      }
+export function useGetAllTalkSlugsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllTalkSlugsQuery, GetAllTalkSlugsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAllTalkSlugsQuery, GetAllTalkSlugsQueryVariables>(GetAllTalkSlugsDocument, options);
+        }
+export type GetAllTalkSlugsQueryHookResult = ReturnType<typeof useGetAllTalkSlugsQuery>;
+export type GetAllTalkSlugsLazyQueryHookResult = ReturnType<typeof useGetAllTalkSlugsLazyQuery>;
+export type GetAllTalkSlugsQueryResult = Apollo.QueryResult<GetAllTalkSlugsQuery, GetAllTalkSlugsQueryVariables>;
 export const GetAllTalksDocument = gql`
-  query GetAllTalks {
-    talkCollection {
-      items {
-        title
-        slug
-        contentfulMetadata {
-          tags {
-            id
-            name
-          }
+    query GetAllTalks {
+  talkCollection {
+    items {
+      title
+      slug
+      contentfulMetadata {
+        tags {
+          id
+          name
         }
       }
     }
   }
-`;
+}
+    `;
 
 /**
  * __useGetAllTalksQuery__
@@ -2318,74 +2314,52 @@ export const GetAllTalksDocument = gql`
  *   },
  * });
  */
-export function useGetAllTalksQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    GetAllTalksQuery,
-    GetAllTalksQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetAllTalksQuery, GetAllTalksQueryVariables>(
-    GetAllTalksDocument,
-    options
-  );
-}
-export function useGetAllTalksLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetAllTalksQuery,
-    GetAllTalksQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetAllTalksQuery, GetAllTalksQueryVariables>(
-    GetAllTalksDocument,
-    options
-  );
-}
-export type GetAllTalksQueryHookResult = ReturnType<typeof useGetAllTalksQuery>;
-export type GetAllTalksLazyQueryHookResult = ReturnType<
-  typeof useGetAllTalksLazyQuery
->;
-export type GetAllTalksQueryResult = Apollo.QueryResult<
-  GetAllTalksQuery,
-  GetAllTalksQueryVariables
->;
-export const GetTalkDocument = gql`
-  query GetTalk($slug: String!) {
-    talkCollection(where: { slug: $slug }, limit: 1) {
-      items {
-        title
-        abstract {
-          json
+export function useGetAllTalksQuery(baseOptions?: Apollo.QueryHookOptions<GetAllTalksQuery, GetAllTalksQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAllTalksQuery, GetAllTalksQueryVariables>(GetAllTalksDocument, options);
+      }
+export function useGetAllTalksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllTalksQuery, GetAllTalksQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAllTalksQuery, GetAllTalksQueryVariables>(GetAllTalksDocument, options);
         }
-        sessionsCollection {
-          items {
-            sys {
-              id
-            }
-            language {
-              flag
-              language
-            }
-            online
-            slides
-            recording
-            online
-            audience
-            event {
+export type GetAllTalksQueryHookResult = ReturnType<typeof useGetAllTalksQuery>;
+export type GetAllTalksLazyQueryHookResult = ReturnType<typeof useGetAllTalksLazyQuery>;
+export type GetAllTalksQueryResult = Apollo.QueryResult<GetAllTalksQuery, GetAllTalksQueryVariables>;
+export const GetTalkDocument = gql`
+    query GetTalk($slug: String!) {
+  talkCollection(where: {slug: $slug}, limit: 1) {
+    items {
+      title
+      abstract {
+        json
+      }
+      sessionsCollection {
+        items {
+          sys {
+            id
+          }
+          language {
+            flag
+            language
+          }
+          online
+          slides
+          recording
+          online
+          audience
+          event {
+            name
+            website
+            startingDate
+            endingDate
+            city {
               name
-              website
-              startingDate
-              endingDate
-              city {
+              photo {
+                url
+              }
+              country {
                 name
-                photo {
-                  url
-                }
-                country {
-                  name
-                  flag
-                }
+                flag
               }
             }
           }
@@ -2393,7 +2367,8 @@ export const GetTalkDocument = gql`
       }
     }
   }
-`;
+}
+    `;
 
 /**
  * __useGetTalkQuery__
@@ -2411,59 +2386,89 @@ export const GetTalkDocument = gql`
  *   },
  * });
  */
-export function useGetTalkQuery(
-  baseOptions: Apollo.QueryHookOptions<GetTalkQuery, GetTalkQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetTalkQuery, GetTalkQueryVariables>(
-    GetTalkDocument,
-    options
-  );
-}
-export function useGetTalkLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetTalkQuery, GetTalkQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetTalkQuery, GetTalkQueryVariables>(
-    GetTalkDocument,
-    options
-  );
-}
+export function useGetTalkQuery(baseOptions: Apollo.QueryHookOptions<GetTalkQuery, GetTalkQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetTalkQuery, GetTalkQueryVariables>(GetTalkDocument, options);
+      }
+export function useGetTalkLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTalkQuery, GetTalkQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetTalkQuery, GetTalkQueryVariables>(GetTalkDocument, options);
+        }
 export type GetTalkQueryHookResult = ReturnType<typeof useGetTalkQuery>;
 export type GetTalkLazyQueryHookResult = ReturnType<typeof useGetTalkLazyQuery>;
-export type GetTalkQueryResult = Apollo.QueryResult<
-  GetTalkQuery,
-  GetTalkQueryVariables
->;
-export const GetUpcomingTalksDocument = gql`
-  query GetUpcomingTalks($eventStartingDate: DateTime!) {
-    eventCollection(limit: 5, where: { startingDate_gt: $eventStartingDate }) {
-      items {
-        name
-        city {
-          name
-          photo {
-            url
-          }
-          country {
-            flag
-            name
-          }
+export type GetTalkQueryResult = Apollo.QueryResult<GetTalkQuery, GetTalkQueryVariables>;
+export const GetTalksStatsDocument = gql`
+    query GetTalksStats {
+  talkCollection {
+    total
+  }
+  eventCollection {
+    total
+  }
+  cityCollection {
+    total
+  }
+  countryCollection {
+    total
+  }
+}
+    `;
+
+/**
+ * __useGetTalksStatsQuery__
+ *
+ * To run a query within a React component, call `useGetTalksStatsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTalksStatsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetTalksStatsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetTalksStatsQuery(baseOptions?: Apollo.QueryHookOptions<GetTalksStatsQuery, GetTalksStatsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetTalksStatsQuery, GetTalksStatsQueryVariables>(GetTalksStatsDocument, options);
+      }
+export function useGetTalksStatsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTalksStatsQuery, GetTalksStatsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetTalksStatsQuery, GetTalksStatsQueryVariables>(GetTalksStatsDocument, options);
         }
-        startingDate
-        endingDate
-        sessionsCollection {
-          items {
-            talk {
-              title
-              slug
-            }
+export type GetTalksStatsQueryHookResult = ReturnType<typeof useGetTalksStatsQuery>;
+export type GetTalksStatsLazyQueryHookResult = ReturnType<typeof useGetTalksStatsLazyQuery>;
+export type GetTalksStatsQueryResult = Apollo.QueryResult<GetTalksStatsQuery, GetTalksStatsQueryVariables>;
+export const GetUpcomingTalksDocument = gql`
+    query GetUpcomingTalks($eventStartingDate: DateTime!) {
+  eventCollection(limit: 5, where: {startingDate_gt: $eventStartingDate}) {
+    items {
+      name
+      city {
+        name
+        photo {
+          url
+        }
+        country {
+          flag
+          name
+        }
+      }
+      startingDate
+      endingDate
+      sessionsCollection {
+        items {
+          talk {
+            title
+            slug
           }
         }
       }
     }
   }
-`;
+}
+    `;
 
 /**
  * __useGetUpcomingTalksQuery__
@@ -2481,37 +2486,14 @@ export const GetUpcomingTalksDocument = gql`
  *   },
  * });
  */
-export function useGetUpcomingTalksQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    GetUpcomingTalksQuery,
-    GetUpcomingTalksQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetUpcomingTalksQuery, GetUpcomingTalksQueryVariables>(
-    GetUpcomingTalksDocument,
-    options
-  );
-}
-export function useGetUpcomingTalksLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetUpcomingTalksQuery,
-    GetUpcomingTalksQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    GetUpcomingTalksQuery,
-    GetUpcomingTalksQueryVariables
-  >(GetUpcomingTalksDocument, options);
-}
-export type GetUpcomingTalksQueryHookResult = ReturnType<
-  typeof useGetUpcomingTalksQuery
->;
-export type GetUpcomingTalksLazyQueryHookResult = ReturnType<
-  typeof useGetUpcomingTalksLazyQuery
->;
-export type GetUpcomingTalksQueryResult = Apollo.QueryResult<
-  GetUpcomingTalksQuery,
-  GetUpcomingTalksQueryVariables
->;
+export function useGetUpcomingTalksQuery(baseOptions: Apollo.QueryHookOptions<GetUpcomingTalksQuery, GetUpcomingTalksQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetUpcomingTalksQuery, GetUpcomingTalksQueryVariables>(GetUpcomingTalksDocument, options);
+      }
+export function useGetUpcomingTalksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUpcomingTalksQuery, GetUpcomingTalksQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetUpcomingTalksQuery, GetUpcomingTalksQueryVariables>(GetUpcomingTalksDocument, options);
+        }
+export type GetUpcomingTalksQueryHookResult = ReturnType<typeof useGetUpcomingTalksQuery>;
+export type GetUpcomingTalksLazyQueryHookResult = ReturnType<typeof useGetUpcomingTalksLazyQuery>;
+export type GetUpcomingTalksQueryResult = Apollo.QueryResult<GetUpcomingTalksQuery, GetUpcomingTalksQueryVariables>;

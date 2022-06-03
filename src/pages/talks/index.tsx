@@ -4,6 +4,8 @@ import {
   GetUpcomingTalksDocument,
   GetUpcomingTalksQuery,
   ContentfulTag,
+  GetTalksStatsQuery,
+  GetTalksStatsDocument,
 } from 'graphql/schema';
 import { InferGetStaticPropsType, NextPage } from 'next';
 import { Themed } from 'theme-ui';
@@ -32,7 +34,7 @@ const tagTransformer = (tag: DeepNonNullable<ContentfulTag>) => {
   return { id, name };
 };
 
-const allTalksDocumentTransformer = (result: GetAllTalksQuery) => {
+const allTalksDocTransformer = (result: GetAllTalksQuery) => {
   const items = (result as DeepNonNullable<GetAllTalksQuery>).talkCollection
     .items;
 
@@ -48,7 +50,7 @@ const allTalksDocumentTransformer = (result: GetAllTalksQuery) => {
   });
 };
 
-const upcomingTalksDocumentTransformer = (result: GetUpcomingTalksQuery) => {
+const upcomingTalksDocTransformer = (result: GetUpcomingTalksQuery) => {
   const items = (result as DeepNonNullable<GetUpcomingTalksQuery>)
     .eventCollection.items;
 
@@ -67,34 +69,53 @@ const upcomingTalksDocumentTransformer = (result: GetUpcomingTalksQuery) => {
   });
 };
 
+const talksStatsDocTransformer = (result: GetTalksStatsQuery) => {
+  const { countryCollection, cityCollection, eventCollection, talkCollection } =
+    result as DeepNonNullable<GetTalksStatsQuery>;
+
+  return {
+    talksTotal: talkCollection.total,
+    eventsTotal: eventCollection.total,
+    citiesTotal: cityCollection.total,
+    countriesTotal: countryCollection.total,
+  };
+};
+
+const getTalksStats = ContentfulService.query<GetTalksStatsQuery>({
+  query: GetTalksStatsDocument,
+});
+
+const getUpcomingTalks = ContentfulService.query<GetUpcomingTalksQuery>({
+  query: GetUpcomingTalksDocument,
+  variables: {
+    eventStartingDate: new Date().toISOString(),
+  },
+});
+
+const getAllTalks = ContentfulService.query<GetAllTalksQuery>({
+  query: GetAllTalksDocument,
+});
+
 /*~
  * NEXTJS
  */
 
 export async function getStaticProps() {
-  // "Upcoming Talks" section
-  const upcomingTalksDocument =
-    await ContentfulService.query<GetUpcomingTalksQuery>({
-      query: GetUpcomingTalksDocument,
-      variables: {
-        eventStartingDate: new Date().toISOString(),
-      },
-    });
+  // Numbers
 
-  const upcomingTalks = upcomingTalksDocumentTransformer(
-    upcomingTalksDocument.data
-  );
+  const [talksStatsDoc, upcomingTalksDoc, allTalksDoc] = await Promise.all([
+    getTalksStats,
+    getUpcomingTalks,
+    getAllTalks,
+  ]);
 
-  // "All Talks" section
-  const allTalksDocument = await ContentfulService.query<GetAllTalksQuery>({
-    query: GetAllTalksDocument,
-  });
-
-  const allTalks = allTalksDocumentTransformer(allTalksDocument.data);
+  const talksStats = talksStatsDocTransformer(talksStatsDoc.data);
+  const upcomingTalks = upcomingTalksDocTransformer(upcomingTalksDoc.data);
+  const allTalks = allTalksDocTransformer(allTalksDoc.data);
 
   // Final props
   return {
-    props: { upcomingTalks, allTalks },
+    props: { talksStats, upcomingTalks, allTalks },
     // revalidate: 86400,
   };
 }
@@ -113,16 +134,23 @@ const featuredTalks = [
 ];
 
 const TalksPage: NextPage<Props> = (props) => {
-  const { upcomingTalks, allTalks } = props;
+  const { talksStats, upcomingTalks, allTalks } = props;
+  const { citiesTotal, countriesTotal, talksTotal, eventsTotal } = talksStats;
 
   return (
     <Layout>
       <Themed.h2>Talks</Themed.h2>
+
       <Themed.p>
         I've been speaking and learning in public since 2015, mostly about web
         performance, JavaScript/TypeScript, React, and their ecosystem. Other
-        topics also include programming languages and iOS engineering. In total,
-        I've given x sessions in y events in z cities.
+        topics also include programming languages design and iOS engineering.
+      </Themed.p>
+
+      <Themed.p>
+        In total, I've presented <b>{talksTotal}</b> different sessions in{' '}
+        <b>{eventsTotal}</b> events across <b>{citiesTotal}</b> cities in{' '}
+        <b>{countriesTotal}</b> different countries.
       </Themed.p>
 
       {/* Featured */}
