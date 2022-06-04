@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Box, Flex, useColorMode } from 'theme-ui';
 
 import * as styles from './Tag.styles';
-import { TagColor, TagIcon } from './Tag.utils';
+import { getTagColor, getTagIcon } from './Tag.utils';
 
 /*~
  * TYPES
@@ -22,8 +22,8 @@ const Tag: FC<TagProps> = (props) => {
 
   const [colorMode] = useColorMode();
 
-  const icon = TagIcon[id];
-  const color = TagColor[id];
+  const icon = getTagIcon(id);
+  const color = getTagColor(id);
 
   return (
     <Box sx={styles.boxContainer(color, colorMode)}>
