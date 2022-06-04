@@ -1,3 +1,8 @@
+import {
+  documentToReactComponents,
+  Options,
+} from '@contentful/rich-text-react-renderer';
+import { Document as ContentfulDocument } from '@contentful/rich-text-types';
 import Link from 'next/link';
 import { FC } from 'react';
 import { Box, Flex, Themed } from 'theme-ui';
@@ -13,7 +18,7 @@ import Tag from 'components/shared/Tag';
 export type AllTalksItemProps = {
   slug: string;
   title: string;
-  headline: string;
+  headline: ContentfulDocument;
   tags: {
     name: string;
     id: string;
@@ -40,7 +45,6 @@ const AllTalksItem: FC<AllTalksItemProps> = (props) => {
       </Themed.h5>
 
       {/* Tags */}
-
       <Flex>
         {tags.map((tag) => (
           <Tag key={tag.id} name={tag.name} id={tag.id} />
@@ -48,7 +52,7 @@ const AllTalksItem: FC<AllTalksItemProps> = (props) => {
       </Flex>
 
       {/* Headline */}
-      <Themed.p>{headline}</Themed.p>
+      <Themed.p>{documentToReactComponents(headline)}</Themed.p>
     </Box>
   );
 };

@@ -1,3 +1,4 @@
+import { Document as ContentfulDocument } from '@contentful/rich-text-types';
 import {
   GetAllTalksDocument,
   GetAllTalksQuery,
@@ -39,11 +40,12 @@ const allTalksDocTransformer = (result: GetAllTalksQuery) => {
     .items;
 
   return items.map((item) => {
-    const { title, slug, contentfulMetadata } = item;
+    const { title, slug, abstract, contentfulMetadata } = item;
+    const headline = abstract.json.content[0] as ContentfulDocument;
+
     return {
       title,
-      headline:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      headline,
       slug,
       tags: contentfulMetadata.tags.map(tagTransformer),
     };

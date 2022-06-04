@@ -2224,7 +2224,7 @@ export type GetAllTalkSlugsQuery = { __typename?: 'Query', talkCollection?: { __
 export type GetAllTalksQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAllTalksQuery = { __typename?: 'Query', talkCollection?: { __typename?: 'TalkCollection', items: Array<{ __typename?: 'Talk', title?: string | null, slug?: string | null, contentfulMetadata: { __typename?: 'ContentfulMetadata', tags: Array<{ __typename?: 'ContentfulTag', id?: string | null, name?: string | null } | null> } } | null> } | null };
+export type GetAllTalksQuery = { __typename?: 'Query', talkCollection?: { __typename?: 'TalkCollection', items: Array<{ __typename?: 'Talk', title?: string | null, slug?: string | null, abstract?: { __typename?: 'TalkAbstract', json: any } | null, contentfulMetadata: { __typename?: 'ContentfulMetadata', tags: Array<{ __typename?: 'ContentfulTag', id?: string | null, name?: string | null } | null> } } | null> } | null };
 
 export type GetTalkQueryVariables = Exact<{
   slug: Scalars['String'];
@@ -2287,6 +2287,9 @@ export const GetAllTalksDocument = gql`
   talkCollection {
     items {
       title
+      abstract {
+        json
+      }
       slug
       contentfulMetadata {
         tags {

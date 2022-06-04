@@ -2,6 +2,9 @@ query GetAllTalks {
   talkCollection {
     items {
       title
+      abstract {
+        json
+      }
       slug
       contentfulMetadata {
         tags {
