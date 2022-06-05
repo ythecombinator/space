@@ -47,8 +47,8 @@ const allTalksDocTransformer = (result: GetAllTalksQuery) => {
     .items;
 
   return items.map((item) => {
-    const { title, slug, abstract, contentfulMetadata } = item;
-    const headline = abstract.json.content[0] as ContentfulDocument;
+    const { title, slug, shortDescription, contentfulMetadata } = item;
+    const headline = shortDescription.json.content[0] as ContentfulDocument;
 
     return {
       title,

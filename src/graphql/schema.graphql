@@ -982,8 +982,10 @@ input SysFilter {
 type Talk implements Entry {
   abstract(locale: String): TalkAbstract
   contentfulMetadata: ContentfulMetadata!
+  lastRelevant(locale: String): DateTime
   linkedFrom(allowedLocales: [String]): TalkLinkingCollections
   sessionsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): TalkSessionsCollection
+  shortDescription(locale: String): TalkShortDescription
   slug(locale: String): String
   sys: Sys!
   title(locale: String): String
@@ -1024,7 +1026,19 @@ input TalkFilter {
   abstract_exists: Boolean
   abstract_not_contains: String
   contentfulMetadata: ContentfulMetadataFilter
+  lastRelevant: DateTime
+  lastRelevant_exists: Boolean
+  lastRelevant_gt: DateTime
+  lastRelevant_gte: DateTime
+  lastRelevant_in: [DateTime]
+  lastRelevant_lt: DateTime
+  lastRelevant_lte: DateTime
+  lastRelevant_not: DateTime
+  lastRelevant_not_in: [DateTime]
   sessionsCollection_exists: Boolean
+  shortDescription_contains: String
+  shortDescription_exists: Boolean
+  shortDescription_not_contains: String
   slug: String
   slug_contains: String
   slug_exists: Boolean
@@ -1048,6 +1062,8 @@ type TalkLinkingCollections {
 }
 
 enum TalkOrder {
+  lastRelevant_ASC
+  lastRelevant_DESC
   slug_ASC
   slug_DESC
   sys_firstPublishedAt_ASC
@@ -1067,6 +1083,27 @@ type TalkSessionsCollection {
   limit: Int!
   skip: Int!
   total: Int!
+}
+
+type TalkShortDescription {
+  json: JSON!
+  links: TalkShortDescriptionLinks!
+}
+
+type TalkShortDescriptionAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type TalkShortDescriptionEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type TalkShortDescriptionLinks {
+  assets: TalkShortDescriptionAssets!
+  entries: TalkShortDescriptionEntries!
 }
 
 """
@@ -1374,7 +1411,19 @@ input cfTalkNestedFilter {
   abstract_exists: Boolean
   abstract_not_contains: String
   contentfulMetadata: ContentfulMetadataFilter
+  lastRelevant: DateTime
+  lastRelevant_exists: Boolean
+  lastRelevant_gt: DateTime
+  lastRelevant_gte: DateTime
+  lastRelevant_in: [DateTime]
+  lastRelevant_lt: DateTime
+  lastRelevant_lte: DateTime
+  lastRelevant_not: DateTime
+  lastRelevant_not_in: [DateTime]
   sessionsCollection_exists: Boolean
+  shortDescription_contains: String
+  shortDescription_exists: Boolean
+  shortDescription_not_contains: String
   slug: String
   slug_contains: String
   slug_exists: Boolean

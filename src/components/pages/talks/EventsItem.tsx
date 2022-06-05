@@ -42,7 +42,7 @@ const EventsItem = (props: EventsItemProps) => {
   } = props;
 
   return (
-    <Card width={275}>
+    <Card mode="fit">
       <CardBody>
         <CardSubtitle>{eventLocation}</CardSubtitle>
         <Themed.h6>{eventName}</Themed.h6>

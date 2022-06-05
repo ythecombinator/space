@@ -8,21 +8,25 @@ import { useGradient } from 'styles/utils';
  */
 
 export type CardProps = PropsWithChildren<{
-  width?: number;
+  mode: 'fixed' | 'fit';
 }>;
 
 /*~
  * STYLES
  */
 
-const buildStyles = (firstColor: string, secondColor: string, width: number) =>
+const buildStyles = (
+  firstColor: string,
+  secondColor: string,
+  mode: CardProps['mode']
+) =>
   buildStyleObject({
     container: {
       padding: ['1rem', '3px'],
       margin: '10px',
       position: 'relative',
-      minWidth: width,
-      maxWidth: width,
+      ...(mode === 'fixed' ? { minWidth: 400, maxWidth5: 400 } : {}),
+      ...(mode === 'fit' ? { width: '100%' } : {}),
       display: 'block',
       transition: '0.25s',
       height: '100%',
@@ -47,10 +51,10 @@ const buildStyles = (firstColor: string, secondColor: string, width: number) =>
  */
 
 const Card: FC<CardProps> = (props) => {
-  const { children, width = 400 } = props;
+  const { children, mode = 'fit' } = props;
 
   const gradient = useGradient();
-  const styles = buildStyles(gradient[0], gradient[1], width);
+  const styles = buildStyles(gradient[0], gradient[1], mode);
 
   return <article sx={styles.container}>{children}</article>;
 };

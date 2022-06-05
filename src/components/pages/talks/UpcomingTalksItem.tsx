@@ -34,7 +34,7 @@ const UpcomingTalk: FC<UpcomingTalkProps> = (props) => {
   } = props;
 
   return (
-    <Card key={talkSlug}>
+    <Card mode="fixed" key={talkSlug}>
       <CardHeader backgroundImage={eventLocationImage}>
         {eventLocation}
       </CardHeader>

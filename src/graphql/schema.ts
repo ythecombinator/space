@@ -1646,8 +1646,10 @@ export type Talk = Entry & {
   __typename?: 'Talk';
   abstract?: Maybe<TalkAbstract>;
   contentfulMetadata: ContentfulMetadata;
+  lastRelevant?: Maybe<Scalars['DateTime']>;
   linkedFrom?: Maybe<TalkLinkingCollections>;
   sessionsCollection?: Maybe<TalkSessionsCollection>;
+  shortDescription?: Maybe<TalkShortDescription>;
   slug?: Maybe<Scalars['String']>;
   sys: Sys;
   title?: Maybe<Scalars['String']>;
@@ -1656,6 +1658,12 @@ export type Talk = Entry & {
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/talk) */
 export type TalkAbstractArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/talk) */
+export type TalkLastRelevantArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -1672,6 +1680,12 @@ export type TalkSessionsCollectionArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/talk) */
+export type TalkShortDescriptionArgs = {
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -1726,7 +1740,19 @@ export type TalkFilter = {
   abstract_exists?: InputMaybe<Scalars['Boolean']>;
   abstract_not_contains?: InputMaybe<Scalars['String']>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  lastRelevant?: InputMaybe<Scalars['DateTime']>;
+  lastRelevant_exists?: InputMaybe<Scalars['Boolean']>;
+  lastRelevant_gt?: InputMaybe<Scalars['DateTime']>;
+  lastRelevant_gte?: InputMaybe<Scalars['DateTime']>;
+  lastRelevant_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  lastRelevant_lt?: InputMaybe<Scalars['DateTime']>;
+  lastRelevant_lte?: InputMaybe<Scalars['DateTime']>;
+  lastRelevant_not?: InputMaybe<Scalars['DateTime']>;
+  lastRelevant_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   sessionsCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  shortDescription_contains?: InputMaybe<Scalars['String']>;
+  shortDescription_exists?: InputMaybe<Scalars['Boolean']>;
+  shortDescription_not_contains?: InputMaybe<Scalars['String']>;
   slug?: InputMaybe<Scalars['String']>;
   slug_contains?: InputMaybe<Scalars['String']>;
   slug_exists?: InputMaybe<Scalars['Boolean']>;
@@ -1767,6 +1793,8 @@ export type TalkLinkingCollectionsSessionCollectionArgs = {
 };
 
 export enum TalkOrder {
+  LastRelevantAsc = 'lastRelevant_ASC',
+  LastRelevantDesc = 'lastRelevant_DESC',
   SlugAsc = 'slug_ASC',
   SlugDesc = 'slug_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -1787,6 +1815,31 @@ export type TalkSessionsCollection = {
   limit: Scalars['Int'];
   skip: Scalars['Int'];
   total: Scalars['Int'];
+};
+
+export type TalkShortDescription = {
+  __typename?: 'TalkShortDescription';
+  json: Scalars['JSON'];
+  links: TalkShortDescriptionLinks;
+};
+
+export type TalkShortDescriptionAssets = {
+  __typename?: 'TalkShortDescriptionAssets';
+  block: Array<Maybe<Asset>>;
+  hyperlink: Array<Maybe<Asset>>;
+};
+
+export type TalkShortDescriptionEntries = {
+  __typename?: 'TalkShortDescriptionEntries';
+  block: Array<Maybe<Entry>>;
+  hyperlink: Array<Maybe<Entry>>;
+  inline: Array<Maybe<Entry>>;
+};
+
+export type TalkShortDescriptionLinks = {
+  __typename?: 'TalkShortDescriptionLinks';
+  assets: TalkShortDescriptionAssets;
+  entries: TalkShortDescriptionEntries;
 };
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/technology) */
@@ -2195,7 +2248,19 @@ export type CfTalkNestedFilter = {
   abstract_exists?: InputMaybe<Scalars['Boolean']>;
   abstract_not_contains?: InputMaybe<Scalars['String']>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  lastRelevant?: InputMaybe<Scalars['DateTime']>;
+  lastRelevant_exists?: InputMaybe<Scalars['Boolean']>;
+  lastRelevant_gt?: InputMaybe<Scalars['DateTime']>;
+  lastRelevant_gte?: InputMaybe<Scalars['DateTime']>;
+  lastRelevant_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  lastRelevant_lt?: InputMaybe<Scalars['DateTime']>;
+  lastRelevant_lte?: InputMaybe<Scalars['DateTime']>;
+  lastRelevant_not?: InputMaybe<Scalars['DateTime']>;
+  lastRelevant_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   sessionsCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  shortDescription_contains?: InputMaybe<Scalars['String']>;
+  shortDescription_exists?: InputMaybe<Scalars['Boolean']>;
+  shortDescription_not_contains?: InputMaybe<Scalars['String']>;
   slug?: InputMaybe<Scalars['String']>;
   slug_contains?: InputMaybe<Scalars['String']>;
   slug_exists?: InputMaybe<Scalars['Boolean']>;
@@ -2221,7 +2286,7 @@ export type GetAllTalkSlugsQuery = { __typename?: 'Query', talkCollection?: { __
 export type GetAllTalksQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAllTalksQuery = { __typename?: 'Query', talkCollection?: { __typename?: 'TalkCollection', items: Array<{ __typename?: 'Talk', title?: string | null, slug?: string | null, abstract?: { __typename?: 'TalkAbstract', json: any } | null, contentfulMetadata: { __typename?: 'ContentfulMetadata', tags: Array<{ __typename?: 'ContentfulTag', id?: string | null, name?: string | null } | null> } } | null> } | null };
+export type GetAllTalksQuery = { __typename?: 'Query', talkCollection?: { __typename?: 'TalkCollection', items: Array<{ __typename?: 'Talk', title?: string | null, slug?: string | null, shortDescription?: { __typename?: 'TalkShortDescription', json: any } | null, contentfulMetadata: { __typename?: 'ContentfulMetadata', tags: Array<{ __typename?: 'ContentfulTag', id?: string | null, name?: string | null } | null> } } | null> } | null };
 
 export type GetFeaturedTalksQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2286,10 +2351,10 @@ export type GetAllTalkSlugsLazyQueryHookResult = ReturnType<typeof useGetAllTalk
 export type GetAllTalkSlugsQueryResult = Apollo.QueryResult<GetAllTalkSlugsQuery, GetAllTalkSlugsQueryVariables>;
 export const GetAllTalksDocument = gql`
     query GetAllTalks {
-  talkCollection {
+  talkCollection(order: lastRelevant_DESC) {
     items {
       title
-      abstract {
+      shortDescription {
         json
       }
       slug
