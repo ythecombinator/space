@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { siteOwner } from 'config/constants';
+import { siteConfig } from 'config/constants';
 
 import * as styles from './Footer.styles';
 
@@ -11,7 +11,8 @@ import * as styles from './Footer.styles';
 const Footer: FC = () => {
   return (
     <footer sx={styles.footer}>
-      &copy; {new Date().getFullYear()} by {siteOwner}. All rights reserved.
+      &copy; {new Date().getFullYear()} by {siteConfig.baseTitle}. All rights
+      reserved.
     </footer>
   );
 };

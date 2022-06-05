@@ -2,7 +2,14 @@ import { HeaderExternalLinkIconIdentifier } from 'components/shared/HeaderExtern
 
 export const siteTitle = 'ythecombinator';
 
-export const siteOwner = 'Matheus Albuquerque';
+export const siteConfig = {
+  baseTitle: 'Matheus Albuquerque',
+  title: 'Matheus Albuquerque — Developer, speaker, creator.',
+  description:
+    'Sr. Software Engineer, Front-End • Consultant • Speaker • Traveler',
+  url: 'https://www.ythecombinator.space',
+  twitterHandle: '@ythecombinator',
+};
 
 export const externalLinks: Array<{
   name: HeaderExternalLinkIconIdentifier;
