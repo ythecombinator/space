@@ -187,7 +187,7 @@ export type AssetLinkingCollections = {
   cityCollection?: Maybe<CityCollection>;
   companyCollection?: Maybe<CompanyCollection>;
   entryCollection?: Maybe<EntryCollection>;
-  eventCollection?: Maybe<EventCollection>;
+  sessionCollection?: Maybe<SessionCollection>;
 };
 
 
@@ -215,7 +215,7 @@ export type AssetLinkingCollectionsEntryCollectionArgs = {
 };
 
 
-export type AssetLinkingCollectionsEventCollectionArgs = {
+export type AssetLinkingCollectionsSessionCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
@@ -617,7 +617,6 @@ export type Event = Entry & {
   endingDate?: Maybe<Scalars['DateTime']>;
   linkedFrom?: Maybe<EventLinkingCollections>;
   name?: Maybe<Scalars['String']>;
-  photosCollection?: Maybe<AssetCollection>;
   sessionsCollection?: Maybe<EventSessionsCollection>;
   startingDate?: Maybe<Scalars['DateTime']>;
   sys: Sys;
@@ -647,15 +646,6 @@ export type EventLinkedFromArgs = {
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/event) */
 export type EventNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/event) */
-export type EventPhotosCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -709,7 +699,6 @@ export type EventFilter = {
   name_not?: InputMaybe<Scalars['String']>;
   name_not_contains?: InputMaybe<Scalars['String']>;
   name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  photosCollection_exists?: InputMaybe<Scalars['Boolean']>;
   sessionsCollection_exists?: InputMaybe<Scalars['Boolean']>;
   startingDate?: InputMaybe<Scalars['DateTime']>;
   startingDate_exists?: InputMaybe<Scalars['Boolean']>;
@@ -1415,6 +1404,7 @@ export type Session = Entry & {
   language?: Maybe<Language>;
   linkedFrom?: Maybe<SessionLinkingCollections>;
   online?: Maybe<Scalars['Boolean']>;
+  photo?: Maybe<Asset>;
   recording?: Maybe<Scalars['String']>;
   slides?: Maybe<Scalars['String']>;
   sys: Sys;
@@ -1458,6 +1448,13 @@ export type SessionLinkedFromArgs = {
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/session) */
 export type SessionOnlineArgs = {
   locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/session) */
+export type SessionPhotoArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
 };
 
 
@@ -1516,6 +1513,7 @@ export type SessionFilter = {
   online?: InputMaybe<Scalars['Boolean']>;
   online_exists?: InputMaybe<Scalars['Boolean']>;
   online_not?: InputMaybe<Scalars['Boolean']>;
+  photo_exists?: InputMaybe<Scalars['Boolean']>;
   recording?: InputMaybe<Scalars['String']>;
   recording_contains?: InputMaybe<Scalars['String']>;
   recording_exists?: InputMaybe<Scalars['Boolean']>;
@@ -2142,7 +2140,6 @@ export type CfEventNestedFilter = {
   name_not?: InputMaybe<Scalars['String']>;
   name_not_contains?: InputMaybe<Scalars['String']>;
   name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  photosCollection_exists?: InputMaybe<Scalars['Boolean']>;
   sessionsCollection_exists?: InputMaybe<Scalars['Boolean']>;
   startingDate?: InputMaybe<Scalars['DateTime']>;
   startingDate_exists?: InputMaybe<Scalars['Boolean']>;
@@ -2225,6 +2222,11 @@ export type GetAllTalksQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetAllTalksQuery = { __typename?: 'Query', talkCollection?: { __typename?: 'TalkCollection', items: Array<{ __typename?: 'Talk', title?: string | null, slug?: string | null, abstract?: { __typename?: 'TalkAbstract', json: any } | null, contentfulMetadata: { __typename?: 'ContentfulMetadata', tags: Array<{ __typename?: 'ContentfulTag', id?: string | null, name?: string | null } | null> } } | null> } | null };
+
+export type GetFeaturedTalksQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetFeaturedTalksQuery = { __typename?: 'Query', sessionCollection?: { __typename?: 'SessionCollection', items: Array<{ __typename?: 'Session', talk?: { __typename?: 'Talk', title?: string | null, slug?: string | null } | null, event?: { __typename?: 'Event', name?: string | null } | null, photo?: { __typename?: 'Asset', url?: string | null } | null } | null> } | null };
 
 export type GetTalkQueryVariables = Exact<{
   slug: Scalars['String'];
@@ -2328,6 +2330,51 @@ export function useGetAllTalksLazyQuery(baseOptions?: Apollo.LazyQueryHookOption
 export type GetAllTalksQueryHookResult = ReturnType<typeof useGetAllTalksQuery>;
 export type GetAllTalksLazyQueryHookResult = ReturnType<typeof useGetAllTalksLazyQuery>;
 export type GetAllTalksQueryResult = Apollo.QueryResult<GetAllTalksQuery, GetAllTalksQueryVariables>;
+export const GetFeaturedTalksDocument = gql`
+    query GetFeaturedTalks {
+  sessionCollection(where: {featured: true}) {
+    items {
+      talk {
+        title
+        slug
+      }
+      event {
+        name
+      }
+      photo {
+        url
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetFeaturedTalksQuery__
+ *
+ * To run a query within a React component, call `useGetFeaturedTalksQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetFeaturedTalksQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetFeaturedTalksQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetFeaturedTalksQuery(baseOptions?: Apollo.QueryHookOptions<GetFeaturedTalksQuery, GetFeaturedTalksQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetFeaturedTalksQuery, GetFeaturedTalksQueryVariables>(GetFeaturedTalksDocument, options);
+      }
+export function useGetFeaturedTalksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetFeaturedTalksQuery, GetFeaturedTalksQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetFeaturedTalksQuery, GetFeaturedTalksQueryVariables>(GetFeaturedTalksDocument, options);
+        }
+export type GetFeaturedTalksQueryHookResult = ReturnType<typeof useGetFeaturedTalksQuery>;
+export type GetFeaturedTalksLazyQueryHookResult = ReturnType<typeof useGetFeaturedTalksLazyQuery>;
+export type GetFeaturedTalksQueryResult = Apollo.QueryResult<GetFeaturedTalksQuery, GetFeaturedTalksQueryVariables>;
 export const GetTalkDocument = gql`
     query GetTalk($slug: String!) {
   talkCollection(where: {slug: $slug}, limit: 1) {

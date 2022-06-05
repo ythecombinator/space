@@ -6,6 +6,7 @@ import {
   HiHashtag,
   HiOutlineServer,
   HiOutlineCloud,
+  HiOutlineDeviceMobile,
 } from 'react-icons/hi';
 import { MdOutlineScience } from 'react-icons/md';
 import {
@@ -33,6 +34,7 @@ const TagColor: Record<string, string> = {
   performance: '#c44569',
   'mad-science': '#546de5',
   'developer-tools': '#f5cd79',
+  'mobile-development': '#714d69',
   'programming-languages': '#e66767',
 };
 
@@ -54,6 +56,7 @@ const TagIcon: Record<string, JSX.Element> = {
   performance: <HiOutlineLightningBolt />,
   'mad-science': <MdOutlineScience />,
   'developer-tools': <AiOutlineCode />,
+  'mobile-development': <HiOutlineDeviceMobile />,
   'programming-languages': <HiOutlineCode />,
 };
 

@@ -93,7 +93,7 @@ type AssetLinkingCollections {
   cityCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): CityCollection
   companyCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): CompanyCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  eventCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EventCollection
+  sessionCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): SessionCollection
 }
 
 enum AssetOrder {
@@ -372,7 +372,6 @@ type Event implements Entry {
   endingDate(locale: String): DateTime
   linkedFrom(allowedLocales: [String]): EventLinkingCollections
   name(locale: String): String
-  photosCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): AssetCollection
   sessionsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EventSessionsCollection
   startingDate(locale: String): DateTime
   sys: Sys!
@@ -408,7 +407,6 @@ input EventFilter {
   name_not: String
   name_not_contains: String
   name_not_in: [String]
-  photosCollection_exists: Boolean
   sessionsCollection_exists: Boolean
   startingDate: DateTime
   startingDate_exists: Boolean
@@ -838,6 +836,7 @@ type Session implements Entry {
   language(locale: String, preview: Boolean): Language
   linkedFrom(allowedLocales: [String]): SessionLinkingCollections
   online(locale: String): Boolean
+  photo(locale: String, preview: Boolean): Asset
   recording(locale: String): String
   slides(locale: String): String
   sys: Sys!
@@ -875,6 +874,7 @@ input SessionFilter {
   online: Boolean
   online_exists: Boolean
   online_not: Boolean
+  photo_exists: Boolean
   recording: String
   recording_contains: String
   recording_exists: Boolean
@@ -1319,7 +1319,6 @@ input cfEventNestedFilter {
   name_not: String
   name_not_contains: String
   name_not_in: [String]
-  photosCollection_exists: Boolean
   sessionsCollection_exists: Boolean
   startingDate: DateTime
   startingDate_exists: Boolean

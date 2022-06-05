@@ -7,8 +7,11 @@ import {
   ContentfulTag,
   GetTalksStatsQuery,
   GetTalksStatsDocument,
+  GetFeaturedTalksQuery,
+  GetFeaturedTalksDocument,
 } from 'graphql/schema';
 import { InferGetStaticPropsType, NextPage } from 'next';
+import dynamic from 'next/dynamic';
 import { Themed } from 'theme-ui';
 import { DeepNonNullable } from 'utility-types';
 
@@ -17,8 +20,12 @@ import ContentfulService from 'services/contentful';
 import Layout from 'components/shared/Layout';
 
 import AllTalksList from 'components/pages/talks/AllTalksList';
-import FeaturedTalksList from 'components/pages/talks/FeaturedTalksList';
 import UpcomingTalksList from 'components/pages/talks/UpcomingTalksList';
+
+const FeaturedTalksList = dynamic(
+  () => import('components/pages/talks/FeaturedTalksList'),
+  { ssr: false }
+);
 
 /*~
  * TYPES
@@ -83,8 +90,24 @@ const talksStatsDocTransformer = (result: GetTalksStatsQuery) => {
   };
 };
 
+const featuredTalksDocTransformer = (result: GetFeaturedTalksQuery) => {
+  const items = (result as DeepNonNullable<GetFeaturedTalksQuery>)
+    .sessionCollection?.items;
+
+  return items.map((item) => ({
+    eventName: item.event.name,
+    talkTitle: item.talk.title,
+    talkSlug: item.talk.slug,
+    photo: item.photo.url,
+  }));
+};
+
 const getTalksStats = ContentfulService.query<GetTalksStatsQuery>({
   query: GetTalksStatsDocument,
+});
+
+const getFeaturedTalks = ContentfulService.query<GetFeaturedTalksQuery>({
+  query: GetFeaturedTalksDocument,
 });
 
 const getUpcomingTalks = ContentfulService.query<GetUpcomingTalksQuery>({
@@ -105,19 +128,22 @@ const getAllTalks = ContentfulService.query<GetAllTalksQuery>({
 export async function getStaticProps() {
   // Numbers
 
-  const [talksStatsDoc, upcomingTalksDoc, allTalksDoc] = await Promise.all([
-    getTalksStats,
-    getUpcomingTalks,
-    getAllTalks,
-  ]);
+  const [talksStatsDoc, featuredTalksDoc, upcomingTalksDoc, allTalksDoc] =
+    await Promise.all([
+      getTalksStats,
+      getFeaturedTalks,
+      getUpcomingTalks,
+      getAllTalks,
+    ]);
 
   const talksStats = talksStatsDocTransformer(talksStatsDoc.data);
+  const featuredTalks = featuredTalksDocTransformer(featuredTalksDoc.data);
   const upcomingTalks = upcomingTalksDocTransformer(upcomingTalksDoc.data);
   const allTalks = allTalksDocTransformer(allTalksDoc.data);
 
   // Final props
   return {
-    props: { talksStats, upcomingTalks, allTalks },
+    props: { talksStats, featuredTalks, upcomingTalks, allTalks },
     // revalidate: 86400,
   };
 }
@@ -126,17 +152,8 @@ export async function getStaticProps() {
  * PAGE
  */
 
-const featuredTalks = [
-  { eventName: 'Opa', talkSlug: 'Opa', key: 'osdfuijsjdi' },
-  { eventName: 'Opa', talkSlug: 'Opa', key: 'sdasd' },
-  { eventName: 'Opa', talkSlug: 'Opa', key: 'sssdsd' },
-  { eventName: 'Opa', talkSlug: 'Opa', key: 'dds' },
-  { eventName: 'Opa', talkSlug: 'Opa', key: 'sdadssd' },
-  { eventName: 'Opa', talkSlug: 'Opa', key: 'sssssfsddsd' },
-];
-
 const TalksPage: NextPage<Props> = (props) => {
-  const { talksStats, upcomingTalks, allTalks } = props;
+  const { talksStats, featuredTalks, upcomingTalks, allTalks } = props;
   const { citiesTotal, countriesTotal, talksTotal, eventsTotal } = talksStats;
 
   return (

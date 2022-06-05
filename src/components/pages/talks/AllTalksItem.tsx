@@ -52,7 +52,7 @@ const AllTalksItem: FC<AllTalksItemProps> = (props) => {
       </Flex>
 
       {/* Headline */}
-      <Themed.p>{documentToReactComponents(headline)}</Themed.p>
+      <p>{documentToReactComponents(headline)}</p>
     </Box>
   );
 };

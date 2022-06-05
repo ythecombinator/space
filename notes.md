@@ -7,13 +7,13 @@
 - ✅ The state of the state: React state management in 2019
 - ✅ React 16.x: Way Beyond Hooks
 - ✅ The Hitchhiker's Guide to the Front-End Performance
-- State of the art React development flow with TypeScript
-- The correctness-by-design duck will bite PHP
-- Building Swift Libraries
-- Server-Side goes Serverless
-- The future favors Swift
-- Sweet Macros O’ Mine
-- SpriteKit - Up and Running
+- ✅ State of the art React development flow with TypeScript
+- ✅ The correctness-by-design duck will bite PHP
+- ✅ Building Swift Libraries
+- ✅ Server-Side goes Serverless
+- ✅ The future favors Swift
+- ✅ Sweet Macros O’ Mine
+- ✅ SpriteKit - Up and Running
 - Playing With WatchConnectivity for ~24 hours
 - The Art of Notifications
 - Designing For Humans (like You & Me)

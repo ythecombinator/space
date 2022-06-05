@@ -1,6 +1,8 @@
 import Link from 'next/link';
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
 import { Themed } from 'theme-ui';
+
+import { shuffleItems } from 'utils/array';
 
 import { buildStyleObject } from 'styles/theme';
 
@@ -36,15 +38,18 @@ const styles = buildStyleObject({
  */
 
 const FeaturedTalksList: FC<FeaturedTalksListProps> = (props) => {
-  const { items } = props;
+  const allItems = props.items;
+  const items = useMemo(() => shuffleItems(allItems).slice(0, 9), []);
 
   return (
     <div sx={styles.collection}>
       {items.map((item) => (
         <FeaturedTalksItem
-          key={item.talkSlug}
+          key={item.talkTitle}
           eventName={item.eventName}
+          talkTitle={item.talkTitle}
           talkSlug={item.talkSlug}
+          photo={item.photo}
         />
       ))}
     </div>
