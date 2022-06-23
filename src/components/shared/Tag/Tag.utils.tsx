@@ -1,4 +1,5 @@
 import { darken, lighten } from '@theme-ui/color';
+import { ComponentType } from 'react';
 import { AiOutlineCode } from 'react-icons/ai';
 import {
   HiOutlineLightningBolt,
@@ -40,24 +41,24 @@ const TagColor: Record<string, string> = {
 
 export const getTagColor = (id: string) => TagColor[id] ?? '#f3a683';
 
-const TagIcon: Record<string, JSX.Element> = {
+const TagIcon: Record<string, ComponentType> = {
   // Libs & Tools
-  react: <SiReact />,
-  'react-native': <SiReact />,
-  serverless: <SiServerless />,
+  react: SiReact,
+  'react-native': SiReact,
+  serverless: SiServerless,
   // Languages
-  javascript: <SiJavascript />,
-  typescript: <SiTypescript />,
-  php: <SiPhp />,
-  swift: <SiSwift />,
+  javascript: SiJavascript,
+  typescript: SiTypescript,
+  php: SiPhp,
+  swift: SiSwift,
   // Topics
-  devops: <HiOutlineCloud />,
-  'back-end': <HiOutlineServer />,
-  performance: <HiOutlineLightningBolt />,
-  'mad-science': <MdOutlineScience />,
-  'developer-tools': <AiOutlineCode />,
-  'mobile-development': <HiOutlineDeviceMobile />,
-  'programming-languages': <HiOutlineCode />,
+  devops: HiOutlineCloud,
+  'back-end': HiOutlineServer,
+  performance: HiOutlineLightningBolt,
+  'mad-science': MdOutlineScience,
+  'developer-tools': AiOutlineCode,
+  'mobile-development': HiOutlineDeviceMobile,
+  'programming-languages': HiOutlineCode,
 };
 
 export const getTagIcon = (id: string) => TagIcon[id] ?? <HiHashtag />;

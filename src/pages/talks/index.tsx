@@ -1,3 +1,4 @@
+import { Heading, Text, Box, VStack } from '@chakra-ui/react';
 import { Document as ContentfulDocument } from '@contentful/rich-text-types';
 import {
   GetAllTalksDocument,
@@ -12,7 +13,6 @@ import {
 } from 'graphql/schema';
 import { InferGetStaticPropsType, NextPage } from 'next';
 import dynamic from 'next/dynamic';
-import { Themed } from 'theme-ui';
 import { DeepNonNullable } from 'utility-types';
 
 import ContentfulService from 'services/contentful';
@@ -158,31 +158,48 @@ const TalksPage: NextPage<Props> = (props) => {
 
   return (
     <Layout>
-      <Themed.h2>Talks</Themed.h2>
+      <Text
+        bgGradient="linear(to-l, #7928CA,#FF0080)"
+        bgClip="text"
+        fontSize="5xl"
+        fontWeight="extrabold"
+      >
+        Confs. Meetups. Events.
+      </Text>
 
-      <Themed.p>
-        I've been speaking and learning in public since 2015, mostly about web
-        performance, JavaScript/TypeScript, React, and their ecosystem. Other
-        topics also include programming languages design and iOS engineering.
-      </Themed.p>
+      <VStack spacing="1rem">
+        <Box>
+          <Text fontSize="lg" mb="4">
+            I've been speaking and learning in public since 2015, mostly about
+            web performance, JavaScript/TypeScript, React, and their ecosystem.
+            Other topics also include programming languages design and iOS
+            engineering.
+          </Text>
+          <Text fontSize="lg" mb="4">
+            In total, I've presented <b>{talksTotal}</b> different sessions in{' '}
+            <b>{eventsTotal}</b> events across <b>{citiesTotal}</b> cities in{' '}
+            <b>{countriesTotal}</b> different countries.
+          </Text>
+        </Box>
 
-      <Themed.p>
-        In total, I've presented <b>{talksTotal}</b> different sessions in{' '}
-        <b>{eventsTotal}</b> events across <b>{citiesTotal}</b> cities in{' '}
-        <b>{countriesTotal}</b> different countries.
-      </Themed.p>
+        {/* Featured */}
+        <Box>
+          <Heading marginBottom={'1rem'}>Featured Talks</Heading>
+          <FeaturedTalksList items={featuredTalks} />
+        </Box>
 
-      {/* Featured */}
-      <Themed.h3>Featured Talks</Themed.h3>
-      <FeaturedTalksList items={featuredTalks} />
+        {/* Upcoming */}
+        <Box>
+          <Heading marginBottom={'1rem'}>Upcoming Talks</Heading>
+          <UpcomingTalksList items={upcomingTalks} />
+        </Box>
 
-      {/* Upcoming */}
-      <Themed.h3>Upcoming Talks</Themed.h3>
-      <UpcomingTalksList items={upcomingTalks} />
-
-      {/* All */}
-      <Themed.h3>All Talks</Themed.h3>
-      <AllTalksList items={allTalks} />
+        {/* All */}
+        <Box>
+          <Heading marginBottom={'1rem'}>All Talks</Heading>
+          <AllTalksList items={allTalks} />
+        </Box>
+      </VStack>
     </Layout>
   );
 };

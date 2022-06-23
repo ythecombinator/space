@@ -34,3 +34,11 @@
 4. 05.2019 - Gatsby V1 + rstacruz
 5. 03.2020 - Gatsby V2 + gatsby-theme-minimal-blog
 6. 06.2022 - Next.js V12 + gatsby-theme-minimal-blog
+
+## Chakra Ideas
+
+- Home: CTA with Video/Image
+- Talks list: Grid With Blurred Backdrop
+- Cities list: Product Simple
+- Blog: Basic layout #1
+- Header: With user dropdown and Dark theme switcher + With action button & user dropdown

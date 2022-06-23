@@ -1,10 +1,7 @@
-import Link from 'next/link';
+import { Flex } from '@chakra-ui/react';
 import { FC, useMemo } from 'react';
-import { Themed } from 'theme-ui';
 
 import { shuffleItems } from 'utils/array';
-
-import { buildStyleObject } from 'styles/theme';
 
 import FeaturedTalksItem, { FeaturedTalksItemProps } from './FeaturedTalksItem';
 
@@ -17,23 +14,6 @@ export type FeaturedTalksListProps = {
 };
 
 /*~
- * STYLES
- */
-
-const styles = buildStyleObject({
-  collection: {
-    display: 'flex',
-    msFlexWrap: 'wrap',
-    flexWrap: 'wrap',
-    position: 'relative',
-    width: '100vw',
-    left: '50%',
-    marginTop: '1rem',
-    marginLeft: '-50vw',
-  },
-});
-
-/*~
  * COMPONENT
  */
 
@@ -42,7 +22,14 @@ const FeaturedTalksList: FC<FeaturedTalksListProps> = (props) => {
   const items = useMemo(() => shuffleItems(allItems).slice(0, 9), []);
 
   return (
-    <div sx={styles.collection}>
+    <Flex
+      wrap="wrap"
+      position="relative"
+      width="100vw"
+      left="50%"
+      marginTop="1rem"
+      marginLeft="-50vw"
+    >
       {items.map((item) => (
         <FeaturedTalksItem
           key={item.talkTitle}
@@ -52,7 +39,7 @@ const FeaturedTalksList: FC<FeaturedTalksListProps> = (props) => {
           photo={item.photo}
         />
       ))}
-    </div>
+    </Flex>
   );
 };
 

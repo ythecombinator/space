@@ -1,5 +1,5 @@
+import { Heading } from '@chakra-ui/react';
 import { FC } from 'react';
-import { Heading } from 'theme-ui';
 
 import Layout from 'components/shared/Layout';
 
@@ -25,9 +25,7 @@ const PageLayout: FC<PageLayoutProps> = (props) => {
     <Layout>
       {/* TODO */}
       {/* <Seo title={page.title} description={page.excerpt} /> */}
-      <Heading as="h1" variant="styles.h1">
-        {title}
-      </Heading>
+      <Heading>{title}</Heading>
       <section sx={{ my: 5, variant: `layout.content` }}>
         {/* TODO */}
         {/* <MDXRenderer>{page.body}</MDXRenderer> */}

@@ -1,17 +1,15 @@
+import { ChakraProvider } from '@chakra-ui/react';
 import { DefaultSeo } from 'next-seo';
 import App from 'next/app';
 import Head from 'next/head';
-import { ThemeProvider } from 'theme-ui';
 
 import { siteConfig } from 'config/constants';
-
-import theme from 'styles/theme';
 
 class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
     return (
-      <ThemeProvider theme={theme}>
+      <ChakraProvider>
         <Head>
           <meta
             content="width=device-width, initial-scale=1.0"
@@ -43,7 +41,7 @@ class MyApp extends App {
           }}
         />
         <Component {...pageProps} />
-      </ThemeProvider>
+      </ChakraProvider>
     );
   }
 }

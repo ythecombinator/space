@@ -1,11 +1,15 @@
 import {
-  documentToReactComponents,
-  Options,
-} from '@contentful/rich-text-react-renderer';
+  chakra,
+  Box,
+  useColorModeValue,
+  Link,
+  HStack,
+  Text,
+} from '@chakra-ui/react';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { Document as ContentfulDocument } from '@contentful/rich-text-types';
-import Link from 'next/link';
+import NextLink from 'next/link';
 import { FC } from 'react';
-import { Box, Flex, Themed } from 'theme-ui';
 
 import { NavigationPath } from 'config/constants';
 
@@ -33,26 +37,37 @@ const AllTalksItem: FC<AllTalksItemProps> = (props) => {
   const { title, headline, tags, slug } = props;
 
   return (
-    <Box my={4}>
-      <Themed.h5
-        sx={{
-          a: { color: 'secondary' },
-          fontSize: [1, 1, 2],
-          mb: 2,
-        }}
-      >
-        <Link href={`${NavigationPath.talks}/${slug}`}>{title}</Link>
-      </Themed.h5>
-
-      {/* Tags */}
-      <Flex>
+    <Box
+      margin="4"
+      paddingX={8}
+      paddingY={4}
+      rounded="lg"
+      shadow="lg"
+      bg={useColorModeValue('white', 'gray.800')}
+      maxW="2xl"
+    >
+      <HStack>
         {tags.map((tag) => (
-          <Tag key={tag.id} name={tag.name} id={tag.id} />
+          <Tag name={tag.name} id={tag.id} />
         ))}
-      </Flex>
+      </HStack>
 
-      {/* Headline */}
-      <p>{documentToReactComponents(headline)}</p>
+      <Box mt={2}>
+        <Link
+          fontSize="2xl"
+          color={useColorModeValue('gray.700', 'white')}
+          fontWeight="700"
+          _hover={{
+            color: useColorModeValue('gray.600', 'gray.200'),
+            textDecor: 'underline',
+          }}
+        >
+          <NextLink href={`${NavigationPath.talks}/${slug}`}>{title}</NextLink>
+        </Link>
+        <Text mt={2} color={useColorModeValue('gray.600', 'gray.300')}>
+          {documentToReactComponents(headline)}
+        </Text>
+      </Box>
     </Box>
   );
 };

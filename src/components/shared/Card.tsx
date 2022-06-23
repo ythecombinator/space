@@ -1,6 +1,6 @@
-import { FC, FunctionComponent, PropsWithChildren } from 'react';
+import { Box } from '@chakra-ui/react';
+import { FC, PropsWithChildren } from 'react';
 
-import { buildStyleObject } from 'styles/theme';
 import { useGradient } from 'styles/utils';
 
 /*~
@@ -15,36 +15,10 @@ export type CardProps = PropsWithChildren<{
  * STYLES
  */
 
-const buildStyles = (
-  firstColor: string,
-  secondColor: string,
-  mode: CardProps['mode']
-) =>
-  buildStyleObject({
-    container: {
-      padding: ['1rem', '3px'],
-      margin: '10px',
-      position: 'relative',
-      ...(mode === 'fixed' ? { minWidth: 400, maxWidth5: 400 } : {}),
-      ...(mode === 'fit' ? { width: '100%' } : {}),
-      display: 'block',
-      transition: '0.25s',
-      height: '100%',
-
-      ':hover': {
-        transform: 'translateY(0.5rem)',
-      },
-
-      border: `6px solid ${firstColor}`,
-      borderImageSlice: 1,
-      borderImageSource: `conic-gradient(
-        from 0deg,
-        ${firstColor}, 
-        ${secondColor},
-        ${firstColor}
-      )`,
-    },
-  });
+const getWidthForMode = (mode: CardProps['mode']) => ({
+  ...(mode === 'fixed' ? { minWidth: 400, maxWidth5: 400 } : {}),
+  ...(mode === 'fit' ? { width: '100%' } : {}),
+});
 
 /*~
  * COMPONENT
@@ -54,9 +28,37 @@ const Card: FC<CardProps> = (props) => {
   const { children, mode = 'fit' } = props;
 
   const gradient = useGradient();
-  const styles = buildStyles(gradient[0], gradient[1], mode);
+  const width = getWidthForMode(mode);
 
-  return <article sx={styles.container}>{children}</article>;
+  return (
+    <Box
+      as="article"
+      padding={['1rem', '3px']}
+      margin="10px"
+      position="relative"
+      display="block"
+      transition="0.25s"
+      height="100%"
+      _hover={{
+        transform: 'translateY(0.5rem)',
+      }}
+      // Width
+      {...width}
+      // Border
+      border={`6px solid ${gradient[0]}`}
+      style={{
+        borderImageSlice: 1,
+        borderImageSource: `conic-gradient(
+          from 0deg,
+          ${gradient[0]}, 
+          ${gradient[1]},
+          ${gradient[0]}
+        )`,
+      }}
+    >
+      {children}
+    </Box>
+  );
 };
 
 export default Card;

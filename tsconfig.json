@@ -13,7 +13,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "jsxImportSource": "theme-ui", // https://testing-library.com/docs/react-testing-library/setup#configuring-jest-with-test-utils
     "baseUrl": "./src",
     "incremental": true
   },

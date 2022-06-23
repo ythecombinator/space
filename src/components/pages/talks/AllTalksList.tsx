@@ -20,7 +20,7 @@ const AllTalksList: FC<AllTalksListProps> = (props) => {
   const { items } = props;
 
   return (
-    <section sx={{ mb: [5, 6, 7] }}>
+    <section>
       {items.map((item) => {
         const { title, headline, slug, tags } = item;
         return (

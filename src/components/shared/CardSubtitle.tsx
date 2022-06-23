@@ -1,7 +1,5 @@
+import { Text } from '@chakra-ui/react';
 import { FC } from 'react';
-import { Themed } from 'theme-ui';
-
-import * as styles from './CardSubtitle.styles';
 
 /*~
  * TYPES
@@ -15,7 +13,11 @@ export type CardSubtitleProps = {};
 
 const CardSubtitle: FC<CardSubtitleProps> = (props) => {
   const { children } = props;
-  return <Themed.h6 sx={styles.subtitle}>{children}</Themed.h6>;
+  return (
+    <Text fontSize="medium" fontWeight={600} margin="0.1rem" color="GrayText">
+      {children}
+    </Text>
+  );
 };
 
 export default CardSubtitle;
