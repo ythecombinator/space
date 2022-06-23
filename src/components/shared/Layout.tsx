@@ -21,6 +21,7 @@ const global = () =>
   ({
     '*': {
       boxSizing: 'inherit',
+      lineHeight: 1.6,
     },
     html: {
       WebkitTextSizeAdjust: '100%',

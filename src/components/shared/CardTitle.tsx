@@ -20,6 +20,7 @@ const CardTitle: FC<CardTitleProps> = (props) => {
       cursor="pointer"
       fontWeight="bold"
       textDecoration="none"
+      marginBottom={1}
     >
       {children}
     </Text>

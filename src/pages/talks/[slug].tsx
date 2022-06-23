@@ -1,3 +1,4 @@
+import { Heading, Text } from '@chakra-ui/react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import {
   GetAllTalkSlugsDocument,
@@ -9,7 +10,6 @@ import {
 } from 'graphql/schema';
 import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next';
 import { ParsedUrlQuery } from 'querystring';
-import { Themed } from 'theme-ui';
 import { DeepNonNullable } from 'utility-types';
 
 import ContentfulService from 'services/contentful';
@@ -113,11 +113,13 @@ const TalkPage: NextPage<Props> = (props) => {
 
   return (
     <Layout>
-      <Themed.h2>{title}</Themed.h2>
+      <Text fontSize="3xl" fontWeight="extrabold">
+        {title}
+      </Text>
 
       {documentToReactComponents(abstract)}
 
-      <Themed.h3>Sessions</Themed.h3>
+      <Heading marginBottom={'1rem'}>Sessions</Heading>
       <EventsList items={sessions} />
     </Layout>
   );

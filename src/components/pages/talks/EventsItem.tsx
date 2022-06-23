@@ -1,10 +1,11 @@
-import { FC, PropsWithChildren } from 'react';
-import { Themed } from 'theme-ui';
+import { Text } from '@chakra-ui/react';
+import { PropsWithChildren } from 'react';
 
 import Card from 'components/shared/Card';
 import CardBody from 'components/shared/CardBody';
 import CardLink from 'components/shared/CardLink';
 import CardSubtitle from 'components/shared/CardSubtitle';
+import CardTitle from 'components/shared/CardTitle';
 
 /*~
  * TYPES
@@ -45,17 +46,22 @@ const EventsItem = (props: EventsItemProps) => {
     <Card mode="fit">
       <CardBody>
         <CardSubtitle>{eventLocation}</CardSubtitle>
-        <Themed.h6>{eventName}</Themed.h6>
+        <CardTitle>{eventName}</CardTitle>
 
-        <hr />
-
-        <p>↝ 📅 {eventStartingDate}</p>
-        <p>↝ 👥 {sessionAudience}</p>
-        <p>↝ 🌎 {sessionLanguage}</p>
+        <Text fontSize="md" marginBottom={1}>
+          ↝ 📅 {eventStartingDate}
+        </Text>
+        <Text fontSize="md" marginBottom={1}>
+          ↝ 👥 {sessionAudience}
+        </Text>
+        <Text fontSize="md" marginBottom={1}>
+          ↝ 🌎 {sessionLanguage}
+        </Text>
 
         {sessionSlides && (
           <CardLink href={sessionSlides}>🖥️ Presentation deck</CardLink>
         )}
+
         {sessionRecording && (
           <CardLink href={sessionRecording}>📺 Session recording</CardLink>
         )}

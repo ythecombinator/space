@@ -1,4 +1,4 @@
-import { Grid } from 'theme-ui';
+import { SimpleGrid } from '@chakra-ui/react';
 
 import EventsItem, { EventsItemProps } from 'components/pages/talks/EventsItem';
 
@@ -18,17 +18,8 @@ const EventsList = (props: EventsListProps) => {
   const { items } = props;
 
   return (
-    <section sx={{ mb: [5, 6, 7] }}>
-      <Grid
-        gap={4}
-        columns={[2, '1fr 1fr']}
-        sx={{
-          '@media screen and (max-width: 768px)': {
-            gridTemplateColumns: 'repeat(1, 1fr)',
-            justifyItems: 'center',
-          },
-        }}
-      >
+    <section>
+      <SimpleGrid columns={{ sm: 1, md: 2 }} spacing="40px">
         {items.map((item) => {
           const {
             eventName,
@@ -57,7 +48,7 @@ const EventsList = (props: EventsListProps) => {
             />
           );
         })}
-      </Grid>
+      </SimpleGrid>
     </section>
   );
 };
