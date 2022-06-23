@@ -3,9 +3,8 @@ import { Global, GlobalProps } from '@emotion/react';
 import NProgress from 'next-nprogress-emotion';
 import { FC, Fragment } from 'react';
 
+import Footer from 'components/shared/Footer';
 import Header from 'components/shared/Header';
-
-import * as styles from './Layout.styles';
 
 /*~
  * TYPES
@@ -58,7 +57,7 @@ const Layout: FC<LayoutProps> = (props) => {
       />
       <Header />
       <Container maxW="2xl">{children}</Container>
-      {/* <Footer />  */}
+      <Footer />
     </Fragment>
   );
 };

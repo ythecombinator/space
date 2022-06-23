@@ -1,8 +1,7 @@
+import { Center, chakra, Flex } from '@chakra-ui/react';
 import { FC } from 'react';
 
 import { siteConfig } from 'config/constants';
-
-import * as styles from './Footer.styles';
 
 /*~
  * COMPONENT
@@ -10,10 +9,17 @@ import * as styles from './Footer.styles';
 
 const Footer: FC = () => {
   return (
-    <footer sx={styles.footer}>
-      &copy; {new Date().getFullYear()} by {siteConfig.baseTitle}. All rights
-      reserved.
-    </footer>
+    <Center
+      as="footer"
+      borderTop="1px solid"
+      borderTopColor="brand.400"
+      marginTop={20}
+    >
+      <chakra.p padding={4}>
+        &copy; {new Date().getFullYear()} by {siteConfig.baseTitle}. All rights
+        reserved.
+      </chakra.p>
+    </Center>
   );
 };
 
