@@ -41,7 +41,7 @@ const BlogPostCard: FC<BlogPostCardProps> = (props) => {
     <LinkBox as="article">
       <VStack
         alignItems="stretch"
-        w="full"
+        width="full"
         p={{ base: 0, md: 4 }}
         _hover={{
           bg: 'gray.100',

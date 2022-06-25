@@ -12,10 +12,10 @@ export type TalksSectionProps = {
 
 const TalksSection = (props: TalksSectionProps) => {
   return (
-    <VStack as="section" alignItems="flex-start" w="full" spacing={4}>
+    <VStack as="section" alignItems="flex-start" width="full" spacing={4}>
       <Heading size="md">Latest Talks</Heading>
 
-      <List w="full" spacing={{ base: 8, md: 2 }}>
+      <List width="full" spacing={{ base: 8, md: 2 }}>
         {props.talks.map((talk) => (
           <ListItem key={talk.slug}>
             <TalkCard {...talk} />

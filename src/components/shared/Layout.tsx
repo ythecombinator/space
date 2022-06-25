@@ -1,5 +1,4 @@
 import { Container, VStack } from '@chakra-ui/react';
-import { Global, GlobalProps } from '@emotion/react';
 import NProgress from 'next-nprogress-emotion';
 import { FC, Fragment } from 'react';
 
@@ -13,31 +12,6 @@ import Header from 'components/shared/Header';
 export type LayoutProps = { children: React.ReactNode };
 
 /*~
- * STYLES
- */
-
-const global = () =>
-  ({
-    '*': {
-      boxSizing: 'inherit',
-      lineHeight: 1.6,
-    },
-    html: {
-      WebkitTextSizeAdjust: '100%',
-    },
-    img: {
-      borderStyle: 'none',
-    },
-    pre: {
-      fontFamily: 'monospace',
-      fontSize: '1em',
-    },
-    '[hidden]': {
-      display: 'none',
-    },
-  } as GlobalProps['styles']);
-
-/*~
  * COMPONENT
  */
 
@@ -46,7 +20,6 @@ const Layout: FC<LayoutProps> = (props) => {
 
   return (
     <Fragment>
-      <Global styles={global} />
       <NProgress
         color="accent"
         options={{ trickleSpeed: 50 }}

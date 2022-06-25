@@ -6,93 +6,38 @@ import {
   IconButton,
   useColorModeValue,
   useDisclosure,
-  CloseButton,
-  VStack,
   Button,
-  useColorMode,
+  Box,
 } from '@chakra-ui/react';
-import { useViewportScroll } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
-import { AiFillHome, AiOutlineInbox, AiOutlineMenu } from 'react-icons/ai';
-import { BsFillCameraVideoFill } from 'react-icons/bs';
-import { FaMoon, FaSun } from 'react-icons/fa';
+import { AiOutlineMenu } from 'react-icons/ai';
 
+import { NavigationPath } from 'config/constants';
+
+import ColorModeToggle from 'components/shared/ColorModeToggle';
+import HeaderLink from 'components/shared/HeaderLink';
+import HeaderMobileNavigation from 'components/shared/HeaderMobileNavigation';
 import Logo from 'components/shared/Logo';
 
 export default function Header() {
-  const { toggleColorMode: toggleMode } = useColorMode();
-  const text = useColorModeValue('dark', 'light');
-  const SwitchIcon = useColorModeValue(FaMoon, FaSun);
-  const bg = useColorModeValue('white', 'gray.800');
-  const ref = useRef();
-  const [y, setY] = useState(0);
-  const { height = 0 } = ref.current ? ref.current.getBoundingClientRect() : {};
-
-  const { scrollY } = useViewportScroll();
-
-  useEffect(() => {
-    return scrollY.onChange(() => setY(scrollY.get()));
-  }, [scrollY]);
-
-  const cl = useColorModeValue('gray.800', 'white');
-  const mobileNav = useDisclosure();
-
-  const MobileNavContent = (
-    <VStack
-      pos="absolute"
-      top={0}
-      left={0}
-      right={0}
-      display={mobileNav.isOpen ? 'flex' : 'none'}
-      flexDirection="column"
-      p={2}
-      pb={4}
-      m={2}
-      bg={bg}
-      spacing={3}
-      rounded="sm"
-      shadow="sm"
-    >
-      <CloseButton
-        aria-label="Close menu"
-        justifySelf="self-start"
-        onClick={mobileNav.onClose}
-      />
-      <Button width="full" variant="ghost" leftIcon={<AiFillHome />}>
-        Dashboard
-      </Button>
-      <Button
-        width="full"
-        variant="solid"
-        colorScheme="brand"
-        leftIcon={<AiOutlineInbox />}
-      >
-        Inbox
-      </Button>
-      <Button width="full" variant="ghost" leftIcon={<BsFillCameraVideoFill />}>
-        Videos
-      </Button>
-    </VStack>
-  );
+  const backgroundColor = useColorModeValue('white', 'gray.800');
+  const mobileNavigation = useDisclosure();
 
   return (
     <chakra.header
-      ref={ref}
       position="sticky"
-      background={bg}
+      background={backgroundColor}
       marginBottom="10"
-      // overflowY="hidden"
       zIndex="popover"
       top={0}
       width="full"
     >
-      <chakra.div h="4.5rem" mx="auto" maxW="1200px">
+      <Box height="4.5rem" marginX="auto">
         <Flex
           width="full"
-          h="full"
-          px="6"
+          height="full"
+          paddingX="6"
           alignItems="center"
-          justifyContent="space-between"
+          justifyContent="space-around"
         >
           <Flex align="flex-start">
             <Link href="/">
@@ -103,39 +48,11 @@ export default function Header() {
           </Flex>
           <Flex>
             <HStack spacing="5" display={{ base: 'none', md: 'flex' }}>
-              <Button
-                bg={bg}
-                color="gray.500"
-                display="inline-flex"
-                alignItems="center"
-                fontSize="md"
-                _hover={{ color: cl }}
-                _focus={{ boxShadow: 'none' }}
-              >
+              <HeaderLink href={NavigationPath.speaking}>
                 📣 Speaking
-              </Button>
-              <Button
-                bg={bg}
-                color="gray.500"
-                display="inline-flex"
-                alignItems="center"
-                fontSize="md"
-                _hover={{ color: cl }}
-                _focus={{ boxShadow: 'none' }}
-              >
-                ✍️ Writing
-              </Button>
-              <Button
-                bg={bg}
-                color="gray.500"
-                display="inline-flex"
-                alignItems="center"
-                fontSize="md"
-                _hover={{ color: cl }}
-                _focus={{ boxShadow: 'none' }}
-              >
-                👨‍💻 Coding
-              </Button>
+              </HeaderLink>
+              <HeaderLink href={NavigationPath.writing}>✍️ Writing</HeaderLink>
+              <HeaderLink href={NavigationPath.coding}>👨‍💻 Coding</HeaderLink>
             </HStack>
           </Flex>
           <Flex justify="flex-end" align="center" color="gray.400">
@@ -146,16 +63,7 @@ export default function Header() {
               <Button variant="ghost" size="sm">
                 Life
               </Button>
-              <IconButton
-                size="md"
-                fontSize="lg"
-                aria-label={`Switch to ${text} mode`}
-                variant="ghost"
-                color="current"
-                ml={{ base: '0', md: '3' }}
-                onClick={toggleMode}
-                icon={<SwitchIcon />}
-              />
+              <ColorModeToggle />
             </HStack>
             <IconButton
               display={{ base: 'flex', md: 'none' }}
@@ -164,12 +72,15 @@ export default function Header() {
               color={useColorModeValue('gray.800', 'inherit')}
               variant="ghost"
               icon={<AiOutlineMenu />}
-              onClick={mobileNav.onOpen}
+              onClick={mobileNavigation.onOpen}
             />
           </Flex>
         </Flex>
-        {MobileNavContent}
-      </chakra.div>
+        <HeaderMobileNavigation
+          isOpen={mobileNavigation.isOpen}
+          onClose={mobileNavigation.onClose}
+        />
+      </Box>
     </chakra.header>
   );
 }

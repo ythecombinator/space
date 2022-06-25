@@ -6,6 +6,7 @@ import {
   Button,
   Icon,
   Link,
+  HStack,
 } from '@chakra-ui/react';
 import { Prose } from '@nikolovlazar/chakra-ui-prose';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
@@ -23,19 +24,21 @@ export type HeroProps = {
 
 const Hero = (props: HeroProps) => {
   return (
-    <VStack alignItems="flex-start" w="full" spacing={3}>
+    <VStack alignItems="flex-start" width="full" spacing={3}>
       <HeroImage />
 
       <Heading as="h1" size="lg">
         {`🙋🏻‍♂️ Hi, I'm ${siteConfig.baseTitle}!`}
       </Heading>
+
       <Text as="h2" lineHeight="175%">
         <Prose>
           <MDXRenderer {...props.contents} />
         </Prose>
       </Text>
-      <Stack direction={{ base: 'column', md: 'row' }} spacing={3}>
-        {socialNetworks.slice(0, 3).map(({ href, label }) => (
+
+      <HStack spacing={2}>
+        {socialNetworks.map(({ href, label }) => (
           <Button
             key={href}
             as={Link}
@@ -50,7 +53,7 @@ const Hero = (props: HeroProps) => {
             {label}
           </Button>
         ))}
-      </Stack>
+      </HStack>
     </VStack>
   );
 };
