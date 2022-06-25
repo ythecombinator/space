@@ -6,7 +6,10 @@ import {
 } from '@chakra-ui/react';
 import { FiArrowUpRight } from 'react-icons/fi';
 
-const LinkExternal = ({ children, ...linkProps }: LinkProps) => {
+export type ExternalLinkProps = LinkProps;
+
+const ExternalLink = (props: LinkProps) => {
+  const { children, ...linkProps } = props;
   return (
     <span>
       <Link
@@ -28,4 +31,4 @@ const LinkExternal = ({ children, ...linkProps }: LinkProps) => {
   );
 };
 
-export default LinkExternal;
+export default ExternalLink;

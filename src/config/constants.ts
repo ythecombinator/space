@@ -1,4 +1,4 @@
-import { HeaderExternalLinkIconIdentifier } from 'components/shared/HeaderExternalLinkIcon';
+import { ExternalLink } from 'types/link';
 
 export const siteTitle = 'ythecombinator';
 
@@ -11,75 +11,40 @@ export const siteConfig = {
   twitterHandle: '@ythecombinator',
 };
 
-export const externalLinks: Array<{
-  name: HeaderExternalLinkIconIdentifier;
-  url: string;
-}> = [
+export const socialNetworks: Array<ExternalLink> = [
   {
-    name: `twitter`,
-    url: `https://twitter.com/ythecombinator`,
+    label: 'Twitter',
+    href: 'https://twitter.com/ythecombinator',
   },
   {
-    name: `github`,
-    url: `https://github.com/ythecombinator`,
+    label: 'Github',
+    href: 'https://github.com/ythecombinator',
   },
   {
-    name: `devto`,
-    url: `https://dev.to/ythecombinator`,
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/ythecombinator',
   },
   {
-    name: `speakerdeck`,
-    url: `https://speakerdeck.com/ythecombinator`,
+    label: 'SpeakerDeck',
+    href: 'https://speakerdeck.com/ythecombinator',
   },
   {
-    name: `linkedin`,
-    url: `https://www.linkedin.com/in/ythecombinator/`,
-  },
-  {
-    name: `angel.co`,
-    url: `https://angel.co/u/ythecombinator`,
-  },
-  {
-    name: `instagram`,
-    url: `https://www.instagram.com/ythecombinator`,
-  },
-  {
-    name: `unsplash`,
-    url: `https://unsplash.com/@ythecombinator`,
-  },
-  {
-    name: `deviantart`,
-    url: `https://www.deviantart.com/ythecombinator`,
+    label: 'devto',
+    href: 'https://dev.to/ythecombinator',
   },
 ];
 
 export enum NavigationPath {
   base = '/',
-  about = '/about',
+  work = '/work',
+  life = '/life',
   writing = '/writing',
   speaking = '/speaking',
-  projects = '/projects',
+  coding = '/coding',
+  setupSoftware = '/setup/software',
+  setupHardware = '/setup/hardware',
   tags = '/tags',
 }
-
-export const navigationItems = [
-  {
-    title: `About`,
-    slug: NavigationPath.about,
-  },
-  {
-    title: `Writing`,
-    slug: NavigationPath.writing,
-  },
-  {
-    title: `Speaking`,
-    slug: NavigationPath.speaking,
-  },
-  {
-    title: `Projects`,
-    slug: NavigationPath.projects,
-  },
-];
 
 export enum SourcePath {
   content = 'src/content',

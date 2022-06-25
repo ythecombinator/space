@@ -47,8 +47,6 @@ const Layout: FC<LayoutProps> = (props) => {
   return (
     <Fragment>
       <Global styles={global} />
-      {/* TODO */}
-      {/* <Seo /> */}
       <NProgress
         color="accent"
         options={{ trickleSpeed: 50 }}
@@ -58,7 +56,7 @@ const Layout: FC<LayoutProps> = (props) => {
       <Header />
       <Container
         display="flex"
-        maxWidth="container.md"
+        maxWidth="container.sm"
         minHeight={{ base: 'auto', md: '100vh' }}
         paddingX={{ base: 4, lg: 0 }}
         centerContent

@@ -47,12 +47,10 @@ const theme = extendTheme(
       },
       Link: {
         baseStyle: (props) => ({
-          ...purpleRing(props),
-        }),
-      },
-      Button: {
-        baseStyle: (props) => ({
-          ...purpleRing(props),
+          textDecoration: 'none',
+          _hover: {
+            textDecoration: 'none',
+          },
         }),
       },
       Input: {
@@ -64,16 +62,13 @@ const theme = extendTheme(
           }),
         },
       },
-      Textarea: {
-        variants: {
-          filled: (props) => ({
-            ...inputBorder(props),
-          }),
-        },
-      },
     },
     colors: {
       twitter: '#1EA1F1',
+      github: '#333',
+      linkedin: '#0a66c2',
+      speakerdeck: '#006159',
+      devto: '#333',
     },
     fonts: {
       heading: `Cal Sans, ${base.fonts.heading}`,
@@ -98,7 +93,16 @@ const theme = extendTheme(
       },
     },
   },
-  withProse()
+  withProse({
+    baseStyle: {
+      a: {
+        textDecoration: 'none',
+        _hover: {
+          textDecoration: 'none',
+        },
+      },
+    },
+  })
 );
 
 export default theme;
