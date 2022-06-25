@@ -1,4 +1,4 @@
-import { Container } from '@chakra-ui/react';
+import { Container, VStack } from '@chakra-ui/react';
 import { Global, GlobalProps } from '@emotion/react';
 import NProgress from 'next-nprogress-emotion';
 import { FC, Fragment } from 'react';
@@ -56,8 +56,20 @@ const Layout: FC<LayoutProps> = (props) => {
         spinner
       />
       <Header />
-      <Container maxW="2xl">{children}</Container>
-      <Footer />
+      <Container
+        display="flex"
+        maxWidth="container.md"
+        minHeight={{ base: 'auto', md: '100vh' }}
+        paddingX={{ base: 4, lg: 0 }}
+        centerContent
+      >
+        <VStack alignItems="stretch" flex={1} width="full" spacing={16}>
+          <VStack as="main" flex={1} width="full" spacing={8}>
+            {children}
+          </VStack>
+          <Footer />
+        </VStack>
+      </Container>
     </Fragment>
   );
 };

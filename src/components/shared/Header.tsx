@@ -10,16 +10,10 @@ import {
   VStack,
   Button,
   useColorMode,
-  Icon,
 } from '@chakra-ui/react';
 import { useViewportScroll } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
-import {
-  AiFillHome,
-  AiOutlineInbox,
-  AiOutlineMenu,
-  AiFillGithub,
-} from 'react-icons/ai';
+import { AiFillHome, AiOutlineInbox, AiOutlineMenu } from 'react-icons/ai';
 import { BsFillCameraVideoFill } from 'react-icons/bs';
 import { FaMoon, FaSun } from 'react-icons/fa';
 
@@ -64,18 +58,18 @@ export default function Header() {
         justifySelf="self-start"
         onClick={mobileNav.onClose}
       />
-      <Button w="full" variant="ghost" leftIcon={<AiFillHome />}>
+      <Button width="full" variant="ghost" leftIcon={<AiFillHome />}>
         Dashboard
       </Button>
       <Button
-        w="full"
+        width="full"
         variant="solid"
         colorScheme="brand"
         leftIcon={<AiOutlineInbox />}
       >
         Inbox
       </Button>
-      <Button w="full" variant="ghost" leftIcon={<BsFillCameraVideoFill />}>
+      <Button width="full" variant="ghost" leftIcon={<BsFillCameraVideoFill />}>
         Videos
       </Button>
     </VStack>
@@ -84,18 +78,17 @@ export default function Header() {
   return (
     <chakra.header
       ref={ref}
-      shadow={y > height ? 'sm' : undefined}
-      transition="box-shadow 0.2s"
-      bg={bg}
-      borderBottom="1px solid"
-      borderBottomColor="brand.400"
+      position="sticky"
+      background={bg}
       marginBottom="10"
+      // overflowY="hidden"
+      zIndex="popover"
+      top={0}
       width="full"
-      overflowY="hidden"
     >
       <chakra.div h="4.5rem" mx="auto" maxW="1200px">
         <Flex
-          w="full"
+          width="full"
           h="full"
           px="6"
           alignItems="center"
@@ -119,7 +112,7 @@ export default function Header() {
                 _hover={{ color: cl }}
                 _focus={{ boxShadow: 'none' }}
               >
-                Talks
+                📣 Speaking
               </Button>
               <Button
                 bg={bg}
@@ -130,7 +123,7 @@ export default function Header() {
                 _hover={{ color: cl }}
                 _focus={{ boxShadow: 'none' }}
               >
-                Posts
+                ✍️ Writing
               </Button>
               <Button
                 bg={bg}
@@ -141,7 +134,7 @@ export default function Header() {
                 _hover={{ color: cl }}
                 _focus={{ boxShadow: 'none' }}
               >
-                Projects
+                👨‍💻 Coding
               </Button>
             </HStack>
           </Flex>
@@ -153,8 +146,6 @@ export default function Header() {
               <Button variant="ghost" size="sm">
                 Life
               </Button>
-            </HStack>
-            <HStack spacing="5" display={{ base: 'none', md: 'flex' }}>
               <IconButton
                 size="md"
                 fontSize="lg"
@@ -165,21 +156,6 @@ export default function Header() {
                 onClick={toggleMode}
                 icon={<SwitchIcon />}
               />
-
-              <Link
-                isExternal
-                aria-label="Go to Choc UI GitHub page"
-                href="https://github.com/anubra266/choc-ui"
-              >
-                <Icon
-                  as={AiFillGithub}
-                  display="block"
-                  transition="color 0.2s"
-                  w="5"
-                  h="5"
-                  _hover={{ color: 'gray.600' }}
-                />
-              </Link>
             </HStack>
             <IconButton
               display={{ base: 'flex', md: 'none' }}

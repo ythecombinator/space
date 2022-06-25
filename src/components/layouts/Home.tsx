@@ -23,13 +23,12 @@ const HomeLayout: FC<HomeLayoutProps> = (props) => {
 
   return (
     <Layout>
-      <h1 sx={visuallyHidden}>{siteTitle}</h1>
       <section
-        sx={{
-          mb: [5, 6, 7],
-          p: { fontSize: [1, 2, 3], mt: 2 },
-          variant: `section_hero`,
-        }}
+      // sx={{
+      //   mb: [5, 6, 7],
+      //   p: { fontSize: [1, 2, 3], mt: 2 },
+      //   variant: `section_hero`,
+      // }}
       >
         {heroSection}
       </section>

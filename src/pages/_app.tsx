@@ -5,11 +5,14 @@ import Head from 'next/head';
 
 import { siteConfig } from 'config/constants';
 
+import 'styles/globals.css';
+import theme from 'styles/theme';
+
 class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
     return (
-      <ChakraProvider>
+      <ChakraProvider theme={theme}>
         <Head>
           <meta
             content="width=device-width, initial-scale=1.0"

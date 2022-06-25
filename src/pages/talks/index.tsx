@@ -184,19 +184,19 @@ const TalksPage: NextPage<Props> = (props) => {
 
         {/* Featured */}
         <Box>
-          <Heading marginBottom={'1rem'}>Featured Talks</Heading>
+          <Heading marginBottom={'1rem'}>Featured Sessions</Heading>
           <FeaturedTalksList items={featuredTalks} />
         </Box>
 
         {/* Upcoming */}
         <Box>
-          <Heading marginBottom={'1rem'}>Upcoming Talks</Heading>
+          <Heading marginBottom={'1rem'}>Hot Sessions</Heading>
           <UpcomingTalksList items={upcomingTalks} />
         </Box>
 
         {/* All */}
         <Box>
-          <Heading marginBottom={'1rem'}>All Talks</Heading>
+          <Heading marginBottom={'1rem'}>All Sessions</Heading>
           <AllTalksList items={allTalks} />
         </Box>
       </VStack>

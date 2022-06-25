@@ -46,7 +46,7 @@ const FeaturedTalksItem: FC<FeaturedTalksItemProps> = (props) => {
         left={0}
         _hover={{ opacity: 1 }}
       >
-        <Link href={`${NavigationPath.talks}/${talkSlug}`}>
+        <Link href={`${NavigationPath.speaking}/${talkSlug}`}>
           <Flex
             maxWidth="85%"
             direction="column"

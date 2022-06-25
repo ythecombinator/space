@@ -6,10 +6,9 @@ import { NavigationPath } from 'config/constants';
 import { getFileContents } from 'utils/mdx';
 import { replaceSlashes } from 'utils/string';
 
-import MDXRenderer from 'components/shared/MDXRenderer';
-import Title from 'components/shared/Title';
-
 import HomepageLayout from 'components/layouts/Home';
+
+import Hero from 'components/pages/home/Hero';
 
 /*~
  * TYPES
@@ -34,18 +33,9 @@ const HomePage: NextPage<HomePageProps> = (props) => {
   const { heroContent } = props;
 
   return (
-    <HomepageLayout heroSection={<MDXRenderer {...heroContent} />}>
-      <Title text="Latest Posts">
-        <Link
-          href={replaceSlashes(
-            `/${NavigationPath.base}/${NavigationPath.posts}`
-          )}
-        >
-          Read all posts
-        </Link>
-      </Title>
-      {/* <Listing posts={posts} showTags={false} /> */}
-    </HomepageLayout>
+    <HomepageLayout
+      heroSection={<Hero contents={heroContent} />}
+    ></HomepageLayout>
   );
 };
 

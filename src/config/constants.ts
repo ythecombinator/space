@@ -56,8 +56,8 @@ export const externalLinks: Array<{
 export enum NavigationPath {
   base = '/',
   about = '/about',
-  posts = '/posts',
-  talks = '/talks',
+  writing = '/writing',
+  speaking = '/speaking',
   projects = '/projects',
   tags = '/tags',
 }
@@ -68,12 +68,12 @@ export const navigationItems = [
     slug: NavigationPath.about,
   },
   {
-    title: `Posts`,
-    slug: NavigationPath.posts,
+    title: `Writing`,
+    slug: NavigationPath.writing,
   },
   {
-    title: `Talks`,
-    slug: NavigationPath.talks,
+    title: `Speaking`,
+    slug: NavigationPath.speaking,
   },
   {
     title: `Projects`,

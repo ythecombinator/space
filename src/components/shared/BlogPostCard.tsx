@@ -20,7 +20,7 @@ import Tag from 'components/shared/Tag';
  * TYPES
  */
 
-export type AllTalksItemProps = {
+export type BlogPostCardProps = {
   slug: string;
   title: string;
   headline: ContentfulDocument;
@@ -34,7 +34,7 @@ export type AllTalksItemProps = {
  * COMPONENT
  */
 
-const AllTalksItem: FC<AllTalksItemProps> = (props) => {
+const BlogPostCard: FC<BlogPostCardProps> = (props) => {
   const { title, headline, tags, slug } = props;
 
   return (
@@ -85,4 +85,4 @@ const AllTalksItem: FC<AllTalksItemProps> = (props) => {
   );
 };
 
-export default AllTalksItem;
+export default BlogPostCard;

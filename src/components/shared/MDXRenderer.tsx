@@ -1,8 +1,6 @@
-import { Avatar, AvatarProps, Text, TextProps } from '@theme-ui/components';
+import { Avatar, AvatarProps, Text, TextProps } from '@chakra-ui/react';
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote';
 import { FunctionComponent, PropsWithChildren } from 'react';
-
-import Title, { TitleProps } from 'components/shared/Title';
 
 /*~
  * TYPES
@@ -10,7 +8,6 @@ import Title, { TitleProps } from 'components/shared/Title';
 
 type AvatarWrapperComponent = FunctionComponent<AvatarProps>;
 type TextWrapperComponent = FunctionComponent<TextProps>;
-type TitleWrapperComponent = FunctionComponent<TitleProps>;
 
 export type MDXRendererProps = PropsWithChildren<MDXRemoteProps>;
 
@@ -26,16 +23,9 @@ const TextWrapper: TextWrapperComponent = ({ children, ...props }) => (
   <Text {...props}>{children}</Text>
 );
 
-const TitleWrapper: TitleWrapperComponent = ({ children, text, ...props }) => (
-  <Title text={text} {...props}>
-    {children}
-  </Title>
-);
-
 const defaultComponents = {
   Avatar: AvatarWrapper,
   Text: TextWrapper,
-  Title: TitleWrapper,
 };
 
 /*~

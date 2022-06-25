@@ -1,5 +1,6 @@
 import { Heading, Text } from '@chakra-ui/react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { Prose } from '@nikolovlazar/chakra-ui-prose';
 import {
   GetAllTalkSlugsDocument,
   GetAllTalkSlugsQuery,
@@ -113,13 +114,11 @@ const TalkPage: NextPage<Props> = (props) => {
 
   return (
     <Layout>
-      <Text fontSize="3xl" fontWeight="extrabold">
-        {title}
-      </Text>
+      <Heading> {title}</Heading>
 
-      {documentToReactComponents(abstract)}
+      <Prose>{documentToReactComponents(abstract)}</Prose>
 
-      <Heading marginBottom={'1rem'}>Sessions</Heading>
+      <Heading>Sessions</Heading>
       <EventsList items={sessions} />
     </Layout>
   );
