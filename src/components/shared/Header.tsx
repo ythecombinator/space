@@ -48,9 +48,7 @@ export default function Header() {
           </Flex>
           <Flex>
             <HStack spacing="5" display={{ base: 'none', md: 'flex' }}>
-              <HeaderLink href={NavigationPath.speaking}>
-                📣 Speaking
-              </HeaderLink>
+              <HeaderLink href={NavigationPath.talks}>📣 Speaking</HeaderLink>
               <HeaderLink href={NavigationPath.writing}>✍️ Writing</HeaderLink>
               <HeaderLink href={NavigationPath.coding}>👨‍💻 Coding</HeaderLink>
             </HStack>

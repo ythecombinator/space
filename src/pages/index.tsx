@@ -1,9 +1,5 @@
 import { Document as ContentfulDocument } from '@contentful/rich-text-types';
-import {
-  ContentfulTag,
-  GetAllTalksDocument,
-  GetAllTalksQuery,
-} from 'graphql/schema';
+import { ContentfulTag, GetTalksDocument, GetTalksQuery } from 'graphql/schema';
 import { InferGetStaticPropsType, NextPage } from 'next';
 import { DeepNonNullable } from 'utility-types';
 
@@ -31,9 +27,8 @@ const tagTransformer = (tag: DeepNonNullable<ContentfulTag>) => {
   return { id, name };
 };
 
-const latestTalksDocTransformer = (result: GetAllTalksQuery) => {
-  const items = (result as DeepNonNullable<GetAllTalksQuery>).talkCollection
-    .items;
+const latestTalksDocTransformer = (result: GetTalksQuery) => {
+  const items = (result as DeepNonNullable<GetTalksQuery>).talkCollection.items;
 
   return items.map((item) => {
     const { title, slug, shortDescription, contentfulMetadata } = item;
@@ -48,8 +43,11 @@ const latestTalksDocTransformer = (result: GetAllTalksQuery) => {
   });
 };
 
-const getAllTalks = ContentfulService.query<GetAllTalksQuery>({
-  query: GetAllTalksDocument,
+const getLatestTalks = ContentfulService.query<GetTalksQuery>({
+  query: GetTalksDocument,
+  variables: {
+    limit: 3,
+  },
 });
 
 /*~
@@ -59,7 +57,7 @@ const getAllTalks = ContentfulService.query<GetAllTalksQuery>({
 export async function getStaticProps() {
   const [heroContents, latestTalksDoc] = await Promise.all([
     getFileContents('hero'),
-    getAllTalks,
+    getLatestTalks,
   ]);
 
   const latestTalks = latestTalksDocTransformer(latestTalksDoc.data);

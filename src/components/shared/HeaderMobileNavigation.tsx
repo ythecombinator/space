@@ -39,7 +39,7 @@ const HeaderMobileNavigation = (props: HeaderMobileNavigationProps) => {
         justifySelf="self-start"
         onClick={onClose}
       />
-      <HeaderMobileNavigationLink href={NavigationPath.speaking}>
+      <HeaderMobileNavigationLink href={NavigationPath.talks}>
         📣 Speaking
       </HeaderMobileNavigationLink>
 

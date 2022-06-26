@@ -39,7 +39,7 @@ export enum NavigationPath {
   work = '/work',
   life = '/life',
   writing = '/writing',
-  speaking = '/speaking',
+  talks = '/talks',
   coding = '/coding',
   setupSoftware = '/setup/software',
   setupHardware = '/setup/hardware',

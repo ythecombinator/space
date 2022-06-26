@@ -1,5 +1,5 @@
-query GetAllTalks {
-  talkCollection(order: lastRelevant_DESC) {
+query GetTalks($limit: Int) {
+  talkCollection(order: lastRelevant_DESC, limit: $limit) {
     items {
       title
       shortDescription {

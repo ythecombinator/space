@@ -1,8 +1,8 @@
 import { Heading, Text, Box, VStack } from '@chakra-ui/react';
 import { Document as ContentfulDocument } from '@contentful/rich-text-types';
 import {
-  GetAllTalksDocument,
-  GetAllTalksQuery,
+  GetTalksDocument,
+  GetTalksQuery,
   GetUpcomingTalksDocument,
   GetUpcomingTalksQuery,
   ContentfulTag,
@@ -42,9 +42,8 @@ const tagTransformer = (tag: DeepNonNullable<ContentfulTag>) => {
   return { id, name };
 };
 
-const allTalksDocTransformer = (result: GetAllTalksQuery) => {
-  const items = (result as DeepNonNullable<GetAllTalksQuery>).talkCollection
-    .items;
+const allTalksDocTransformer = (result: GetTalksQuery) => {
+  const items = (result as DeepNonNullable<GetTalksQuery>).talkCollection.items;
 
   return items.map((item) => {
     const { title, slug, shortDescription, contentfulMetadata } = item;
@@ -117,8 +116,11 @@ const getUpcomingTalks = ContentfulService.query<GetUpcomingTalksQuery>({
   },
 });
 
-const getAllTalks = ContentfulService.query<GetAllTalksQuery>({
-  query: GetAllTalksDocument,
+const getAllTalks = ContentfulService.query<GetTalksQuery>({
+  query: GetTalksDocument,
+  variables: {
+    limit: 0,
+  },
 });
 
 /*~

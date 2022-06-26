@@ -27,9 +27,11 @@ const TalksSection = (props: TalksSectionProps) => {
         <Link
           display="flex"
           alignItems="center"
-          href={NavigationPath.speaking}
+          href={NavigationPath.talks}
           ml={{ base: 0, md: 4 }}
           role="group"
+          bgGradient="linear(to-l, #7928CA,#FF0080)"
+          bgClip="text"
         >
           View all talks
           <Icon

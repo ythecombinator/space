@@ -58,7 +58,7 @@ const AllTalksItem: FC<AllTalksItemProps> = (props) => {
         transitionTimingFunction="ease-out"
       >
         <VStack alignItems="flex-start">
-          <NextLink href={`${NavigationPath.speaking}/${slug}`}>
+          <NextLink href={`${NavigationPath.talks}/${slug}`}>
             <Link>
               <LinkOverlay>
                 <Heading size="md">{title}</Heading>
