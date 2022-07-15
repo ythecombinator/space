@@ -6,18 +6,19 @@ import {Event} from 'model/Event';
 
 import * as Styled from './styles';
 
-interface Props extends Pick<Event, "video"> {}
+interface Props {
+  href: string;
+  label: string;
+}
 
-interface Props {}
-
-const Card: FunctionComponent<Props> = (props) => {
-  const { video } = props;
+const Button: FunctionComponent<Props> = (props) => {
+  const { href, label } = props;
 
   return (
-    <Styled.Button href={video}>
-      <FaChevronRight /> Watch it 📺
+    <Styled.Button target="_blank" href={href}>
+      <FaChevronRight /> {label}
     </Styled.Button>
   );
 };
 
-export default Card;
+export default Button;

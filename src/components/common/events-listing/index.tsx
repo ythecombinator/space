@@ -24,6 +24,7 @@ const EventsListing: FunctionComponent<Props> = (props) => {
           date,
           link,
           video,
+          slides,
         } = item;
 
         return (
@@ -36,6 +37,7 @@ const EventsListing: FunctionComponent<Props> = (props) => {
             date={date}
             link={link}
             video={video}
+            slides={slides}
           />
         );
       })}

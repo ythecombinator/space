@@ -1,6 +1,7 @@
 import styled from 'utils/styles';
 
 export const Button = styled.a`
+  margin: 0.5rem 0;
   display: flex;
   align-items: center;
   border: none;

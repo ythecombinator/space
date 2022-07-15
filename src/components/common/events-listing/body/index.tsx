@@ -8,11 +8,11 @@ import * as Styled from './styles';
 interface Props
   extends Pick<
     Event,
-    "name" | "place" | "date" | "audience" | "video" | "link"
+    "name" | "place" | "date" | "audience" | "video" | "slides" | "link"
   > {}
 
 const Body: FunctionComponent<Props> = (props) => {
-  const { name, place, date, audience, video, link } = props;
+  const { name, slides, date, audience, video, link } = props;
 
   return (
     <Styled.Container>
@@ -21,11 +21,13 @@ const Body: FunctionComponent<Props> = (props) => {
       <Styled.Title href={link}>{name}</Styled.Title>
 
       <Styled.Content>
-        <Styled.Info>📍 {place}</Styled.Info>
-        <Styled.Info>👥 {audience ? `≈ ${audience}` : "N/A"}</Styled.Info>
+        <Styled.Info>
+          👥 Audience: {audience ? `~${audience}` : "N/A"}
+        </Styled.Info>
       </Styled.Content>
 
-      {video && <Button video={video} />}
+      {video && <Button label="Watch it 📺" href={video} />}
+      {slides && <Button label="Check the slides 🖥️" href={slides} />}
     </Styled.Container>
   );
 };

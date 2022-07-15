@@ -18,11 +18,7 @@ export const Content = styled.div`
   line-height: 1.8;
 `;
 
-export const Info = styled.p`
-  border: 3px solid ${(props) => props.theme.colors.secondary};
-  margin-right: 1rem;
-  padding: 0.5rem;
-`;
+export const Info = styled.p``;
 
 export const Title = styled.a`
   display: block;

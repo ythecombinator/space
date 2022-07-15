@@ -9,7 +9,17 @@ import * as Styled from './styles';
 interface Props extends Event {}
 
 const Card: FunctionComponent<Props> = (props) => {
-  const { name, thumbnail, city, place, audience, date, video, link } = props;
+  const {
+    name,
+    thumbnail,
+    city,
+    place,
+    audience,
+    date,
+    video,
+    slides,
+    link,
+  } = props;
 
   return (
     <Styled.Container>
@@ -21,6 +31,7 @@ const Card: FunctionComponent<Props> = (props) => {
         date={date}
         link={link}
         video={video}
+        slides={slides}
       />
     </Styled.Container>
   );
