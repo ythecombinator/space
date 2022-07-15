@@ -7,4 +7,5 @@ export interface Event {
   place: string;
   audience: number;
   date: string;
+  slides: string;
 }
