@@ -20,11 +20,11 @@ const Body: FunctionComponent<Props> = (props) => {
 
       <Styled.Title href={link}>{name}</Styled.Title>
 
-      <Styled.Content>
-        <Styled.Info>
-          👥 Audience: {audience ? `~${audience}` : "N/A"}
-        </Styled.Info>
-      </Styled.Content>
+      {audience && (
+        <Styled.Content>
+          <Styled.Info>{`👥 Audience: ~${audience}`}</Styled.Info>
+        </Styled.Content>
+      )}
 
       {video && <Button label="Watch it 📺" href={video} />}
       {slides && <Button label="Check the slides 🖥️" href={slides} />}
