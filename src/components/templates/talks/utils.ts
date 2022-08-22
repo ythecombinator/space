@@ -9,6 +9,7 @@ import featuredTalk14 from './assets/frontend_talks_prg-2019.jpg';
 import featuredTalk16 from './assets/frontend_talks_prg-2020.jpg';
 import featuredTalk06 from './assets/natal_tech_conference-2019.jpg';
 import featuredTalk03 from './assets/phpeste-2017.jpg';
+import featuredTalk18 from './assets/react_next-2022.jpg';
 import featuredTalk05 from './assets/react_nyc-2018.jpg';
 import featuredTalk17 from './assets/react_summit_2022.jpg';
 import featuredTalk08 from './assets/tdc_bh-2019-1.jpg';
@@ -19,6 +20,12 @@ import featuredTalk11 from './assets/tdc_sp-2019-2.jpg';
 import featuredTalk12 from './assets/the_conf.jpg';
 
 const featuredTalks = [
+  {
+    event: "React Next 2022 • June, 2022",
+    link: "/talks/inside-fiber-the-in-depth-overview-you-wanted-a-tldr-for",
+    image: featuredTalk18,
+    key: "featuredTalk18",
+  },
   {
     event: "React Summit 2022 • June, 2022",
     link: "/talks/inside-fiber-the-in-depth-overview-you-wanted-a-tldr-for",
