@@ -4,9 +4,12 @@ import {createRef, FunctionComponent} from 'react';
 import {Flex} from '@theme-ui/components';
 import alicante from 'assets/cities/alicante.jpg';
 import amsterdam from 'assets/cities/amsterdam.jpg';
+import berlin from 'assets/cities/berlin.jpg';
+import brussels from 'assets/cities/brussels.jpg';
 import goa from 'assets/cities/goa.jpg';
 import lodz from 'assets/cities/lodz.jpg';
 import oslo from 'assets/cities/oslo.jpg';
+import reactGlobalSummit from 'assets/cities/react-global-summit.jpg';
 import telAviv from 'assets/cities/tel-aviv.jpg';
 import {jsx, Styled as StyledTheme} from 'theme-ui';
 
@@ -47,6 +50,20 @@ const Talks: FunctionComponent<PageProps> = (props) => {
       <EventsListing
         data={[
           {
+            name: "React Global Summit",
+            link: "https://events.geekle.us/react3/",
+            city: "Online",
+            thumbnail: reactGlobalSummit,
+            date: "November 8, 2022",
+          },
+          {
+            name: "React Brussels 2022",
+            link: "https://www.react.brussels",
+            city: "Brussels, Belgium",
+            thumbnail: brussels,
+            date: "October 14, 2022",
+          },
+          {
             name: "React Alicante 2022",
             link: "https://reactalicante.es",
             city: "Alicante, Spain",
@@ -67,6 +84,13 @@ const Talks: FunctionComponent<PageProps> = (props) => {
             city: "Goa, India",
             thumbnail: goa,
             date: "September 23, 2022",
+          },
+          {
+            name: "React Berlin Meetup",
+            link: "https://www.meetup.com/react-berlin-meetup/events/287841091",
+            city: "Berlin, Germany",
+            thumbnail: berlin,
+            date: "September 8, 2022",
           },
           {
             name: "Dev Conf 2022",
