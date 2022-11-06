@@ -57,7 +57,7 @@ export default {
         primary: tailwind.colors.gray[5],
         secondary: `#7f8ea3`,
         toggleIcon: tailwind.colors.gray[4],
-        background: `#1A202C`,
+        background: `#08070b`,
         heading: tailwind.colors.white,
         divide: tailwind.colors.gray[8],
         muted: tailwind.colors.gray[8],
