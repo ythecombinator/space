@@ -7,17 +7,34 @@ date: "2022-09-28"
 import EventsListing from "components/common/events-listing";
 
 import oslo from "assets/cities/oslo.jpg";
+import utrecht from "assets/cities/utrecht.jpg";
+import vilnius from "assets/cities/vilnius.jpg";
 
-Responsiveness to user interaction is crucial for our apps and you’ve probably heard about the amazing tools we have to measure web performance. Maybe you've measured your app using Lighthouse, checked the cost of a package using Bundlephobia, or even rejected a PR that adds a massive dependency using size-limit.
+Responsiveness to interaction is crucial for our apps and you’ve probably heard about the amazing tools we have to measure web performance. But did you know there are many performance APIs native to the Web Platform?
 
-Unfortunately, users are still frustrated by delayed TTIs, high input latency, and janky animations, and, while developers can measure some aspects of responsiveness, sometimes these are not reliable and it’s difficult to identify the root causes.
-
-But did you know there are many performance APIs native to the Web Platform? In this talk, we’ll see how to leverage the power of some of them to reliably measure responsiveness and correctly identify culprits for bad experiences.
+In this talk, we’ll see how to leverage the power of some of them to reliably measure responsiveness and correctly identify culprits for bad experiences.
 
 ### Events
 
 <EventsListing
   data={[
+    {
+      name: "Build Stuff Conference 2022",
+      link: "https://www.buildstuff.events/",
+      city: "Vilnius, Lithuania",
+      thumbnail: vilnius,
+      date: "November 10, 2022",
+      slides: "https://speakerdeck.com/ythecombinator/build-stuff-2022",
+    },
+    {
+      name: "Frontmania 2022",
+      link: "https://frontmania.com/",
+      city: "Utrecht, Netherlands",
+      thumbnail: utrecht,
+      date: "October 5, 2022",
+      slides:
+        "https://speakerdeck.com/ythecombinator/frontmania-2022-web-performance-apis",
+    },
     {
       name: "NDC Oslo 2022",
       link:
@@ -25,6 +42,7 @@ But did you know there are many performance APIs native to the Web Platform? In 
       city: "Oslo, Norway",
       thumbnail: oslo,
       date: "September 28, 2022",
+      slides: "https://speakerdeck.com/ythecombinator/ndc-oslo-2022",
     },
   ]}
 />
