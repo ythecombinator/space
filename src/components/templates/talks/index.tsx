@@ -1,16 +1,12 @@
 /** @jsx jsx */
-import {createRef, FunctionComponent} from 'react';
+import {FunctionComponent} from 'react';
 
 import {Flex} from '@theme-ui/components';
-import alicante from 'assets/cities/alicante.jpg';
-import amsterdam from 'assets/cities/amsterdam.jpg';
 import berlin from 'assets/cities/berlin.jpg';
 import brussels from 'assets/cities/brussels.jpg';
 import goa from 'assets/cities/goa.jpg';
-import lodz from 'assets/cities/lodz.jpg';
+import london from 'assets/cities/london.jpg';
 import oslo from 'assets/cities/oslo.jpg';
-import reactGlobalSummit from 'assets/cities/react-global-summit.jpg';
-import telAviv from 'assets/cities/tel-aviv.jpg';
 import {jsx, Styled as StyledTheme} from 'theme-ui';
 
 import EventsListing from 'components/common/events-listing';
@@ -50,11 +46,18 @@ const Talks: FunctionComponent<PageProps> = (props) => {
       <EventsListing
         data={[
           {
-            name: "React Global Summit",
-            link: "https://events.geekle.us/react3/",
-            city: "Online",
-            thumbnail: reactGlobalSummit,
-            date: "November 8, 2022",
+            name: "React Day Berlin 2022",
+            link: "https://reactday.berlin",
+            city: "Berlin, Germany",
+            thumbnail: berlin,
+            date: "December 2, 2022",
+          },
+          {
+            name: "React Advanced London 2022",
+            link: "https://reactadvanced.com/",
+            city: "London, United Kingdom",
+            thumbnail: london,
+            date: "October 21, 2022",
           },
           {
             name: "React Brussels 2022",
@@ -62,14 +65,7 @@ const Talks: FunctionComponent<PageProps> = (props) => {
             city: "Brussels, Belgium",
             thumbnail: brussels,
             date: "October 14, 2022",
-          },
-          {
-            name: "React Alicante 2022",
-            link: "https://reactalicante.es",
-            city: "Alicante, Spain",
-            thumbnail: alicante,
-            date: "September 30, 2022",
-          },
+          },å
           {
             name: "NDC Oslo 2022",
             link:
@@ -84,35 +80,7 @@ const Talks: FunctionComponent<PageProps> = (props) => {
             city: "Goa, India",
             thumbnail: goa,
             date: "September 23, 2022",
-          },
-          {
-            name: "React Berlin Meetup",
-            link: "https://www.meetup.com/react-berlin-meetup/events/287841091",
-            city: "Berlin, Germany",
-            thumbnail: berlin,
-            date: "September 8, 2022",
-          },
-          {
-            name: "Dev Conf 2022",
-            link: "https://devconf.pl/speakers/matheus-albuquerque",
-            city: "Łódź, Poland",
-            thumbnail: lodz,
-            date: "September 2, 2022",
-          },
-          {
-            name: "React Next 2022",
-            link: "https://www.react-next.com",
-            city: "Tel-Aviv, Israel",
-            thumbnail: telAviv,
-            date: "June 28, 2022",
-          },
-          {
-            name: "React Summit 2022",
-            link: "https://reactsummit.com",
-            city: "Amsterdam, Netherlands",
-            thumbnail: amsterdam,
-            date: "June 17, 2022",
-          },
+          },å
         ]}
       />
 
