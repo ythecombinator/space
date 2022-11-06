@@ -65,7 +65,7 @@ const Talks: FunctionComponent<PageProps> = (props) => {
             city: "Brussels, Belgium",
             thumbnail: brussels,
             date: "October 14, 2022",
-          },å
+          },
           {
             name: "NDC Oslo 2022",
             link:
@@ -80,7 +80,7 @@ const Talks: FunctionComponent<PageProps> = (props) => {
             city: "Goa, India",
             thumbnail: goa,
             date: "September 23, 2022",
-          },å
+          },
         ]}
       />
 
