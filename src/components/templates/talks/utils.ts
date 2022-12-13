@@ -14,15 +14,36 @@ import featuredTalkK from './assets/2019/tdc-sp-2.jpg';
 import featuredTalkL from './assets/2019/the-conf.jpg';
 import featuredTalkM from './assets/2020/frontend-talks-brn.jpg';
 import featuredTalkN from './assets/2020/frontend-talks-prg.jpg';
+import featuredTalkW from './assets/2022/build-stuff-conf.jpg';
 import featuredTalkO from './assets/2022/devconf-pl.jpg';
+import featuredTalkV from './assets/2022/frontmania.jpg';
 import featuredTalkP from './assets/2022/react-advanced.jpg';
 import featuredTalkQ from './assets/2022/react-alicante.jpg';
 import featuredTalkR from './assets/2022/react-brussels.jpg';
+import featuredTalkX from './assets/2022/react-day-berlin.jpg';
 import featuredTalkS from './assets/2022/react-india.jpg';
 import featuredTalkT from './assets/2022/react-next.jpg';
 import featuredTalkU from './assets/2022/react-summit.jpg';
 
 const featuredTalks = [
+  {
+    event: "React Day Berlin • December, 2022",
+    link: "/talks/consistent-ux-at-scale-lessons-learned-when-i-wore-the-design-ops-hat",
+    image: featuredTalkX,
+    key: "featuredTalkX",
+  },
+  {
+    event: "Build Stuff Conf • November, 2022",
+    link: "/talks/web-performance-apis-you-probably-didnt-know-existed",
+    image: featuredTalkW,
+    key: "featuredTalkW",
+  },
+  {
+    event: "Frontmania • October, 2022",
+    link: "/talks/web-performance-apis-you-probably-didnt-know-existed",
+    image: featuredTalkV,
+    key: "featuredTalkV",
+  },
   {
     event: "React Advanced London • October, 2022",
     link: "/talks/deep-diving-on-concurrent-react",
