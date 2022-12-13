@@ -91,5 +91,13 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: "gatsby-plugin-piwik-pro",
+      options: {
+        containerUrl: "https://ythecombinator.containers.piwik.pro",
+        siteId: "9c66f3a5-2460-4e70-a795-a69c4eb922aa",
+        enabled: process.env.NODE_ENV === "production",
+      },
+    },
   ].filter(Boolean),
 };

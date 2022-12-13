@@ -1766,6 +1766,11 @@
     string-width "^2.0.0"
     strip-ansi "^3"
 
+"@piwikpro/react-piwik-pro@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@piwikpro/react-piwik-pro/-/react-piwik-pro-1.1.1.tgz#2869e77876c95cc7c850e69fa8367a3b5ae7f744"
+  integrity sha512-Zl6+3FMUOqENOflmVkP8YP8WMV0D+H9BND8QUCp1gCqGUSSMlsSxco9hJFZGG0m0wiDAIqkF6p0ocNSVcUeR4g==
+
 "@pmmmwh/react-refresh-webpack-plugin@^0.4.1":
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/@pmmmwh/react-refresh-webpack-plugin/-/react-refresh-webpack-plugin-0.4.2.tgz#1f9741e0bde9790a0e13272082ed7272a083620d"
@@ -7380,6 +7385,13 @@ gatsby-plugin-page-creator@^2.3.32:
     globby "^11.0.1"
     graphql "^14.7.0"
     lodash "^4.17.20"
+
+gatsby-plugin-piwik-pro@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-piwik-pro/-/gatsby-plugin-piwik-pro-1.2.0.tgz#d18afe8409d227be849d6084325a32470f5df459"
+  integrity sha512-drQwjxvAAV53Ipj9lw6NlWBO/pqy9NdJV9xRWNiylfGuwTygCFQCQjCC+vV1c2lvsz0bXHlizhb6k/O/zEaEXg==
+  dependencies:
+    "@piwikpro/react-piwik-pro" "^1.1.1"
 
 gatsby-plugin-react-helmet-canonical-urls@1.4.0:
   version "1.4.0"
