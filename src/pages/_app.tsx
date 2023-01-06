@@ -1,52 +1,25 @@
-import { ChakraProvider } from '@chakra-ui/react';
-import { DefaultSeo } from 'next-seo';
-import App from 'next/app';
+import LayoutWrapper from 'components/LayoutWrapper';
+import { MainSEO } from 'components/NextSEO';
+import 'css/prism.css';
+import 'css/tailwind.css';
+import siteMetadata from 'data/siteMetadata';
+import { ThemeProvider } from 'next-themes';
 import Head from 'next/head';
 
-import { siteConfig } from 'config/constants';
+const isDevelopment = process.env.NODE_ENV === 'development';
+const isSocket = process.env.SOCKET;
 
-import 'styles/globals.css';
-import theme from 'styles/theme';
-
-class MyApp extends App {
-  render() {
-    const { Component, pageProps } = this.props;
-    return (
-      <ChakraProvider theme={theme}>
-        <Head>
-          <meta
-            content="width=device-width, initial-scale=1.0"
-            name="viewport"
-          />
-          <link rel="shortcut icon" href="/icon.png" />
-        </Head>
-        <DefaultSeo
-          title={siteConfig.title}
-          description={siteConfig.description}
-          openGraph={{
-            type: 'website',
-            url: siteConfig.url,
-            site_name: 'SiteName',
-            images: [
-              {
-                url: '/cover.png',
-                width: 1200,
-                height: 630,
-                alt: siteConfig.title,
-                type: 'image/png',
-              },
-            ],
-          }}
-          twitter={{
-            handle: siteConfig.twitterHandle,
-            site: siteConfig.url,
-            cardType: 'summary_large_image',
-          }}
-        />
+export default function App({ Component, pageProps }) {
+  return (
+    <ThemeProvider attribute="class" defaultTheme={siteMetadata.theme}>
+      <Head>
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+      </Head>
+      <LayoutWrapper>
+        {/* <Analytics /> */}
+        <MainSEO />
         <Component {...pageProps} />
-      </ChakraProvider>
-    );
-  }
+      </LayoutWrapper>
+    </ThemeProvider>
+  );
 }
-
-export default MyApp;
