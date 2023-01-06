@@ -41,11 +41,6 @@ export default function Footer() {
           <div className="flex flex-row  mb-1 sm:mb-0  sm:flex-col space-x-8 sm:space-x-0 justify-center sm:justify-start sm:space-y-4">
             <ExternalLink href={twitter}>Twitter</ExternalLink>
             <ExternalLink href={github}>GitHub</ExternalLink>
-            <Link href="/spotify">
-              <a className="text-gray-500 hover:text-gray-600 transition">
-                Spotify
-              </a>
-            </Link>
             <Link href="/feed.xml">
               <a className="text-gray-500 hover:text-gray-600 transition">
                 RSS
@@ -56,9 +51,8 @@ export default function Footer() {
 
         <div className="flex flex-col sm:items-center sm:justify-center  mb-5 ">
           <p className="text-gray-500 text-base self-start dark:text-gray-400 text-left sm:text-right mb-2">
-            Understand, don't memorize.
+            © <time>{new Date().getFullYear()}</time> Made with 💖.
           </p>
-          {siteMetadata.newsletter.provider !== '' && <NewsletterForm />}
         </div>
       </div>
     </footer>
