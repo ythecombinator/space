@@ -1,19 +1,11 @@
-import Image from 'components/Image';
 import Link from 'components/Link';
 import { BlogSEO } from 'components/NextSEO';
 import PageTitle from 'components/PageTitle';
 import ScrollTopAndComment from 'components/ScrollTopAndComment';
-import Comments from 'components/comments';
 import siteMetadata from 'data/siteMetadata';
 import formatDate from 'lib/utils/formatDate';
 
-export default function PostLayout({
-  frontMatter,
-  authorDetails,
-  next,
-  prev,
-  children,
-}) {
+export default function PostLayout({ frontMatter, children }) {
   const { date, title, slug, fileName, readingTime } = frontMatter;
 
   const editUrl = (fileName) =>
@@ -69,31 +61,6 @@ export default function PostLayout({
                 </Link>
               </div>
             </div>
-            <Comments />
-            <footer>
-              <div className="flex flex-col text-sm font-medium sm:flex-row sm:justify-between sm:text-base">
-                {prev && (
-                  <div className="pt-2 xl:pt-8">
-                    <Link
-                      href={`/blog/${prev.slug}`}
-                      className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                    >
-                      &larr; {prev.title}
-                    </Link>
-                  </div>
-                )}
-                {next && (
-                  <div className="pt-4 xl:pt-8">
-                    <Link
-                      href={`/blog/${next.slug}`}
-                      className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                    >
-                      {next.title} &rarr;
-                    </Link>
-                  </div>
-                )}
-              </div>
-            </footer>
           </div>
         </div>
       </article>
