@@ -20,7 +20,7 @@ import remarkImgToJsx from './remark-img-to-jsx';
 import remarkTocHeadings from './remark-toc-headings';
 import getAllFilesRecursively from './utils/files';
 
-const root = process.cwd();
+const root = `${process.cwd()}/src`;
 
 export function getFiles(type) {
   const prefixPaths = path.join(root, 'data', type);
@@ -42,8 +42,8 @@ export function dateSortDesc(a, b) {
 }
 
 export async function getFileBySlug(type, slug) {
-  const mdxPath = path.join(root, 'src/data', type, `${slug}.mdx`);
-  const mdPath = path.join(root, 'src/data', type, `${slug}.md`);
+  const mdxPath = path.join(root, 'data', type, `${slug}.mdx`);
+  const mdPath = path.join(root, 'data', type, `${slug}.md`);
   const source = fs.existsSync(mdxPath)
     ? fs.readFileSync(mdxPath, 'utf8')
     : fs.readFileSync(mdPath, 'utf8');
