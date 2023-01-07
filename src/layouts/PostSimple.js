@@ -49,30 +49,6 @@ export default function PostLayout({
               </div>
             </div>
             <div className="flex justify-between items-center">
-              <div>
-                {authorDetails.map((author) => (
-                  <Link key={author.name} href={author.twitter}>
-                    <div className="flex items-center space-x-2 mb-1">
-                      {author.avatar && (
-                        <Image
-                          src={author.avatar}
-                          width="24px"
-                          height="24px"
-                          alt="avatar"
-                          className="w-10 h-10 rounded-full"
-                        />
-                      )}
-                      <dl className="text-sm font-medium leading-5 whitespace-nowrap">
-                        <dt className="sr-only">Name</dt>
-                        <dd className="text-gray-900 dark:text-gray-100">
-                          {author.name}
-                        </dd>
-                        <dt className="sr-only">Twitter</dt>
-                      </dl>
-                    </div>
-                  </Link>
-                ))}
-              </div>
               <div className="flex items-center space-x-2 ">
                 <div className="text-gray-500 dark:text-gray-400">
                   {readingTime.text}
