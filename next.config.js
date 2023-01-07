@@ -17,3 +17,38 @@
 //     return config;
 //   },
 // };
+
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+const withPlugins = require('next-compose-plugins');
+
+const withTM = require('next-transpile-modules')([
+  'react-spring',
+  //   '@react-spring/three',
+  '@react-spring/web',
+]);
+
+const nextConfig = {
+  compress: true,
+  reactStrictMode: true,
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+  eslint: {
+    // dirs: ['pages', 'components', 'lib', 'layouts', 'scripts', 'context'],
+  },
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
+    config.module.rules.push({
+      test: /react-spring/,
+      sideEffects: true,
+    });
+
+    return config;
+  },
+};
+
+module.exports = withPlugins([[withBundleAnalyzer], [withTM]], nextConfig);
