@@ -14,140 +14,20 @@
     <guid>https://astrosaurus.me/blog/2022-wrapped</guid>
     <title>2022 Wrapped: Communities, Public Speaking, and Other DevRel Stuff From a Non-DevRel Engineer</title>
     <link>https://astrosaurus.me/blog/2022-wrapped</link>
-    undefined
+    <description>It’s that epiphany time of the year, again! But, before, a bit of an introduction!</description>
     <pubDate>Thu, 29 Dec 2022 00:00:00 GMT</pubDate>
     <author>ephraimduncan68@gmail.com (Ephraim Atta-Duncan)</author>
     <category>career</category><category>community</category><category>devrel</category>
   </item>
 
   <item>
-    <guid>https://astrosaurus.me/blog/recursion</guid>
-    <title>Recursion in JavaScript and React Components</title>
-    <link>https://astrosaurus.me/blog/recursion</link>
-    <description>Recursion in JavaScript and React Components</description>
-    <pubDate>Mon, 12 Dec 2022 00:00:00 GMT</pubDate>
+    <guid>https://astrosaurus.me/blog/driving-towards-a-universal-navigation-strategy-in-react</guid>
+    <title>Driving towards a universal navigation strategy in React</title>
+    <link>https://astrosaurus.me/blog/driving-towards-a-universal-navigation-strategy-in-react</link>
+    <description>When I joined STRV, they had a specific request for me; to build a front-end app for iOS, Android, and Web, sharing component and business logic amongst all the platforms.</description>
+    <pubDate>Mon, 13 Jan 2020 00:00:00 GMT</pubDate>
     <author>ephraimduncan68@gmail.com (Ephraim Atta-Duncan)</author>
-    <category>nextjs</category><category>javascript</category><category>react</category>
-  </item>
-
-  <item>
-    <guid>https://astrosaurus.me/blog/nextjs-preact</guid>
-    <title>Use Preact in Next.js 13</title>
-    <link>https://astrosaurus.me/blog/nextjs-preact</link>
-    <description>Replace React for smaller build size in Next.js</description>
-    <pubDate>Sun, 27 Nov 2022 00:00:00 GMT</pubDate>
-    <author>ephraimduncan68@gmail.com (Ephraim Atta-Duncan)</author>
-    <category>Next.js</category><category>React</category><category>Preact</category><category>TypeScript</category>
-  </item>
-
-  <item>
-    <guid>https://astrosaurus.me/blog/typescript</guid>
-    <title>Getting Started with TypeScript</title>
-    <link>https://astrosaurus.me/blog/typescript</link>
-    <description>TypeScript Basics for beginners</description>
-    <pubDate>Fri, 17 Sep 2021 00:00:00 GMT</pubDate>
-    <author>ephraimduncan68@gmail.com (Ephraim Atta-Duncan)</author>
-    <category>typescript</category>
-  </item>
-
-  <item>
-    <guid>https://astrosaurus.me/blog/javascript-syntax</guid>
-    <title>Create Your Own JavaScript Syntax</title>
-    <link>https://astrosaurus.me/blog/javascript-syntax</link>
-    <description>An overview of how to create your own JavaScript Syntax</description>
-    <pubDate>Wed, 25 Nov 2020 00:00:00 GMT</pubDate>
-    <author>ephraimduncan68@gmail.com (Ephraim Atta-Duncan)</author>
-    <category>javascript</category><category>node</category><category>ast</category>
-  </item>
-
-  <item>
-    <guid>https://astrosaurus.me/blog/developer-tips</guid>
-    <title>50 Essential Tips for Every Developer</title>
-    <link>https://astrosaurus.me/blog/developer-tips</link>
-    <description>Useful tips for me as a developer</description>
-    <pubDate>Sun, 18 Oct 2020 00:00:00 GMT</pubDate>
-    <author>ephraimduncan68@gmail.com (Ephraim Atta-Duncan)</author>
-    <category>productivity</category>
-  </item>
-
-  <item>
-    <guid>https://astrosaurus.me/blog/git-commands</guid>
-    <title>🔱 Git Commands You Didn&#39;t Know</title>
-    <link>https://astrosaurus.me/blog/git-commands</link>
-    <description>A fun guide to creating Git aliases and some special aliases</description>
-    <pubDate>Wed, 23 Sep 2020 00:00:00 GMT</pubDate>
-    <author>ephraimduncan68@gmail.com (Ephraim Atta-Duncan)</author>
-    <category>git</category><category>github</category>
-  </item>
-
-  <item>
-    <guid>https://astrosaurus.me/blog/git-intro</guid>
-    <title>Git Commands Introduction </title>
-    <link>https://astrosaurus.me/blog/git-intro</link>
-    <description>A git commands cheatsheet</description>
-    <pubDate>Mon, 21 Sep 2020 00:00:00 GMT</pubDate>
-    <author>ephraimduncan68@gmail.com (Ephraim Atta-Duncan)</author>
-    <category>git</category><category>github</category>
-  </item>
-
-  <item>
-    <guid>https://astrosaurus.me/blog/github-contribution</guid>
-    <title>🦄 Making Your First Github Contribution</title>
-    <link>https://astrosaurus.me/blog/github-contribution</link>
-    <description>A quick guide to contributing to open source projects on Github</description>
-    <pubDate>Tue, 01 Sep 2020 00:00:00 GMT</pubDate>
-    <author>ephraimduncan68@gmail.com (Ephraim Atta-Duncan)</author>
-    <category>opensource</category><category>github</category>
-  </item>
-
-  <item>
-    <guid>https://astrosaurus.me/blog/array-methods</guid>
-    <title>🤸‍♂️ JavaScript Array Methods Simplified</title>
-    <link>https://astrosaurus.me/blog/array-methods</link>
-    <description>JavaScript Array methods cheatsheet</description>
-    <pubDate>Mon, 31 Aug 2020 00:00:00 GMT</pubDate>
-    <author>ephraimduncan68@gmail.com (Ephraim Atta-Duncan)</author>
-    <category>javascript</category><category>array</category>
-  </item>
-
-  <item>
-    <guid>https://astrosaurus.me/blog/array-reduce</guid>
-    <title>Understanding Array.reduce(), JavaScript</title>
-    <link>https://astrosaurus.me/blog/array-reduce</link>
-    <description>An easy analogy to understand Array.reduce()</description>
-    <pubDate>Sat, 29 Aug 2020 00:00:00 GMT</pubDate>
-    <author>ephraimduncan68@gmail.com (Ephraim Atta-Duncan)</author>
-    <category>javascript</category><category>array</category>
-  </item>
-
-  <item>
-    <guid>https://astrosaurus.me/blog/javascripts-prayer</guid>
-    <title>The JavaScript&#39;s Prayer</title>
-    <link>https://astrosaurus.me/blog/javascripts-prayer</link>
-    <description>A JavaScript&#39;s Prayer</description>
-    <pubDate>Sat, 29 Aug 2020 00:00:00 GMT</pubDate>
-    <author>ephraimduncan68@gmail.com (Ephraim Atta-Duncan)</author>
-    <category>javascript</category>
-  </item>
-
-  <item>
-    <guid>https://astrosaurus.me/blog/sass-2</guid>
-    <title> Getting Started With Sass - 2</title>
-    <link>https://astrosaurus.me/blog/sass-2</link>
-    <description>Part 2 of guide to getting started with Sass</description>
-    <pubDate>Thu, 13 Aug 2020 00:00:00 GMT</pubDate>
-    <author>ephraimduncan68@gmail.com (Ephraim Atta-Duncan)</author>
-    <category>sass</category><category>css</category>
-  </item>
-
-  <item>
-    <guid>https://astrosaurus.me/blog/sass-1</guid>
-    <title> Getting Started With Sass </title>
-    <link>https://astrosaurus.me/blog/sass-1</link>
-    <description>A guide to getting started with Sass</description>
-    <pubDate>Mon, 03 Aug 2020 00:00:00 GMT</pubDate>
-    <author>ephraimduncan68@gmail.com (Ephraim Atta-Duncan)</author>
-    <category>sass</category><category>css</category>
+    <category>react</category><category>react native</category><category>navigation</category>
   </item>
 
     </channel>

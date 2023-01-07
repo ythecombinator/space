@@ -1,11 +1,9 @@
 ---
 title: '2022 Wrapped: Communities, Public Speaking, and Other DevRel Stuff From a Non-DevRel Engineer'
 date: '2022-12-29'
-tags:
-  - career
-  - community
-  - devrel
-slug: '/posts/2022-wrapped'
+tags: ['career', 'community', 'devrel']
+draft: false
+summary: 'It’s that epiphany time of the year, again! But, before, a bit of an introduction!'
 ---
 
 ![Cover](/posts/2022-wrapped/cover.jpg)
