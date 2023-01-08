@@ -1,6 +1,7 @@
 import siteMetadata from 'data/siteMetadata';
-import ListLayout from 'layouts/ListLayout';
 import { getAllFilesFrontMatter } from 'lib/mdx';
+
+import ListLayout from 'components/layouts/ListLayout';
 
 export const POSTS_PER_PAGE = 20;
 

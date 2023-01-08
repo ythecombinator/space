@@ -2,7 +2,8 @@ import { getAllFilesFrontMatter } from 'lib/mdx';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import { PostFrontMatter } from 'types/PostFrontMatter';
 
-import BlogListLayout from '../../../layouts/BlogListLayout';
+import BlogListLayout from 'components/layouts/BlogListLayout';
+
 import { POSTS_PER_PAGE } from '../../blog';
 
 export const getStaticPaths: GetStaticPaths<{ page: string }> = async () => {

@@ -1,8 +1,9 @@
-import BlogListLayout from 'layouts/BlogListLayout';
-import ListLayout from 'layouts/ListLayout';
 import { getAllFilesFrontMatter } from 'lib/mdx';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { ComponentProps } from 'react';
+
+import BlogListLayout from 'components/layouts/BlogListLayout';
+import ListLayout from 'components/layouts/ListLayout';
 
 export const POSTS_PER_PAGE = 10;
 
