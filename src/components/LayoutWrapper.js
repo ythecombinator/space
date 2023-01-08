@@ -1,10 +1,10 @@
+import Footer from 'components//Footer';
+import Link from 'components//Link';
+import MobileNav from 'components/MobileNav';
+import SectionContainer from 'components/SectionContainer';
 import headerNavLinks from 'data/headerNavLinks';
 
-import Footer from './Footer';
-import Link from './Link';
-import MobileNav from './MobileNav';
-import SectionContainer from './SectionContainer';
-import ThemeSwitch from './ThemeSwitch';
+import ThemeSwitch from 'components/shared/ThemeSwitch';
 
 const LayoutWrapper = ({ children }) => {
   return (
