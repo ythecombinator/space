@@ -1,5 +1,6 @@
 import siteMetadata from 'data/siteMetadata';
-import { getAllFilesFrontMatter } from 'lib/mdx';
+
+import { getAllFilesFrontMatter } from 'utils/mdx';
 
 import ListLayout from 'components/layouts/ListLayout';
 

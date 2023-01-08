@@ -1,6 +1,7 @@
-import { getFileBySlug } from 'lib/mdx';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { AuthorFrontMatter } from 'types/AuthorFrontMatter';
+
+import { getFileBySlug } from 'utils/mdx';
 
 import { MDXLayoutRenderer } from 'components/shared/MDXComponents';
 

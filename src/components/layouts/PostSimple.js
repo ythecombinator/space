@@ -1,7 +1,8 @@
 import Link from 'components/Link';
 import PageTitle from 'components/PageTitle';
 import siteMetadata from 'data/siteMetadata';
-import formatDate from 'lib/utils/formatDate';
+
+import { formatDate } from 'utils/date';
 
 import { BlogSEO } from 'components/shared/SEO';
 import ScrollTop from 'components/shared/ScrollTop';

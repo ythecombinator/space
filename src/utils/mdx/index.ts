@@ -18,11 +18,11 @@ import { AuthorFrontMatter } from 'types/AuthorFrontMatter';
 import { PostFrontMatter } from 'types/PostFrontMatter';
 import { Toc } from 'types/Toc';
 
-import remarkCodeTitles from './remark-code-title';
-import remarkExtractFrontmatter from './remark-extract-frontmatter';
-import remarkImgToJsx from './remark-img-to-jsx';
-import remarkTocHeadings from './remark-toc-headings';
-import getAllFilesRecursively from './utils/files';
+import { getAllFilesRecursively } from 'utils/files';
+import remarkCodeTitles from 'utils/mdx/remark-code-title';
+import remarkExtractFrontmatter from 'utils/mdx/remark-extract-frontmatter';
+import remarkImgToJsx from 'utils/mdx/remark-img-to-jsx';
+import remarkTocHeadings from 'utils/mdx/remark-toc-headings';
 
 const root = `${process.cwd()}/src`;
 

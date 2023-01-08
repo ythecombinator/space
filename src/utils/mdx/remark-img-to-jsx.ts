@@ -1,13 +1,15 @@
-import { visit } from 'unist-util-visit';
-import sizeOf from 'image-size';
 import fs from 'fs';
+import sizeOf from 'image-size';
+import { visit } from 'unist-util-visit';
 
 export default function remarkImgToJsx() {
   return (tree) => {
     visit(
       tree,
       // only visit p tags that contain an img element
-      (node) => node.type === 'paragraph' && node.children.some((n) => n.type === 'image'),
+      (node) =>
+        node.type === 'paragraph' &&
+        node.children.some((n) => n.type === 'image'),
       (node) => {
         const imageNode = node.children.find((n) => n.type === 'image');
 
@@ -21,8 +23,16 @@ export default function remarkImgToJsx() {
             (imageNode.attributes = [
               { type: 'mdxJsxAttribute', name: 'alt', value: imageNode.alt },
               { type: 'mdxJsxAttribute', name: 'src', value: imageNode.url },
-              { type: 'mdxJsxAttribute', name: 'width', value: dimensions.width },
-              { type: 'mdxJsxAttribute', name: 'height', value: dimensions.height },
+              {
+                type: 'mdxJsxAttribute',
+                name: 'width',
+                value: dimensions.width,
+              },
+              {
+                type: 'mdxJsxAttribute',
+                name: 'height',
+                value: dimensions.height,
+              },
             ]);
 
           // Change node type from p to div to avoid nesting error

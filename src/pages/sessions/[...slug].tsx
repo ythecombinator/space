@@ -1,16 +1,17 @@
 import PageTitle from 'components/PageTitle';
 import fs from 'fs';
 import generateRss from 'lib/generate-rss';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { AuthorFrontMatter } from 'types/AuthorFrontMatter';
+import { PostFrontMatter } from 'types/PostFrontMatter';
+import { Toc } from 'types/Toc';
+
 import {
   formatSlug,
   getAllFilesFrontMatter,
   getFileBySlug,
   getFiles,
-} from 'lib/mdx';
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
-import { AuthorFrontMatter } from 'types/AuthorFrontMatter';
-import { PostFrontMatter } from 'types/PostFrontMatter';
-import { Toc } from 'types/Toc';
+} from 'utils/mdx';
 
 import { MDXLayoutRenderer } from 'components/shared/MDXComponents';
 

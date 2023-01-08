@@ -1,5 +1,6 @@
-import formatDate from 'lib/utils/formatDate';
 import Link from 'next/link';
+
+import { formatDate } from 'utils/date';
 
 export default function BlogPost({ title, summary, date, slug }) {
   return (

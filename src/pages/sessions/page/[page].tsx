@@ -1,6 +1,7 @@
-import { getAllFilesFrontMatter } from 'lib/mdx';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import { PostFrontMatter } from 'types/PostFrontMatter';
+
+import { getAllFilesFrontMatter } from 'utils/mdx';
 
 import BlogListLayout from 'components/layouts/BlogListLayout';
 

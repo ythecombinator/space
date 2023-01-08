@@ -1,12 +1,13 @@
 import PageTitle from 'components/PageTitle';
 import fs from 'fs';
 import generateRss from 'lib/generate-rss';
+
 import {
   formatSlug,
   getAllFilesFrontMatter,
   getFileBySlug,
   getFiles,
-} from 'lib/mdx';
+} from 'utils/mdx';
 
 import { MDXLayoutRenderer } from 'components/shared/MDXComponents';
 
