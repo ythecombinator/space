@@ -1,23 +1,13 @@
-import siteMetadata, { github, twitter } from 'data/siteMetadata';
+import Link from 'components/Link';
+import { github, twitter } from 'data/siteMetadata';
 
-import Link from './Link';
-import NewsletterForm from './NewsletterForm';
-
-const ExternalLink = ({ href, children }) => (
-  <a
-    className="text-gray-500 hover:text-gray-600 transition"
-    target="_blank"
-    rel="noopener noreferrer"
-    href={href}
-  >
-    {children}
-  </a>
-);
+import FooterExternalLink from 'components/shared/FooterExternalLink';
+import LayoutGradient from 'components/shared/LayoutGradient';
 
 export default function Footer() {
   return (
     <footer className="flex flex-col justify-center items-start mx-auto w-full mb-8 mt-4">
-      <FooterGradient />
+      <LayoutGradient />
       <hr className="w-full border-1 border-gray-100 dark:border-gray-800 mb-8" />
       <div className="w-full pb-16 flex flex-col-reverse justify-between sm:flex-row">
         <div className="flex flex-col sm:flex-row sm:space-x-16">
@@ -39,8 +29,8 @@ export default function Footer() {
             </Link>
           </div>
           <div className="flex flex-row  mb-1 sm:mb-0  sm:flex-col space-x-8 sm:space-x-0 justify-center sm:justify-start sm:space-y-4">
-            <ExternalLink href={twitter}>Twitter</ExternalLink>
-            <ExternalLink href={github}>GitHub</ExternalLink>
+            <FooterExternalLink href={twitter}>Twitter</FooterExternalLink>
+            <FooterExternalLink href={github}>GitHub</FooterExternalLink>
             <Link href="/feed.xml">
               <a className="text-gray-500 hover:text-gray-600 transition">
                 RSS
@@ -56,13 +46,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  );
-}
-
-function FooterGradient() {
-  return (
-    <div className="mx-auto max-w-6xl motion-safe:animate-rotate-colors pointer-events-none z-[-1]">
-      <div className="absolute inset-x-0 bg-gradient-to-r from-amber-500 via-indigo-500 to-emerald-500 rounded-t-full opacity-20 blur-3xl h-[200px]" />
-    </div>
   );
 }

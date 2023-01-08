@@ -1,15 +1,16 @@
-import Footer from 'components//Footer';
-import Link from 'components//Link';
+import Link from 'components/Link';
 import MobileNav from 'components/MobileNav';
 import SectionContainer from 'components/SectionContainer';
 import headerNavLinks from 'data/headerNavLinks';
 
+import Footer from 'components/shared/Footer';
+import LayoutGradient from 'components/shared/LayoutGradient';
 import ThemeSwitch from 'components/shared/ThemeSwitch';
 
 const LayoutWrapper = ({ children }) => {
   return (
     <>
-      <HeaderGradient />
+      <LayoutGradient />
       <SectionContainer>
         <div className="flex flex-col justify-between h-screen">
           <header className="flex items-center py-10">
@@ -42,13 +43,5 @@ const LayoutWrapper = ({ children }) => {
     </>
   );
 };
-
-function HeaderGradient() {
-  return (
-    <div className="mx-auto max-w-6xl motion-safe:animate-rotate-colors pointer-events-none z-[-2]">
-      <div className="absolute inset-x-0 bg-gradient-to-r from-amber-500 via-indigo-500 to-emerald-500 rounded-t-full opacity-20 blur-3xl h-[200px]" />
-    </div>
-  );
-}
 
 export default LayoutWrapper;

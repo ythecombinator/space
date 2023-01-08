@@ -1,4 +1,3 @@
-import { MDXLayoutRenderer } from 'components/MDXComponents';
 import PageTitle from 'components/PageTitle';
 import fs from 'fs';
 import generateRss from 'lib/generate-rss';
@@ -12,6 +11,8 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { AuthorFrontMatter } from 'types/AuthorFrontMatter';
 import { PostFrontMatter } from 'types/PostFrontMatter';
 import { Toc } from 'types/Toc';
+
+import { MDXLayoutRenderer } from 'components/shared/MDXComponents';
 
 const DEFAULT_LAYOUT = 'PostLayout';
 

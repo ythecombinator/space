@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import smoothscroll from 'smoothscroll-polyfill';
 
-const ScrollTopAndComment = () => {
+const ScrollTop = () => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -21,7 +21,9 @@ const ScrollTopAndComment = () => {
 
   return (
     <div
-      className={`fixed flex-col hidden gap-3 right-8 bottom-8 ${show ? 'md:flex' : 'md:hidden'}`}
+      className={`fixed flex-col hidden gap-3 right-8 bottom-8 ${
+        show ? 'md:flex' : 'md:hidden'
+      }`}
     >
       <button
         aria-label="Scroll To Top"
@@ -41,4 +43,4 @@ const ScrollTopAndComment = () => {
   );
 };
 
-export default ScrollTopAndComment;
+export default ScrollTop;

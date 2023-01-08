@@ -1,9 +1,10 @@
 import Link from 'components/Link';
-import { BlogSEO } from 'components/NextSEO';
 import PageTitle from 'components/PageTitle';
-import ScrollTopAndComment from 'components/ScrollTopAndComment';
 import siteMetadata from 'data/siteMetadata';
 import formatDate from 'lib/utils/formatDate';
+
+import { BlogSEO } from 'components/shared/SEO';
+import ScrollTop from 'components/shared/ScrollTop';
 
 export default function PostLayout({ frontMatter, children }) {
   const { date, title, slug, fileName, readingTime } = frontMatter;
@@ -15,15 +16,13 @@ export default function PostLayout({ frontMatter, children }) {
       `${siteMetadata.siteUrl}/blog/${slug}`
     )}`;
 
-  const pageViews = undefined;
-
   return (
     <>
       <BlogSEO
         url={`${siteMetadata.siteUrl}/blog/${frontMatter.slug}`}
         {...frontMatter}
       />
-      <ScrollTopAndComment />
+      <ScrollTop />
       <article>
         <div>
           <header className="pb-10">
@@ -45,7 +44,6 @@ export default function PostLayout({ frontMatter, children }) {
                 <div className="text-gray-500 dark:text-gray-400">
                   {readingTime.text}
                 </div>
-                {pageViews && <div>Page Views</div>}
               </div>
             </div>
           </header>

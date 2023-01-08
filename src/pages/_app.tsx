@@ -1,15 +1,14 @@
 import LayoutWrapper from 'components/LayoutWrapper';
-import { MainSEO } from 'components/NextSEO';
 import 'css/prism.css';
 import 'css/tailwind.css';
 import siteMetadata from 'data/siteMetadata';
 import { ThemeProvider } from 'next-themes';
+import type { AppProps } from 'next/app';
 import Head from 'next/head';
 
-const isDevelopment = process.env.NODE_ENV === 'development';
-const isSocket = process.env.SOCKET;
+import { PageSEO } from 'components/shared/SEO';
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider attribute="class" defaultTheme={siteMetadata.theme}>
       <Head>
@@ -17,7 +16,10 @@ export default function App({ Component, pageProps }) {
       </Head>
       <LayoutWrapper>
         {/* <Analytics /> */}
-        <MainSEO />
+        <PageSEO
+          title={siteMetadata.title}
+          description={siteMetadata.description}
+        />
         <Component {...pageProps} />
       </LayoutWrapper>
     </ThemeProvider>
