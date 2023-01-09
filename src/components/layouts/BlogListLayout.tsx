@@ -1,8 +1,9 @@
-import Card from 'components/Card';
 import Link from 'components/Link';
 import Pagination from 'components/Pagination';
 import { ComponentProps, useState } from 'react';
 import { PostFrontMatter } from 'types/PostFrontMatter';
+
+import Card from 'components/shared/CardFeatured';
 
 const gradients = {
   '0': ' from-[#FDE68A] via-[#FCA5A5] to-[#FECACA]',

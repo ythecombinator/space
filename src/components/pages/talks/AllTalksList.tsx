@@ -20,7 +20,8 @@ const AllTalksList: FC<AllTalksListProps> = (props) => {
   const { items } = props;
 
   return (
-    <section>
+    <ul className="grid grid-cols-1 gap-10 py-8 dark:border-gray-700 md:grid-cols-3">
+      {!items.length && 'No posts found.'}
       {items.map((item) => {
         const { title, headline, slug, tags } = item;
         return (
@@ -33,7 +34,7 @@ const AllTalksList: FC<AllTalksListProps> = (props) => {
           />
         );
       })}
-    </section>
+    </ul>
   );
 };
 

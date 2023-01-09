@@ -2,16 +2,31 @@ import { useSpring, animated, config } from '@react-spring/web';
 import Link from 'components/Link';
 import { useRef, useState } from 'react';
 
-const calc = (x, y, rect) => [
+interface CardProps {
+  title: string;
+  description: string;
+  href: string;
+  className?: string;
+  fullWidth?: boolean;
+}
+
+const calc = (x: number, y: number, rect: DOMRect) => [
   -(y - rect.top - rect.height / 2) / 20,
   (x - rect.left - rect.width / 2) / 20,
   1.01,
 ];
-const trans = (x, y, s) =>
-  `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
-const Card = ({ title, description, href, className, fullWidth = true }) => {
-  const ref = useRef(null);
+const trans = (x: number, y: number, scale: number) =>
+  `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${scale})`;
+
+const CardFeatured: React.FC<CardProps> = ({
+  title,
+  description,
+  href,
+  className,
+  fullWidth = true,
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
   const [xys, set] = useState([0, 0, 1]);
   const props = useSpring({ xys, config: config.molasses });
 
@@ -30,7 +45,7 @@ const Card = ({ title, description, href, className, fullWidth = true }) => {
             style={{ transform: props.xys.to(trans) }}
             onMouseLeave={() => set([0, 0, 1])}
             onMouseMove={(e) => {
-              const rect = ref.current.getBoundingClientRect();
+              const rect = ref.current?.getBoundingClientRect();
               set(calc(e.clientX, e.clientY, rect));
             }}
             className={`will-change-transform overflow-hidden relative rounded-md bg-violet-30 dark:bg-violet-950
@@ -77,4 +92,4 @@ const Card = ({ title, description, href, className, fullWidth = true }) => {
   );
 };
 
-export default Card;
+export default CardFeatured;

@@ -1,5 +1,5 @@
-import { Heading, Text, Box, VStack } from '@chakra-ui/react';
 import { Document as ContentfulDocument } from '@contentful/rich-text-types';
+import Link from 'components/Link';
 import {
   GetTalksDocument,
   GetTalksQuery,
@@ -13,19 +13,18 @@ import {
 } from 'graphql/schema';
 import { InferGetStaticPropsType, NextPage } from 'next';
 import dynamic from 'next/dynamic';
+import { useState } from 'react';
 import { DeepNonNullable } from 'utility-types';
 
 import ContentfulService from 'services/contentful';
 
-import Layout from 'components/shared/Layout';
+import CardFeatured from 'components/shared/CardFeatured';
+
+import Layout from 'components/layouts/TalksLayout';
 
 import AllTalksList from 'components/pages/talks/AllTalksList';
+import FeaturedTalksList from 'components/pages/talks/FeaturedTalksList';
 import UpcomingTalksList from 'components/pages/talks/UpcomingTalksList';
-
-const FeaturedTalksList = dynamic(
-  () => import('components/pages/talks/FeaturedTalksList'),
-  { ssr: false }
-);
 
 /*~
  * TYPES
@@ -158,51 +157,31 @@ const TalksPage: NextPage<Props> = (props) => {
   const { talksStats, featuredTalks, upcomingTalks, allTalks } = props;
   const { citiesTotal, countriesTotal, talksTotal, eventsTotal } = talksStats;
 
+  const [searchValue, setSearchValue] = useState('');
+  const filteredBlogPosts = allTalks.filter((frontMatter) => {
+    const searchContent =
+      frontMatter.title + frontMatter.headline + frontMatter.tags.join(' ');
+    return searchContent.toLowerCase().includes(searchValue.toLowerCase());
+  });
+
+  const initialDisplayPosts = [];
+
+  console.log('allTalks', allTalks);
+
+  // If initialDisplayPosts exist, display it if no searchValue is specified
+  const displayPosts =
+    initialDisplayPosts.length > 0 && !searchValue
+      ? initialDisplayPosts
+      : filteredBlogPosts;
+
   return (
-    <Layout>
-      <Text
-        bgGradient="linear(to-l, #7928CA,#FF0080)"
-        bgClip="text"
-        fontSize="5xl"
-        fontWeight="extrabold"
-      >
-        Confs. Meetups. Events.
-      </Text>
-
-      <VStack spacing="1rem">
-        <Box>
-          <Text fontSize="lg" mb="4">
-            I've been speaking and learning in public since 2015, mostly about
-            web performance, JavaScript/TypeScript, React, and their ecosystem.
-            Other topics also include programming languages design and iOS
-            engineering.
-          </Text>
-          <Text fontSize="lg" mb="4">
-            In total, I've presented <b>{talksTotal}</b> different sessions in{' '}
-            <b>{eventsTotal}</b> events across <b>{citiesTotal}</b> cities in{' '}
-            <b>{countriesTotal}</b> different countries.
-          </Text>
-        </Box>
-
-        {/* Featured */}
-        <Box>
-          <Heading marginBottom={'1rem'}>Featured Sessions</Heading>
-          <FeaturedTalksList items={featuredTalks} />
-        </Box>
-
-        {/* Upcoming */}
-        <Box>
-          <Heading marginBottom={'1rem'}>Hot Sessions</Heading>
-          <UpcomingTalksList items={upcomingTalks} />
-        </Box>
-
-        {/* All */}
-        <Box>
-          <Heading marginBottom={'1rem'}>All Sessions</Heading>
-          <AllTalksList items={allTalks} />
-        </Box>
-      </VStack>
-    </Layout>
+    <>
+      {/* <PageSEO title={`Blog - ${siteMetadata.author}`} description={siteMetadata.description} /> */}
+      <Layout title="Talks">
+        <FeaturedTalksList items={featuredTalks} />
+        <AllTalksList items={allTalks} />
+      </Layout>
+    </>
   );
 };
 

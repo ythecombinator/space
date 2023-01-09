@@ -19,27 +19,19 @@ export type FeaturedTalksListProps = {
 
 const FeaturedTalksList: FC<FeaturedTalksListProps> = (props) => {
   const allItems = props.items;
-  const items = useMemo(() => shuffleItems(allItems).slice(0, 9), []);
+  const items = useMemo(() => allItems.slice(0, 2), []);
 
   return (
-    <Flex
-      wrap="wrap"
-      position="relative"
-      width="100vw"
-      left="50%"
-      marginTop="1rem"
-      marginLeft="-50vw"
-    >
+    <div className="pb-2 w-full flex flex-wrap">
       {items.map((item) => (
         <FeaturedTalksItem
           key={item.talkTitle}
-          eventName={item.eventName}
           talkTitle={item.talkTitle}
+          talkHeadline={'Headline'}
           talkSlug={item.talkSlug}
-          photo={item.photo}
         />
       ))}
-    </Flex>
+    </div>
   );
 };
 
