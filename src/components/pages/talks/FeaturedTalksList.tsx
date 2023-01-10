@@ -3,6 +3,9 @@ import { FC, useMemo } from 'react';
 
 import { shuffleItems } from 'utils/array';
 
+import SectionContainer from 'components/shared/SectionContainer';
+import SectionHeading from 'components/shared/SectionHeading';
+
 import FeaturedTalksItem, { FeaturedTalksItemProps } from './FeaturedTalksItem';
 
 /*~
@@ -22,16 +25,19 @@ const FeaturedTalksList: FC<FeaturedTalksListProps> = (props) => {
   const items = useMemo(() => allItems.slice(0, 2), []);
 
   return (
-    <div className="pb-2 w-full flex flex-wrap">
-      {items.map((item) => (
-        <FeaturedTalksItem
-          key={item.talkTitle}
-          talkTitle={item.talkTitle}
-          talkHeadline={'Headline'}
-          talkSlug={item.talkSlug}
-        />
-      ))}
-    </div>
+    <SectionContainer>
+      <SectionHeading title="YouTube Highlights" />
+      <div className="pb-2 w-full flex flex-wrap">
+        {items.map((item) => (
+          <FeaturedTalksItem
+            key={item.talkTitle}
+            talkTitle={item.talkTitle}
+            talkHeadline={'Headline'}
+            talkSlug={item.talkSlug}
+          />
+        ))}
+      </div>
+    </SectionContainer>
   );
 };
 

@@ -22,6 +22,7 @@ import CardFeatured from 'components/shared/CardFeatured';
 
 import Layout from 'components/layouts/TalksLayout';
 
+import ActiveTalksList from 'components/pages/talks/ActiveTalksList';
 import AllTalksList from 'components/pages/talks/AllTalksList';
 import FeaturedTalksList from 'components/pages/talks/FeaturedTalksList';
 import UpcomingTalksList from 'components/pages/talks/UpcomingTalksList';
@@ -115,7 +116,7 @@ const getUpcomingTalks = ContentfulService.query<GetUpcomingTalksQuery>({
   },
 });
 
-const getAllTalks = ContentfulService.query<GetTalksQuery>({
+const getActiveTalks = ContentfulService.query<GetTalksQuery>({
   query: GetTalksDocument,
   variables: {
     limit: 0,
@@ -134,7 +135,7 @@ export async function getStaticProps() {
       getTalksStats,
       getFeaturedTalks,
       getUpcomingTalks,
-      getAllTalks,
+      getActiveTalks,
     ]);
 
   const talksStats = talksStatsDocTransformer(talksStatsDoc.data);
@@ -179,6 +180,7 @@ const TalksPage: NextPage<Props> = (props) => {
       {/* <PageSEO title={`Blog - ${siteMetadata.author}`} description={siteMetadata.description} /> */}
       <Layout title="Talks">
         <FeaturedTalksList items={featuredTalks} />
+        <ActiveTalksList items={allTalks} />
         <AllTalksList items={allTalks} />
       </Layout>
     </>

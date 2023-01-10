@@ -25,7 +25,7 @@ export type HeroProps = {
 const Hero = (props: HeroProps) => {
   return (
     <VStack alignItems="flex-start" width="full" spacing={3}>
-      <HeroImage />
+      {/* <HeroImage />
 
       <Heading as="h1" size="lg">
         {`🙋🏻‍♂️ Hi, I'm ${siteConfig.baseTitle}!`}
@@ -53,7 +53,7 @@ const Hero = (props: HeroProps) => {
             {label}
           </Button>
         ))}
-      </HStack>
+      </HStack> */}
     </VStack>
   );
 };
