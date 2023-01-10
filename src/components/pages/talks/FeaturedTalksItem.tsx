@@ -9,7 +9,7 @@ import CardFeatured from 'components/shared/CardFeatured';
 export type FeaturedTalksItemProps = {
   talkTitle: string;
   talkSlug: string;
-  talkHeadline: string;
+  eventName: string;
 };
 
 /*~
@@ -17,12 +17,12 @@ export type FeaturedTalksItemProps = {
  */
 
 const FeaturedTalksItem: FC<FeaturedTalksItemProps> = (props) => {
-  const { talkTitle, talkSlug, talkHeadline } = props;
+  const { talkTitle, talkSlug, eventName } = props;
 
   return (
     <CardFeatured
       title={talkTitle}
-      description={talkHeadline}
+      description={eventName}
       href={talkSlug}
       className="py-4 md:px-4"
     />

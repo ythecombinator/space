@@ -1,7 +1,4 @@
-import { Flex } from '@chakra-ui/react';
 import { FC, useMemo } from 'react';
-
-import { shuffleItems } from 'utils/array';
 
 import SectionContainer from 'components/shared/SectionContainer';
 import SectionHeading from 'components/shared/SectionHeading';
@@ -12,7 +9,7 @@ import FeaturedTalksItem, { FeaturedTalksItemProps } from './FeaturedTalksItem';
  * TYPES
  */
 
-export type FeaturedTalksListProps = {
+export type FeaturedTalksSectionProps = {
   items: Array<FeaturedTalksItemProps>;
 };
 
@@ -20,7 +17,7 @@ export type FeaturedTalksListProps = {
  * COMPONENT
  */
 
-const FeaturedTalksList: FC<FeaturedTalksListProps> = (props) => {
+const FeaturedTalksSection: FC<FeaturedTalksSectionProps> = (props) => {
   const allItems = props.items;
   const items = useMemo(() => allItems.slice(0, 2), []);
 
@@ -32,7 +29,7 @@ const FeaturedTalksList: FC<FeaturedTalksListProps> = (props) => {
           <FeaturedTalksItem
             key={item.talkTitle}
             talkTitle={item.talkTitle}
-            talkHeadline={'Headline'}
+            eventName={item.eventName}
             talkSlug={item.talkSlug}
           />
         ))}
@@ -41,4 +38,4 @@ const FeaturedTalksList: FC<FeaturedTalksListProps> = (props) => {
   );
 };
 
-export default FeaturedTalksList;
+export default FeaturedTalksSection;

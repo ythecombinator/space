@@ -8,9 +8,6 @@ query GetFeaturedTalks {
       event {
         name
       }
-      photo {
-        url
-      }
     }
   }
 }

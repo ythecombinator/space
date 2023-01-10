@@ -27,14 +27,13 @@ const ActiveTalksList: FC<ActiveTalksListProps> = (props) => {
       <SectionHeading title="Active Sessions" />
       <ul className="grid grid-cols-1 gap-10 py-8 dark:border-gray-700 md:grid-cols-3">
         {items.map((item) => {
-          const { title, headline, slug, tags } = item;
+          const { talkTitle, talkSlug, sessions } = item;
           return (
             <ActiveTalksListItem
-              key={item.slug}
-              title={title}
-              headline={headline}
-              slug={slug}
-              tags={tags}
+              key={item.talkSlug}
+              talkTitle={talkTitle}
+              talkSlug={talkSlug}
+              sessions={sessions}
             />
           );
         })}

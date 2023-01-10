@@ -120,6 +120,204 @@ enum AssetOrder {
 }
 
 """
+[See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/blogPost)
+"""
+type BlogPost implements Entry {
+  body(locale: String): BlogPostBody
+  canonical(locale: String, preview: Boolean): CanonicalSource
+  contentfulMetadata: ContentfulMetadata!
+  headline(locale: String): BlogPostHeadline
+  language(locale: String, preview: Boolean): Language
+  lastUpdatedAt(locale: String): DateTime
+  linkedFrom(allowedLocales: [String]): BlogPostLinkingCollections
+  publishedAt(locale: String): DateTime
+  slug(locale: String): String
+  sys: Sys!
+  title(locale: String): String
+}
+
+type BlogPostBody {
+  json: JSON!
+  links: BlogPostBodyLinks!
+}
+
+type BlogPostBodyAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type BlogPostBodyEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type BlogPostBodyLinks {
+  assets: BlogPostBodyAssets!
+  entries: BlogPostBodyEntries!
+}
+
+type BlogPostCollection {
+  items: [BlogPost]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input BlogPostFilter {
+  AND: [BlogPostFilter]
+  OR: [BlogPostFilter]
+  body_contains: String
+  body_exists: Boolean
+  body_not_contains: String
+  canonical: cfCanonicalSourceNestedFilter
+  canonical_exists: Boolean
+  contentfulMetadata: ContentfulMetadataFilter
+  headline_contains: String
+  headline_exists: Boolean
+  headline_not_contains: String
+  language: cfLanguageNestedFilter
+  language_exists: Boolean
+  lastUpdatedAt: DateTime
+  lastUpdatedAt_exists: Boolean
+  lastUpdatedAt_gt: DateTime
+  lastUpdatedAt_gte: DateTime
+  lastUpdatedAt_in: [DateTime]
+  lastUpdatedAt_lt: DateTime
+  lastUpdatedAt_lte: DateTime
+  lastUpdatedAt_not: DateTime
+  lastUpdatedAt_not_in: [DateTime]
+  publishedAt: DateTime
+  publishedAt_exists: Boolean
+  publishedAt_gt: DateTime
+  publishedAt_gte: DateTime
+  publishedAt_in: [DateTime]
+  publishedAt_lt: DateTime
+  publishedAt_lte: DateTime
+  publishedAt_not: DateTime
+  publishedAt_not_in: [DateTime]
+  slug: String
+  slug_contains: String
+  slug_exists: Boolean
+  slug_in: [String]
+  slug_not: String
+  slug_not_contains: String
+  slug_not_in: [String]
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+type BlogPostHeadline {
+  json: JSON!
+  links: BlogPostHeadlineLinks!
+}
+
+type BlogPostHeadlineAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type BlogPostHeadlineEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type BlogPostHeadlineLinks {
+  assets: BlogPostHeadlineAssets!
+  entries: BlogPostHeadlineEntries!
+}
+
+type BlogPostLinkingCollections {
+  codeBlockCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): CodeBlockCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum BlogPostOrder {
+  lastUpdatedAt_ASC
+  lastUpdatedAt_DESC
+  publishedAt_ASC
+  publishedAt_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/canonicalSource)
+"""
+type CanonicalSource implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  label(locale: String): String
+  linkedFrom(allowedLocales: [String]): CanonicalSourceLinkingCollections
+  sys: Sys!
+  url(locale: String): String
+}
+
+type CanonicalSourceCollection {
+  items: [CanonicalSource]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input CanonicalSourceFilter {
+  AND: [CanonicalSourceFilter]
+  OR: [CanonicalSourceFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  label: String
+  label_contains: String
+  label_exists: Boolean
+  label_in: [String]
+  label_not: String
+  label_not_contains: String
+  label_not_in: [String]
+  sys: SysFilter
+  url: String
+  url_contains: String
+  url_exists: Boolean
+  url_in: [String]
+  url_not: String
+  url_not_contains: String
+  url_not_in: [String]
+}
+
+type CanonicalSourceLinkingCollections {
+  blogPostCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): BlogPostCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum CanonicalSourceOrder {
+  label_ASC
+  label_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  url_ASC
+  url_DESC
+}
+
+"""
 The Circle scalar type represents a circle, defined by the coordinates of its center and a radius. The Circle type is used to represent a searchable area together with the '_within_circle' filter.
 """
 scalar Circle
@@ -173,6 +371,75 @@ type CityLinkingCollections {
 enum CityOrder {
   name_ASC
   name_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/codeBlock)
+"""
+type CodeBlock implements Entry {
+  associatedEntry(locale: String, preview: Boolean): BlogPost
+  code(locale: String): String
+  contentfulMetadata: ContentfulMetadata!
+  description(locale: String): String
+  language(locale: String): String
+  linkedFrom(allowedLocales: [String]): CodeBlockLinkingCollections
+  sys: Sys!
+}
+
+type CodeBlockCollection {
+  items: [CodeBlock]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input CodeBlockFilter {
+  AND: [CodeBlockFilter]
+  OR: [CodeBlockFilter]
+  associatedEntry: cfBlogPostNestedFilter
+  associatedEntry_exists: Boolean
+  code: String
+  code_contains: String
+  code_exists: Boolean
+  code_in: [String]
+  code_not: String
+  code_not_contains: String
+  code_not_in: [String]
+  contentfulMetadata: ContentfulMetadataFilter
+  description: String
+  description_contains: String
+  description_exists: Boolean
+  description_in: [String]
+  description_not: String
+  description_not_contains: String
+  description_not_in: [String]
+  language: String
+  language_contains: String
+  language_exists: Boolean
+  language_in: [String]
+  language_not: String
+  language_not_contains: String
+  language_not_in: [String]
+  sys: SysFilter
+}
+
+type CodeBlockLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum CodeBlockOrder {
+  description_ASC
+  description_DESC
+  language_ASC
+  language_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -642,6 +909,7 @@ input LanguageFilter {
 }
 
 type LanguageLinkingCollections {
+  blogPostCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): BlogPostCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   postCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PostCollection
   sessionCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): SessionCollection
@@ -797,8 +1065,14 @@ scalar Quality
 type Query {
   asset(id: String!, locale: String, preview: Boolean): Asset
   assetCollection(limit: Int = 100, locale: String, order: [AssetOrder], preview: Boolean, skip: Int = 0, where: AssetFilter): AssetCollection
+  blogPost(id: String!, locale: String, preview: Boolean): BlogPost
+  blogPostCollection(limit: Int = 100, locale: String, order: [BlogPostOrder], preview: Boolean, skip: Int = 0, where: BlogPostFilter): BlogPostCollection
+  canonicalSource(id: String!, locale: String, preview: Boolean): CanonicalSource
+  canonicalSourceCollection(limit: Int = 100, locale: String, order: [CanonicalSourceOrder], preview: Boolean, skip: Int = 0, where: CanonicalSourceFilter): CanonicalSourceCollection
   city(id: String!, locale: String, preview: Boolean): City
   cityCollection(limit: Int = 100, locale: String, order: [CityOrder], preview: Boolean, skip: Int = 0, where: CityFilter): CityCollection
+  codeBlock(id: String!, locale: String, preview: Boolean): CodeBlock
+  codeBlockCollection(limit: Int = 100, locale: String, order: [CodeBlockOrder], preview: Boolean, skip: Int = 0, where: CodeBlockFilter): CodeBlockCollection
   company(id: String!, locale: String, preview: Boolean): Company
   companyCollection(limit: Int = 100, locale: String, order: [CompanyOrder], preview: Boolean, skip: Int = 0, where: CompanyFilter): CompanyCollection
   country(id: String!, locale: String, preview: Boolean): Country
@@ -981,6 +1255,7 @@ input SysFilter {
 """
 type Talk implements Entry {
   abstract(locale: String): TalkAbstract
+  active(locale: String): Boolean
   contentfulMetadata: ContentfulMetadata!
   lastRelevant(locale: String): DateTime
   linkedFrom(allowedLocales: [String]): TalkLinkingCollections
@@ -1025,6 +1300,9 @@ input TalkFilter {
   abstract_contains: String
   abstract_exists: Boolean
   abstract_not_contains: String
+  active: Boolean
+  active_exists: Boolean
+  active_not: Boolean
   contentfulMetadata: ContentfulMetadataFilter
   lastRelevant: DateTime
   lastRelevant_exists: Boolean
@@ -1062,6 +1340,8 @@ type TalkLinkingCollections {
 }
 
 enum TalkOrder {
+  active_ASC
+  active_DESC
   lastRelevant_ASC
   lastRelevant_DESC
   slug_ASC
@@ -1279,6 +1559,74 @@ type TitleStackCollection {
   total: Int!
 }
 
+input cfBlogPostNestedFilter {
+  AND: [cfBlogPostNestedFilter]
+  OR: [cfBlogPostNestedFilter]
+  body_contains: String
+  body_exists: Boolean
+  body_not_contains: String
+  canonical_exists: Boolean
+  contentfulMetadata: ContentfulMetadataFilter
+  headline_contains: String
+  headline_exists: Boolean
+  headline_not_contains: String
+  language_exists: Boolean
+  lastUpdatedAt: DateTime
+  lastUpdatedAt_exists: Boolean
+  lastUpdatedAt_gt: DateTime
+  lastUpdatedAt_gte: DateTime
+  lastUpdatedAt_in: [DateTime]
+  lastUpdatedAt_lt: DateTime
+  lastUpdatedAt_lte: DateTime
+  lastUpdatedAt_not: DateTime
+  lastUpdatedAt_not_in: [DateTime]
+  publishedAt: DateTime
+  publishedAt_exists: Boolean
+  publishedAt_gt: DateTime
+  publishedAt_gte: DateTime
+  publishedAt_in: [DateTime]
+  publishedAt_lt: DateTime
+  publishedAt_lte: DateTime
+  publishedAt_not: DateTime
+  publishedAt_not_in: [DateTime]
+  slug: String
+  slug_contains: String
+  slug_exists: Boolean
+  slug_in: [String]
+  slug_not: String
+  slug_not_contains: String
+  slug_not_in: [String]
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+input cfCanonicalSourceNestedFilter {
+  AND: [cfCanonicalSourceNestedFilter]
+  OR: [cfCanonicalSourceNestedFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  label: String
+  label_contains: String
+  label_exists: Boolean
+  label_in: [String]
+  label_not: String
+  label_not_contains: String
+  label_not_in: [String]
+  sys: SysFilter
+  url: String
+  url_contains: String
+  url_exists: Boolean
+  url_in: [String]
+  url_not: String
+  url_not_contains: String
+  url_not_in: [String]
+}
+
 input cfCityNestedFilter {
   AND: [cfCityNestedFilter]
   OR: [cfCityNestedFilter]
@@ -1410,6 +1758,9 @@ input cfTalkNestedFilter {
   abstract_contains: String
   abstract_exists: Boolean
   abstract_not_contains: String
+  active: Boolean
+  active_exists: Boolean
+  active_not: Boolean
   contentfulMetadata: ContentfulMetadataFilter
   lastRelevant: DateTime
   lastRelevant_exists: Boolean

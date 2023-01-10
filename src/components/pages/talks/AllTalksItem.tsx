@@ -7,13 +7,9 @@ import { FC } from 'react';
  */
 
 export type AllTalksItemProps = {
-  slug: string;
-  title: string;
-  headline: ContentfulDocument;
-  tags: {
-    name: string;
-    id: string;
-  }[];
+  talkSlug: string;
+  talkTitle: string;
+  index: number;
 };
 
 /*~
@@ -21,19 +17,19 @@ export type AllTalksItemProps = {
  */
 
 const AllTalksItem: FC<AllTalksItemProps> = (props) => {
-  const { title, slug } = props;
+  const { talkTitle, talkSlug, index } = props;
 
   return (
-    <Link href={`/blog/${slug}`}>
-      <a className="w-full" aria-label={title}>
+    <Link href={`/blog/${talkSlug}`}>
+      <a className="w-full" aria-label={talkTitle}>
         <div className="w-full border-b border-gray-200 dark:border-gray-700 py-3 transform hover:scale-[1.01] transition-all">
           <div className="flex flex-col sm:flex-row justify-between sm:items-center">
             <div className="flex items-center">
               <div className="text-gray-300 dark:text-gray-400 text-left mr-6">
-                0
+                {index}
               </div>
               <h4 className="text-base sm:text-lg font-medium w-full text-gray-800 dark:text-gray-100">
-                {title}
+                {talkTitle}
               </h4>
             </div>
             <div className="flex items-center mt-2 sm:mt-0  justify-between">

@@ -12,7 +12,7 @@ import AllTalksItem, {
  */
 
 export type AllTalksListProps = {
-  items: Array<AllTalksItemProps>;
+  items: Array<Omit<AllTalksItemProps, 'index'>>;
 };
 
 /*~
@@ -26,9 +26,15 @@ const AllTalksList: FC<AllTalksListProps> = (props) => {
     <SectionContainer>
       <SectionHeading title="All Sessions" />
       <div className="mb-6">
-        {items.map((item) => {
-          const { title, headline, slug, tags } = item;
-          return <AllTalksItem title={title} />;
+        {items.map((item, index) => {
+          const { talkTitle, talkSlug } = item;
+          return (
+            <AllTalksItem
+              talkTitle={talkTitle}
+              talkSlug={talkSlug}
+              index={index}
+            />
+          );
         })}
       </div>
     </SectionContainer>

@@ -1,6 +1,6 @@
-import { Document as ContentfulDocument } from '@contentful/rich-text-types';
 import Link from 'components/Link';
 import { FC } from 'react';
+import { FaMapMarkedAlt } from 'react-icons/fa';
 
 const gradients = {
   '0': ' from-[#FDE68A] via-[#FCA5A5] to-[#FECACA]',
@@ -21,13 +21,9 @@ const gradients = {
  */
 
 export type ActiveTalksItemProps = {
-  slug: string;
-  title: string;
-  headline: ContentfulDocument;
-  tags: {
-    name: string;
-    id: string;
-  }[];
+  talkTitle: string;
+  talkSlug: string;
+  sessions: Array<{ eventName: string; eventPage: string; eventFlag: string }>;
 };
 
 /*~
@@ -35,12 +31,12 @@ export type ActiveTalksItemProps = {
  */
 
 const ActiveTalksItem: FC<ActiveTalksItemProps> = (props) => {
-  const { title, headline, tags, slug } = props;
+  const { talkTitle, talkSlug, sessions } = props;
 
   return (
     <Link
-      href={`/blog/${slug}`}
-      key={slug}
+      href={`/blog/${talkSlug}`}
+      key={talkSlug}
       className="group transform transition-all duration-500 hover:scale-[1.05] hover:duration-500"
     >
       <div
@@ -55,34 +51,21 @@ const ActiveTalksItem: FC<ActiveTalksItemProps> = (props) => {
             <div className="space-y-6">
               <div>
                 <h2 className="text-xl font-semibold leading-8 tracking-tight text-gray-900 dark:text-gray-100">
-                  {title}
+                  {talkTitle}
                 </h2>
               </div>
             </div>
           </div>
           <div className="mt-10 flex">
             <div className="capsize flex items-center text-gray-800 dark:text-gray-200">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="mr-2 h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                ></path>
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                ></path>
-              </svg>
-              {'OPA'}
+              <div className="mr-1 flex h-11 items-center justify-center bg-transparent text-lg">
+                <FaMapMarkedAlt size={20} />{' '}
+              </div>
+              {sessions.map((event) => (
+                <span className="ml-1" role="img" aria-label="dog">
+                  {event.eventFlag}
+                </span>
+              ))}
             </div>
           </div>
         </div>
