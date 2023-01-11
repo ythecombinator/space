@@ -34,7 +34,7 @@
     "gatsby-remark-images": "3.3.33",
     "gatsby-remark-prismjs": "3.5.16",
     "gatsby-source-filesystem": "2.3.34",
-    "gatsby-transformer-remark": "2.8.38",
+    "gatsby-transformer-remark": "5.25.1",
     "gatsby-transformer-sharp": "2.5.17",
     "lodash.kebabcase": "4.1.1",
     "mdx-utils": "0.2.0",
