@@ -1,11 +1,11 @@
 const siteMetadata = {
-  title: 'Ephraim Atta-Duncan',
-  author: 'Ephraim Atta-Duncan',
+  title: 'Matheus Albuquerque',
+  author: 'Matheus Albuquerque',
   headerTitle: 'Astrosaurus',
-  description: 'Ephraim Atta-Duncan, Software Developer in Ghana. Technical Writer in Ghana',
+  description: 'Matheus Albuquerque — Developer, speaker, creator.',
   language: 'en-us',
-  theme: 'system', // system, dark or light
-  siteUrl: 'https://astrosaurus.me',
+  theme: 'system',
+  siteUrl: 'https://www.ythecombinator.space',
   siteRepo: 'https://github.com/dephraiim/astrosaurus.me',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.jpeg',
