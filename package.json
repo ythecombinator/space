@@ -13,7 +13,7 @@
     "lint": "next lint",
     "format": "prettier --write src/",
     "codegen:schema": "graphql-codegen --config codegen.yml --require dotenv/config",
-    "codegen:gradients": "ts-node --project scripts/tsconfig.json scripts/generate-gradients.ts"
+    "codegen:gradients": "ts-node --project scripts/tsconfig.json scripts/codegen-gradients.ts"
   },
   "dependencies": {
     "@apollo/client": "^3.6.5",

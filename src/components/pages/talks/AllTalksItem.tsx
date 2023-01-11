@@ -28,7 +28,7 @@ const AllTalksItem: FC<AllTalksItemProps> = (props) => {
               <div className="text-gray-300 dark:text-gray-400 text-left mr-6">
                 {index}
               </div>
-              <h4 className="text-base sm:text-lg font-medium w-full text-gray-800 dark:text-gray-100">
+              <h4 className="text-base font-medium w-full text-gray-800 dark:text-gray-100">
                 {talkTitle}
               </h4>
             </div>

@@ -32,3 +32,6 @@ export const fetchGradients = async () => {
 
   console.log('colors', colors);
 };
+
+export const classNameForGradient = (gradient: [string, string]) =>
+  ` from-[${gradient[0]}] to-[${gradient[1]}]`;

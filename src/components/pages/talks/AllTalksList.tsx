@@ -1,5 +1,7 @@
 import { FC } from 'react';
 
+import { reversedIndexOf } from 'utils/array';
+
 import SectionContainer from 'components/shared/SectionContainer';
 import SectionHeading from 'components/shared/SectionHeading';
 
@@ -32,7 +34,7 @@ const AllTalksList: FC<AllTalksListProps> = (props) => {
             <AllTalksItem
               talkTitle={talkTitle}
               talkSlug={talkSlug}
-              index={index}
+              index={reversedIndexOf(items.length, index)}
             />
           );
         })}

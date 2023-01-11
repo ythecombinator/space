@@ -1,8 +1,8 @@
+import { exec } from 'child_process';
+import { writeFile } from 'fs/promises';
 import fetch from 'node-fetch';
-import { exec } from 'node:child_process';
-import { writeFile } from 'node:fs/promises';
-import { resolve } from 'node:path';
-import { promisify } from 'node:util';
+import { resolve } from 'path';
+import { promisify } from 'util';
 
 /*~
  * TYPES
@@ -42,7 +42,7 @@ const codegenGradients = async () => {
     const colorsData = rawColorsData
       .filter((colorInfo) => colorInfo.colors.length === 2)
       .slice(0, 50)
-      .map((colorInfo) => colorInfo.colors);
+      .map((colorInfo) => colorInfo.colors.map((color) => color.toUpperCase()));
 
     const fileContents = `
     export const gradients = ${JSON.stringify(colorsData)};

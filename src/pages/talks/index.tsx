@@ -1,10 +1,6 @@
-import { Document as ContentfulDocument } from '@contentful/rich-text-types';
 import {
   GetTalksDocument,
   GetTalksQuery,
-  GetUpcomingTalksDocument,
-  GetUpcomingTalksQuery,
-  ContentfulTag,
   GetTalksStatsQuery,
   GetTalksStatsDocument,
   GetFeaturedTalksQuery,
