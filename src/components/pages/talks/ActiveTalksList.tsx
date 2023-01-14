@@ -24,7 +24,7 @@ const ActiveTalksList: FC<ActiveTalksListProps> = (props) => {
 
   return (
     <SectionContainer>
-      <SectionHeading title="Active Sessions" />
+      <SectionHeading title="️‍🔥 Active Sessions" />
       <ul className="grid grid-cols-1 gap-10 py-8 dark:border-gray-700 md:grid-cols-3">
         {items.map((item) => {
           const { talkTitle, talkSlug, sessions } = item;

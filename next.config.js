@@ -26,7 +26,6 @@ const withPlugins = require('next-compose-plugins');
 
 const withTM = require('next-transpile-modules')([
   'react-spring',
-  //   '@react-spring/three',
   '@react-spring/web',
 ]);
 
@@ -34,9 +33,6 @@ const nextConfig = {
   compress: true,
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
-  eslint: {
-    // dirs: ['pages', 'components', 'lib', 'layouts', 'scripts', 'context'],
-  },
   webpack: (config) => {
     config.module.rules.push({
       test: /\.svg$/,
@@ -48,6 +44,9 @@ const nextConfig = {
     });
 
     return config;
+  },
+  images: {
+    domains: ['images.ctfassets.net'],
   },
 };
 

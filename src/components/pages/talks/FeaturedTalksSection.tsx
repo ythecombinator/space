@@ -23,7 +23,7 @@ const FeaturedTalksSection: FC<FeaturedTalksSectionProps> = (props) => {
 
   return (
     <SectionContainer>
-      <SectionHeading title="YouTube Highlights" />
+      <SectionHeading title="📺 YouTube Highlights" />
       <div className="pb-2 w-full flex flex-wrap">
         {items.map((item) => (
           <FeaturedTalksItem

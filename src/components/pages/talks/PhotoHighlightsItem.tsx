@@ -1,0 +1,47 @@
+import Image from 'next/image';
+import Link from 'next/link';
+import { FC } from 'react';
+
+/*~
+ * TYPES
+ */
+
+export type PhotoHighlightsItemProps = {
+  talkSlug: string;
+  eventName: string;
+  photoURL: string;
+};
+
+/*~
+ * COMPONENT
+ */
+
+const PhotoHighlightsItem: FC<PhotoHighlightsItemProps> = (props) => {
+  const { photoURL, talkSlug, eventName } = props;
+
+  return (
+    <Link
+      key={talkSlug}
+      href={talkSlug}
+      shallow
+      className="after:content group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
+    >
+      <figure className="relative max-w-sm transition-all duration-300 cursor-pointer">
+        <Image
+          alt="Next.js Conf photo"
+          className="h-auto max-w-lg transition-all duration-300 rounded-lg filter grayscale blur-sm hover:blur-none"
+          src={photoURL}
+          width={720}
+          height={480}
+        />
+        <figcaption className="absolute px-4 text-lg text-white bottom-6">
+          <p className="text-xl font-semibold leading-8 tracking-tight text-gray-100">
+            {eventName}
+          </p>
+        </figcaption>
+      </figure>
+    </Link>
+  );
+};
+
+export default PhotoHighlightsItem;

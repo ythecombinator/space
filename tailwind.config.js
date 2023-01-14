@@ -7,6 +7,8 @@ module.exports = {
   theme: {
     screens: {
       xs: '425px',
+      narrow: { raw: '(max-aspect-ratio: 3 / 2)' },
+      wide: { raw: '(min-aspect-ratio: 3 / 2)' },
       ...defaultTheme.screens,
     },
     extend: {

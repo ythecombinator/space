@@ -26,7 +26,7 @@ const AllTalksList: FC<AllTalksListProps> = (props) => {
 
   return (
     <SectionContainer>
-      <SectionHeading title="All Sessions" />
+      <SectionHeading title="📚 All Sessions" />
       <div className="mb-6">
         {items.map((item, index) => {
           const { talkTitle, talkSlug } = item;

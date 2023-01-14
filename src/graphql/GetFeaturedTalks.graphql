@@ -5,6 +5,9 @@ query GetFeaturedTalks {
         title
         slug
       }
+      photo {
+        url
+      }
       event {
         name
       }

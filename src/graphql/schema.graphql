@@ -1256,6 +1256,7 @@ input SysFilter {
 type Talk implements Entry {
   abstract(locale: String): TalkAbstract
   active(locale: String): Boolean
+  category(locale: String): String
   contentfulMetadata: ContentfulMetadata!
   lastRelevant(locale: String): DateTime
   linkedFrom(allowedLocales: [String]): TalkLinkingCollections
@@ -1303,6 +1304,13 @@ input TalkFilter {
   active: Boolean
   active_exists: Boolean
   active_not: Boolean
+  category: String
+  category_contains: String
+  category_exists: Boolean
+  category_in: [String]
+  category_not: String
+  category_not_contains: String
+  category_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
   lastRelevant: DateTime
   lastRelevant_exists: Boolean
@@ -1342,6 +1350,8 @@ type TalkLinkingCollections {
 enum TalkOrder {
   active_ASC
   active_DESC
+  category_ASC
+  category_DESC
   lastRelevant_ASC
   lastRelevant_DESC
   slug_ASC
@@ -1761,6 +1771,13 @@ input cfTalkNestedFilter {
   active: Boolean
   active_exists: Boolean
   active_not: Boolean
+  category: String
+  category_contains: String
+  category_exists: Boolean
+  category_in: [String]
+  category_not: String
+  category_not_contains: String
+  category_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
   lastRelevant: DateTime
   lastRelevant_exists: Boolean

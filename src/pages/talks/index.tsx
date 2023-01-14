@@ -19,6 +19,7 @@ import Layout from 'components/layouts/TalksLayout';
 import ActiveTalksList from 'components/pages/talks/ActiveTalksList';
 import AllTalksList from 'components/pages/talks/AllTalksList';
 import FeaturedTalksSection from 'components/pages/talks/FeaturedTalksSection';
+import PhotoHighlightsSection from 'components/pages/talks/PhotoHighlightsSection';
 
 /*~
  * TYPES
@@ -62,6 +63,7 @@ const featuredTalksDocTransformer = (result: GetFeaturedTalksQuery) => {
 
   return items.map((item) => ({
     eventName: item.event.name,
+    photoURL: item.photo.url,
     talkTitle: item.talk.title,
     talkSlug: item.talk.slug,
   }));
@@ -154,6 +156,7 @@ const TalksPage: NextPage<Props> = (props) => {
       <Layout title="Talks">
         <FeaturedTalksSection items={featuredTalks} />
         <ActiveTalksList items={activeTalks} />
+        <PhotoHighlightsSection items={featuredTalks} />
         <AllTalksList items={allTalks} />
       </Layout>
     </>

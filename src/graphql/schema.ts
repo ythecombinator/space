@@ -2135,6 +2135,7 @@ export type Talk = Entry & {
   __typename?: 'Talk';
   abstract?: Maybe<TalkAbstract>;
   active?: Maybe<Scalars['Boolean']>;
+  category?: Maybe<Scalars['String']>;
   contentfulMetadata: ContentfulMetadata;
   lastRelevant?: Maybe<Scalars['DateTime']>;
   linkedFrom?: Maybe<TalkLinkingCollections>;
@@ -2154,6 +2155,12 @@ export type TalkAbstractArgs = {
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/talk) */
 export type TalkActiveArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/talk) */
+export type TalkCategoryArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -2238,6 +2245,13 @@ export type TalkFilter = {
   active?: InputMaybe<Scalars['Boolean']>;
   active_exists?: InputMaybe<Scalars['Boolean']>;
   active_not?: InputMaybe<Scalars['Boolean']>;
+  category?: InputMaybe<Scalars['String']>;
+  category_contains?: InputMaybe<Scalars['String']>;
+  category_exists?: InputMaybe<Scalars['Boolean']>;
+  category_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  category_not?: InputMaybe<Scalars['String']>;
+  category_not_contains?: InputMaybe<Scalars['String']>;
+  category_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
   lastRelevant?: InputMaybe<Scalars['DateTime']>;
   lastRelevant_exists?: InputMaybe<Scalars['Boolean']>;
@@ -2294,6 +2308,8 @@ export type TalkLinkingCollectionsSessionCollectionArgs = {
 export enum TalkOrder {
   ActiveAsc = 'active_ASC',
   ActiveDesc = 'active_DESC',
+  CategoryAsc = 'category_ASC',
+  CategoryDesc = 'category_DESC',
   LastRelevantAsc = 'lastRelevant_ASC',
   LastRelevantDesc = 'lastRelevant_DESC',
   SlugAsc = 'slug_ASC',
@@ -2819,6 +2835,13 @@ export type CfTalkNestedFilter = {
   active?: InputMaybe<Scalars['Boolean']>;
   active_exists?: InputMaybe<Scalars['Boolean']>;
   active_not?: InputMaybe<Scalars['Boolean']>;
+  category?: InputMaybe<Scalars['String']>;
+  category_contains?: InputMaybe<Scalars['String']>;
+  category_exists?: InputMaybe<Scalars['Boolean']>;
+  category_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  category_not?: InputMaybe<Scalars['String']>;
+  category_not_contains?: InputMaybe<Scalars['String']>;
+  category_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
   lastRelevant?: InputMaybe<Scalars['DateTime']>;
   lastRelevant_exists?: InputMaybe<Scalars['Boolean']>;
@@ -2863,7 +2886,7 @@ export type GetAllTalkSlugsQuery = { __typename?: 'Query', talkCollection?: { __
 export type GetFeaturedTalksQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetFeaturedTalksQuery = { __typename?: 'Query', sessionCollection?: { __typename?: 'SessionCollection', items: Array<{ __typename?: 'Session', talk?: { __typename?: 'Talk', title?: string | null, slug?: string | null } | null, event?: { __typename?: 'Event', name?: string | null } | null } | null> } | null };
+export type GetFeaturedTalksQuery = { __typename?: 'Query', sessionCollection?: { __typename?: 'SessionCollection', items: Array<{ __typename?: 'Session', talk?: { __typename?: 'Talk', title?: string | null, slug?: string | null } | null, photo?: { __typename?: 'Asset', url?: string | null } | null, event?: { __typename?: 'Event', name?: string | null } | null } | null> } | null };
 
 export type GetTalkQueryVariables = Exact<{
   slug: Scalars['String'];
@@ -2985,6 +3008,9 @@ export const GetFeaturedTalksDocument = gql`
       talk {
         title
         slug
+      }
+      photo {
+        url
       }
       event {
         name
