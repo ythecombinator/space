@@ -3,8 +3,9 @@ import 'css/prism.css';
 import 'css/tailwind.css';
 import siteMetadata from 'data/siteMetadata';
 import { ThemeProvider } from 'next-themes';
-import type { AppProps } from 'next/app';
+import { AppProps } from 'next/app';
 import Head from 'next/head';
+import { Suspense } from 'react';
 
 import { PageSEO } from 'components/shared/SEO';
 

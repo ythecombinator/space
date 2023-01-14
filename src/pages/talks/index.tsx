@@ -1,3 +1,4 @@
+import siteMetadata from 'data/siteMetadata';
 import {
   GetTalksDocument,
   GetTalksQuery,
@@ -9,12 +10,15 @@ import {
   GetActiveTalksDocument,
 } from 'graphql/schema';
 import { InferGetStaticPropsType, NextPage } from 'next';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { DeepNonNullable } from 'utility-types';
 
 import ContentfulService from 'services/contentful';
 
-import Layout from 'components/layouts/TalksLayout';
+import { PageSEO } from 'components/shared/SEO';
+import SeachBar from 'components/shared/SeachBar';
+
+import Layout from 'components/layouts/TalksPageLayout';
 
 import ActiveTalksSection from 'components/pages/talks/ActiveTalksSection';
 import AllTalksSection from 'components/pages/talks/AllTalksSection';
@@ -121,7 +125,6 @@ export async function getStaticProps() {
   const talksStats = talksStatsDocTransformer(talksStatsDoc.data);
   const featuredTalks = featuredTalksDocTransformer(featuredTalksDoc.data);
   const activeTalks = activeTalksDocTransformer(activeTalksDoc.data);
-
   const allTalks = allTalksDocTransformer(allTalksDoc.data);
 
   // Final props
@@ -136,28 +139,32 @@ export async function getStaticProps() {
  */
 
 const TalksPage: NextPage<Props> = (props) => {
-  const { talksStats, featuredTalks, activeTalks, allTalks } = props;
+  const { talksStats, featuredTalks, activeTalks } = props;
 
-  const [searchValue, setSearchValue] = useState('');
-  const filteredBlogPosts = allTalks.filter((frontMatter) => {
-    const searchContent = frontMatter.talkTitle;
-    return searchContent.toLowerCase().includes(searchValue.toLowerCase());
-  });
-
-  const initialDisplayPosts = [];
-
-  // console.log('activeTalks', activeTalks);
-  // If initialDisplayPosts exist, display it if no searchValue is specified
+  const [term, setTerm] = useState('');
+  const onChange = (e) => {
+    setTerm(e.target.value);
+  };
 
   return (
     <>
-      {/* <PageSEO title={`Blog - ${siteMetadata.author}`} description={siteMetadata.description} /> */}
-      <Layout title="Talks">
+      <PageSEO
+        title={`Talks by ${siteMetadata.author}`}
+        description={siteMetadata.description}
+      />
+      <Layout
+        heading="Talks"
+        subHeading={<SeachBar label="Search Talks" onChange={onChange} />}
+      >
         <OverviewSection {...talksStats} />
+
         <VideoHighlightsSection items={featuredTalks} />
         <ActiveTalksSection items={activeTalks} />
         <PhotoHighlightsSection items={featuredTalks} />
-        <AllTalksSection items={allTalks} />
+
+        <Suspense fallback={<p>Loading Todos...</p>}>
+          <AllTalksSection items={props.allTalks} query={term} />
+        </Suspense>
       </Layout>
     </>
   );

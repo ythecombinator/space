@@ -1,6 +1,7 @@
 import { FC } from 'react';
 
 import { reversedIndexOf } from 'utils/array';
+import { useLyraSearch } from 'utils/search';
 
 import SectionContainer from 'components/shared/SectionContainer';
 import SectionHeading from 'components/shared/SectionHeading';
@@ -15,26 +16,36 @@ import AllTalksItem, {
 
 export type AllTalksSectionProps = {
   items: Array<Omit<AllTalksItemProps, 'index'>>;
+  query: string;
 };
 
 /*~
  * COMPONENT
  */
 
-const AllTalksSection: FC<AllTalksSectionProps> = (props) => {
-  const { items } = props;
+const AllTalksSection: FC<AllTalksSectionProps> = ({ items, query }) => {
+  const data = useLyraSearch(
+    {
+      talkTitle: 'string',
+      talkSlug: 'string',
+    },
+    items,
+    query
+  );
+  console.log('data', data);
 
   return (
     <SectionContainer>
       <SectionHeading title="📚 All Sessions" />
       <div className="mb-6">
-        {items.map((item, index) => {
+        {data.map((item, index) => {
           const { talkTitle, talkSlug } = item;
           return (
             <AllTalksItem
+              key={talkSlug}
               talkTitle={talkTitle}
               talkSlug={talkSlug}
-              index={reversedIndexOf(items.length, index)}
+              index={reversedIndexOf(data.length, index)}
             />
           );
         })}
