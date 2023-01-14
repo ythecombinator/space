@@ -28,14 +28,9 @@ const AllTalksItem: FC<AllTalksItemProps> = (props) => {
               <div className="text-gray-300 dark:text-gray-400 text-left mr-6">
                 {index}
               </div>
-              <h4 className="text-base font-medium w-full text-gray-800 dark:text-gray-100">
+              <h4 className="text-base sm:text-lg font-medium w-full text-gray-800 dark:text-gray-100">
                 {talkTitle}
               </h4>
-            </div>
-            <div className="flex items-center mt-2 sm:mt-0  justify-between">
-              <p className="text-gray-500 text-sm dark:text-gray-400 text-left sm:text-right md:mb-0 mr-2 ml-8 sm:ml-0">
-                OPA
-              </p>
             </div>
           </div>
         </div>
