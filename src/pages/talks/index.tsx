@@ -18,6 +18,7 @@ import Layout from 'components/layouts/TalksLayout';
 
 import ActiveTalksSection from 'components/pages/talks/ActiveTalksSection';
 import AllTalksSection from 'components/pages/talks/AllTalksSection';
+import OverviewSection from 'components/pages/talks/OverviewSection';
 import PhotoHighlightsSection from 'components/pages/talks/PhotoHighlightsSection';
 import VideoHighlightsSection from 'components/pages/talks/VideoHighlightsSection';
 
@@ -136,7 +137,6 @@ export async function getStaticProps() {
 
 const TalksPage: NextPage<Props> = (props) => {
   const { talksStats, featuredTalks, activeTalks, allTalks } = props;
-  const { citiesTotal, countriesTotal, talksTotal, eventsTotal } = talksStats;
 
   const [searchValue, setSearchValue] = useState('');
   const filteredBlogPosts = allTalks.filter((frontMatter) => {
@@ -147,13 +147,13 @@ const TalksPage: NextPage<Props> = (props) => {
   const initialDisplayPosts = [];
 
   // console.log('activeTalks', activeTalks);
-
   // If initialDisplayPosts exist, display it if no searchValue is specified
 
   return (
     <>
       {/* <PageSEO title={`Blog - ${siteMetadata.author}`} description={siteMetadata.description} /> */}
       <Layout title="Talks">
+        <OverviewSection {...talksStats} />
         <VideoHighlightsSection items={featuredTalks} />
         <ActiveTalksSection items={activeTalks} />
         <PhotoHighlightsSection items={featuredTalks} />
