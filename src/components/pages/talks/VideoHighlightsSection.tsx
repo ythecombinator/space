@@ -3,21 +3,23 @@ import { FC, useMemo } from 'react';
 import SectionContainer from 'components/shared/SectionContainer';
 import SectionHeading from 'components/shared/SectionHeading';
 
-import FeaturedTalksItem, { FeaturedTalksItemProps } from './FeaturedTalksItem';
+import VideoHighlightsItem, {
+  VideoHighlightsItemProps,
+} from './VideoHighlightsItem';
 
 /*~
  * TYPES
  */
 
-export type FeaturedTalksSectionProps = {
-  items: Array<FeaturedTalksItemProps>;
+export type VideoHighlightsSectionProps = {
+  items: Array<VideoHighlightsItemProps>;
 };
 
 /*~
  * COMPONENT
  */
 
-const FeaturedTalksSection: FC<FeaturedTalksSectionProps> = (props) => {
+const VideoHighlightsSection: FC<VideoHighlightsSectionProps> = (props) => {
   const allItems = props.items;
   const items = useMemo(() => allItems.slice(0, 2), []);
 
@@ -26,7 +28,7 @@ const FeaturedTalksSection: FC<FeaturedTalksSectionProps> = (props) => {
       <SectionHeading title="📺 YouTube Highlights" />
       <div className="pb-2 w-full flex flex-wrap">
         {items.map((item) => (
-          <FeaturedTalksItem
+          <VideoHighlightsItem
             key={item.talkTitle}
             talkTitle={item.talkTitle}
             eventName={item.eventName}
@@ -38,4 +40,4 @@ const FeaturedTalksSection: FC<FeaturedTalksSectionProps> = (props) => {
   );
 };
 
-export default FeaturedTalksSection;
+export default VideoHighlightsSection;

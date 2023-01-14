@@ -16,10 +16,10 @@ import ContentfulService from 'services/contentful';
 
 import Layout from 'components/layouts/TalksLayout';
 
-import ActiveTalksList from 'components/pages/talks/ActiveTalksList';
-import AllTalksList from 'components/pages/talks/AllTalksList';
-import FeaturedTalksSection from 'components/pages/talks/FeaturedTalksSection';
+import ActiveTalksSection from 'components/pages/talks/ActiveTalksSection';
+import AllTalksSection from 'components/pages/talks/AllTalksSection';
 import PhotoHighlightsSection from 'components/pages/talks/PhotoHighlightsSection';
+import VideoHighlightsSection from 'components/pages/talks/VideoHighlightsSection';
 
 /*~
  * TYPES
@@ -154,10 +154,10 @@ const TalksPage: NextPage<Props> = (props) => {
     <>
       {/* <PageSEO title={`Blog - ${siteMetadata.author}`} description={siteMetadata.description} /> */}
       <Layout title="Talks">
-        <FeaturedTalksSection items={featuredTalks} />
-        <ActiveTalksList items={activeTalks} />
+        <VideoHighlightsSection items={featuredTalks} />
+        <ActiveTalksSection items={activeTalks} />
         <PhotoHighlightsSection items={featuredTalks} />
-        <AllTalksList items={allTalks} />
+        <AllTalksSection items={allTalks} />
       </Layout>
     </>
   );

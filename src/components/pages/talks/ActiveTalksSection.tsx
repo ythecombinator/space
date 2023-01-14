@@ -3,7 +3,7 @@ import { FC } from 'react';
 import SectionContainer from 'components/shared/SectionContainer';
 import SectionHeading from 'components/shared/SectionHeading';
 
-import ActiveTalksListItem, {
+import ActiveTalksSectionItem, {
   ActiveTalksItemProps,
 } from 'components/pages/talks/ActiveTalksItem';
 
@@ -11,7 +11,7 @@ import ActiveTalksListItem, {
  * TYPES
  */
 
-export type ActiveTalksListProps = {
+export type ActiveTalksSectionProps = {
   items: Array<ActiveTalksItemProps>;
 };
 
@@ -19,7 +19,7 @@ export type ActiveTalksListProps = {
  * COMPONENT
  */
 
-const ActiveTalksList: FC<ActiveTalksListProps> = (props) => {
+const ActiveTalksSection: FC<ActiveTalksSectionProps> = (props) => {
   const { items } = props;
 
   return (
@@ -29,7 +29,7 @@ const ActiveTalksList: FC<ActiveTalksListProps> = (props) => {
         {items.map((item) => {
           const { talkTitle, talkSlug, sessions } = item;
           return (
-            <ActiveTalksListItem
+            <ActiveTalksSectionItem
               key={item.talkSlug}
               talkTitle={talkTitle}
               talkSlug={talkSlug}
@@ -42,4 +42,4 @@ const ActiveTalksList: FC<ActiveTalksListProps> = (props) => {
   );
 };
 
-export default ActiveTalksList;
+export default ActiveTalksSection;

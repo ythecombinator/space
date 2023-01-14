@@ -13,7 +13,7 @@ import AllTalksItem, {
  * TYPES
  */
 
-export type AllTalksListProps = {
+export type AllTalksSectionProps = {
   items: Array<Omit<AllTalksItemProps, 'index'>>;
 };
 
@@ -21,7 +21,7 @@ export type AllTalksListProps = {
  * COMPONENT
  */
 
-const AllTalksList: FC<AllTalksListProps> = (props) => {
+const AllTalksSection: FC<AllTalksSectionProps> = (props) => {
   const { items } = props;
 
   return (
@@ -43,4 +43,4 @@ const AllTalksList: FC<AllTalksListProps> = (props) => {
   );
 };
 
-export default AllTalksList;
+export default AllTalksSection;

@@ -6,7 +6,7 @@ import CardFeatured from 'components/shared/CardFeatured';
  * TYPES
  */
 
-export type FeaturedTalksItemProps = {
+export type VideoHighlightsItemProps = {
   talkTitle: string;
   talkSlug: string;
   eventName: string;
@@ -16,7 +16,7 @@ export type FeaturedTalksItemProps = {
  * COMPONENT
  */
 
-const FeaturedTalksItem: FC<FeaturedTalksItemProps> = (props) => {
+const VideoHighlightsItem: FC<VideoHighlightsItemProps> = (props) => {
   const { talkTitle, talkSlug, eventName } = props;
 
   return (
@@ -29,4 +29,4 @@ const FeaturedTalksItem: FC<FeaturedTalksItemProps> = (props) => {
   );
 };
 
-export default FeaturedTalksItem;
+export default VideoHighlightsItem;
