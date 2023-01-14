@@ -65,7 +65,12 @@ const ActiveTalksItem: FC<ActiveTalksItemProps> = (props) => {
                 <FaMapMarkedAlt size={20} />
               </div>
               {sessions.map((event) => (
-                <span className="ml-1" role="img" aria-label="dog">
+                <span
+                  key={event.eventName}
+                  className="ml-1"
+                  role="img"
+                  aria-label={event.eventName}
+                >
                   {event.eventFlag}
                 </span>
               ))}

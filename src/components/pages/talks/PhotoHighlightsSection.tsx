@@ -26,7 +26,7 @@ const PhotoHighlightsSection: FC<PhotoHighlightsSectionProps> = ({ items }) => {
       <div className="mx-auto max-w-[1960px] p-4">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {items.map((item) => (
-            <PhotoHighlightsItem {...item} />
+            <PhotoHighlightsItem key={item.eventName} {...item} />
           ))}
         </div>
       </div>
