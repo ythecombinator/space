@@ -1,7 +1,7 @@
 import siteMetadata from 'data/siteMetadata';
 import {
-  GetTalksDocument,
-  GetTalksQuery,
+  GetAllTalksDocument,
+  GetAllTalksQuery,
   GetTalksStatsQuery,
   GetTalksStatsDocument,
   GetFeaturedTalksQuery,
@@ -15,8 +15,10 @@ import { DeepNonNullable } from 'utility-types';
 
 import ContentfulService from 'services/contentful';
 
+import { toIndexableCollection } from 'utils/search';
+
 import { PageSEO } from 'components/shared/SEO';
-import SeachBar from 'components/shared/SeachBar';
+import SeachBar, { SeachBarProps } from 'components/shared/SeachBar';
 
 import Layout from 'components/layouts/TalksPageLayout';
 
@@ -37,16 +39,38 @@ export type Props = InferGetStaticPropsType<typeof getStaticProps>;
  * UTILS
  */
 
-const allTalksDocTransformer = (result: GetTalksQuery) => {
-  const items = (result as DeepNonNullable<GetTalksQuery>).talkCollection.items;
+const allTalksDocTransformer = (result: GetAllTalksQuery) => {
+  const items = (result as DeepNonNullable<GetAllTalksQuery>).talkCollection
+    .items;
 
   return items.map((item) => {
-    const { title, slug } = item;
+    const {
+      title,
+      shortDescription,
+      slug,
+      sessionsCollection,
+      contentfulMetadata,
+    } = item;
 
     return {
       talkTitle: title,
       talkSlug: slug,
-      // tags: contentfulMetadata.tags.map(tagTransformer),
+      // Indexable search metadata
+      _description: JSON.stringify(shortDescription.json),
+      _events: toIndexableCollection(
+        sessionsCollection.items.map((session) => session.event.name)
+      ),
+      _cities: toIndexableCollection(
+        sessionsCollection.items.map((session) => session.event.city.name)
+      ),
+      _countries: toIndexableCollection(
+        sessionsCollection.items.map(
+          (session) => session.event.city.country.name
+        )
+      ),
+      _tags: toIndexableCollection(
+        contentfulMetadata.tags.map((tag) => tag.name)
+      ),
     };
   });
 };
@@ -102,8 +126,8 @@ const getActiveTalks = ContentfulService.query<GetFeaturedTalksQuery>({
   query: GetActiveTalksDocument,
 });
 
-const getAllTalks = ContentfulService.query<GetTalksQuery>({
-  query: GetTalksDocument,
+const getAllTalks = ContentfulService.query<GetAllTalksQuery>({
+  query: GetAllTalksDocument,
   variables: {
     limit: 0,
   },
@@ -141,9 +165,10 @@ export async function getStaticProps() {
 const TalksPage: NextPage<Props> = (props) => {
   const { talksStats, allTalks, featuredTalks, activeTalks } = props;
 
-  const [term, setTerm] = useState('');
-  const onChange = (e) => {
-    setTerm(e.target.value);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const onChange: SeachBarProps['onChange'] = (evt) => {
+    setSearchTerm(evt.target.value);
   };
 
   return (
@@ -154,12 +179,17 @@ const TalksPage: NextPage<Props> = (props) => {
       />
       <Layout
         heading="Talks"
-        subHeading={<SeachBar label="Search Talks" onChange={onChange} />}
+        subHeading={
+          <SeachBar
+            label={`Search topics, events (e.g. "React Summit") and places (e.g. "Spain")`}
+            onChange={onChange}
+          />
+        }
       >
         <OverviewSection {...talksStats} />
 
         <Suspense fallback={<AllTalksSectionSkeleton items={5} />}>
-          <AllTalksSection items={allTalks} query={term} />
+          <AllTalksSection items={allTalks} searchTerm={searchTerm} />
         </Suspense>
 
         <VideoHighlightsSection items={featuredTalks} />

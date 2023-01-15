@@ -16,13 +16,30 @@ import AllTalksItem, {
  */
 
 export type AllTalksSectionProps = {
-  items: Array<Omit<AllTalksItemProps, 'index'>>;
-  query: string;
+  items: Array<
+    Omit<AllTalksItemProps, 'index'> & {
+      _description: string;
+      _events: string;
+      _tags: string;
+      _cities: string;
+      _countries: string;
+    }
+  >;
+  searchTerm: string;
 };
+
+/*~
+ * UTILS
+ */
 
 const searchSchema = {
   talkTitle: 'string',
   talkSlug: 'string',
+  _description: 'string',
+  _events: 'string',
+  _tags: 'string',
+  _cities: 'string',
+  _countries: 'string',
 } as const;
 
 /*~
@@ -31,11 +48,9 @@ const searchSchema = {
 
 const AllTalksSection: FC<AllTalksSectionProps> = ({
   items: baseItems,
-  query,
+  searchTerm,
 }) => {
-  const items = useLyraSearch(searchSchema, baseItems, query);
-  console.log('AllTalksSection items', items);
-  console.log('AllTalksSection baseItems', baseItems);
+  const items = useLyraSearch(searchSchema, baseItems, searchTerm);
 
   return (
     <SectionContainer>
