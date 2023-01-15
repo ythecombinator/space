@@ -50,7 +50,7 @@ export const useLyraSearch = <T>(
     await searcher.init();
     const result = searcher.findDocument(searchTerm);
     return result;
-  }, [searchTerm]);
+  }, [searchTerm, JSON.stringify(initialState)]);
 
   return results as T[];
 };

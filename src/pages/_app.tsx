@@ -5,7 +5,6 @@ import siteMetadata from 'data/siteMetadata';
 import { ThemeProvider } from 'next-themes';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { Suspense } from 'react';
 
 import { PageSEO } from 'components/shared/SEO';
 

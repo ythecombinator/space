@@ -22,6 +22,7 @@ import Layout from 'components/layouts/TalksPageLayout';
 
 import ActiveTalksSection from 'components/pages/talks/ActiveTalksSection';
 import AllTalksSection from 'components/pages/talks/AllTalksSection';
+import AllTalksSectionSkeleton from 'components/pages/talks/AllTalksSection.skeleton';
 import OverviewSection from 'components/pages/talks/OverviewSection';
 import PhotoHighlightsSection from 'components/pages/talks/PhotoHighlightsSection';
 import VideoHighlightsSection from 'components/pages/talks/VideoHighlightsSection';
@@ -130,7 +131,6 @@ export async function getStaticProps() {
   // Final props
   return {
     props: { talksStats, featuredTalks, activeTalks, allTalks },
-    // revalidate: 86400,
   };
 }
 
@@ -139,7 +139,7 @@ export async function getStaticProps() {
  */
 
 const TalksPage: NextPage<Props> = (props) => {
-  const { talksStats, featuredTalks, activeTalks } = props;
+  const { talksStats, allTalks, featuredTalks, activeTalks } = props;
 
   const [term, setTerm] = useState('');
   const onChange = (e) => {
@@ -158,13 +158,14 @@ const TalksPage: NextPage<Props> = (props) => {
       >
         <OverviewSection {...talksStats} />
 
+        <Suspense fallback={<AllTalksSectionSkeleton items={5} />}>
+          <AllTalksSection items={allTalks} query={term} />
+        </Suspense>
+
         <VideoHighlightsSection items={featuredTalks} />
         <ActiveTalksSection items={activeTalks} />
-        <PhotoHighlightsSection items={featuredTalks} />
 
-        <Suspense fallback={<p>Loading Todos...</p>}>
-          <AllTalksSection items={props.allTalks} query={term} />
-        </Suspense>
+        <PhotoHighlightsSection items={featuredTalks} />
       </Layout>
     </>
   );
