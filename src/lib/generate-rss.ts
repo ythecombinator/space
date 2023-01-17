@@ -2,11 +2,13 @@ import siteMetadata from 'data/siteMetadata';
 import { escape } from 'lib/utils/htmlEscaper';
 import { PostFrontMatter } from 'types/PostFrontMatter';
 
+import { NavigationPath } from 'config/constants';
+
 const generateRssItem = (post: PostFrontMatter) => `
   <item>
-    <guid>${siteMetadata.siteUrl}/blog/${post.slug}</guid>
+    <guid>${siteMetadata.siteUrl}/${NavigationPath.posts}/${post.slug}</guid>
     <title>${escape(post.title)}</title>
-    <link>${siteMetadata.siteUrl}/blog/${post.slug}</link>
+    <link>${siteMetadata.siteUrl}/${NavigationPath.posts}/${post.slug}</link>
     ${post.summary && `<description>${escape(post.summary)}</description>`}
     <pubDate>${new Date(post.date).toUTCString()}</pubDate>
     <author>${siteMetadata.email} (${siteMetadata.author})</author>
@@ -14,11 +16,11 @@ const generateRssItem = (post: PostFrontMatter) => `
   </item>
 `;
 
-const generateRss = (posts: PostFrontMatter[], page = 'feed.xml') => `
+const generateRSS = (posts: PostFrontMatter[], page = 'feed.xml') => `
   <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
       <title>${escape(siteMetadata.title)}</title>
-      <link>${siteMetadata.siteUrl}/blog</link>
+      <link>${siteMetadata.siteUrl}/${NavigationPath.posts}</link>
       <description>${escape(siteMetadata.description)}</description>
       <language>${siteMetadata.language}</language>
       <managingEditor>${siteMetadata.email} (${
@@ -33,4 +35,4 @@ const generateRss = (posts: PostFrontMatter[], page = 'feed.xml') => `
     </channel>
   </rss>
 `;
-export default generateRss;
+export default generateRSS;

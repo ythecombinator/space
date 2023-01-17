@@ -2,6 +2,8 @@ import Link from 'components/Link';
 import PageTitle from 'components/PageTitle';
 import siteMetadata from 'data/siteMetadata';
 
+import { NavigationPath } from 'config/constants';
+
 import { formatDate } from 'utils/date';
 
 import { BlogSEO } from 'components/shared/SEO';
@@ -14,7 +16,7 @@ export default function PostLayout({ frontMatter, children }) {
     `${siteMetadata.siteRepo}/blob/master/data/blog/${fileName}`;
   const discussUrl = (slug) =>
     `https://mobile.twitter.com/search?q=${encodeURIComponent(
-      `${siteMetadata.siteUrl}/blog/${slug}`
+      `${siteMetadata.siteUrl}/${NavigationPath.posts}/${slug}`
     )}`;
 
   return (

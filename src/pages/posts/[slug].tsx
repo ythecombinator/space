@@ -1,6 +1,9 @@
-import PageTitle from 'components/PageTitle';
 import fs from 'fs';
-import generateRss from 'lib/generate-rss';
+import generateRSS from 'lib/generate-rss';
+import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next';
+import { ParsedUrlQuery } from 'querystring';
+
+import { NavigationPath } from 'config/constants';
 
 import {
   formatSlug,
@@ -13,67 +16,63 @@ import { MDXLayoutRenderer } from 'components/shared/MDXComponents';
 
 const DEFAULT_LAYOUT = 'PostSimple';
 
+/*~
+ * TYPES
+ */
+
+interface Params extends ParsedUrlQuery {
+  slug: string;
+}
+
+export type Props = InferGetStaticPropsType<typeof getStaticProps>;
+
+/*~
+ * NEXTJS
+ */
+
 export async function getStaticPaths() {
-  const posts = getFiles('blog');
+  const posts = getFiles(NavigationPath.posts);
+  console.log('posts', posts);
   return {
     paths: posts.map((p) => ({
       params: {
-        slug: formatSlug(p).split('/'),
+        slug: formatSlug(p),
       },
     })),
     fallback: false,
   };
 }
 
-export async function getStaticProps({ params }) {
-  const allPosts = await getAllFilesFrontMatter('blog');
-  const postIndex = allPosts.findIndex(
-    (post) => formatSlug(post.slug) === params.slug.join('/')
-  );
-  const prev = allPosts[postIndex + 1] || null;
-  const next = allPosts[postIndex - 1] || null;
-  const post = await getFileBySlug('blog', params.slug.join('/'));
-  const authorList = post.frontMatter.authors || ['default'];
-  const authorPromise = authorList.map(async (author) => {
-    const authorResults = await getFileBySlug('authors', [author]);
-    return authorResults.frontMatter;
-  });
-  const authorDetails = await Promise.all(authorPromise);
+export async function getStaticProps(context: GetStaticPropsContext<Params>) {
+  const allPosts = await getAllFilesFrontMatter(NavigationPath.posts);
+  const slug = context.params?.slug!;
 
-  // rss
+  const post = await getFileBySlug(NavigationPath.posts, slug);
+
+  // RSS
   if (allPosts.length > 0) {
-    const rss = generateRss(allPosts);
+    const rss = generateRSS(allPosts);
     fs.writeFileSync('./public/feed.xml', rss);
   }
 
-  return { props: { post, authorDetails, prev, next } };
+  return { props: { post } };
 }
 
-export default function Blog({ post, authorDetails, prev, next }) {
+/*~
+ * PAGE
+ */
+
+const PostPage: NextPage<Props> = ({ post }) => {
   const { mdxSource, toc, frontMatter } = post;
 
   return (
-    <>
-      {frontMatter.draft !== true ? (
-        <MDXLayoutRenderer
-          layout={frontMatter.layout || DEFAULT_LAYOUT}
-          toc={toc}
-          mdxSource={mdxSource}
-          frontMatter={frontMatter}
-          authorDetails={authorDetails}
-          prev={prev}
-          next={next}
-        />
-      ) : (
-        <div className="mt-24 text-center">
-          <PageTitle>
-            Under Construction{' '}
-            <span role="img" aria-label="roadwork sign">
-              🚧
-            </span>
-          </PageTitle>
-        </div>
-      )}
-    </>
+    <MDXLayoutRenderer
+      layout={frontMatter.layout || DEFAULT_LAYOUT}
+      toc={toc}
+      mdxSource={mdxSource}
+      frontMatter={frontMatter}
+    />
   );
-}
+};
+
+export default PostPage;

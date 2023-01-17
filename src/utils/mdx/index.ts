@@ -26,7 +26,7 @@ import remarkTocHeadings from 'utils/mdx/remark-toc-headings';
 
 const root = `${process.cwd()}/src`;
 
-export function getFiles(type: 'blog' | 'authors' | 'snippets') {
+export function getFiles(type: 'posts' | 'authors' | 'snippets') {
   const prefixPaths = path.join(root, 'data', type);
   const files = getAllFilesRecursively(prefixPaths);
   // Only want to return blog/path and ignore root, replace is needed to work on Windows
@@ -46,7 +46,7 @@ export function dateSortDesc(a: string, b: string) {
 }
 
 export async function getFileBySlug<T>(
-  type: 'authors' | 'blog' | 'snippets',
+  type: 'authors' | 'posts' | 'snippets',
   slug: string | string[]
 ) {
   const mdxPath = path.join(root, 'data', type, `${slug}.mdx`);
@@ -126,7 +126,7 @@ export async function getFileBySlug<T>(
   };
 }
 
-export async function getAllFilesFrontMatter(folder: 'blog' | 'snippets') {
+export async function getAllFilesFrontMatter(folder: 'posts' | 'snippets') {
   const prefixPaths = path.join(root, 'data', folder);
 
   const files = getAllFilesRecursively(prefixPaths);

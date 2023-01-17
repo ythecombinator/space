@@ -36,14 +36,13 @@ export const socialNetworks: Array<ExternalLink> = [
 
 export enum NavigationPath {
   base = '/',
-  work = '/work',
-  life = '/life',
-  writing = '/writing',
-  talks = '/talks',
-  coding = '/coding',
-  setupSoftware = '/setup/software',
-  setupHardware = '/setup/hardware',
-  tags = '/tags',
+  work = 'about/work',
+  life = 'about/life',
+  setup = 'about/setup',
+  posts = 'posts',
+  talks = 'talks',
+  projects = 'projects',
+  tags = 'tags',
 }
 
 export enum SourcePath {

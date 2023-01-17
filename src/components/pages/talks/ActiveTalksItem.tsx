@@ -2,6 +2,8 @@ import Link from 'components/Link';
 import { FC } from 'react';
 import { FaMapMarkedAlt } from 'react-icons/fa';
 
+import { NavigationPath } from 'config/constants';
+
 import { randomElement } from 'utils/array';
 
 const gradients = [
@@ -38,7 +40,7 @@ const ActiveTalksItem: FC<ActiveTalksItemProps> = (props) => {
 
   return (
     <Link
-      href={`/blog/${talkSlug}`}
+      href={`/${NavigationPath.talks}/${talkSlug}`}
       key={talkSlug}
       className="group transform transition-all duration-500 hover:scale-[1.05] hover:duration-500"
     >

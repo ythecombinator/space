@@ -2,6 +2,8 @@ import siteMetadata from 'data/siteMetadata';
 import { InferGetStaticPropsType, NextPage } from 'next';
 import { Suspense, useState } from 'react';
 
+import { NavigationPath } from 'config/constants';
+
 import { getAllFilesFrontMatter } from 'utils/mdx';
 import { toIndexableCollection } from 'utils/search';
 
@@ -24,7 +26,7 @@ export type Props = InferGetStaticPropsType<typeof getStaticProps>;
  */
 
 export async function getStaticProps() {
-  const allPostsRaw = await getAllFilesFrontMatter('blog');
+  const allPostsRaw = await getAllFilesFrontMatter(NavigationPath.posts);
   const allPosts = allPostsRaw.map((post) => ({
     ...post,
     _tags: toIndexableCollection(post.tags),
