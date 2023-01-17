@@ -2,7 +2,7 @@ import siteMetadata from 'data/siteMetadata';
 import { InferGetStaticPropsType, NextPage } from 'next';
 import { Suspense, useState } from 'react';
 
-import { NavigationPath } from 'config/constants';
+import { Routes } from 'config/constants';
 
 import { getAllFilesFrontMatter } from 'utils/mdx';
 import { toIndexableCollection } from 'utils/search';
@@ -10,7 +10,7 @@ import { toIndexableCollection } from 'utils/search';
 import { PageSEO } from 'components/shared/SEO';
 import SeachBar, { SeachBarProps } from 'components/shared/SeachBar';
 
-import Layout from 'components/layouts/TalksPageLayout';
+import Layout from 'components/layouts/PageLayout';
 
 import AllPostsSection from 'components/pages/posts/AllPostsSection';
 import AllPostsSectionSkeleton from 'components/pages/posts/AllPostsSection.skeleton';
@@ -26,7 +26,7 @@ export type Props = InferGetStaticPropsType<typeof getStaticProps>;
  */
 
 export async function getStaticProps() {
-  const allPostsRaw = await getAllFilesFrontMatter(NavigationPath.posts);
+  const allPostsRaw = await getAllFilesFrontMatter(Routes.posts);
   const allPosts = allPostsRaw.map((post) => ({
     ...post,
     _tags: toIndexableCollection(post.tags),

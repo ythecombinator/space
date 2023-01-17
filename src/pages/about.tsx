@@ -1,11 +1,15 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { AuthorFrontMatter } from 'types/AuthorFrontMatter';
 
+import { Layouts } from 'config/constants';
+
 import { getFileBySlug } from 'utils/mdx';
 
 import { MDXLayoutRenderer } from 'components/shared/MDXComponents';
 
-const DEFAULT_LAYOUT = 'AuthorLayout';
+/*~
+ * NEXTJS
+ */
 
 // @ts-ignore
 export const getStaticProps: GetStaticProps<{
@@ -18,16 +22,22 @@ export const getStaticProps: GetStaticProps<{
   return { props: { authorDetails: { mdxSource, frontMatter } } };
 };
 
-export default function About({
+/*~
+ * PAGE
+ */
+
+const AboutPage = ({
   authorDetails,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { mdxSource, frontMatter } = authorDetails;
 
   return (
     <MDXLayoutRenderer
-      layout={frontMatter.layout || DEFAULT_LAYOUT}
+      layout={Layouts.about}
       mdxSource={mdxSource}
       frontMatter={frontMatter}
     />
   );
-}
+};
+
+export default AboutPage;

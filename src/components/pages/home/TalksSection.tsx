@@ -1,7 +1,7 @@
 import { Heading, VStack, List, ListItem, Icon, Box } from '@chakra-ui/react';
 import { CgArrowRight } from 'react-icons/cg';
 
-import { NavigationPath } from 'config/constants';
+import { Routes } from 'config/constants';
 
 import Link from 'components/shared/Link';
 import TalkCard, { TalkCardProps } from 'components/shared/TalkCard';
@@ -27,7 +27,7 @@ const TalksSection = (props: TalksSectionProps) => {
         <Link
           display="flex"
           alignItems="center"
-          href={NavigationPath.talks}
+          href={Routes.talks}
           ml={{ base: 0, md: 4 }}
           role="group"
           bgGradient="linear(to-l, #7928CA,#FF0080)"

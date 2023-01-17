@@ -2,7 +2,7 @@ import Link from 'components/Link';
 import { FC } from 'react';
 import { PostFrontMatter } from 'types/PostFrontMatter';
 
-import { NavigationPath } from 'config/constants';
+import { Routes } from 'config/constants';
 
 import { formatDate } from 'utils/date';
 
@@ -30,7 +30,7 @@ const AllPostsItem: FC<AllPostsItemProps> = (props) => {
         </div>
         <h3 className="grow text-2xl font-bold leading-8 tracking-tight">
           <Link
-            href={`/${NavigationPath.posts}/${slug}`}
+            href={`/${Routes.posts}/${slug}`}
             className="text-gray-900 dark:text-gray-100"
           >
             {title}

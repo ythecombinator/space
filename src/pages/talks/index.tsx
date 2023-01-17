@@ -20,7 +20,7 @@ import { toIndexableCollection } from 'utils/search';
 import { PageSEO } from 'components/shared/SEO';
 import SeachBar, { SeachBarProps } from 'components/shared/SeachBar';
 
-import Layout from 'components/layouts/TalksPageLayout';
+import Layout from 'components/layouts/PageLayout';
 
 import ActiveTalksSection from 'components/pages/talks/ActiveTalksSection';
 import AllTalksSection from 'components/pages/talks/AllTalksSection';

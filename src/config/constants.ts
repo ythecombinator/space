@@ -34,7 +34,7 @@ export const socialNetworks: Array<ExternalLink> = [
   },
 ];
 
-export enum NavigationPath {
+export enum Routes {
   base = '/',
   work = 'about/work',
   life = 'about/life',
@@ -43,6 +43,12 @@ export enum NavigationPath {
   talks = 'talks',
   projects = 'projects',
   tags = 'tags',
+}
+
+export enum Layouts {
+  post = 'PostLayout',
+  page = 'PageLayout',
+  about = 'AuthorLayout',
 }
 
 export enum SourcePath {

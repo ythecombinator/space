@@ -1,7 +1,7 @@
 import Link from 'components/Link';
 import { github, twitter } from 'data/siteMetadata';
 
-import { NavigationPath } from 'config/constants';
+import { Routes } from 'config/constants';
 
 import FooterExternalLink from 'components/shared/FooterExternalLink';
 import LayoutGradient from 'components/shared/LayoutGradient';
@@ -19,7 +19,7 @@ export default function Footer() {
                 About
               </a>
             </Link>
-            <Link href={`/${NavigationPath.posts}`}>
+            <Link href={`/${Routes.posts}`}>
               <a className="text-gray-500 hover:text-gray-600 transition">
                 Posts
               </a>

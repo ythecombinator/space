@@ -1,7 +1,7 @@
 import Link from 'components/Link';
 import { FC } from 'react';
 
-import { NavigationPath } from 'config/constants';
+import { Routes } from 'config/constants';
 
 /*~
  * TYPES
@@ -21,7 +21,7 @@ const AllTalksItem: FC<AllTalksItemProps> = (props) => {
   const { talkTitle, talkSlug, index } = props;
 
   return (
-    <Link href={`/${NavigationPath.talks}/${talkSlug}`}>
+    <Link href={`/${Routes.talks}/${talkSlug}`}>
       <a className="w-full" aria-label={talkTitle}>
         <div className="w-full border-b border-gray-200 dark:border-gray-700 py-3 transform hover:scale-[1.01] transition-all">
           <div className="flex flex-col sm:flex-row justify-between sm:items-center">

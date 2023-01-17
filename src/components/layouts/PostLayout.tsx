@@ -1,22 +1,36 @@
 import Link from 'components/Link';
 import PageTitle from 'components/PageTitle';
 import siteMetadata from 'data/siteMetadata';
+import { FC } from 'react';
+import { PostFrontMatter } from 'types/PostFrontMatter';
 
-import { NavigationPath } from 'config/constants';
+import { Routes } from 'config/constants';
 
 import { formatDate } from 'utils/date';
 
 import { BlogSEO } from 'components/shared/SEO';
 import ScrollTop from 'components/shared/ScrollTop';
 
-export default function PostLayout({ frontMatter, children }) {
+/*~
+ * TYPES
+ */
+
+interface PostLayoutProps {
+  frontMatter: PostFrontMatter;
+}
+
+/*~
+ * LAYOUT
+ */
+
+const PostLayout: FC<PostLayoutProps> = ({ frontMatter, children }) => {
   const { date, title, slug, fileName, readingTime } = frontMatter;
 
   const editUrl = (fileName) =>
     `${siteMetadata.siteRepo}/blob/master/data/blog/${fileName}`;
   const discussUrl = (slug) =>
     `https://mobile.twitter.com/search?q=${encodeURIComponent(
-      `${siteMetadata.siteUrl}/${NavigationPath.posts}/${slug}`
+      `${siteMetadata.siteUrl}/${Routes.posts}/${slug}`
     )}`;
 
   return (
@@ -67,4 +81,6 @@ export default function PostLayout({ frontMatter, children }) {
       </article>
     </>
   );
-}
+};
+
+export default PostLayout;

@@ -1,15 +1,19 @@
 import { FC } from 'react';
 
-interface TalksPageLayoutProps {
+/*~
+ * TYPES
+ */
+
+interface PageLayoutProps {
   heading: string;
   subHeading?: JSX.Element;
 }
 
-const TalksPageLayout: FC<TalksPageLayoutProps> = ({
-  heading,
-  subHeading,
-  children,
-}) => {
+/*~
+ * LAYOUT
+ */
+
+const PageLayout: FC<PageLayoutProps> = ({ heading, subHeading, children }) => {
   return (
     <div className="mt-6 px-2 sm:px-0">
       <div className="space-y-2 pt-6 pb-8 md:space-y-5">
@@ -23,4 +27,4 @@ const TalksPageLayout: FC<TalksPageLayoutProps> = ({
   );
 };
 
-export default TalksPageLayout;
+export default PageLayout;
