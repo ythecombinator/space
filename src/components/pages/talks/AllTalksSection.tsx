@@ -59,7 +59,7 @@ const AllTalksSection: FC<AllTalksSectionProps> = ({
         {isEmpty(items) && (
           <EmptyList
             heading="No items found 😢"
-            subHeading="I don't have any sessions on this topic. In the future they, will appear here."
+            subHeading="I don't have any sessions on this topic."
           />
         )}
         {items.map((item, index) => {
