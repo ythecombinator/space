@@ -36,6 +36,7 @@ export const socialNetworks: Array<ExternalLink> = [
 
 export enum Routes {
   base = '/',
+  about = 'about',
   work = 'about/work',
   life = 'about/life',
   setup = 'about/setup',
@@ -44,6 +45,13 @@ export enum Routes {
   projects = 'projects',
   tags = 'tags',
 }
+
+export const headerNavigationLinks = [
+  { href: Routes.base, title: 'Home' },
+  { href: `/${Routes.posts}`, title: 'Posts' },
+  { href: `/${Routes.talks}`, title: 'Talks' },
+  { href: `/${Routes.about}`, title: 'About' },
+];
 
 export enum Layouts {
   post = 'PostLayout',

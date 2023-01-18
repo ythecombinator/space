@@ -1,4 +1,3 @@
-import LayoutWrapper from 'components/LayoutWrapper';
 import 'css/prism.css';
 import 'css/tailwind.css';
 import siteMetadata from 'data/siteMetadata';
@@ -6,6 +5,7 @@ import { ThemeProvider } from 'next-themes';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 
+import LayoutWrapper from 'components/shared/LayoutWrapper';
 import { PageSEO } from 'components/shared/SEO';
 
 export default function App({ Component, pageProps }: AppProps) {

@@ -1,6 +1,7 @@
-import { Heading, Text } from '@chakra-ui/react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { Prose } from '@nikolovlazar/chakra-ui-prose';
+import { BLOCKS } from '@contentful/rich-text-types';
+import { Document as ContentfulDocument } from '@contentful/rich-text-types';
+import siteMetadata from 'data/siteMetadata';
 import {
   GetAllTalkSlugsDocument,
   GetAllTalkSlugsQuery,
@@ -15,11 +16,14 @@ import { DeepNonNullable } from 'utility-types';
 
 import ContentfulService from 'services/contentful';
 
-import { format } from 'utils/date';
+import { formatDate } from 'utils/date';
 
-import Layout from 'components/shared/Layout';
+import { PageSEO } from 'components/shared/SEO';
 
-import EventsList from 'components/pages/talks/EventsList';
+import Layout from 'components/layouts/PageLayout';
+
+import EventsSection from 'components/pages/talk/EventsSection';
+import OverviewSection from 'components/pages/talk/OverviewSection';
 
 /*~
  * TYPES
@@ -36,14 +40,14 @@ export type Props = InferGetStaticPropsType<typeof getStaticProps>;
  */
 
 const locationTransformer = (city: City) =>
-  `${city.country?.flag} ${city.name}, ${city.country?.name}`;
+  `${city.name}, ${city.country?.name} ${city.country?.flag} `;
 
 const sessionTransformer = (session: DeepNonNullable<Session>) => ({
   id: session.sys.id,
   eventName: session.event?.name,
   eventLocation: locationTransformer(session.event?.city),
-  eventStartingDate: format(session.event?.startingDate),
-  eventEndingDate: format(session.event?.endingDate),
+  eventStartingDate: formatDate(session.event?.startingDate),
+  eventEndingDate: formatDate(session.event?.endingDate),
   sessionAudience: formatAudience(session.audience),
   sessionLanguage: formatLanguage(session.language),
   sessionOnline: session.online,
@@ -59,7 +63,7 @@ export const talkDocumentTransformer = (result: GetTalkQuery) => {
 
   return {
     title: talk?.title,
-    abstract: talk?.abstract?.json,
+    abstract: talk?.abstract?.json as ContentfulDocument,
     sessions: sessions.map(sessionTransformer),
   };
 };
@@ -111,16 +115,19 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
 
 const TalkPage: NextPage<Props> = (props) => {
   const { title, abstract, sessions } = props;
+  console.log('sessions', sessions);
 
   return (
-    <Layout>
-      <Heading> {title}</Heading>
-
-      <Prose>{documentToReactComponents(abstract)}</Prose>
-
-      <Heading>Sessions</Heading>
-      <EventsList items={sessions} />
-    </Layout>
+    <>
+      <PageSEO
+        title={`${title} by ${siteMetadata.author}`}
+        description={siteMetadata.description}
+      />
+      <Layout heading={title!}>
+        <OverviewSection abstract={abstract} />
+        <EventsSection items={sessions} />
+      </Layout>
+    </>
   );
 };
 
