@@ -4,8 +4,7 @@ import { InferGetStaticPropsType, NextPage } from 'next';
 import { DeepNonNullable } from 'utility-types';
 
 import ContentfulService from 'services/contentful';
-
-import { getFileContents } from 'utils/mdx';
+import { getFileContents } from 'services/mdx';
 
 import HomepageLayout from 'components/layouts/Home';
 

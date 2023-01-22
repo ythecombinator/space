@@ -15,14 +15,15 @@ import remarkFootnotes from 'remark-footnotes';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import { TOC } from 'types/TOC';
-import { AboutFrontMatter, ContentFrontMatter } from 'types/front-matter';
+import { ContentFrontMatter } from 'types/front-matter';
 import { PostFrontMatter } from 'types/front-matter';
 
+import remarkCodeTitles from 'services/mdx/remark-code-title';
+import remarkExtractFrontmatter from 'services/mdx/remark-extract-frontmatter';
+import remarkImgToJsx from 'services/mdx/remark-img-to-jsx';
+import remarkTocHeadings from 'services/mdx/remark-toc-headings';
+
 import { getAllFilesRecursively } from 'utils/files';
-import remarkCodeTitles from 'utils/mdx/remark-code-title';
-import remarkExtractFrontmatter from 'utils/mdx/remark-extract-frontmatter';
-import remarkImgToJsx from 'utils/mdx/remark-img-to-jsx';
-import remarkTocHeadings from 'utils/mdx/remark-toc-headings';
 
 const root = `${process.cwd()}/src`;
 
@@ -134,12 +135,12 @@ export async function getAllFilesFrontMatter(folder: 'posts' | 'snippets') {
   const allFrontMatter: PostFrontMatter[] = [];
 
   files.forEach((file: string) => {
-    // Replace is needed to work on Windows
     const fileName = file.slice(prefixPaths.length + 1).replace(/\\/g, '/');
-    // Remove Unexpected File
+
     if (path.extname(fileName) !== '.md' && path.extname(fileName) !== '.mdx') {
       return;
     }
+
     const source = fs.readFileSync(file, 'utf8');
     const matterFile = matter(source);
     const frontmatter = matterFile.data as ContentFrontMatter;

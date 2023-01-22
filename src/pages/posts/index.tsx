@@ -4,7 +4,8 @@ import { Suspense, useState } from 'react';
 import { Routes } from 'config/constants';
 import { siteMetadata } from 'config/constants';
 
-import { getAllFilesFrontMatter } from 'utils/mdx';
+import { getAllFilesFrontMatter } from 'services/mdx';
+
 import { toIndexableCollection } from 'utils/search';
 
 import SeachBar, { SeachBarProps } from 'components/shared/seach-bar';

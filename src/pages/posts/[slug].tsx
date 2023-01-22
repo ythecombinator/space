@@ -9,7 +9,8 @@ import {
   getAllFilesFrontMatter,
   getFileBySlug,
   getFiles,
-} from 'utils/mdx';
+} from 'services/mdx';
+
 import { generateRSS } from 'utils/rss';
 
 import { MDXLayoutRenderer } from 'components/shared/mdx-components';

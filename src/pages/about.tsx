@@ -3,7 +3,7 @@ import { AboutFrontMatter } from 'types/front-matter';
 
 import { Layouts } from 'config/constants';
 
-import { getFileBySlug } from 'utils/mdx';
+import { getFileBySlug } from 'services/mdx';
 
 import { MDXLayoutRenderer } from 'components/shared/mdx-components';
 
