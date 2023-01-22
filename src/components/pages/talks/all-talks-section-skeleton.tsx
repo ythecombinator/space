@@ -3,7 +3,7 @@ import { FC, useMemo } from 'react';
 import SectionContainer from 'components/shared/SectionContainer';
 import SectionHeading from 'components/shared/SectionHeading';
 
-import AllTalksItemSkeleton from './AllTalksItem.skeleton';
+import AllTalksSectionItemSkeleton from 'components/pages/talks/all-talks-section-item-skeleton';
 
 /*~
  * TYPES
@@ -27,7 +27,7 @@ const AllTalksSectionSkeleton: FC<AllTalksSectionSkeletonProps> = ({
       <SectionHeading title="📚 All Sessions" />
       <div className="mb-6">
         {itemSkeletons.map((skeletonId) => {
-          return <AllTalksItemSkeleton key={skeletonId} />;
+          return <AllTalksSectionItemSkeleton key={skeletonId} />;
         })}
       </div>
     </SectionContainer>

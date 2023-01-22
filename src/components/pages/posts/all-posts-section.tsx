@@ -1,15 +1,14 @@
 import { FC } from 'react';
 
-import { isEmpty, reversedIndexOf } from 'utils/array';
+import { isEmpty } from 'utils/array';
 import { useLyraSearch } from 'utils/search';
 
 import EmptyList from 'components/shared/EmptyList';
 import SectionContainer from 'components/shared/SectionContainer';
-import SectionHeading from 'components/shared/SectionHeading';
 
-import AllPostsItem, {
-  AllPostsItemProps,
-} from 'components/pages/posts/AllPostsItem';
+import AllPostsSectionItem, {
+  AllPostsSectionItemProps,
+} from 'components/pages/posts/all-posts-section-item';
 
 /*~
  * TYPES
@@ -17,7 +16,7 @@ import AllPostsItem, {
 
 export type AllPostsSectionProps = {
   items: Array<
-    Omit<AllPostsItemProps, 'index'> & {
+    Omit<AllPostsSectionItemProps, 'index'> & {
       _tags: string;
     }
   >;
@@ -55,7 +54,7 @@ const AllPostsSection: FC<AllPostsSectionProps> = ({
       )}
       <ul>
         {items.map((item) => (
-          <AllPostsItem {...item} />
+          <AllPostsSectionItem {...item} />
         ))}
       </ul>
     </SectionContainer>

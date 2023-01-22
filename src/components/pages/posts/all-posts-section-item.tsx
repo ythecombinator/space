@@ -10,7 +10,7 @@ import { formatDate } from 'utils/date';
  * TYPES
  */
 
-export type AllPostsItemProps = Pick<
+export type AllPostsSectionItemProps = Pick<
   PostFrontMatter,
   'slug' | 'title' | 'date' | 'summary'
 >;
@@ -19,7 +19,7 @@ export type AllPostsItemProps = Pick<
  * COMPONENT
  */
 
-const AllPostsItem: FC<AllPostsItemProps> = (props) => {
+const AllPostsSectionItem: FC<AllPostsSectionItemProps> = (props) => {
   const { slug, date, title, summary } = props;
 
   return (
@@ -44,4 +44,4 @@ const AllPostsItem: FC<AllPostsItemProps> = (props) => {
   );
 };
 
-export default AllPostsItem;
+export default AllPostsSectionItem;

@@ -22,12 +22,12 @@ import SeachBar, { SeachBarProps } from 'components/shared/SeachBar';
 
 import Layout from 'components/layouts/layout-page';
 
-import ActiveTalksSection from 'components/pages/talks/ActiveTalksSection';
-import AllTalksSection from 'components/pages/talks/AllTalksSection';
-import AllTalksSectionSkeleton from 'components/pages/talks/AllTalksSection.skeleton';
-import OverviewSection from 'components/pages/talks/OverviewSection';
-import PhotoHighlightsSection from 'components/pages/talks/PhotoHighlightsSection';
-import VideoHighlightsSection from 'components/pages/talks/VideoHighlightsSection';
+import ActiveTalksSection from 'components/pages/talks/active-talks-section';
+import AllTalksSection from 'components/pages/talks/all-talks-section';
+import AllTalksSectionSkeleton from 'components/pages/talks/all-talks-section-skeleton';
+import OverviewSection from 'components/pages/talks/overview-section';
+import PhotoHighlightsSection from 'components/pages/talks/photo-highlights-section';
+import VideoHighlightsSection from 'components/pages/talks/video-highlights-section';
 
 /*~
  * TYPES

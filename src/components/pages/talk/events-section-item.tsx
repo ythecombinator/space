@@ -10,7 +10,7 @@ import CardOutlined from 'components/shared/card-outlined';
  * TYPES
  */
 
-export type EventsItemProps = {
+export type EventsSectionItemProps = {
   // Event
   eventName: string;
   eventLocation: string;
@@ -28,7 +28,7 @@ export type EventsItemProps = {
  * COMPONENT
  */
 
-const EventsItem: FC<EventsItemProps> = (props) => {
+const EventsSectionItem: FC<EventsSectionItemProps> = (props) => {
   const {
     eventName,
     eventLocation,
@@ -72,4 +72,4 @@ const EventsItem: FC<EventsItemProps> = (props) => {
   );
 };
 
-export default EventsItem;
+export default EventsSectionItem;

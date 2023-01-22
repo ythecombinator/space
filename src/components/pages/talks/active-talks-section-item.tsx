@@ -9,7 +9,7 @@ import CardOutlined from 'components/shared/card-outlined';
  * TYPES
  */
 
-export type ActiveTalksItemProps = {
+export type ActiveTalksSectionItemProps = {
   talkTitle: string;
   talkSlug: string;
   sessions: Array<{ eventName: string; eventPage: string; eventFlag: string }>;
@@ -19,7 +19,7 @@ export type ActiveTalksItemProps = {
  * COMPONENT
  */
 
-const ActiveTalksItem: FC<ActiveTalksItemProps> = (props) => {
+const ActiveTalksSectionItem: FC<ActiveTalksSectionItemProps> = (props) => {
   const { talkTitle, talkSlug, sessions } = props;
 
   return (
@@ -43,4 +43,4 @@ const ActiveTalksItem: FC<ActiveTalksItemProps> = (props) => {
   );
 };
 
-export default ActiveTalksItem;
+export default ActiveTalksSectionItem;

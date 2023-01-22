@@ -7,9 +7,9 @@ import EmptyList from 'components/shared/EmptyList';
 import SectionContainer from 'components/shared/SectionContainer';
 import SectionHeading from 'components/shared/SectionHeading';
 
-import AllTalksItem, {
-  AllTalksItemProps,
-} from 'components/pages/talks/AllTalksItem';
+import AllTalksSectionItem, {
+  AllTalksSectionItemProps,
+} from 'components/pages/talks/all-talks-section-item';
 
 /*~
  * TYPES
@@ -17,7 +17,7 @@ import AllTalksItem, {
 
 export type AllTalksSectionProps = {
   items: Array<
-    Omit<AllTalksItemProps, 'index'> & {
+    Omit<AllTalksSectionItemProps, 'index'> & {
       _description: string;
       _events: string;
       _tags: string;
@@ -65,7 +65,7 @@ const AllTalksSection: FC<AllTalksSectionProps> = ({
         {items.map((item, index) => {
           const { talkTitle, talkSlug } = item;
           return (
-            <AllTalksItem
+            <AllTalksSectionItem
               key={talkSlug}
               talkTitle={talkTitle}
               talkSlug={talkSlug}

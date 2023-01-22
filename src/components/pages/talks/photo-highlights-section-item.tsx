@@ -6,7 +6,7 @@ import { FC } from 'react';
  * TYPES
  */
 
-export type PhotoHighlightsItemProps = {
+export type PhotoHighlightsSectionItemProps = {
   talkSlug: string;
   eventName: string;
   photoURL: string;
@@ -16,7 +16,9 @@ export type PhotoHighlightsItemProps = {
  * COMPONENT
  */
 
-const PhotoHighlightsItem: FC<PhotoHighlightsItemProps> = (props) => {
+const PhotoHighlightsSectionItem: FC<PhotoHighlightsSectionItemProps> = (
+  props
+) => {
   const { photoURL, talkSlug, eventName } = props;
 
   return (
@@ -44,4 +46,4 @@ const PhotoHighlightsItem: FC<PhotoHighlightsItemProps> = (props) => {
   );
 };
 
-export default PhotoHighlightsItem;
+export default PhotoHighlightsSectionItem;

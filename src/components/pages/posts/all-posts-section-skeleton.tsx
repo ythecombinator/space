@@ -1,9 +1,8 @@
 import { FC, useMemo } from 'react';
 
 import SectionContainer from 'components/shared/SectionContainer';
-import SectionHeading from 'components/shared/SectionHeading';
 
-import AllPostsItemSkeleton from './AllPostsItem.skeleton';
+import AllPostsSectionItemSkeleton from 'components/pages/posts/all-posts-section-item-skeleton';
 
 /*~
  * TYPES
@@ -26,7 +25,7 @@ const AllPostsSectionSkeleton: FC<AllPostsSectionSkeletonProps> = ({
     <SectionContainer>
       <ul>
         {itemSkeletons.map((skeletonId) => {
-          return <AllPostsItemSkeleton key={skeletonId} />;
+          return <AllPostsSectionItemSkeleton key={skeletonId} />;
         })}
       </ul>
     </SectionContainer>

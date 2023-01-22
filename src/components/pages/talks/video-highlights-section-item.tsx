@@ -6,7 +6,7 @@ import CardFeatured from 'components/shared/CardFeatured';
  * TYPES
  */
 
-export type VideoHighlightsItemProps = {
+export type VideoHighlightsSectionItemProps = {
   talkTitle: string;
   talkSlug: string;
   eventName: string;
@@ -16,7 +16,9 @@ export type VideoHighlightsItemProps = {
  * COMPONENT
  */
 
-const VideoHighlightsItem: FC<VideoHighlightsItemProps> = (props) => {
+const VideoHighlightsSectionItem: FC<VideoHighlightsSectionItemProps> = (
+  props
+) => {
   const { talkTitle, talkSlug, eventName } = props;
 
   return (
@@ -29,4 +31,4 @@ const VideoHighlightsItem: FC<VideoHighlightsItemProps> = (props) => {
   );
 };
 
-export default VideoHighlightsItem;
+export default VideoHighlightsSectionItem;

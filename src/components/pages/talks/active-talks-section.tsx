@@ -4,24 +4,22 @@ import SectionContainer from 'components/shared/SectionContainer';
 import SectionHeading from 'components/shared/SectionHeading';
 
 import ActiveTalksSectionItem, {
-  ActiveTalksItemProps,
-} from 'components/pages/talks/ActiveTalksItem';
+  ActiveTalksSectionItemProps,
+} from 'components/pages/talks/active-talks-section-item';
 
 /*~
  * TYPES
  */
 
 export type ActiveTalksSectionProps = {
-  items: Array<ActiveTalksItemProps>;
+  items: Array<ActiveTalksSectionItemProps>;
 };
 
 /*~
  * COMPONENT
  */
 
-const ActiveTalksSection: FC<ActiveTalksSectionProps> = (props) => {
-  const { items } = props;
-
+const ActiveTalksSection: FC<ActiveTalksSectionProps> = ({ items }) => {
   return (
     <SectionContainer>
       <SectionHeading title="️‍🔥 Active Sessions" />

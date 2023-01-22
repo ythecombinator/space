@@ -7,7 +7,7 @@ import colors from 'tailwindcss/colors';
  * COMPONENT
  */
 
-const AllTalksItemSkeleton: FC<{}> = () => {
+const AllTalksSectionItemSkeleton: FC<{}> = () => {
   const { theme } = useTheme();
 
   return (
@@ -25,4 +25,4 @@ const AllTalksItemSkeleton: FC<{}> = () => {
   );
 };
 
-export default AllTalksItemSkeleton;
+export default AllTalksSectionItemSkeleton;

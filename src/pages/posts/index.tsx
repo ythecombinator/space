@@ -12,8 +12,8 @@ import SeachBar, { SeachBarProps } from 'components/shared/SeachBar';
 
 import Layout from 'components/layouts/layout-page';
 
-import AllPostsSection from 'components/pages/posts/AllPostsSection';
-import AllPostsSectionSkeleton from 'components/pages/posts/AllPostsSection.skeleton';
+import AllPostsSection from 'components/pages/posts/all-posts-section';
+import AllPostsSectionSkeleton from 'components/pages/posts/all-posts-section-skeleton';
 
 /*~
  * TYPES

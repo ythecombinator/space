@@ -5,16 +5,16 @@ import { useLyraSearch } from 'utils/search';
 import SectionContainer from 'components/shared/SectionContainer';
 import SectionHeading from 'components/shared/SectionHeading';
 
-import PhotoHighlightsItem, {
-  PhotoHighlightsItemProps,
-} from './PhotoHighlightsItem';
+import PhotoHighlightsSectionItem, {
+  PhotoHighlightsSectionItemProps,
+} from 'components/pages/talks/photo-highlights-section-item';
 
 /*~
  * TYPES
  */
 
 export type PhotoHighlightsSectionProps = {
-  items: Array<PhotoHighlightsItemProps>;
+  items: Array<PhotoHighlightsSectionItemProps>;
 };
 
 /*~
@@ -28,7 +28,7 @@ const PhotoHighlightsSection: FC<PhotoHighlightsSectionProps> = ({ items }) => {
       <div className="mx-auto max-w-[1960px] p-4">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {items.map((item) => (
-            <PhotoHighlightsItem
+            <PhotoHighlightsSectionItem
               key={`${item.talkSlug}-${item.eventName}`}
               {...item}
             />

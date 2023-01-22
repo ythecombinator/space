@@ -4,15 +4,15 @@ import SectionContainer from 'components/shared/SectionContainer';
 import SectionHeading from 'components/shared/SectionHeading';
 
 import EventsSectionItem, {
-  EventsItemProps,
-} from 'components/pages/talk/EventsItem';
+  EventsSectionItemProps,
+} from 'components/pages/talk/events-section-item';
 
 /*~
  * TYPES
  */
 
 export type EventsSectionProps = {
-  items: Array<EventsItemProps>;
+  items: Array<EventsSectionItemProps>;
 };
 
 /*~

@@ -7,7 +7,7 @@ import { Routes } from 'config/constants';
  * TYPES
  */
 
-export type AllTalksItemProps = {
+export type AllTalksSectionItemProps = {
   talkSlug: string;
   talkTitle: string;
   index: number;
@@ -17,7 +17,7 @@ export type AllTalksItemProps = {
  * COMPONENT
  */
 
-const AllTalksItem: FC<AllTalksItemProps> = (props) => {
+const AllTalksSectionItem: FC<AllTalksSectionItemProps> = (props) => {
   const { talkTitle, talkSlug, index } = props;
 
   return (
@@ -40,4 +40,4 @@ const AllTalksItem: FC<AllTalksItemProps> = (props) => {
   );
 };
 
-export default AllTalksItem;
+export default AllTalksSectionItem;

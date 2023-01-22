@@ -22,8 +22,8 @@ import { PageSEO } from 'components/shared/SEO';
 
 import Layout from 'components/layouts/layout-page';
 
-import EventsSection from 'components/pages/talk/EventsSection';
-import OverviewSection from 'components/pages/talk/OverviewSection';
+import EventsSection from 'components/pages/talk/events-section';
+import OverviewSection from 'components/pages/talk/overview-section';
 
 /*~
  * TYPES

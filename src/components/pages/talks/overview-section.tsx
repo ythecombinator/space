@@ -1,7 +1,6 @@
-import { FC, useMemo } from 'react';
+import { FC } from 'react';
 
 import SectionContainer from 'components/shared/SectionContainer';
-import SectionHeading from 'components/shared/SectionHeading';
 
 /*~
  * TYPES
