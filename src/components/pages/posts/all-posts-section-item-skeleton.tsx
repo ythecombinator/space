@@ -7,7 +7,7 @@ import colors from 'tailwindcss/colors';
  * COMPONENT
  */
 
-const AllPostsSectionItemSkeleton: FC<{}> = () => {
+const AllPostsSectionItemSkeleton: FC = () => {
   const { theme } = useTheme();
 
   return (

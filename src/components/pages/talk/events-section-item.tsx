@@ -1,10 +1,10 @@
-import Link from 'components/Link';
 import { FC } from 'react';
 import { FaMapMarkedAlt, FaYoutube, FaSpeakerDeck } from 'react-icons/fa';
 
 import { Routes } from 'config/constants';
 
 import CardOutlined from 'components/shared/card-outlined';
+import Link from 'components/shared/link';
 
 /*~
  * TYPES

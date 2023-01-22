@@ -1,7 +1,15 @@
-export default function PageTitle({ children }) {
+import { FC } from 'react';
+
+/*~
+ * COMPONENT
+ */
+
+const PageTitle: FC = ({ children }) => {
   return (
     <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14 mb-2">
       {children}
     </h1>
   );
-}
+};
+
+export default PageTitle;

@@ -1,7 +1,8 @@
-import Link from 'components/Link';
 import { FC } from 'react';
 
 import { randomElement } from 'utils/array';
+
+import Link from 'components/shared/link';
 
 /*~
  * TYPES

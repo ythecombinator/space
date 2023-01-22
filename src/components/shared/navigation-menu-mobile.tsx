@@ -1,9 +1,13 @@
 import headerNavLinks from 'data/headerNavLinks';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 
-import Link from './Link';
+import Link from 'components/shared/link';
 
-const MobileNav = () => {
+/*~
+ * COMPONENT
+ */
+
+const NavigationMenuMobile: FC = () => {
   const [navShow, setNavShow] = useState(false);
 
   const onToggleNav = () => {
@@ -76,4 +80,4 @@ const MobileNav = () => {
   );
 };
 
-export default MobileNav;
+export default NavigationMenuMobile;

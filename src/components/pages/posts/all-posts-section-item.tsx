@@ -1,10 +1,11 @@
-import Link from 'components/Link';
 import { FC } from 'react';
 import { PostFrontMatter } from 'types/PostFrontMatter';
 
 import { Routes } from 'config/constants';
 
 import { formatDate } from 'utils/date';
+
+import Link from 'components/shared/link';
 
 /*~
  * TYPES

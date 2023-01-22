@@ -1,5 +1,3 @@
-import Link from 'components/Link';
-import PageTitle from 'components/PageTitle';
 import siteMetadata from 'data/siteMetadata';
 import { FC } from 'react';
 import { PostFrontMatter } from 'types/PostFrontMatter';
@@ -9,6 +7,8 @@ import { Routes } from 'config/constants';
 import { formatDate } from 'utils/date';
 import { discussOnTwitter } from 'utils/social';
 
+import Link from 'components/shared/link';
+import PageTitle from 'components/shared/page-title';
 import ScrollTop from 'components/shared/scroll-top';
 import BlogSEO from 'components/shared/seo-blog';
 

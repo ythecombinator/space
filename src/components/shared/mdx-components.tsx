@@ -1,9 +1,9 @@
-import Image from 'components/Image';
-import CustomLink from 'components/Link';
-import Pre from 'components/Pre';
 import { getMDXComponent, MDXContentProps } from 'mdx-bundler/client';
+import Image from 'next/image';
 import { ComponentType, useMemo } from 'react';
 
+import Link from 'components/shared/link';
+import Pre from 'components/shared/pre';
 import TOCInline from 'components/shared/toc-inline';
 
 /*~
@@ -19,7 +19,7 @@ export const MDXComponents: MDXContentProps['components'] = {
   Image,
   TOCInline,
   //@ts-ignore
-  a: CustomLink,
+  a: Link,
   pre: Pre,
   wrapper: Wrapper,
 };

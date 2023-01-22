@@ -1,6 +1,7 @@
 import { useSpring, animated, config } from '@react-spring/web';
-import Link from 'components/Link';
 import { useRef, useState } from 'react';
+
+import Link from 'components/shared/link';
 
 /*~
  * TYPES

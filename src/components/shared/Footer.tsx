@@ -1,4 +1,3 @@
-import Link from 'components/Link';
 import { github, twitter } from 'data/siteMetadata';
 import { FC } from 'react';
 
@@ -6,6 +5,7 @@ import { Routes } from 'config/constants';
 
 import FooterExternalLink from 'components/shared/footer-external-link';
 import LayoutGradient from 'components/shared/layout-gradient';
+import Link from 'components/shared/link';
 
 /*~
  * COMPONENT

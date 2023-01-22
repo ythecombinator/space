@@ -1,6 +1,11 @@
 import { useState, useRef } from 'react';
+import { FC } from 'react';
 
-const Pre = (props) => {
+/*~
+ * COMPONENT
+ */
+
+const Pre: FC = ({ children }) => {
   const textInput = useRef(null);
   const [hovered, setHovered] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -21,7 +26,12 @@ const Pre = (props) => {
   };
 
   return (
-    <div ref={textInput} onMouseEnter={onEnter} onMouseLeave={onExit} className="relative">
+    <div
+      ref={textInput}
+      onMouseEnter={onEnter}
+      onMouseLeave={onExit}
+      className="relative"
+    >
       {hovered && (
         <button
           aria-label="Copy code"
@@ -63,7 +73,7 @@ const Pre = (props) => {
         </button>
       )}
 
-      <pre>{props.children}</pre>
+      <pre>{children}</pre>
     </div>
   );
 };

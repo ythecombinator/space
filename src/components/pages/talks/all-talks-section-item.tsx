@@ -1,7 +1,8 @@
-import Link from 'components/Link';
 import { FC } from 'react';
 
 import { Routes } from 'config/constants';
+
+import Link from 'components/shared/link';
 
 /*~
  * TYPES

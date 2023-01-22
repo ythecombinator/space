@@ -1,23 +1,23 @@
-import MobileNav from 'components/MobileNav';
-import SectionContainer from 'components/SectionContainer';
 import { FunctionComponent } from 'react';
 
 import { headerNavigationLinks } from 'config/constants';
 
 import Footer from 'components/shared/footer';
+import LayoutContainer from 'components/shared/layout-container';
 import LayoutGradient from 'components/shared/layout-gradient';
 import NavigationMenu from 'components/shared/navigation-menu';
+import NavigationMenuMobile from 'components/shared/navigation-menu-mobile';
 import ThemeSwitch from 'components/shared/theme-switch';
 
 /*~
  * COMPONENT
  */
 
-export const LayoutWrapper: FunctionComponent<{}> = ({ children }) => {
+const LayoutWrapper: FunctionComponent = ({ children }) => {
   return (
     <>
       <LayoutGradient />
-      <SectionContainer>
+      <LayoutContainer>
         <div className="flex flex-col justify-between h-screen">
           <header className="flex items-center py-10">
             <div className="flex flex-auto items-center justify-between">
@@ -27,13 +27,13 @@ export const LayoutWrapper: FunctionComponent<{}> = ({ children }) => {
                 </div>
                 <ThemeSwitch />
               </div>
-              <MobileNav />
+              <NavigationMenuMobile />
             </div>
           </header>
           <main className="mb-auto">{children}</main>
           <Footer />
         </div>
-      </SectionContainer>
+      </LayoutContainer>
     </>
   );
 };
