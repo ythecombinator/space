@@ -5,8 +5,8 @@ import { ThemeProvider } from 'next-themes';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 
-import LayoutWrapper from 'components/shared/LayoutWrapper';
-import { PageSEO } from 'components/shared/SEO';
+import LayoutWrapper from 'components/shared/layout-wrapper';
+import PageSEO from 'components/shared/seo-page';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

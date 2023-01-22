@@ -1,6 +1,6 @@
 import { FC, useMemo } from 'react';
 
-import SectionContainer from 'components/shared/SectionContainer';
+import SectionContainer from 'components/shared/section-container';
 
 import AllPostsSectionItemSkeleton from 'components/pages/posts/all-posts-section-item-skeleton';
 

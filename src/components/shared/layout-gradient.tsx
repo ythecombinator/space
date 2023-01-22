@@ -1,5 +1,9 @@
 import { FunctionComponent } from 'react';
 
+/*~
+ * COMPONENT
+ */
+
 export const LayoutGradient: FunctionComponent<{}> = () => {
   return (
     <div className="mx-auto max-w-6xl motion-safe:animate-rotate-colors pointer-events-none z-[-1]">

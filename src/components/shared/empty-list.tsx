@@ -1,9 +1,17 @@
 import { FunctionComponent } from 'react';
 
+/*~
+ * TYPES
+ */
+
 interface EmptyListProps {
   heading: string;
   subHeading: string;
 }
+
+/*~
+ * COMPONENT
+ */
 
 export const EmptyList: FunctionComponent<EmptyListProps> = ({
   heading,

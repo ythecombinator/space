@@ -12,7 +12,7 @@ import {
   getFiles,
 } from 'utils/mdx';
 
-import { MDXLayoutRenderer } from 'components/shared/MDXComponents';
+import { MDXLayoutRenderer } from 'components/shared/mdx-components';
 
 /*~
  * TYPES

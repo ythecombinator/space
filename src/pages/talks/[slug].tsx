@@ -18,7 +18,7 @@ import ContentfulService from 'services/contentful';
 
 import { formatDate } from 'utils/date';
 
-import { PageSEO } from 'components/shared/SEO';
+import PageSEO from 'components/shared/seo-page';
 
 import Layout from 'components/layouts/layout-page';
 

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import SectionContainer from 'components/shared/SectionContainer';
+import SectionContainer from 'components/shared/section-container';
 
 /*~
  * TYPES

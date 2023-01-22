@@ -5,7 +5,7 @@ import { Layouts } from 'config/constants';
 
 import { getFileBySlug } from 'utils/mdx';
 
-import { MDXLayoutRenderer } from 'components/shared/MDXComponents';
+import { MDXLayoutRenderer } from 'components/shared/mdx-components';
 
 /*~
  * NEXTJS

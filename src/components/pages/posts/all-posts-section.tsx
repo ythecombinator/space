@@ -3,8 +3,8 @@ import { FC } from 'react';
 import { isEmpty } from 'utils/array';
 import { useLyraSearch } from 'utils/search';
 
-import EmptyList from 'components/shared/EmptyList';
-import SectionContainer from 'components/shared/SectionContainer';
+import EmptyList from 'components/shared/empty-list';
+import SectionContainer from 'components/shared/section-container';
 
 import AllPostsSectionItem, {
   AllPostsSectionItemProps,

@@ -3,7 +3,7 @@ import { BLOCKS } from '@contentful/rich-text-types';
 import { Document as ContentfulDocument } from '@contentful/rich-text-types';
 import { FC } from 'react';
 
-import SectionContainer from 'components/shared/SectionContainer';
+import SectionContainer from 'components/shared/section-container';
 
 /*~
  * TYPES

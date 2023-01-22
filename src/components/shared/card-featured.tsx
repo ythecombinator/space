@@ -2,13 +2,21 @@ import { useSpring, animated, config } from '@react-spring/web';
 import Link from 'components/Link';
 import { useRef, useState } from 'react';
 
-interface CardProps {
+/*~
+ * TYPES
+ */
+
+export interface CardFeaturedProps {
   title: string;
   description: string;
   href: string;
   className?: string;
   fullWidth?: boolean;
 }
+
+/*~
+ * UTILS
+ */
 
 const calc = (x: number, y: number, rect: DOMRect) => [
   -(y - rect.top - rect.height / 2) / 20,
@@ -19,7 +27,11 @@ const calc = (x: number, y: number, rect: DOMRect) => [
 const trans = (x: number, y: number, scale: number) =>
   `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${scale})`;
 
-const CardFeatured: React.FC<CardProps> = ({
+/*~
+ * COMPONENT
+ */
+
+const CardFeatured: React.FC<CardFeaturedProps> = ({
   title,
   description,
   href,

@@ -9,8 +9,8 @@ import { Routes } from 'config/constants';
 import { formatDate } from 'utils/date';
 import { discussOnTwitter } from 'utils/social';
 
-import { BlogSEO } from 'components/shared/SEO';
-import ScrollTop from 'components/shared/ScrollTop';
+import ScrollTop from 'components/shared/scroll-top';
+import BlogSEO from 'components/shared/seo-blog';
 
 /*~
  * TYPES

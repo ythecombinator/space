@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { AuthorFrontMatter } from 'types/AuthorFrontMatter';
 
-import { PageSEO } from 'components/shared/SEO';
+import PageSEO from 'components/shared/seo-page';
 
 /*~
  * TYPES

@@ -4,10 +4,14 @@ import { FunctionComponent } from 'react';
 
 import { headerNavigationLinks } from 'config/constants';
 
-import Footer from 'components/shared/Footer';
-import LayoutGradient from 'components/shared/LayoutGradient';
-import ThemeSwitch from 'components/shared/ThemeSwitch';
+import Footer from 'components/shared/footer';
+import LayoutGradient from 'components/shared/layout-gradient';
 import NavigationMenu from 'components/shared/navigation-menu';
+import ThemeSwitch from 'components/shared/theme-switch';
+
+/*~
+ * COMPONENT
+ */
 
 export const LayoutWrapper: FunctionComponent<{}> = ({ children }) => {
   return (
@@ -21,19 +25,15 @@ export const LayoutWrapper: FunctionComponent<{}> = ({ children }) => {
                 <div className="hidden sm:block">
                   <NavigationMenu items={headerNavigationLinks} />
                 </div>
-
                 <ThemeSwitch />
               </div>
-
               <MobileNav />
             </div>
           </header>
           <main className="mb-auto">{children}</main>
-
           <Footer />
         </div>
       </SectionContainer>
-      {/* <FooterGradient /> */}
     </>
   );
 };

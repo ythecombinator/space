@@ -1,11 +1,14 @@
-/* eslint-disable react/display-name */
 import Image from 'components/Image';
 import CustomLink from 'components/Link';
 import Pre from 'components/Pre';
 import { getMDXComponent, MDXContentProps } from 'mdx-bundler/client';
 import { ComponentType, useMemo } from 'react';
 
-import TOCInline from 'components/shared/TOCInline';
+import TOCInline from 'components/shared/toc-inline';
+
+/*~
+ * COMPONENT
+ */
 
 const Wrapper: ComponentType<{ layout: string }> = ({ layout, ...rest }) => {
   const Layout = require(`components/layouts/${layout}`).default;

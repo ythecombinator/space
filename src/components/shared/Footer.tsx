@@ -1,12 +1,17 @@
 import Link from 'components/Link';
 import { github, twitter } from 'data/siteMetadata';
+import { FC } from 'react';
 
 import { Routes } from 'config/constants';
 
-import FooterExternalLink from 'components/shared/FooterExternalLink';
-import LayoutGradient from 'components/shared/LayoutGradient';
+import FooterExternalLink from 'components/shared/footer-external-link';
+import LayoutGradient from 'components/shared/layout-gradient';
 
-export default function Footer() {
+/*~
+ * COMPONENT
+ */
+
+const Footer: FC = () => {
   return (
     <footer className="flex flex-col justify-center items-start mx-auto w-full mb-8 mt-4">
       <LayoutGradient />
@@ -49,4 +54,6 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

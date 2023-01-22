@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
-import SectionContainer from 'components/shared/SectionContainer';
-import SectionHeading from 'components/shared/SectionHeading';
+import SectionContainer from 'components/shared/section-container';
+import SectionHeading from 'components/shared/section-heading';
 
 import ActiveTalksSectionItem, {
   ActiveTalksSectionItemProps,

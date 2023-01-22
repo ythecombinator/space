@@ -2,8 +2,8 @@ import { FC } from 'react';
 
 import { useLyraSearch } from 'utils/search';
 
-import SectionContainer from 'components/shared/SectionContainer';
-import SectionHeading from 'components/shared/SectionHeading';
+import SectionContainer from 'components/shared/section-container';
+import SectionHeading from 'components/shared/section-heading';
 
 import PhotoHighlightsSectionItem, {
   PhotoHighlightsSectionItemProps,

@@ -17,8 +17,8 @@ import ContentfulService from 'services/contentful';
 
 import { toIndexableCollection } from 'utils/search';
 
-import { PageSEO } from 'components/shared/SEO';
-import SeachBar, { SeachBarProps } from 'components/shared/SeachBar';
+import SeachBar, { SeachBarProps } from 'components/shared/seach-bar';
+import PageSEO from 'components/shared/seo-page';
 
 import Layout from 'components/layouts/layout-page';
 

@@ -1,10 +1,20 @@
 import Link from 'components/Link';
 import { FC } from 'react';
-import { FaMapMarkedAlt } from 'react-icons/fa';
-
-import { Routes } from 'config/constants';
 
 import { randomElement } from 'utils/array';
+
+/*~
+ * TYPES
+ */
+
+export type CardOutlinedProps = {
+  heading: string;
+  href: string;
+};
+
+/*~
+ * UTILS
+ */
 
 const gradients = [
   ' from-[#FDE68A] via-[#FCA5A5] to-[#FECACA]',
@@ -19,15 +29,6 @@ const gradients = [
   ' from-pink-400 to-pink-600',
   ' from-sky-400 via-rose-400 to-lime-400',
 ];
-
-/*~
- * TYPES
- */
-
-export type CardOutlinedProps = {
-  heading: string;
-  href: string;
-};
 
 /*~
  * COMPONENT

@@ -3,9 +3,9 @@ import { FC } from 'react';
 import { isEmpty, reversedIndexOf } from 'utils/array';
 import { useLyraSearch } from 'utils/search';
 
-import EmptyList from 'components/shared/EmptyList';
-import SectionContainer from 'components/shared/SectionContainer';
-import SectionHeading from 'components/shared/SectionHeading';
+import EmptyList from 'components/shared/empty-list';
+import SectionContainer from 'components/shared/section-container';
+import SectionHeading from 'components/shared/section-heading';
 
 import AllTalksSectionItem, {
   AllTalksSectionItemProps,

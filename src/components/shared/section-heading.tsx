@@ -1,8 +1,16 @@
 import { FunctionComponent } from 'react';
 
+/*~
+ * TYPES
+ */
+
 interface SectionHeadingProps {
   title: string;
 }
+
+/*~
+ * COMPONENT
+ */
 
 export const SectionHeading: FunctionComponent<SectionHeadingProps> = ({
   title,

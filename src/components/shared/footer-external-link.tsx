@@ -1,9 +1,17 @@
 import { FunctionComponent } from 'react';
 
+/*~
+ * TYPES
+ */
+
 interface FooterExternalLinkProps {
   href: string;
   children: React.ReactNode;
 }
+
+/*~
+ * COMPONENT
+ */
 
 export const FooterExternalLink: FunctionComponent<FooterExternalLinkProps> = ({
   href,

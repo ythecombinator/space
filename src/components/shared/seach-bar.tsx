@@ -1,5 +1,3 @@
-import { Document as ContentfulDocument } from '@contentful/rich-text-types';
-import Link from 'components/Link';
 import { FC, InputHTMLAttributes } from 'react';
 
 /*~

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import CardFeatured from 'components/shared/CardFeatured';
+import CardFeatured from 'components/shared/card-featured';
 
 /*~
  * TYPES
