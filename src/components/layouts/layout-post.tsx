@@ -7,6 +7,7 @@ import { PostFrontMatter } from 'types/PostFrontMatter';
 import { Routes } from 'config/constants';
 
 import { formatDate } from 'utils/date';
+import { discussOnTwitter } from 'utils/social';
 
 import { BlogSEO } from 'components/shared/SEO';
 import ScrollTop from 'components/shared/ScrollTop';
@@ -24,14 +25,7 @@ interface PostLayoutProps {
  */
 
 const PostLayout: FC<PostLayoutProps> = ({ frontMatter, children }) => {
-  const { date, title, slug, fileName, readingTime } = frontMatter;
-
-  const editUrl = (fileName) =>
-    `${siteMetadata.siteRepo}/blob/master/data/blog/${fileName}`;
-  const discussUrl = (slug) =>
-    `https://mobile.twitter.com/search?q=${encodeURIComponent(
-      `${siteMetadata.siteUrl}/${Routes.posts}/${slug}`
-    )}`;
+  const { date, title, slug, readingTime } = frontMatter;
 
   return (
     <>
@@ -70,9 +64,12 @@ const PostLayout: FC<PostLayoutProps> = ({ frontMatter, children }) => {
                 {children}
               </div>
               <div className="pt-6 flex justify-between text-sm text-gray-700 dark:text-gray-300">
-                <Link href={editUrl(fileName)}>{'Thanks for reading 💖'}</Link>
-                <Link href={discussUrl(slug)} rel="nofollow">
-                  {'Discuss on Twitter'}
+                Thanks for reading 💖
+                <Link
+                  href={discussOnTwitter(title, `${Routes.posts}/${slug}`)}
+                  rel="me"
+                >
+                  Share on Twitter
                 </Link>
               </div>
             </div>

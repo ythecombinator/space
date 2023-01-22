@@ -54,9 +54,9 @@ export const headerNavigationLinks = [
 ];
 
 export enum Layouts {
-  post = 'PostLayout',
-  page = 'PageLayout',
-  about = 'AuthorLayout',
+  post = 'layout-post',
+  page = 'layout-page',
+  about = 'layout-about',
 }
 
 export enum SourcePath {

@@ -20,7 +20,7 @@ import { formatDate } from 'utils/date';
 
 import { PageSEO } from 'components/shared/SEO';
 
-import Layout from 'components/layouts/PageLayout';
+import Layout from 'components/layouts/layout-page';
 
 import EventsSection from 'components/pages/talk/EventsSection';
 import OverviewSection from 'components/pages/talk/OverviewSection';

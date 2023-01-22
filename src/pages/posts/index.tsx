@@ -10,7 +10,7 @@ import { toIndexableCollection } from 'utils/search';
 import { PageSEO } from 'components/shared/SEO';
 import SeachBar, { SeachBarProps } from 'components/shared/SeachBar';
 
-import Layout from 'components/layouts/PageLayout';
+import Layout from 'components/layouts/layout-page';
 
 import AllPostsSection from 'components/pages/posts/AllPostsSection';
 import AllPostsSectionSkeleton from 'components/pages/posts/AllPostsSection.skeleton';

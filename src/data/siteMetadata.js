@@ -12,7 +12,7 @@ const siteMetadata = {
   socialBanner: '/static/images/card.png',
   email: 'ephraimduncan68@gmail.com',
   github: 'https://github.com/dephraiim',
-  twitter: 'https://twitter.com/dephraiim',
+  twitter: '@ythecombinator',
 
   locale: 'en-US',
   newsletter: {

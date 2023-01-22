@@ -24,7 +24,7 @@ const EventsSection: FC<EventsSectionProps> = (props) => {
 
   return (
     <SectionContainer>
-      <SectionHeading title="️‍🔥 Active Sessions" />
+      <SectionHeading title="️Presentations" />
       <ul className="grid grid-cols-1 gap-10 py-8 dark:border-gray-700 md:grid-cols-2">
         {items.map((item) => {
           return <EventsSectionItem key={item.eventName} {...item} />;
