@@ -1,5 +1,5 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
-import { AuthorFrontMatter } from 'types/AuthorFrontMatter';
+import { AboutFrontMatter } from 'types/front-matter';
 
 import { Layouts } from 'config/constants';
 
@@ -11,15 +11,12 @@ import { MDXLayoutRenderer } from 'components/shared/mdx-components';
  * NEXTJS
  */
 
-// @ts-ignore
 export const getStaticProps: GetStaticProps<{
-  authorDetails: { mdxSource: string; frontMatter: AuthorFrontMatter };
+  content: { mdxSource: string; frontMatter: AboutFrontMatter };
 }> = async () => {
-  const authorDetails = await getFileBySlug<AuthorFrontMatter>('authors', [
-    'default',
-  ]);
-  const { mdxSource, frontMatter } = authorDetails;
-  return { props: { authorDetails: { mdxSource, frontMatter } } };
+  const content = await getFileBySlug<AboutFrontMatter>('about', 'work');
+  const { mdxSource, frontMatter } = content;
+  return { props: { content: { mdxSource, frontMatter } } };
 };
 
 /*~
@@ -27,9 +24,9 @@ export const getStaticProps: GetStaticProps<{
  */
 
 const AboutPage = ({
-  authorDetails,
+  content,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { mdxSource, frontMatter } = authorDetails;
+  const { mdxSource, frontMatter } = content;
 
   return (
     <MDXLayoutRenderer

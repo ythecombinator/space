@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { PostFrontMatter } from 'types/PostFrontMatter';
+import { PostFrontMatter } from 'types/front-matter';
 
 import { Routes } from 'config/constants';
 

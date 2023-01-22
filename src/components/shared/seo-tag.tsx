@@ -1,7 +1,8 @@
-import siteMetadata from 'data/siteMetadata';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { FunctionComponent } from 'react';
+
+import { siteMetadata } from 'config/constants';
 
 import CommonSEO from 'components/shared/seo-common';
 import { PageSEOProps } from 'components/shared/seo-page';

@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { AuthorFrontMatter } from 'types/AuthorFrontMatter';
+import { AboutFrontMatter } from 'types/front-matter';
 
 import PageSEO from 'components/shared/seo-page';
 
@@ -8,7 +8,7 @@ import PageSEO from 'components/shared/seo-page';
  */
 
 interface AboutLayoutProps {
-  frontMatter: AuthorFrontMatter;
+  frontMatter: AboutFrontMatter;
 }
 
 /*~

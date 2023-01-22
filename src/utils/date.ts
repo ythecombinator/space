@@ -1,4 +1,4 @@
-import siteMetadata from 'data/siteMetadata';
+import { siteMetadata } from 'config/constants';
 
 export const formatDate = (dateString: string) =>
   new Intl.DateTimeFormat(siteMetadata.locale, {

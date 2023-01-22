@@ -1,8 +1,8 @@
-import siteMetadata from 'data/siteMetadata';
 import { FunctionComponent } from 'react';
-import { PostFrontMatter } from 'types/PostFrontMatter';
+import { PostFrontMatter } from 'types/front-matter';
 
 import { Routes } from 'config/constants';
+import { siteMetadata } from 'config/constants';
 
 import { formatDate } from 'utils/date';
 import { discussOnTwitter } from 'utils/social';

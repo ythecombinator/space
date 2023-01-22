@@ -1,8 +1,9 @@
-import siteMetadata from 'data/siteMetadata';
 import Head from 'next/head';
 import { FunctionComponent } from 'react';
-import { AuthorFrontMatter } from 'types/AuthorFrontMatter';
-import { PostFrontMatter } from 'types/PostFrontMatter';
+import { AboutFrontMatter } from 'types/front-matter';
+import { PostFrontMatter } from 'types/front-matter';
+
+import { siteMetadata } from 'config/constants';
 
 import CommonSEO from 'components/shared/seo-common';
 
@@ -11,7 +12,7 @@ import CommonSEO from 'components/shared/seo-common';
  */
 
 export interface BlogSEOProps extends PostFrontMatter {
-  authorDetails?: AuthorFrontMatter[];
+  authorDetails?: AboutFrontMatter[];
   url: string;
 }
 

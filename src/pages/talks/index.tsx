@@ -1,4 +1,3 @@
-import siteMetadata from 'data/siteMetadata';
 import {
   GetAllTalksDocument,
   GetAllTalksQuery,
@@ -12,6 +11,8 @@ import {
 import { InferGetStaticPropsType, NextPage } from 'next';
 import { Suspense, useState } from 'react';
 import { DeepNonNullable } from 'utility-types';
+
+import { siteMetadata } from 'config/constants';
 
 import ContentfulService from 'services/contentful';
 

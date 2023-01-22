@@ -14,9 +14,9 @@ import remarkFootnotes from 'remark-footnotes';
 // Remark packages
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
-import { AuthorFrontMatter } from 'types/AuthorFrontMatter';
-import { PostFrontMatter } from 'types/PostFrontMatter';
-import { Toc } from 'types/Toc';
+import { TOC } from 'types/TOC';
+import { AboutFrontMatter, ContentFrontMatter } from 'types/front-matter';
+import { PostFrontMatter } from 'types/front-matter';
 
 import { getAllFilesRecursively } from 'utils/files';
 import remarkCodeTitles from 'utils/mdx/remark-code-title';
@@ -26,10 +26,10 @@ import remarkTocHeadings from 'utils/mdx/remark-toc-headings';
 
 const root = `${process.cwd()}/src`;
 
-export function getFiles(type: 'posts' | 'authors' | 'snippets') {
-  const prefixPaths = path.join(root, 'data', type);
+export function getFiles(type: 'posts') {
+  const prefixPaths = path.join(root, 'content', type);
   const files = getAllFilesRecursively(prefixPaths);
-  // Only want to return blog/path and ignore root, replace is needed to work on Windows
+
   return files.map((file) =>
     file.slice(prefixPaths.length + 1).replace(/\\/g, '/')
   );
@@ -46,11 +46,11 @@ export function dateSortDesc(a: string, b: string) {
 }
 
 export async function getFileBySlug<T>(
-  type: 'authors' | 'posts' | 'snippets',
+  type: 'about' | 'posts',
   slug: string | string[]
 ) {
-  const mdxPath = path.join(root, 'data', type, `${slug}.mdx`);
-  const mdPath = path.join(root, 'data', type, `${slug}.md`);
+  const mdxPath = path.join(root, 'content', type, `${slug}.mdx`);
+  const mdPath = path.join(root, 'content', type, `${slug}.md`);
   const source = fs.existsSync(mdxPath)
     ? fs.readFileSync(mdxPath, 'utf8')
     : fs.readFileSync(mdPath, 'utf8');
@@ -73,7 +73,7 @@ export async function getFileBySlug<T>(
     );
   }
 
-  const toc: Toc = [];
+  const toc: TOC = [];
 
   const { code, frontmatter } = await bundleMDX({
     source,
@@ -98,7 +98,7 @@ export async function getFileBySlug<T>(
         rehypeSlug,
         rehypeAutolinkHeadings,
         rehypeKatex,
-        [rehypeCitation, { path: path.join(root, 'data') }],
+        [rehypeCitation, { path: path.join(root, 'content') }],
         [rehypePrismPlus, { ignoreMissing: true }],
         rehypePresetMinify,
       ];
@@ -127,7 +127,7 @@ export async function getFileBySlug<T>(
 }
 
 export async function getAllFilesFrontMatter(folder: 'posts' | 'snippets') {
-  const prefixPaths = path.join(root, 'data', folder);
+  const prefixPaths = path.join(root, 'content', folder);
 
   const files = getAllFilesRecursively(prefixPaths);
 
@@ -142,16 +142,13 @@ export async function getAllFilesFrontMatter(folder: 'posts' | 'snippets') {
     }
     const source = fs.readFileSync(file, 'utf8');
     const matterFile = matter(source);
-    const frontmatter = matterFile.data as AuthorFrontMatter | PostFrontMatter;
-    if ('draft' in frontmatter && frontmatter.draft !== true) {
-      allFrontMatter.push({
-        ...frontmatter,
-        slug: formatSlug(fileName),
-        date: frontmatter.date
-          ? new Date(frontmatter.date).toISOString()
-          : null,
-      });
-    }
+    const frontmatter = matterFile.data as ContentFrontMatter;
+
+    allFrontMatter.push({
+      ...frontmatter,
+      slug: formatSlug(fileName),
+      date: frontmatter.date ? new Date(frontmatter.date).toISOString() : null,
+    });
   });
 
   return allFrontMatter.sort((a, b) => dateSortDesc(a.date, b.date));

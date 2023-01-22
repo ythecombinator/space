@@ -1,8 +1,8 @@
-import siteMetadata from 'data/siteMetadata';
 import { InferGetStaticPropsType, NextPage } from 'next';
 import { Suspense, useState } from 'react';
 
 import { Routes } from 'config/constants';
+import { siteMetadata } from 'config/constants';
 
 import { getAllFilesFrontMatter } from 'utils/mdx';
 import { toIndexableCollection } from 'utils/search';

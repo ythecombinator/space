@@ -1,7 +1,7 @@
-import { github, twitter } from 'data/siteMetadata';
 import { FunctionComponent } from 'react';
 
 import { Routes } from 'config/constants';
+import { siteMetadata } from 'config/constants';
 
 import FooterExternalLink from 'components/shared/footer-external-link';
 import LayoutGradient from 'components/shared/layout-gradient';
@@ -36,8 +36,12 @@ const Footer: FunctionComponent = () => {
             </Link>
           </div>
           <div className="flex flex-row  mb-1 sm:mb-0  sm:flex-col space-x-8 sm:space-x-0 justify-center sm:justify-start sm:space-y-4">
-            <FooterExternalLink href={twitter}>Twitter</FooterExternalLink>
-            <FooterExternalLink href={github}>GitHub</FooterExternalLink>
+            <FooterExternalLink href={siteMetadata.twitter}>
+              Twitter
+            </FooterExternalLink>
+            <FooterExternalLink href={siteMetadata.github}>
+              GitHub
+            </FooterExternalLink>
             <Link href="/feed.xml">
               <a className="text-gray-500 hover:text-gray-600 transition">
                 RSS

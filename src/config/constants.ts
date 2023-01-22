@@ -1,14 +1,21 @@
 import { ExternalLink } from 'types/link';
 
-export const siteTitle = 'ythecombinator';
-
-export const siteConfig = {
-  baseTitle: 'Matheus Albuquerque',
-  title: 'Matheus Albuquerque — Developer, speaker, creator.',
-  description:
-    'Sr. Software Engineer, Front-End • Consultant • Speaker • Traveler',
-  url: 'https://www.ythecombinator.space',
-  twitterHandle: '@ythecombinator',
+export const siteMetadata = {
+  title: 'Matheus Albuquerque',
+  author: 'Matheus Albuquerque',
+  headerTitle: 'Astrosaurus',
+  description: 'Matheus Albuquerque — Developer, speaker, creator.',
+  language: 'en-us',
+  theme: 'system',
+  siteUrl: 'https://www.ythecombinator.space',
+  siteRepo: 'https://github.com/dephraiim/astrosaurus.me',
+  siteLogo: '/static/images/logo.png',
+  image: '/static/images/avatar.jpeg',
+  socialBanner: '/static/images/card.png',
+  email: 'ephraimduncan68@gmail.com',
+  github: 'https://github.com/dephraiim',
+  twitter: '@ythecombinator',
+  locale: 'en-US',
 };
 
 export const socialNetworks: Array<ExternalLink> = [

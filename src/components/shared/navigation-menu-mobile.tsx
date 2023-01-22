@@ -1,13 +1,22 @@
-import headerNavLinks from 'data/headerNavLinks';
 import { FunctionComponent, useState } from 'react';
 
 import Link from 'components/shared/link';
 
 /*~
+ * TYPES
+ */
+
+interface NavigationMenuProps {
+  items: Array<{ href: string; title: string }>;
+}
+
+/*~
  * COMPONENT
  */
 
-const NavigationMenuMobile: FunctionComponent = () => {
+const NavigationMenuMobile: FunctionComponent<NavigationMenuProps> = ({
+  items,
+}) => {
   const [navShow, setNavShow] = useState(false);
 
   const onToggleNav = () => {
@@ -63,7 +72,7 @@ const NavigationMenuMobile: FunctionComponent = () => {
           onClick={onToggleNav}
         ></button>
         <nav className="fixed h-full mt-8">
-          {headerNavLinks.map((link) => (
+          {items.map((link) => (
             <div key={link.title} className="px-12 py-4">
               <Link
                 href={link.href}

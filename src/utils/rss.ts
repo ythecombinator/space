@@ -1,7 +1,7 @@
-import siteMetadata from 'data/siteMetadata';
-import { PostFrontMatter } from 'types/PostFrontMatter';
+import { PostFrontMatter } from 'types/front-matter';
 
 import { Routes } from 'config/constants';
+import { siteMetadata } from 'config/constants';
 
 import { escapeHTML } from 'utils/html';
 

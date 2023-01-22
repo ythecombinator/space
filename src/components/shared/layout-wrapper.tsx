@@ -27,7 +27,7 @@ const LayoutWrapper: FunctionComponent = ({ children }) => {
                 </div>
                 <ThemeSwitch />
               </div>
-              <NavigationMenuMobile />
+              <NavigationMenuMobile items={headerNavigationLinks} />
             </div>
           </header>
           <main className="mb-auto">{children}</main>

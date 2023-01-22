@@ -1,9 +1,10 @@
 import 'css/prism.css';
 import 'css/tailwind.css';
-import siteMetadata from 'data/siteMetadata';
 import { ThemeProvider } from 'next-themes';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+
+import { siteMetadata } from 'config/constants';
 
 import LayoutWrapper from 'components/shared/layout-wrapper';
 import PageSEO from 'components/shared/seo-page';

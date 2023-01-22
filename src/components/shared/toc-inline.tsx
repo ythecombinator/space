@@ -1,11 +1,11 @@
-import { Toc } from 'types/Toc';
+import { TOC } from 'types/TOC';
 
 /*~
  * TYPES
  */
 
 interface TOCInlineProps {
-  toc: Toc;
+  toc: TOC;
   indentDepth?: number;
   fromHeading?: number;
   toHeading?: number;

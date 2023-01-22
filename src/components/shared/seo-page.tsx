@@ -1,5 +1,6 @@
-import siteMetadata from 'data/siteMetadata';
 import { FunctionComponent } from 'react';
+
+import { siteMetadata } from 'config/constants';
 
 import CommonSEO from 'components/shared/seo-common';
 

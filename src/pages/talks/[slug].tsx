@@ -1,7 +1,4 @@
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { BLOCKS } from '@contentful/rich-text-types';
 import { Document as ContentfulDocument } from '@contentful/rich-text-types';
-import siteMetadata from 'data/siteMetadata';
 import {
   GetAllTalkSlugsDocument,
   GetAllTalkSlugsQuery,
@@ -13,6 +10,8 @@ import {
 import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import { DeepNonNullable } from 'utility-types';
+
+import { siteMetadata } from 'config/constants';
 
 import ContentfulService from 'services/contentful';
 
