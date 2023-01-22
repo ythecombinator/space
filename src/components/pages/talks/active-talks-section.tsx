@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FunctionComponent } from 'react';
 
 import SectionContainer from 'components/shared/section-container';
 import SectionHeading from 'components/shared/section-heading';
@@ -19,7 +19,9 @@ export type ActiveTalksSectionProps = {
  * COMPONENT
  */
 
-const ActiveTalksSection: FC<ActiveTalksSectionProps> = ({ items }) => {
+const ActiveTalksSection: FunctionComponent<ActiveTalksSectionProps> = ({
+  items,
+}) => {
   return (
     <SectionContainer>
       <SectionHeading title="️‍🔥 Active Sessions" />

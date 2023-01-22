@@ -1,5 +1,5 @@
 import headerNavLinks from 'data/headerNavLinks';
-import { FC, useState } from 'react';
+import { FunctionComponent, useState } from 'react';
 
 import Link from 'components/shared/link';
 
@@ -7,7 +7,7 @@ import Link from 'components/shared/link';
  * COMPONENT
  */
 
-const NavigationMenuMobile: FC = () => {
+const NavigationMenuMobile: FunctionComponent = () => {
   const [navShow, setNavShow] = useState(false);
 
   const onToggleNav = () => {

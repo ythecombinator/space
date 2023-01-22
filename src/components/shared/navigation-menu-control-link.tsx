@@ -1,7 +1,7 @@
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 import { NavigationMenuLinkProps } from '@radix-ui/react-navigation-menu';
 import Link, { LinkProps } from 'next/link';
-import { FC } from 'react';
+import { FunctionComponent } from 'react';
 
 /*~
  * TYPES
@@ -14,11 +14,9 @@ type NavigationMenuControlLinkProps = LinkProps &
  * COMPONENT
  */
 
-export const NavigationMenuControlLink: FC<NavigationMenuControlLinkProps> = ({
-  children,
-  className,
-  ...props
-}) => (
+export const NavigationMenuControlLink: FunctionComponent<
+  NavigationMenuControlLinkProps
+> = ({ children, className, ...props }) => (
   <Link shallow {...props} passHref>
     <NavigationMenuPrimitive.Link className={className}>
       {children}

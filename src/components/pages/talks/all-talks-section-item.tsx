@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FunctionComponent } from 'react';
 
 import { Routes } from 'config/constants';
 
@@ -18,7 +18,9 @@ export type AllTalksSectionItemProps = {
  * COMPONENT
  */
 
-const AllTalksSectionItem: FC<AllTalksSectionItemProps> = (props) => {
+const AllTalksSectionItem: FunctionComponent<AllTalksSectionItemProps> = (
+  props
+) => {
   const { talkTitle, talkSlug, index } = props;
 
   return (

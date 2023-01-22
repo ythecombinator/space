@@ -1,4 +1,4 @@
-import { FC, InputHTMLAttributes } from 'react';
+import { FunctionComponent, InputHTMLAttributes } from 'react';
 
 /*~
  * TYPES
@@ -13,7 +13,7 @@ export type SeachBarProps = {
  * COMPONENT
  */
 
-const SeachBar: FC<SeachBarProps> = ({ label, onChange }) => {
+const SeachBar: FunctionComponent<SeachBarProps> = ({ label, onChange }) => {
   return (
     <div className="relative">
       <input

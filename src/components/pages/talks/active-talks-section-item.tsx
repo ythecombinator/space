@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FunctionComponent } from 'react';
 import { FaMapMarkedAlt } from 'react-icons/fa';
 
 import { Routes } from 'config/constants';
@@ -19,7 +19,9 @@ export type ActiveTalksSectionItemProps = {
  * COMPONENT
  */
 
-const ActiveTalksSectionItem: FC<ActiveTalksSectionItemProps> = (props) => {
+const ActiveTalksSectionItem: FunctionComponent<ActiveTalksSectionItemProps> = (
+  props
+) => {
   const { talkTitle, talkSlug, sessions } = props;
 
   return (

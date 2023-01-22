@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FunctionComponent } from 'react';
 
 import { useLyraSearch } from 'utils/search';
 
@@ -21,7 +21,9 @@ export type PhotoHighlightsSectionProps = {
  * COMPONENT
  */
 
-const PhotoHighlightsSection: FC<PhotoHighlightsSectionProps> = ({ items }) => {
+const PhotoHighlightsSection: FunctionComponent<
+  PhotoHighlightsSectionProps
+> = ({ items }) => {
   return (
     <SectionContainer>
       <SectionHeading title="📸 Captured Highlights" />

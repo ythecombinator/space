@@ -1,5 +1,5 @@
 import siteMetadata from 'data/siteMetadata';
-import { FC } from 'react';
+import { FunctionComponent } from 'react';
 
 import CommonSEO from 'components/shared/seo-common';
 
@@ -16,7 +16,7 @@ export interface PageSEOProps {
  * COMPONENT
  */
 
-const PageSEO: FC<PageSEOProps> = ({ title, description }) => {
+const PageSEO: FunctionComponent<PageSEOProps> = ({ title, description }) => {
   const ogImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner;
   const twImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner;
   return (

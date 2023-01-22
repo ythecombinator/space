@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FC } from 'react';
+import { FunctionComponent } from 'react';
 
 /*~
  * TYPES
@@ -16,9 +16,9 @@ export type PhotoHighlightsSectionItemProps = {
  * COMPONENT
  */
 
-const PhotoHighlightsSectionItem: FC<PhotoHighlightsSectionItemProps> = (
-  props
-) => {
+const PhotoHighlightsSectionItem: FunctionComponent<
+  PhotoHighlightsSectionItemProps
+> = (props) => {
   const { photoURL, talkSlug, eventName } = props;
 
   return (

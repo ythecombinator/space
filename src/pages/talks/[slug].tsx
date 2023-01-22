@@ -115,7 +115,6 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
 
 const TalkPage: NextPage<Props> = (props) => {
   const { title, abstract, sessions } = props;
-  console.log('sessions', sessions);
 
   return (
     <>

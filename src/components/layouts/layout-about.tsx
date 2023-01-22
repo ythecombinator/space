@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FunctionComponent } from 'react';
 import { AuthorFrontMatter } from 'types/AuthorFrontMatter';
 
 import PageSEO from 'components/shared/seo-page';
@@ -15,7 +15,10 @@ interface AboutLayoutProps {
  * LAYOUT
  */
 
-const AboutLayout: FC<AboutLayoutProps> = ({ children, frontMatter }) => {
+const AboutLayout: FunctionComponent<AboutLayoutProps> = ({
+  children,
+  frontMatter,
+}) => {
   const { name } = frontMatter;
 
   return (

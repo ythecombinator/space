@@ -1,11 +1,11 @@
 import { useState, useRef } from 'react';
-import { FC } from 'react';
+import { FunctionComponent } from 'react';
 
 /*~
  * COMPONENT
  */
 
-const Pre: FC = ({ children }) => {
+const Pre: FunctionComponent = ({ children }) => {
   const textInput = useRef(null);
   const [hovered, setHovered] = useState(false);
   const [copied, setCopied] = useState(false);

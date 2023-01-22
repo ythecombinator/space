@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FunctionComponent } from 'react';
 
 import { isEmpty, reversedIndexOf } from 'utils/array';
 import { useLyraSearch } from 'utils/search';
@@ -46,7 +46,7 @@ const searchSchema = {
  * COMPONENT
  */
 
-const AllTalksSection: FC<AllTalksSectionProps> = ({
+const AllTalksSection: FunctionComponent<AllTalksSectionProps> = ({
   items: baseItems,
   searchTerm,
 }) => {

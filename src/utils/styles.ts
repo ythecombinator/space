@@ -29,8 +29,6 @@ export const fetchGradients = async () => {
 
   const res = await fetch(url, settings);
   const colors = await res.json();
-
-  console.log('colors', colors);
 };
 
 export const classNameForGradient = (gradient: [string, string]) =>

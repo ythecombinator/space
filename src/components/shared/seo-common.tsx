@@ -1,7 +1,7 @@
 import siteMetadata from 'data/siteMetadata';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { FC } from 'react';
+import { FunctionComponent } from 'react';
 
 /*~
  * TYPES
@@ -25,7 +25,7 @@ interface CommonSEOProps {
  * COMPONENT
  */
 
-const CommonSEO: FC<CommonSEOProps> = ({
+const CommonSEO: FunctionComponent<CommonSEOProps> = ({
   title,
   description,
   ogType,

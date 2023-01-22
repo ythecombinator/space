@@ -1,5 +1,5 @@
 import siteMetadata from 'data/siteMetadata';
-import { FC } from 'react';
+import { FunctionComponent } from 'react';
 import { PostFrontMatter } from 'types/PostFrontMatter';
 
 import { Routes } from 'config/constants';
@@ -24,7 +24,10 @@ interface PostLayoutProps {
  * LAYOUT
  */
 
-const PostLayout: FC<PostLayoutProps> = ({ frontMatter, children }) => {
+const PostLayout: FunctionComponent<PostLayoutProps> = ({
+  frontMatter,
+  children,
+}) => {
   const { date, title, slug, readingTime } = frontMatter;
 
   return (

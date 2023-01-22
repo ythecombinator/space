@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FunctionComponent } from 'react';
 
 /*~
  * TYPES
@@ -13,7 +13,11 @@ interface PageLayoutProps {
  * LAYOUT
  */
 
-const PageLayout: FC<PageLayoutProps> = ({ heading, subHeading, children }) => {
+const PageLayout: FunctionComponent<PageLayoutProps> = ({
+  heading,
+  subHeading,
+  children,
+}) => {
   return (
     <div className="mt-6 px-2 sm:px-0">
       <div className="space-y-2 pt-6 pb-8 md:space-y-5">

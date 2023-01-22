@@ -1,6 +1,6 @@
 import siteMetadata from 'data/siteMetadata';
 import Head from 'next/head';
-import { FC } from 'react';
+import { FunctionComponent } from 'react';
 import { AuthorFrontMatter } from 'types/AuthorFrontMatter';
 import { PostFrontMatter } from 'types/PostFrontMatter';
 
@@ -19,7 +19,7 @@ export interface BlogSEOProps extends PostFrontMatter {
  * COMPONENT
  */
 
-const BlogSEO: FC<BlogSEOProps> = ({
+const BlogSEO: FunctionComponent<BlogSEOProps> = ({
   authorDetails,
   title,
   summary,

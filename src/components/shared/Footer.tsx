@@ -1,5 +1,5 @@
 import { github, twitter } from 'data/siteMetadata';
-import { FC } from 'react';
+import { FunctionComponent } from 'react';
 
 import { Routes } from 'config/constants';
 
@@ -11,7 +11,7 @@ import Link from 'components/shared/link';
  * COMPONENT
  */
 
-const Footer: FC = () => {
+const Footer: FunctionComponent = () => {
   return (
     <footer className="flex flex-col justify-center items-start mx-auto w-full mb-8 mt-4">
       <LayoutGradient />

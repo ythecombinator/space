@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FunctionComponent } from 'react';
 
 import SectionContainer from 'components/shared/section-container';
 
@@ -17,7 +17,7 @@ export type OverviewSectionProps = {
  * COMPONENT
  */
 
-const OverviewSection: FC<OverviewSectionProps> = (props) => {
+const OverviewSection: FunctionComponent<OverviewSectionProps> = (props) => {
   const { citiesTotal, countriesTotal, talksTotal, eventsTotal } = props;
 
   return (

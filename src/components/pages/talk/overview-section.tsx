@@ -1,7 +1,7 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS } from '@contentful/rich-text-types';
 import { Document as ContentfulDocument } from '@contentful/rich-text-types';
-import { FC } from 'react';
+import { FunctionComponent } from 'react';
 
 import SectionContainer from 'components/shared/section-container';
 
@@ -17,7 +17,7 @@ export type OverviewSectionProps = {
  * COMPONENT
  */
 
-const OverviewSection: FC<OverviewSectionProps> = (props) => {
+const OverviewSection: FunctionComponent<OverviewSectionProps> = (props) => {
   const { abstract } = props;
 
   return (

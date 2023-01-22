@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FunctionComponent } from 'react';
 
 import { isEmpty } from 'utils/array';
 import { useLyraSearch } from 'utils/search';
@@ -38,7 +38,7 @@ const searchSchema = {
  * COMPONENT
  */
 
-const AllPostsSection: FC<AllPostsSectionProps> = ({
+const AllPostsSection: FunctionComponent<AllPostsSectionProps> = ({
   items: baseItems,
   searchTerm,
 }) => {

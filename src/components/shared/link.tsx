@@ -1,5 +1,9 @@
 import NextLink from 'next/link';
-import { AnchorHTMLAttributes, DetailedHTMLProps, FC } from 'react';
+import {
+  AnchorHTMLAttributes,
+  DetailedHTMLProps,
+  FunctionComponent,
+} from 'react';
 
 /*~
  * TYPES
@@ -14,7 +18,7 @@ export type LinkProps = DetailedHTMLProps<
  * COMPONENT
  */
 
-const Link: FC<LinkProps> = ({ href, ...rest }) => {
+const Link: FunctionComponent<LinkProps> = ({ href, ...rest }) => {
   const isInternalLink = href && href.startsWith('/');
   const isAnchorLink = href && href.startsWith('#');
 

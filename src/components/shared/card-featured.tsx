@@ -32,7 +32,7 @@ const trans = (x: number, y: number, scale: number) =>
  * COMPONENT
  */
 
-const CardFeatured: React.FC<CardFeaturedProps> = ({
+const CardFeatured: React.FunctionComponent<CardFeaturedProps> = ({
   title,
   description,
   href,

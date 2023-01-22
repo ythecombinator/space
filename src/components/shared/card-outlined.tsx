@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FunctionComponent } from 'react';
 
 import { randomElement } from 'utils/array';
 
@@ -35,7 +35,7 @@ const gradients = [
  * COMPONENT
  */
 
-const CardOutlined: FC<CardOutlinedProps> = (props) => {
+const CardOutlined: FunctionComponent<CardOutlinedProps> = (props) => {
   const { heading, href, children } = props;
   const gradient = randomElement(gradients);
 
