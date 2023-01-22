@@ -32,7 +32,7 @@ const ActiveTalksSectionItem: FunctionComponent<ActiveTalksSectionItemProps> = (
           <FaMapMarkedAlt size={20} />
         </div>
         {sessions.map((event) => (
-          <Tooltip content={event.eventName}>
+          <Tooltip key={event.eventName} content={event.eventName}>
             <span
               key={event.eventName}
               className="ml-1"

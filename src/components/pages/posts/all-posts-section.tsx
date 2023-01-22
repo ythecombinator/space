@@ -54,7 +54,7 @@ const AllPostsSection: FunctionComponent<AllPostsSectionProps> = ({
       )}
       <ul>
         {items.map((item) => (
-          <AllPostsSectionItem {...item} />
+          <AllPostsSectionItem key={item.slug} {...item} />
         ))}
       </ul>
     </SectionContainer>

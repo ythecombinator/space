@@ -28,7 +28,7 @@ module.exports = {
         'texture-pattern': "url('/img/texture-pattern.svg')",
       },
       colors: {
-        primary: colors.sky,
+        primary: colors.indigo,
         gray: colors.slate,
         'background-color': '#000',
         violet: {

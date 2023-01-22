@@ -6,6 +6,7 @@ import { Routes } from 'config/constants';
 import { formatDate } from 'utils/date';
 
 import Link from 'components/shared/link';
+import Tag from 'components/shared/tag';
 
 /*~
  * TYPES
@@ -13,7 +14,7 @@ import Link from 'components/shared/link';
 
 export type AllPostsSectionItemProps = Pick<
   PostFrontMatter,
-  'slug' | 'title' | 'date' | 'summary'
+  'slug' | 'title' | 'date' | 'summary' | 'tags'
 >;
 
 /*~
@@ -23,7 +24,7 @@ export type AllPostsSectionItemProps = Pick<
 const AllPostsSectionItem: FunctionComponent<AllPostsSectionItemProps> = (
   props
 ) => {
-  const { slug, date, title, summary } = props;
+  const { slug, date, title, summary, tags } = props;
 
   return (
     <li key={slug} className="py-4">
@@ -39,6 +40,11 @@ const AllPostsSectionItem: FunctionComponent<AllPostsSectionItemProps> = (
             {title}
           </Link>
         </h3>
+        <div className="flex flex-wrap gap-3 my-2">
+          {tags.map((tag) => (
+            <Tag key={tag} text={tag} />
+          ))}
+        </div>
         <div className="prose text-gray-500 max-w-none dark:text-gray-400">
           {summary}
         </div>
