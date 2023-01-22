@@ -1,5 +1,4 @@
 import fs from 'fs';
-import generateRSS from 'lib/generate-rss';
 import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 
@@ -11,6 +10,7 @@ import {
   getFileBySlug,
   getFiles,
 } from 'utils/mdx';
+import { generateRSS } from 'utils/rss';
 
 import { MDXLayoutRenderer } from 'components/shared/mdx-components';
 
