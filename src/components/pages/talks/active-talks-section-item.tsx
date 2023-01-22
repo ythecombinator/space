@@ -4,6 +4,7 @@ import { FaMapMarkedAlt } from 'react-icons/fa';
 import { Routes } from 'config/constants';
 
 import CardOutlined from 'components/shared/card-outlined';
+import Tooltip from 'components/shared/tooltip';
 
 /*~
  * TYPES
@@ -31,14 +32,16 @@ const ActiveTalksSectionItem: FunctionComponent<ActiveTalksSectionItemProps> = (
           <FaMapMarkedAlt size={20} />
         </div>
         {sessions.map((event) => (
-          <span
-            key={event.eventName}
-            className="ml-1"
-            role="img"
-            aria-label={event.eventName}
-          >
-            {event.eventFlag}
-          </span>
+          <Tooltip content={event.eventName}>
+            <span
+              key={event.eventName}
+              className="ml-1"
+              role="img"
+              aria-label={event.eventName}
+            >
+              {event.eventFlag}
+            </span>
+          </Tooltip>
         ))}
       </div>
     </CardOutlined>
