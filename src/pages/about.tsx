@@ -15,8 +15,7 @@ export const getStaticProps: GetStaticProps<{
   content: { mdxSource: string; frontMatter: AboutFrontMatter };
 }> = async () => {
   const content = await getFileBySlug<AboutFrontMatter>('about', 'work');
-  const { mdxSource, frontMatter } = content;
-  return { props: { content: { mdxSource, frontMatter } } };
+  return { props: { content } };
 };
 
 /*~

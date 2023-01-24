@@ -52,7 +52,7 @@ const Footer: FunctionComponent = () => {
 
         <div className="flex flex-col sm:items-center sm:justify-center  mb-5 ">
           <p className="text-gray-500 text-base self-start dark:text-gray-400 text-left sm:text-right mb-2">
-            © <time>{new Date().getFullYear()}</time> Made with 💖.
+            © <time>{new Date().getFullYear()}</time> Made with 💖, ☕ and 🍻.
           </p>
         </div>
       </div>

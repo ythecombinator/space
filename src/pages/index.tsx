@@ -1,15 +1,22 @@
 import { Document as ContentfulDocument } from '@contentful/rich-text-types';
-import { ContentfulTag, GetTalksDocument, GetTalksQuery } from 'graphql/schema';
+import {
+  ContentfulTag,
+  GetAllTalksDocument,
+  GetAllTalksQuery,
+} from 'graphql/schema';
 import { InferGetStaticPropsType, NextPage } from 'next';
 import { DeepNonNullable } from 'utility-types';
 
+import { siteMetadata } from 'config/constants';
+
 import ContentfulService from 'services/contentful';
-import { getFileContents } from 'services/mdx';
+import { getFileBySlug } from 'services/mdx';
 
-import HomepageLayout from 'components/layouts/Home';
+import PageSEO from 'components/shared/seo-page';
 
-import Hero from 'components/pages/home/Hero';
-import TalksSection from 'components/pages/home/TalksSection';
+import Layout from 'components/layouts/layout-page';
+
+import OverviewSection from 'components/pages/home/overview-section';
 
 /*~
  * TYPES
@@ -26,8 +33,9 @@ const tagTransformer = (tag: DeepNonNullable<ContentfulTag>) => {
   return { id, name };
 };
 
-const latestTalksDocTransformer = (result: GetTalksQuery) => {
-  const items = (result as DeepNonNullable<GetTalksQuery>).talkCollection.items;
+const latestTalksDocTransformer = (result: GetAllTalksQuery) => {
+  const items = (result as DeepNonNullable<GetAllTalksQuery>).talkCollection
+    .items;
 
   return items.map((item) => {
     const { title, slug, shortDescription, contentfulMetadata } = item;
@@ -42,8 +50,8 @@ const latestTalksDocTransformer = (result: GetTalksQuery) => {
   });
 };
 
-const getLatestTalks = ContentfulService.query<GetTalksQuery>({
-  query: GetTalksDocument,
+const getLatestTalks = ContentfulService.query<GetAllTalksQuery>({
+  query: GetAllTalksDocument,
   variables: {
     limit: 3,
   },
@@ -54,14 +62,16 @@ const getLatestTalks = ContentfulService.query<GetTalksQuery>({
  */
 
 export async function getStaticProps() {
-  const [heroContents, latestTalksDoc] = await Promise.all([
-    getFileContents('hero'),
+  const content = await getFileBySlug('about', 'work');
+
+  const [overview, latestTalksDoc] = await Promise.all([
+    getFileBySlug('about', 'work'),
     getLatestTalks,
   ]);
 
   const latestTalks = latestTalksDocTransformer(latestTalksDoc.data);
 
-  return { props: { heroContents, latestTalks } };
+  return { props: { overview, latestTalks } };
 }
 
 /*~
@@ -69,12 +79,18 @@ export async function getStaticProps() {
  */
 
 const HomePage: NextPage<HomePageProps> = (props) => {
-  const { heroContents, latestTalks } = props;
+  const {} = props;
 
   return (
-    <HomepageLayout heroSection={<Hero contents={heroContents} />}>
-      <TalksSection talks={latestTalks} />
-    </HomepageLayout>
+    <>
+      <PageSEO
+        title={`Talks by ${siteMetadata.author}`}
+        description={siteMetadata.description}
+      />
+      <Layout heading="Hi, I'm Matheus! 👋">
+        <OverviewSection />
+      </Layout>
+    </>
   );
 };
 
