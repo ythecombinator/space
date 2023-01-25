@@ -1,5 +1,7 @@
 import { tailwind } from '@theme-ui/presets';
+import { ClassValue, clsx } from 'clsx';
 import fetch from 'node-fetch';
+import { twMerge } from 'tailwind-merge';
 
 const { gray } = tailwind.colors;
 
@@ -33,3 +35,7 @@ export const fetchGradients = async () => {
 
 export const classNameForGradient = (gradient: [string, string]) =>
   ` from-[${gradient[0]}] to-[${gradient[1]}]`;
+
+export const classNames = (...inputs: ClassValue[]) => {
+  return twMerge(clsx(inputs));
+};

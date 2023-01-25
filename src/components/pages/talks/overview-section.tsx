@@ -1,6 +1,7 @@
 import { FunctionComponent } from 'react';
 
 import SectionContainer from 'components/shared/section-container';
+import Typography from 'components/shared/typography';
 
 /*~
  * TYPES
@@ -22,16 +23,16 @@ const OverviewSection: FunctionComponent<OverviewSectionProps> = (props) => {
 
   return (
     <SectionContainer>
-      <p className="text-lg leading-7 text-gray-500 my-2 dark:text-gray-400">
+      <Typography.p>
         I've been speaking and learning in public since 2015, mostly about web
         performance, JavaScript/TypeScript, React, and their ecosystem. Other
         topics also include programming languages design and iOS engineering.
-      </p>
-      <p className="text-lg leading-7 text-gray-500 my-2 dark:text-gray-400">
+      </Typography.p>
+      <Typography.p>
         In total, I've presented <b>{talksTotal}</b> different sessions in{' '}
         <b>{eventsTotal}</b> events across <b>{citiesTotal}</b> cities in{' '}
         <b>{countriesTotal}</b> different countries.
-      </p>
+      </Typography.p>
     </SectionContainer>
   );
 };

@@ -6,6 +6,7 @@ import { siteMetadata } from 'config/constants';
 import FooterExternalLink from 'components/shared/footer-external-link';
 import LayoutGradient from 'components/shared/layout-gradient';
 import Link from 'components/shared/link';
+import Typography from 'components/shared/typography';
 
 /*~
  * COMPONENT
@@ -49,11 +50,10 @@ const Footer: FunctionComponent = () => {
             </Link>
           </div>
         </div>
-
         <div className="flex flex-col sm:items-center sm:justify-center  mb-5 ">
-          <p className="text-gray-500 text-base self-start dark:text-gray-400 text-left sm:text-right mb-2">
+          <Typography.subtle>
             © <time>{new Date().getFullYear()}</time> Made with 💖, ☕ and 🍻.
-          </p>
+          </Typography.subtle>
         </div>
       </div>
     </footer>

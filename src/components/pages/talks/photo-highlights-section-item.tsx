@@ -2,6 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FunctionComponent } from 'react';
 
+import Typography from 'components/shared/typography';
+
 /*~
  * TYPES
  */
@@ -36,10 +38,8 @@ const PhotoHighlightsSectionItem: FunctionComponent<
           width={720}
           height={480}
         />
-        <figcaption className="absolute px-4 text-lg text-white bottom-6">
-          <p className="text-xl font-semibold leading-8 tracking-tight text-gray-100">
-            {eventName}
-          </p>
+        <figcaption className="absolute px-4 bottom-6">
+          <Typography.lead>{eventName}</Typography.lead>
         </figcaption>
       </figure>
     </Link>

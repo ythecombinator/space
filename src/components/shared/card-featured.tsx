@@ -2,6 +2,7 @@ import { useSpring, animated, config } from '@react-spring/web';
 import { useRef, useState } from 'react';
 
 import Link from 'components/shared/link';
+import Typography from 'components/shared/typography';
 
 /*~
  * TYPES
@@ -70,9 +71,7 @@ const CardFeatured: React.FunctionComponent<CardFeaturedProps> = ({
               <h2 className="mb-2 text-2xl font-bold leading-8 tracking-tight">
                 {title}
               </h2>
-              <p className="mb-2 prose text-gray-500 max-w-none dark:text-gray-400">
-                {description}
-              </p>
+              <Typography.p>{description}</Typography.p>
               <div className="text-2xl font-thin leading-6 text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
                 <svg
                   className="rotate-180"

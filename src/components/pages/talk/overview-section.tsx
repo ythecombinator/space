@@ -4,6 +4,7 @@ import { Document as ContentfulDocument } from '@contentful/rich-text-types';
 import { FunctionComponent } from 'react';
 
 import SectionContainer from 'components/shared/section-container';
+import Typography from 'components/shared/typography';
 
 /*~
  * TYPES
@@ -25,9 +26,7 @@ const OverviewSection: FunctionComponent<OverviewSectionProps> = (props) => {
       {documentToReactComponents(abstract, {
         renderNode: {
           [BLOCKS.PARAGRAPH]: (_node, children) => (
-            <p className="text-lg leading-7 text-gray-500 my-2 dark:text-gray-400">
-              {children}
-            </p>
+            <Typography.p>{children}</Typography.p>
           ),
         },
       })}

@@ -1,6 +1,7 @@
 import { FunctionComponent } from 'react';
 import { AboutFrontMatter } from 'types/front-matter';
 
+import PageTitle from 'components/shared/page-title';
 import PageSEO from 'components/shared/seo-page';
 
 /*~
@@ -26,6 +27,8 @@ const AboutLayout: FunctionComponent<AboutLayoutProps> = ({
       <PageSEO title={`About - ${name}`} description={`About me - ${name}`} />
       <div className="divide-y">
         <div className="pt-6 pb-8 space-y-2 md:space-y-5">
+          {/* TODO: Replace by */}
+          {/* <PageTitle>About</PageTitle> */}
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
             About
           </h1>

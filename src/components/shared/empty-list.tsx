@@ -1,5 +1,7 @@
 import { FunctionComponent } from 'react';
 
+import Typography from 'components/shared/typography';
+
 /*~
  * TYPES
  */
@@ -22,9 +24,7 @@ export const EmptyList: FunctionComponent<EmptyListProps> = ({
       <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
         {heading}
       </h1>
-      <p className="font-medium leading-7 text-gray-500 my-2 dark:text-gray-400">
-        {subHeading}
-      </p>
+      <Typography.p>{subHeading}</Typography.p>
     </div>
   );
 };
