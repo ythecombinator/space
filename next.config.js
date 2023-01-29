@@ -18,6 +18,8 @@
 //   },
 // };
 
+const { withContentlayer } = require('next-contentlayer');
+
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
@@ -26,6 +28,7 @@ const withPlugins = require('next-compose-plugins');
 
 const withTM = require('next-transpile-modules')([
   'react-spring',
+  'remark',
   '@react-spring/web',
 ]);
 
@@ -50,4 +53,7 @@ const nextConfig = {
   },
 };
 
-module.exports = withPlugins([[withBundleAnalyzer], [withTM]], nextConfig);
+module.exports = withPlugins(
+  [[withContentlayer], [withBundleAnalyzer], [withTM]],
+  nextConfig
+);

@@ -1,3 +1,4 @@
+import { allBlogs } from 'contentlayer/generated';
 import { InferGetStaticPropsType, NextPage } from 'next';
 import { Suspense, useState } from 'react';
 
@@ -27,8 +28,8 @@ export type Props = InferGetStaticPropsType<typeof getStaticProps>;
  */
 
 export async function getStaticProps() {
-  const allPostsRaw = await getAllFilesFrontMatter(Routes.posts);
-  const allPosts = allPostsRaw.map((post) => ({
+  // const allPostsRaw = await getAllFilesFrontMatter(Routes.posts);
+  const allPosts = allBlogs.map((post) => ({
     ...post,
     _tags: toIndexableCollection(post.tags),
   }));

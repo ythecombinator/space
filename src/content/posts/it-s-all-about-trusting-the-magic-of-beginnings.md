@@ -1,7 +1,7 @@
 ---
 title: "It's all about trusting the magic of beginnings"
 date: '2019-07-15'
-tags: ['carreer', 'life']
+tags: ['career', 'life']
 draft: false
 summary: "After almost two years immersed in countless exciting challenges, it's time to move on."
 ---

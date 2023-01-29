@@ -1,3 +1,4 @@
+import { allBlogs } from 'contentlayer/generated';
 import fs from 'fs';
 import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next';
 import { ParsedUrlQuery } from 'querystring';
@@ -45,7 +46,9 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
   const allPosts = await getAllFilesFrontMatter(Routes.posts);
   const slug = context.params?.slug!;
 
-  const post = await getFileBySlug(Routes.posts, slug);
+  const post = allBlogs.find((p) => {
+    return p.slug === slug;
+  });
 
   // RSS
   if (allPosts.length > 0) {
@@ -61,15 +64,8 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
  */
 
 const PostPage: NextPage<Props> = ({ post }) => {
-  const { mdxSource, toc, frontMatter } = post;
-
   return (
-    <MDXLayoutRenderer
-      layout={Layouts.post}
-      toc={toc}
-      mdxSource={mdxSource}
-      frontMatter={frontMatter}
-    />
+    <MDXLayoutRenderer layout={Layouts.post} toc={post.toc} content={post} />
   );
 };
 

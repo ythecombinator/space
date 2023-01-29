@@ -1,3 +1,5 @@
+import { Blog } from 'contentlayer/generated';
+import { CoreContent } from 'lib/utils/contentlayer';
 import { FunctionComponent } from 'react';
 import { PostFrontMatter } from 'types/front-matter';
 
@@ -17,7 +19,7 @@ import BlogSEO from 'components/shared/seo-blog';
  */
 
 interface PostLayoutProps {
-  frontMatter: PostFrontMatter;
+  content: CoreContent<Blog>;
 }
 
 /*~
@@ -25,16 +27,15 @@ interface PostLayoutProps {
  */
 
 const PostLayout: FunctionComponent<PostLayoutProps> = ({
-  frontMatter,
+  content,
   children,
 }) => {
-  const { date, title, slug, readingTime } = frontMatter;
-
+  const { date, title, slug, readingTime } = content;
   return (
     <>
       <BlogSEO
-        url={`${siteMetadata.siteUrl}/blog/${frontMatter.slug}`}
-        {...frontMatter}
+        url={`${siteMetadata.siteUrl}/blog/${content.slug}`}
+        {...content}
       />
       <ScrollTop />
       <article>
@@ -50,11 +51,7 @@ const PostLayout: FunctionComponent<PostLayoutProps> = ({
                 </div>
               </dl>
               <div>
-                {/* TODO: Replace by */}
-                {/* <PageTitle>{title}</PageTitle> */}
-                <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-                  {title}
-                </h1>
+                <PageTitle>{title}</PageTitle>
               </div>
             </div>
             <div className="flex justify-between items-center">
