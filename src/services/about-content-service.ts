@@ -14,12 +14,16 @@ export default class AboutContentService {
   }
 
   public get(id: string) {
-    return this.getAll().find((post) => {
-      return post.slug === id;
+    return this.getAll().find((item) => {
+      return item.slug === id;
     });
   }
 
   public getAll() {
     return allAbouts;
+  }
+
+  public getAllSlugs() {
+    return this.getAll().map((item) => item.slug);
   }
 }
