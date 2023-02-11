@@ -5,6 +5,8 @@ import {
   FunctionComponent,
 } from 'react';
 
+import { isAnchorLink, isInternalLink } from 'utils/link';
+
 /*~
  * TYPES
  */
@@ -12,25 +14,24 @@ import {
 export type LinkProps = DetailedHTMLProps<
   AnchorHTMLAttributes<HTMLAnchorElement>,
   HTMLAnchorElement
->;
+> & {
+  href: string;
+};
 
 /*~
  * COMPONENT
  */
 
 const Link: FunctionComponent<LinkProps> = ({ href, ...rest }) => {
-  const isInternalLink = href && href.startsWith('/');
-  const isAnchorLink = href && href.startsWith('#');
-
-  if (isInternalLink) {
+  if (isInternalLink(href)) {
     return (
       <NextLink href={href} passHref>
-        <span {...rest} />
+        <a {...rest} />
       </NextLink>
     );
   }
 
-  if (isAnchorLink) {
+  if (isAnchorLink(href)) {
     return <a href={href} {...rest} />;
   }
 

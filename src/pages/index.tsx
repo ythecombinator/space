@@ -1,19 +1,13 @@
 import { Document as ContentfulDocument } from '@contentful/rich-text-types';
-import {
-  ContentfulTag,
-  GetAllTalksDocument,
-  GetAllTalksQuery,
-} from 'graphql/schema';
 import { InferGetStaticPropsType, NextPage } from 'next';
 import { DeepNonNullable } from 'utility-types';
 
 import { siteMetadata, socialNetworks } from 'config/constants';
 
-import ContentfulService from 'services/contentful';
-import { getFileBySlug } from 'services/mdx';
+import TalksContentService from 'services/talks-content-service';
 
+import ButtonLink from 'components/shared/button-link';
 import PageSEO from 'components/shared/seo-page';
-import SocialNetworkLink from 'components/shared/social-network-link';
 
 import Layout from 'components/layouts/layout-page';
 
@@ -26,53 +20,15 @@ import OverviewSection from 'components/pages/home/overview-section';
 export type HomePageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 /*~
- * UTILS
- */
-
-const tagTransformer = (tag: DeepNonNullable<ContentfulTag>) => {
-  const { id, name } = tag;
-  return { id, name };
-};
-
-const latestTalksDocTransformer = (result: GetAllTalksQuery) => {
-  const items = (result as DeepNonNullable<GetAllTalksQuery>).talkCollection
-    .items;
-
-  return items.map((item) => {
-    const { title, slug, shortDescription, contentfulMetadata } = item;
-    const headline = shortDescription.json.content[0] as ContentfulDocument;
-
-    return {
-      title,
-      headline,
-      slug,
-      tags: contentfulMetadata.tags.map(tagTransformer),
-    };
-  });
-};
-
-const getLatestTalks = ContentfulService.query<GetAllTalksQuery>({
-  query: GetAllTalksDocument,
-  variables: {
-    limit: 3,
-  },
-});
-
-/*~
  * NEXTJS
  */
 
+const talksServiceInstance = TalksContentService.getInstance();
+
 export async function getStaticProps() {
-  const content = await getFileBySlug('about', 'work');
+  const [latestTalks] = await Promise.all([talksServiceInstance.getLatest(3)]);
 
-  const [overview, latestTalksDoc] = await Promise.all([
-    getFileBySlug('about', 'work'),
-    getLatestTalks,
-  ]);
-
-  const latestTalks = latestTalksDocTransformer(latestTalksDoc.data);
-
-  return { props: { overview, latestTalks } };
+  return { props: { latestTalks } };
 }
 
 /*~
@@ -90,11 +46,11 @@ const HomePage: NextPage<HomePageProps> = (props) => {
       />
       <Layout heading="Hi, I'm Matheus! 👋">
         <OverviewSection />
-        <div className="mt-8 flex flex-wrap gap-4 text-center">
-          {socialNetworks.map(({ label, href }) => (
-            <SocialNetworkLink key={label} href={href}>
+        <div className="flex flex-col gap-2 md:flex-row md:gap-2">
+          {socialNetworks.map(({ label, href, Icon }) => (
+            <ButtonLink key={label} href={href} icon={<Icon />}>
               {label}
-            </SocialNetworkLink>
+            </ButtonLink>
           ))}
         </div>
         <div className="flex w-full justify-center">

@@ -1,7 +1,16 @@
 import { FunctionComponent } from 'react';
+import {
+  FaDev,
+  FaGithub,
+  FaLinkedin,
+  FaSpeakerDeck,
+  FaTwitter,
+} from 'react-icons/fa';
+import { IconType } from 'react-icons/lib';
 import { ExternalLink } from 'types/link';
 
 import LayoutAbout from 'components/layouts/layout-about';
+import LayoutPage from 'components/layouts/layout-page';
 import LayoutPost from 'components/layouts/layout-post';
 
 export const siteMetadata = {
@@ -22,26 +31,26 @@ export const siteMetadata = {
   locale: 'en-US',
 };
 
-export const socialNetworks: Array<ExternalLink> = [
+export const socialNetworks: Array<ExternalLink & { Icon: IconType }> = [
   {
     label: 'Twitter',
     href: 'https://twitter.com/ythecombinator',
+    Icon: FaTwitter,
   },
   {
     label: 'Github',
     href: 'https://github.com/ythecombinator',
+    Icon: FaGithub,
   },
   {
     label: 'LinkedIn',
     href: 'https://www.linkedin.com/in/ythecombinator',
+    Icon: FaLinkedin,
   },
   {
-    label: 'SpeakerDeck',
-    href: 'https://speakerdeck.com/ythecombinator',
-  },
-  {
-    label: 'devto',
+    label: 'dev.to',
     href: 'https://dev.to/ythecombinator',
+    Icon: FaDev,
   },
 ];
 
@@ -49,8 +58,9 @@ export enum Routes {
   base = '/',
   about = 'about',
   work = 'about/work',
+  clients = 'about/clients',
   life = 'about/life',
-  setup = 'about/setup',
+  uses = 'about/uses',
   posts = 'posts',
   talks = 'talks',
   projects = 'projects',
@@ -72,7 +82,7 @@ export enum Layouts {
 
 export const LayoutsMap: Record<Layouts, FunctionComponent<any>> = {
   'layout-about': LayoutAbout,
-  'layout-page': LayoutPost,
+  'layout-page': LayoutPage,
   'layout-post': LayoutPost,
 };
 

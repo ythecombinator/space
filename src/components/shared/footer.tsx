@@ -3,7 +3,6 @@ import { FunctionComponent } from 'react';
 import { Routes } from 'config/constants';
 import { siteMetadata } from 'config/constants';
 
-import FooterExternalLink from 'components/shared/footer-external-link';
 import LayoutGradient from 'components/shared/layout-gradient';
 import Link from 'components/shared/link';
 import Typography from 'components/shared/typography';
@@ -20,34 +19,14 @@ const Footer: FunctionComponent = () => {
       <div className="w-full pb-16 flex flex-col-reverse justify-between sm:flex-row">
         <div className="flex flex-col sm:flex-row sm:space-x-16">
           <div className="flex flex-row mb-1 sm:mb-0 sm:flex-col space-x-8 sm:space-x-0 justify-center sm:justify-start sm:space-y-4">
-            <Link href="/about">
-              <a className="text-gray-500 hover:text-gray-600 transition">
-                About
-              </a>
-            </Link>
-            <Link href={`/${Routes.posts}`}>
-              <a className="text-gray-500 hover:text-gray-600 transition">
-                Posts
-              </a>
-            </Link>
-            <Link href="/tags">
-              <a className="text-gray-500 hover:text-gray-600 transition">
-                Tags
-              </a>
-            </Link>
+            <Link href={`/${Routes.life}`}>Life</Link>
+            <Link href={`/${Routes.work}`}>Work</Link>
+            <Link href={`/${Routes.uses}`}>Uses</Link>
           </div>
           <div className="flex flex-row  mb-1 sm:mb-0  sm:flex-col space-x-8 sm:space-x-0 justify-center sm:justify-start sm:space-y-4">
-            <FooterExternalLink href={siteMetadata.twitter}>
-              Twitter
-            </FooterExternalLink>
-            <FooterExternalLink href={siteMetadata.github}>
-              GitHub
-            </FooterExternalLink>
-            <Link href="/feed.xml">
-              <a className="text-gray-500 hover:text-gray-600 transition">
-                RSS
-              </a>
-            </Link>
+            <Link href={siteMetadata.twitter}>Twitter</Link>
+            <Link href={siteMetadata.github}>GitHub</Link>
+            <Link href="/feed.xml">RSS</Link>
           </div>
         </div>
         <div className="flex flex-col sm:items-center sm:justify-center  mb-5 ">

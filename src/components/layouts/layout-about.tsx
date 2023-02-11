@@ -22,8 +22,8 @@ const AboutLayout: FunctionComponent<AboutLayoutProps> = ({ children }) => {
   return (
     <>
       <PageSEO title={`About - ${name}`} description={`About me - ${name}`} />
-      <div className="divide-y">
-        <div className="pt-6 pb-8 space-y-2 md:space-y-5">
+      <div className="mt-6 px-2 sm:px-0">
+        <div className="space-y-2 pt-6 pb-8 md:space-y-5">
           <PageTitle>About</PageTitle>
         </div>
         <div className="items-start space-y-2  xl:gap-x-8 xl:space-y-0">

@@ -14,6 +14,7 @@ import {
   GetTalkDocument,
   GetAllTalkSlugsQuery,
   GetAllTalkSlugsDocument,
+  ContentfulTag,
 } from 'graphql/schema';
 import { DeepNonNullable } from 'utility-types';
 
@@ -56,6 +57,16 @@ export default class TalksContentService {
     return transformers.all(doc.data);
   }
 
+  public async getLatest(limit: number = 0) {
+    const doc = await contentfulServiceInstance.query<GetAllTalksQuery>({
+      query: GetAllTalksDocument,
+      variables: {
+        limit,
+      },
+    });
+    return transformers.latest(doc.data);
+  }
+
   public async getAllSlugs() {
     const doc = await contentfulServiceInstance.query<GetAllTalkSlugsQuery>({
       query: GetAllTalkSlugsDocument,
@@ -90,10 +101,10 @@ export default class TalksContentService {
 }
 
 /*~
- * TRANSFORMERS
+ * TRANSFORMERS (MAIN)
  */
 
-const allTalksDocTransformer = (result: GetAllTalksQuery) => {
+const allTransformer = (result: GetAllTalksQuery) => {
   const items = (result as DeepNonNullable<GetAllTalksQuery>).talkCollection
     .items;
 
@@ -129,7 +140,7 @@ const allTalksDocTransformer = (result: GetAllTalksQuery) => {
   });
 };
 
-const featuredTalksDocTransformer = (result: GetFeaturedTalksQuery) => {
+const featuredTransformer = (result: GetFeaturedTalksQuery) => {
   const items = (result as DeepNonNullable<GetFeaturedTalksQuery>)
     .sessionCollection?.items;
 
@@ -141,7 +152,7 @@ const featuredTalksDocTransformer = (result: GetFeaturedTalksQuery) => {
   }));
 };
 
-const activeTalksDocTransformer = (result: GetActiveTalksQuery) => {
+const activeTransformer = (result: GetActiveTalksQuery) => {
   const items = (result as DeepNonNullable<GetActiveTalksQuery>).talkCollection
     ?.items;
 
@@ -156,7 +167,7 @@ const activeTalksDocTransformer = (result: GetActiveTalksQuery) => {
   }));
 };
 
-const talksStatsDocTransformer = (result: GetTalksStatsQuery) => {
+const statsTransformer = (result: GetTalksStatsQuery) => {
   const { countryCollection, cityCollection, eventCollection, talkCollection } =
     result as DeepNonNullable<GetTalksStatsQuery>;
 
@@ -167,6 +178,35 @@ const talksStatsDocTransformer = (result: GetTalksStatsQuery) => {
     countriesTotal: countryCollection.total,
   };
 };
+
+const latestTransformer = (result: GetAllTalksQuery) => {
+  const items = (result as DeepNonNullable<GetAllTalksQuery>).talkCollection
+    .items;
+
+  return items.map((item) => {
+    const { title, slug, shortDescription, contentfulMetadata } = item;
+    const headline = shortDescription.json.content[0] as ContentfulDocument;
+
+    return {
+      title,
+      headline,
+      slug,
+      tags: contentfulMetadata.tags.map(tagTransformer),
+    };
+  });
+};
+
+const transformers = {
+  all: allTransformer,
+  active: activeTransformer,
+  featured: featuredTransformer,
+  stats: statsTransformer,
+  latest: latestTransformer,
+};
+
+/*~
+ * TRANSFORMERS (HELPERS)
+ */
 
 const locationTransformer = (city: City) =>
   `${city.name}, ${city.country?.name} ${city.country?.flag} `;
@@ -197,11 +237,9 @@ const talkDocumentTransformer = (result: GetTalkQuery) => {
   };
 };
 
-const transformers = {
-  all: allTalksDocTransformer,
-  active: activeTalksDocTransformer,
-  featured: featuredTalksDocTransformer,
-  stats: talksStatsDocTransformer,
+const tagTransformer = (tag: DeepNonNullable<ContentfulTag>) => {
+  const { id, name } = tag;
+  return { id, name };
 };
 
 /*~

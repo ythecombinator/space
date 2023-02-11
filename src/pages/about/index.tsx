@@ -6,6 +6,8 @@ import PageSEO from 'components/shared/seo-page';
 
 import Layout from 'components/layouts/layout-page';
 
+import OverviewSection from 'components/pages/about/overview-section';
+
 /*~
  * PAGE
  */
@@ -17,7 +19,9 @@ const AboutPage: NextPage = () => {
         title={`About by ${siteMetadata.author}`}
         description={siteMetadata.description}
       />
-      <Layout heading="About">About</Layout>
+      <Layout heading="About">
+        <OverviewSection />
+      </Layout>
     </>
   );
 };
