@@ -50,6 +50,7 @@ const MDXLayoutRenderer: FunctionComponent<MDXLayout> = ({
   content,
   ...rest
 }) => {
+  console.log('content', content);
   const MDXLayout = useMDXComponent(content.body.code);
   const mainContent = coreContent(content);
 

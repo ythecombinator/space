@@ -24,6 +24,10 @@ import { extractTocHeadings } from './src/lib/remark-toc-headings';
 
 const root = process.cwd();
 
+/*~
+ * UTILS
+ */
+
 const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
   slug: {
@@ -35,8 +39,12 @@ const computedFields: ComputedFields = {
   toc: { type: 'string', resolve: (doc) => extractTocHeadings(doc.body.raw) },
 };
 
-export const Blog = defineDocumentType(() => ({
-  name: 'Blog',
+/*~
+ * MODELS
+ */
+
+export const Post = defineDocumentType(() => ({
+  name: 'Post',
   filePathPattern: 'posts/**/*.md',
   contentType: 'mdx',
   fields: {
@@ -44,20 +52,29 @@ export const Blog = defineDocumentType(() => ({
     date: { type: 'date', required: true },
     tags: { type: 'list', of: { type: 'string' } },
     lastmod: { type: 'date' },
-    draft: { type: 'boolean' },
     summary: { type: 'string' },
     images: { type: 'list', of: { type: 'string' } },
-    authors: { type: 'list', of: { type: 'string' } },
     layout: { type: 'string' },
-    bibliography: { type: 'string' },
     canonicalUrl: { type: 'string' },
   },
   computedFields,
 }));
 
+export const About = defineDocumentType(() => ({
+  name: 'About',
+  filePathPattern: 'about/**/*.md',
+  contentType: 'mdx',
+  fields: {
+    title: { type: 'string', required: true },
+  },
+  computedFields: {
+    slug: computedFields.slug,
+  },
+}));
+
 export default makeSource({
   contentDirPath: 'src/content',
-  documentTypes: [Blog],
+  documentTypes: [Post, About],
   mdx: {
     cwd: process.cwd(),
     remarkPlugins: [

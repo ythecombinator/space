@@ -9,18 +9,15 @@ import PageSEO from 'components/shared/seo-page';
  */
 
 interface AboutLayoutProps {
-  frontMatter: AboutFrontMatter;
+  content: AboutFrontMatter;
 }
 
 /*~
  * LAYOUT
  */
 
-const AboutLayout: FunctionComponent<AboutLayoutProps> = ({
-  children,
-  frontMatter,
-}) => {
-  const { name } = frontMatter;
+const AboutLayout: FunctionComponent<AboutLayoutProps> = ({ children }) => {
+  const name = 'Matheus';
 
   return (
     <>

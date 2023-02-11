@@ -2,7 +2,6 @@
 title: 'Driving towards a universal navigation strategy in React'
 date: '2020-01-13'
 tags: ['react', 'react native', 'navigation']
-draft: false
 summary: 'When I joined STRV, they had a specific request for me; to build a front-end app for iOS, Android, and Web, sharing component and business logic amongst all the platforms.'
 ---
 

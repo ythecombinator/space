@@ -1,8 +1,8 @@
-import { allBlogs } from 'contentlayer/generated';
+import { allPosts } from 'contentlayer/generated';
 
 import { toIndexableCollection } from 'utils/search';
 
-export type { Blog } from 'contentlayer/generated';
+export type { Post } from 'contentlayer/generated';
 
 export default class PostsContentService {
   private static instance: PostsContentService;
@@ -22,13 +22,13 @@ export default class PostsContentService {
   }
 
   public getAll() {
-    return allBlogs.map((post) => ({
+    return allPosts.map((post) => ({
       ...post,
       _tags: toIndexableCollection(post.tags),
     }));
   }
 
   public getAllSlugs() {
-    return allBlogs.map((post) => post.slug);
+    return allPosts.map((post) => post.slug);
   }
 }

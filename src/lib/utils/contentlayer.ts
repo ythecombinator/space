@@ -1,4 +1,4 @@
-import type { Blog, DocumentTypes } from 'contentlayer/generated';
+import type { Post, DocumentTypes } from 'contentlayer/generated';
 
 import kebabCase from './kebabCase';
 
@@ -8,7 +8,7 @@ export function dateSortDesc(a: string, b: string) {
   return 0;
 }
 
-export function sortedBlogPost(allBlogs: Blog[]) {
+export function sortedBlogPost(allBlogs: Post[]) {
   return allBlogs.sort((a, b) => dateSortDesc(a.date, b.date));
 }
 
@@ -57,7 +57,7 @@ export function allCoreContent<T extends DocumentTypes>(contents: T[]) {
 }
 
 // TODO: refactor into contentlayer once compute over all docs is enabled
-export async function getAllTags(allBlogs: Blog[]) {
+export async function getAllTags(allBlogs: Post[]) {
   const tagCount: Record<string, number> = {};
   // Iterate through each post, putting all found tags into `tags`
   allBlogs.forEach((file) => {

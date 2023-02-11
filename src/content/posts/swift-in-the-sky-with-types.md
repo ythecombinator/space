@@ -2,7 +2,6 @@
 title: '🇵🇹 • Swift In The Sky With Types'
 date: '2016-03-28'
 tags: ['swift', 'type systems']
-draft: false
 summary: "This is pretty much a controversial decentralized web technologies research story but, before starting, there are a few things I'd like to ensure you all, my beloved readers, are aware of."
 ---
 

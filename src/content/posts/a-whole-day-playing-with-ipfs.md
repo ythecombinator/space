@@ -2,7 +2,6 @@
 title: 'A Whole Day Playing with IPFS'
 date: '2017-12-15'
 tags: ['ipfs', 'distributed systems']
-draft: false
 summary: "This is mostly a controversial decentralized web technologies research story but, before starting, there are a few things I'd like to ensure you all, my beloved readers, are aware of."
 ---
 

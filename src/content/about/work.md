@@ -1,12 +1,5 @@
 ---
-name: Matheus Albuquerque
-avatar: /static/images/avatar.jpeg
-occupation: Software Developer, Techical Writer
-company: University of Mines and Technology
-email: ephraimduncan68@gmail.com
-twitter: https://twitter.com/EphraimDuncan_
-linkedin: https://www.linkedin.com/in/dephraiim
-github: https://github.com/dephraiim
+title: 'Work'
 ---
 
 I am a Front-End Engineer focused on new and scalable technologies based in Prague. Being a consultant I have shipped solutions to small, medium and huge companies to grow their business and, mostly, help them meet their business goals, without leaving quality aside.

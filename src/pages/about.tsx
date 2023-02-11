@@ -1,20 +1,25 @@
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
-import { AboutFrontMatter } from 'types/front-matter';
+import { InferGetStaticPropsType, NextPage } from 'next';
 
 import { Layouts } from 'config/constants';
 
-import { getFileBySlug } from 'services/mdx';
+import AboutContentService from 'services/about-content-service';
 
-import { MDXLayoutRenderer } from 'components/shared/mdx-components';
+import MDXLayoutRenderer from 'components/shared/mdx-components';
+
+const aboutServiceInstance = AboutContentService.getInstance();
+
+/*~
+ * TYPES
+ */
+
+export type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 /*~
  * NEXTJS
  */
 
-export const getStaticProps: GetStaticProps<{
-  content: { mdxSource: string; frontMatter: AboutFrontMatter };
-}> = async () => {
-  const content = await getFileBySlug<AboutFrontMatter>('about', 'work');
+export const getStaticProps = async () => {
+  const content = await aboutServiceInstance.get('work');
   return { props: { content } };
 };
 
@@ -22,18 +27,8 @@ export const getStaticProps: GetStaticProps<{
  * PAGE
  */
 
-const AboutPage = ({
-  content,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { mdxSource, frontMatter } = content;
-
-  return (
-    <MDXLayoutRenderer
-      layout={Layouts.about}
-      mdxSource={mdxSource}
-      frontMatter={frontMatter}
-    />
-  );
+const AboutPage: NextPage<Props> = ({ content }) => {
+  return <MDXLayoutRenderer layout={Layouts.about} content={content} />;
 };
 
 export default AboutPage;

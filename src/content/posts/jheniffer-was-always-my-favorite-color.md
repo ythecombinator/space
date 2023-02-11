@@ -2,7 +2,6 @@
 title: 'Jheniffer was always my favorite color'
 date: '2020-08-20'
 tags: ['life']
-draft: false
 summary: "I hope yall don't mind the inconvenience, but I need to talk about Jheniffer Rodrigues."
 ---
 
