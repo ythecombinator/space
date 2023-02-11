@@ -5,22 +5,24 @@ import {
 } from 'contentlayer/source-files';
 import path from 'path';
 import readingTime from 'reading-time';
+import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
+// Rehype packages
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeCitation from 'rehype-citation';
 import rehypeKatex from 'rehype-katex';
 import rehypePresetMinify from 'rehype-preset-minify';
+import rehypePrettyCode from 'rehype-pretty-code';
 import rehypePrismPlus from 'rehype-prism-plus';
-// Rehype packages
 import rehypeSlug from 'rehype-slug';
-import remarkFootnotes from 'remark-footnotes';
 // Remark packages
+import remarkFootnotes from 'remark-footnotes';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 
-import remarkCodeTitles from './src/lib/remark-code-title';
-import remarkExtractFrontmatter from './src/lib/remark-extract-frontmatter';
-import remarkImgToJsx from './src/lib/remark-img-to-jsx';
-import { extractTocHeadings } from './src/lib/remark-toc-headings';
+import remarkCodeTitles from 'utils/remark/remark-code-title';
+import remarkExtractFrontmatter from 'utils/remark/remark-extract-frontmatter';
+import remarkImgToJsx from 'utils/remark/remark-img-to-jsx';
+import { extractTocHeadings } from 'utils/remark/remark-toc-headings';
 
 const root = process.cwd();
 
@@ -86,6 +88,8 @@ export default makeSource({
       remarkImgToJsx,
     ],
     rehypePlugins: [
+      rehypeAccessibleEmojis,
+      rehypePrettyCode,
       rehypeSlug,
       rehypeAutolinkHeadings,
       rehypeKatex,

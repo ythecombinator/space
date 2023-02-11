@@ -1,10 +1,11 @@
-import { coreContent } from 'lib/utils/contentlayer';
 import { MDXContentProps } from 'mdx-bundler/client';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import Image from 'next/image';
 import { FunctionComponent } from 'react';
 
 import { Layouts, LayoutsMap } from 'config/constants';
+
+import { coreContent } from 'utils/contentlayer';
 
 import Link from 'components/shared/link';
 import Pre from 'components/shared/pre';

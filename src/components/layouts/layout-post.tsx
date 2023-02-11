@@ -1,4 +1,3 @@
-import { CoreContent } from 'lib/utils/contentlayer';
 import { FunctionComponent } from 'react';
 
 import { Routes } from 'config/constants';
@@ -6,6 +5,7 @@ import { siteMetadata } from 'config/constants';
 
 import { Blog } from 'services/posts-content-service';
 
+import { CoreContent } from 'utils/contentlayer';
 import { formatDate } from 'utils/date';
 import { discussOnTwitter } from 'utils/social';
 
