@@ -1,4 +1,8 @@
+import { FunctionComponent } from 'react';
 import { ExternalLink } from 'types/link';
+
+import LayoutAbout from 'components/layouts/layout-about';
+import LayoutPost from 'components/layouts/layout-post';
 
 export const siteMetadata = {
   title: 'Matheus Albuquerque',
@@ -65,6 +69,12 @@ export enum Layouts {
   page = 'layout-page',
   about = 'layout-about',
 }
+
+export const LayoutsMap: Record<Layouts, FunctionComponent<any>> = {
+  'layout-about': LayoutAbout,
+  'layout-page': LayoutPost,
+  'layout-post': LayoutPost,
+};
 
 export enum SourcePath {
   content = 'src/content',

@@ -14,7 +14,6 @@ import { getFileBySlug } from 'services/mdx';
 
 import PageSEO from 'components/shared/seo-page';
 import SocialNetworkLink from 'components/shared/social-network-link';
-import Typography from 'components/shared/typography';
 
 import Layout from 'components/layouts/layout-page';
 

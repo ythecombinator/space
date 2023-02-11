@@ -21,13 +21,13 @@
   </item>
 
   <item>
-    <guid>https://www.ythecombinator.space/posts/jheniffer-was-always-my-favorite-color</guid>
-    <title>Jheniffer was always my favorite color</title>
-    <link>https://www.ythecombinator.space/posts/jheniffer-was-always-my-favorite-color</link>
-    <description>I hope yall don&#39;t mind the inconvenience, but I need to talk about Jheniffer Rodrigues.</description>
-    <pubDate>Thu, 20 Aug 2020 00:00:00 GMT</pubDate>
+    <guid>https://www.ythecombinator.space/posts/a-whole-day-playing-with-ipfs</guid>
+    <title>A Whole Day Playing with IPFS</title>
+    <link>https://www.ythecombinator.space/posts/a-whole-day-playing-with-ipfs</link>
+    <description>This is mostly a controversial decentralized web technologies research story but, before starting, there are a few things I&#39;d like to ensure you all, my beloved readers, are aware of.</description>
+    <pubDate>Fri, 15 Dec 2017 00:00:00 GMT</pubDate>
     <author>ephraimduncan68@gmail.com (Matheus Albuquerque)</author>
-    <category>life</category>
+    <category>ipfs</category><category>distributed systems</category>
   </item>
 
   <item>
@@ -51,23 +51,13 @@
   </item>
 
   <item>
-    <guid>https://www.ythecombinator.space/posts/a-whole-day-playing-with-ipfs</guid>
-    <title>A Whole Day Playing with IPFS</title>
-    <link>https://www.ythecombinator.space/posts/a-whole-day-playing-with-ipfs</link>
-    <description>This is mostly a controversial decentralized web technologies research story but, before starting, there are a few things I&#39;d like to ensure you all, my beloved readers, are aware of.</description>
-    <pubDate>Fri, 15 Dec 2017 00:00:00 GMT</pubDate>
+    <guid>https://www.ythecombinator.space/posts/jheniffer-was-always-my-favorite-color</guid>
+    <title>Jheniffer was always my favorite color</title>
+    <link>https://www.ythecombinator.space/posts/jheniffer-was-always-my-favorite-color</link>
+    <description>I hope yall don&#39;t mind the inconvenience, but I need to talk about Jheniffer Rodrigues.</description>
+    <pubDate>Thu, 20 Aug 2020 00:00:00 GMT</pubDate>
     <author>ephraimduncan68@gmail.com (Matheus Albuquerque)</author>
-    <category>ipfs</category><category>distributed systems</category>
-  </item>
-
-  <item>
-    <guid>https://www.ythecombinator.space/posts/swift-in-the-sky-with-types</guid>
-    <title>🇵🇹 • Swift In The Sky With Types</title>
-    <link>https://www.ythecombinator.space/posts/swift-in-the-sky-with-types</link>
-    <description>This is pretty much a controversial decentralized web technologies research story but, before starting, there are a few things I&#39;d like to ensure you all, my beloved readers, are aware of.</description>
-    <pubDate>Mon, 28 Mar 2016 00:00:00 GMT</pubDate>
-    <author>ephraimduncan68@gmail.com (Matheus Albuquerque)</author>
-    <category>swift</category><category>type systems</category>
+    <category>life</category>
   </item>
 
   <item>
@@ -78,6 +68,16 @@
     <pubDate>Mon, 10 Nov 2014 00:00:00 GMT</pubDate>
     <author>ephraimduncan68@gmail.com (Matheus Albuquerque)</author>
     <category>angular</category>
+  </item>
+
+  <item>
+    <guid>https://www.ythecombinator.space/posts/swift-in-the-sky-with-types</guid>
+    <title>🇵🇹 • Swift In The Sky With Types</title>
+    <link>https://www.ythecombinator.space/posts/swift-in-the-sky-with-types</link>
+    <description>This is pretty much a controversial decentralized web technologies research story but, before starting, there are a few things I&#39;d like to ensure you all, my beloved readers, are aware of.</description>
+    <pubDate>Mon, 28 Mar 2016 00:00:00 GMT</pubDate>
+    <author>ephraimduncan68@gmail.com (Matheus Albuquerque)</author>
+    <category>swift</category><category>type systems</category>
   </item>
 
     </channel>

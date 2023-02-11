@@ -1,13 +1,9 @@
-import { allBlogs } from 'contentlayer/generated';
 import { InferGetStaticPropsType, NextPage } from 'next';
 import { Suspense, useState } from 'react';
 
-import { Routes } from 'config/constants';
 import { siteMetadata } from 'config/constants';
 
-import { getAllFilesFrontMatter } from 'services/mdx';
-
-import { toIndexableCollection } from 'utils/search';
+import PostsContentService from 'services/posts-content-service';
 
 import SeachBar, { SeachBarProps } from 'components/shared/seach-bar';
 import PageSEO from 'components/shared/seo-page';
@@ -27,13 +23,10 @@ export type Props = InferGetStaticPropsType<typeof getStaticProps>;
  * NEXTJS
  */
 
-export async function getStaticProps() {
-  // const allPostsRaw = await getAllFilesFrontMatter(Routes.posts);
-  const allPosts = allBlogs.map((post) => ({
-    ...post,
-    _tags: toIndexableCollection(post.tags),
-  }));
+const postsServiceInstance = PostsContentService.getInstance();
 
+export async function getStaticProps() {
+  const allPosts = postsServiceInstance.getAll();
   return { props: { allPosts } };
 }
 

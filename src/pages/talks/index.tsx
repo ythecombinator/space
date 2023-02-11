@@ -1,22 +1,9 @@
-import {
-  GetAllTalksDocument,
-  GetAllTalksQuery,
-  GetTalksStatsQuery,
-  GetTalksStatsDocument,
-  GetFeaturedTalksQuery,
-  GetFeaturedTalksDocument,
-  GetActiveTalksQuery,
-  GetActiveTalksDocument,
-} from 'graphql/schema';
 import { InferGetStaticPropsType, NextPage } from 'next';
 import { Suspense, useState } from 'react';
-import { DeepNonNullable } from 'utility-types';
 
 import { siteMetadata } from 'config/constants';
 
-import ContentfulService from 'services/contentful';
-
-import { toIndexableCollection } from 'utils/search';
+import TalksContentService from 'services/talks-content-service';
 
 import SeachBar, { SeachBarProps } from 'components/shared/seach-bar';
 import PageSEO from 'components/shared/seo-page';
@@ -37,123 +24,19 @@ import VideoHighlightsSection from 'components/pages/talks/video-highlights-sect
 export type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 /*~
- * UTILS
- */
-
-const allTalksDocTransformer = (result: GetAllTalksQuery) => {
-  const items = (result as DeepNonNullable<GetAllTalksQuery>).talkCollection
-    .items;
-
-  return items.map((item) => {
-    const {
-      title,
-      shortDescription,
-      slug,
-      sessionsCollection,
-      contentfulMetadata,
-    } = item;
-
-    return {
-      talkTitle: title,
-      talkSlug: slug,
-      // Indexable search metadata
-      _description: JSON.stringify(shortDescription.json),
-      _events: toIndexableCollection(
-        sessionsCollection.items.map((session) => session.event.name)
-      ),
-      _cities: toIndexableCollection(
-        sessionsCollection.items.map((session) => session.event.city.name)
-      ),
-      _countries: toIndexableCollection(
-        sessionsCollection.items.map(
-          (session) => session.event.city.country.name
-        )
-      ),
-      _tags: toIndexableCollection(
-        contentfulMetadata.tags.map((tag) => tag.name)
-      ),
-    };
-  });
-};
-
-const talksStatsDocTransformer = (result: GetTalksStatsQuery) => {
-  const { countryCollection, cityCollection, eventCollection, talkCollection } =
-    result as DeepNonNullable<GetTalksStatsQuery>;
-
-  return {
-    talksTotal: talkCollection.total,
-    eventsTotal: eventCollection.total,
-    citiesTotal: cityCollection.total,
-    countriesTotal: countryCollection.total,
-  };
-};
-
-const featuredTalksDocTransformer = (result: GetFeaturedTalksQuery) => {
-  const items = (result as DeepNonNullable<GetFeaturedTalksQuery>)
-    .sessionCollection?.items;
-
-  return items.map((item) => ({
-    eventName: item.event.name,
-    photoURL: item.photo.url,
-    talkTitle: item.talk.title,
-    talkSlug: item.talk.slug,
-  }));
-};
-
-const activeTalksDocTransformer = (result: GetActiveTalksQuery) => {
-  const items = (result as DeepNonNullable<GetActiveTalksQuery>).talkCollection
-    ?.items;
-
-  return items.map((item) => ({
-    talkTitle: item.title,
-    talkSlug: item.slug,
-    sessions: item.sessionsCollection.items.map((session) => ({
-      eventName: session.event.name,
-      eventPage: session.event.website,
-      eventFlag: session.event.city.country.flag,
-    })),
-  }));
-};
-
-const getTalksStats = ContentfulService.query<GetTalksStatsQuery>({
-  query: GetTalksStatsDocument,
-});
-
-const getFeaturedTalks = ContentfulService.query<GetFeaturedTalksQuery>({
-  query: GetFeaturedTalksDocument,
-});
-
-const getActiveTalks = ContentfulService.query<GetFeaturedTalksQuery>({
-  query: GetActiveTalksDocument,
-});
-
-const getAllTalks = ContentfulService.query<GetAllTalksQuery>({
-  query: GetAllTalksDocument,
-  variables: {
-    limit: 0,
-  },
-});
-
-/*~
  * NEXTJS
  */
 
+const talksServiceInstance = TalksContentService.getInstance();
+
 export async function getStaticProps() {
-  // Numbers
-  const [talksStatsDoc, featuredTalksDoc, activeTalksDoc, allTalksDoc] =
-    await Promise.all([
-      getTalksStats,
-      getFeaturedTalks,
-      getActiveTalks,
-      getAllTalks,
-    ]);
+  const [talksStats, featuredTalks, activeTalks, allTalks] = await Promise.all([
+    talksServiceInstance.getStats(),
+    talksServiceInstance.getFeatured(),
+    talksServiceInstance.getActive(),
+    talksServiceInstance.getAll(),
+  ]);
 
-  const talksStats = talksStatsDocTransformer(talksStatsDoc.data);
-  const featuredTalks = featuredTalksDocTransformer(featuredTalksDoc.data);
-  const activeTalks = activeTalksDocTransformer(activeTalksDoc.data);
-  const allTalks = allTalksDocTransformer(allTalksDoc.data);
-
-  // Final props
   return {
     props: { talksStats, featuredTalks, activeTalks, allTalks },
   };
@@ -182,7 +65,7 @@ const TalksPage: NextPage<Props> = (props) => {
         heading="Talks"
         subHeading={
           <SeachBar
-            label={`Search topics, events (e.g. "React Summit") and places (e.g. "Spain")`}
+            label={`Search topics, events and places`}
             onChange={onChange}
           />
         }

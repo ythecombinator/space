@@ -1,21 +1,9 @@
-import { Document as ContentfulDocument } from '@contentful/rich-text-types';
-import {
-  GetAllTalkSlugsDocument,
-  GetAllTalkSlugsQuery,
-  GetTalkDocument,
-  GetTalkQuery,
-  City,
-  Session,
-} from 'graphql/schema';
 import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next';
 import { ParsedUrlQuery } from 'querystring';
-import { DeepNonNullable } from 'utility-types';
 
 import { siteMetadata } from 'config/constants';
 
-import ContentfulService from 'services/contentful';
-
-import { formatDate } from 'utils/date';
+import TalksContentService from 'services/talks-content-service';
 
 import PageSEO from 'components/shared/seo-page';
 
@@ -35,76 +23,29 @@ interface Params extends ParsedUrlQuery {
 export type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 /*~
- * UTILS
- */
-
-const locationTransformer = (city: City) =>
-  `${city.name}, ${city.country?.name} ${city.country?.flag} `;
-
-const sessionTransformer = (session: DeepNonNullable<Session>) => ({
-  id: session.sys.id,
-  eventName: session.event?.name,
-  eventLocation: locationTransformer(session.event?.city),
-  eventStartingDate: formatDate(session.event?.startingDate),
-  eventEndingDate: formatDate(session.event?.endingDate),
-  sessionAudience: formatAudience(session.audience),
-  sessionLanguage: formatLanguage(session.language),
-  sessionOnline: session.online,
-  sessionSlides: session.slides,
-  sessionRecording: session.recording,
-});
-
-export const talkDocumentTransformer = (result: GetTalkQuery) => {
-  const talk = result.talkCollection?.items[0];
-  const sessions = talk?.sessionsCollection?.items as Array<
-    DeepNonNullable<Session>
-  >;
-
-  return {
-    title: talk?.title,
-    abstract: talk?.abstract?.json as ContentfulDocument,
-    sessions: sessions.map(sessionTransformer),
-  };
-};
-
-export const formatAudience = (data: Session['audience']) =>
-  data ? `Est. ${data} people audience` : 'No audience data';
-
-export const formatLanguage = (data: Session['language']) =>
-  `Presented in ${data?.language}`;
-
-/*~
  * NEXTJS
  */
 
-export async function getStaticPaths() {
-  const { data: talkSlugsDocument } =
-    await ContentfulService.query<GetAllTalkSlugsQuery>({
-      query: GetAllTalkSlugsDocument,
-    });
+const talksServiceInstance = TalksContentService.getInstance();
 
+export async function getStaticPaths() {
+  const paths = await talksServiceInstance.getAllSlugs();
   return {
-    paths: talkSlugsDocument.talkCollection?.items.map((item) => ({
-      params: { slug: item?.slug },
+    paths: paths.map((slug) => ({
+      params: {
+        slug,
+      },
     })),
     fallback: false,
   };
 }
 
 export async function getStaticProps(context: GetStaticPropsContext<Params>) {
-  const { data: talkBySlugDocument } =
-    await ContentfulService.query<GetTalkQuery>({
-      query: GetTalkDocument,
-      variables: {
-        slug: context.params?.slug,
-      },
-    });
-
-  const talkData = talkDocumentTransformer(talkBySlugDocument);
+  const id = context.params?.slug!;
+  const talkData = await talksServiceInstance.get(id);
 
   return {
     props: { ...talkData },
-    // revalidate: 86400,
   };
 }
 

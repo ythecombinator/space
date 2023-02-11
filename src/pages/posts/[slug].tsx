@@ -1,20 +1,14 @@
-import { allBlogs } from 'contentlayer/generated';
 import fs from 'fs';
 import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 
-import { Layouts, Routes } from 'config/constants';
+import { Layouts } from 'config/constants';
 
-import {
-  formatSlug,
-  getAllFilesFrontMatter,
-  getFileBySlug,
-  getFiles,
-} from 'services/mdx';
+import PostsContentService from 'services/posts-content-service';
 
 import { generateRSS } from 'utils/rss';
 
-import { MDXLayoutRenderer } from 'components/shared/mdx-components';
+import MDXLayoutRenderer from 'components/shared/mdx-components';
 
 /*~
  * TYPES
@@ -30,12 +24,14 @@ export type Props = InferGetStaticPropsType<typeof getStaticProps>;
  * NEXTJS
  */
 
+const postsServiceInstance = PostsContentService.getInstance();
+
 export async function getStaticPaths() {
-  const posts = getFiles(Routes.posts);
+  const paths = postsServiceInstance.getAllSlugs();
   return {
-    paths: posts.map((p) => ({
+    paths: paths.map((slug) => ({
       params: {
-        slug: formatSlug(p),
+        slug,
       },
     })),
     fallback: false,
@@ -43,12 +39,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context: GetStaticPropsContext<Params>) {
-  const allPosts = await getAllFilesFrontMatter(Routes.posts);
   const slug = context.params?.slug!;
 
-  const post = allBlogs.find((p) => {
-    return p.slug === slug;
-  });
+  const post = postsServiceInstance.get(slug);
+  const allPosts = postsServiceInstance.getAll();
 
   // RSS
   if (allPosts.length > 0) {
