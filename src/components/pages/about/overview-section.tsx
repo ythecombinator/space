@@ -4,7 +4,6 @@ import { FaArrowRight, FaLaptopCode } from 'react-icons/fa';
 import { GiCardRandom, GiTakeMyMoney, GiBattleGear } from 'react-icons/gi';
 
 import ButtonLink from 'components/shared/button-link';
-import Link from 'components/shared/link';
 import SectionContainer from 'components/shared/section-container';
 import Typography from 'components/shared/typography';
 

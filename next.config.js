@@ -51,6 +51,9 @@ const nextConfig = {
   images: {
     domains: ['images.ctfassets.net'],
   },
+  experimental: {
+    largePageDataBytes: 128 * 100000,
+  },
 };
 
 module.exports = withPlugins(

@@ -32,7 +32,7 @@ const PhotoHighlightsSectionItem: FunctionComponent<
     >
       <figure className="relative max-w-sm transition-all duration-300 cursor-pointer">
         <Image
-          alt="Next.js Conf photo"
+          alt={eventName}
           className="h-auto max-w-lg transition-all duration-300 rounded-lg filter grayscale blur-sm hover:blur-none"
           src={photoURL}
           width={720}

@@ -24,11 +24,7 @@ export type LinkProps = DetailedHTMLProps<
 
 const Link: FunctionComponent<LinkProps> = ({ href, ...rest }) => {
   if (isInternalLink(href)) {
-    return (
-      <NextLink href={href} passHref>
-        <a {...rest} />
-      </NextLink>
-    );
+    return <NextLink href={href} {...rest} />;
   }
 
   if (isAnchorLink(href)) {
