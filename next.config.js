@@ -1,41 +1,10 @@
-// const withMDX = require('@next/mdx')();
-
-// module.exports = withMDX({
-//   pageExtensions: ['js', 'mdx', 'tsx'],
-// });
-
-// module.exports = {
-//   webpack: (config) => {
-//     config.module.rules.push({
-//       test: /\.(graphql|gql)$/,
-//       exclude: /node_modules/,
-//       loader: 'graphql-tag/loader',
-//     });
-//     return config;
-//   },
-//   webpackDevMiddleware: (config) => {
-//     return config;
-//   },
-// };
-
 const { withContentlayer } = require('next-contentlayer');
-
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
-
-const withPlugins = require('next-compose-plugins');
-
-const withTM = require('next-transpile-modules')([
-  'react-spring',
-  'remark',
-  '@react-spring/web',
-]);
 
 const nextConfig = {
   compress: true,
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+  transpilePackages: ['react-spring', '@react-spring/web', 'remark'],
   webpack: (config) => {
     config.module.rules.push({
       test: /\.svg$/,
@@ -56,7 +25,17 @@ const nextConfig = {
   },
 };
 
-module.exports = withPlugins(
-  [[withContentlayer], [withBundleAnalyzer], [withTM]],
-  nextConfig
-);
+// TODO: Replace `next-compose-plugins`.
+
+// const withBundleAnalyzer = require('@next/bundle-analyzer')({
+//   enabled: process.env.ANALYZE === 'true',
+// });
+
+// const withPlugins = require('next-compose-plugins');
+
+// module.exports = withPlugins(
+//   [[withContentlayer], [withBundleAnalyzer]],
+//   nextConfig
+// );
+
+module.exports = withContentlayer(nextConfig);

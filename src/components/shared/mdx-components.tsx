@@ -1,6 +1,6 @@
 import { MDXContentProps } from 'mdx-bundler/client';
 import { useMDXComponent } from 'next-contentlayer/hooks';
-import Image from 'next/image';
+import Image from "next/image";
 import { FunctionComponent } from 'react';
 
 import { Layouts, LayoutsMap } from 'config/constants';

@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from "next/image";
 import Link from 'next/link';
 import { FunctionComponent } from 'react';
 
@@ -37,7 +37,10 @@ const PhotoHighlightsSectionItem: FunctionComponent<
           src={photoURL}
           width={720}
           height={480}
-        />
+          style={{
+            maxWidth: "100%",
+            height: "auto"
+          }} />
         <figcaption className="absolute px-4 bottom-6">
           <Typography.lead>{eventName}</Typography.lead>
         </figcaption>

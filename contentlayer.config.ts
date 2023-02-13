@@ -19,10 +19,10 @@ import remarkFootnotes from 'remark-footnotes';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 
-import remarkCodeTitles from 'utils/remark/remark-code-title';
-import remarkExtractFrontmatter from 'utils/remark/remark-extract-frontmatter';
-import remarkImgToJsx from 'utils/remark/remark-img-to-jsx';
-import { extractTocHeadings } from 'utils/remark/remark-toc-headings';
+import remarkCodeTitles from './src/utils/remark/remark-code-title';
+import remarkExtractFrontmatter from './src/utils/remark/remark-extract-frontmatter';
+import remarkImgToJsx from './src/utils/remark/remark-img-to-jsx';
+import { extractTocHeadings } from './src/utils/remark/remark-toc-headings';
 
 const root = process.cwd();
 
@@ -89,7 +89,7 @@ export default makeSource({
     ],
     rehypePlugins: [
       rehypeAccessibleEmojis,
-      rehypePrettyCode,
+      // rehypePrettyCode,
       rehypeSlug,
       rehypeAutolinkHeadings,
       rehypeKatex,
