@@ -13,7 +13,7 @@ import Typography from 'components/shared/typography';
 
 const OverviewSection: FunctionComponent = () => {
   return (
-    <SectionContainer>
+    <SectionContainer className="prose">
       <Typography.p>
         Hey, I'm Matheus—but most folks know me as ythecombinator online.
       </Typography.p>

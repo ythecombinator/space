@@ -22,7 +22,7 @@ const OverviewSection: FunctionComponent<OverviewSectionProps> = (props) => {
   const { citiesTotal, countriesTotal, talksTotal, eventsTotal } = props;
 
   return (
-    <SectionContainer>
+    <SectionContainer className="prose">
       <Typography.p>
         I've been speaking and learning in public since 2015, mostly about web
         performance, JavaScript/TypeScript, React, and their ecosystem. Other

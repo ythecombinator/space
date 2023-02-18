@@ -15,7 +15,7 @@ export type OverviewSectionProps = {};
 
 const OverviewSection: FunctionComponent<OverviewSectionProps> = (props) => {
   return (
-    <SectionContainer>
+    <SectionContainer className="prose">
       <Typography.p>
         I'm a Sr. Front-End Engineer at Medallia, building their surveys
         platform and helping them shape the customer experience market with

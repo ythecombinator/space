@@ -14,7 +14,7 @@ const P: FunctionComponent<HTMLAttributes<HTMLParagraphElement>> = ({
   return (
     <p
       className={classNames(
-        'text-lg leading-7 text-gray-500 my-2 dark:text-gray-400',
+        'leading-7 text-gray-500 my-2 dark:text-gray-400',
         className
       )}
       {...props}
