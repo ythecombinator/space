@@ -23,7 +23,7 @@ const EventsSection: FunctionComponent<EventsSectionProps> = (props) => {
   const { items } = props;
 
   return (
-    <SectionContainer className="prose">
+    <SectionContainer>
       <SectionHeading title="️Presentations" />
       <ul className="grid grid-cols-1 gap-10 py-8 dark:border-gray-700 md:grid-cols-2">
         {items.map((item) => {

@@ -1,10 +1,24 @@
-import { allPosts } from 'contentlayer/generated';
+import {
+  allBlogEntries,
+  BlogEntry as RawBlogEntry,
+} from 'contentlayer/generated';
 
+import ContentlayerService from 'services/contentlayer-service';
+
+import { CoreContent } from 'utils/contentlayer';
 import { toIndexableCollection } from 'utils/search';
 
-export type { Post } from 'contentlayer/generated';
+/*~
+ * TYPES
+ */
 
-export default class PostsContentService {
+export type BlogEntry = CoreContent<RawBlogEntry>;
+
+/*~
+ * SERVICE
+ */
+
+export default class PostsContentService extends ContentlayerService<BlogEntry> {
   private static instance: PostsContentService;
 
   static getInstance() {
@@ -22,13 +36,9 @@ export default class PostsContentService {
   }
 
   public getAll() {
-    return allPosts.map((post) => ({
+    return allBlogEntries.map((post) => ({
       ...post,
       _tags: toIndexableCollection(post.tags),
     }));
-  }
-
-  public getAllSlugs() {
-    return allPosts.map((post) => post.slug);
   }
 }

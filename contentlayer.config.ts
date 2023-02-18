@@ -11,7 +11,6 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeCitation from 'rehype-citation';
 import rehypeKatex from 'rehype-katex';
 import rehypePresetMinify from 'rehype-preset-minify';
-import rehypePrettyCode from 'rehype-pretty-code';
 import rehypePrismPlus from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
 // Remark packages
@@ -22,7 +21,6 @@ import remarkMath from 'remark-math';
 import remarkCodeTitles from './src/utils/remark/remark-code-title';
 import remarkExtractFrontmatter from './src/utils/remark/remark-extract-frontmatter';
 import remarkImgToJsx from './src/utils/remark/remark-img-to-jsx';
-import { extractTocHeadings } from './src/utils/remark/remark-toc-headings';
 
 const root = process.cwd();
 
@@ -38,33 +36,31 @@ const computedFields: ComputedFields = {
       return doc._raw.flattenedPath.replace(/^.+?(\/)/, '');
     },
   },
-  toc: { type: 'string', resolve: (doc) => extractTocHeadings(doc.body.raw) },
 };
 
 /*~
  * MODELS
  */
 
-export const Post = defineDocumentType(() => ({
-  name: 'Post',
-  filePathPattern: 'posts/**/*.md',
+export const BlogEntry = defineDocumentType(() => ({
+  name: 'BlogEntry',
+  filePathPattern: 'blog/**/*.md',
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
     date: { type: 'date', required: true },
-    tags: { type: 'list', of: { type: 'string' } },
+    summary: { type: 'string', required: true },
+    tags: { type: 'list', of: { type: 'string' }, required: true },
     lastmod: { type: 'date' },
-    summary: { type: 'string' },
     images: { type: 'list', of: { type: 'string' } },
-    layout: { type: 'string' },
     canonicalUrl: { type: 'string' },
   },
   computedFields,
 }));
 
-export const About = defineDocumentType(() => ({
-  name: 'About',
-  filePathPattern: 'about/**/*.md',
+export const BiographyEntry = defineDocumentType(() => ({
+  name: 'BiographyEntry',
+  filePathPattern: 'biography/**/*.md',
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
@@ -78,7 +74,7 @@ export const About = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: 'src/content',
-  documentTypes: [Post, About],
+  documentTypes: [BlogEntry, BiographyEntry],
   mdx: {
     cwd: process.cwd(),
     remarkPlugins: [

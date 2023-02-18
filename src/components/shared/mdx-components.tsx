@@ -1,15 +1,17 @@
 import { MDXContentProps } from 'mdx-bundler/client';
 import { useMDXComponent } from 'next-contentlayer/hooks';
-import Image from "next/image";
+import Image from 'next/image';
 import { FunctionComponent } from 'react';
 
 import { Layouts, LayoutsMap } from 'config/constants';
+
+import { BiographyEntry } from 'services/biography-content-service';
+import { BlogEntry } from 'services/posts-content-service';
 
 import { coreContent } from 'utils/contentlayer';
 
 import Link from 'components/shared/link';
 import Pre from 'components/shared/pre';
-import TOCInline from 'components/shared/toc-inline';
 
 /*~
  * TYPES
@@ -17,7 +19,7 @@ import TOCInline from 'components/shared/toc-inline';
 
 interface MDXLayout {
   layout: Layouts;
-  content: Blog | Authors;
+  content: BiographyEntry | BlogEntry;
   [key: string]: unknown;
 }
 
@@ -36,7 +38,6 @@ const Wrapper: FunctionComponent<MDXLayout> = ({
 
 const MDXComponents: MDXContentProps['components'] = {
   Image,
-  TOCInline,
   a: Link,
   pre: Pre,
   wrapper: Wrapper,

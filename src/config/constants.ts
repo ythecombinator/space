@@ -9,9 +9,9 @@ import {
 import { IconType } from 'react-icons/lib';
 import { ExternalLink } from 'types/link';
 
-import LayoutAbout from 'components/layouts/layout-about';
+import LayoutBiographyEntry from 'components/layouts/layout-biography-entry';
+import LayoutBlogEntry from 'components/layouts/layout-blog-entry';
 import LayoutPage from 'components/layouts/layout-page';
-import LayoutPost from 'components/layouts/layout-post';
 
 export const siteMetadata = {
   title: 'Matheus Albuquerque',
@@ -75,15 +75,15 @@ export const headerNavigationLinks = [
 ];
 
 export enum Layouts {
-  post = 'layout-post',
   page = 'layout-page',
-  about = 'layout-about',
+  blog = 'layout-blog-entry',
+  biography = 'layout-biography-entry',
 }
 
 export const LayoutsMap: Record<Layouts, FunctionComponent<any>> = {
-  'layout-about': LayoutAbout,
+  'layout-biography-entry': LayoutBiographyEntry,
   'layout-page': LayoutPage,
-  'layout-post': LayoutPost,
+  'layout-blog-entry': LayoutBlogEntry,
 };
 
 export enum SourcePath {

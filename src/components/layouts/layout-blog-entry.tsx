@@ -3,9 +3,8 @@ import { FunctionComponent } from 'react';
 import { Routes } from 'config/constants';
 import { siteMetadata } from 'config/constants';
 
-import { Blog } from 'services/posts-content-service';
+import { BlogEntry } from 'services/posts-content-service';
 
-import { CoreContent } from 'utils/contentlayer';
 import { formatDate } from 'utils/date';
 import { discussOnTwitter } from 'utils/social';
 
@@ -18,15 +17,15 @@ import BlogSEO from 'components/shared/seo-blog';
  * TYPES
  */
 
-interface PostLayoutProps {
-  content: CoreContent<Blog>;
+interface BlogEntryLayoutProps {
+  content: BlogEntry;
 }
 
 /*~
  * LAYOUT
  */
 
-const PostLayout: FunctionComponent<PostLayoutProps> = ({
+const BlogEntryLayout: FunctionComponent<BlogEntryLayoutProps> = ({
   content,
   children,
 }) => {
@@ -84,4 +83,4 @@ const PostLayout: FunctionComponent<PostLayoutProps> = ({
   );
 };
 
-export default PostLayout;
+export default BlogEntryLayout;

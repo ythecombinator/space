@@ -58,9 +58,7 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
  */
 
 const PostPage: NextPage<Props> = ({ post }) => {
-  return (
-    <MDXLayoutRenderer layout={Layouts.post} toc={post.toc} content={post} />
-  );
+  return <MDXLayoutRenderer layout={Layouts.blog} content={post} />;
 };
 
 export default PostPage;

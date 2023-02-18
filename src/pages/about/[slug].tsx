@@ -4,8 +4,7 @@ import { ParsedUrlQuery } from 'querystring';
 
 import { Layouts } from 'config/constants';
 
-import AboutContentService from 'services/about-content-service';
-import AboutsContentService from 'services/posts-content-service';
+import BiographyContentService from 'services/biography-content-service';
 
 import { generateRSS } from 'utils/rss';
 
@@ -25,10 +24,10 @@ export type Props = InferGetStaticPropsType<typeof getStaticProps>;
  * NEXTJS
  */
 
-const aboutServiceInstance = AboutContentService.getInstance();
+const biographyServiceInstance = BiographyContentService.getInstance();
 
 export async function getStaticPaths() {
-  const paths = aboutServiceInstance.getAllSlugs();
+  const paths = biographyServiceInstance.getAllSlugs();
   return {
     paths: paths.map((slug) => ({
       params: {
@@ -41,7 +40,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context: GetStaticPropsContext<Params>) {
   const slug = context.params?.slug!;
-  const content = aboutServiceInstance.get(slug);
+  const content = biographyServiceInstance.get(slug);
   return { props: { content } };
 }
 
@@ -50,7 +49,7 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
  */
 
 const AboutPage: NextPage<Props> = ({ content }) => {
-  return <MDXLayoutRenderer layout={Layouts.about} content={content} />;
+  return <MDXLayoutRenderer layout={Layouts.biography} content={content} />;
 };
 
 export default AboutPage;

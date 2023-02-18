@@ -1,5 +1,6 @@
-import { About } from 'contentlayer/generated';
 import { FunctionComponent } from 'react';
+
+import { BiographyEntry } from 'services/biography-content-service';
 
 import PageTitle from 'components/shared/page-title';
 import SectionCover from 'components/shared/section-cover';
@@ -9,15 +10,15 @@ import PageSEO from 'components/shared/seo-page';
  * TYPES
  */
 
-interface AboutLayoutProps {
-  content: About;
+interface BiographyEntryLayoutProps {
+  content: BiographyEntry;
 }
 
 /*~
  * LAYOUT
  */
 
-const AboutLayout: FunctionComponent<AboutLayoutProps> = ({
+const BiographyEntryLayout: FunctionComponent<BiographyEntryLayoutProps> = ({
   children,
   content,
 }) => {
@@ -26,7 +27,10 @@ const AboutLayout: FunctionComponent<AboutLayoutProps> = ({
 
   return (
     <>
-      <PageSEO title={`About - ${name}`} description={`About me - ${name}`} />
+      <PageSEO
+        title={`Biography - ${name}`}
+        description={`Biography me - ${name}`}
+      />
       <div className="mt-6 px-2 sm:px-0">
         <div className="space-y-2 pt-6 pb-8 md:space-y-5">
           <PageTitle>{title}</PageTitle>
@@ -42,4 +46,4 @@ const AboutLayout: FunctionComponent<AboutLayoutProps> = ({
   );
 };
 
-export default AboutLayout;
+export default BiographyEntryLayout;
