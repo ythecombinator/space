@@ -7,11 +7,17 @@ import {
   QueryOptions,
 } from '@apollo/client';
 
-const CONTENTFUL_ENDPOINT = `https://graphql.contentful.com/content/v1/spaces/49ay1wkx3zpm`;
+/*~
+ * CONFIG
+ */
 
 const CONTENTFUL_HEADERS = {
-  Authorization: `Bearer i9MdcylsuzLkgf-7WLpi_moE0uva2HeZXtPti-1bOoM`,
+  Authorization: `Bearer ${process.env.CONTENTFUL_TOKEN}`,
 };
+
+/*~
+ * SERVICE
+ */
 
 export default class ContentfulService {
   private static instance: ContentfulService;
@@ -28,7 +34,7 @@ export default class ContentfulService {
   static getInstance() {
     if (!this.instance) {
       this.instance = new ContentfulService(
-        CONTENTFUL_ENDPOINT,
+        process.env.CONTENTFUL_ENDPOINT,
         CONTENTFUL_HEADERS
       );
     }
