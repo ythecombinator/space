@@ -55,4 +55,4 @@ const run = promisify(exec);
 //   }
 // };
 
-codegenGradients();
+// codegenGradients();

@@ -15,11 +15,11 @@ export type OverviewSectionProps = {};
 
 const OverviewSection: FunctionComponent<
   PropsWithChildren<OverviewSectionProps>
-> = (props) => {
+> = () => {
   return (
     <SectionContainer className="prose">
       <Typography.p>
-        I'm a Sr. Front-End Engineer at Medallia, building their surveys
+        {`I'm`} a Sr. Front-End Engineer at Medallia, building their surveys
         platform and helping them shape the customer experience market with
         React.
       </Typography.p>
@@ -28,8 +28,8 @@ const OverviewSection: FunctionComponent<
         platform for people to learn different programming skills.
       </Typography.p>
       <Typography.p>
-        Other than this, I'm casually speaking, writing, traveling & advocating
-        for craft brewing.
+        Other than this, {`I'm`} casually speaking, writing, traveling &
+        advocating for craft brewing.
       </Typography.p>
       <Typography.p>
         Feel free to reach me out on social networks, Whereby, or schedule

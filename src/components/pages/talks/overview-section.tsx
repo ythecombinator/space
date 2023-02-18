@@ -26,12 +26,13 @@ const OverviewSection: FunctionComponent<
   return (
     <SectionContainer className="prose">
       <Typography.p>
-        I've been speaking and learning in public since 2015, mostly about web
-        performance, JavaScript/TypeScript, React, and their ecosystem. Other
-        topics also include programming languages design and iOS engineering.
+        {`I've`} been speaking and learning in public since 2015, mostly about
+        web performance, JavaScript/TypeScript, React, and their ecosystem.
+        Other topics also include programming languages design and iOS
+        engineering.
       </Typography.p>
       <Typography.p>
-        In total, I've presented <b>{talksTotal}</b> different sessions in{' '}
+        In total, {`I've`} presented <b>{talksTotal}</b> different sessions in{' '}
         <b>{eventsTotal}</b> events across <b>{citiesTotal}</b> cities in{' '}
         <b>{countriesTotal}</b> different countries.
       </Typography.p>

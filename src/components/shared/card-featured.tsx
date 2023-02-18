@@ -59,7 +59,7 @@ const CardFeatured: FunctionComponent<PropsWithChildren<CardFeaturedProps>> = ({
             style={{ transform: props.xys.to(trans) }}
             onMouseLeave={() => set([0, 0, 1])}
             onMouseMove={(e) => {
-              const rect = ref.current?.getBoundingClientRect();
+              const rect = ref.current?.getBoundingClientRect()!;
               set(calc(e.clientX, e.clientY, rect));
             }}
             className={`will-change-transform overflow-hidden relative rounded-md bg-violet-30 dark:bg-violet-950

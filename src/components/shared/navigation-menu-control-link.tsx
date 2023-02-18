@@ -25,4 +25,6 @@ export const NavigationMenuControlLink = forwardRef<
   </NavigationMenuPrimitive.Link>
 ));
 
+NavigationMenuControlLink.displayName = 'NavigationMenuControlLink';
+
 export default NavigationMenuControlLink;

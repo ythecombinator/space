@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import { FunctionComponent, PropsWithChildren } from 'react';
-import { AboutFrontMatter } from 'types/front-matter';
-import { PostFrontMatter } from 'types/front-matter';
 
 import { siteMetadata } from 'config/constants';
+
+import { BlogEntry } from 'services/posts-content-service';
 
 import CommonSEO from 'components/shared/seo-common';
 
@@ -11,8 +11,7 @@ import CommonSEO from 'components/shared/seo-common';
  * TYPES
  */
 
-export interface BlogSEOProps extends PostFrontMatter {
-  authorDetails?: AboutFrontMatter[];
+export interface BlogSEOProps extends BlogEntry {
   url: string;
 }
 
@@ -21,7 +20,6 @@ export interface BlogSEOProps extends PostFrontMatter {
  */
 
 const BlogSEO: FunctionComponent<PropsWithChildren<BlogSEOProps>> = ({
-  authorDetails,
   title,
   summary,
   date,
@@ -46,20 +44,10 @@ const BlogSEO: FunctionComponent<PropsWithChildren<BlogSEOProps>> = ({
     };
   });
 
-  let authorList;
-  if (authorDetails) {
-    authorList = authorDetails.map((author) => {
-      return {
-        '@type': 'Person',
-        name: author.name,
-      };
-    });
-  } else {
-    authorList = {
-      '@type': 'Person',
-      name: siteMetadata.author,
-    };
-  }
+  const authorList = {
+    '@type': 'Person',
+    name: siteMetadata.author,
+  };
 
   const structuredData = {
     '@context': 'https://schema.org',

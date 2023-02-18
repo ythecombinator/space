@@ -40,11 +40,11 @@ export const useLyraSearch = <T extends {}>(
   documents: Array<T>,
   searchTerm: string
 ) => {
+  const searcher = useMemo(() => new Searcher(schema, documents), []);
+
   if (searchTerm === '') {
     return documents;
   }
-
-  const searcher = useMemo(() => new Searcher(schema, documents), []);
 
   const results = suspend(async () => {
     await searcher.init();

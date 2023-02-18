@@ -42,14 +42,14 @@ const EventsSectionItem: FunctionComponent<
   return (
     <CardOutlined href={`/${Routes.talks}`} heading={eventName}>
       <div className="flex-col">
-        <div className="capsize flex items-center text-gray-800 dark:text-gray-200">
+        <div className="flex items-center text-gray-800 dark:text-gray-200">
           <div className="mr-1 flex h-11 items-center justify-center bg-transparent text-lg">
             <FaMapMarkedAlt size={20} />
           </div>
           {eventLocation}
         </div>
         {sessionSlides && (
-          <div className="capsize flex items-center text-gray-800 dark:text-gray-200">
+          <div className="flex items-center text-gray-800 dark:text-gray-200">
             <div className="mr-1 flex h-11 items-center justify-center bg-transparent text-lg">
               <FaSpeakerDeck size={20} />
             </div>
@@ -59,7 +59,7 @@ const EventsSectionItem: FunctionComponent<
           </div>
         )}
         {sessionRecording && (
-          <div className="capsize flex items-center text-gray-800 dark:text-gray-200">
+          <div className="flex items-center text-gray-800 dark:text-gray-200">
             <div className="mr-1 flex h-11 items-center justify-center bg-transparent text-lg">
               <FaYoutube size={20} />
             </div>

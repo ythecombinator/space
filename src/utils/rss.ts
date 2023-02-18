@@ -1,11 +1,11 @@
-import { PostFrontMatter } from 'types/front-matter';
-
 import { Routes } from 'config/constants';
 import { siteMetadata } from 'config/constants';
 
+import { BlogEntry } from 'services/posts-content-service';
+
 import { escapeHTML } from 'utils/html';
 
-const generateRssItem = (post: PostFrontMatter) => `
+const generateRssItem = (post: BlogEntry) => `
   <item>
     <guid>${siteMetadata.siteUrl}/${Routes.posts}/${post.slug}</guid>
     <title>${escapeHTML(post.title)}</title>
@@ -17,7 +17,7 @@ const generateRssItem = (post: PostFrontMatter) => `
   </item>
 `;
 
-export const generateRSS = (posts: PostFrontMatter[], page = 'feed.xml') => `
+export const generateRSS = (posts: Array<BlogEntry>, page = 'feed.xml') => `
   <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
       <title>${escapeHTML(siteMetadata.title)}</title>

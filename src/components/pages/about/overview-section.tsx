@@ -16,16 +16,16 @@ const OverviewSection: FunctionComponent<PropsWithChildren<{}>> = () => {
     <SectionContainer className="prose">
       <SectionCover alt="This is me!" src="/img/about/intro.jpg" />
       <Typography.p>
-        Hey, I'm Matheus—but most folks know me as ythecombinator online.
+        Hey, {`I'm`} Matheus—but most folks know me as ythecombinator online.
       </Typography.p>
       <Typography.p>
-        I love building for the web, and I'm an experienced software engineer
-        and Google Developer Expert from Fortaleza, Brazil. I've worked as a
-        software engineer and architect for most of the past decade, in product
-        and consultancy companies, taking the best from both worlds.
+        I love building for the web, and {`I'm`} an experienced software
+        engineer and Google Developer Expert from Fortaleza, Brazil. {`I've`}
+        worked as a software engineer and architect for most of the past decade,
+        in product and consultancy companies, taking the best from both worlds.
       </Typography.p>
       <Typography.p>
-        I'm currently based in Prague, Czech Republic, working as a Senior
+        {`I'm`} currently based in Prague, Czech Republic, working as a Senior
         Software Engineer at Medallia, where I help leading the development of
         their Surveys, while writing technical articles and speaking to many
         international conferences. My current focus is on educating advanced
@@ -34,8 +34,8 @@ const OverviewSection: FunctionComponent<PropsWithChildren<{}>> = () => {
       </Typography.p>
       <Typography.p>
         Outside Medallia, I volunteer as Mentor at TechLabs Berlin, teaching
-        front-end development, and I'm also part of the program committee of the
-        US chapter of the React Summit conference.
+        front-end development, and {`I'm`} also part of the program committee of
+        the US chapter of the React Summit conference.
       </Typography.p>
       <Typography.p>
         Curious to know further details about the stuff I mentioned above? I

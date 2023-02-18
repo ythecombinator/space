@@ -1,7 +1,8 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
-import { PostFrontMatter } from 'types/front-matter';
 
 import { Routes } from 'config/constants';
+
+import { BlogEntry } from 'services/posts-content-service';
 
 import { formatDate } from 'utils/date';
 
@@ -13,7 +14,7 @@ import Tag from 'components/shared/tag';
  */
 
 export type AllPostsSectionItemProps = Pick<
-  PostFrontMatter,
+  BlogEntry,
   'slug' | 'title' | 'date' | 'summary' | 'tags'
 >;
 
