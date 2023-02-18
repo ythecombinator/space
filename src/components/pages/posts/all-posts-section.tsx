@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { isEmpty } from 'utils/array';
 import { useLyraSearch } from 'utils/search';
@@ -38,10 +38,9 @@ const searchSchema = {
  * COMPONENT
  */
 
-const AllPostsSection: FunctionComponent<AllPostsSectionProps> = ({
-  items: baseItems,
-  searchTerm,
-}) => {
+const AllPostsSection: FunctionComponent<
+  PropsWithChildren<AllPostsSectionProps>
+> = ({ items: baseItems, searchTerm }) => {
   const items = useLyraSearch(searchSchema, baseItems, searchTerm);
 
   return (

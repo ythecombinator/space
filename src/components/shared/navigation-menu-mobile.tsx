@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from 'react';
+import { FunctionComponent, PropsWithChildren, useState } from 'react';
 
 import Link from 'components/shared/link';
 
@@ -14,9 +14,9 @@ interface NavigationMenuProps {
  * COMPONENT
  */
 
-const NavigationMenuMobile: FunctionComponent<NavigationMenuProps> = ({
-  items,
-}) => {
+const NavigationMenuMobile: FunctionComponent<
+  PropsWithChildren<NavigationMenuProps>
+> = ({ items }) => {
   const [navShow, setNavShow] = useState(false);
 
   const onToggleNav = () => {

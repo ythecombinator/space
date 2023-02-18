@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { siteMetadata } from 'config/constants';
 
@@ -11,7 +11,10 @@ import { PageSEOProps } from 'components/shared/seo-page';
  * COMPONENT
  */
 
-const TagSEO: FunctionComponent<PageSEOProps> = ({ title, description }) => {
+const TagSEO: FunctionComponent<PropsWithChildren<PageSEOProps>> = ({
+  title,
+  description,
+}) => {
   const ogImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner;
   const twImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner;
   const router = useRouter();

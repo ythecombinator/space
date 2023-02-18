@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 import { FaMapMarkedAlt, FaYoutube, FaSpeakerDeck } from 'react-icons/fa';
 
 import { Routes } from 'config/constants';
@@ -28,9 +28,9 @@ export type EventsSectionItemProps = {
  * COMPONENT
  */
 
-const EventsSectionItem: FunctionComponent<EventsSectionItemProps> = (
-  props
-) => {
+const EventsSectionItem: FunctionComponent<
+  PropsWithChildren<EventsSectionItemProps>
+> = (props) => {
   const {
     eventName,
     eventLocation,

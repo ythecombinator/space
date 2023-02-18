@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 import { PostFrontMatter } from 'types/front-matter';
 
 import { Routes } from 'config/constants';
@@ -21,9 +21,9 @@ export type AllPostsSectionItemProps = Pick<
  * COMPONENT
  */
 
-const AllPostsSectionItem: FunctionComponent<AllPostsSectionItemProps> = (
-  props
-) => {
+const AllPostsSectionItem: FunctionComponent<
+  PropsWithChildren<AllPostsSectionItemProps>
+> = (props) => {
   const { slug, date, title, summary, tags } = props;
 
   return (

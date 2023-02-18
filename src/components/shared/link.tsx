@@ -3,6 +3,7 @@ import {
   AnchorHTMLAttributes,
   DetailedHTMLProps,
   FunctionComponent,
+  PropsWithChildren,
 } from 'react';
 
 import { isAnchorLink, isInternalLink } from 'utils/link';
@@ -22,7 +23,10 @@ export type LinkProps = DetailedHTMLProps<
  * COMPONENT
  */
 
-const Link: FunctionComponent<LinkProps> = ({ href, ...rest }) => {
+const Link: FunctionComponent<PropsWithChildren<LinkProps>> = ({
+  href,
+  ...rest
+}) => {
   if (isInternalLink(href)) {
     return <NextLink href={href} {...rest} />;
   }

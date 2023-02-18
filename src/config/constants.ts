@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { ComponentType, FunctionComponent } from 'react';
 import {
   FaDev,
   FaGithub,
@@ -80,7 +80,7 @@ export enum Layouts {
   biography = 'layout-biography-entry',
 }
 
-export const LayoutsMap: Record<Layouts, FunctionComponent<any>> = {
+export const LayoutsMap: Record<Layouts, ComponentType<any>> = {
   'layout-biography-entry': LayoutBiographyEntry,
   'layout-page': LayoutPage,
   'layout-blog-entry': LayoutBlogEntry,

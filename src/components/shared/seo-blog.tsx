@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 import { AboutFrontMatter } from 'types/front-matter';
 import { PostFrontMatter } from 'types/front-matter';
 
@@ -20,7 +20,7 @@ export interface BlogSEOProps extends PostFrontMatter {
  * COMPONENT
  */
 
-const BlogSEO: FunctionComponent<BlogSEOProps> = ({
+const BlogSEO: FunctionComponent<PropsWithChildren<BlogSEOProps>> = ({
   authorDetails,
   title,
   summary,

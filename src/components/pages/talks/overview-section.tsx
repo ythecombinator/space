@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 
 import SectionContainer from 'components/shared/section-container';
 import Typography from 'components/shared/typography';
@@ -18,7 +18,9 @@ export type OverviewSectionProps = {
  * COMPONENT
  */
 
-const OverviewSection: FunctionComponent<OverviewSectionProps> = (props) => {
+const OverviewSection: FunctionComponent<
+  PropsWithChildren<OverviewSectionProps>
+> = (props) => {
   const { citiesTotal, countriesTotal, talksTotal, eventsTotal } = props;
 
   return (

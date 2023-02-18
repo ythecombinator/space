@@ -1,4 +1,4 @@
-import { FunctionComponent, useMemo } from 'react';
+import { FunctionComponent, PropsWithChildren, useMemo } from 'react';
 
 import SectionContainer from 'components/shared/section-container';
 import SectionHeading from 'components/shared/section-heading';
@@ -19,9 +19,9 @@ export type VideoHighlightsSectionProps = {
  * COMPONENT
  */
 
-const VideoHighlightsSection: FunctionComponent<VideoHighlightsSectionProps> = (
-  props
-) => {
+const VideoHighlightsSection: FunctionComponent<
+  PropsWithChildren<VideoHighlightsSectionProps>
+> = (props) => {
   const allItems = props.items;
   const items = useMemo(() => allItems.slice(0, 2), []);
 

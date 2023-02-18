@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { headerNavigationLinks } from 'config/constants';
 
@@ -13,7 +13,9 @@ import ThemeSwitch from 'components/shared/theme-switch';
  * COMPONENT
  */
 
-const LayoutWrapper: FunctionComponent = ({ children }) => {
+const LayoutWrapper: FunctionComponent<PropsWithChildren<{}>> = ({
+  children,
+}) => {
   return (
     <>
       <LayoutGradient />

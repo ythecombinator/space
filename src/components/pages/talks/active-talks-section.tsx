@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 
 import SectionContainer from 'components/shared/section-container';
 import SectionHeading from 'components/shared/section-heading';
@@ -19,9 +19,9 @@ export type ActiveTalksSectionProps = {
  * COMPONENT
  */
 
-const ActiveTalksSection: FunctionComponent<ActiveTalksSectionProps> = ({
-  items,
-}) => {
+const ActiveTalksSection: FunctionComponent<
+  PropsWithChildren<ActiveTalksSectionProps>
+> = ({ items }) => {
   return (
     <SectionContainer>
       <SectionHeading title="️‍🔥 Active Sessions" />

@@ -1,6 +1,6 @@
-import Image from "next/image";
+import Image from 'next/image';
 import Link from 'next/link';
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 
 import Typography from 'components/shared/typography';
 
@@ -19,7 +19,7 @@ export type PhotoHighlightsSectionItemProps = {
  */
 
 const PhotoHighlightsSectionItem: FunctionComponent<
-  PhotoHighlightsSectionItemProps
+  PropsWithChildren<PhotoHighlightsSectionItemProps>
 > = (props) => {
   const { photoURL, talkSlug, eventName } = props;
 
@@ -38,9 +38,10 @@ const PhotoHighlightsSectionItem: FunctionComponent<
           width={720}
           height={480}
           style={{
-            maxWidth: "100%",
-            height: "auto"
-          }} />
+            maxWidth: '100%',
+            height: 'auto',
+          }}
+        />
         <figcaption className="absolute px-4 bottom-6">
           <Typography.lead>{eventName}</Typography.lead>
         </figcaption>

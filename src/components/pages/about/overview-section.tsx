@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 import { FaLaptopCode } from 'react-icons/fa';
 import { GiCardRandom, GiTakeMyMoney, GiBattleGear } from 'react-icons/gi';
 
@@ -11,7 +11,7 @@ import Typography from 'components/shared/typography';
  * COMPONENT
  */
 
-const OverviewSection: FunctionComponent = () => {
+const OverviewSection: FunctionComponent<PropsWithChildren<{}>> = () => {
   return (
     <SectionContainer className="prose">
       <SectionCover alt="This is me!" src="/img/about/intro.jpg" />

@@ -1,11 +1,11 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, PropsWithChildren } from 'react';
 import { FunctionComponent } from 'react';
 
 /*~
  * COMPONENT
  */
 
-const Pre: FunctionComponent = ({ children }) => {
+const Pre: FunctionComponent<PropsWithChildren<{}>> = ({ children }) => {
   const textInput = useRef(null);
   const [hovered, setHovered] = useState(false);
   const [copied, setCopied] = useState(false);

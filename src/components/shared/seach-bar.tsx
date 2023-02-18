@@ -13,7 +13,10 @@ export type SeachBarProps = {
  * COMPONENT
  */
 
-const SeachBar: FunctionComponent<SeachBarProps> = ({ label, onChange }) => {
+const SeachBar: FunctionComponent<PropsWithChildren<SeachBarProps>> = ({
+  label,
+  onChange,
+}) => {
   return (
     <div className="relative">
       <input

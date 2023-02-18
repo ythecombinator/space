@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 import { FaMapMarkedAlt } from 'react-icons/fa';
 
 import { Routes } from 'config/constants';
@@ -20,9 +20,9 @@ export type ActiveTalksSectionItemProps = {
  * COMPONENT
  */
 
-const ActiveTalksSectionItem: FunctionComponent<ActiveTalksSectionItemProps> = (
-  props
-) => {
+const ActiveTalksSectionItem: FunctionComponent<
+  PropsWithChildren<ActiveTalksSectionItemProps>
+> = (props) => {
   const { talkTitle, talkSlug, sessions } = props;
 
   return (

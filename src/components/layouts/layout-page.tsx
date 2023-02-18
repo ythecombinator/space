@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 
 import PageTitle from 'components/shared/page-title';
 
@@ -15,7 +15,7 @@ interface PageLayoutProps {
  * LAYOUT
  */
 
-const PageLayout: FunctionComponent<PageLayoutProps> = ({
+const PageLayout: FunctionComponent<PropsWithChildren<PageLayoutProps>> = ({
   heading,
   subHeading,
   children,

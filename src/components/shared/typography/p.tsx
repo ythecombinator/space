@@ -1,4 +1,4 @@
-import { FunctionComponent, HTMLAttributes } from 'react';
+import { FunctionComponent, HTMLAttributes, PropsWithChildren } from 'react';
 
 import { classNames } from 'utils/styles';
 
@@ -6,11 +6,9 @@ import { classNames } from 'utils/styles';
  * COMPONENT
  */
 
-const P: FunctionComponent<HTMLAttributes<HTMLParagraphElement>> = ({
-  children,
-  className,
-  ...props
-}) => {
+const P: FunctionComponent<
+  PropsWithChildren<HTMLAttributes<HTMLParagraphElement>>
+> = ({ children, className, ...props }) => {
   return (
     <p
       className={classNames(

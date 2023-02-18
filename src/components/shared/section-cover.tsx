@@ -1,5 +1,5 @@
 import Image, { ImageProps } from 'next/image';
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 
 type SectionCoverProps = Pick<ImageProps, 'src' | 'alt'>;
 
@@ -7,10 +7,9 @@ type SectionCoverProps = Pick<ImageProps, 'src' | 'alt'>;
  * COMPONENT
  */
 
-export const SectionCover: FunctionComponent<SectionCoverProps> = ({
-  src,
-  alt,
-}) => {
+export const SectionCover: FunctionComponent<
+  PropsWithChildren<SectionCoverProps>
+> = ({ src, alt }) => {
   return (
     <Image
       alt={alt}

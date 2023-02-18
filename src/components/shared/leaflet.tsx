@@ -5,6 +5,7 @@ import {
   Dispatch,
   SetStateAction,
   FunctionComponent,
+  PropsWithChildren,
 } from 'react';
 
 /*~
@@ -19,7 +20,10 @@ export type LeafletProps = {
  * COMPONENT
  */
 
-const Leaflet: FunctionComponent<LeafletProps> = ({ setShow, children }) => {
+const Leaflet: FunctionComponent<PropsWithChildren<LeafletProps>> = ({
+  setShow,
+  children,
+}) => {
   const leafletRef = useRef<HTMLDivElement>(null);
   const controls = useAnimation();
   const transitionProps = { type: 'spring', stiffness: 500, damping: 30 };

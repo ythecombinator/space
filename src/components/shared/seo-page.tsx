@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { siteMetadata } from 'config/constants';
 
@@ -17,7 +17,10 @@ export interface PageSEOProps {
  * COMPONENT
  */
 
-const PageSEO: FunctionComponent<PageSEOProps> = ({ title, description }) => {
+const PageSEO: FunctionComponent<PropsWithChildren<PageSEOProps>> = ({
+  title,
+  description,
+}) => {
   const ogImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner;
   const twImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner;
   return (

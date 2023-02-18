@@ -1,4 +1,4 @@
-import { FunctionComponent, useMemo } from 'react';
+import { FunctionComponent, PropsWithChildren, useMemo } from 'react';
 
 import SectionContainer from 'components/shared/section-container';
 
@@ -17,7 +17,7 @@ export type AllPostsSectionSkeletonProps = {
  */
 
 const AllPostsSectionSkeleton: FunctionComponent<
-  AllPostsSectionSkeletonProps
+  PropsWithChildren<AllPostsSectionSkeletonProps>
 > = ({ items }) => {
   const itemSkeletons = useMemo(() => Array.from(Array(items).keys()), [items]);
 

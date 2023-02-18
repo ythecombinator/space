@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { isEmpty, reversedIndexOf } from 'utils/array';
 import { useLyraSearch } from 'utils/search';
@@ -46,10 +46,9 @@ const searchSchema = {
  * COMPONENT
  */
 
-const AllTalksSection: FunctionComponent<AllTalksSectionProps> = ({
-  items: baseItems,
-  searchTerm,
-}) => {
+const AllTalksSection: FunctionComponent<
+  PropsWithChildren<AllTalksSectionProps>
+> = ({ items: baseItems, searchTerm }) => {
   const items = useLyraSearch(searchSchema, baseItems, searchTerm);
 
   return (

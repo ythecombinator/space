@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 
 import CardFeatured from 'components/shared/card-featured';
 
@@ -17,7 +17,7 @@ export type VideoHighlightsSectionItemProps = {
  */
 
 const VideoHighlightsSectionItem: FunctionComponent<
-  VideoHighlightsSectionItemProps
+  PropsWithChildren<VideoHighlightsSectionItemProps>
 > = (props) => {
   const { talkTitle, talkSlug, eventName } = props;
 

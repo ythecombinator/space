@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { toKebabCase } from 'utils/string';
 
@@ -16,7 +16,7 @@ export interface TagProps {
  * COMPONENT
  */
 
-const Tag: FunctionComponent<TagProps> = ({ text }) => {
+const Tag: FunctionComponent<PropsWithChildren<TagProps>> = ({ text }) => {
   return (
     <Link
       className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"

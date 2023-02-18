@@ -1,6 +1,6 @@
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 import cx from 'classnames';
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 
 import NavigationMenuControlLink from 'components/shared/navigation-menu-control-link';
 
@@ -16,9 +16,9 @@ interface NavigationMenuProps {
  * COMPONENT
  */
 
-export const NavigationMenu: FunctionComponent<NavigationMenuProps> = ({
-  items,
-}) => {
+export const NavigationMenu: FunctionComponent<
+  PropsWithChildren<NavigationMenuProps>
+> = ({ items }) => {
   return (
     <NavigationMenuPrimitive.Root className="relative">
       <NavigationMenuPrimitive.List className="flex flex-row p-2 space-x-2">

@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 
 import Typography from 'components/shared/typography';
 
@@ -6,7 +6,7 @@ import Typography from 'components/shared/typography';
  * COMPONENT
  */
 
-const PageTitle: FunctionComponent = ({ children }) => {
+const PageTitle: FunctionComponent<PropsWithChildren<{}>> = ({ children }) => {
   return <Typography.h1>{children}</Typography.h1>;
 };
 

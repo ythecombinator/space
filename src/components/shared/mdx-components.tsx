@@ -1,7 +1,7 @@
 import { MDXContentProps } from 'mdx-bundler/client';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import Image from 'next/image';
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { Layouts, LayoutsMap } from 'config/constants';
 
@@ -27,7 +27,7 @@ interface MDXLayout {
  * UTILS
  */
 
-const Wrapper: FunctionComponent<MDXLayout> = ({
+const Wrapper: FunctionComponent<PropsWithChildren<MDXLayout>> = ({
   layout,
   content,
   ...rest
@@ -47,7 +47,7 @@ const MDXComponents: MDXContentProps['components'] = {
  * COMPONENT
  */
 
-const MDXLayoutRenderer: FunctionComponent<MDXLayout> = ({
+const MDXLayoutRenderer: FunctionComponent<PropsWithChildren<MDXLayout>> = ({
   layout,
   content,
   ...rest

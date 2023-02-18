@@ -1,5 +1,5 @@
 import { useTheme } from 'next-themes';
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 import ContentLoader from 'react-content-loader';
 import colors from 'tailwindcss/colors';
 
@@ -7,7 +7,9 @@ import colors from 'tailwindcss/colors';
  * COMPONENT
  */
 
-const AllTalksSectionItemSkeleton: FunctionComponent = () => {
+const AllTalksSectionItemSkeleton: FunctionComponent<
+  PropsWithChildren<{}>
+> = () => {
   const { theme } = useTheme();
 
   return (

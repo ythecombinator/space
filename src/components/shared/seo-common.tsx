@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { siteMetadata } from 'config/constants';
 
@@ -26,7 +26,7 @@ interface CommonSEOProps {
  * COMPONENT
  */
 
-const CommonSEO: FunctionComponent<CommonSEOProps> = ({
+const CommonSEO: FunctionComponent<PropsWithChildren<CommonSEOProps>> = ({
   title,
   description,
   ogType,

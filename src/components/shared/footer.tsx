@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { Routes } from 'config/constants';
 import { siteMetadata } from 'config/constants';
@@ -11,7 +11,7 @@ import Typography from 'components/shared/typography';
  * COMPONENT
  */
 
-const Footer: FunctionComponent = () => {
+const Footer: FunctionComponent<PropsWithChildren<{}>> = () => {
   return (
     <footer className="flex flex-col justify-center items-start mx-auto w-full mb-8 mt-4">
       <LayoutGradient />

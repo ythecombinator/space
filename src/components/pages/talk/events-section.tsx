@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 
 import SectionContainer from 'components/shared/section-container';
 import SectionHeading from 'components/shared/section-heading';
@@ -19,7 +19,9 @@ export type EventsSectionProps = {
  * COMPONENT
  */
 
-const EventsSection: FunctionComponent<EventsSectionProps> = (props) => {
+const EventsSection: FunctionComponent<
+  PropsWithChildren<EventsSectionProps>
+> = (props) => {
   const { items } = props;
 
   return (

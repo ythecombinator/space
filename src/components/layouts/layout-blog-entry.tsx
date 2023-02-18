@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { Routes } from 'config/constants';
 import { siteMetadata } from 'config/constants';
@@ -25,10 +25,9 @@ interface BlogEntryLayoutProps {
  * LAYOUT
  */
 
-const BlogEntryLayout: FunctionComponent<BlogEntryLayoutProps> = ({
-  content,
-  children,
-}) => {
+const BlogEntryLayout: FunctionComponent<
+  PropsWithChildren<BlogEntryLayoutProps>
+> = ({ content, children }) => {
   const { date, title, slug, readingTime } = content;
   return (
     <>

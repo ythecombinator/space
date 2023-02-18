@@ -1,5 +1,10 @@
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
-import { FunctionComponent, ReactNode, useState } from 'react';
+import {
+  FunctionComponent,
+  PropsWithChildren,
+  ReactNode,
+  useState,
+} from 'react';
 
 import { useWindowSize } from 'utils/window';
 
@@ -18,7 +23,7 @@ export type TooltipProps = {
  * COMPONENT
  */
 
-const Tooltip: FunctionComponent<TooltipProps> = ({
+const Tooltip: FunctionComponent<PropsWithChildren<TooltipProps>> = ({
   children,
   content,
   fullWidth,

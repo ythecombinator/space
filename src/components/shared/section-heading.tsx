@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 
 import Typography from 'components/shared/typography';
 
@@ -14,9 +14,9 @@ interface SectionHeadingProps {
  * COMPONENT
  */
 
-export const SectionHeading: FunctionComponent<SectionHeadingProps> = ({
-  title,
-}) => {
+export const SectionHeading: FunctionComponent<
+  PropsWithChildren<SectionHeadingProps>
+> = ({ title }) => {
   return <Typography.h3>{title}</Typography.h3>;
 };
 

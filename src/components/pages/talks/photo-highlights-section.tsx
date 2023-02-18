@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { useLyraSearch } from 'utils/search';
 
@@ -22,7 +22,7 @@ export type PhotoHighlightsSectionProps = {
  */
 
 const PhotoHighlightsSection: FunctionComponent<
-  PhotoHighlightsSectionProps
+  PropsWithChildren<PhotoHighlightsSectionProps>
 > = ({ items }) => {
   return (
     <SectionContainer>

@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { BiographyEntry } from 'services/biography-content-service';
 
@@ -18,10 +18,9 @@ interface BiographyEntryLayoutProps {
  * LAYOUT
  */
 
-const BiographyEntryLayout: FunctionComponent<BiographyEntryLayoutProps> = ({
-  children,
-  content,
-}) => {
+const BiographyEntryLayout: FunctionComponent<
+  PropsWithChildren<BiographyEntryLayoutProps>
+> = ({ children, content }) => {
   const name = 'Matheus';
   const { title, coverImageUrl, coverImageAltText } = content;
 

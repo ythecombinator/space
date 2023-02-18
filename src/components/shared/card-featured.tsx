@@ -1,5 +1,5 @@
 import { useSpring, animated, config } from '@react-spring/web';
-import { useRef, useState } from 'react';
+import { FunctionComponent, PropsWithChildren, useRef, useState } from 'react';
 
 import Link from 'components/shared/link';
 import Typography from 'components/shared/typography';
@@ -33,7 +33,7 @@ const trans = (x: number, y: number, scale: number) =>
  * COMPONENT
  */
 
-const CardFeatured: React.FunctionComponent<CardFeaturedProps> = ({
+const CardFeatured: FunctionComponent<PropsWithChildren<CardFeaturedProps>> = ({
   title,
   description,
   href,
