@@ -15,7 +15,7 @@ import Tag from 'components/shared/tag';
 
 export type AllPostsSectionItemProps = Pick<
   BlogEntry,
-  'slug' | 'title' | 'date' | 'summary' | 'tags'
+  'slug' | 'title' | 'date' | 'summary' | 'tags' | 'language'
 >;
 
 /*~
@@ -25,7 +25,7 @@ export type AllPostsSectionItemProps = Pick<
 const AllPostsSectionItem: FunctionComponent<
   PropsWithChildren<AllPostsSectionItemProps>
 > = (props) => {
-  const { slug, date, title, summary, tags } = props;
+  const { slug, date, title, summary, language } = props;
 
   return (
     <li key={slug} className="py-4">
@@ -38,14 +38,15 @@ const AllPostsSectionItem: FunctionComponent<
             href={`/${Routes.posts}/${slug}`}
             className="text-gray-900 dark:text-gray-100"
           >
-            {title}
+            {language === 'pt' ? `🇧🇷 • ${title}` : `${title}`}
           </Link>
         </h3>
-        <div className="flex flex-wrap gap-3 my-2">
+        {/* TODO: Move this back once we have tags. */}
+        {/* <div className="flex flex-wrap gap-3 my-2">
           {tags.map((tag) => (
             <Tag key={tag} text={tag} />
           ))}
-        </div>
+        </div> */}
         <div className="prose text-gray-500 max-w-none dark:text-gray-400">
           {summary}
         </div>

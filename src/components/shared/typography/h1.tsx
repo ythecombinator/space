@@ -12,7 +12,7 @@ const H1: FunctionComponent<
   return (
     <h1
       className={classNames(
-        'text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14',
+        'text-3xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl md:text-6xl',
         className
       )}
       {...props}

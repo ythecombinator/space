@@ -1,4 +1,4 @@
-import type { Post, DocumentTypes } from 'contentlayer/generated';
+import type { DocumentTypes } from 'contentlayer/generated';
 
 export function dateSortDesc(a: string, b: string) {
   if (a > b) return -1;
@@ -6,8 +6,8 @@ export function dateSortDesc(a: string, b: string) {
   return 0;
 }
 
-export function sortedBlogPost(allBlogs: Post[]) {
-  return allBlogs.sort((a, b) => dateSortDesc(a.date, b.date));
+export function sortEntries<T extends { date: string }>(entries: Array<T>) {
+  return entries.sort((a, b) => dateSortDesc(a.date, b.date));
 }
 
 export const omit = <Obj, Keys extends keyof Obj>(

@@ -1,7 +1,8 @@
 ---
-title: '🇵🇹 • O que há de novo com o AngularJS?'
+title: 'O que há de novo com o AngularJS?'
 date: '2014-11-10'
 tags: ['angular']
+language: pt
 summary: 'Mudanças anunciadas na ng-Europe, a versão 1.3, “morte” de APIs… O AngularJS 2.0 ainda será o AngularJS que conhecemos?'
 ---
 

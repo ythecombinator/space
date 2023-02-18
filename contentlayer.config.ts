@@ -2,6 +2,8 @@ import {
   defineDocumentType,
   ComputedFields,
   makeSource,
+  FieldDef,
+  FieldDefs,
 } from 'contentlayer/source-files';
 import path from 'path';
 import readingTime from 'reading-time';
@@ -28,13 +30,13 @@ const root = process.cwd();
  * UTILS
  */
 
+const fields: FieldDefs = { title: { type: 'string', required: true } };
+
 const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
   slug: {
     type: 'string',
-    resolve: (doc) => {
-      return doc._raw.flattenedPath.replace(/^.+?(\/)/, '');
-    },
+    resolve: (doc) => doc._raw.flattenedPath.replace(/^.+?(\/)/, ''),
   },
 };
 
@@ -47,15 +49,26 @@ export const BlogEntry = defineDocumentType(() => ({
   filePathPattern: 'blog/**/*.md',
   contentType: 'mdx',
   fields: {
-    title: { type: 'string', required: true },
+    title: fields.title,
     date: { type: 'date', required: true },
     summary: { type: 'string', required: true },
+    language: {
+      type: 'enum',
+      options: ['pt', 'en'],
+      default: 'en',
+    },
     tags: { type: 'list', of: { type: 'string' }, required: true },
     lastmod: { type: 'date' },
     images: { type: 'list', of: { type: 'string' } },
     canonicalUrl: { type: 'string' },
   },
-  computedFields,
+  computedFields: {
+    ...computedFields,
+    cover: {
+      type: 'string',
+      resolve: (doc) => `/content/${doc._raw.flattenedPath}/cover.png`,
+    },
+  },
 }));
 
 export const BiographyEntry = defineDocumentType(() => ({
@@ -63,11 +76,13 @@ export const BiographyEntry = defineDocumentType(() => ({
   filePathPattern: 'biography/**/*.md',
   contentType: 'mdx',
   fields: {
-    title: { type: 'string', required: true },
-    coverImageUrl: { type: 'string', required: true },
-    coverImageAltText: { type: 'string', required: true },
+    title: fields.title,
   },
   computedFields: {
+    cover: {
+      type: 'string',
+      resolve: (doc) => `/content/${doc._raw.flattenedPath}.jpg`,
+    },
     slug: computedFields.slug,
   },
 }));
@@ -87,7 +102,6 @@ export default makeSource({
     ],
     rehypePlugins: [
       rehypeAccessibleEmojis,
-      // rehypePrettyCode,
       rehypeSlug,
       rehypeAutolinkHeadings,
       rehypeKatex,

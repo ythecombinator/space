@@ -1,7 +1,5 @@
 ---
-title: 'Life'
-coverImageUrl: '/img/about/life.jpg'
-coverImageAltText: 'Text'
+title: 'Travel, Family & More'
 ---
 
 As I started working as a remote developer (~ early 2018) besides traveling a lot more through my homeland, I decided to travel and live a little around the world for a while – not staying for too long on any city.

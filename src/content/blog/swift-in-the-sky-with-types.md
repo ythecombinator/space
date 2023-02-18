@@ -1,7 +1,8 @@
 ---
-title: '🇵🇹 • Swift In The Sky With Types'
+title: 'Swift In The Sky With Types'
 date: '2016-03-28'
 tags: ['swift', 'type systems']
+language: pt
 summary: "This is pretty much a controversial decentralized web technologies research story but, before starting, there are a few things I'd like to ensure you all, my beloved readers, are aware of."
 ---
 
@@ -55,7 +56,7 @@ alguns conceitos mais "gerais".
 
 ### Dados?
 
-![Dados?](/posts/swift-in-the-sky-with-types/data.png)
+![Dados?](/content/blog/swift-in-the-sky-with-types/data.png)
 
 Esse é um conceito bem primitivo - e que muitas vezes não é discutido e só
 aceito. Na _Filosofia_, temos uma definição parecida com isso:
@@ -99,7 +100,7 @@ tópico.
 
 ### Tipos de Dados?
 
-![Tipos de Dados?](/posts/swift-in-the-sky-with-types/data-types.png)
+![Tipos de Dados?](/content/blog/swift-in-the-sky-with-types/data-types.png)
 
 > **tl;dr**: Uma representação específica de algum(ns) dado(s).
 
@@ -123,7 +124,7 @@ discutida mais a frente.
 
 ### Sistemas de Tipos?
 
-![Sistemas de Tipos?](/posts/swift-in-the-sky-with-types/type-system.png)
+![Sistemas de Tipos?](/content/blog/swift-in-the-sky-with-types/type-system.png)
 
 > **tl;dr**: Sistemas do tipo são, em sua essência, estruturas de análise de
 > programas.
@@ -157,7 +158,7 @@ número inteiro - e aí temos nossa prova.
 
 ### _Correctness-by-Design_
 
-![Correctness-by-Design](/posts/swift-in-the-sky-with-types/correctness-by-design.png)
+![Correctness-by-Design](/content/blog/swift-in-the-sky-with-types/correctness-by-design.png)
 
 Esse conceito aqui também é sempre legal de se pensar sobre, garanto.
 
@@ -174,7 +175,7 @@ compilador não deixar.
 
 ### _Correctness-by-Design_ & Sistemas de Tipos
 
-![Correctness-by-Design & Sistemas de Tipos](/posts/swift-in-the-sky-with-types/correctness-by-design-and-type-systems.png)
+![Correctness-by-Design & Sistemas de Tipos](/content/blog/swift-in-the-sky-with-types/correctness-by-design-and-type-systems.png)
 
 Agora que já temos uma ideia geral em torno de sistemas de tipos e de como
 linguagens devem ser projetadas de modo a naturalmente evitar que programas
@@ -208,7 +209,7 @@ deixar"_.
 
 ### O Que Temos Por Aí?
 
-![O Que Temos Por Aí?](/posts/swift-in-the-sky-with-types/what-we-have.png)
+![O Que Temos Por Aí?](/content/blog/swift-in-the-sky-with-types/what-we-have.png)
 
 Esta seção serve mais para contextualizar Swift entre outras linguagens antes
 de falarmos especificamente desta.
@@ -291,7 +292,7 @@ anterior.
 
 ### _Type-Safety_
 
-![Type-Safety](/posts/swift-in-the-sky-with-types/type-safety.png)
+![Type-Safety](/content/blog/swift-in-the-sky-with-types/type-safety.png)
 
 Como podemos encontrar na própria [documentação provida pela Apple](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309):
 
@@ -339,7 +340,7 @@ fatorial(3.0) // => 6.0
 
 ### _Type Inference_
 
-![Type Inference](/posts/swift-in-the-sky-with-types/type-inference.png)
+![Type Inference](/content/blog/swift-in-the-sky-with-types/type-inference.png)
 
 Se você é daqueles que se assusta com a possibilidade de ter que declarar tipo
 de cada variável do seu código, relaxe! Swift usa a inferência de tipos
@@ -364,7 +365,7 @@ y = 2
 
 ### _Generics_
 
-![Generics](/posts/swift-in-the-sky-with-types/generics.png)
+![Generics](/content/blog/swift-in-the-sky-with-types/generics.png)
 
 Os conhecidos _Generics_ nos permitem declarar uma variável que, na execução,
 pode ser atribuído a um conjunto de tipos definidos por nós.

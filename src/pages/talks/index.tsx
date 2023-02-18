@@ -62,7 +62,7 @@ const TalksPage: NextPage<Props> = (props) => {
         description={siteMetadata.description}
       />
       <Layout
-        heading="Talks"
+        heading="Confs, Meetups & More"
         subHeading={
           <SeachBar
             label={`Search topics, events and places`}

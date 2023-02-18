@@ -11,6 +11,7 @@ import { discussOnTwitter } from 'utils/social';
 import Link from 'components/shared/link';
 import PageTitle from 'components/shared/page-title';
 import ScrollTop from 'components/shared/scroll-top';
+import SectionCover from 'components/shared/section-cover';
 import BlogSEO from 'components/shared/seo-blog';
 
 /*~
@@ -28,7 +29,7 @@ interface BlogEntryLayoutProps {
 const BlogEntryLayout: FunctionComponent<
   PropsWithChildren<BlogEntryLayoutProps>
 > = ({ content, children }) => {
-  const { date, title, slug, readingTime } = content;
+  const { date, title, slug, readingTime, cover } = content;
   return (
     <>
       <BlogSEO
@@ -38,8 +39,8 @@ const BlogEntryLayout: FunctionComponent<
       <ScrollTop />
       <article>
         <div>
-          <header className="pb-10">
-            <div className="mt-4 space-y-1 text-left">
+          <header className="pb-10 space-y-2">
+            <div className="mt-4 space-y-2 text-left">
               <dl>
                 <div>
                   <dt className="sr-only">Published on</dt>
@@ -61,7 +62,8 @@ const BlogEntryLayout: FunctionComponent<
             </div>
           </header>
           <div className="pb-8 " style={{ gridTemplateRows: 'auto 1fr' }}>
-            <div className=" xl:pb-0 xl:col-span-3 xl:row-span-2">
+            <div className="xl:pb-0 xl:col-span-3 xl:row-span-2 space-y-4">
+              <SectionCover alt={title} src={cover} />
               <div className="pb-4 prose dark:prose-dark max-w-none">
                 {children}
               </div>

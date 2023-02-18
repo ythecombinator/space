@@ -16,7 +16,7 @@ At Beakyn, I had the chance to contribute to a couple of projects that impacted 
 It all happened combined with efforts to shape a culture of sharing and openness, and I'm so proud of the achievements we've made!
 
 <figure>
-  <img src="/posts/it-s-all-about-trusting-the-magic-of-beginnings/crew.jpg" alt="Our crew" />
+  <img src="/content/blog/it-s-all-about-trusting-the-magic-of-beginnings/crew.jpg" alt="Our crew" />
   <figcaption>
     Dope team; always doing some crazy dope stuff in the city that never sleeps!
     🗽
@@ -26,7 +26,7 @@ It all happened combined with efforts to shape a culture of sharing and openness
 I also had the opportunity to present [some of the cool things I learned](https://www.ythecombinator.space/talks) while working on our projects in conferences and meetups. This allowed me to grow my presentation skills (I know there is always a wide room for improvement here, tho) and to create a great network of contacts among our community.
 
 <figure>
-  <img src="/posts/it-s-all-about-trusting-the-magic-of-beginnings/talks.jpg" alt="A few talks" />
+  <img src="/content/blog/it-s-all-about-trusting-the-magic-of-beginnings/talks.jpg" alt="A few talks" />
   <figcaption>
     <figcaption>
       I had never traveled that much to attend conferences! 🛫
@@ -37,7 +37,7 @@ I also had the opportunity to present [some of the cool things I learned](https:
 On the personal side, I feel that I have grown so much! My remote working routine allowed me not only to travel a lot more through my country – not staying for too long in any city – but to visit new ones. This made me meet tons of great people, get to know wonderful cultures, experience great things and capture all of [these moments](https://www.instagram.com/ythecombinator) in photos! By the way, it all showed me photography is a strong candidate to become the hobby I've been constantly looking for 📸.
 
 <figure>
-  <img src="/posts/it-s-all-about-trusting-the-magic-of-beginnings/sky.jpg" alt="Ah, the sky..." />
+  <img src="/content/blog/it-s-all-about-trusting-the-magic-of-beginnings/sky.jpg" alt="Ah, the sky..." />
   <figcaption>
     Watching the sunrise by the window in a plane became one of my greatest
     moments of peace. 🙏

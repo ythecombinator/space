@@ -48,7 +48,7 @@ const PostsPage: NextPage<Props> = ({ allPosts }) => {
         description={siteMetadata.description}
       />
       <Layout
-        heading="Posts"
+        heading="Stories, Updates & More"
         subHeading={<SeachBar label={`Search posts`} onChange={onChange} />}
       >
         <Suspense fallback={<AllPostsSectionSkeleton items={3} />}>

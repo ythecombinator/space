@@ -5,7 +5,7 @@ import {
 
 import ContentlayerService from 'services/contentlayer-service';
 
-import { CoreContent } from 'utils/contentlayer';
+import { CoreContent, sortEntries } from 'utils/contentlayer';
 import { toIndexableCollection } from 'utils/search';
 
 /*~
@@ -36,7 +36,7 @@ export default class PostsContentService extends ContentlayerService<BlogEntry> 
   }
 
   public getAll() {
-    return allBlogEntries.map((post) => ({
+    return sortEntries(allBlogEntries).map((post) => ({
       ...post,
       _tags: toIndexableCollection(post.tags),
     }));

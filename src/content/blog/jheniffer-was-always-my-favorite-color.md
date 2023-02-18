@@ -5,8 +5,6 @@ tags: ['life']
 summary: "I hope yall don't mind the inconvenience, but I need to talk about Jheniffer Rodrigues."
 ---
 
-![her](/posts/jheniffer-was-always-my-favorite-color/her.jpg)
-
 I hope yall don't mind the inconvenience, but I need to talk about Jheniffer Rodrigues.
 
 Yup, you got it right. Not _Jennifer_, nor _Jeniffer_, _Jenniffer_, _Jenifer_, or any other regularly spelled variation you could think of; this one goes by _J-H-E-N-I-F-F-E-R_, with the H taking most of the work in representing how unique she is — and putting all spell checkers, text editors, and my relatives on the same quest to properly spell it.
