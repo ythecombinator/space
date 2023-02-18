@@ -1,10 +1,10 @@
-import NextLink from 'next/link';
 import { FunctionComponent } from 'react';
-import { FaArrowRight, FaLaptopCode } from 'react-icons/fa';
+import { FaLaptopCode } from 'react-icons/fa';
 import { GiCardRandom, GiTakeMyMoney, GiBattleGear } from 'react-icons/gi';
 
 import ButtonLink from 'components/shared/button-link';
 import SectionContainer from 'components/shared/section-container';
+import SectionCover from 'components/shared/section-cover';
 import Typography from 'components/shared/typography';
 
 /*~
@@ -14,6 +14,7 @@ import Typography from 'components/shared/typography';
 const OverviewSection: FunctionComponent = () => {
   return (
     <SectionContainer className="prose">
+      <SectionCover alt="This is me!" src="/img/about/intro.jpg" />
       <Typography.p>
         Hey, I'm Matheus—but most folks know me as ythecombinator online.
       </Typography.p>

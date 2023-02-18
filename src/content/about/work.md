@@ -1,5 +1,7 @@
 ---
-title: 'Work'
+title: 'Create. Share. Repeat.'
+coverImageUrl: '/img/about/career.jpg'
+coverImageAltText: 'Text'
 ---
 
 I am a Front-End Engineer focused on new and scalable technologies based in Prague. Being a consultant I have shipped solutions to small, medium and huge companies to grow their business and, mostly, help them meet their business goals, without leaving quality aside.

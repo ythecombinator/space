@@ -1,5 +1,7 @@
 ---
 title: 'Clients'
+coverImageUrl: '/img/about/clients.jpg'
+coverImageAltText: 'Text'
 ---
 
 On my journey as a Front-End Software Engineer focused on new and scalable technologies, I've worked with different software design & engineering companies that helped a wide range of clients on digital transformation, strategy, and more.
@@ -8,7 +10,7 @@ I always aim to help them meet their business goals, without leaving quality asi
 
 ### [Outfront Media](https://www.outfrontmedia.com/)
 
-[Outfront Media](https://www.outfrontmedia.com/) is one of the largest outdoor media companies in America. It operates in markets including the United States and Canada.
+Outfront Media is one of the largest outdoor media companies in America. It operates in markets including the United States and Canada.
 
 I helped them build their large-scale geographic data visualization platforms and assets curation systems from scratch.
 
@@ -24,7 +26,7 @@ I helped them build their large-scale geographic data visualization platforms an
 
 ### [Minted](https://www.minted.com)
 
-[Minted](https://www.minted.com) is an online marketplace of independent artists and designers. The company crowdsources art and graphic design through monthly design challenges.
+Minted is an online marketplace of independent artists and designers. The company crowdsources art and graphic design through monthly design challenges.
 
 I helped them redesigning both their Cart and Checkout pages in a short time in advance of their sales peak in November.
 
@@ -55,7 +57,7 @@ Also, I helped to build new features for the administration app (a web applicati
 
 ### [Surge](https://www.surgeapp.co/)
 
-[Surge](https://www.surgeapp.co/) is currently the fastest growing gay dating app on the US market and the most searched gay dating app on the Apple App Store.
+Surge is currently the fastest growing gay dating app on the US market and the most searched gay dating app on the Apple App Store.
 
 I helped them build a CLI tool that provides some App Store connect utilities for doing some experiments with in-app purchases pricing (basically A/B testing with IAP prices).
 
@@ -68,7 +70,7 @@ I helped them build a CLI tool that provides some App Store connect utilities fo
 
 ### [Rebel Girls](https://www.rebelgirls.com/)
 
-[Good Night Stories for Rebel Girls](https://www.rebelgirls.com/) is a series of children's books, aimed at ages six and up. It has sold over one million copies and has been translated into more than 47 languages.
+Good Night Stories for Rebel Girls is a series of children's books, aimed at ages six and up. It has sold over one million copies and has been translated into more than 47 languages.
 
 I helped them to gradually:
 
@@ -86,7 +88,7 @@ I helped them to gradually:
 
 ### [Bredal Australia](https://www.bredalaustralia.com/)
 
-[Bredal](https://www.bredal.com/en/) is a Denmark-based company that's been producing high-quality products for agricultural business for more than 60 years.
+Bredal is a Denmark-based company that's been producing high-quality products for agricultural business for more than 60 years.
 
 I helped their Australian branch to design and build from scratch a management platform to validate different steps of their process, from when a purchase order is made to when a machine is assembled.
 
@@ -103,7 +105,7 @@ I helped their Australian branch to design and build from scratch a management p
 
 ### [Fleetyr](https://www.fleetyr.com/)
 
-[Fleetyr](https://www.bredal.com/en/) is an Australian startup focused on analysis that provides clients with actionable insights that help them to create a safer, healthier, cost-effective fleet.
+Fleetyr is an Australian startup focused on analysis that provides clients with actionable insights that help them to create a safer, healthier, cost-effective fleet.
 
 I helped them to design and build from scratch their platform, where users can sign up, sync their fleet data, and have access to custom Tableau-based dashboards.
 
@@ -125,7 +127,7 @@ I helped them to design and build from scratch their platform, where users can s
 
 ### [Bitcoin IRA](https://bitcoinira.com)
 
-[Bitcoin IRA](https://bitcoinira.com) is the world's largest cryptocurrency IRA platform, allowing customers to purchase Bitcoin and other cryptos for their retirement accounts.
+Bitcoin IRA is the world's largest cryptocurrency IRA platform, allowing customers to purchase Bitcoin and other cryptos for their retirement accounts.
 
 I worked with them for a few weeks researching how they could approach ID verification of new users, studying existing solutions in the market, talking to other fintech companies, and trying to figure out what best works for them.
 

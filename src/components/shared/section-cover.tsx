@@ -1,0 +1,26 @@
+import Image, { ImageProps } from 'next/image';
+import { FunctionComponent } from 'react';
+
+type SectionCoverProps = Pick<ImageProps, 'src' | 'alt'>;
+
+/*~
+ * COMPONENT
+ */
+
+export const SectionCover: FunctionComponent<SectionCoverProps> = ({
+  src,
+  alt,
+}) => {
+  return (
+    <Image
+      alt={alt}
+      src={src}
+      width={700}
+      height={475}
+      sizes="100vw"
+      className="w-full h-auto rounded-lg grayscale hover:grayscale-0"
+    />
+  );
+};
+
+export default SectionCover;

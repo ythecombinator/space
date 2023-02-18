@@ -68,6 +68,8 @@ export const About = defineDocumentType(() => ({
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
+    coverImageUrl: { type: 'string', required: true },
+    coverImageAltText: { type: 'string', required: true },
   },
   computedFields: {
     slug: computedFields.slug,
