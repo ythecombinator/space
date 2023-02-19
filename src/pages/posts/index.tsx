@@ -48,7 +48,7 @@ const PostsPage: NextPage<Props> = ({ allPosts }) => {
         description={siteMetadata.description}
       />
       <Layout
-        heading="Stories, Updates & More"
+        heading="Ideas. Stories. Updates."
         headingGradientMask
         subHeading={<SeachBar label={`Search posts`} onChange={onChange} />}
       >

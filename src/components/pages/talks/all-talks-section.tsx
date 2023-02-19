@@ -1,30 +1,29 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
 
+import { Routes } from 'config/constants';
+
 import { isEmpty, reversedIndexOf } from 'utils/array';
 import { useLyraSearch } from 'utils/search';
 
 import EmptyList from 'components/shared/empty-list';
+import OrderedListItem from 'components/shared/ordered-list-item';
 import SectionContainer from 'components/shared/section-container';
 import SectionHeading from 'components/shared/section-heading';
-
-import AllTalksSectionItem, {
-  AllTalksSectionItemProps,
-} from 'components/pages/talks/all-talks-section-item';
 
 /*~
  * TYPES
  */
 
 export type AllTalksSectionProps = {
-  items: Array<
-    Omit<AllTalksSectionItemProps, 'index'> & {
-      _description: string;
-      _events: string;
-      _tags: string;
-      _cities: string;
-      _countries: string;
-    }
-  >;
+  items: Array<{
+    talkSlug: string;
+    talkTitle: string;
+    _description: string;
+    _events: string;
+    _tags: string;
+    _cities: string;
+    _countries: string;
+  }>;
   searchTerm: string;
 };
 
@@ -64,11 +63,11 @@ const AllTalksSection: FunctionComponent<
         {items.map((item, index) => {
           const { talkTitle, talkSlug } = item;
           return (
-            <AllTalksSectionItem
+            <OrderedListItem
               key={talkSlug}
-              talkTitle={talkTitle}
-              talkSlug={talkSlug}
+              label={talkTitle}
               index={reversedIndexOf(items.length, index)}
+              href={`/${Routes.talks}/${talkSlug}`}
             />
           );
         })}

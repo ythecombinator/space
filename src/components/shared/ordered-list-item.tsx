@@ -8,9 +8,9 @@ import Link from 'components/shared/link';
  * TYPES
  */
 
-export type AllTalksSectionItemProps = {
-  talkSlug: string;
-  talkTitle: string;
+export type OrderedListItemProps = {
+  href: string;
+  label: string;
   index: number;
 };
 
@@ -18,16 +18,16 @@ export type AllTalksSectionItemProps = {
  * COMPONENT
  */
 
-const AllTalksSectionItem: FunctionComponent<
-  PropsWithChildren<AllTalksSectionItemProps>
+const OrderedListItem: FunctionComponent<
+  PropsWithChildren<OrderedListItemProps>
 > = (props) => {
-  const { talkTitle, talkSlug, index } = props;
+  const { label, href, index } = props;
 
   return (
     <Link
-      href={`/${Routes.talks}/${talkSlug}`}
+      href={href}
       className="w-full"
-      aria-label={talkTitle}
+      aria-label={label}
     >
       <div className="w-full border-b border-gray-200 dark:border-gray-700 py-3 transform hover:scale-[1.01] transition-all">
         <div className="flex flex-col sm:flex-row justify-between sm:items-center">
@@ -36,7 +36,7 @@ const AllTalksSectionItem: FunctionComponent<
               {index}
             </div>
             <h4 className="text-base sm:text-lg font-medium w-full text-gray-800 dark:text-gray-100">
-              {talkTitle}
+              {label}
             </h4>
           </div>
         </div>
@@ -45,4 +45,4 @@ const AllTalksSectionItem: FunctionComponent<
   );
 };
 
-export default AllTalksSectionItem;
+export default OrderedListItem;
