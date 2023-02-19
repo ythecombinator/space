@@ -40,7 +40,7 @@ const EventsSectionItem: FunctionComponent<
   } = props;
 
   return (
-    <CardOutlined href={`/${Routes.talks}`} heading={eventName}>
+    <CardOutlined heading={eventName}>
       <div className="flex-col">
         <div className="flex items-center text-gray-800 dark:text-gray-200">
           <div className="mr-1 flex h-11 items-center justify-center bg-transparent text-lg">

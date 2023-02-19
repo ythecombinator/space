@@ -1,9 +1,9 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { randomElement } from 'utils/array';
+import { classNames, gradients } from 'utils/styles';
 
 import Link from 'components/shared/link';
-import { gradients } from 'utils/styles';
 
 /*~
  * TYPES
@@ -11,34 +11,35 @@ import { gradients } from 'utils/styles';
 
 export type CardOutlinedProps = {
   heading: string;
-  href: string;
+  href?: string;
 };
 
 /*~
  * UTILS
  */
 
-
-
 /*~
  * COMPONENT
  */
 
-const CardOutlined: FunctionComponent<PropsWithChildren<CardOutlinedProps>> = (
-  { heading, href, children }
-) => {
+const CardOutlined: FunctionComponent<PropsWithChildren<CardOutlinedProps>> = ({
+  heading,
+  href,
+  children,
+}) => {
   const gradientClasses = randomElement(gradients);
+  const Wrapper = href ? Link : 'div';
 
   return (
-    <Link
-      href={href}
+    <Wrapper
       className="group transform transition-all duration-500 hover:scale-[1.05] hover:duration-500"
+      href={href}
     >
       <div
-        className={
-          'absolute -inset-[2.4px] rounded-2xl bg-gray-100 transition duration-1000 group-hover:bg-gradient-to-r group-hover:blur-md group-hover:duration-500 dark:bg-gray-800' +
+        className={classNames(
+          'absolute -inset-[2.4px] rounded-2xl bg-gray-100 transition duration-1000 group-hover:bg-gradient-to-r group-hover:blur-md group-hover:duration-500 dark:bg-gray-800',
           gradientClasses
-        }
+        )}
       ></div>
       <article className="relative h-full w-full rounded-xl">
         <div className="flex h-full w-full flex-col justify-between rounded-xl bg-white p-5 dark:bg-background-color">
@@ -54,7 +55,7 @@ const CardOutlined: FunctionComponent<PropsWithChildren<CardOutlinedProps>> = (
           <div className="mt-10 flex">{children}</div>
         </div>
       </article>
-    </Link>
+    </Wrapper>
   );
 };
 
