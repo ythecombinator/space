@@ -1,9 +1,11 @@
 import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 
-import { siteMetadata } from 'config/constants';
+import { Routes, siteMetadata } from 'config/constants';
 
 import TalksContentService from 'services/talks-content-service';
+
+import { generateOpenGraphImage } from 'utils/open-graph';
 
 import PageSEO from 'components/shared/seo-page';
 
@@ -44,8 +46,14 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
   const id = context.params?.slug!;
   const talkData = await talksServiceInstance.get(id);
 
+  const ogImage = await generateOpenGraphImage({
+    title: talkData.title!,
+    postPath: `${Routes.talks}/${id}`,
+    path: `content/${Routes.talks}/${id}/cover.png`,
+  });
+
   return {
-    props: { ...talkData },
+    props: { ...talkData, ogImage },
   };
 }
 
@@ -54,7 +62,8 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
  */
 
 const TalkPage: NextPage<Props> = (props) => {
-  const { title, abstract, sessions } = props;
+  const { title, abstract, sessions, ogImage } = props;
+  console.log('ogImage', ogImage);
 
   return (
     <>

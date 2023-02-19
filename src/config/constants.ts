@@ -28,6 +28,7 @@ export const siteMetadata = {
   email: 'ephraimduncan68@gmail.com',
   github: 'https://github.com/dephraiim',
   twitter: '@ythecombinator',
+  avatar: 'https://pbs.twimg.com/profile_images/1615068105977331712/TOWGdEEO_400x400.jpg',
   locale: 'en-US',
 };
 

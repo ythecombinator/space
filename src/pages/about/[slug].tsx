@@ -1,12 +1,9 @@
-import fs from 'fs';
 import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 
 import { Layouts } from 'config/constants';
 
 import BiographyContentService from 'services/biography-content-service';
-
-import { generateRSS } from 'utils/rss';
 
 import MDXLayoutRenderer from 'components/shared/mdx-components';
 
