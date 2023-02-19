@@ -19,7 +19,7 @@ const AboutPage: NextPage = () => {
         title={`About by ${siteMetadata.author}`}
         description={siteMetadata.description}
       />
-      <Layout heading="About">
+      <Layout heading="Build. Share. Rewind." headingGradientMask>
         <OverviewSection />
       </Layout>
     </>

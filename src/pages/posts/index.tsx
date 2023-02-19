@@ -49,6 +49,7 @@ const PostsPage: NextPage<Props> = ({ allPosts }) => {
       />
       <Layout
         heading="Stories, Updates & More"
+        headingGradientMask
         subHeading={<SeachBar label={`Search posts`} onChange={onChange} />}
       >
         <Suspense fallback={<AllPostsSectionSkeleton items={3} />}>

@@ -1,5 +1,5 @@
 ---
-title: 'Clients'
+title: 'Develop. Ship. Repeat.'
 ---
 
 On my journey as a Front-End Software Engineer focused on new and scalable technologies, I've worked with different software design & engineering companies that helped a wide range of clients on digital transformation, strategy, and more.

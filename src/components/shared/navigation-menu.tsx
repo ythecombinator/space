@@ -1,8 +1,8 @@
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
-import cx from 'classnames';
 import { FunctionComponent, PropsWithChildren } from 'react';
 
 import NavigationMenuControlLink from 'components/shared/navigation-menu-control-link';
+import { classNames } from 'utils/styles';
 
 /*~
  * TYPES
@@ -34,7 +34,7 @@ export const NavigationMenu: FunctionComponent<
         ))}
 
         <NavigationMenuPrimitive.Indicator
-          className={cx(
+          className={classNames(
             'z-10',
             'top-[100%] flex items-end justify-center h-2 overflow-hidden',
             'radix-state-visible:animate-fade-in',

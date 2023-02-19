@@ -63,6 +63,7 @@ const TalksPage: NextPage<Props> = (props) => {
       />
       <Layout
         heading="Confs, Meetups & More"
+        headingGradientMask
         subHeading={
           <SeachBar
             label={`Search topics, events and places`}
