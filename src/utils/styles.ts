@@ -1,6 +1,9 @@
 import { ClassValue, clsx } from 'clsx';
+import { useEffect, useState } from 'react';
 // import fetch from 'node-fetch';
 import { twMerge } from 'tailwind-merge';
+
+import { randomElement } from './array';
 
 // export const fetchGradients = async () => {
 //   const url =
@@ -32,3 +35,13 @@ export const gradients = [
   ' from-pink-400 to-pink-600',
   ' from-sky-400 via-rose-400 to-lime-400',
 ];
+
+export const useRandomGradient = () => {
+  const [gradientClassName, setGradientClassName] = useState('');
+
+  useEffect(() => {
+    setGradientClassName(randomElement(gradients));
+  }, []);
+
+  return gradientClassName;
+};
