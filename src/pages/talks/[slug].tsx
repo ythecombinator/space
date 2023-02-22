@@ -69,7 +69,6 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
 
 const TalkPage: NextPage<Props> = (props) => {
   const { title, abstract, sessions, ogImage } = props;
-  console.log('ogImage', ogImage);
 
   return (
     <>

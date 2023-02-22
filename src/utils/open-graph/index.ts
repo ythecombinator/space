@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync } from 'fs';
 import { outputFile } from 'fs-extra';
 import { compile } from 'handlebars';
 import { join } from 'path';
@@ -78,6 +78,10 @@ async function generateImage({ width, height, content }: ImageProps) {
   }
 
   await page.setContent(content, { waitUntil: 'networkidle2' });
+  await page.waitForSelector('#body', {
+    visible: true,
+  });
+
   const element = await page.$('#body');
   const image = await element!.screenshot();
   await browser.close();
