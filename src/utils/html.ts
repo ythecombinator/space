@@ -13,4 +13,5 @@ const charDictionary = {
 const escape = (char: keyof typeof charDictionary) => charDictionary[char];
 
 export const escapeHTML = (input: string): string =>
+  // @ts-ignore
   replace.call(input, escapeRegex, escape);

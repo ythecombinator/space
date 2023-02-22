@@ -72,7 +72,13 @@ export default class TalksContentService {
       query: GetAllTalkSlugsDocument,
     });
 
-    return doc.data.talkCollection?.items.map((item) => item?.slug!);
+    const items = doc.data.talkCollection?.items;
+
+    if (!items) {
+      return []
+    }
+
+    return items.map((item) => item?.slug!);
   }
 
   public async getActive() {

@@ -5,7 +5,7 @@ import { siteMetadata } from 'config/constants';
 
 import TalksContentService from 'services/talks-content-service';
 
-import SeachBar, { SeachBarProps } from 'components/shared/seach-bar';
+import SearchBar, { SearchBarProps } from 'components/shared/seach-bar';
 import PageSEO from 'components/shared/seo-page';
 
 import Layout from 'components/layouts/layout-page';
@@ -51,7 +51,7 @@ const TalksPage: NextPage<Props> = (props) => {
 
   const [searchTerm, setSearchTerm] = useState('');
 
-  const onChange: SeachBarProps['onChange'] = (evt) => {
+  const onChange: SearchBarProps['onChange'] = (evt) => {
     setSearchTerm(evt.target.value);
   };
 
@@ -65,7 +65,7 @@ const TalksPage: NextPage<Props> = (props) => {
         heading="Confs, Meetups & More"
         headingGradientMask
         subHeading={
-          <SeachBar
+          <SearchBar
             label={`Search topics, events and places`}
             onChange={onChange}
           />

@@ -38,6 +38,13 @@ export async function getStaticPaths() {
 export async function getStaticProps(context: GetStaticPropsContext<Params>) {
   const slug = context.params?.slug!;
   const content = biographyServiceInstance.get(slug);
+
+  if (!content) {
+    return {
+      notFound: true,
+    };
+  }
+
   return { props: { content } };
 }
 

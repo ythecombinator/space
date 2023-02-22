@@ -12,6 +12,7 @@ import { CoreContent } from 'utils/contentlayer';
  */
 
 export type BiographyEntry = CoreContent<RawBiographyEntry>;
+export type { RawBiographyEntry };
 
 /*~
  * SERVICE

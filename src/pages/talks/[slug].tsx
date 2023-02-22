@@ -52,6 +52,12 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
     path: `content/${Routes.talks}/${id}/cover.png`,
   });
 
+  if (!talkData) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: { ...talkData, ogImage },
   };

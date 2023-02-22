@@ -34,7 +34,7 @@ export default class ContentfulService {
   static getInstance() {
     if (!this.instance) {
       this.instance = new ContentfulService(
-        process.env.CONTENTFUL_ENDPOINT,
+        process.env.CONTENTFUL_ENDPOINT!,
         CONTENTFUL_HEADERS
       );
     }
@@ -42,8 +42,8 @@ export default class ContentfulService {
     return this.instance;
   }
 
-  public query<T = any, TVariables = OperationVariables>(
-    options: QueryOptions<TVariables, T>
+  public query<T>(
+    options: QueryOptions<OperationVariables, T>
   ): Promise<ApolloQueryResult<T>> {
     return this.apoloClient.query(options);
   }

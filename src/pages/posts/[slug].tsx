@@ -50,6 +50,12 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
     fs.writeFileSync('./public/feed.xml', rss);
   }
 
+  if (!post) {
+    return {
+      notFound: true,
+    };
+  }
+
   return { props: { post } };
 }
 

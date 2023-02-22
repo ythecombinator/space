@@ -19,10 +19,11 @@ import rehypeSlug from 'rehype-slug';
 import remarkFootnotes from 'remark-footnotes';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
-
-import remarkCodeTitles from './src/utils/remark/remark-code-title';
-import remarkExtractFrontmatter from './src/utils/remark/remark-extract-frontmatter';
-import remarkImgToJsx from './src/utils/remark/remark-img-to-jsx';
+import {
+  remarkExtractFrontmatter,
+  remarkCodeTitles,
+  remarkImgToJsx,
+} from 'pliny/mdx-plugins.js'
 
 const root = process.cwd();
 

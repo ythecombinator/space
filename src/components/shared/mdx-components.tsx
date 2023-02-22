@@ -5,8 +5,8 @@ import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { Layouts, LayoutsMap } from 'config/constants';
 
-import { BiographyEntry } from 'services/biography-content-service';
-import { BlogEntry } from 'services/posts-content-service';
+import { RawBiographyEntry } from 'services/biography-content-service';
+import { RawBlogEntry } from 'services/posts-content-service';
 
 import { coreContent } from 'utils/contentlayer';
 
@@ -19,7 +19,7 @@ import Pre from 'components/shared/pre';
 
 interface MDXLayout {
   layout: Layouts;
-  content: BiographyEntry | BlogEntry;
+  content: RawBiographyEntry | RawBlogEntry;
   [key: string]: unknown;
 }
 
@@ -38,6 +38,7 @@ const Wrapper: FunctionComponent<PropsWithChildren<MDXLayout>> = ({
 
 const MDXComponents: MDXContentProps['components'] = {
   Image,
+  // @ts-ignore
   a: Link,
   pre: Pre,
   wrapper: Wrapper,

@@ -4,6 +4,7 @@ import {
   DetailedHTMLProps,
   FunctionComponent,
   PropsWithChildren,
+  Ref,
 } from 'react';
 
 import { isAnchorLink, isInternalLink } from 'utils/link';
@@ -17,6 +18,7 @@ export type LinkProps = DetailedHTMLProps<
   HTMLAnchorElement
 > & {
   href: string;
+  ref?: Ref<HTMLAnchorElement>;
 };
 
 /*~

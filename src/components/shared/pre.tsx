@@ -6,20 +6,27 @@ import { FunctionComponent } from 'react';
  */
 
 const Pre: FunctionComponent<PropsWithChildren<{}>> = ({ children }) => {
-  const textInput = useRef(null);
+  const textInput = useRef<HTMLDivElement>(null);
   const [hovered, setHovered] = useState(false);
   const [copied, setCopied] = useState(false);
 
   const onEnter = () => {
     setHovered(true);
   };
+
   const onExit = () => {
     setHovered(false);
     setCopied(false);
   };
+
   const onCopy = () => {
-    setCopied(true);
-    navigator.clipboard.writeText(textInput.current.textContent);
+    const textContent = textInput.current?.textContent;
+
+    if (textContent) {
+      setCopied(true);
+      navigator.clipboard.writeText(textContent);
+    }
+
     setTimeout(() => {
       setCopied(false);
     }, 2000);

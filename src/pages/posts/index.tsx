@@ -5,7 +5,7 @@ import { siteMetadata } from 'config/constants';
 
 import PostsContentService from 'services/posts-content-service';
 
-import SeachBar, { SeachBarProps } from 'components/shared/seach-bar';
+import SearchBar, { SearchBarProps } from 'components/shared/seach-bar';
 import PageSEO from 'components/shared/seo-page';
 
 import Layout from 'components/layouts/layout-page';
@@ -37,7 +37,7 @@ export async function getStaticProps() {
 const PostsPage: NextPage<Props> = ({ allPosts }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
-  const onChange: SeachBarProps['onChange'] = (evt) => {
+  const onChange: SearchBarProps['onChange'] = (evt) => {
     setSearchTerm(evt.target.value);
   };
 
@@ -50,7 +50,7 @@ const PostsPage: NextPage<Props> = ({ allPosts }) => {
       <Layout
         heading="Ideas. Stories. Updates."
         headingGradientMask
-        subHeading={<SeachBar label={`Search posts`} onChange={onChange} />}
+        subHeading={<SearchBar label={`Search posts`} onChange={onChange} />}
       >
         <Suspense fallback={<AllPostsSectionSkeleton items={3} />}>
           <AllPostsSection items={allPosts} searchTerm={searchTerm} />

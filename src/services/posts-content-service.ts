@@ -13,6 +13,7 @@ import { toIndexableCollection } from 'utils/search';
  */
 
 export type BlogEntry = CoreContent<RawBlogEntry>;
+export type { RawBlogEntry };
 
 /*~
  * SERVICE

@@ -60,34 +60,29 @@ function compileTemplate({
 }
 
 async function generateImage({ width, height, content }: ImageProps) {
-  try {
-    const browser = await launch({
-      headless: true,
-      args: ['--no-sandbox'],
-      defaultViewport: {
-        width: DEFAULT_WIDTH,
-        height: DEFAULT_HEIGHT,
-      },
+  const browser = await launch({
+    headless: true,
+    args: ['--no-sandbox'],
+    defaultViewport: {
+      width: DEFAULT_WIDTH,
+      height: DEFAULT_HEIGHT,
+    },
+  });
+  const page = await browser.newPage();
+
+  if (width || height) {
+    await page.setViewport({
+      width: width ? Number(width) : DEFAULT_WIDTH,
+      height: height ? Number(height) : DEFAULT_HEIGHT,
     });
-    const page = await browser.newPage();
-
-    if (width || height) {
-      await page.setViewport({
-        width: width ? Number(width) : DEFAULT_WIDTH,
-        height: height ? Number(height) : DEFAULT_HEIGHT,
-      });
-    }
-
-    await page.setContent(content, { waitUntil: 'networkidle2' });
-    const element = await page.$('#body');
-    const image = await element!.screenshot();
-    await browser.close();
-
-    return image;
-  } catch (err) {
-    console.log(err);
-    return null;
   }
+
+  await page.setContent(content, { waitUntil: 'networkidle2' });
+  const element = await page.$('#body');
+  const image = await element!.screenshot();
+  await browser.close();
+
+  return image;
 }
 
 /*~

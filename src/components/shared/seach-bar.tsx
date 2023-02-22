@@ -1,10 +1,10 @@
-import { FunctionComponent, InputHTMLAttributes } from 'react';
+import { FunctionComponent, InputHTMLAttributes, PropsWithChildren } from 'react';
 
 /*~
  * TYPES
  */
 
-export type SeachBarProps = {
+export type SearchBarProps = {
   label: string;
   onChange: InputHTMLAttributes<HTMLInputElement>['onChange'];
 };
@@ -13,7 +13,7 @@ export type SeachBarProps = {
  * COMPONENT
  */
 
-const SeachBar: FunctionComponent<PropsWithChildren<SeachBarProps>> = ({
+const SearchBar: FunctionComponent<PropsWithChildren<SearchBarProps>> = ({
   label,
   onChange,
 }) => {
@@ -44,4 +44,4 @@ const SeachBar: FunctionComponent<PropsWithChildren<SeachBarProps>> = ({
   );
 };
 
-export default SeachBar;
+export default SearchBar;
