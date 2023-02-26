@@ -2,10 +2,9 @@ import {
   allBiographyEntries,
   BiographyEntry as RawBiographyEntry,
 } from 'contentlayer/generated';
+import { CoreContent } from 'pliny/utils/contentlayer';
 
 import ContentlayerService from 'services/contentlayer-service';
-
-import { CoreContent } from 'utils/contentlayer';
 
 /*~
  * TYPES

@@ -1,14 +1,13 @@
 import { MDXContentProps } from 'mdx-bundler/client';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import Image from 'next/image';
+import { coreContent } from 'pliny/utils/contentlayer';
 import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { Layouts, LayoutsMap } from 'config/constants';
 
 import { RawBiographyEntry } from 'services/biography-content-service';
 import { RawBlogEntry } from 'services/posts-content-service';
-
-import { coreContent } from 'utils/contentlayer';
 
 import Link from 'components/shared/link';
 import Pre from 'components/shared/pre';
