@@ -32,10 +32,6 @@ const BlogEntryLayout: FunctionComponent<
   const { date, title, slug, readingTime, cover } = content;
   return (
     <>
-      <BlogSEO
-        url={`${siteMetadata.siteUrl}/blog/${content.slug}`}
-        {...content}
-      />
       <ScrollTop />
       <article>
         <div>

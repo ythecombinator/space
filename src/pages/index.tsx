@@ -1,13 +1,10 @@
-import { Document as ContentfulDocument } from '@contentful/rich-text-types';
 import { InferGetStaticPropsType, NextPage } from 'next';
-import { DeepNonNullable } from 'utility-types';
 
-import { siteMetadata, socialNetworks } from 'config/constants';
+import { socialNetworks } from 'config/constants';
 
 import TalksContentService from 'services/talks-content-service';
 
 import ButtonLink from 'components/shared/button-link';
-import PageSEO from 'components/shared/seo-page';
 
 import Layout from 'components/layouts/layout-page';
 
@@ -39,25 +36,19 @@ const HomePage: NextPage<HomePageProps> = (props) => {
   const {} = props;
 
   return (
-    <>
-      <PageSEO
-        title={`Talks by ${siteMetadata.author}`}
-        description={siteMetadata.description}
-      />
-      <Layout heading="Hi, I'm Matheus! 👋">
-        <OverviewSection />
-        <div className="flex flex-col gap-2 md:flex-row md:gap-2">
-          {socialNetworks.map(({ label, href, Icon }) => (
-            <ButtonLink key={label} href={href} icon={<Icon />}>
-              {label}
-            </ButtonLink>
-          ))}
-        </div>
-        <div className="flex w-full justify-center">
-          <div className="mt-2 justify-center"></div>
-        </div>
-      </Layout>
-    </>
+    <Layout heading="Hi, I'm Matheus! 👋">
+      <OverviewSection />
+      <div className="flex flex-col gap-2 md:flex-row md:gap-2">
+        {socialNetworks.map(({ label, href, Icon }) => (
+          <ButtonLink key={label} href={href} icon={<Icon />}>
+            {label}
+          </ButtonLink>
+        ))}
+      </div>
+      <div className="flex w-full justify-center">
+        <div className="mt-2 justify-center"></div>
+      </div>
+    </Layout>
   );
 };
 

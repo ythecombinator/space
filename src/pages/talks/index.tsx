@@ -1,12 +1,14 @@
 import { InferGetStaticPropsType, NextPage } from 'next';
+import { NextSeo as Metadata } from 'next-seo';
 import { Suspense, useState } from 'react';
 
 import { siteMetadata } from 'config/constants';
 
 import TalksContentService from 'services/talks-content-service';
 
+import { usePathName } from 'utils/url';
+
 import SearchBar, { SearchBarProps } from 'components/shared/seach-bar';
-import PageSEO from 'components/shared/seo-page';
 
 import Layout from 'components/layouts/layout-page';
 
@@ -57,9 +59,9 @@ const TalksPage: NextPage<Props> = (props) => {
 
   return (
     <>
-      <PageSEO
-        title={`Talks by ${siteMetadata.author}`}
-        description={siteMetadata.description}
+      <Metadata
+        title={`Talks | ${siteMetadata.title}`}
+        description="Confs, Meetups & More"
       />
       <Layout
         heading="Confs, Meetups & More"

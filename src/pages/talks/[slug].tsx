@@ -1,13 +1,14 @@
 import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next';
+import { NextSeo as Metadata } from 'next-seo';
 import { ParsedUrlQuery } from 'querystring';
 
-import { Routes, siteMetadata } from 'config/constants';
+import { Routes } from 'config/constants';
 
 import TalksContentService from 'services/talks-content-service';
 
+import { documentToString } from 'utils/contentful';
 import { generateOpenGraphImage } from 'utils/open-graph';
-
-import PageSEO from 'components/shared/seo-page';
+import { usePathName } from 'utils/url';
 
 import Layout from 'components/layouts/layout-page';
 
@@ -69,12 +70,19 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
 
 const TalkPage: NextPage<Props> = (props) => {
   const { title, abstract, sessions, ogImage } = props;
+  const description = documentToString(abstract);
 
   return (
     <>
-      <PageSEO
-        title={`${title} by ${siteMetadata.author}`}
-        description={siteMetadata.description}
+      <Metadata
+        title={title}
+        description={description}
+        openGraph={{
+          type: 'website',
+          title,
+          description,
+          images: [{ url: ogImage }],
+        }}
       />
       <Layout heading={title!}>
         <OverviewSection abstract={abstract} />

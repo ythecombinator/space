@@ -1,12 +1,14 @@
 import fs from 'fs';
 import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next';
+import { ArticleJsonLd, NextSeo as Metadata } from 'next-seo';
 import { ParsedUrlQuery } from 'querystring';
 
-import { Layouts } from 'config/constants';
+import { Layouts, siteMetadata } from 'config/constants';
 
 import PostsContentService from 'services/posts-content-service';
 
 import { generateRSS } from 'utils/rss';
+import { usePathName } from 'utils/url';
 
 import MDXLayoutRenderer from 'components/shared/mdx-components';
 
@@ -64,7 +66,37 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
  */
 
 const PostPage: NextPage<Props> = ({ post }) => {
-  return <MDXLayoutRenderer layout={Layouts.blog} content={post} />;
+  const { title, summary, tags, date, cover } = post;
+  const url = usePathName();
+
+  return (
+    <>
+      <Metadata
+        title={title}
+        description={summary}
+        openGraph={{
+          type: 'article',
+          title,
+          description: summary,
+          article: {
+            publishedTime: date,
+            authors: [siteMetadata.siteUrl],
+            tags,
+          },
+        }}
+      />
+      <ArticleJsonLd
+        type="BlogPosting"
+        url={url}
+        title={title}
+        images={[cover]}
+        datePublished={date}
+        authorName={siteMetadata.author}
+        description={summary}
+      />
+      <MDXLayoutRenderer layout={Layouts.blog} content={post} />
+    </>
+  );
 };
 
 export default PostPage;

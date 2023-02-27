@@ -1,4 +1,5 @@
 import { InferGetStaticPropsType, NextPage } from 'next';
+import { NextSeo as Metadata } from 'next-seo';
 import { Suspense, useState } from 'react';
 
 import { siteMetadata } from 'config/constants';
@@ -6,7 +7,6 @@ import { siteMetadata } from 'config/constants';
 import PostsContentService from 'services/posts-content-service';
 
 import SearchBar, { SearchBarProps } from 'components/shared/seach-bar';
-import PageSEO from 'components/shared/seo-page';
 
 import Layout from 'components/layouts/layout-page';
 
@@ -43,9 +43,9 @@ const PostsPage: NextPage<Props> = ({ allPosts }) => {
 
   return (
     <>
-      <PageSEO
-        title={`Posts by ${siteMetadata.author}`}
-        description={siteMetadata.description}
+      <Metadata
+        title={`Posts | ${siteMetadata.title}`}
+        description="Ideas. Stories. Updates."
       />
       <Layout
         heading="Ideas. Stories. Updates."

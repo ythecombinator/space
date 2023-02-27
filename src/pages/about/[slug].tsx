@@ -1,7 +1,8 @@
 import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next';
+import { NextSeo as Metadata } from 'next-seo';
 import { ParsedUrlQuery } from 'querystring';
 
-import { Layouts } from 'config/constants';
+import { Layouts, siteMetadata } from 'config/constants';
 
 import BiographyContentService from 'services/biography-content-service';
 
@@ -53,7 +54,29 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
  */
 
 const AboutPage: NextPage<Props> = ({ content }) => {
-  return <MDXLayoutRenderer layout={Layouts.biography} content={content} />;
+  return (
+    <>
+      <Metadata
+        title={`About | ${siteMetadata.title}`}
+        openGraph={{
+          type: 'profile',
+          profile: {
+            firstName: siteMetadata.authorFirstName,
+            lastName: siteMetadata.authorLastName,
+            username: siteMetadata.twitter,
+          },
+          images: [
+            {
+              url: siteMetadata.avatar,
+              width: 400,
+              height: 400,
+            },
+          ],
+        }}
+      />
+      <MDXLayoutRenderer layout={Layouts.biography} content={content} />{' '}
+    </>
+  );
 };
 
 export default AboutPage;
