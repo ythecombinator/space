@@ -15,6 +15,7 @@ import {
   GetAllTalkSlugsQuery,
   GetAllTalkSlugsDocument,
   ContentfulTag,
+  Talk,
 } from 'graphql/schema';
 import { DeepNonNullable } from 'utility-types';
 
@@ -231,7 +232,7 @@ const sessionTransformer = (session: DeepNonNullable<Session>) => ({
 });
 
 const talkDocumentTransformer = (result: GetTalkQuery) => {
-  const talk = result.talkCollection?.items[0];
+  const talk = result.talkCollection?.items[0] as DeepNonNullable<Talk>;
   const sessions = talk?.sessionsCollection?.items as Array<
     DeepNonNullable<Session>
   >;
