@@ -31,7 +31,7 @@ const Footer: FunctionComponent<PropsWithChildren<{}>> = () => {
         </div>
         <div className="flex flex-col sm:items-center sm:justify-center  mb-5 ">
           <Typography.subtle>
-            © <time>{new Date().getFullYear()}</time> Made with 💖, ☕ and 🍻.
+            {siteMetadata.author} © <time>{new Date().getFullYear()}</time>
           </Typography.subtle>
         </div>
       </div>
