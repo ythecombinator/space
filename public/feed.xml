@@ -3,10 +3,10 @@
     <channel>
       <title>Matheus Albuquerque</title>
       <link>https://www.ythecombinator.space/posts</link>
-      <description>Matheus Albuquerque — Developer, speaker, creator.</description>
+      <description>Developer, speaker, creator. Obsessed with performance and DX.</description>
       <language>en-us</language>
-      <managingEditor>ephraimduncan68@gmail.com (Matheus Albuquerque)</managingEditor>
-      <webMaster>ephraimduncan68@gmail.com (Matheus Albuquerque)</webMaster>
+      <managingEditor>land@ythecombinator.space (Matheus Albuquerque)</managingEditor>
+      <webMaster>land@ythecombinator.space (Matheus Albuquerque)</webMaster>
       <lastBuildDate>Thu, 29 Dec 2022 00:00:00 GMT</lastBuildDate>
       <atom:link href="https://www.ythecombinator.space/feed.xml" rel="self" type="application/rss+xml"/>
       
@@ -16,7 +16,7 @@
     <link>https://www.ythecombinator.space/posts/2022-wrapped</link>
     <description>It’s that epiphany time of the year, again! But, before, a bit of an introduction!</description>
     <pubDate>Thu, 29 Dec 2022 00:00:00 GMT</pubDate>
-    <author>ephraimduncan68@gmail.com (Matheus Albuquerque)</author>
+    <author>land@ythecombinator.space (Matheus Albuquerque)</author>
     <category>career</category><category>community</category><category>devrel</category>
   </item>
 
@@ -26,7 +26,7 @@
     <link>https://www.ythecombinator.space/posts/jheniffer-was-always-my-favorite-color</link>
     <description>I hope yall don&#39;t mind the inconvenience, but I need to talk about Jheniffer Rodrigues.</description>
     <pubDate>Thu, 20 Aug 2020 00:00:00 GMT</pubDate>
-    <author>ephraimduncan68@gmail.com (Matheus Albuquerque)</author>
+    <author>land@ythecombinator.space (Matheus Albuquerque)</author>
     <category>life</category>
   </item>
 
@@ -36,7 +36,7 @@
     <link>https://www.ythecombinator.space/posts/driving-towards-a-universal-navigation-strategy-in-react</link>
     <description>When I joined STRV, they had a specific request for me; to build a front-end app for iOS, Android, and Web, sharing component and business logic amongst all the platforms.</description>
     <pubDate>Mon, 13 Jan 2020 00:00:00 GMT</pubDate>
-    <author>ephraimduncan68@gmail.com (Matheus Albuquerque)</author>
+    <author>land@ythecombinator.space (Matheus Albuquerque)</author>
     <category>react</category><category>react native</category><category>navigation</category>
   </item>
 
@@ -46,7 +46,7 @@
     <link>https://www.ythecombinator.space/posts/it-s-all-about-trusting-the-magic-of-beginnings</link>
     <description>After almost two years immersed in countless exciting challenges, it&#39;s time to move on.</description>
     <pubDate>Mon, 15 Jul 2019 00:00:00 GMT</pubDate>
-    <author>ephraimduncan68@gmail.com (Matheus Albuquerque)</author>
+    <author>land@ythecombinator.space (Matheus Albuquerque)</author>
     <category>career</category><category>life</category>
   </item>
 
@@ -56,7 +56,7 @@
     <link>https://www.ythecombinator.space/posts/a-whole-day-playing-with-ipfs</link>
     <description>This is mostly a controversial decentralized web technologies research story but, before starting, there are a few things I&#39;d like to ensure you all, my beloved readers, are aware of.</description>
     <pubDate>Fri, 15 Dec 2017 00:00:00 GMT</pubDate>
-    <author>ephraimduncan68@gmail.com (Matheus Albuquerque)</author>
+    <author>land@ythecombinator.space (Matheus Albuquerque)</author>
     <category>ipfs</category><category>distributed systems</category>
   </item>
 
@@ -66,7 +66,7 @@
     <link>https://www.ythecombinator.space/posts/swift-in-the-sky-with-types</link>
     <description>This is pretty much a controversial decentralized web technologies research story but, before starting, there are a few things I&#39;d like to ensure you all, my beloved readers, are aware of.</description>
     <pubDate>Mon, 28 Mar 2016 00:00:00 GMT</pubDate>
-    <author>ephraimduncan68@gmail.com (Matheus Albuquerque)</author>
+    <author>land@ythecombinator.space (Matheus Albuquerque)</author>
     <category>swift</category><category>type systems</category>
   </item>
 
@@ -76,7 +76,7 @@
     <link>https://www.ythecombinator.space/posts/o-que-ha-de-novo-com-o-angularjs</link>
     <description>Mudanças anunciadas na ng-Europe, a versão 1.3, “morte” de APIs… O AngularJS 2.0 ainda será o AngularJS que conhecemos?</description>
     <pubDate>Mon, 10 Nov 2014 00:00:00 GMT</pubDate>
-    <author>ephraimduncan68@gmail.com (Matheus Albuquerque)</author>
+    <author>land@ythecombinator.space (Matheus Albuquerque)</author>
     <category>angular</category>
   </item>
 

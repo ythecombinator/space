@@ -1,9 +1,8 @@
-import { ComponentType, FunctionComponent } from 'react';
+import { ComponentType } from 'react';
 import {
   FaDev,
   FaGithub,
   FaLinkedin,
-  FaSpeakerDeck,
   FaTwitter,
 } from 'react-icons/fa';
 import { IconType } from 'react-icons/lib';
@@ -16,20 +15,21 @@ import LayoutPage from 'components/layouts/layout-page';
 export const siteMetadata = {
   title: 'Matheus Albuquerque',
   author: 'Matheus Albuquerque',
-  headerTitle: 'Astrosaurus',
-  description: 'Matheus Albuquerque — Developer, speaker, creator.',
+  authorFirstName: 'Matheus',
+  authorLastName: 'Albuquerque',
+  description: 'Developer, speaker, creator. Obsessed with performance and DX.',
   language: 'en-us',
   theme: 'system',
   siteUrl: 'https://www.ythecombinator.space',
-  siteRepo: 'https://github.com/dephraiim/astrosaurus.me',
   siteLogo: '/static/images/logo.png',
-  image: '/static/images/avatar.jpeg',
   socialBanner: '/static/images/card.png',
-  email: 'ephraimduncan68@gmail.com',
-  github: 'https://github.com/dephraiim',
-  twitter: '@ythecombinator',
-  avatar: 'https://pbs.twimg.com/profile_images/1615068105977331712/TOWGdEEO_400x400.jpg',
   locale: 'en-US',
+  // Social
+  email: 'land@ythecombinator.space',
+  github: 'https://github.com/ythecombinator',
+  twitter: '@ythecombinator',
+  avatar:
+    'https://pbs.twimg.com/profile_images/1615068105977331712/TOWGdEEO_400x400.jpg',
 };
 
 export const socialNetworks: Array<ExternalLink & { Icon: IconType }> = [
