@@ -17,7 +17,7 @@ interface SectionHeadingProps {
 export const SectionHeading: FunctionComponent<
   PropsWithChildren<SectionHeadingProps>
 > = ({ title }) => {
-  return <Typography.h3>{title}</Typography.h3>;
+  return <Typography.h2>{title}</Typography.h2>;
 };
 
 export default SectionHeading;

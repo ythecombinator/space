@@ -23,7 +23,7 @@ export const NavigationMenu: FunctionComponent<
     <NavigationMenuPrimitive.Root className="relative">
       <NavigationMenuPrimitive.List className="flex flex-row p-2 space-x-2">
         {items.map((link) => (
-          <NavigationMenuPrimitive.Item key={link.href} asChild>
+          <NavigationMenuPrimitive.Item key={link.href}>
             <NavigationMenuControlLink
               href={link.href}
               className="link-underline dark:link-underline-black rounded-xl p-1 font-medium text-gray-900 hover:bg-gray-400/10 dark:text-gray-100 sm:p-4"

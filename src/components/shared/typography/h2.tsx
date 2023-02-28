@@ -6,11 +6,11 @@ import { classNames } from 'utils/styles';
  * COMPONENT
  */
 
-const H3: FunctionComponent<
+const H2: FunctionComponent<
   PropsWithChildren<HTMLAttributes<HTMLHeadingElement>>
 > = ({ children, className, ...props }) => {
   return (
-    <h3
+    <h2
       className={classNames(
         'font-bold text-2xl md:text-3xl tracking-tight my-4 text-black dark:text-white',
         className
@@ -18,8 +18,8 @@ const H3: FunctionComponent<
       {...props}
     >
       {children}
-    </h3>
+    </h2>
   );
 };
 
-export default H3;
+export default H2;

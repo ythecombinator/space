@@ -35,9 +35,9 @@ const OrderedListItem: FunctionComponent<
             <div className="text-gray-300 dark:text-gray-400 text-left mr-6">
               {index}
             </div>
-            <h4 className="text-base sm:text-lg font-medium w-full text-gray-800 dark:text-gray-100">
+            <h3 className="text-base sm:text-lg font-medium w-full text-gray-800 dark:text-gray-100">
               {label}
-            </h4>
+            </h3>
           </div>
         </div>
       </div>

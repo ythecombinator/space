@@ -33,14 +33,14 @@ const AllPostsSectionItem: FunctionComponent<
         <div className="sm:text-base text-sm font-medium leading-6 text-gray-500 dark:text-gray-400">
           <time dateTime={date}>{formatDate(date)}</time>
         </div>
-        <h3 className="grow text-2xl font-bold leading-8 tracking-tight">
+        <h2 className="grow text-2xl font-bold leading-8 tracking-tight">
           <Link
             href={`/${Routes.posts}/${slug}`}
             className="text-gray-900 dark:text-gray-100"
           >
             {language === 'pt' ? `🇧🇷 • ${title}` : `${title}`}
           </Link>
-        </h3>
+        </h2>
         {/* TODO: Move this back once we have tags. */}
         {/* <div className="flex flex-wrap gap-3 my-2">
           {tags.map((tag) => (

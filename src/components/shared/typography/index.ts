@@ -1,5 +1,5 @@
 import h1 from 'components/shared/typography/h1';
-import h3 from 'components/shared/typography/h3';
+import h2 from 'components/shared/typography/h2';
 import lead from 'components/shared/typography/lead';
 import p from 'components/shared/typography/p';
 import subtle from 'components/shared/typography/subtle';
@@ -9,7 +9,7 @@ const Typography = {
   subtle,
   lead,
   h1,
-  h3,
+  h2,
 };
 
 export default Typography;

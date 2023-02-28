@@ -34,7 +34,6 @@ const EventsSectionItem: FunctionComponent<
   const {
     eventName,
     eventLocation,
-    sessionLanguage,
     sessionSlides,
     sessionRecording,
   } = props;

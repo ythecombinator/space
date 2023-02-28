@@ -29,12 +29,13 @@ const ActiveTalksSection: FunctionComponent<
         {items.map((item) => {
           const { talkTitle, talkSlug, sessions } = item;
           return (
-            <ActiveTalksSectionItem
-              key={item.talkSlug}
-              talkTitle={talkTitle}
-              talkSlug={talkSlug}
-              sessions={sessions}
-            />
+            <li key={item.talkSlug}>
+              <ActiveTalksSectionItem
+                talkTitle={talkTitle}
+                talkSlug={talkSlug}
+                sessions={sessions}
+              />
+            </li>
           );
         })}
       </ul>
