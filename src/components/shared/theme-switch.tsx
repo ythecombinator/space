@@ -34,9 +34,9 @@ const ThemeSwitch = () => {
       }
     >
       {mounted && (theme === 'dark' || resolvedTheme === 'dark') ? (
-        <FaSun size={20} />
+        <FaSun size={20} aria-hidden />
       ) : (
-        <FaMoon size={20} />
+        <FaMoon size={20} aria-hidden />
       )}
     </motion.button>
   );

@@ -27,7 +27,11 @@ export const ButtonLink: FunctionComponent<
       {icon}
       <div className="ml-3">{children}</div>
     </div>
-    {isInternalLink(href) ? <FaArrowRight /> : <FiExternalLink />}
+    {isInternalLink(href) ? (
+      <FaArrowRight aria-hidden />
+    ) : (
+      <FiExternalLink aria-hidden />
+    )}
   </Link>
 );
 

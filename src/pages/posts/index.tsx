@@ -44,7 +44,7 @@ const PostsPage: NextPage<Props> = ({ allPosts }) => {
   return (
     <>
       <Metadata
-        title={`Posts | ${siteMetadata.title}`}
+        title={`Posts / ${siteMetadata.title}`}
         description="Ideas. Stories. Updates."
       />
       <Layout

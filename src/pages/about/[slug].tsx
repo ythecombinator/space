@@ -57,7 +57,7 @@ const AboutPage: NextPage<Props> = ({ content }) => {
   return (
     <>
       <Metadata
-        title={`About | ${siteMetadata.title}`}
+        title={`About / ${siteMetadata.title}`}
         openGraph={{
           type: 'profile',
           profile: {

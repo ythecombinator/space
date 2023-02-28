@@ -60,7 +60,7 @@ const TalksPage: NextPage<Props> = (props) => {
   return (
     <>
       <Metadata
-        title={`Talks | ${siteMetadata.title}`}
+        title={`Talks / ${siteMetadata.title}`}
         description="Confs, Meetups & More"
       />
       <Layout
