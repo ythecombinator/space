@@ -28,7 +28,7 @@ module.exports = {
         'texture-pattern': "url('/img/texture-pattern.svg')",
       },
       colors: {
-        primary: colors.fuchsia,
+        primary: colors.teal,
         gray: colors.slate,
         'background-color': '#000',
         violet: {
@@ -93,10 +93,15 @@ module.exports = {
             color: theme('colors.gray.700'),
             a: {
               color: theme('colors.primary.500'),
+              textDecoration: 'none',
               '&:hover': {
                 color: theme('colors.primary.700'),
               },
               code: { color: theme('colors.primary.400') },
+            },
+            mark: {
+              color: 'white',
+              backgroundColor: 'transparent',
             },
             p: {
               marginTop: '6px',
@@ -177,6 +182,10 @@ module.exports = {
                 color: theme('colors.primary.400'),
               },
               code: { color: theme('colors.primary.400') },
+            },
+            mark: {
+              color: colors.slate[900],
+              backgroundColor: 'transparent',
             },
             h1: {
               fontWeight: '700',

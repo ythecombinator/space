@@ -11,6 +11,7 @@ import { RawBlogEntry } from 'services/posts-content-service';
 
 import Link from 'components/shared/link';
 import Pre from 'components/shared/pre';
+import Typography from 'components/shared/typography';
 
 /*~
  * TYPES
@@ -38,7 +39,7 @@ const Wrapper: FunctionComponent<PropsWithChildren<MDXLayout>> = ({
 const MDXComponents: MDXContentProps['components'] = {
   Image,
   // @ts-ignore
-  a: Link,
+  a: Typography.a,
   pre: Pre,
   wrapper: Wrapper,
 };

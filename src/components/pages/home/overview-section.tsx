@@ -18,23 +18,49 @@ const OverviewSection: FunctionComponent<
 > = () => {
   return (
     <SectionContainer className="prose">
+      <div className="flex flex-wrap gap-4">
+        <Typography.Highlight color="fuchsia">
+          <Typography.lead className="font-bold px-3 text-slate-800 dark:text-white">
+            Sr. Software Engineer @ Medallia
+          </Typography.lead>
+        </Typography.Highlight>
+
+        <Typography.Highlight color="emerald">
+          <Typography.lead className="font-bold px-3 text-slate-800 dark:text-white">
+            Mentor @ TechLabs
+          </Typography.lead>
+        </Typography.Highlight>
+
+        <Typography.Highlight color="pink">
+          <Typography.lead className="font-bold px-3 text-slate-800 dark:text-white">
+            International Speaker
+          </Typography.lead>
+        </Typography.Highlight>
+        <Typography.Highlight color="cyan">
+          <Typography.lead className="font-bold px-3 text-slate-800 dark:text-white">
+            Google Developer Expert
+          </Typography.lead>
+        </Typography.Highlight>
+
+        <Typography.Highlight color="yellow">
+          <Typography.lead className="font-bold px-3 text-slate-800 dark:text-white">
+            Program Committee @ React Summit
+          </Typography.lead>
+        </Typography.Highlight>
+      </div>
+
       <Typography.p>
-        {`I'm`} a Sr. Front-End Engineer at Medallia, building their surveys
-        platform and helping them shape the customer experience market with
-        React.
-      </Typography.p>
-      <Typography.p>
-        I also volunteer as Mentor at TechLabs Berlin, a completely free
-        platform for people to learn different programming skills.
+        Welcome to my e-garden – I am an iOS developer by training and an
+        experienced front-end engineer by passion, who loves building for the
+        web, being a software engineer since React Mixins.
       </Typography.p>
       <Typography.p>
         Other than this, {`I'm`} casually speaking, writing, traveling &
         advocating for craft brewing.
       </Typography.p>
       <Typography.p>
-        Feel free to reach me out on social networks, Whereby, or schedule
-        something on my calendar. Last but not least, you can write to me
-        through land@ythecombinator.space.
+        Feel free to reach me out on social networks or write to me through
+        land@ythecombinator.space.
       </Typography.p>
     </SectionContainer>
   );
