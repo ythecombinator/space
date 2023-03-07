@@ -40,11 +40,7 @@ const HomePage: NextPage<HomePageProps> = (props) => {
       <OverviewSection />
       <div className="flex flex-col gap-2 md:flex-row md:gap-2">
         {socialNetworks.map(({ label, href, Icon }) => (
-          <ButtonLink
-            key={label}
-            href={href}
-            icon={<Icon aria-hidden />}
-          >
+          <ButtonLink key={label} href={href} icon={<Icon aria-hidden />}>
             {label}
           </ButtonLink>
         ))}

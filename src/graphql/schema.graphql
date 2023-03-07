@@ -1,4 +1,6 @@
-"""Represents a binary file in a space. An asset can be any file type."""
+"""
+Represents a binary file in a space. An asset can be any file type.
+"""
 type Asset {
   contentType(locale: String): String
   contentfulMetadata: ContentfulMetadata!
@@ -90,10 +92,30 @@ input AssetFilter {
 }
 
 type AssetLinkingCollections {
-  cityCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): CityCollection
-  companyCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): CompanyCollection
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  sessionCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): SessionCollection
+  cityCollection(
+    limit: Int = 100
+    locale: String
+    preview: Boolean
+    skip: Int = 0
+  ): CityCollection
+  companyCollection(
+    limit: Int = 100
+    locale: String
+    preview: Boolean
+    skip: Int = 0
+  ): CompanyCollection
+  entryCollection(
+    limit: Int = 100
+    locale: String
+    preview: Boolean
+    skip: Int = 0
+  ): EntryCollection
+  sessionCollection(
+    limit: Int = 100
+    locale: String
+    preview: Boolean
+    skip: Int = 0
+  ): SessionCollection
 }
 
 enum AssetOrder {
@@ -165,9 +187,24 @@ input CityFilter {
 }
 
 type CityLinkingCollections {
-  companyCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): CompanyCollection
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  eventCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EventCollection
+  companyCollection(
+    limit: Int = 100
+    locale: String
+    preview: Boolean
+    skip: Int = 0
+  ): CompanyCollection
+  entryCollection(
+    limit: Int = 100
+    locale: String
+    preview: Boolean
+    skip: Int = 0
+  ): EntryCollection
+  eventCollection(
+    limit: Int = 100
+    locale: String
+    preview: Boolean
+    skip: Int = 0
+  ): EventCollection
 }
 
 enum CityOrder {
@@ -220,8 +257,18 @@ input CompanyFilter {
 }
 
 type CompanyLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  titleCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): TitleCollection
+  entryCollection(
+    limit: Int = 100
+    locale: String
+    preview: Boolean
+    skip: Int = 0
+  ): EntryCollection
+  titleCollection(
+    limit: Int = 100
+    locale: String
+    preview: Boolean
+    skip: Int = 0
+  ): TitleCollection
 }
 
 enum CompanyOrder {
@@ -301,8 +348,18 @@ input CountryFilter {
 }
 
 type CountryLinkingCollections {
-  cityCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): CityCollection
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  cityCollection(
+    limit: Int = 100
+    locale: String
+    preview: Boolean
+    skip: Int = 0
+  ): CityCollection
+  entryCollection(
+    limit: Int = 100
+    locale: String
+    preview: Boolean
+    skip: Int = 0
+  ): EntryCollection
 }
 
 enum CountryOrder {
@@ -372,7 +429,12 @@ type Event implements Entry {
   endingDate(locale: String): DateTime
   linkedFrom(allowedLocales: [String]): EventLinkingCollections
   name(locale: String): String
-  sessionsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EventSessionsCollection
+  sessionsCollection(
+    limit: Int = 100
+    locale: String
+    preview: Boolean
+    skip: Int = 0
+  ): EventSessionsCollection
   startingDate(locale: String): DateTime
   sys: Sys!
   website(locale: String): String
@@ -428,8 +490,18 @@ input EventFilter {
 }
 
 type EventLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  sessionCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): SessionCollection
+  entryCollection(
+    limit: Int = 100
+    locale: String
+    preview: Boolean
+    skip: Int = 0
+  ): EntryCollection
+  sessionCollection(
+    limit: Int = 100
+    locale: String
+    preview: Boolean
+    skip: Int = 0
+  ): SessionCollection
 }
 
 enum EventOrder {
@@ -458,13 +530,17 @@ type EventSessionsCollection {
   total: Int!
 }
 
-"""The 'HexColor' type represents color in `rgb:ffffff` string format."""
+"""
+The 'HexColor' type represents color in `rgb:ffffff` string format.
+"""
 scalar HexColor
 
 enum ImageFormat {
   AVIF
 
-  """JPG image format."""
+  """
+  JPG image format.
+  """
   JPG
 
   """
@@ -475,7 +551,9 @@ enum ImageFormat {
   """
   JPG_PROGRESSIVE
 
-  """PNG image format"""
+  """
+  PNG image format
+  """
   PNG
 
   """
@@ -484,42 +562,66 @@ enum ImageFormat {
   """
   PNG8
 
-  """WebP image format."""
+  """
+  WebP image format.
+  """
   WEBP
 }
 
 enum ImageResizeFocus {
-  """Focus the resizing on the bottom."""
+  """
+  Focus the resizing on the bottom.
+  """
   BOTTOM
 
-  """Focus the resizing on the bottom left."""
+  """
+  Focus the resizing on the bottom left.
+  """
   BOTTOM_LEFT
 
-  """Focus the resizing on the bottom right."""
+  """
+  Focus the resizing on the bottom right.
+  """
   BOTTOM_RIGHT
 
-  """Focus the resizing on the center."""
+  """
+  Focus the resizing on the center.
+  """
   CENTER
 
-  """Focus the resizing on the largest face."""
+  """
+  Focus the resizing on the largest face.
+  """
   FACE
 
-  """Focus the resizing on the area containing all the faces."""
+  """
+  Focus the resizing on the area containing all the faces.
+  """
   FACES
 
-  """Focus the resizing on the left."""
+  """
+  Focus the resizing on the left.
+  """
   LEFT
 
-  """Focus the resizing on the right."""
+  """
+  Focus the resizing on the right.
+  """
   RIGHT
 
-  """Focus the resizing on the top."""
+  """
+  Focus the resizing on the top.
+  """
   TOP
 
-  """Focus the resizing on the top left."""
+  """
+  Focus the resizing on the top left.
+  """
   TOP_LEFT
 
-  """Focus the resizing on the top right."""
+  """
+  Focus the resizing on the top right.
+  """
   TOP_RIGHT
 }
 
@@ -534,7 +636,9 @@ enum ImageResizeStrategy {
   """
   FILL
 
-  """Resizes the image to fit into the specified dimensions."""
+  """
+  Resizes the image to fit into the specified dimensions.
+  """
   FIT
 
   """
@@ -548,7 +652,9 @@ enum ImageResizeStrategy {
   """
   SCALE
 
-  """Creates a thumbnail from the image."""
+  """
+  Creates a thumbnail from the image.
+  """
   THUMB
 }
 
@@ -567,10 +673,14 @@ input ImageTransformOptions {
   """
   cornerRadius: Int
 
-  """Desired image format. Defaults to the original image format."""
+  """
+  Desired image format. Defaults to the original image format.
+  """
   format: ImageFormat
 
-  """Desired height in pixels. Defaults to the original image height."""
+  """
+  Desired height in pixels. Defaults to the original image height.
+  """
   height: Dimension
 
   """
@@ -579,13 +689,19 @@ input ImageTransformOptions {
   """
   quality: Quality
 
-  """Desired resize focus area. Defaults to `CENTER`."""
+  """
+  Desired resize focus area. Defaults to `CENTER`.
+  """
   resizeFocus: ImageResizeFocus
 
-  """Desired resize strategy. Defaults to `FIT`."""
+  """
+  Desired resize strategy. Defaults to `FIT`.
+  """
   resizeStrategy: ImageResizeStrategy
 
-  """Desired width in pixels. Defaults to the original image width."""
+  """
+  Desired width in pixels. Defaults to the original image width.
+  """
   width: Dimension
 }
 
@@ -642,8 +758,18 @@ input LanguageFilter {
 }
 
 type LanguageLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  sessionCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): SessionCollection
+  entryCollection(
+    limit: Int = 100
+    locale: String
+    preview: Boolean
+    skip: Int = 0
+  ): EntryCollection
+  sessionCollection(
+    limit: Int = 100
+    locale: String
+    preview: Boolean
+    skip: Int = 0
+  ): SessionCollection
 }
 
 enum LanguageOrder {
@@ -675,26 +801,103 @@ scalar Quality
 
 type Query {
   asset(id: String!, locale: String, preview: Boolean): Asset
-  assetCollection(limit: Int = 100, locale: String, order: [AssetOrder], preview: Boolean, skip: Int = 0, where: AssetFilter): AssetCollection
+  assetCollection(
+    limit: Int = 100
+    locale: String
+    order: [AssetOrder]
+    preview: Boolean
+    skip: Int = 0
+    where: AssetFilter
+  ): AssetCollection
   city(id: String!, locale: String, preview: Boolean): City
-  cityCollection(limit: Int = 100, locale: String, order: [CityOrder], preview: Boolean, skip: Int = 0, where: CityFilter): CityCollection
+  cityCollection(
+    limit: Int = 100
+    locale: String
+    order: [CityOrder]
+    preview: Boolean
+    skip: Int = 0
+    where: CityFilter
+  ): CityCollection
   company(id: String!, locale: String, preview: Boolean): Company
-  companyCollection(limit: Int = 100, locale: String, order: [CompanyOrder], preview: Boolean, skip: Int = 0, where: CompanyFilter): CompanyCollection
+  companyCollection(
+    limit: Int = 100
+    locale: String
+    order: [CompanyOrder]
+    preview: Boolean
+    skip: Int = 0
+    where: CompanyFilter
+  ): CompanyCollection
   country(id: String!, locale: String, preview: Boolean): Country
-  countryCollection(limit: Int = 100, locale: String, order: [CountryOrder], preview: Boolean, skip: Int = 0, where: CountryFilter): CountryCollection
-  entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, where: EntryFilter): EntryCollection
+  countryCollection(
+    limit: Int = 100
+    locale: String
+    order: [CountryOrder]
+    preview: Boolean
+    skip: Int = 0
+    where: CountryFilter
+  ): CountryCollection
+  entryCollection(
+    limit: Int = 100
+    locale: String
+    order: [EntryOrder]
+    preview: Boolean
+    skip: Int = 0
+    where: EntryFilter
+  ): EntryCollection
   event(id: String!, locale: String, preview: Boolean): Event
-  eventCollection(limit: Int = 100, locale: String, order: [EventOrder], preview: Boolean, skip: Int = 0, where: EventFilter): EventCollection
+  eventCollection(
+    limit: Int = 100
+    locale: String
+    order: [EventOrder]
+    preview: Boolean
+    skip: Int = 0
+    where: EventFilter
+  ): EventCollection
   language(id: String!, locale: String, preview: Boolean): Language
-  languageCollection(limit: Int = 100, locale: String, order: [LanguageOrder], preview: Boolean, skip: Int = 0, where: LanguageFilter): LanguageCollection
+  languageCollection(
+    limit: Int = 100
+    locale: String
+    order: [LanguageOrder]
+    preview: Boolean
+    skip: Int = 0
+    where: LanguageFilter
+  ): LanguageCollection
   session(id: String!, locale: String, preview: Boolean): Session
-  sessionCollection(limit: Int = 100, locale: String, order: [SessionOrder], preview: Boolean, skip: Int = 0, where: SessionFilter): SessionCollection
+  sessionCollection(
+    limit: Int = 100
+    locale: String
+    order: [SessionOrder]
+    preview: Boolean
+    skip: Int = 0
+    where: SessionFilter
+  ): SessionCollection
   talk(id: String!, locale: String, preview: Boolean): Talk
-  talkCollection(limit: Int = 100, locale: String, order: [TalkOrder], preview: Boolean, skip: Int = 0, where: TalkFilter): TalkCollection
+  talkCollection(
+    limit: Int = 100
+    locale: String
+    order: [TalkOrder]
+    preview: Boolean
+    skip: Int = 0
+    where: TalkFilter
+  ): TalkCollection
   technology(id: String!, locale: String, preview: Boolean): Technology
-  technologyCollection(limit: Int = 100, locale: String, order: [TechnologyOrder], preview: Boolean, skip: Int = 0, where: TechnologyFilter): TechnologyCollection
+  technologyCollection(
+    limit: Int = 100
+    locale: String
+    order: [TechnologyOrder]
+    preview: Boolean
+    skip: Int = 0
+    where: TechnologyFilter
+  ): TechnologyCollection
   title(id: String!, locale: String, preview: Boolean): Title
-  titleCollection(limit: Int = 100, locale: String, order: [TitleOrder], preview: Boolean, skip: Int = 0, where: TitleFilter): TitleCollection
+  titleCollection(
+    limit: Int = 100
+    locale: String
+    order: [TitleOrder]
+    preview: Boolean
+    skip: Int = 0
+    where: TitleFilter
+  ): TitleCollection
 }
 
 """
@@ -779,9 +982,24 @@ input SessionFilter {
 }
 
 type SessionLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  eventCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EventCollection
-  talkCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): TalkCollection
+  entryCollection(
+    limit: Int = 100
+    locale: String
+    preview: Boolean
+    skip: Int = 0
+  ): EntryCollection
+  eventCollection(
+    limit: Int = 100
+    locale: String
+    preview: Boolean
+    skip: Int = 0
+  ): EventCollection
+  talkCollection(
+    limit: Int = 100
+    locale: String
+    preview: Boolean
+    skip: Int = 0
+  ): TalkCollection
 }
 
 enum SessionOrder {
@@ -863,7 +1081,12 @@ type Talk implements Entry {
   contentfulMetadata: ContentfulMetadata!
   lastRelevant(locale: String): DateTime
   linkedFrom(allowedLocales: [String]): TalkLinkingCollections
-  sessionsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): TalkSessionsCollection
+  sessionsCollection(
+    limit: Int = 100
+    locale: String
+    preview: Boolean
+    skip: Int = 0
+  ): TalkSessionsCollection
   shortDescription(locale: String): TalkShortDescription
   slug(locale: String): String
   sys: Sys!
@@ -946,8 +1169,18 @@ input TalkFilter {
 }
 
 type TalkLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  sessionCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): SessionCollection
+  entryCollection(
+    limit: Int = 100
+    locale: String
+    preview: Boolean
+    skip: Int = 0
+  ): EntryCollection
+  sessionCollection(
+    limit: Int = 100
+    locale: String
+    preview: Boolean
+    skip: Int = 0
+  ): SessionCollection
 }
 
 enum TalkOrder {
@@ -1039,8 +1272,18 @@ input TechnologyFilter {
 }
 
 type TechnologyLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  titleCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): TitleCollection
+  entryCollection(
+    limit: Int = 100
+    locale: String
+    preview: Boolean
+    skip: Int = 0
+  ): EntryCollection
+  titleCollection(
+    limit: Int = 100
+    locale: String
+    preview: Boolean
+    skip: Int = 0
+  ): TitleCollection
 }
 
 enum TechnologyOrder {
@@ -1068,7 +1311,12 @@ type Title implements Entry {
   linkedFrom(allowedLocales: [String]): TitleLinkingCollections
   organization(locale: String, preview: Boolean): Company
   roles(locale: String): [String]
-  stackCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): TitleStackCollection
+  stackCollection(
+    limit: Int = 100
+    locale: String
+    preview: Boolean
+    skip: Int = 0
+  ): TitleStackCollection
   startingDate(locale: String): DateTime
   sys: Sys!
   title(locale: String): String
@@ -1145,7 +1393,12 @@ input TitleFilter {
 }
 
 type TitleLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  entryCollection(
+    limit: Int = 100
+    locale: String
+    preview: Boolean
+    skip: Int = 0
+  ): EntryCollection
 }
 
 enum TitleOrder {

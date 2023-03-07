@@ -2,7 +2,6 @@ import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { classNames, useRandomGradient } from 'utils/styles';
 
-
 /*~
  * TYPES
  */

@@ -1,42 +1,40 @@
-<html lang="EN">
+<html lang='EN'>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width' />
+    <script src='https://cdn.tailwindcss.com'></script>
   </head>
-  <body id="body">
+  <body id='body'>
     <div>
       <div
-        class="relative flex flex-col justify-between p-16 text-gray-100 bg-gray-900 shadow-md"
-        style="width: 1200px; height: 630px"
+        class='relative flex flex-col justify-between p-16 text-gray-100 bg-gray-900 shadow-md'
+        style='width: 1200px; height: 630px'
       >
-        <div class="max-w-screen-lg space-y-2">
-          <h1
-            class="text-7xl font-bold text-gray-100 font-source-sans-pro"
-          >
+        <div class='max-w-screen-lg space-y-2'>
+          <h1 class='text-7xl font-bold text-gray-100 font-source-sans-pro'>
             {{title}}
           </h1>
         </div>
-        <div class="flex justify-between">
-          <div class="flex items-center space-x-6">
+        <div class='flex justify-between'>
+          <div class='flex items-center space-x-6'>
             <img
-              src="{{authorPic}}"
-              class="flex-none w-32 h-32 border-4 border-gray-200 rounded-full handsome"
+              src='{{authorPic}}'
+              class='flex-none w-32 h-32 border-4 border-gray-200 rounded-full handsome'
             />
-            <div class="flex flex-col gap">
+            <div class='flex flex-col gap'>
               <p
-                class="mb-1 text-3xl font-semibold text-gray-200 font-source-sans-pro"
+                class='mb-1 text-3xl font-semibold text-gray-200 font-source-sans-pro'
               >
                 {{authorName}}
               </p>
               <p
-                class="text-2xl font-semibold tracking-wide text-indigo-400 font-open-sans"
+                class='text-2xl font-semibold tracking-wide text-indigo-400 font-open-sans'
               >
-                {{basePath}}/<span class="path">{{postPath}}</span>
+                {{basePath}}/<span class='path'>{{postPath}}</span>
               </p>
               <p
-                class="text-2xl font-semibold tracking-wide font-source-sans-pro"
-                style="color: rgb(29, 155, 240)"
+                class='text-2xl font-semibold tracking-wide font-source-sans-pro'
+                style='color: rgb(29, 155, 240)'
               >
                 twitter.com/{{authorTwitter}}
               </p>

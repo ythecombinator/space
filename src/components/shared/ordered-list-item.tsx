@@ -24,11 +24,7 @@ const OrderedListItem: FunctionComponent<
   const { label, href, index } = props;
 
   return (
-    <Link
-      href={href}
-      className="w-full"
-      aria-label={label}
-    >
+    <Link href={href} className="w-full" aria-label={label}>
       <div className="w-full border-b border-gray-200 dark:border-gray-700 py-3 transform hover:scale-[1.01] transition-all">
         <div className="flex flex-col sm:flex-row justify-between sm:items-center">
           <div className="flex items-center">

@@ -44,9 +44,7 @@ const OverviewSection: FunctionComponent<PropsWithChildren<{}>> = () => {
         <Typography.a href="https://techlabs.org">TechLabs Berlin</Typography.a>
         , teaching front-end development, and {`I'm`} also part of the program
         committee of the US chapter of the{' '}
-        <Typography.a href="https://reactsummit.com">
-          React Summit
-        </Typography.a>{' '}
+        <Typography.a href="https://reactsummit.com">React Summit</Typography.a>{' '}
         conference.
       </Typography.p>
       <Typography.p>

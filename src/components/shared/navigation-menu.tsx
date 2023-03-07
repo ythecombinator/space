@@ -1,8 +1,9 @@
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 import { FunctionComponent, PropsWithChildren } from 'react';
 
-import NavigationMenuControlLink from 'components/shared/navigation-menu-control-link';
 import { classNames } from 'utils/styles';
+
+import NavigationMenuControlLink from 'components/shared/navigation-menu-control-link';
 
 /*~
  * TYPES

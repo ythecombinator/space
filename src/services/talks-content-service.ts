@@ -76,7 +76,7 @@ export default class TalksContentService {
     const items = doc.data.talkCollection?.items;
 
     if (!items) {
-      return []
+      return [];
     }
 
     return items.map((item) => item?.slug!);

@@ -1,7 +1,8 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
 
-module.exports = {
+/** @type {import('tailwindcss').Config} */
+const config = {
   content: ['./src/**/*.{js,ts,jsx,tsx}', './contentlayer.config.ts'],
   darkMode: 'class',
   theme: {
@@ -243,3 +244,5 @@ module.exports = {
   },
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 };
+
+module.exports = config;

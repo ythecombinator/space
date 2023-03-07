@@ -12,7 +12,6 @@ import Link from 'components/shared/link';
 import PageTitle from 'components/shared/page-title';
 import ScrollTop from 'components/shared/scroll-top';
 import SectionCover from 'components/shared/section-cover';
-import BlogSEO from 'components/shared/seo-blog';
 
 /*~
  * TYPES

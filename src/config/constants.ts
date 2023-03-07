@@ -1,10 +1,5 @@
 import { ComponentType } from 'react';
-import {
-  FaDev,
-  FaGithub,
-  FaLinkedin,
-  FaTwitter,
-} from 'react-icons/fa';
+import { FaDev, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { IconType } from 'react-icons/lib';
 import { ExternalLink } from 'types/link';
 
