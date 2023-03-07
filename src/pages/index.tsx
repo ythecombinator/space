@@ -32,9 +32,7 @@ export async function getStaticProps() {
  * PAGE
  */
 
-const HomePage: NextPage<HomePageProps> = (props) => {
-  const {} = props;
-
+const HomePage: NextPage<HomePageProps> = () => {
   return (
     <Layout heading="Hi, I'm Matheus! 👋">
       <OverviewSection />
