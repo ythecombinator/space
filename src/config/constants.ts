@@ -1,7 +1,5 @@
 import { ComponentType } from 'react';
 import { FaDev, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
-import { IconType } from 'react-icons/lib';
-import { ExternalLink } from 'types/link';
 
 import LayoutBiographyEntry from 'components/layouts/layout-biography-entry';
 import LayoutBlogEntry from 'components/layouts/layout-blog-entry';
@@ -27,7 +25,7 @@ export const siteMetadata = {
     'https://pbs.twimg.com/profile_images/1615068105977331712/TOWGdEEO_400x400.jpg',
 };
 
-export const socialNetworks: Array<ExternalLink & { Icon: IconType }> = [
+export const socialNetworks = [
   {
     label: 'Twitter',
     href: 'https://twitter.com/ythecombinator',
@@ -81,7 +79,3 @@ export const LayoutsMap: Record<Layouts, ComponentType<any>> = {
   'layout-page': LayoutPage,
   'layout-blog-entry': LayoutBlogEntry,
 };
-
-export enum SourcePath {
-  content = 'src/content',
-}

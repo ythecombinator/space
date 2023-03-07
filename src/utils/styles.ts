@@ -1,27 +1,14 @@
 import { ClassValue, clsx } from 'clsx';
 import { useEffect, useState } from 'react';
-// import fetch from 'node-fetch';
 import { twMerge } from 'tailwind-merge';
 
-import { randomElement } from './array';
-
-// export const fetchGradients = async () => {
-//   const url =
-//     'https://raw.githubusercontent.com/ghosh/uiGradients/master/gradients.json';
-//   const settings = { method: 'Get' };
-
-//   const res = await fetch(url, settings);
-//   const colors = await res.json();
-// };
-
-export const classNameForGradient = (gradient: [string, string]) =>
-  ` from-[${gradient[0]}] to-[${gradient[1]}]`;
+import { randomElement } from 'utils/array';
 
 export const classNames = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs));
 };
 
-export const gradients = [
+const gradients = [
   ' from-[#FDE68A] via-[#FCA5A5] to-[#FECACA]',
   ' from-[#D8B4FE] to-[#818CF8]',
   ' to-[#6EE7B7] from-[#6EE7F9]',
