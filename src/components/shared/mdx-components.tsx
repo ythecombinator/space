@@ -42,6 +42,8 @@ const MDXComponents: MDXContentProps['components'] = {
   a: Typography.a,
   pre: Pre,
   wrapper: Wrapper,
+  Lead: Typography.lead,
+  Subtle: Typography.subtle,
 };
 
 /*~
