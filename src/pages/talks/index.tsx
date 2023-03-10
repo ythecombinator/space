@@ -61,11 +61,11 @@ const TalksPage: NextPage<Props> = (props) => {
     <>
       <Metadata
         title={`Talks / ${siteMetadata.title}`}
-        description="Confs, Meetups & More"
+        description="Confs. Meetups. More."
       />
       <Layout
-        heading="Confs, Meetups & More"
-        headingGradientMask
+        heading="Confs. Meetups. More."
+        headingGradient="borealis"
         subHeading={
           <SearchBar
             label={`Search topics, events and places`}

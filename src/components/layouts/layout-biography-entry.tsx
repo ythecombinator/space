@@ -2,6 +2,8 @@ import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { BiographyEntry } from 'services/biography-content-service';
 
+import { Gradient } from 'utils/styles';
+
 import PageTitle from 'components/shared/page-title';
 import SectionCover from 'components/shared/section-cover';
 
@@ -20,11 +22,13 @@ interface BiographyEntryLayoutProps {
 const BiographyEntryLayout: FunctionComponent<
   PropsWithChildren<BiographyEntryLayoutProps>
 > = ({ children, content }) => {
-  const { title, cover } = content;
+  const { title, color, cover } = content;
+  console.log('content', content);
+
   return (
     <div className="mt-6 px-2 sm:px-0">
       <div className="space-y-2 pt-6 pb-8 md:space-y-5">
-        <PageTitle gradient>{title}</PageTitle>
+        <PageTitle gradient={color as Gradient}>{title}</PageTitle>
         <SectionCover alt={title} src={cover} />
       </div>
 

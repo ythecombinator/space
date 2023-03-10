@@ -54,7 +54,7 @@ export enum Routes {
   work = 'about/work',
   clients = 'about/clients',
   life = 'about/life',
-  uses = 'about/uses',
+  community = 'about/community',
   posts = 'posts',
   talks = 'talks',
   projects = 'projects',

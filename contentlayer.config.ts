@@ -2,10 +2,14 @@ import {
   defineDocumentType,
   ComputedFields,
   makeSource,
-  FieldDef,
   FieldDefs,
 } from 'contentlayer/source-files';
 import path from 'path';
+import {
+  remarkExtractFrontmatter,
+  remarkCodeTitles,
+  remarkImgToJsx,
+} from 'pliny/mdx-plugins.js';
 import readingTime from 'reading-time';
 import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
 // Rehype packages
@@ -19,11 +23,6 @@ import rehypeSlug from 'rehype-slug';
 import remarkFootnotes from 'remark-footnotes';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
-import {
-  remarkExtractFrontmatter,
-  remarkCodeTitles,
-  remarkImgToJsx,
-} from 'pliny/mdx-plugins.js'
 
 const root = process.cwd();
 
@@ -47,7 +46,7 @@ const computedFields: ComputedFields = {
 
 export const BlogEntry = defineDocumentType(() => ({
   name: 'BlogEntry',
-  filePathPattern: 'blog/**/*.mdx',
+  filePathPattern: 'blog/**/*.md',
   contentType: 'mdx',
   fields: {
     title: fields.title,
@@ -78,6 +77,10 @@ export const BiographyEntry = defineDocumentType(() => ({
   contentType: 'mdx',
   fields: {
     title: fields.title,
+    color: {
+      type: 'string',
+      required: true,
+    },
   },
   computedFields: {
     cover: {

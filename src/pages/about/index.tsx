@@ -32,7 +32,7 @@ const AboutPage: NextPage = () => {
           ],
         }}
       />
-      <Layout heading="Build. Share. Rewind." headingGradientMask>
+      <Layout heading="Build. Share. Rewind." headingGradient="cottonCandy">
         <OverviewSection />
       </Layout>
     </>

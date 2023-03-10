@@ -1,6 +1,11 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
 
-import { classNames, useRandomGradient } from 'utils/styles';
+import {
+  classNames,
+  Gradient,
+  useRandomGradient,
+  gradients,
+} from 'utils/styles';
 
 import Typography from 'components/shared/typography';
 
@@ -8,8 +13,8 @@ import Typography from 'components/shared/typography';
  * TYPES
  */
 
-interface PageTitleProps {
-  gradient?: boolean;
+export interface PageTitleProps {
+  gradient?: Gradient;
 }
 
 /*~
@@ -17,16 +22,15 @@ interface PageTitleProps {
  */
 
 const PageTitle: FunctionComponent<PropsWithChildren<PageTitleProps>> = ({
-  gradient = false,
+  gradient,
   children,
 }) => {
-  const gradientClassName = useRandomGradient();
-
   return (
     <Typography.h1
       className={classNames({
-        [`text-transparent bg-clip-text bg-gradient-to-r ${gradientClassName}`]:
-          gradient,
+        [`text-transparent bg-clip-text bg-gradient-to-r ${
+          gradients[gradient as Gradient]
+        }`]: gradient,
       })}
     >
       {children}

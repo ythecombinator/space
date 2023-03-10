@@ -8,26 +8,26 @@ export const classNames = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs));
 };
 
-const gradients = [
-  ' from-[#FDE68A] via-[#FCA5A5] to-[#FECACA]',
-  ' from-[#D8B4FE] to-[#818CF8]',
-  ' to-[#6EE7B7] from-[#6EE7F9]',
-  ' from-purple-400 to-pink-600',
-  ' from-pink-500 via-red-500 to-yellow-500',
-  ' from-yellow-100 via-yellow-300 to-yellow-500',
-  ' from-indigo-200 via-red-200 to-yellow-100',
-  ' from-green-200 via-green-400 to-purple-700',
-  ' from-red-200 to-red-600',
-  ' from-green-300 via-yellow-300 to-pink-300',
-  ' from-pink-400 to-pink-600',
-  ' from-sky-400 via-rose-400 to-lime-400',
-];
+// Extracted from: https://hypercolor.dev
+export const gradients = {
+  hyper: ' from-pink-500 via-red-500 to-yellow-500',
+  cottonCandy: ' from-pink-300 via-purple-300 to-indigo-400',
+  sunset: ' from-indigo-200 via-red-200 to-yellow-100',
+  peachy: ' from-red-200 via-red-300 to-yellow-200',
+  minnesota: ' from-purple-400 to-yellow-400',
+  orangeCoral: ' from-orange-400 to-rose-400',
+  morning: ' from-rose-400 to-orange-300',
+  sublime: ' from-rose-400 via-fuchsia-500 to-indigo-500',
+  borealis: ' from-green-300 to-purple-400',
+};
+
+export type Gradient = keyof typeof gradients;
 
 export const useRandomGradient = () => {
   const [gradientClassName, setGradientClassName] = useState('');
 
   useEffect(() => {
-    setGradientClassName(randomElement(gradients));
+    setGradientClassName(randomElement(Object.values(gradients)));
   }, []);
 
   return gradientClassName;

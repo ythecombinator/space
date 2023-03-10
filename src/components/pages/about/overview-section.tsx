@@ -2,6 +2,8 @@ import { FunctionComponent, PropsWithChildren } from 'react';
 import { FaLaptopCode } from 'react-icons/fa';
 import { GiCardRandom, GiTakeMyMoney, GiBattleGear } from 'react-icons/gi';
 
+import { Routes } from 'config/constants';
+
 import ButtonLink from 'components/shared/button-link';
 import SectionContainer from 'components/shared/section-container';
 import SectionCover from 'components/shared/section-cover';
@@ -53,17 +55,29 @@ const OverviewSection: FunctionComponent<PropsWithChildren<{}>> = () => {
       </Typography.p>
 
       <div className="flex flex-col gap-2 md:flex-row md:gap-2">
-        <ButtonLink href="/about/life" icon={<GiCardRandom aria-hidden />}>
+        <ButtonLink
+          href={`/${Routes.life}`}
+          icon={<GiCardRandom aria-hidden />}
+        >
           Life
         </ButtonLink>
-        <ButtonLink href="/about/work" icon={<FaLaptopCode aria-hidden />}>
+        <ButtonLink
+          href={`/${Routes.work}`}
+          icon={<FaLaptopCode aria-hidden />}
+        >
           Work
         </ButtonLink>
-        <ButtonLink href="/about/clients" icon={<GiTakeMyMoney aria-hidden />}>
+        <ButtonLink
+          href={`/${Routes.clients}`}
+          icon={<GiTakeMyMoney aria-hidden />}
+        >
           Clients
         </ButtonLink>
-        <ButtonLink href="/about/uses" icon={<GiBattleGear aria-hidden />}>
-          Uses
+        <ButtonLink
+          href={`/${Routes.community}`}
+          icon={<GiBattleGear aria-hidden />}
+        >
+          Community
         </ButtonLink>
       </div>
     </SectionContainer>

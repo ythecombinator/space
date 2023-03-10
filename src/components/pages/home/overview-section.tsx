@@ -50,7 +50,7 @@ const OverviewSection: FunctionComponent<
       </div>
 
       <Typography.p>
-        Welcome to my e-garden – I am an iOS developer by training and an
+        Welcome to my digital garden – I am an iOS developer by training and an
         experienced front-end engineer by passion, who loves building for the
         web, being a software engineer since React Mixins.
       </Typography.p>
