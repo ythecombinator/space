@@ -28,12 +28,12 @@ const PhotoHighlightsSectionItem: FunctionComponent<
       key={talkSlug}
       href={talkSlug}
       shallow
-      className="after:content group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
+      className="after:content after:shadow-highlight group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg"
     >
-      <figure className="relative max-w-sm transition-all duration-300 cursor-pointer">
+      <figure className="relative max-w-sm cursor-pointer transition-all duration-300">
         <Image
           alt={eventName}
-          className="h-auto max-w-lg transition-all duration-300 rounded-lg filter grayscale blur-sm hover:blur-none"
+          className="h-auto max-w-lg rounded-lg blur-sm grayscale transition-all duration-300 hover:blur-none"
           src={photoURL}
           width={720}
           height={480}
@@ -42,7 +42,7 @@ const PhotoHighlightsSectionItem: FunctionComponent<
             height: 'auto',
           }}
         />
-        <figcaption className="absolute px-4 bottom-6">
+        <figcaption className="absolute bottom-6 px-4">
           <Typography.lead>{eventName}</Typography.lead>
         </figcaption>
       </figure>

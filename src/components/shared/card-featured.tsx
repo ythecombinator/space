@@ -52,7 +52,7 @@ const CardFeatured: FunctionComponent<PropsWithChildren<CardFeaturedProps>> = ({
       ref={ref}
     >
       <div
-        className={`rounded-md p-0.5 dark:p-px bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-full -z-10`}
+        className={`-z-10 h-full rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-0.5 dark:p-px`}
       >
         <Link href={href} aria-label={`Link to ${title}`}>
           <animated.div
@@ -62,10 +62,10 @@ const CardFeatured: FunctionComponent<PropsWithChildren<CardFeaturedProps>> = ({
               const rect = ref.current?.getBoundingClientRect()!;
               set(calc(e.clientX, e.clientY, rect));
             }}
-            className={`will-change-transform overflow-hidden relative rounded-md bg-violet-30 dark:bg-violet-950
-          after:absolute after:inset-0 after:z-10 after:bg-cover after:bg-no-repeat after:opacity-0 after:pointer-events-none
-          after:mix-blend-hard-light after:will-change-auto after:bg-texture-pattern after:transition-opacity after:duration-500
-          hover:after:opacity-100 hover:after:animate-hue-animation h-full z-20`}
+            className={`relative z-20 h-full overflow-hidden rounded-md bg-violet-30
+          will-change-transform after:pointer-events-none after:absolute after:inset-0 after:z-10 after:bg-texture-pattern after:bg-cover
+          after:bg-no-repeat after:opacity-0 after:mix-blend-hard-light after:transition-opacity after:duration-500
+          after:will-change-auto hover:after:animate-hue-animation hover:after:opacity-100 dark:bg-violet-950`}
           >
             <div className="p-5">
               <h2 className="mb-2 text-2xl font-bold leading-8 tracking-tight">

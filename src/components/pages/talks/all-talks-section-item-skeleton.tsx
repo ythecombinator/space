@@ -13,7 +13,7 @@ const AllTalksSectionItemSkeleton: FunctionComponent<
   const { theme } = useTheme();
 
   return (
-    <div className="w-full border-b border-gray-200 dark:border-gray-700 py-3">
+    <div className="w-full border-b border-gray-200 py-3 dark:border-gray-700">
       <ContentLoader
         speed={1}
         viewBox="0 0 400 25"

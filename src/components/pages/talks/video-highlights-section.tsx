@@ -28,7 +28,7 @@ const VideoHighlightsSection: FunctionComponent<
   return (
     <SectionContainer>
       <SectionHeading title="📺 YouTube Highlights" />
-      <div className="pb-2 w-full flex flex-wrap">
+      <div className="flex w-full flex-wrap pb-2">
         {items.map((item) => (
           <VideoHighlightsSectionItem
             key={item.talkTitle}
