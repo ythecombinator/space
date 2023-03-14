@@ -10,6 +10,7 @@
     "^services/(.*)$",
     "^schema/(.*)$",
     "^utils/(.*)$",
+    "^content/(.*)$",
     "^components/shared/(.*)$",
     "^components/layouts/(.*)$",
     "^components/pages/(.*)$",
