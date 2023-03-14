@@ -46,7 +46,7 @@ const Tooltip: FunctionComponent<PropsWithChildren<TooltipProps>> = ({
       {openTooltip && isMobile && (
         <Leaflet setShow={setOpenTooltip}>
           {typeof content === 'string' ? (
-            <span className="flex min-h-[150px] w-full items-center justify-center bg-gray-100 dark:bg-gray-800 px-10 text-center text-sm text-gray-800 dark:text-gray-200">
+            <span className="flex min-h-[150px] w-full items-center justify-center bg-gray-100 px-10 text-center text-sm text-gray-800 dark:bg-gray-800 dark:text-gray-200">
               {content}
             </span>
           ) : (
@@ -63,7 +63,7 @@ const Tooltip: FunctionComponent<PropsWithChildren<TooltipProps>> = ({
             <TooltipPrimitive.Content
               sideOffset={4}
               side="top"
-              className="z-30 hidden animate-slide-up-fade items-center overflow-hidden rounded-md border border-gray-200 bg-gray-100 dark:bg-gray-800 drop-shadow-lg sm:block"
+              className="animate-slide-up-fade z-30 hidden items-center overflow-hidden rounded-md border border-gray-200 bg-gray-100 drop-shadow-lg dark:bg-gray-800 sm:block"
             >
               <TooltipPrimitive.Arrow className="fill-current text-gray-800 dark:text-gray-200" />
               {typeof content === 'string' ? (

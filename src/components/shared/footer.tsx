@@ -13,22 +13,22 @@ import Typography from 'components/shared/typography';
 
 const Footer: FunctionComponent<PropsWithChildren<{}>> = () => {
   return (
-    <footer className="flex flex-col justify-center items-start mx-auto w-full mb-8 mt-4">
+    <footer className="mx-auto mb-8 mt-4 flex w-full flex-col items-start justify-center">
       <LayoutGradient />
-      <hr className="w-full border-1 border-gray-100 dark:border-gray-800 mb-8" />
-      <div className="w-full pb-16 flex flex-col-reverse justify-between sm:flex-row">
+      <hr className="border-1 mb-8 w-full border-gray-100 dark:border-gray-800" />
+      <div className="flex w-full flex-col-reverse justify-between pb-16 sm:flex-row">
         <div className="flex flex-col sm:flex-row sm:space-x-16">
-          <div className="flex flex-row mb-1 sm:mb-0 sm:flex-col space-x-8 sm:space-x-0 justify-center sm:justify-start sm:space-y-4">
+          <div className="mb-1 flex flex-row justify-center space-x-8 sm:mb-0 sm:flex-col sm:justify-start sm:space-x-0 sm:space-y-4">
             <Link href={`/${Routes.life}`}>Life</Link>
             <Link href={`/${Routes.experience}`}>Experience</Link>
           </div>
-          <div className="flex flex-row  mb-1 sm:mb-0  sm:flex-col space-x-8 sm:space-x-0 justify-center sm:justify-start sm:space-y-4">
+          <div className="mb-1 flex  flex-row justify-center  space-x-8 sm:mb-0 sm:flex-col sm:justify-start sm:space-x-0 sm:space-y-4">
             <Link href={siteMetadata.twitter}>Twitter</Link>
             <Link href={siteMetadata.github}>GitHub</Link>
             <Link href="/feed.xml">RSS</Link>
           </div>
         </div>
-        <div className="flex flex-col sm:items-center sm:justify-center  mb-5 ">
+        <div className="mb-5 flex flex-col sm:items-center  sm:justify-center ">
           <Typography.subtle>
             {siteMetadata.author} © <time>{new Date().getFullYear()}</time>
           </Typography.subtle>

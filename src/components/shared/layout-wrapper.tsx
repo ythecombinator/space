@@ -20,7 +20,7 @@ const LayoutWrapper: FunctionComponent<PropsWithChildren<{}>> = ({
     <>
       <LayoutGradient />
       <LayoutContainer>
-        <div className="flex flex-col justify-between h-screen">
+        <div className="flex h-screen flex-col justify-between">
           <header className="flex items-center py-10">
             <div className="flex flex-auto items-center justify-between">
               <div className="flex flex-1 items-center justify-between text-base leading-5">

@@ -20,30 +20,30 @@ const OverviewSection: FunctionComponent<
     <SectionContainer className="prose dark:prose-dark">
       <div className="flex flex-wrap gap-4">
         <Typography.Highlight color="fuchsia">
-          <Typography.lead className="font-bold px-3 text-slate-800 dark:text-white">
+          <Typography.lead className="px-3 font-bold text-slate-800 dark:text-white">
             Sr. Software Engineer @ Medallia
           </Typography.lead>
         </Typography.Highlight>
 
         <Typography.Highlight color="emerald">
-          <Typography.lead className="font-bold px-3 text-slate-800 dark:text-white">
+          <Typography.lead className="px-3 font-bold text-slate-800 dark:text-white">
             Mentor @ TechLabs
           </Typography.lead>
         </Typography.Highlight>
 
         <Typography.Highlight color="pink">
-          <Typography.lead className="font-bold px-3 text-slate-800 dark:text-white">
+          <Typography.lead className="px-3 font-bold text-slate-800 dark:text-white">
             International Speaker
           </Typography.lead>
         </Typography.Highlight>
         <Typography.Highlight color="cyan">
-          <Typography.lead className="font-bold px-3 text-slate-800 dark:text-white">
+          <Typography.lead className="px-3 font-bold text-slate-800 dark:text-white">
             Google Developer Expert
           </Typography.lead>
         </Typography.Highlight>
 
         <Typography.Highlight color="yellow">
-          <Typography.lead className="font-bold px-3 text-slate-800 dark:text-white">
+          <Typography.lead className="px-3 font-bold text-slate-800 dark:text-white">
             Program Committee @ React Summit
           </Typography.lead>
         </Typography.Highlight>

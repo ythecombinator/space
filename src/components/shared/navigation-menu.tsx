@@ -22,7 +22,7 @@ export const NavigationMenu: FunctionComponent<
 > = ({ items }) => {
   return (
     <NavigationMenuPrimitive.Root className="relative">
-      <NavigationMenuPrimitive.List className="flex flex-row p-2 space-x-2">
+      <NavigationMenuPrimitive.List className="flex flex-row space-x-2 p-2">
         {items.map((link) => (
           <NavigationMenuPrimitive.Item key={link.href}>
             <NavigationMenuControlLink
@@ -43,7 +43,7 @@ export const NavigationMenu: FunctionComponent<
             'transition-[width_transform] duration-[250ms] ease-[ease]'
           )}
         >
-          <div className="top-1 relative bg-white dark:bg-gray-800 w-2 h-2 rotate-45" />
+          <div className="relative top-1 h-2 w-2 rotate-45 bg-white dark:bg-gray-800" />
         </NavigationMenuPrimitive.Indicator>
       </NavigationMenuPrimitive.List>
     </NavigationMenuPrimitive.Root>

@@ -17,7 +17,7 @@ export const SectionCover: FunctionComponent<
       width={700}
       height={475}
       sizes="100vw"
-      className="w-full h-auto rounded-lg grayscale hover:grayscale-0"
+      className="h-auto w-full rounded-lg grayscale hover:grayscale-0"
     />
   );
 };

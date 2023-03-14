@@ -52,7 +52,7 @@ const Leaflet: FunctionComponent<PropsWithChildren<LeafletProps>> = ({
       <motion.div
         ref={leafletRef}
         key="leaflet"
-        className="group fixed inset-x-0 bottom-0 z-40 w-screen cursor-grab bg-gray-100 dark:bg-gray-800 pb-5 active:cursor-grabbing sm:hidden"
+        className="group fixed inset-x-0 bottom-0 z-40 w-screen cursor-grab bg-gray-100 pb-5 active:cursor-grabbing dark:bg-gray-800 sm:hidden"
         initial={{ y: '100%' }}
         animate={controls}
         exit={{ y: '100%' }}

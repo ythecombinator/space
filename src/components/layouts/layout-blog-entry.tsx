@@ -34,7 +34,7 @@ const BlogEntryLayout: FunctionComponent<
       <ScrollTop />
       <article>
         <div>
-          <header className="pb-10 space-y-2">
+          <header className="space-y-2 pb-10">
             <div className="mt-4 space-y-2 text-left">
               <dl>
                 <div>
@@ -48,7 +48,7 @@ const BlogEntryLayout: FunctionComponent<
                 <PageTitle>{title}</PageTitle>
               </div>
             </div>
-            <div className="flex justify-between items-center">
+            <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2 ">
                 <div className="text-gray-500 dark:text-gray-400">
                   {readingTime.text}
@@ -57,12 +57,12 @@ const BlogEntryLayout: FunctionComponent<
             </div>
           </header>
           <div className="pb-8 " style={{ gridTemplateRows: 'auto 1fr' }}>
-            <div className="xl:pb-0 xl:col-span-3 xl:row-span-2 space-y-4">
+            <div className="space-y-4 xl:col-span-3 xl:row-span-2 xl:pb-0">
               <SectionCover alt={title} src={cover} />
-              <div className="pb-4 prose dark:prose-dark max-w-none">
+              <div className="prose max-w-none pb-4 dark:prose-dark">
                 {children}
               </div>
-              <div className="pt-6 flex justify-between text-sm text-gray-700 dark:text-gray-300">
+              <div className="flex justify-between pt-6 text-sm text-gray-700 dark:text-gray-300">
                 Thanks for reading 💖
                 <Link
                   href={discussOnTwitter(title, `${Routes.posts}/${slug}`)}

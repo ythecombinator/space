@@ -30,7 +30,7 @@ const AllPostsSectionItem: FunctionComponent<
   return (
     <li key={slug} className="py-4">
       <article className="xl:items-baseline">
-        <div className="sm:text-base text-sm font-medium leading-6 text-gray-500 dark:text-gray-400">
+        <div className="text-sm font-medium leading-6 text-gray-500 dark:text-gray-400 sm:text-base">
           <time dateTime={date}>{formatDate(date)}</time>
         </div>
         <h2 className="grow text-2xl font-bold leading-8 tracking-tight">
@@ -47,7 +47,7 @@ const AllPostsSectionItem: FunctionComponent<
             <Tag key={tag} text={tag} />
           ))}
         </div> */}
-        <div className="prose dark:prose-dark text-gray-500 max-w-none dark:text-gray-400">
+        <div className="prose max-w-none text-gray-500 dark:prose-dark dark:text-gray-400">
           {summary}
         </div>
       </article>
