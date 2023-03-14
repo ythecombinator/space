@@ -17,7 +17,7 @@ const OverviewSection: FunctionComponent<
   PropsWithChildren<OverviewSectionProps>
 > = () => {
   return (
-    <SectionContainer className="prose">
+    <SectionContainer className="prose dark:prose-dark">
       <div className="flex flex-wrap gap-4">
         <Typography.Highlight color="fuchsia">
           <Typography.lead className="font-bold px-3 text-slate-800 dark:text-white">

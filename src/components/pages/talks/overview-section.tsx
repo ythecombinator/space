@@ -24,7 +24,7 @@ const OverviewSection: FunctionComponent<
   const { citiesTotal, countriesTotal, talksTotal, eventsTotal } = props;
 
   return (
-    <SectionContainer className="prose">
+    <SectionContainer className="prose dark:prose-dark">
       <Typography.p>
         {`I've`} been speaking and learning in public since 2015, mostly about
         web performance, JavaScript/TypeScript, React, and their ecosystem.

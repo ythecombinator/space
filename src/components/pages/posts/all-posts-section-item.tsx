@@ -47,7 +47,7 @@ const AllPostsSectionItem: FunctionComponent<
             <Tag key={tag} text={tag} />
           ))}
         </div> */}
-        <div className="prose text-gray-500 max-w-none dark:text-gray-400">
+        <div className="prose dark:prose-dark text-gray-500 max-w-none dark:text-gray-400">
           {summary}
         </div>
       </article>
