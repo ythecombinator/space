@@ -23,7 +23,6 @@ const BiographyEntryLayout: FunctionComponent<
   PropsWithChildren<BiographyEntryLayoutProps>
 > = ({ children, content }) => {
   const { title, color, cover } = content;
-  console.log('content', content);
 
   return (
     <div className="mt-6 px-2 sm:px-0">

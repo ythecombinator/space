@@ -56,7 +56,7 @@ const OverviewSection: FunctionComponent<
       </Typography.p>
 
       <Typography.p>
-        I have been building digital projects for almost a decade and I have
+        I have been building digital projects for years now and I have
         launched products for some of the world’s most respected brands, hired
         and mentored software engineers, bootstrapped and ran multidisciplinary
         teams and implemented organization-wide engineering initiatives.

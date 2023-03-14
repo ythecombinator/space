@@ -28,8 +28,8 @@ const OverviewSection: FunctionComponent<PropsWithChildren<{}>> = () => {
           Google Developer Expert
         </Typography.a>{' '}
         from Fortaleza, Brazil. {`I've `} worked as a software engineer and
-        architect for most of the past decade, in product and consultancy
-        companies, taking the best from both worlds.
+        architect in product and consultancy companies, taking the best from
+        both worlds.
       </Typography.p>
       <Typography.p>
         {`I'm`} currently based in Prague, Czech Republic, working as a Senior
