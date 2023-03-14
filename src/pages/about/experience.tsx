@@ -1,6 +1,6 @@
-import experience from 'content/biography/experience.json';
 import { InferGetStaticPropsType, NextPage } from 'next';
 import { useMDXComponent } from 'next-contentlayer/hooks';
+import { MDXRemote } from 'next-mdx-remote';
 import { NextSeo as Metadata } from 'next-seo';
 import { coreContent } from 'pliny/utils/contentlayer';
 import ReactMarkdown from 'react-markdown';
@@ -8,6 +8,10 @@ import ReactMarkdown from 'react-markdown';
 import { siteMetadata } from 'config/constants';
 
 import BiographyContentService from 'services/biography-content-service';
+
+import { serializeExperience, WorkExperience } from 'utils/linkedin';
+
+import experience from 'content/biography/experience.json';
 
 import SectionContainer from 'components/shared/section-container';
 import SectionCover from 'components/shared/section-cover';
@@ -30,22 +34,33 @@ const biographyServiceInstance = BiographyContentService.getInstance();
 export async function getStaticProps() {
   const content = biographyServiceInstance.get('experience');
 
+  const work = await Promise.all(experience.work.map(serializeExperience));
+  const volunteering = await Promise.all(
+    experience.volunteering.map(serializeExperience)
+  );
+
   if (!content) {
     return {
       notFound: true,
     };
   }
 
-  return { props: { content } };
+  return { props: { content, work, volunteering } };
 }
+
+/*~
+ * COMPONENTS
+ */
+
+
 
 /*~
  * PAGE
  */
 
-const CareerPage: NextPage<CareerPageProps> = ({ content }) => {
-  const MDXLayout = useMDXComponent(content.body.code);
-  const mainContent = coreContent(content);
+const Page: NextPage<CareerPageProps> = ({ content, work, volunteering }) => {
+  const MDXRenderer = useMDXComponent(content.body.code);
+  const mdxContent = coreContent(content);
 
   return (
     <>
@@ -70,13 +85,13 @@ const CareerPage: NextPage<CareerPageProps> = ({ content }) => {
       <Layout heading="Build. Share. Rewind." headingGradient="peachy">
         <SectionContainer className="prose dark:prose-dark">
           <SectionCover alt="This is me!" src="/content/biography/work.jpg" />
-          <MDXLayout content={mainContent} />
+          <MDXRenderer content={mdxContent} />
         </SectionContainer>
 
         <SectionContainer className="prose dark:prose-dark">
           <Typography.h2>Experience</Typography.h2>
 
-          {experience.work.map((item, index) => {
+          {work.map((item, index) => {
             return (
               <div key={index}>
                 <Typography.h3>{item.title}</Typography.h3>
@@ -92,9 +107,7 @@ const CareerPage: NextPage<CareerPageProps> = ({ content }) => {
                   <span>{item.endDate}</span>
                 </Typography.small>
 
-                {item.description && (
-                  <ReactMarkdown>{item.description}</ReactMarkdown>
-                )}
+                {item.description && <MDXRemote {...item.description} />}
               </div>
             );
           })}
@@ -103,7 +116,7 @@ const CareerPage: NextPage<CareerPageProps> = ({ content }) => {
         <SectionContainer className="prose dark:prose-dark">
           <Typography.h2>Communities</Typography.h2>
 
-          {experience.volunteering.map((item, index) => {
+          {volunteering.map((item, index) => {
             return (
               <div key={index}>
                 <Typography.h3>{item.title}</Typography.h3>
@@ -118,9 +131,7 @@ const CareerPage: NextPage<CareerPageProps> = ({ content }) => {
                   <span>{item.endDate}</span>
                 </Typography.small>
 
-                {item.description && (
-                  <ReactMarkdown>{item.description}</ReactMarkdown>
-                )}
+                {item.description && <MDXRemote {...item.description} />}
               </div>
             );
           })}
@@ -130,4 +141,4 @@ const CareerPage: NextPage<CareerPageProps> = ({ content }) => {
   );
 };
 
-export default CareerPage;
+export default Page;
