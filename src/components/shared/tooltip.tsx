@@ -63,7 +63,7 @@ const Tooltip: FunctionComponent<PropsWithChildren<TooltipProps>> = ({
             <TooltipPrimitive.Content
               sideOffset={4}
               side="top"
-              className="animate-slide-up-fade z-30 hidden items-center overflow-hidden rounded-md border border-gray-200 bg-gray-100 drop-shadow-lg dark:bg-gray-800 sm:block"
+              className="z-30 hidden items-center overflow-hidden rounded-md border border-gray-200 bg-gray-100 drop-shadow-lg dark:bg-gray-800 sm:block"
             >
               <TooltipPrimitive.Arrow className="fill-current text-gray-800 dark:text-gray-200" />
               {typeof content === 'string' ? (

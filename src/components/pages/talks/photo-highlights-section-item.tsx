@@ -28,7 +28,7 @@ const PhotoHighlightsSectionItem: FunctionComponent<
       key={talkSlug}
       href={talkSlug}
       shallow
-      className="after:content after:shadow-highlight group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg"
+      className="group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg"
     >
       <figure className="relative max-w-sm cursor-pointer transition-all duration-300">
         <Image

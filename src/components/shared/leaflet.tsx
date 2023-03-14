@@ -64,7 +64,7 @@ const Leaflet: FunctionComponent<PropsWithChildren<LeafletProps>> = ({
         dragConstraints={{ top: 0, bottom: 0 }}
       >
         <div
-          className={`rounded-t-4xl -mb-1 flex h-7 w-full items-center justify-center border-t border-gray-200`}
+          className={`-mb-1 flex h-7 w-full items-center justify-center border-t border-gray-200`}
         >
           <div className="-mr-1 h-1 w-6 rounded-full bg-gray-300 transition-all group-active:rotate-12" />
           <div className="h-1 w-6 rounded-full bg-gray-300 transition-all group-active:-rotate-12" />
