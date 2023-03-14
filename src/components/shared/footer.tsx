@@ -20,8 +20,7 @@ const Footer: FunctionComponent<PropsWithChildren<{}>> = () => {
         <div className="flex flex-col sm:flex-row sm:space-x-16">
           <div className="flex flex-row mb-1 sm:mb-0 sm:flex-col space-x-8 sm:space-x-0 justify-center sm:justify-start sm:space-y-4">
             <Link href={`/${Routes.life}`}>Life</Link>
-            <Link href={`/${Routes.work}`}>Work</Link>
-            <Link href={`/${Routes.community}`}>Community</Link>
+            <Link href={`/${Routes.experience}`}>Experience</Link>
           </div>
           <div className="flex flex-row  mb-1 sm:mb-0  sm:flex-col space-x-8 sm:space-x-0 justify-center sm:justify-start sm:space-y-4">
             <Link href={siteMetadata.twitter}>Twitter</Link>

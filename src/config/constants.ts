@@ -51,10 +51,9 @@ export const socialNetworks = [
 export enum Routes {
   base = '/',
   about = 'about',
-  work = 'about/work',
+  experience = 'about/experience',
   clients = 'about/clients',
   life = 'about/life',
-  community = 'about/community',
   posts = 'posts',
   talks = 'talks',
   projects = 'projects',

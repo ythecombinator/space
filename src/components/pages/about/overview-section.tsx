@@ -62,22 +62,16 @@ const OverviewSection: FunctionComponent<PropsWithChildren<{}>> = () => {
           Life
         </ButtonLink>
         <ButtonLink
-          href={`/${Routes.work}`}
+          href={`/${Routes.experience}`}
           icon={<FaLaptopCode aria-hidden />}
         >
-          Work
+          Experience
         </ButtonLink>
         <ButtonLink
           href={`/${Routes.clients}`}
           icon={<GiTakeMyMoney aria-hidden />}
         >
           Clients
-        </ButtonLink>
-        <ButtonLink
-          href={`/${Routes.community}`}
-          icon={<GiBattleGear aria-hidden />}
-        >
-          Community
         </ButtonLink>
       </div>
     </SectionContainer>
