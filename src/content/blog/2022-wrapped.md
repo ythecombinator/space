@@ -260,7 +260,7 @@ That simple!
 
 I'd say this year brought a lot of new experiences and a ton of wins! I know this post is a bit long already, but I will share a few of them as I feel fortunate and proud of them. Here you'll find some of those mentioned wins and also some not-so-great results.
 
-- I helped draft a developer communities program at Medallia from almost nothing with a fantastic crew and we went from zero to sponsoring three conferences: [DevConf 2022](https://devconf.pl), [React India 2022](React India 2022) and [React Alicante 2022](https://reactalicante.es). We learned a lot together and are still evolving. This is our Spanish squad in React Alicante! 🤩
+- I helped draft a developer communities program at Medallia from almost nothing with a fantastic crew and we went from zero to sponsoring three conferences: [DevConf 2022](https://devconf.pl), [React India 2022](https://www.reactindia.io/) and [React Alicante 2022](https://reactalicante.es). We learned a lot together and are still evolving. This is our Spanish squad in React Alicante! 🤩
 
 ![Medallia at React Alicante](/content/blog/2022-wrapped/medallia+react-alicante.jpg)
 
