@@ -35,13 +35,9 @@ const CardOutlined: FunctionComponent<PropsWithChildren<CardOutlinedProps>> = ({
       <article className="relative h-full w-full rounded-xl">
         <div className="flex h-full w-full flex-col justify-between rounded-xl bg-white p-5 dark:bg-background-color">
           <div className="flex flex-col justify-between space-y-5 md:flex-row xl:col-span-3">
-            <div className="space-y-6">
-              <div>
-                <h2 className="text-xl font-semibold leading-8 tracking-tight text-gray-900 dark:text-gray-100">
-                  {heading}
-                </h2>
-              </div>
-            </div>
+            <h2 className="text-xl space-y-6 font-semibold leading-8 tracking-tight text-gray-900 dark:text-gray-100">
+              {heading}
+            </h2>
           </div>
           <div className="mt-10 flex">{children}</div>
         </div>
