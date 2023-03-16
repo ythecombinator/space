@@ -25,7 +25,11 @@ export type Props = InferGetStaticPropsType<typeof getStaticProps>;
 const biographyServiceInstance = BiographyContentService.getInstance();
 
 export async function getStaticPaths() {
-  const paths = biographyServiceInstance.getAllSlugs();
+  const paths = biographyServiceInstance
+    .getAllSlugs()
+    // Those are present under the /pages/about/ directory.
+    .filter((slug) => slug !== 'experience');
+
   return {
     paths: paths.map((slug) => ({
       params: {
