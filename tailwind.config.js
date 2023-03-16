@@ -23,7 +23,9 @@ const config = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        // sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        sans: ['var(--font-biotify)', ...defaultTheme.fontFamily.sans],
+        heading: ['var(--font-neuzeitGrotesk)', ...defaultTheme.fontFamily.sans],
       },
       backgroundImage: {
         'texture-pattern': "url('/img/texture-pattern.svg')",

@@ -1,5 +1,6 @@
 import { FunctionComponent, HTMLAttributes, PropsWithChildren } from 'react';
 
+import fonts from 'utils/fonts';
 import { classNames } from 'utils/styles';
 
 /*~
@@ -13,6 +14,7 @@ const H2: FunctionComponent<
     <h2
       className={classNames(
         'font-bold text-2xl md:text-3xl tracking-tight my-4 text-black dark:text-white',
+        fonts.neuzeitGrotesk,
         className
       )}
       {...props}

@@ -1,5 +1,6 @@
 import { FunctionComponent, HTMLAttributes, PropsWithChildren } from 'react';
 
+import fonts from 'utils/fonts';
 import { classNames } from 'utils/styles';
 
 /*~
@@ -13,6 +14,7 @@ const H3: FunctionComponent<
     <h3
       className={classNames(
         'mt-8 scroll-m-20 text-xl font-semibold tracking-tight',
+        fonts.neuzeitGrotesk,
         className
       )}
       {...props}
