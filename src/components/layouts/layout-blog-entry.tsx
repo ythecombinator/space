@@ -34,7 +34,7 @@ const BlogEntryLayout: FunctionComponent<
     <>
       <ScrollTop />
       <article>
-        <header className="flex flex-col space-y-2 pb-10 gap-4">
+        <header className="flex flex-col gap-4 space-y-2 pb-10">
           <dl className="flex gap-4">
             <dt className="sr-only">Published on</dt>
             <dd>
