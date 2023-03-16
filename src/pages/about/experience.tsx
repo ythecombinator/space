@@ -3,13 +3,12 @@ import { useMDXComponent } from 'next-contentlayer/hooks';
 import { MDXRemote } from 'next-mdx-remote';
 import { NextSeo as Metadata } from 'next-seo';
 import { coreContent } from 'pliny/utils/contentlayer';
-import ReactMarkdown from 'react-markdown';
 
 import { siteMetadata } from 'config/constants';
 
 import BiographyContentService from 'services/biography-content-service';
 
-import { serializeExperience, WorkExperience } from 'utils/linkedin';
+import { serializeExperience } from 'utils/linkedin';
 
 import experience from 'content/biography/experience.json';
 
@@ -51,8 +50,6 @@ export async function getStaticProps() {
 /*~
  * COMPONENTS
  */
-
-
 
 /*~
  * PAGE

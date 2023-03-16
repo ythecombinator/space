@@ -10,7 +10,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --fix",
+    "lint": "next lint",
     "lint:deadcode": "! ts-prune | grep -v \"used in module\"",
     "format": "prettier --write src/",
     "codegen:schema": "graphql-codegen --config codegen.yml --require dotenv/config",
