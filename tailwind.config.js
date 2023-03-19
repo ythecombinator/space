@@ -25,7 +25,10 @@ const config = {
       fontFamily: {
         // sans: ['Inter', ...defaultTheme.fontFamily.sans],
         sans: ['var(--font-biotify)', ...defaultTheme.fontFamily.sans],
-        heading: ['var(--font-neuzeitGrotesk)', ...defaultTheme.fontFamily.sans],
+        heading: [
+          'var(--font-neuzeitGrotesk)',
+          ...defaultTheme.fontFamily.sans,
+        ],
       },
       backgroundImage: {
         'texture-pattern': "url('/img/texture-pattern.svg')",
@@ -103,7 +106,7 @@ const config = {
               code: { color: theme('colors.primary.400') },
             },
             mark: {
-              color: 'white',
+              color: colors.slate[900],
               backgroundColor: 'transparent',
             },
             p: {
@@ -187,7 +190,7 @@ const config = {
               code: { color: theme('colors.primary.400') },
             },
             mark: {
-              color: colors.slate[900],
+              color: colors.slate[100],
               backgroundColor: 'transparent',
             },
             h1: {

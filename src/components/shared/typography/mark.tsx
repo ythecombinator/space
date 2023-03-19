@@ -10,7 +10,7 @@ const Mark: FunctionComponent<
   PropsWithChildren<HTMLAttributes<HTMLElement>>
 > = ({ children }) => {
   return (
-    <Highlight color="cyan" customElement="mark" multiline>
+    <Highlight color="indigo" customElement="mark" multiline>
       {children}
     </Highlight>
   );
