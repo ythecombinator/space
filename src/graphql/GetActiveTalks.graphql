@@ -1,0 +1,21 @@
+query GetActiveTalks {
+  talkCollection(where: { active: true }, limit: 5) {
+    items {
+      title
+      slug
+      sessionsCollection {
+        items {
+          event {
+            name
+            website
+            city {
+              country {
+                flag
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

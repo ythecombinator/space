@@ -1,25 +1,25 @@
 {
-  "include": ["./src/**/*"],
   "compilerOptions": {
-    "target": "esnext",
-    "module": "commonjs",
-    "lib": ["dom", "es2017"],
-    "jsx": "react",
-    "strict": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "noEmit": true,
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
     "skipLibCheck": true,
-    "baseUrl": ".",
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "baseUrl": "./src",
+    "incremental": true,
     "paths": {
-      "assets/*": ["src/assets/*"],
-      "components/*": ["src/components/*"],
-      "hooks/*": ["src/hooks/*"],
-      "model/*": ["src/model/*"],
-      "styles/*": ["src/styles/*"],
-      "sections/*": ["src/sections/*"],
-      "utils/*": ["src/utils/*"]
+      "contentlayer/generated": ["../.contentlayer/generated"]
     }
-  }
+  },
+  "exclude": ["node_modules", "cypress", "coverage", ".github", "test"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".contentlayer/generated"]
 }

@@ -1,0 +1,4 @@
+{
+  "ignore": "src/graphql/schema.ts|contentlayer.config.ts|.contentlayer/generated/|src/pages/",
+  "error": true
+}

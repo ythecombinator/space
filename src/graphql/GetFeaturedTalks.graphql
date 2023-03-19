@@ -1,0 +1,16 @@
+query GetFeaturedTalks {
+  sessionCollection(where: { featured: true }) {
+    items {
+      talk {
+        title
+        slug
+      }
+      photo {
+        url
+      }
+      event {
+        name
+      }
+    }
+  }
+}

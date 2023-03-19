@@ -1,0 +1,14 @@
+query GetTalksStats {
+  talkCollection {
+    total
+  }
+  eventCollection {
+    total
+  }
+  cityCollection {
+    total
+  }
+  countryCollection {
+    total
+  }
+}

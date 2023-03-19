@@ -1,5 +1,3 @@
-const replaceSlashes = (input: string) => {
-  return input.replace(/\/\/+/g, `/`);
-};
+import { slug } from 'github-slugger';
 
-export { replaceSlashes };
+export const toKebabCase = (str: string) => slug(str);

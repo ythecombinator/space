@@ -2,58 +2,12 @@
   "search.exclude": {
     "**/node_modules": true,
     "**/.netlify": true,
-    "**/.cache": true,
-    "**/public": true
+    "**/.next": true
   },
   "files.exclude": {
     "**/node_modules": true,
     "**/.netlify": true,
-    "**/.cache": true,
-    "**/public": true
+    "**/.next": true
   },
-  "editor.formatOnSave": true,
-  "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.type": "newLineEachExpressionAfterCountLimit",
-  "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.count": 100,
-  "importSorter.importStringConfiguration.tabSize": 2,
-  "importSorter.importStringConfiguration.trailingComma": "multiLine",
-  "importSorter.generalConfiguration.sortOnBeforeSave": true,
-  "importSorter.sortConfiguration.customOrderingRules.defaultOrderLevel": 15,
-  "importSorter.sortConfiguration.customOrderingRules.rules": [
-    {
-      "regex": "^(react)$",
-      "orderLevel": 10
-    },
-    {
-      "regex": "^(components)",
-      "orderLevel": 20
-    },
-    {
-      "regex": "^(hooks)",
-      "orderLevel": 30
-    },
-    {
-      "regex": "^(utils)",
-      "orderLevel": 40
-    },
-    {
-      "regex": "^(model)",
-      "orderLevel": 50
-    },
-    {
-      "regex": "^(styles)",
-      "orderLevel": 60
-    },
-    {
-      "regex": "^(sections)",
-      "orderLevel": 80
-    },
-    {
-      "regex": "^[.]",
-      "orderLevel": 90
-    }
-  ],
-  "importSorter.importStringConfiguration.spacingPerImportExpression.afterStartingBracket": 0,
-  "importSorter.importStringConfiguration.spacingPerImportExpression.beforeEndingBracket": 0,
-  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
-  "importSorter.sortConfiguration.joinImportPaths": false
+  "editor.formatOnSave": true
 }

@@ -1,0 +1,93 @@
+{
+  "work": [
+    {
+      "company": "Medallia",
+      "companyUrl": "https://linkedin.com/company/medallia-inc.",
+      "startDate": "March, 2022",
+      "endDate": "Present",
+      "location": "Prague, Czechia",
+      "title": "Senior Software Engineer, Front-End",
+      "description": "I've been helping them rebuild their surveys platform with a focus on Developer Experience (DX) and user-perceived performance. \n\nMy work includes measuring performance and its impact on user behavior, identifying culprits for bad experiences and addressing issues like delayed TTIs, high input latency, and janky animations. Also, I've been modernizing the codebase, pushing its rewrite in TypeScript, and adopting new tools.\n\nMostly working with:\n\n- JavaScript and TypeScript\n- React\n- redux and related tooling\n- Lighthouse, size-limit, and other performance measuring tools\n- Webpack and bundle optimization techniques\n- Jest, unit testing, integration testing, and robust testing infrastructure\n- Jenkins and related CI infrastructure\n- JIRA, Confluence, and other project management and documentation solutions"
+    },
+    {
+      "company": "Citrix",
+      "companyUrl": "https://linkedin.com/company/citrix",
+      "startDate": "January, 2021",
+      "endDate": "January, 2022",
+      "location": "Prague, Czechia",
+      "title": "Senior Software Engineer, Front-End",
+      "description": "I have helped architect and implement new features, address critical bugs, and improve Developer Experience in the MicroApps Builder, a low-code environment part of Citrix Workspace.\n\nMostly working with:\n\n- JavaScript and TypeScript\n- React\n- GraphQL, Apollo and its ecosystem\n- i18next and internationalization\n- Jest, unit testing, integration testing, and robust testing infrastructure\n- Jenkins and related CI infrastructure\n- JIRA, Confluence, and other project management and documentation solutions"
+    },
+    {
+      "company": "STRV",
+      "companyUrl": "https://linkedin.com/company/strvcom",
+      "startDate": "September, 2020",
+      "endDate": "December, 2020",
+      "location": "Prague, Czechia",
+      "title": "Senior Software Engineer, Front-End",
+      "description": null
+    },
+    {
+      "company": "STRV",
+      "companyUrl": "https://linkedin.com/company/strvcom",
+      "startDate": "July, 2019",
+      "endDate": "September, 2020",
+      "location": "Prague, Czechia",
+      "title": "Software Engineer, Front-End",
+      "description": "Working to grow the business and help our clients meet their goals, without leaving quality aside.\n\nAmongst the clients I have worked with being at STRV, I would highlight:\n\n- LivePenalty: A game that allows players to control a football launching machine through their digital devices.\n \n- Surge: The fastest-growing gay dating app on the US market and the most searched gay dating app on the Apple App Store.\n\n- Minted: An online marketplace of independent artists and designers. The company crowdsources art and graphic design through monthly design challenges.\n\nMostly working with:\n\n- JavaScript and TypeScript\n- React and Next.js\n- React Native\n- Redux and related tooling (e.g. redux-saga, redux-act, reselect, etc.)\n- Firebase services (Auth, Firestore, etc.)\n- Shopify, Liquid, and third-party Shopify themes and apps\n- Github Actions and other continuous integration workflows\n- Netlify and other cloud platforms\n- JIRA and other project management solutions"
+    },
+    {
+      "company": "Beakyn Company",
+      "companyUrl": "https://linkedin.com/company/beakyn-company",
+      "startDate": "February, 2018",
+      "endDate": "August, 2019",
+      "location": "Greater New York City Area",
+      "title": "Tech Lead, Front-End",
+      "description": null
+    },
+    {
+      "company": "Beakyn Company",
+      "companyUrl": "https://linkedin.com/company/beakyn-company",
+      "startDate": "September, 2017",
+      "endDate": "August, 2019",
+      "location": "Greater New York City Area",
+      "title": "Senior Software Engineer, Front-End",
+      "description": "Building large-scale geographic data visualization platforms and assets curation systems.\n\nMostly working with:\n\n- JavaScript and TypeScript\n- React and Next.js\n- React Native and iOS native development\n- redux and related tooling (e.g. redux-saga, redux-act, reselect, etc.)\n- Webpack and bundle optimization techniques\n- Map data plotting and analyzation tools (e.g. Mapbox GL, Turf.js, pbf, etc.)\n- Firebase services (Auth, Cloud Functions, Firestore, etc.)\n- Authentication, authorization, and accounting infrastructure (mostly with Auth0 and node.js)\n- Chat & Chatbots tooling (Intercom, Tokbox, Dialogflow, etc.)\n- Buddy CI and other continuous integration workflows\n- Vercel, Heroku, and other cloud platforms\n- Github Projects and other project management solutions"
+    },
+    {
+      "company": "Apple Developer Academy",
+      "companyUrl": "https://linkedin.com/company/apple-developer-academy",
+      "startDate": "January, 2016",
+      "endDate": "December, 2017",
+      "location": "Fortaleza e Região, Brasil",
+      "title": "Intern, Apple Platforms",
+      "description": "Trained aiming at developing apps for the world’s most innovative and vibrant app ecosystem. The program focuses on software development, startup creation, and app design with an emphasis on creativity and collaboration to empower and equip students to develop the skills needed to succeed.\n\nMostly learning and working with:\n\n- Swift and Objective-C\n- iOS frameworks and APIs (e.g. Foundation, UIKit, AutoLayout, CoreData, MapKit, CoreLocation, CoreMotion, Push Notifications, etc.)\n- watchOS frameworks and APIs (e.g. WatchKit, WatchConnectivity, etc.)\n- tvOS frameworks and APIs (e.g. UIKit, Focus Engine, TVMLKit, etc.)\n- Server-side Swift frameworks and APIs (e.g. Vapor)\n- Unit and integration tests tools (e.g. XCTest, Quick, Nimble, etc.)\n- SpriteKit and other game development focused APIs (e.g. GameCenter)"
+    }
+  ],
+  "volunteering": [
+    {
+      "company": "TechLabs Berlin",
+      "companyUrl": "https://linkedin.com/company/techlabs-berlin",
+      "startDate": "November, 2020",
+      "endDate": "Present",
+      "title": "Project Mentor • Mentoring Coordinator",
+      "description": "TechLabs is a completely free platform for people from all disciplines to learn different programming skills.\n\nAs a mentorship coordinator—and a mentor—, I had a chance to:\n\n- Take an active part in the project ideation phase to help the students develop their own vision\n- Regularly the project team, helping them making progress with their project\n- Give feedback on the current track\n- Present workshops on technologies I have expertise in, like React.js, TypeScript, Firebase, etc.\n- Helped recruiting more volunteers to help the team\n- Promoted improvements to how mentoring happens"
+    },
+    {
+      "company": "DEVIO Foundation",
+      "companyUrl": "https://linkedin.com/company/deviofoundation",
+      "startDate": "January, 2015",
+      "endDate": "December, 2018",
+      "title": "Developer Advocate",
+      "description": "Since 2015 I've been acting as speaker, helper and organizer at local meetups and conferences promoted by DEV I/O Fortaleza which aim to spread knowledge related to a large variety of technologies which include JavaScript, Node.js, Ionic, Functional Programming and others."
+    },
+    {
+      "company": "CocoaHeads Brasil",
+      "companyUrl": "https://linkedin.com/company/cocoaheads-brasil",
+      "startDate": "January, 2016",
+      "endDate": "September, 2017",
+      "title": "Local Manager",
+      "description": "I've helped for months the organization of the local edition of CocoaHeads (the Fortaleza chapter) in many areas which include gathering speakers and sponsors and giving multidisciplinary lectures."
+    }
+  ]
+}
