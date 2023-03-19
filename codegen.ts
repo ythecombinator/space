@@ -3,7 +3,7 @@ import { CodegenConfig } from '@graphql-codegen/cli';
 const config: CodegenConfig = {
   overwrite: true,
   schema: {
-    [process.env.CONTENTFUL_SCHEMA]: {
+    [process.env.CONTENTFUL_SCHEMA!]: {
       headers: {
         Authorization: `Bearer ${process.env.CONTENTFUL_TOKEN}`,
       },
