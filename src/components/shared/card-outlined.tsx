@@ -25,7 +25,7 @@ const CardOutlined: FunctionComponent<PropsWithChildren<CardOutlinedProps>> = ({
   const gradientClassName = useRandomGradient();
 
   return (
-    <div className="group transform transition-all duration-500 hover:scale-[1.05] hover:duration-500">
+    <div className="group h-full transform transition-all duration-500 hover:scale-[1.05] hover:duration-500">
       <div
         className={classNames(
           'absolute -inset-[2.4px] rounded-2xl bg-gray-100 transition duration-1000 group-hover:bg-gradient-to-r group-hover:blur-md group-hover:duration-500 dark:bg-gray-800',
