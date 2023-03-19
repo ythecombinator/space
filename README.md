@@ -5,10 +5,7 @@
 ## Stack
 
 - **🛠️ Framework**: [Next.js](https://nextjs.org/)
-- **📁 Data Sources:**
-  - [Contentful](https://www.contentful.com/) + [Apollo](https://www.apollographql.com/)
-  - [mdx](https://mdxjs.com) + [Contentlayer](https://www.contentlayer.dev/) + [pliny](https://github.com/timlrx/pliny)
-  - [proxycurl](https://nubela.co/proxycurl/)
+- **📁 Data Sources:** [Contentful](https://www.contentful.com/) + [Apollo](https://www.apollographql.com/) / [mdx](https://mdxjs.com) + [Contentlayer](https://www.contentlayer.dev/) + [pliny](https://github.com/timlrx/pliny) / [proxycurl](https://nubela.co/proxycurl/)
 - **🔍 Searching:** [Lyra](https://github.com/LyraSearch/lyra)
 - **👍 A11y:** [Radix UI Primitives](https://www.radix-ui.com/) + [axe](https://www.deque.com/axe/)
 - **💅 Styling:** [Tailwind CSS](https://tailwindcss.com/) + [tailwind-merge](https://github.com/dcastil/tailwind-merge) + [clsx](https://github.com/lukeed/clsx)
