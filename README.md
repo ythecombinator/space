@@ -1,6 +1,4 @@
-# https://www.ythecombinator.space
-
-> My personal website! ✨
+![hero](./static/banner.png)
 
 ## Stack
 
