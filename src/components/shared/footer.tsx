@@ -25,7 +25,6 @@ const Footer: FunctionComponent<PropsWithChildren<{}>> = () => {
           <div className="mb-1 flex  flex-row justify-center  space-x-8 sm:mb-0 sm:flex-col sm:justify-start sm:space-x-0 sm:space-y-4">
             <Link href={siteMetadata.twitter}>Twitter</Link>
             <Link href={siteMetadata.github}>GitHub</Link>
-            <Link href="/feed.xml">RSS</Link>
           </div>
         </div>
         <div className="mb-5 flex flex-col sm:items-center  sm:justify-center ">
