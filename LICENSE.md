@@ -1,7 +1,6 @@
 MIT License
 
-Initial project Copyright (c) 2018 Enrique Benitez <hello@bntz.io>
-Changes Copyright (c) 2018 Matheus Albuquerque <hey@ythecombinator.space>.
+Copyright (c) 2022 Matheus Albuquerque <land@ythecombinator.space>.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

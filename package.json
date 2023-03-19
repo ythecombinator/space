@@ -13,7 +13,7 @@
     "lint": "next lint",
     "lint:deadcode": "! ts-prune | grep -v \"used in module\"",
     "format": "prettier --write src/",
-    "codegen:schema": "graphql-codegen --config codegen.yml --require dotenv/config",
+    "codegen:schema": "graphql-codegen --config codegen.ts --require dotenv/config",
     "codegen:linkedin": "esno scripts/codegen-linkedin.ts"
   },
   "dependencies": {
