@@ -8,7 +8,6 @@ import TalksContentService from 'services/talks-content-service';
 
 import { documentToString } from 'utils/contentful';
 import { generateOpenGraphImage } from 'utils/open-graph';
-import { usePathName } from 'utils/url';
 
 import Layout from 'components/layouts/layout-page';
 
@@ -47,17 +46,17 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
   const id = context.params?.slug!;
   const talkData = await talksServiceInstance.get(id);
 
-  const ogImage = await generateOpenGraphImage({
-    title: talkData.title!,
-    postPath: `${Routes.talks}/${id}`,
-    path: `content/${Routes.talks}/${id}/cover.png`,
-  });
-
   if (!talkData) {
     return {
       notFound: true,
     };
   }
+
+  const ogImage = await generateOpenGraphImage({
+    title: talkData.title!,
+    postPath: `${Routes.talks}/${id}`,
+    path: `content/${Routes.talks}/${id}/cover.png`,
+  });
 
   return {
     props: { ...talkData, ogImage },

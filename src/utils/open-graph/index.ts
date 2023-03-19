@@ -115,5 +115,5 @@ export async function generateOpenGraphImage(options: Options) {
     console.log(err);
   }
 
-  return path;
+  return `${siteMetadata.siteUrl}/${options.path}`;
 }

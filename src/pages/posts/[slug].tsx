@@ -3,10 +3,11 @@ import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next';
 import { ArticleJsonLd, NextSeo as Metadata } from 'next-seo';
 import { ParsedUrlQuery } from 'querystring';
 
-import { Layouts, siteMetadata } from 'config/constants';
+import { Layouts, Routes, siteMetadata } from 'config/constants';
 
 import PostsContentService from 'services/posts-content-service';
 
+import { generateOpenGraphImage } from 'utils/open-graph';
 import { generateRSS } from 'utils/rss';
 import { usePathName } from 'utils/url';
 
@@ -58,14 +59,20 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
     };
   }
 
-  return { props: { post } };
+  const ogImage = await generateOpenGraphImage({
+    title: post.title,
+    postPath: `${Routes.posts}/${post.slug}`,
+    path: `content/${Routes.posts}/${post.slug}/cover.png`,
+  });
+
+  return { props: { post, ogImage } };
 }
 
 /*~
  * PAGE
  */
 
-const PostPage: NextPage<Props> = ({ post }) => {
+const PostPage: NextPage<Props> = ({ post, ogImage }) => {
   const { title, summary, tags, date, cover } = post;
   const url = usePathName();
 
@@ -78,6 +85,7 @@ const PostPage: NextPage<Props> = ({ post }) => {
           type: 'article',
           title,
           description: summary,
+          images: [{ url: ogImage }],
           article: {
             publishedTime: date,
             authors: [siteMetadata.siteUrl],
