@@ -2,6 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FunctionComponent, PropsWithChildren } from 'react';
 
+import { Routes } from 'config/constants';
+
 import Typography from 'components/shared/typography';
 
 /*~
@@ -26,7 +28,7 @@ const PhotoHighlightsSectionItem: FunctionComponent<
   return (
     <Link
       key={talkSlug}
-      href={talkSlug}
+      href={`/${Routes.talks}/${talkSlug}`}
       shallow
       className="group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg"
     >
