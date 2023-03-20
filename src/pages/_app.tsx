@@ -31,7 +31,7 @@ export default function App({ Component, pageProps }: AppProps) {
           }}
           twitter={{
             site: url,
-            handle: siteMetadata.twitter,
+            handle: siteMetadata.twitterHandle,
             cardType: 'summary_large_image',
           }}
         />

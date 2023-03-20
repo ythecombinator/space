@@ -21,17 +21,17 @@ const Footer: FunctionComponent<PropsWithChildren<{}>> = () => {
           <div className="mb-1 flex flex-row justify-center space-x-8 sm:mb-0 sm:flex-col sm:justify-start sm:space-x-0 sm:space-y-4">
             <Link href={`/${Routes.life}`}>Life</Link>
             <Link href={`/${Routes.experience}`}>Experience</Link>
+            <Link href="/feed.xml">RSS</Link>
           </div>
           <div className="mb-1 flex  flex-row justify-center  space-x-8 sm:mb-0 sm:flex-col sm:justify-start sm:space-x-0 sm:space-y-4">
             <Link href={siteMetadata.twitter}>Twitter</Link>
             <Link href={siteMetadata.github}>GitHub</Link>
+            <Link href={siteMetadata.linkedin}>LinkedIn</Link>
           </div>
         </div>
-        <div className="mb-5 flex flex-col sm:items-center  sm:justify-center ">
-          <Typography.subtle>
-            {siteMetadata.author} © <time>{new Date().getFullYear()}</time>
-          </Typography.subtle>
-        </div>
+        <Typography.subtle className="mb-5 text-center sm:text-left">
+          {siteMetadata.author} © <time>{new Date().getFullYear()}</time>
+        </Typography.subtle>
       </div>
     </footer>
   );

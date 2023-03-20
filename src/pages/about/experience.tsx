@@ -68,7 +68,7 @@ const Page: NextPage<CareerPageProps> = ({ content, work, volunteering }) => {
           profile: {
             firstName: siteMetadata.authorFirstName,
             lastName: siteMetadata.authorLastName,
-            username: siteMetadata.twitter,
+            username: siteMetadata.twitterHandle,
           },
           images: [
             {

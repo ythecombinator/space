@@ -98,7 +98,7 @@ export async function generateOpenGraphImage(options: Options) {
     ...options,
     basePath: siteMetadata.siteUrl,
     authorName: siteMetadata.author,
-    authorTwitter: siteMetadata.twitter,
+    authorTwitter: siteMetadata.twitterHandle,
     authorPic: siteMetadata.avatar,
   });
 

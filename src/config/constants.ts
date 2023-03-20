@@ -19,8 +19,10 @@ export const siteMetadata = {
   locale: 'en-US',
   // Social
   email: 'land@ythecombinator.space',
+  linkedin: 'https://www.linkedin.com/in/ythecombinator',
   github: 'https://github.com/ythecombinator',
-  twitter: '@ythecombinator',
+  twitterHandle: '@ythecombinator',
+  twitter: 'https://twitter.com/ythecombinator',
   avatar:
     'https://pbs.twimg.com/profile_images/1615068105977331712/TOWGdEEO_400x400.jpg',
 };
@@ -28,12 +30,12 @@ export const siteMetadata = {
 export const socialNetworks = [
   {
     label: 'Twitter',
-    href: 'https://twitter.com/ythecombinator',
+    href: siteMetadata.twitter,
     Icon: FaTwitter,
   },
   {
     label: 'Github',
-    href: 'https://github.com/ythecombinator',
+    href: siteMetadata.github,
     Icon: FaGithub,
   },
   {
