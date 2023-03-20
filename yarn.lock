@@ -4156,11 +4156,6 @@ citeproc@^2.4.6, citeproc@^2.4.62:
   resolved "https://registry.yarnpkg.com/citeproc/-/citeproc-2.4.62.tgz#c2a27eafd7182b95b0812b92c53193b037840ed3"
   integrity sha512-l3uFfSEwNZp/jlz/TpgyBs85kOww6VlQHbAth0cpbgOn6iulZd+QlFY43LrRelzcYt3FZHTZ3soDyd8lNmkqdw==
 
-class-variance-authority@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/class-variance-authority/-/class-variance-authority-0.4.0.tgz#2ff1b5a836a68ce7a2dac0cc12f6fdc50e47f666"
-  integrity sha512-74enNN8O9ZNieycac/y8FxqgyzZhZbxmCitAtAeUrLPlxjSd5zA7LfpprmxEcOmQBnaGs5hYhiSGnJ0mqrtBLQ==
-
 clean-css@^5.0.0:
   version "5.3.2"
   resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-5.3.2.tgz#70ecc7d4d4114921f5d298349ff86a31a9975224"
@@ -8030,6 +8025,11 @@ neo-async@^2.6.0:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
+
+netlify-plugin-cache@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/netlify-plugin-cache/-/netlify-plugin-cache-1.0.3.tgz#f60514e259dff2b3286b6d60b570bb1c81206794"
+  integrity sha512-CTOwNWrTOP59T6y6unxQNnp1WX702v2R/faR5peSH94ebrYfyY4zT5IsRcIiHKq57jXeyCrhy0GLuTN8ktzuQg==
 
 next-contentlayer@0.2.8:
   version "0.2.8"
