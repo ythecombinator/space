@@ -1,4 +1,2 @@
 [[plugins]]
-package = "netlify-plugin-cache"
-  [plugins.inputs]
-  paths = [".cache", ".next"]
+package = "./plugins/keep-data-cache"
