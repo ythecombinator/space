@@ -2241,10 +2241,10 @@
     jsbi "^4.1.0"
     tslib "^2.3.1"
 
-"@lyrasearch/lyra@^0.4.6":
-  version "0.4.11"
-  resolved "https://registry.yarnpkg.com/@lyrasearch/lyra/-/lyra-0.4.11.tgz#285f5bcdb528de7e0558d731e73b6e240a755827"
-  integrity sha512-KvTTCLNG5+BaAKQnYXP/b/NMatqitHFu5LDKGxbga7IXZMPFBdJe4TSvhkJcPsdnEQOccYlPYvkxgjV9BPmV0Q==
+"@lyrasearch/lyra@^0.4.12":
+  version "0.4.12"
+  resolved "https://registry.yarnpkg.com/@lyrasearch/lyra/-/lyra-0.4.12.tgz#c642772e2ac5c372d0e77450b4aaff7476e85989"
+  integrity sha512-7lcUALhAKUhC4p8h6JJRuZFrOHzNxq0uEgHzTSIAXYfFufA2X0BfBDPABlrFwgJ5GP+LwmjMet2rS3XHvG9xNg==
 
 "@mailchimp/mailchimp_marketing@^3.0.75":
   version "3.0.80"
