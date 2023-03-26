@@ -5,6 +5,7 @@ import { siteMetadata } from 'config/constants';
 
 import LayoutGradient from 'components/shared/layout-gradient';
 import Link from 'components/shared/link';
+import Signature from 'components/shared/signature';
 import Typography from 'components/shared/typography';
 
 /*~
@@ -29,8 +30,8 @@ const Footer: FunctionComponent<PropsWithChildren<{}>> = () => {
             <Link href={siteMetadata.linkedin}>LinkedIn</Link>
           </div>
         </div>
-        <Typography.subtle className="mb-5 text-center sm:text-left">
-          {siteMetadata.author} © <time>{new Date().getFullYear()}</time>
+        <Typography.subtle className="mb-5 justify-center sm:justify-start flex items-center gap-2">
+          <Signature /> © <time>{new Date().getFullYear()}</time>
         </Typography.subtle>
       </div>
     </footer>
