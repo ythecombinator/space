@@ -37,7 +37,7 @@
     "clsx": "^1.2.1",
     "contentlayer": "^0.3.0",
     "esbuild": "^0.17.8",
-    "framer-motion": "^9.0.2",
+    "framer-motion": "^10.11.2",
     "fs-extra": "^11.1.0",
     "github-slugger": "^2.0.0",
     "got": "^12.6.0",
