@@ -1,8 +1,11 @@
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 import { FunctionComponent, PropsWithChildren } from 'react';
 
+import { Routes } from 'config/constants';
+
 import { classNames } from 'utils/styles';
 
+import Logo from 'components/shared/logo';
 import NavigationMenuControlLink from 'components/shared/navigation-menu-control-link';
 
 /*~
@@ -22,7 +25,13 @@ export const NavigationMenu: FunctionComponent<
 > = ({ items }) => {
   return (
     <NavigationMenuPrimitive.Root className="relative">
-      <NavigationMenuPrimitive.List className="flex flex-row space-x-2 p-2">
+      <NavigationMenuPrimitive.List className="flex flex-row space-x-2 p-2 items-center">
+        <NavigationMenuPrimitive.Item className="mr-4">
+          <NavigationMenuControlLink href={Routes.base}>
+            <Logo />
+          </NavigationMenuControlLink>
+        </NavigationMenuPrimitive.Item>
+
         {items.map((link) => (
           <NavigationMenuPrimitive.Item key={link.href}>
             <NavigationMenuControlLink

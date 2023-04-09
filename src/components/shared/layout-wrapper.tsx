@@ -1,6 +1,6 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
 
-import { headerNavigationLinks } from 'config/constants';
+import { headerNavigationLinks, Routes } from 'config/constants';
 
 import Footer from 'components/shared/footer';
 import LayoutContainer from 'components/shared/layout-container';
@@ -25,7 +25,11 @@ const LayoutWrapper: FunctionComponent<PropsWithChildren<{}>> = ({
             <div className="flex flex-auto items-center justify-between">
               <div className="flex flex-1 items-center justify-between text-base leading-5">
                 <div className="hidden sm:block">
-                  <NavigationMenu items={headerNavigationLinks} />
+                  <NavigationMenu
+                    items={headerNavigationLinks.filter(
+                      (item) => item.href !== Routes.base
+                    )}
+                  />
                 </div>
                 <ThemeSwitch />
               </div>

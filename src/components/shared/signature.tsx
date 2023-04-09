@@ -6,16 +6,13 @@ import { siteMetadata } from 'config/constants';
  * COMPONENT
  */
 
-const Signature: FunctionComponent<SVGProps<SVGSVGElement>> = ({
-  ...props
-}) => (
+const Signature: FunctionComponent<{}> = () => (
   <svg
     width={200}
     viewBox="0 0 1158 91"
     xmlns="http://www.w3.org/2000/svg"
     aria-labelledby={'signature'}
     role="img"
-    {...props}
   >
     <title id={'signature'}>{siteMetadata.author}</title>
     <path

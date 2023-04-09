@@ -63,7 +63,7 @@ export enum Routes {
 }
 
 export const headerNavigationLinks = [
-  { href: Routes.base, title: '@ythecombinator' },
+  { href: Routes.base, title: 'Home' },
   { href: `/${Routes.posts}`, title: 'Posts' },
   { href: `/${Routes.talks}`, title: 'Talks' },
   { href: `/${Routes.about}`, title: 'About' },
