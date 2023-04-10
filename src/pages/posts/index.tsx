@@ -2,9 +2,11 @@ import { InferGetStaticPropsType, NextPage } from 'next';
 import { NextSeo as Metadata } from 'next-seo';
 import { Suspense, useState } from 'react';
 
-import { siteMetadata } from 'config/constants';
+import { Routes, siteMetadata } from 'config/constants';
 
 import PostsContentService from 'services/posts-content-service';
+
+import { generateOpenGraphImage } from 'utils/open-graph';
 
 import SearchBar, { SearchBarProps } from 'components/shared/seach-bar';
 
@@ -12,6 +14,11 @@ import Layout from 'components/layouts/layout-page';
 
 import AllPostsSection from 'components/pages/posts/all-posts-section';
 import AllPostsSectionSkeleton from 'components/pages/posts/all-posts-section-skeleton';
+
+const metadata = {
+  title: `Posts / ${siteMetadata.title}`,
+  description: 'Ideas. Stories. Updates.',
+};
 
 /*~
  * TYPES
@@ -27,14 +34,21 @@ const postsServiceInstance = PostsContentService.getInstance();
 
 export async function getStaticProps() {
   const allPosts = postsServiceInstance.getAll();
-  return { props: { allPosts } };
+
+  const ogImage = await generateOpenGraphImage({
+    title: `✍️ ${metadata.description}`,
+    postPath: Routes.posts,
+    path: `content/${Routes.posts}/cover.png`,
+  });
+
+  return { props: { allPosts, ogImage } };
 }
 
 /*~
  * PAGE
  */
 
-const PostsPage: NextPage<Props> = ({ allPosts }) => {
+const PostsPage: NextPage<Props> = ({ allPosts, ogImage }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const onChange: SearchBarProps['onChange'] = (evt) => {
@@ -44,11 +58,17 @@ const PostsPage: NextPage<Props> = ({ allPosts }) => {
   return (
     <>
       <Metadata
-        title={`Posts / ${siteMetadata.title}`}
-        description="Ideas. Stories. Updates."
+        title={metadata.title}
+        description={metadata.description}
+        openGraph={{
+          type: 'website',
+          title: metadata.title,
+          description: metadata.description,
+          images: [{ url: ogImage }],
+        }}
       />
       <Layout
-        heading="Ideas. Stories. Updates."
+        heading={metadata.description}
         headingGradient="minnesota"
         subHeading={<SearchBar label={`Search posts`} onChange={onChange} />}
       >

@@ -2,11 +2,11 @@ import { InferGetStaticPropsType, NextPage } from 'next';
 import { NextSeo as Metadata } from 'next-seo';
 import { Suspense, useState } from 'react';
 
-import { siteMetadata } from 'config/constants';
+import { Routes, siteMetadata } from 'config/constants';
 
 import TalksContentService from 'services/talks-content-service';
 
-import { usePathName } from 'utils/url';
+import { generateOpenGraphImage } from 'utils/open-graph';
 
 import SearchBar, { SearchBarProps } from 'components/shared/seach-bar';
 
@@ -18,6 +18,11 @@ import AllTalksSectionSkeleton from 'components/pages/talks/all-talks-section-sk
 import OverviewSection from 'components/pages/talks/overview-section';
 import PhotoHighlightsSection from 'components/pages/talks/photo-highlights-section';
 import VideoHighlightsSection from 'components/pages/talks/video-highlights-section';
+
+const metadata = {
+  title: `Talks / ${siteMetadata.title}`,
+  description: 'Confs. Meetups. More.',
+};
 
 /*~
  * TYPES
@@ -39,8 +44,14 @@ export async function getStaticProps() {
     talksServiceInstance.getAll(),
   ]);
 
+  const ogImage = await generateOpenGraphImage({
+    title: `🎙️ ${metadata.description}`,
+    postPath: Routes.talks,
+    path: `content/${Routes.talks}/cover.png`,
+  });
+
   return {
-    props: { talksStats, featuredTalks, activeTalks, allTalks },
+    props: { talksStats, featuredTalks, activeTalks, allTalks, ogImage },
   };
 }
 
@@ -49,7 +60,7 @@ export async function getStaticProps() {
  */
 
 const TalksPage: NextPage<Props> = (props) => {
-  const { talksStats, allTalks, featuredTalks, activeTalks } = props;
+  const { talksStats, allTalks, featuredTalks, activeTalks, ogImage } = props;
 
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -60,11 +71,17 @@ const TalksPage: NextPage<Props> = (props) => {
   return (
     <>
       <Metadata
-        title={`Talks / ${siteMetadata.title}`}
-        description="Confs. Meetups. More."
+        title={metadata.title}
+        description={metadata.description}
+        openGraph={{
+          type: 'website',
+          title: metadata.title,
+          description: metadata.description,
+          images: [{ url: ogImage }],
+        }}
       />
       <Layout
-        heading="Confs. Meetups. More."
+        heading={metadata.description}
         headingGradient="borealis"
         subHeading={
           <SearchBar

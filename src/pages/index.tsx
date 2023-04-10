@@ -1,8 +1,8 @@
 import { InferGetStaticPropsType, NextPage } from 'next';
 
-import { socialNetworks } from 'config/constants';
+import { siteMetadata, socialNetworks } from 'config/constants';
 
-import TalksContentService from 'services/talks-content-service';
+import { generateOpenGraphImage } from 'utils/open-graph';
 
 import ButtonLink from 'components/shared/button-link';
 
@@ -11,28 +11,10 @@ import Layout from 'components/layouts/layout-page';
 import OverviewSection from 'components/pages/home/overview-section';
 
 /*~
- * TYPES
- */
-
-export type HomePageProps = InferGetStaticPropsType<typeof getStaticProps>;
-
-/*~
- * NEXTJS
- */
-
-const talksServiceInstance = TalksContentService.getInstance();
-
-export async function getStaticProps() {
-  const [latestTalks] = await Promise.all([talksServiceInstance.getLatest(3)]);
-
-  return { props: { latestTalks } };
-}
-
-/*~
  * PAGE
  */
 
-const HomePage: NextPage<HomePageProps> = () => {
+const HomePage: NextPage<{}> = () => {
   return (
     <Layout heading="Hi, I'm Matheus! 👋">
       <OverviewSection />

@@ -28,6 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
             type: 'website',
             locale: siteMetadata.locale,
             siteName: siteMetadata.title,
+            images: [{ url: siteMetadata.socialBanner }],
           }}
           twitter={{
             site: url,

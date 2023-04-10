@@ -15,7 +15,7 @@ export const siteMetadata = {
   theme: 'system',
   siteUrl: 'https://www.ythecombinator.space',
   siteLogo: '/static/images/logo.png',
-  socialBanner: '/static/images/card.png',
+  socialBanner: 'https://www.ythecombinator.space/content/cover.png',
   locale: 'en-US',
   // Social
   email: 'land@ythecombinator.space',
