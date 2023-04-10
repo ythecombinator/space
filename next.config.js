@@ -18,7 +18,7 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ['images.ctfassets.net'],
+    domains: ['images.ctfassets.net', 'pbs.twimg.com'],
   },
   experimental: {
     largePageDataBytes: 128 * 100000,

@@ -1,10 +1,13 @@
+import Image from 'next/image';
 import { FunctionComponent, PropsWithChildren } from 'react';
 import { FaLaptopCode } from 'react-icons/fa';
 import { GiCardRandom, GiTakeMyMoney, GiBattleGear } from 'react-icons/gi';
 
-import { Routes } from 'config/constants';
+import { Routes, siteMetadata } from 'config/constants';
 
 import ButtonLink from 'components/shared/button-link';
+import CurrentLocation from 'components/shared/current-location';
+import Link from 'components/shared/link';
 import SectionContainer from 'components/shared/section-container';
 import SectionCover from 'components/shared/section-cover';
 import Typography from 'components/shared/typography';
@@ -21,6 +24,7 @@ const OverviewSection: FunctionComponent<PropsWithChildren<{}>> = () => {
         Hey, {`I'm`} Matheus Albuquerque—but most folks know me as{' '}
         <Typography.mark>ythecombinator</Typography.mark> online.
       </Typography.p>
+
       <Typography.p>
         I love building for the web, and {`I'm`} an experienced software
         engineer and{' '}
@@ -31,6 +35,13 @@ const OverviewSection: FunctionComponent<PropsWithChildren<{}>> = () => {
         architect in product and consultancy companies, taking the best from
         both worlds.
       </Typography.p>
+
+      <CurrentLocation
+        href="http://maps.apple.com/?address=Prague%CZ&z=15"
+        location="Prague, Czech Republic"
+        locationImage="/content/biography/prague.jpg"
+      />
+
       <Typography.p>
         {`I'm`} currently based in Prague, Czech Republic, working as a Senior
         Software Engineer at{' '}
@@ -41,6 +52,7 @@ const OverviewSection: FunctionComponent<PropsWithChildren<{}>> = () => {
         communities around React, perceived performance and developer
         experience.
       </Typography.p>
+
       <Typography.p>
         Outside Medallia, I volunteer as a mentor at{' '}
         <Typography.a href="https://techlabs.org">TechLabs Berlin</Typography.a>
@@ -49,6 +61,7 @@ const OverviewSection: FunctionComponent<PropsWithChildren<{}>> = () => {
         <Typography.a href="https://reactsummit.com">React Summit</Typography.a>{' '}
         conference.
       </Typography.p>
+
       <Typography.p>
         Curious to know further details about the stuff I mentioned above? I
         keep some pages updated with these!
