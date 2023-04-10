@@ -15,7 +15,6 @@ import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
 // Rehype packages
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeCitation from 'rehype-citation';
-import rehypeKatex from 'rehype-katex';
 import rehypePresetMinify from 'rehype-preset-minify';
 import rehypePrismPlus from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
@@ -108,7 +107,6 @@ export default makeSource({
       rehypeAccessibleEmojis,
       rehypeSlug,
       rehypeAutolinkHeadings,
-      rehypeKatex,
       [rehypeCitation, { path: path.join(root, 'data') }],
       [rehypePrismPlus, { ignoreMissing: true }],
       rehypePresetMinify,

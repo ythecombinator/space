@@ -23,7 +23,6 @@ const config = {
         14: '3.5rem',
       },
       fontFamily: {
-        // sans: ['Inter', ...defaultTheme.fontFamily.sans],
         sans: ['var(--font-biotify)', ...defaultTheme.fontFamily.sans],
         heading: [
           'var(--font-neuzeitGrotesk)',
