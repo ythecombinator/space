@@ -116,19 +116,14 @@ const allTransformer = (result: GetAllTalksQuery) => {
     .items;
 
   return items.map((item) => {
-    const {
-      title,
-      shortDescription,
-      slug,
-      sessionsCollection,
-      contentfulMetadata,
-    } = item;
+    const { title, abstract, slug, sessionsCollection, contentfulMetadata } =
+      item;
 
     return {
       talkTitle: title,
       talkSlug: slug,
       // Indexable search metadata
-      _description: JSON.stringify(shortDescription.json),
+      _description: JSON.stringify(abstract.json),
       _events: toIndexableCollection(
         sessionsCollection.items.map((session) => session.event.name)
       ),
@@ -191,12 +186,10 @@ const latestTransformer = (result: GetAllTalksQuery) => {
     .items;
 
   return items.map((item) => {
-    const { title, slug, shortDescription, contentfulMetadata } = item;
-    const headline = shortDescription.json.content[0] as ContentfulDocument;
+    const { title, slug, contentfulMetadata } = item;
 
     return {
       title,
-      headline,
       slug,
       tags: contentfulMetadata.tags.map(tagTransformer),
     };
