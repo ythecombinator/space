@@ -26,9 +26,6 @@ query GetTalk($slug: String!) {
             endingDate
             city {
               name
-              photo {
-                url
-              }
               country {
                 name
                 flag

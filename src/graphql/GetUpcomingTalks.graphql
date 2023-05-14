@@ -4,9 +4,6 @@ query GetUpcomingTalks($eventStartingDate: DateTime!) {
       name
       city {
         name
-        photo {
-          url
-        }
         country {
           flag
           name

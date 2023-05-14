@@ -90,7 +90,6 @@ input AssetFilter {
 }
 
 type AssetLinkingCollections {
-  cityCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): CityCollection
   companyCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): CompanyCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   sessionCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): SessionCollection
@@ -133,7 +132,6 @@ type City implements Entry {
   linkedFrom(allowedLocales: [String]): CityLinkingCollections
   location(locale: String): Location
   name(locale: String): String
-  photo(locale: String, preview: Boolean): Asset
   sys: Sys!
 }
 
@@ -160,7 +158,6 @@ input CityFilter {
   name_not: String
   name_not_contains: String
   name_not_in: [String]
-  photo_exists: Boolean
   sys: SysFilter
 }
 
@@ -407,6 +404,7 @@ input EventFilter {
   name_not: String
   name_not_contains: String
   name_not_in: [String]
+  sessions: cfSessionNestedFilter
   sessionsCollection_exists: Boolean
   startingDate: DateTime
   startingDate_exists: Boolean
@@ -864,7 +862,6 @@ type Talk implements Entry {
   lastRelevant(locale: String): DateTime
   linkedFrom(allowedLocales: [String]): TalkLinkingCollections
   sessionsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): TalkSessionsCollection
-  shortDescription(locale: String): TalkShortDescription
   slug(locale: String): String
   sys: Sys!
   title(locale: String): String
@@ -924,10 +921,8 @@ input TalkFilter {
   lastRelevant_lte: DateTime
   lastRelevant_not: DateTime
   lastRelevant_not_in: [DateTime]
+  sessions: cfSessionNestedFilter
   sessionsCollection_exists: Boolean
-  shortDescription_contains: String
-  shortDescription_exists: Boolean
-  shortDescription_not_contains: String
   slug: String
   slug_contains: String
   slug_exists: Boolean
@@ -976,27 +971,6 @@ type TalkSessionsCollection {
   limit: Int!
   skip: Int!
   total: Int!
-}
-
-type TalkShortDescription {
-  json: JSON!
-  links: TalkShortDescriptionLinks!
-}
-
-type TalkShortDescriptionAssets {
-  block: [Asset]!
-  hyperlink: [Asset]!
-}
-
-type TalkShortDescriptionEntries {
-  block: [Entry]!
-  hyperlink: [Entry]!
-  inline: [Entry]!
-}
-
-type TalkShortDescriptionLinks {
-  assets: TalkShortDescriptionAssets!
-  entries: TalkShortDescriptionEntries!
 }
 
 """
@@ -1124,6 +1098,7 @@ input TitleFilter {
   roles_contains_none: [String]
   roles_contains_some: [String]
   roles_exists: Boolean
+  stack: cfTechnologyNestedFilter
   stackCollection_exists: Boolean
   startingDate: DateTime
   startingDate_exists: Boolean
@@ -1187,7 +1162,6 @@ input cfCityNestedFilter {
   name_not: String
   name_not_contains: String
   name_not_in: [String]
-  photo_exists: Boolean
   sys: SysFilter
 }
 
@@ -1297,6 +1271,53 @@ input cfLanguageNestedFilter {
   sys: SysFilter
 }
 
+input cfSessionNestedFilter {
+  AND: [cfSessionNestedFilter]
+  OR: [cfSessionNestedFilter]
+  audience: Int
+  audience_exists: Boolean
+  audience_gt: Int
+  audience_gte: Int
+  audience_in: [Int]
+  audience_lt: Int
+  audience_lte: Int
+  audience_not: Int
+  audience_not_in: [Int]
+  contentfulMetadata: ContentfulMetadataFilter
+  event_exists: Boolean
+  featured: Boolean
+  featured_exists: Boolean
+  featured_not: Boolean
+  language_exists: Boolean
+  online: Boolean
+  online_exists: Boolean
+  online_not: Boolean
+  photo_exists: Boolean
+  recording: String
+  recording_contains: String
+  recording_exists: Boolean
+  recording_in: [String]
+  recording_not: String
+  recording_not_contains: String
+  recording_not_in: [String]
+  slides: String
+  slides_contains: String
+  slides_exists: Boolean
+  slides_in: [String]
+  slides_not: String
+  slides_not_contains: String
+  slides_not_in: [String]
+  sys: SysFilter
+  talk_exists: Boolean
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
 input cfTalkNestedFilter {
   AND: [cfTalkNestedFilter]
   OR: [cfTalkNestedFilter]
@@ -1324,9 +1345,27 @@ input cfTalkNestedFilter {
   lastRelevant_not: DateTime
   lastRelevant_not_in: [DateTime]
   sessionsCollection_exists: Boolean
-  shortDescription_contains: String
-  shortDescription_exists: Boolean
-  shortDescription_not_contains: String
+  slug: String
+  slug_contains: String
+  slug_exists: Boolean
+  slug_in: [String]
+  slug_not: String
+  slug_not_contains: String
+  slug_not_in: [String]
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+input cfTechnologyNestedFilter {
+  AND: [cfTechnologyNestedFilter]
+  OR: [cfTechnologyNestedFilter]
+  contentfulMetadata: ContentfulMetadataFilter
   slug: String
   slug_contains: String
   slug_exists: Boolean

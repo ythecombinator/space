@@ -172,18 +172,9 @@ export type AssetFilter = {
 
 export type AssetLinkingCollections = {
   __typename?: 'AssetLinkingCollections';
-  cityCollection?: Maybe<CityCollection>;
   companyCollection?: Maybe<CompanyCollection>;
   entryCollection?: Maybe<EntryCollection>;
   sessionCollection?: Maybe<SessionCollection>;
-};
-
-
-export type AssetLinkingCollectionsCityCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -241,7 +232,6 @@ export type City = Entry & {
   linkedFrom?: Maybe<CityLinkingCollections>;
   location?: Maybe<Location>;
   name?: Maybe<Scalars['String']>;
-  photo?: Maybe<Asset>;
   sys: Sys;
 };
 
@@ -270,13 +260,6 @@ export type CityNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
-
-/** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/city) */
-export type CityPhotoArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-};
-
 export type CityCollection = {
   __typename?: 'CityCollection';
   items: Array<Maybe<City>>;
@@ -301,7 +284,6 @@ export type CityFilter = {
   name_not?: InputMaybe<Scalars['String']>;
   name_not_contains?: InputMaybe<Scalars['String']>;
   name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  photo_exists?: InputMaybe<Scalars['Boolean']>;
   sys?: InputMaybe<SysFilter>;
 };
 
@@ -687,6 +669,7 @@ export type EventFilter = {
   name_not?: InputMaybe<Scalars['String']>;
   name_not_contains?: InputMaybe<Scalars['String']>;
   name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sessions?: InputMaybe<CfSessionNestedFilter>;
   sessionsCollection_exists?: InputMaybe<Scalars['Boolean']>;
   startingDate?: InputMaybe<Scalars['DateTime']>;
   startingDate_exists?: InputMaybe<Scalars['Boolean']>;
@@ -1429,7 +1412,6 @@ export type Talk = Entry & {
   lastRelevant?: Maybe<Scalars['DateTime']>;
   linkedFrom?: Maybe<TalkLinkingCollections>;
   sessionsCollection?: Maybe<TalkSessionsCollection>;
-  shortDescription?: Maybe<TalkShortDescription>;
   slug?: Maybe<Scalars['String']>;
   sys: Sys;
   title?: Maybe<Scalars['String']>;
@@ -1472,12 +1454,6 @@ export type TalkSessionsCollectionArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/talk) */
-export type TalkShortDescriptionArgs = {
-  locale?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -1551,10 +1527,8 @@ export type TalkFilter = {
   lastRelevant_lte?: InputMaybe<Scalars['DateTime']>;
   lastRelevant_not?: InputMaybe<Scalars['DateTime']>;
   lastRelevant_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  sessions?: InputMaybe<CfSessionNestedFilter>;
   sessionsCollection_exists?: InputMaybe<Scalars['Boolean']>;
-  shortDescription_contains?: InputMaybe<Scalars['String']>;
-  shortDescription_exists?: InputMaybe<Scalars['Boolean']>;
-  shortDescription_not_contains?: InputMaybe<Scalars['String']>;
   slug?: InputMaybe<Scalars['String']>;
   slug_contains?: InputMaybe<Scalars['String']>;
   slug_exists?: InputMaybe<Scalars['Boolean']>;
@@ -1621,31 +1595,6 @@ export type TalkSessionsCollection = {
   limit: Scalars['Int'];
   skip: Scalars['Int'];
   total: Scalars['Int'];
-};
-
-export type TalkShortDescription = {
-  __typename?: 'TalkShortDescription';
-  json: Scalars['JSON'];
-  links: TalkShortDescriptionLinks;
-};
-
-export type TalkShortDescriptionAssets = {
-  __typename?: 'TalkShortDescriptionAssets';
-  block: Array<Maybe<Asset>>;
-  hyperlink: Array<Maybe<Asset>>;
-};
-
-export type TalkShortDescriptionEntries = {
-  __typename?: 'TalkShortDescriptionEntries';
-  block: Array<Maybe<Entry>>;
-  hyperlink: Array<Maybe<Entry>>;
-  inline: Array<Maybe<Entry>>;
-};
-
-export type TalkShortDescriptionLinks = {
-  __typename?: 'TalkShortDescriptionLinks';
-  assets: TalkShortDescriptionAssets;
-  entries: TalkShortDescriptionEntries;
 };
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/technology) */
@@ -1864,6 +1813,7 @@ export type TitleFilter = {
   roles_contains_none?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   roles_contains_some?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   roles_exists?: InputMaybe<Scalars['Boolean']>;
+  stack?: InputMaybe<CfTechnologyNestedFilter>;
   stackCollection_exists?: InputMaybe<Scalars['Boolean']>;
   startingDate?: InputMaybe<Scalars['DateTime']>;
   startingDate_exists?: InputMaybe<Scalars['Boolean']>;
@@ -1937,7 +1887,6 @@ export type CfCityNestedFilter = {
   name_not?: InputMaybe<Scalars['String']>;
   name_not_contains?: InputMaybe<Scalars['String']>;
   name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  photo_exists?: InputMaybe<Scalars['Boolean']>;
   sys?: InputMaybe<SysFilter>;
 };
 
@@ -2047,6 +1996,53 @@ export type CfLanguageNestedFilter = {
   sys?: InputMaybe<SysFilter>;
 };
 
+export type CfSessionNestedFilter = {
+  AND?: InputMaybe<Array<InputMaybe<CfSessionNestedFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<CfSessionNestedFilter>>>;
+  audience?: InputMaybe<Scalars['Int']>;
+  audience_exists?: InputMaybe<Scalars['Boolean']>;
+  audience_gt?: InputMaybe<Scalars['Int']>;
+  audience_gte?: InputMaybe<Scalars['Int']>;
+  audience_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  audience_lt?: InputMaybe<Scalars['Int']>;
+  audience_lte?: InputMaybe<Scalars['Int']>;
+  audience_not?: InputMaybe<Scalars['Int']>;
+  audience_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  event_exists?: InputMaybe<Scalars['Boolean']>;
+  featured?: InputMaybe<Scalars['Boolean']>;
+  featured_exists?: InputMaybe<Scalars['Boolean']>;
+  featured_not?: InputMaybe<Scalars['Boolean']>;
+  language_exists?: InputMaybe<Scalars['Boolean']>;
+  online?: InputMaybe<Scalars['Boolean']>;
+  online_exists?: InputMaybe<Scalars['Boolean']>;
+  online_not?: InputMaybe<Scalars['Boolean']>;
+  photo_exists?: InputMaybe<Scalars['Boolean']>;
+  recording?: InputMaybe<Scalars['String']>;
+  recording_contains?: InputMaybe<Scalars['String']>;
+  recording_exists?: InputMaybe<Scalars['Boolean']>;
+  recording_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  recording_not?: InputMaybe<Scalars['String']>;
+  recording_not_contains?: InputMaybe<Scalars['String']>;
+  recording_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  slides?: InputMaybe<Scalars['String']>;
+  slides_contains?: InputMaybe<Scalars['String']>;
+  slides_exists?: InputMaybe<Scalars['Boolean']>;
+  slides_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  slides_not?: InputMaybe<Scalars['String']>;
+  slides_not_contains?: InputMaybe<Scalars['String']>;
+  slides_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+  talk_exists?: InputMaybe<Scalars['Boolean']>;
+  title?: InputMaybe<Scalars['String']>;
+  title_contains?: InputMaybe<Scalars['String']>;
+  title_exists?: InputMaybe<Scalars['Boolean']>;
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  title_not?: InputMaybe<Scalars['String']>;
+  title_not_contains?: InputMaybe<Scalars['String']>;
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
 export type CfTalkNestedFilter = {
   AND?: InputMaybe<Array<InputMaybe<CfTalkNestedFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<CfTalkNestedFilter>>>;
@@ -2074,9 +2070,27 @@ export type CfTalkNestedFilter = {
   lastRelevant_not?: InputMaybe<Scalars['DateTime']>;
   lastRelevant_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   sessionsCollection_exists?: InputMaybe<Scalars['Boolean']>;
-  shortDescription_contains?: InputMaybe<Scalars['String']>;
-  shortDescription_exists?: InputMaybe<Scalars['Boolean']>;
-  shortDescription_not_contains?: InputMaybe<Scalars['String']>;
+  slug?: InputMaybe<Scalars['String']>;
+  slug_contains?: InputMaybe<Scalars['String']>;
+  slug_exists?: InputMaybe<Scalars['Boolean']>;
+  slug_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  slug_not?: InputMaybe<Scalars['String']>;
+  slug_not_contains?: InputMaybe<Scalars['String']>;
+  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+  title?: InputMaybe<Scalars['String']>;
+  title_contains?: InputMaybe<Scalars['String']>;
+  title_exists?: InputMaybe<Scalars['Boolean']>;
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  title_not?: InputMaybe<Scalars['String']>;
+  title_not_contains?: InputMaybe<Scalars['String']>;
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type CfTechnologyNestedFilter = {
+  AND?: InputMaybe<Array<InputMaybe<CfTechnologyNestedFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<CfTechnologyNestedFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
   slug?: InputMaybe<Scalars['String']>;
   slug_contains?: InputMaybe<Scalars['String']>;
   slug_exists?: InputMaybe<Scalars['Boolean']>;
@@ -2109,7 +2123,7 @@ export type GetAllTalksQueryVariables = Exact<{
 }>;
 
 
-export type GetAllTalksQuery = { __typename?: 'Query', talkCollection?: { __typename?: 'TalkCollection', items: Array<{ __typename?: 'Talk', title?: string | null, slug?: string | null, shortDescription?: { __typename?: 'TalkShortDescription', json: any } | null, sessionsCollection?: { __typename?: 'TalkSessionsCollection', items: Array<{ __typename?: 'Session', event?: { __typename?: 'Event', name?: string | null, city?: { __typename?: 'City', name?: string | null, country?: { __typename?: 'Country', name?: string | null } | null } | null } | null } | null> } | null, contentfulMetadata: { __typename?: 'ContentfulMetadata', tags: Array<{ __typename?: 'ContentfulTag', id?: string | null, name?: string | null } | null> } } | null> } | null };
+export type GetAllTalksQuery = { __typename?: 'Query', talkCollection?: { __typename?: 'TalkCollection', items: Array<{ __typename?: 'Talk', title?: string | null, slug?: string | null, abstract?: { __typename?: 'TalkAbstract', json: any } | null, sessionsCollection?: { __typename?: 'TalkSessionsCollection', items: Array<{ __typename?: 'Session', event?: { __typename?: 'Event', name?: string | null, city?: { __typename?: 'City', name?: string | null, country?: { __typename?: 'Country', name?: string | null } | null } | null } | null } | null> } | null, contentfulMetadata: { __typename?: 'ContentfulMetadata', tags: Array<{ __typename?: 'ContentfulTag', id?: string | null, name?: string | null } | null> } } | null> } | null };
 
 export type GetFeaturedTalksQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2121,7 +2135,7 @@ export type GetTalkQueryVariables = Exact<{
 }>;
 
 
-export type GetTalkQuery = { __typename?: 'Query', talkCollection?: { __typename?: 'TalkCollection', items: Array<{ __typename?: 'Talk', title?: string | null, abstract?: { __typename?: 'TalkAbstract', json: any } | null, sessionsCollection?: { __typename?: 'TalkSessionsCollection', items: Array<{ __typename?: 'Session', online?: boolean | null, slides?: string | null, recording?: string | null, audience?: number | null, sys: { __typename?: 'Sys', id: string }, language?: { __typename?: 'Language', flag?: string | null, language?: string | null } | null, event?: { __typename?: 'Event', name?: string | null, website?: string | null, startingDate?: any | null, endingDate?: any | null, city?: { __typename?: 'City', name?: string | null, photo?: { __typename?: 'Asset', url?: string | null } | null, country?: { __typename?: 'Country', name?: string | null, flag?: string | null } | null } | null } | null } | null> } | null } | null> } | null };
+export type GetTalkQuery = { __typename?: 'Query', talkCollection?: { __typename?: 'TalkCollection', items: Array<{ __typename?: 'Talk', title?: string | null, abstract?: { __typename?: 'TalkAbstract', json: any } | null, sessionsCollection?: { __typename?: 'TalkSessionsCollection', items: Array<{ __typename?: 'Session', online?: boolean | null, slides?: string | null, recording?: string | null, audience?: number | null, sys: { __typename?: 'Sys', id: string }, language?: { __typename?: 'Language', flag?: string | null, language?: string | null } | null, event?: { __typename?: 'Event', name?: string | null, website?: string | null, startingDate?: any | null, endingDate?: any | null, city?: { __typename?: 'City', name?: string | null, country?: { __typename?: 'Country', name?: string | null, flag?: string | null } | null } | null } | null } | null> } | null } | null> } | null };
 
 export type GetTalksStatsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2133,7 +2147,7 @@ export type GetUpcomingTalksQueryVariables = Exact<{
 }>;
 
 
-export type GetUpcomingTalksQuery = { __typename?: 'Query', eventCollection?: { __typename?: 'EventCollection', items: Array<{ __typename?: 'Event', name?: string | null, startingDate?: any | null, endingDate?: any | null, city?: { __typename?: 'City', name?: string | null, photo?: { __typename?: 'Asset', url?: string | null } | null, country?: { __typename?: 'Country', flag?: string | null, name?: string | null } | null } | null, sessionsCollection?: { __typename?: 'EventSessionsCollection', items: Array<{ __typename?: 'Session', talk?: { __typename?: 'Talk', title?: string | null, slug?: string | null } | null } | null> } | null } | null> } | null };
+export type GetUpcomingTalksQuery = { __typename?: 'Query', eventCollection?: { __typename?: 'EventCollection', items: Array<{ __typename?: 'Event', name?: string | null, startingDate?: any | null, endingDate?: any | null, city?: { __typename?: 'City', name?: string | null, country?: { __typename?: 'Country', flag?: string | null, name?: string | null } | null } | null, sessionsCollection?: { __typename?: 'EventSessionsCollection', items: Array<{ __typename?: 'Session', talk?: { __typename?: 'Talk', title?: string | null, slug?: string | null } | null } | null> } | null } | null> } | null };
 
 
 export const GetActiveTalksDocument = gql`
@@ -2227,7 +2241,7 @@ export const GetAllTalksDocument = gql`
   talkCollection(order: lastRelevant_DESC, limit: $limit) {
     items {
       title
-      shortDescription {
+      abstract {
         json
       }
       slug
@@ -2356,9 +2370,6 @@ export const GetTalkDocument = gql`
             endingDate
             city {
               name
-              photo {
-                url
-              }
               country {
                 name
                 flag
@@ -2449,9 +2460,6 @@ export const GetUpcomingTalksDocument = gql`
       name
       city {
         name
-        photo {
-          url
-        }
         country {
           flag
           name
