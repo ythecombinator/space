@@ -1,7 +1,9 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
+import { CgWebsite } from 'react-icons/cg';
 import { FaMapMarkedAlt, FaYoutube, FaSpeakerDeck } from 'react-icons/fa';
 
 import CardOutlined from 'components/shared/card-outlined';
+import CardOutlinedListItem from 'components/shared/card-outlined-list-item';
 import Link from 'components/shared/link';
 
 /*~
@@ -14,6 +16,7 @@ export type EventsSectionItemProps = {
   eventLocation: string;
   eventStartingDate: string;
   eventEndingDate: string;
+  eventWebsite: string;
   // Session
   sessionAudience: string;
   sessionLanguage: string;
@@ -29,37 +32,41 @@ export type EventsSectionItemProps = {
 const EventsSectionItem: FunctionComponent<
   PropsWithChildren<EventsSectionItemProps>
 > = (props) => {
-  const { eventName, eventLocation, sessionSlides, sessionRecording } = props;
+  const {
+    eventName,
+    eventLocation,
+    eventWebsite,
+    sessionSlides,
+    sessionRecording,
+  } = props;
 
   return (
     <CardOutlined heading={eventName}>
       <div className="flex-col">
-        <div className="flex items-center text-gray-800 dark:text-gray-200">
-          <div className="mr-1 flex h-11 items-center justify-center bg-transparent text-lg">
-            <FaMapMarkedAlt size={20} aria-hidden />
-          </div>
+        <CardOutlinedListItem icon={<FaMapMarkedAlt size={20} aria-hidden />}>
           {eventLocation}
-        </div>
+        </CardOutlinedListItem>
+
+        <CardOutlinedListItem icon={<CgWebsite size={20} aria-hidden />}>
+          <Link href={eventWebsite} rel="nofollow">
+            Check their website
+          </Link>
+        </CardOutlinedListItem>
+
         {sessionSlides && (
-          <div className="flex items-center text-gray-800 dark:text-gray-200">
-            <div className="mr-1 flex h-11 items-center justify-center bg-transparent text-lg">
-              <FaSpeakerDeck size={20} aria-hidden />
-            </div>
+          <CardOutlinedListItem icon={<FaSpeakerDeck size={20} aria-hidden />}>
             <Link href={sessionSlides} rel="nofollow">
               Check the slides
             </Link>
-          </div>
+          </CardOutlinedListItem>
         )}
-        {sessionRecording && (
-          <div className="flex items-center text-gray-800 dark:text-gray-200">
-            <div className="mr-1 flex h-11 items-center justify-center bg-transparent text-lg">
-              <FaYoutube size={20} aria-hidden />
-            </div>
 
+        {sessionRecording && (
+          <CardOutlinedListItem icon={<FaYoutube size={20} aria-hidden />}>
             <Link href={sessionRecording} rel="nofollow">
               Watch the recording
             </Link>
-          </div>
+          </CardOutlinedListItem>
         )}
       </div>
     </CardOutlined>

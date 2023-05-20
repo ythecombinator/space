@@ -215,6 +215,7 @@ const sessionTransformer = (session: DeepNonNullable<Session>) => ({
   id: session.sys.id,
   eventName: session.event?.name,
   eventLocation: locationTransformer(session.event?.city),
+  eventWebsite: session.event?.website,
   eventStartingDate: formatters.date(session.event?.startingDate),
   eventEndingDate: formatters.date(session.event?.endingDate),
   sessionAudience: formatters.audience(session.audience),
