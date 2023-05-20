@@ -2,6 +2,7 @@ import { FunctionComponent, PropsWithChildren } from 'react';
 
 import SectionContainer from 'components/shared/section-container';
 import SectionHeading from 'components/shared/section-heading';
+import SectionList from 'components/shared/section-list';
 
 import ActiveTalksSectionItem, {
   ActiveTalksSectionItemProps,
@@ -25,7 +26,7 @@ const ActiveTalksSection: FunctionComponent<
   return (
     <SectionContainer>
       <SectionHeading title="️‍🔥 Active Sessions" />
-      <ul className="grid grid-cols-1 gap-10 py-8 dark:border-gray-700 md:grid-cols-3">
+      <SectionList>
         {items.map((item) => {
           const { talkTitle, talkSlug, sessions } = item;
           return (
@@ -38,7 +39,7 @@ const ActiveTalksSection: FunctionComponent<
             </li>
           );
         })}
-      </ul>
+      </SectionList>
     </SectionContainer>
   );
 };
