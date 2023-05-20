@@ -30,7 +30,7 @@ const CurrentLocation: FunctionComponent<
       className="bg-gray-900 text-black p-5 rounded-xl relative shadow overflow-hidden min-h-[20rem] min-w-[20rem] flex items-center justify-center"
     >
       <Image
-        className="absolute inset-0 m-auto"
+        className="absolute inset-0 m-auto object-cover"
         alt={location}
         src={locationImage}
         priority
