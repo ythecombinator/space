@@ -18,6 +18,7 @@ export type AllTalksSectionProps = {
   items: Array<{
     talkSlug: string;
     talkTitle: string;
+    talkCategory: string;
     _description: string;
     _events: string;
     _tags: string;
@@ -61,13 +62,14 @@ const AllTalksSection: FunctionComponent<
           />
         )}
         {items.map((item, index) => {
-          const { talkTitle, talkSlug } = item;
+          const { talkTitle, talkSlug, talkCategory } = item;
           return (
             <OrderedListItem
               key={talkSlug}
               label={talkTitle}
               index={reversedIndexOf(items.length, index)}
               href={`/${Routes.talks}/${talkSlug}`}
+              prefix={talkCategory === 'workshop' ? 'workshop' : null}
             />
           );
         })}

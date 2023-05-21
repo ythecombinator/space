@@ -2,6 +2,7 @@ import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { Routes } from 'config/constants';
 
+import Chip from 'components/shared/chip';
 import Link from 'components/shared/link';
 
 /*~
@@ -12,6 +13,7 @@ export type OrderedListItemProps = {
   href: string;
   label: string;
   index: number;
+  prefix?: string | null;
 };
 
 /*~
@@ -21,7 +23,7 @@ export type OrderedListItemProps = {
 const OrderedListItem: FunctionComponent<
   PropsWithChildren<OrderedListItemProps>
 > = (props) => {
-  const { label, href, index } = props;
+  const { label, href, index, prefix } = props;
 
   return (
     <Link href={href} className="w-full" aria-label={label}>
@@ -31,6 +33,7 @@ const OrderedListItem: FunctionComponent<
             <div className="mr-6 text-left text-gray-300 dark:text-gray-400">
               {index}
             </div>
+            {prefix && <Chip>{prefix}</Chip>}
             <h3 className="w-full text-base font-medium text-gray-800 dark:text-gray-100 sm:text-lg">
               {label}
             </h3>

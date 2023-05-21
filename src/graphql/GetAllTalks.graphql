@@ -2,6 +2,7 @@ query GetAllTalks($limit: Int) {
   talkCollection(order: lastRelevant_DESC, limit: $limit) {
     items {
       title
+      category
       abstract {
         json
       }

@@ -116,12 +116,19 @@ const allTransformer = (result: GetAllTalksQuery) => {
     .items;
 
   return items.map((item) => {
-    const { title, abstract, slug, sessionsCollection, contentfulMetadata } =
-      item;
+    const {
+      title,
+      category,
+      abstract,
+      slug,
+      sessionsCollection,
+      contentfulMetadata,
+    } = item;
 
     return {
       talkTitle: title,
       talkSlug: slug,
+      talkCategory: category,
       // Indexable search metadata
       _description: JSON.stringify(abstract.json),
       _events: toIndexableCollection(
