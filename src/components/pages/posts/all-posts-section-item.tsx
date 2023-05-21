@@ -7,7 +7,6 @@ import { BlogEntry } from 'services/posts-content-service';
 import { formatDate } from 'utils/date';
 
 import Link from 'components/shared/link';
-import Tag from 'components/shared/tag';
 
 /*~
  * TYPES
@@ -41,12 +40,6 @@ const AllPostsSectionItem: FunctionComponent<
             {language === 'pt' ? `🇧🇷 • ${title}` : `${title}`}
           </Link>
         </h2>
-        {/* TODO: Move this back once we have tags. */}
-        {/* <div className="flex flex-wrap gap-3 my-2">
-          {tags.map((tag) => (
-            <Tag key={tag} text={tag} />
-          ))}
-        </div> */}
         <div className="prose max-w-none text-gray-500 dark:prose-dark dark:text-gray-400">
           {summary}
         </div>
