@@ -21,7 +21,7 @@ import { DeepNonNullable } from 'utility-types';
 
 import ContentfulService from 'services/contentful-service';
 
-import { formatDate } from 'utils/date';
+import { formatDate, isSingleDayTimeSpan } from 'utils/date';
 import { toIndexableCollection } from 'utils/search';
 
 const contentfulServiceInstance = ContentfulService.getInstance();
@@ -223,8 +223,18 @@ const sessionTransformer = (session: DeepNonNullable<Session>) => ({
   eventName: session.event?.name,
   eventLocation: locationTransformer(session.event?.city),
   eventWebsite: session.event?.website,
-  eventStartingDate: formatters.date(session.event?.startingDate),
-  eventEndingDate: formatters.date(session.event?.endingDate),
+  eventStartingDate: {
+    raw: session.event?.startingDate,
+    formatted: formatters.date(session.event?.startingDate),
+  },
+  eventEndingDate: {
+    raw: session.event?.endingDate,
+    formatted: formatters.date(session.event?.endingDate),
+  },
+  isSingleDayEvent: isSingleDayTimeSpan(
+    session.event?.startingDate,
+    session.event?.endingDate
+  ),
   sessionAudience: formatters.audience(session.audience),
   sessionLanguage: formatters.language(session.language),
   sessionOnline: session.online,

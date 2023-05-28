@@ -1,6 +1,9 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
+import { BsFillCalendarEventFill } from 'react-icons/bs';
 import { CgWebsite } from 'react-icons/cg';
 import { FaMapMarkedAlt, FaYoutube, FaSpeakerDeck } from 'react-icons/fa';
+
+import { FormattedDate } from 'utils/date';
 
 import CardOutlined from 'components/shared/card-outlined';
 import CardOutlinedListItem from 'components/shared/card-outlined-list-item';
@@ -14,9 +17,10 @@ export type EventsSectionItemProps = {
   // Event
   eventName: string;
   eventLocation: string;
-  eventStartingDate: string;
-  eventEndingDate: string;
+  eventStartingDate: FormattedDate;
+  eventEndingDate: FormattedDate;
   eventWebsite: string;
+  isSingleDayEvent: boolean;
   // Session
   sessionAudience: string;
   sessionLanguage: string;
@@ -35,6 +39,9 @@ const EventsSectionItem: FunctionComponent<
   const {
     eventName,
     eventLocation,
+    isSingleDayEvent,
+    eventStartingDate,
+    eventEndingDate,
     eventWebsite,
     sessionSlides,
     sessionRecording,
@@ -45,6 +52,23 @@ const EventsSectionItem: FunctionComponent<
       <div className="flex-col">
         <CardOutlinedListItem icon={<FaMapMarkedAlt size={20} aria-hidden />}>
           {eventLocation}
+        </CardOutlinedListItem>
+
+        <CardOutlinedListItem
+          icon={<BsFillCalendarEventFill size={20} aria-hidden />}
+        >
+          <time dateTime={eventStartingDate.raw}>
+            {eventStartingDate.formatted}
+          </time>
+
+          {!isSingleDayEvent && (
+            <>
+              {'-'}
+              <time dateTime={eventEndingDate.raw}>
+                {eventEndingDate.formatted}
+              </time>
+            </>
+          )}
         </CardOutlinedListItem>
 
         <CardOutlinedListItem icon={<CgWebsite size={20} aria-hidden />}>
