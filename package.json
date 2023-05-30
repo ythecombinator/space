@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint",
     "lint:deadcode": "! ts-prune | grep -v \"used in module\"",
@@ -48,7 +49,9 @@
     "next-contentlayer": "^0.3.0",
     "next-mdx-remote": "^4.4.1",
     "next-seo": "^5.15.0",
+    "next-sitemap": "^4.1.3",
     "next-themes": "^0.2.1",
+    "pa11y": "^6.2.3",
     "pliny": "^0.0.10",
     "postcss": "^8.4.21",
     "puppeteer": "^19.7.1",

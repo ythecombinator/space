@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.ythecombinator.space
+
+# Sitemaps
+Sitemap: https://www.ythecombinator.space/sitemap.xml
