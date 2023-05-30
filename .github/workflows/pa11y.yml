@@ -18,13 +18,18 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 18
-      - run: npm install -g yarn
-      - run: yarn install --frozen-lockfile
-      - run: yarn build
 
-      - name: Boot Next
-      - run: yarn build
-      - run: yarn start
+      - name: Install Yarn
+        run: npm install -g yarn
+      
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+      
+      - name: Build Next App
+        run: yarn build
+
+      - name: Boot Next App
+        run: yarn start
 
       - name: Run pa11y-ci
         run: yarn pa11y-ci:sitemap 2>&1 | tee pa11y_output.txt
