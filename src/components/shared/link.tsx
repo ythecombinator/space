@@ -27,17 +27,30 @@ export type LinkProps = DetailedHTMLProps<
 
 const Link: FunctionComponent<PropsWithChildren<LinkProps>> = ({
   href,
+  children,
   ...rest
 }) => {
   if (isInternalLink(href)) {
-    return <NextLink href={href} {...rest} />;
+    return (
+      <NextLink href={href} {...rest}>
+        {children}
+      </NextLink>
+    );
   }
 
   if (isAnchorLink(href)) {
-    return <a href={href} {...rest} />;
+    return (
+      <a href={href} {...rest}>
+        {children}
+      </a>
+    );
   }
 
-  return <a target="_blank" rel="noopener noreferrer" href={href} {...rest} />;
+  return (
+    <a target="_blank" rel="noopener noreferrer" href={href} {...rest}>
+      {children}
+    </a>
+  );
 };
 
 export default Link;
