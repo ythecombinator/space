@@ -38,7 +38,7 @@ jobs:
         run: yarn build
 
       - name: Boot Next App
-        run: yarn start & sleep 5
+        run: yarn start & sleep 15
 
       - name: Run pa11y-ci
         run: yarn lint:a11y 2>&1 | tee pa11y_output.txt
