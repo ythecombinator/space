@@ -25,6 +25,13 @@ jobs:
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
 
+      - name: Create .env file
+        run: |
+          touch .env
+          echo CONTENTFUL_ENDPOINT=${{ secrets.CONTENTFUL_ENDPOINT }} >> .env
+          echo CONTENTFUL_SCHEMA=${{ secrets.CONTENTFUL_SCHEMA }} >> .env
+          echo CONTENTFUL_TOKEN=${{ secrets.CONTENTFUL_TOKEN }} >> .env
+
       - name: Build Next App
         run: yarn build
 
