@@ -13,7 +13,7 @@
     "start": "next start",
     "lint": "next lint",
     "lint:deadcode": "! ts-prune | grep -v \"used in module\"",
-    "lint:a11y": "pa11y-ci --sitemap http://localhost:3000/sitemap.xml --sitemap-exclude \"/*.pdf\"",
+    "lint:a11y": "pa11y-ci --sitemap http://localhost:3000/sitemap.xml",
     "format": "prettier --write src/",
     "codegen:schema": "graphql-codegen --config codegen.ts --require dotenv/config",
     "codegen:linkedin": "esno scripts/codegen-linkedin.ts"
@@ -99,6 +99,7 @@
     "esno": "^0.16.3",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.1",
+    "pa11y-ci": "^3.0.1",
     "prettier": "^2.8.4",
     "ts-prune": "^0.10.3",
     "typescript": "^4.9.5",
