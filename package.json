@@ -38,7 +38,7 @@
     "autoprefixer": "^10.4.13",
     "clsx": "^1.2.1",
     "contentlayer": "^0.3.0",
-    "esbuild": "^0.17.8",
+    "esbuild": "^0.18.0",
     "framer-motion": "^9.0.2",
     "fs-extra": "^11.1.0",
     "github-slugger": "^2.0.0",
