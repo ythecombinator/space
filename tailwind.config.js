@@ -56,41 +56,25 @@ const config = {
         '-1': '-1',
       },
       keyframes: {
-        'bg-hue-animation': {
+        hue: {
           '0%': { filter: 'hue-rotate(0deg)' },
           '50%': { filter: 'hue-rotate(180deg)' },
           '100%': { filter: 'hue-rotate(0deg)' },
         },
-        'fade-away': {
-          '0%': {
-            opacity: 1,
-          },
-          '100%': {
-            opacity: 0.2,
-          },
-        },
-        shrink: {
-          '0% , 100%': {
-            height: '0.75rem',
-          },
-          '50%': {
-            height: '0.375rem',
-          },
-        },
-        expand: {
-          '0% , 100%': {
-            height: '0.375rem',
-          },
-          '50%': {
-            height: '0.75rem',
-          },
+        wave: {
+          '0%': { transform: 'rotate(0.0deg)' },
+          '10%': { transform: 'rotate(14deg)' },
+          '20%': { transform: 'rotate(-8deg)' },
+          '30%': { transform: 'rotate(14deg)' },
+          '40%': { transform: 'rotate(-4deg)' },
+          '50%': { transform: 'rotate(10.0deg)' },
+          '60%': { transform: 'rotate(0.0deg)' },
+          '100%': { transform: 'rotate(0.0deg)' },
         },
       },
       animation: {
-        'fade-text': '10s ease-in-out 3s 1 normal forwards running fade-away',
-        shrink: 'shrink ease-in-out 1.5s infinite',
-        expand: 'expand ease-in-out 1.5s infinite',
-        'hue-animation': 'bg-hue-animation 10s infinite',
+        hue: 'hue 10s infinite',
+        wave: 'wave 2s linear infinite',
       },
       typography: (theme) => ({
         DEFAULT: {
