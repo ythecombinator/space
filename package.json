@@ -28,7 +28,7 @@
     "@graphql-codegen/typescript": "^3.0.0",
     "@graphql-codegen/typescript-operations": "^3.0.0",
     "@graphql-codegen/typescript-react-apollo": "^3.3.7",
-    "@lyrasearch/lyra": "^0.4.6",
+    "@lyrasearch/lyra": "^0.4.12",
     "@next/font": "^13.2.4",
     "@radix-ui/react-navigation-menu": "^1.1.1",
     "@radix-ui/react-tooltip": "^1.0.3",
