@@ -8,15 +8,21 @@ const Root = forwardRef<HTMLTableElement, HTMLAttributes<HTMLTableElement>>(({ c
   </div>
 ));
 
+Root.displayName = 'Table-Root';
+
 const Header = forwardRef<HTMLTableSectionElement, HTMLAttributes<HTMLTableSectionElement>>(
   ({ className, ...props }, ref) => <thead ref={ref} className={classNames('[&_tr]:border-b', className)} {...props} />
 );
+
+Header.displayName = 'Table-Header';
 
 const Body = forwardRef<HTMLTableSectionElement, HTMLAttributes<HTMLTableSectionElement>>(
   ({ className, ...props }, ref) => (
     <tbody ref={ref} className={classNames('[&_tr:last-child]:border-0', className)} {...props} />
   )
 );
+
+Body.displayName = 'Table-Body';
 
 const Row = forwardRef<HTMLTableRowElement, HTMLAttributes<HTMLTableRowElement>>(({ className, ...props }, ref) => (
   <tr
@@ -25,6 +31,8 @@ const Row = forwardRef<HTMLTableRowElement, HTMLAttributes<HTMLTableRowElement>>
     {...props}
   />
 ));
+
+Row.displayName = 'Table-Row';
 
 const Head = forwardRef<HTMLTableCellElement, ThHTMLAttributes<HTMLTableCellElement>>(
   ({ className, ...props }, ref) => (
@@ -39,10 +47,14 @@ const Head = forwardRef<HTMLTableCellElement, ThHTMLAttributes<HTMLTableCellElem
   )
 );
 
+Head.displayName = 'Table-Head';
+
 const Cell = forwardRef<HTMLTableCellElement, TdHTMLAttributes<HTMLTableCellElement>>(
   ({ className, ...props }, ref) => (
     <td ref={ref} className={classNames('p-4 align-middle [&:has([role=checkbox])]:pr-0', className)} {...props} />
   )
 );
+
+Cell.displayName = 'Table-Cell';
 
 export default { Root, Header, Body, Head, Row, Cell };
