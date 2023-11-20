@@ -2265,11 +2265,6 @@
     jsbi "^4.1.0"
     tslib "^2.3.1"
 
-"@lyrasearch/lyra@^0.4.6":
-  version "0.4.11"
-  resolved "https://registry.yarnpkg.com/@lyrasearch/lyra/-/lyra-0.4.11.tgz#285f5bcdb528de7e0558d731e73b6e240a755827"
-  integrity sha512-KvTTCLNG5+BaAKQnYXP/b/NMatqitHFu5LDKGxbga7IXZMPFBdJe4TSvhkJcPsdnEQOccYlPYvkxgjV9BPmV0Q==
-
 "@mailchimp/mailchimp_marketing@^3.0.75":
   version "3.0.80"
   resolved "https://registry.yarnpkg.com/@mailchimp/mailchimp_marketing/-/mailchimp_marketing-3.0.80.tgz#120a4aeb9751ac80ff4c86fabb43af7a6add4e49"
@@ -2557,6 +2552,11 @@
   resolved "https://registry.yarnpkg.com/@opentelemetry/semantic-conventions/-/semantic-conventions-1.5.0.tgz#cea9792bfcf556c87ded17c6ac729348697bb632"
   integrity sha512-wlYG/U6ddW1ilXslnDLLQYJ8nd97W8JJTTfwkGhubx6dzW6SUkd+N4/MzTjjyZlrHQunxHtkHFvVpUKiROvFDw==
 
+"@orama/orama@^2.0.0-beta.7":
+  version "2.0.0-beta.7"
+  resolved "https://registry.yarnpkg.com/@orama/orama/-/orama-2.0.0-beta.7.tgz#8d398517fc0a5b0f8af1d8346b3af72fae4e24f9"
+  integrity sha512-7JlCMVoqJ2QBZtJ7H1shYbiVnaJJf5M/LI/H+b/YUyop0wnYTNfi6bRHuGhEMqh8ACXkHPNs0IHkyCKz+mFIXg==
+
 "@parcel/watcher@^2.1.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@parcel/watcher/-/watcher-2.1.0.tgz#5f32969362db4893922c526a842d8af7a8538545"
@@ -2807,11 +2807,6 @@
     "@radix-ui/react-compose-refs" "1.0.1"
     "@radix-ui/react-primitive" "1.0.3"
     "@radix-ui/react-use-callback-ref" "1.0.1"
-
-"@radix-ui/react-icons@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-icons/-/react-icons-1.3.0.tgz#c61af8f323d87682c5ca76b856d60c2312dbcb69"
-  integrity sha512-jQxj/0LKgp+j9BiTXz3O3sgs26RNet2iLWmsPyRz2SIcR4q/4SbazXfnYwbAr+vLYKSfc7qxzyGQA1HLlYiuNw==
 
 "@radix-ui/react-id@1.0.0":
   version "1.0.0"

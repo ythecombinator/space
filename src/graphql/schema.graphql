@@ -128,7 +128,7 @@ scalar Circle
 """
 type City implements Entry {
   contentfulMetadata: ContentfulMetadata!
-  country(locale: String, preview: Boolean): Country
+  country(locale: String, preview: Boolean, where: CountryFilter): Country
   linkedFrom(allowedLocales: [String]): CityLinkingCollections
   location(locale: String): Location
   name(locale: String): String
@@ -162,9 +162,41 @@ input CityFilter {
 }
 
 type CityLinkingCollections {
-  companyCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): CompanyCollection
+  companyCollection(limit: Int = 100, locale: String, order: [CityLinkingCollectionsCompanyCollectionOrder], preview: Boolean, skip: Int = 0): CompanyCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  eventCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EventCollection
+  eventCollection(limit: Int = 100, locale: String, order: [CityLinkingCollectionsEventCollectionOrder], preview: Boolean, skip: Int = 0): EventCollection
+}
+
+enum CityLinkingCollectionsCompanyCollectionOrder {
+  name_ASC
+  name_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum CityLinkingCollectionsEventCollectionOrder {
+  endingDate_ASC
+  endingDate_DESC
+  name_ASC
+  name_DESC
+  startingDate_ASC
+  startingDate_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  website_ASC
+  website_DESC
 }
 
 enum CityOrder {
@@ -184,7 +216,7 @@ enum CityOrder {
 [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/company)
 """
 type Company implements Entry {
-  city(locale: String, preview: Boolean): City
+  city(locale: String, preview: Boolean, where: CityFilter): City
   contentfulMetadata: ContentfulMetadata!
   linkedFrom(allowedLocales: [String]): CompanyLinkingCollections
   logo(locale: String, preview: Boolean): Asset
@@ -218,7 +250,24 @@ input CompanyFilter {
 
 type CompanyLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  titleCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): TitleCollection
+  titleCollection(limit: Int = 100, locale: String, order: [CompanyLinkingCollectionsTitleCollectionOrder], preview: Boolean, skip: Int = 0): TitleCollection
+}
+
+enum CompanyLinkingCollectionsTitleCollectionOrder {
+  endingDate_ASC
+  endingDate_DESC
+  startingDate_ASC
+  startingDate_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
 }
 
 enum CompanyOrder {
@@ -298,8 +347,21 @@ input CountryFilter {
 }
 
 type CountryLinkingCollections {
-  cityCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): CityCollection
+  cityCollection(limit: Int = 100, locale: String, order: [CountryLinkingCollectionsCityCollectionOrder], preview: Boolean, skip: Int = 0): CityCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum CountryLinkingCollectionsCityCollectionOrder {
+  name_ASC
+  name_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 enum CountryOrder {
@@ -364,12 +426,12 @@ enum EntryOrder {
 [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/event)
 """
 type Event implements Entry {
-  city(locale: String, preview: Boolean): City
+  city(locale: String, preview: Boolean, where: CityFilter): City
   contentfulMetadata: ContentfulMetadata!
   endingDate(locale: String): DateTime
   linkedFrom(allowedLocales: [String]): EventLinkingCollections
   name(locale: String): String
-  sessionsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EventSessionsCollection
+  sessionsCollection(limit: Int = 100, locale: String, order: [EventSessionsCollectionOrder], preview: Boolean, skip: Int = 0, where: SessionFilter): EventSessionsCollection
   startingDate(locale: String): DateTime
   sys: Sys!
   website(locale: String): String
@@ -427,7 +489,30 @@ input EventFilter {
 
 type EventLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  sessionCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): SessionCollection
+  sessionCollection(limit: Int = 100, locale: String, order: [EventLinkingCollectionsSessionCollectionOrder], preview: Boolean, skip: Int = 0): SessionCollection
+}
+
+enum EventLinkingCollectionsSessionCollectionOrder {
+  audience_ASC
+  audience_DESC
+  featured_ASC
+  featured_DESC
+  online_ASC
+  online_DESC
+  recording_ASC
+  recording_DESC
+  slides_ASC
+  slides_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
 }
 
 enum EventOrder {
@@ -454,6 +539,29 @@ type EventSessionsCollection {
   limit: Int!
   skip: Int!
   total: Int!
+}
+
+enum EventSessionsCollectionOrder {
+  audience_ASC
+  audience_DESC
+  featured_ASC
+  featured_DESC
+  online_ASC
+  online_DESC
+  recording_ASC
+  recording_DESC
+  slides_ASC
+  slides_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
 }
 
 """The 'HexColor' type represents color in `rgb:ffffff` string format."""
@@ -641,7 +749,30 @@ input LanguageFilter {
 
 type LanguageLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  sessionCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): SessionCollection
+  sessionCollection(limit: Int = 100, locale: String, order: [LanguageLinkingCollectionsSessionCollectionOrder], preview: Boolean, skip: Int = 0): SessionCollection
+}
+
+enum LanguageLinkingCollectionsSessionCollectionOrder {
+  audience_ASC
+  audience_DESC
+  featured_ASC
+  featured_DESC
+  online_ASC
+  online_DESC
+  recording_ASC
+  recording_DESC
+  slides_ASC
+  slides_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
 }
 
 enum LanguageOrder {
@@ -700,22 +831,32 @@ The Rectangle scalar type represents a rectangle, defined by the coordinates of 
 """
 scalar Rectangle
 
+type ResourceLink {
+  sys: ResourceSys!
+}
+
+type ResourceSys {
+  linkType: String!
+  type: String!
+  urn: String!
+}
+
 """
 [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/session)
 """
 type Session implements Entry {
   audience(locale: String): Int
   contentfulMetadata: ContentfulMetadata!
-  event(locale: String, preview: Boolean): Event
+  event(locale: String, preview: Boolean, where: EventFilter): Event
   featured(locale: String): Boolean
-  language(locale: String, preview: Boolean): Language
+  language(locale: String, preview: Boolean, where: LanguageFilter): Language
   linkedFrom(allowedLocales: [String]): SessionLinkingCollections
   online(locale: String): Boolean
   photo(locale: String, preview: Boolean): Asset
   recording(locale: String): String
   slides(locale: String): String
   sys: Sys!
-  talk(locale: String, preview: Boolean): Talk
+  talk(locale: String, preview: Boolean, where: TalkFilter): Talk
   title(locale: String): String
 }
 
@@ -778,8 +919,48 @@ input SessionFilter {
 
 type SessionLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  eventCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EventCollection
-  talkCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): TalkCollection
+  eventCollection(limit: Int = 100, locale: String, order: [SessionLinkingCollectionsEventCollectionOrder], preview: Boolean, skip: Int = 0): EventCollection
+  talkCollection(limit: Int = 100, locale: String, order: [SessionLinkingCollectionsTalkCollectionOrder], preview: Boolean, skip: Int = 0): TalkCollection
+}
+
+enum SessionLinkingCollectionsEventCollectionOrder {
+  endingDate_ASC
+  endingDate_DESC
+  name_ASC
+  name_DESC
+  startingDate_ASC
+  startingDate_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  website_ASC
+  website_DESC
+}
+
+enum SessionLinkingCollectionsTalkCollectionOrder {
+  active_ASC
+  active_DESC
+  category_ASC
+  category_DESC
+  lastRelevant_ASC
+  lastRelevant_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
 }
 
 enum SessionOrder {
@@ -861,7 +1042,7 @@ type Talk implements Entry {
   contentfulMetadata: ContentfulMetadata!
   lastRelevant(locale: String): DateTime
   linkedFrom(allowedLocales: [String]): TalkLinkingCollections
-  sessionsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): TalkSessionsCollection
+  sessionsCollection(limit: Int = 100, locale: String, order: [TalkSessionsCollectionOrder], preview: Boolean, skip: Int = 0, where: SessionFilter): TalkSessionsCollection
   slug(locale: String): String
   sys: Sys!
   title(locale: String): String
@@ -886,6 +1067,13 @@ type TalkAbstractEntries {
 type TalkAbstractLinks {
   assets: TalkAbstractAssets!
   entries: TalkAbstractEntries!
+  resources: TalkAbstractResources!
+}
+
+type TalkAbstractResources {
+  block: [ResourceLink!]!
+  hyperlink: [ResourceLink!]!
+  inline: [ResourceLink!]!
 }
 
 type TalkCollection {
@@ -942,7 +1130,30 @@ input TalkFilter {
 
 type TalkLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  sessionCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): SessionCollection
+  sessionCollection(limit: Int = 100, locale: String, order: [TalkLinkingCollectionsSessionCollectionOrder], preview: Boolean, skip: Int = 0): SessionCollection
+}
+
+enum TalkLinkingCollectionsSessionCollectionOrder {
+  audience_ASC
+  audience_DESC
+  featured_ASC
+  featured_DESC
+  online_ASC
+  online_DESC
+  recording_ASC
+  recording_DESC
+  slides_ASC
+  slides_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
 }
 
 enum TalkOrder {
@@ -971,6 +1182,29 @@ type TalkSessionsCollection {
   limit: Int!
   skip: Int!
   total: Int!
+}
+
+enum TalkSessionsCollectionOrder {
+  audience_ASC
+  audience_DESC
+  featured_ASC
+  featured_DESC
+  online_ASC
+  online_DESC
+  recording_ASC
+  recording_DESC
+  slides_ASC
+  slides_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
 }
 
 """
@@ -1014,7 +1248,24 @@ input TechnologyFilter {
 
 type TechnologyLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  titleCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): TitleCollection
+  titleCollection(limit: Int = 100, locale: String, order: [TechnologyLinkingCollectionsTitleCollectionOrder], preview: Boolean, skip: Int = 0): TitleCollection
+}
+
+enum TechnologyLinkingCollectionsTitleCollectionOrder {
+  endingDate_ASC
+  endingDate_DESC
+  startingDate_ASC
+  startingDate_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
 }
 
 enum TechnologyOrder {
@@ -1040,9 +1291,9 @@ type Title implements Entry {
   description(locale: String): TitleDescription
   endingDate(locale: String): DateTime
   linkedFrom(allowedLocales: [String]): TitleLinkingCollections
-  organization(locale: String, preview: Boolean): Company
+  organization(locale: String, preview: Boolean, where: CompanyFilter): Company
   roles(locale: String): [String]
-  stackCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): TitleStackCollection
+  stackCollection(limit: Int = 100, locale: String, order: [TitleStackCollectionOrder], preview: Boolean, skip: Int = 0, where: TechnologyFilter): TitleStackCollection
   startingDate(locale: String): DateTime
   sys: Sys!
   title(locale: String): String
@@ -1074,6 +1325,13 @@ type TitleDescriptionEntries {
 type TitleDescriptionLinks {
   assets: TitleDescriptionAssets!
   entries: TitleDescriptionEntries!
+  resources: TitleDescriptionResources!
+}
+
+type TitleDescriptionResources {
+  block: [ResourceLink!]!
+  hyperlink: [ResourceLink!]!
+  inline: [ResourceLink!]!
 }
 
 input TitleFilter {
@@ -1145,6 +1403,21 @@ type TitleStackCollection {
   limit: Int!
   skip: Int!
   total: Int!
+}
+
+enum TitleStackCollectionOrder {
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
 }
 
 input cfCityNestedFilter {

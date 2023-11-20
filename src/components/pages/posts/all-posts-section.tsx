@@ -1,14 +1,12 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { isEmpty } from 'utils/array';
-import { useLyraSearch } from 'utils/search';
+import { useSearch } from 'utils/search';
 
 import EmptyList from 'components/shared/empty-list';
 import SectionContainer from 'components/shared/section-container';
 
-import AllPostsSectionItem, {
-  AllPostsSectionItemProps,
-} from 'components/pages/posts/all-posts-section-item';
+import AllPostsSectionItem, { AllPostsSectionItemProps } from 'components/pages/posts/all-posts-section-item';
 
 /*~
  * TYPES
@@ -38,19 +36,15 @@ const searchSchema = {
  * COMPONENT
  */
 
-const AllPostsSection: FunctionComponent<
-  PropsWithChildren<AllPostsSectionProps>
-> = ({ items: baseItems, searchTerm }) => {
-  const items = useLyraSearch(searchSchema, baseItems, searchTerm);
+const AllPostsSection: FunctionComponent<PropsWithChildren<AllPostsSectionProps>> = ({
+  items: baseItems,
+  searchTerm,
+}) => {
+  const items = useSearch(searchSchema, baseItems, searchTerm);
 
   return (
     <SectionContainer>
-      {isEmpty(items) && (
-        <EmptyList
-          heading="No items found 😢"
-          subHeading="I don't have any posts on this topic."
-        />
-      )}
+      {isEmpty(items) && <EmptyList heading="No items found 😢" subHeading="I don't have any posts on this topic." />}
       <ul>
         {items.map((item) => (
           <AllPostsSectionItem key={item.slug} {...item} />

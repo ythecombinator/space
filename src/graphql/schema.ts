@@ -240,6 +240,7 @@ export type City = Entry & {
 export type CityCountryArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
+  where?: InputMaybe<CountryFilter>;
 };
 
 
@@ -298,6 +299,7 @@ export type CityLinkingCollections = {
 export type CityLinkingCollectionsCompanyCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<CityLinkingCollectionsCompanyCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
@@ -314,9 +316,42 @@ export type CityLinkingCollectionsEntryCollectionArgs = {
 export type CityLinkingCollectionsEventCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<CityLinkingCollectionsEventCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
+export enum CityLinkingCollectionsCompanyCollectionOrder {
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+export enum CityLinkingCollectionsEventCollectionOrder {
+  EndingDateAsc = 'endingDate_ASC',
+  EndingDateDesc = 'endingDate_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  StartingDateAsc = 'startingDate_ASC',
+  StartingDateDesc = 'startingDate_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  WebsiteAsc = 'website_ASC',
+  WebsiteDesc = 'website_DESC'
+}
 
 export enum CityOrder {
   NameAsc = 'name_ASC',
@@ -347,6 +382,7 @@ export type Company = Entry & {
 export type CompanyCityArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
+  where?: InputMaybe<CityFilter>;
 };
 
 
@@ -411,9 +447,27 @@ export type CompanyLinkingCollectionsEntryCollectionArgs = {
 export type CompanyLinkingCollectionsTitleCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<CompanyLinkingCollectionsTitleCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
+export enum CompanyLinkingCollectionsTitleCollectionOrder {
+  EndingDateAsc = 'endingDate_ASC',
+  EndingDateDesc = 'endingDate_DESC',
+  StartingDateAsc = 'startingDate_ASC',
+  StartingDateDesc = 'startingDate_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
 
 export enum CompanyOrder {
   NameAsc = 'name_ASC',
@@ -521,6 +575,7 @@ export type CountryLinkingCollections = {
 export type CountryLinkingCollectionsCityCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<CountryLinkingCollectionsCityCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
@@ -532,6 +587,19 @@ export type CountryLinkingCollectionsEntryCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
+export enum CountryLinkingCollectionsCityCollectionOrder {
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
 
 export enum CountryOrder {
   FlagAsc = 'flag_ASC',
@@ -598,6 +666,7 @@ export type Event = Entry & {
 export type EventCityArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
+  where?: InputMaybe<CityFilter>;
 };
 
 
@@ -623,8 +692,10 @@ export type EventNameArgs = {
 export type EventSessionsCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<EventSessionsCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<SessionFilter>;
 };
 
 
@@ -708,9 +779,33 @@ export type EventLinkingCollectionsEntryCollectionArgs = {
 export type EventLinkingCollectionsSessionCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<EventLinkingCollectionsSessionCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
+export enum EventLinkingCollectionsSessionCollectionOrder {
+  AudienceAsc = 'audience_ASC',
+  AudienceDesc = 'audience_DESC',
+  FeaturedAsc = 'featured_ASC',
+  FeaturedDesc = 'featured_DESC',
+  OnlineAsc = 'online_ASC',
+  OnlineDesc = 'online_DESC',
+  RecordingAsc = 'recording_ASC',
+  RecordingDesc = 'recording_DESC',
+  SlidesAsc = 'slides_ASC',
+  SlidesDesc = 'slides_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
 
 export enum EventOrder {
   EndingDateAsc = 'endingDate_ASC',
@@ -738,6 +833,29 @@ export type EventSessionsCollection = {
   skip: Scalars['Int'];
   total: Scalars['Int'];
 };
+
+export enum EventSessionsCollectionOrder {
+  AudienceAsc = 'audience_ASC',
+  AudienceDesc = 'audience_DESC',
+  FeaturedAsc = 'featured_ASC',
+  FeaturedDesc = 'featured_DESC',
+  OnlineAsc = 'online_ASC',
+  OnlineDesc = 'online_DESC',
+  RecordingAsc = 'recording_ASC',
+  RecordingDesc = 'recording_DESC',
+  SlidesAsc = 'slides_ASC',
+  SlidesDesc = 'slides_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
 
 export enum ImageFormat {
   Avif = 'AVIF',
@@ -923,9 +1041,33 @@ export type LanguageLinkingCollectionsEntryCollectionArgs = {
 export type LanguageLinkingCollectionsSessionCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<LanguageLinkingCollectionsSessionCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
+export enum LanguageLinkingCollectionsSessionCollectionOrder {
+  AudienceAsc = 'audience_ASC',
+  AudienceDesc = 'audience_DESC',
+  FeaturedAsc = 'featured_ASC',
+  FeaturedDesc = 'featured_DESC',
+  OnlineAsc = 'online_ASC',
+  OnlineDesc = 'online_DESC',
+  RecordingAsc = 'recording_ASC',
+  RecordingDesc = 'recording_DESC',
+  SlidesAsc = 'slides_ASC',
+  SlidesDesc = 'slides_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
 
 export enum LanguageOrder {
   CodeAsc = 'code_ASC',
@@ -1155,6 +1297,18 @@ export type QueryTitleCollectionArgs = {
   where?: InputMaybe<TitleFilter>;
 };
 
+export type ResourceLink = {
+  __typename?: 'ResourceLink';
+  sys: ResourceSys;
+};
+
+export type ResourceSys = {
+  __typename?: 'ResourceSys';
+  linkType: Scalars['String'];
+  type: Scalars['String'];
+  urn: Scalars['String'];
+};
+
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/session) */
 export type Session = Entry & {
   __typename?: 'Session';
@@ -1184,6 +1338,7 @@ export type SessionAudienceArgs = {
 export type SessionEventArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
+  where?: InputMaybe<EventFilter>;
 };
 
 
@@ -1197,6 +1352,7 @@ export type SessionFeaturedArgs = {
 export type SessionLanguageArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
+  where?: InputMaybe<LanguageFilter>;
 };
 
 
@@ -1235,6 +1391,7 @@ export type SessionSlidesArgs = {
 export type SessionTalkArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
+  where?: InputMaybe<TalkFilter>;
 };
 
 
@@ -1320,6 +1477,7 @@ export type SessionLinkingCollectionsEntryCollectionArgs = {
 export type SessionLinkingCollectionsEventCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<SessionLinkingCollectionsEventCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
@@ -1328,9 +1486,50 @@ export type SessionLinkingCollectionsEventCollectionArgs = {
 export type SessionLinkingCollectionsTalkCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<SessionLinkingCollectionsTalkCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
+export enum SessionLinkingCollectionsEventCollectionOrder {
+  EndingDateAsc = 'endingDate_ASC',
+  EndingDateDesc = 'endingDate_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  StartingDateAsc = 'startingDate_ASC',
+  StartingDateDesc = 'startingDate_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  WebsiteAsc = 'website_ASC',
+  WebsiteDesc = 'website_DESC'
+}
+
+export enum SessionLinkingCollectionsTalkCollectionOrder {
+  ActiveAsc = 'active_ASC',
+  ActiveDesc = 'active_DESC',
+  CategoryAsc = 'category_ASC',
+  CategoryDesc = 'category_DESC',
+  LastRelevantAsc = 'lastRelevant_ASC',
+  LastRelevantDesc = 'lastRelevant_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
 
 export enum SessionOrder {
   AudienceAsc = 'audience_ASC',
@@ -1452,8 +1651,10 @@ export type TalkLinkedFromArgs = {
 export type TalkSessionsCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<TalkSessionsCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<SessionFilter>;
 };
 
 
@@ -1491,6 +1692,14 @@ export type TalkAbstractLinks = {
   __typename?: 'TalkAbstractLinks';
   assets: TalkAbstractAssets;
   entries: TalkAbstractEntries;
+  resources: TalkAbstractResources;
+};
+
+export type TalkAbstractResources = {
+  __typename?: 'TalkAbstractResources';
+  block: Array<ResourceLink>;
+  hyperlink: Array<ResourceLink>;
+  inline: Array<ResourceLink>;
 };
 
 export type TalkCollection = {
@@ -1564,9 +1773,33 @@ export type TalkLinkingCollectionsEntryCollectionArgs = {
 export type TalkLinkingCollectionsSessionCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<TalkLinkingCollectionsSessionCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
+export enum TalkLinkingCollectionsSessionCollectionOrder {
+  AudienceAsc = 'audience_ASC',
+  AudienceDesc = 'audience_DESC',
+  FeaturedAsc = 'featured_ASC',
+  FeaturedDesc = 'featured_DESC',
+  OnlineAsc = 'online_ASC',
+  OnlineDesc = 'online_DESC',
+  RecordingAsc = 'recording_ASC',
+  RecordingDesc = 'recording_DESC',
+  SlidesAsc = 'slides_ASC',
+  SlidesDesc = 'slides_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
 
 export enum TalkOrder {
   ActiveAsc = 'active_ASC',
@@ -1596,6 +1829,29 @@ export type TalkSessionsCollection = {
   skip: Scalars['Int'];
   total: Scalars['Int'];
 };
+
+export enum TalkSessionsCollectionOrder {
+  AudienceAsc = 'audience_ASC',
+  AudienceDesc = 'audience_DESC',
+  FeaturedAsc = 'featured_ASC',
+  FeaturedDesc = 'featured_DESC',
+  OnlineAsc = 'online_ASC',
+  OnlineDesc = 'online_DESC',
+  RecordingAsc = 'recording_ASC',
+  RecordingDesc = 'recording_DESC',
+  SlidesAsc = 'slides_ASC',
+  SlidesDesc = 'slides_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/technology) */
 export type Technology = Entry & {
@@ -1672,9 +1928,27 @@ export type TechnologyLinkingCollectionsEntryCollectionArgs = {
 export type TechnologyLinkingCollectionsTitleCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<TechnologyLinkingCollectionsTitleCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
+export enum TechnologyLinkingCollectionsTitleCollectionOrder {
+  EndingDateAsc = 'endingDate_ASC',
+  EndingDateDesc = 'endingDate_DESC',
+  StartingDateAsc = 'startingDate_ASC',
+  StartingDateDesc = 'startingDate_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
 
 export enum TechnologyOrder {
   SlugAsc = 'slug_ASC',
@@ -1729,6 +2003,7 @@ export type TitleLinkedFromArgs = {
 export type TitleOrganizationArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
+  where?: InputMaybe<CompanyFilter>;
 };
 
 
@@ -1742,8 +2017,10 @@ export type TitleRolesArgs = {
 export type TitleStackCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<TitleStackCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<TechnologyFilter>;
 };
 
 
@@ -1789,6 +2066,14 @@ export type TitleDescriptionLinks = {
   __typename?: 'TitleDescriptionLinks';
   assets: TitleDescriptionAssets;
   entries: TitleDescriptionEntries;
+  resources: TitleDescriptionResources;
+};
+
+export type TitleDescriptionResources = {
+  __typename?: 'TitleDescriptionResources';
+  block: Array<ResourceLink>;
+  hyperlink: Array<ResourceLink>;
+  inline: Array<ResourceLink>;
 };
 
 export type TitleFilter = {
@@ -1871,6 +2156,21 @@ export type TitleStackCollection = {
   skip: Scalars['Int'];
   total: Scalars['Int'];
 };
+
+export enum TitleStackCollectionOrder {
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
 
 export type CfCityNestedFilter = {
   AND?: InputMaybe<Array<InputMaybe<CfCityNestedFilter>>>;

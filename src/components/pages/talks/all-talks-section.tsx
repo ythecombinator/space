@@ -3,7 +3,7 @@ import { FunctionComponent, PropsWithChildren } from 'react';
 import { Routes } from 'config/constants';
 
 import { isEmpty, reversedIndexOf } from 'utils/array';
-import { useLyraSearch } from 'utils/search';
+import { useSearch } from 'utils/search';
 
 import EmptyList from 'components/shared/empty-list';
 import OrderedListItem from 'components/shared/ordered-list-item';
@@ -14,17 +14,19 @@ import SectionHeading from 'components/shared/section-heading';
  * TYPES
  */
 
+type Schema = {
+  talkSlug: string;
+  talkTitle: string;
+  talkCategory: string;
+  _description: string;
+  _events: string;
+  _tags: string;
+  _cities: string;
+  _countries: string;
+};
+
 export type AllTalksSectionProps = {
-  items: Array<{
-    talkSlug: string;
-    talkTitle: string;
-    talkCategory: string;
-    _description: string;
-    _events: string;
-    _tags: string;
-    _cities: string;
-    _countries: string;
-  }>;
+  items: Array<Schema>;
   searchTerm: string;
 };
 
@@ -35,6 +37,7 @@ export type AllTalksSectionProps = {
 const searchSchema = {
   talkTitle: 'string',
   talkSlug: 'string',
+  talkCategory: 'string',
   _description: 'string',
   _events: 'string',
   _tags: 'string',
@@ -46,20 +49,18 @@ const searchSchema = {
  * COMPONENT
  */
 
-const AllTalksSection: FunctionComponent<
-  PropsWithChildren<AllTalksSectionProps>
-> = ({ items: baseItems, searchTerm }) => {
-  const items = useLyraSearch(searchSchema, baseItems, searchTerm);
+const AllTalksSection: FunctionComponent<PropsWithChildren<AllTalksSectionProps>> = ({
+  items: baseItems,
+  searchTerm,
+}) => {
+  const items = useSearch<typeof searchSchema, Schema>(searchSchema, baseItems, searchTerm);
 
   return (
     <SectionContainer>
       <SectionHeading title="📚 All Sessions" />
       <div className="mb-6">
         {isEmpty(items) && (
-          <EmptyList
-            heading="No items found 😢"
-            subHeading="I don't have any sessions on this topic."
-          />
+          <EmptyList heading="No items found 😢" subHeading="I don't have any sessions on this topic." />
         )}
         {items.map((item, index) => {
           const { talkTitle, talkSlug, talkCategory } = item;
