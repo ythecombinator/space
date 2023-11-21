@@ -20,9 +20,11 @@ interface CurrentLocationProps {
  * COMPONENT
  */
 
-const CurrentLocation: FunctionComponent<
-  PropsWithChildren<CurrentLocationProps>
-> = ({ href, location, locationImage }) => {
+const CurrentLocation: FunctionComponent<PropsWithChildren<CurrentLocationProps>> = ({
+  href,
+  location,
+  locationImage,
+}) => {
   return (
     <Link
       href={href}
@@ -37,10 +39,10 @@ const CurrentLocation: FunctionComponent<
         fill
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       />
-      <div className="border-4 w-32 h-32 bg-[#435674]/60 border-white/70 rounded-full z-10 flex items-center justify-center">
+      <div className="border-4 w-32 h-32 bg-[#37CCE5]/60 border-white/70 rounded-full z-10 flex items-center justify-center">
         <Image
           className="p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
-          src={siteMetadata.avatar}
+          src="/content/misc/avatar.jpg"
           alt={`Avatar of ${siteMetadata.author}`}
           width={100}
           height={100}
