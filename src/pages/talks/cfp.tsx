@@ -4,7 +4,7 @@ import { ParsedUrlQuery } from 'querystring';
 
 import { siteMetadata } from 'config/constants';
 
-import TalksCFPContentService from 'services/talks-cfp-content-service';
+import TalksCFPContentService from 'services/content/cfp';
 
 import Layout from 'components/layouts/layout-page';
 

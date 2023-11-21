@@ -2,7 +2,7 @@ import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import { ValuesType } from 'utility-types';
 
-import experience from 'content/biography/experience.json';
+import experience from 'content/misc/experience.json';
 
 export type WorkExperience = ValuesType<typeof experience.work>;
 
@@ -10,10 +10,7 @@ export type VolunteeringExperience = ValuesType<typeof experience.volunteering>;
 
 export type Experience = WorkExperience | VolunteeringExperience;
 
-export type SerializedExperience<T extends Experience> = Omit<
-  T,
-  'description'
-> & {
+export type SerializedExperience<T extends Experience> = Omit<T, 'description'> & {
   description: MDXRemoteSerializeResult;
 };
 

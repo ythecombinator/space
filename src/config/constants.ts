@@ -1,7 +1,7 @@
 import { ComponentType } from 'react';
 import { FaDev, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
-import LayoutBiographyEntry from 'components/layouts/layout-biography-entry';
+import LayoutMDXEntry from 'components/layouts/layout-biography-entry';
 import LayoutBlogEntry from 'components/layouts/layout-blog-entry';
 import LayoutPage from 'components/layouts/layout-page';
 
@@ -23,8 +23,7 @@ export const siteMetadata = {
   github: 'https://github.com/ythecombinator',
   twitterHandle: '@ythecombinator',
   twitter: 'https://twitter.com/ythecombinator',
-  avatar:
-    'https://pbs.twimg.com/profile_images/1615068105977331712/TOWGdEEO_400x400.jpg',
+  avatar: 'https://pbs.twimg.com/profile_images/1615068105977331712/TOWGdEEO_400x400.jpg',
 };
 
 export const socialNetworks = [
@@ -58,6 +57,8 @@ export enum Routes {
   life = 'about/life',
   posts = 'posts',
   talks = 'talks',
+  talksCFP = 'talks/cfp',
+  talksRider = 'talks/rider',
   projects = 'projects',
   tags = 'tags',
 }
@@ -76,7 +77,7 @@ export enum Layouts {
 }
 
 export const LayoutsMap: Record<Layouts, ComponentType<any>> = {
-  'layout-biography-entry': LayoutBiographyEntry,
+  'layout-biography-entry': LayoutMDXEntry,
   'layout-page': LayoutPage,
   'layout-blog-entry': LayoutBlogEntry,
 };

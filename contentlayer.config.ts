@@ -1,15 +1,6 @@
-import {
-  defineDocumentType,
-  ComputedFields,
-  makeSource,
-  FieldDefs,
-} from 'contentlayer/source-files';
+import { defineDocumentType, ComputedFields, makeSource, FieldDefs } from 'contentlayer/source-files';
 import path from 'path';
-import {
-  remarkExtractFrontmatter,
-  remarkCodeTitles,
-  remarkImgToJsx,
-} from 'pliny/mdx-plugins.js';
+import { remarkExtractFrontmatter, remarkCodeTitles, remarkImgToJsx } from 'pliny/mdx-plugins.js';
 import readingTime from 'reading-time';
 import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
 // Rehype packages
@@ -70,9 +61,9 @@ export const BlogEntry = defineDocumentType(() => ({
   },
 }));
 
-export const BiographyEntry = defineDocumentType(() => ({
-  name: 'BiographyEntry',
-  filePathPattern: 'biography/**/*.mdx',
+export const MDXEntry = defineDocumentType(() => ({
+  name: 'MDXEntry',
+  filePathPattern: 'misc/**/*.mdx',
   contentType: 'mdx',
   fields: {
     title: fields.title,
@@ -92,7 +83,7 @@ export const BiographyEntry = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: 'src/content',
-  documentTypes: [BlogEntry, BiographyEntry],
+  documentTypes: [BlogEntry, MDXEntry],
   mdx: {
     cwd: process.cwd(),
     remarkPlugins: [

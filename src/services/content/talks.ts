@@ -19,7 +19,7 @@ import {
 } from 'graphql/schema';
 import { DeepNonNullable } from 'utility-types';
 
-import ContentfulService from 'services/contentful-service';
+import ContentfulService from 'services/providers/contentful';
 
 import { formatDate, isSingleDayTimeSpan } from 'utils/date';
 import { toIndexableCollection } from 'utils/search';
@@ -112,18 +112,10 @@ export default class TalksContentService {
  */
 
 const allTransformer = (result: GetAllTalksQuery) => {
-  const items = (result as DeepNonNullable<GetAllTalksQuery>).talkCollection
-    .items;
+  const items = (result as DeepNonNullable<GetAllTalksQuery>).talkCollection.items;
 
   return items.map((item) => {
-    const {
-      title,
-      category,
-      abstract,
-      slug,
-      sessionsCollection,
-      contentfulMetadata,
-    } = item;
+    const { title, category, abstract, slug, sessionsCollection, contentfulMetadata } = item;
 
     return {
       talkTitle: title,
@@ -131,27 +123,16 @@ const allTransformer = (result: GetAllTalksQuery) => {
       talkCategory: category,
       // Indexable search metadata
       _description: JSON.stringify(abstract.json),
-      _events: toIndexableCollection(
-        sessionsCollection.items.map((session) => session.event.name)
-      ),
-      _cities: toIndexableCollection(
-        sessionsCollection.items.map((session) => session.event.city.name)
-      ),
-      _countries: toIndexableCollection(
-        sessionsCollection.items.map(
-          (session) => session.event.city.country.name
-        )
-      ),
-      _tags: toIndexableCollection(
-        contentfulMetadata.tags.map((tag) => tag.name)
-      ),
+      _events: toIndexableCollection(sessionsCollection.items.map((session) => session.event.name)),
+      _cities: toIndexableCollection(sessionsCollection.items.map((session) => session.event.city.name)),
+      _countries: toIndexableCollection(sessionsCollection.items.map((session) => session.event.city.country.name)),
+      _tags: toIndexableCollection(contentfulMetadata.tags.map((tag) => tag.name)),
     };
   });
 };
 
 const featuredTransformer = (result: GetFeaturedTalksQuery) => {
-  const items = (result as DeepNonNullable<GetFeaturedTalksQuery>)
-    .sessionCollection?.items;
+  const items = (result as DeepNonNullable<GetFeaturedTalksQuery>).sessionCollection?.items;
 
   return items.map((item) => ({
     eventName: item.event.name,
@@ -162,8 +143,7 @@ const featuredTransformer = (result: GetFeaturedTalksQuery) => {
 };
 
 const activeTransformer = (result: GetActiveTalksQuery) => {
-  const items = (result as DeepNonNullable<GetActiveTalksQuery>).talkCollection
-    ?.items;
+  const items = (result as DeepNonNullable<GetActiveTalksQuery>).talkCollection?.items;
 
   return items.map((item) => ({
     talkTitle: item.title,
@@ -189,8 +169,7 @@ const statsTransformer = (result: GetTalksStatsQuery) => {
 };
 
 const latestTransformer = (result: GetAllTalksQuery) => {
-  const items = (result as DeepNonNullable<GetAllTalksQuery>).talkCollection
-    .items;
+  const items = (result as DeepNonNullable<GetAllTalksQuery>).talkCollection.items;
 
   return items.map((item) => {
     const { title, slug, contentfulMetadata } = item;
@@ -215,8 +194,7 @@ const transformers = {
  * TRANSFORMERS (HELPERS)
  */
 
-const locationTransformer = (city: City) =>
-  `${city.name}, ${city.country?.name} ${city.country?.flag} `;
+const locationTransformer = (city: City) => `${city.name}, ${city.country?.name} ${city.country?.flag} `;
 
 const sessionTransformer = (session: DeepNonNullable<Session>) => ({
   id: session.sys.id,
@@ -231,10 +209,7 @@ const sessionTransformer = (session: DeepNonNullable<Session>) => ({
     raw: session.event?.endingDate,
     formatted: formatters.date(session.event?.endingDate),
   },
-  isSingleDayEvent: isSingleDayTimeSpan(
-    session.event?.startingDate,
-    session.event?.endingDate
-  ),
+  isSingleDayEvent: isSingleDayTimeSpan(session.event?.startingDate, session.event?.endingDate),
   sessionAudience: formatters.audience(session.audience),
   sessionLanguage: formatters.language(session.language),
   sessionOnline: session.online,
@@ -244,9 +219,7 @@ const sessionTransformer = (session: DeepNonNullable<Session>) => ({
 
 const talkDocumentTransformer = (result: GetTalkQuery) => {
   const talk = result.talkCollection?.items[0] as DeepNonNullable<Talk>;
-  const sessions = talk?.sessionsCollection?.items as Array<
-    DeepNonNullable<Session>
-  >;
+  const sessions = talk?.sessionsCollection?.items as Array<DeepNonNullable<Session>>;
 
   return {
     title: talk?.title,
@@ -264,11 +237,9 @@ const tagTransformer = (tag: DeepNonNullable<ContentfulTag>) => {
  * FORMATTERS
  */
 
-const formatAudience = (data: Session['audience']) =>
-  data ? `Est. ${data} people audience` : 'No audience data';
+const formatAudience = (data: Session['audience']) => (data ? `Est. ${data} people audience` : 'No audience data');
 
-const formatLanguage = (data: Session['language']) =>
-  `Presented in ${data?.language}`;
+const formatLanguage = (data: Session['language']) => `Presented in ${data?.language}`;
 
 const formatters = {
   date: formatDate,

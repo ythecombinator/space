@@ -4,7 +4,7 @@ import { ParsedUrlQuery } from 'querystring';
 
 import { Routes } from 'config/constants';
 
-import TalksContentService from 'services/talks-content-service';
+import TalksContentService from 'services/content/talks';
 
 import { documentToString } from 'utils/contentful';
 import { generateOpenGraphImage } from 'utils/open-graph';

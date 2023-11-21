@@ -12,12 +12,7 @@ import * as React from 'react';
 import { FunctionComponent, PropsWithChildren, useState } from 'react';
 import { BiSort } from 'react-icons/bi';
 
-import {
-  EngagementStatusPrimary,
-  EngagementStatusSecondary,
-  EventEntry,
-  ConferenceSeason,
-} from 'services/talks-cfp-content-service';
+import { EngagementStatusPrimary, EngagementStatusSecondary, EventEntry, ConferenceSeason } from 'services/content/cfp';
 
 import Button from 'components/shared/button';
 import DropdownMenu from 'components/shared/dropdown-menu';

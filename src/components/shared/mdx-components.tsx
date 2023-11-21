@@ -6,10 +6,9 @@ import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { Layouts, LayoutsMap } from 'config/constants';
 
-import { RawBiographyEntry } from 'services/biography-content-service';
-import { RawBlogEntry } from 'services/posts-content-service';
+import { RawMDXEntry } from 'services/content/markdown';
+import { RawBlogEntry } from 'services/content/posts';
 
-import Link from 'components/shared/link';
 import Pre from 'components/shared/pre';
 import Typography from 'components/shared/typography';
 
@@ -19,7 +18,7 @@ import Typography from 'components/shared/typography';
 
 interface MDXLayout {
   layout: Layouts;
-  content: RawBiographyEntry | RawBlogEntry;
+  content: RawMDXEntry | RawBlogEntry;
   [key: string]: unknown;
 }
 
@@ -27,11 +26,7 @@ interface MDXLayout {
  * UTILS
  */
 
-const Wrapper: FunctionComponent<PropsWithChildren<MDXLayout>> = ({
-  layout,
-  content,
-  ...rest
-}) => {
+const Wrapper: FunctionComponent<PropsWithChildren<MDXLayout>> = ({ layout, content, ...rest }) => {
   const Layout = LayoutsMap[layout];
   return <Layout content={content} {...rest} />;
 };
@@ -50,22 +45,11 @@ const MDXComponents: MDXContentProps['components'] = {
  * COMPONENT
  */
 
-const MDXLayoutRenderer: FunctionComponent<PropsWithChildren<MDXLayout>> = ({
-  layout,
-  content,
-  ...rest
-}) => {
+const MDXLayoutRenderer: FunctionComponent<PropsWithChildren<MDXLayout>> = ({ layout, content, ...rest }) => {
   const MDXLayout = useMDXComponent(content.body.code);
   const mainContent = coreContent(content);
 
-  return (
-    <MDXLayout
-      layout={layout}
-      content={mainContent}
-      components={MDXComponents}
-      {...rest}
-    />
-  );
+  return <MDXLayout layout={layout} content={mainContent} components={MDXComponents} {...rest} />;
 };
 
 export default MDXLayoutRenderer;

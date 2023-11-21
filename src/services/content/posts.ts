@@ -1,10 +1,7 @@
-import {
-  allBlogEntries,
-  BlogEntry as RawBlogEntry,
-} from 'contentlayer/generated';
+import { allBlogEntries, BlogEntry as RawBlogEntry } from 'contentlayer/generated';
 import { CoreContent } from 'pliny/utils/contentlayer';
 
-import ContentlayerService from 'services/contentlayer-service';
+import ContentlayerService from 'services/providers/contentlayer';
 
 import { sortEntries } from 'utils/contentlayer';
 import { toIndexableCollection } from 'utils/search';

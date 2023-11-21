@@ -4,7 +4,7 @@ import { Suspense, useState } from 'react';
 
 import { Routes, siteMetadata } from 'config/constants';
 
-import TalksContentService from 'services/talks-content-service';
+import TalksContentService from 'services/content/talks';
 
 import { generateOpenGraphImage } from 'utils/open-graph';
 
@@ -83,12 +83,7 @@ const TalksPage: NextPage<Props> = (props) => {
       <Layout
         heading={metadata.description}
         headingGradient="borealis"
-        subHeading={
-          <SearchBar
-            label={`Search topics, events and places`}
-            onChange={onChange}
-          />
-        }
+        subHeading={<SearchBar label={`Search topics, events and places`} onChange={onChange} />}
       >
         <OverviewSection {...talksStats} />
 

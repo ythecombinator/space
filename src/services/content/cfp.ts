@@ -1,6 +1,6 @@
 import { pathOr } from 'ramda';
 
-import NotionService, { NotionResponse } from 'services/notion-service';
+import NotionService, { NotionResponse } from 'services/providers/notion';
 
 import { formatDate, isSingleDayTimeSpan } from 'utils/date';
 

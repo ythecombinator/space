@@ -4,7 +4,7 @@ import { ParsedUrlQuery } from 'querystring';
 
 import { Layouts, siteMetadata } from 'config/constants';
 
-import BiographyContentService from 'services/biography-content-service';
+import MarkdownContentService from 'services/content/markdown';
 
 import MDXLayoutRenderer from 'components/shared/mdx-components';
 
@@ -22,7 +22,7 @@ export type Props = InferGetStaticPropsType<typeof getStaticProps>;
  * NEXTJS
  */
 
-const biographyServiceInstance = BiographyContentService.getInstance();
+const biographyServiceInstance = MarkdownContentService.getInstance();
 
 export async function getStaticPaths() {
   const paths = biographyServiceInstance

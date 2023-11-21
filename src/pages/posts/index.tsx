@@ -4,7 +4,7 @@ import { Suspense, useState } from 'react';
 
 import { Routes, siteMetadata } from 'config/constants';
 
-import PostsContentService from 'services/posts-content-service';
+import PostsContentService from 'services/content/posts';
 
 import { generateOpenGraphImage } from 'utils/open-graph';
 

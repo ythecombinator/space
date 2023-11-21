@@ -1,7 +1,7 @@
 import { Routes } from 'config/constants';
 import { siteMetadata } from 'config/constants';
 
-import { BlogEntry } from 'services/posts-content-service';
+import { BlogEntry } from 'services/content/posts';
 
 import { escapeHTML } from 'utils/html';
 
@@ -24,14 +24,10 @@ export const generateRSS = (posts: Array<BlogEntry>, page = 'feed.xml') => `
       <link>${siteMetadata.siteUrl}/${Routes.posts}</link>
       <description>${escapeHTML(siteMetadata.description)}</description>
       <language>${siteMetadata.language}</language>
-      <managingEditor>${siteMetadata.email} (${
-  siteMetadata.author
-})</managingEditor>
+      <managingEditor>${siteMetadata.email} (${siteMetadata.author})</managingEditor>
       <webMaster>${siteMetadata.email} (${siteMetadata.author})</webMaster>
       <lastBuildDate>${new Date(posts[0].date).toUTCString()}</lastBuildDate>
-      <atom:link href="${
-        siteMetadata.siteUrl
-      }/${page}" rel="self" type="application/rss+xml"/>
+      <atom:link href="${siteMetadata.siteUrl}/${page}" rel="self" type="application/rss+xml"/>
       ${posts.map(generateRssItem).join('')}
     </channel>
   </rss>

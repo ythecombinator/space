@@ -17,7 +17,7 @@ import Typography from 'components/shared/typography';
 const OverviewSection: FunctionComponent<PropsWithChildren<{}>> = () => {
   return (
     <SectionContainer className="prose dark:prose-dark">
-      <SectionCover alt="This is me!" src="/content/biography/intro.jpg" />
+      <SectionCover alt="This is me!" src="/content/misc/intro.jpg" />
       <Typography.p>
         Hey, {`I'm`} Matheus Albuquerque—but most folks know me as <Typography.mark>ythecombinator</Typography.mark>{' '}
         online.
@@ -35,7 +35,7 @@ const OverviewSection: FunctionComponent<PropsWithChildren<{}>> = () => {
       <CurrentLocation
         href="http://maps.apple.com/?address=Prague%CZ&z=15"
         location="Prague, Czech Republic"
-        locationImage="/content/biography/prague.jpg"
+        locationImage="/content/misc/prague.jpg"
       />
 
       <Typography.p>

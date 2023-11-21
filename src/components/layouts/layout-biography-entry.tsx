@@ -1,6 +1,6 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
 
-import { BiographyEntry } from 'services/biography-content-service';
+import { MDXEntry } from 'services/content/markdown';
 
 import { Gradient } from 'utils/styles';
 
@@ -11,17 +11,15 @@ import SectionCover from 'components/shared/section-cover';
  * TYPES
  */
 
-interface BiographyEntryLayoutProps {
-  content: BiographyEntry;
+interface MDXEntryLayoutProps {
+  content: MDXEntry;
 }
 
 /*~
  * LAYOUT
  */
 
-const BiographyEntryLayout: FunctionComponent<
-  PropsWithChildren<BiographyEntryLayoutProps>
-> = ({ children, content }) => {
+const MDXEntryLayout: FunctionComponent<PropsWithChildren<MDXEntryLayoutProps>> = ({ children, content }) => {
   const { title, color, cover } = content;
 
   return (
@@ -32,12 +30,10 @@ const BiographyEntryLayout: FunctionComponent<
       </div>
 
       <div className="items-start space-y-2  xl:gap-x-8 xl:space-y-0">
-        <div className="prose max-w-none py-8 dark:prose-dark xl:col-span-2">
-          {children}
-        </div>
+        <div className="prose max-w-none py-8 dark:prose-dark xl:col-span-2">{children}</div>
       </div>
     </div>
   );
 };
 
-export default BiographyEntryLayout;
+export default MDXEntryLayout;

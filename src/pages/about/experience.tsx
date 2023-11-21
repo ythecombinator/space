@@ -6,11 +6,11 @@ import { coreContent } from 'pliny/utils/contentlayer';
 
 import { siteMetadata } from 'config/constants';
 
-import BiographyContentService from 'services/biography-content-service';
+import MarkdownContentService from 'services/content/markdown';
 
 import { serializeExperience } from 'utils/linkedin';
 
-import experience from 'content/biography/experience.json';
+import experience from 'content/misc/experience.json';
 
 import SectionContainer from 'components/shared/section-container';
 import SectionCover from 'components/shared/section-cover';
@@ -28,15 +28,13 @@ export type CareerPageProps = InferGetStaticPropsType<typeof getStaticProps>;
  * NEXTJS
  */
 
-const biographyServiceInstance = BiographyContentService.getInstance();
+const biographyServiceInstance = MarkdownContentService.getInstance();
 
 export async function getStaticProps() {
   const content = biographyServiceInstance.get('experience');
 
   const work = await Promise.all(experience.work.map(serializeExperience));
-  const volunteering = await Promise.all(
-    experience.volunteering.map(serializeExperience)
-  );
+  const volunteering = await Promise.all(experience.volunteering.map(serializeExperience));
 
   if (!content) {
     return {
@@ -81,7 +79,7 @@ const Page: NextPage<CareerPageProps> = ({ content, work, volunteering }) => {
       />
       <Layout heading="Build. Share. Rewind." headingGradient="peachy">
         <SectionContainer className="prose dark:prose-dark">
-          <SectionCover alt="This is me!" src="/content/biography/work.jpg" />
+          <SectionCover alt="This is me!" src="/content/misc/work.jpg" />
           <MDXRenderer content={mdxContent} />
         </SectionContainer>
 
@@ -93,9 +91,7 @@ const Page: NextPage<CareerPageProps> = ({ content, work, volunteering }) => {
               <div key={index}>
                 <Typography.h3>{item.title}</Typography.h3>
                 <Typography.p>
-                  <Typography.a href={item.companyUrl}>
-                    {item.company}
-                  </Typography.a>
+                  <Typography.a href={item.companyUrl}>{item.company}</Typography.a>
                   <span> • {item.location}</span>
                 </Typography.p>
                 <Typography.small>
@@ -118,9 +114,7 @@ const Page: NextPage<CareerPageProps> = ({ content, work, volunteering }) => {
               <div key={index}>
                 <Typography.h3>{item.title}</Typography.h3>
                 <Typography.p>
-                  <Typography.a href={item.companyUrl}>
-                    {item.company}
-                  </Typography.a>
+                  <Typography.a href={item.companyUrl}>{item.company}</Typography.a>
                 </Typography.p>
                 <Typography.small>
                   <span>{item.startDate}</span>

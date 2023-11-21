@@ -5,7 +5,7 @@ import { ParsedUrlQuery } from 'querystring';
 
 import { Layouts, Routes, siteMetadata } from 'config/constants';
 
-import PostsContentService from 'services/posts-content-service';
+import PostsContentService from 'services/content/posts';
 
 import { generateOpenGraphImage } from 'utils/open-graph';
 import { generateRSS } from 'utils/rss';
