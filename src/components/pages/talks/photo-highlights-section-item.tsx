@@ -33,7 +33,7 @@ const PhotoHighlightsSectionItem: FunctionComponent<PropsWithChildren<PhotoHighl
       <figure className="relative max-w-sm cursor-pointer">
         <Image
           alt={eventName}
-          className="h-auto max-w-lg rounded-lg"
+          className="h-auto max-w-lg rounded-lg group-hover:grayscale"
           src={photoURL}
           width={720}
           height={480}
@@ -42,8 +42,8 @@ const PhotoHighlightsSectionItem: FunctionComponent<PropsWithChildren<PhotoHighl
             height: 'auto',
           }}
         />
-        <figcaption className="absolute bottom-0 p-2 text-center w-full backdrop-blur-md hidden group-hover:block">
-          <Typography.lead>{eventName}</Typography.lead>
+        <figcaption className="absolute bottom-0 p-2 text-center w-full hidden group-hover:block backdrop-blur-sm">
+          <Typography.lead className="drop-shadow-[3px_3px_3px_rgba(0,0,0,0.8)]">{eventName}</Typography.lead>
         </figcaption>
       </figure>
     </Link>
