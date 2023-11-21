@@ -22,10 +22,10 @@ export type Props = InferGetStaticPropsType<typeof getStaticProps>;
  * NEXTJS
  */
 
-const biographyServiceInstance = MarkdownContentService.getInstance();
+const markdownServiceInstance = MarkdownContentService.getInstance();
 
 export async function getStaticPaths() {
-  const paths = biographyServiceInstance
+  const paths = markdownServiceInstance
     .getAllSlugs()
     // Those are present under the /pages/about/ directory.
     .filter((slug) => slug !== 'experience');
@@ -42,7 +42,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context: GetStaticPropsContext<Params>) {
   const slug = context.params?.slug!;
-  const content = biographyServiceInstance.get(slug);
+  const content = markdownServiceInstance.get(slug);
 
   if (!content) {
     return {

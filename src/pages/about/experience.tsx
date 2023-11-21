@@ -28,10 +28,10 @@ export type CareerPageProps = InferGetStaticPropsType<typeof getStaticProps>;
  * NEXTJS
  */
 
-const biographyServiceInstance = MarkdownContentService.getInstance();
+const markdownServiceInstance = MarkdownContentService.getInstance();
 
 export async function getStaticProps() {
-  const content = biographyServiceInstance.get('experience');
+  const content = markdownServiceInstance.get('experience');
 
   const work = await Promise.all(experience.work.map(serializeExperience));
   const volunteering = await Promise.all(experience.volunteering.map(serializeExperience));
