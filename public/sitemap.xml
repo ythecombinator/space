@@ -5,8 +5,11 @@
 <url><loc>https://www.ythecombinator.space/about/experience</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://www.ythecombinator.space/posts</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://www.ythecombinator.space/talks</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ythecombinator.space/talks/cfp</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ythecombinator.space/talks/rider</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://www.ythecombinator.space/about/clients</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://www.ythecombinator.space/about/life</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ythecombinator.space/about/speaker-rider</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://www.ythecombinator.space/posts/2022-wrapped</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://www.ythecombinator.space/posts/jheniffer-was-always-my-favorite-color</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://www.ythecombinator.space/posts/driving-towards-a-universal-navigation-strategy-in-react</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
@@ -14,7 +17,12 @@
 <url><loc>https://www.ythecombinator.space/posts/a-whole-day-playing-with-ipfs</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://www.ythecombinator.space/posts/swift-in-the-sky-with-types</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://www.ythecombinator.space/posts/o-que-ha-de-novo-com-o-angularjs</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ythecombinator.space/talks/the-state-of-the-state-react-state-management-in-2019</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://www.ythecombinator.space/talks/deep-diving-on-concurrent-react</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ythecombinator.space/talks/hydration-islands-streaming-resumability-oh-my</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ythecombinator.space/talks/inside-fiber-the-in-depth-overview-you-wanted-a-tldr-for</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ythecombinator.space/talks/consistent-ux-at-scale-lessons-learned-when-i-wore-the-designops-hat</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ythecombinator.space/talks/speed-at-scale-optimizing-the-largest-cx-platform-out-there</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://www.ythecombinator.space/talks/the-art-of-notifications</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://www.ythecombinator.space/talks/playing-with-watchconnectivity-for-24-hours</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://www.ythecombinator.space/talks/designing-for-humans-like-you-and-me</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
@@ -27,10 +35,7 @@
 <url><loc>https://www.ythecombinator.space/talks/break-on-through-to-the-l-side</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://www.ythecombinator.space/talks/javascript-in-the-sky-with-types</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://www.ythecombinator.space/talks/its-2023-and-i-can-finally-talk-about-atomic-css</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.ythecombinator.space/talks/hydration-islands-streaming-resumability-oh-my</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://www.ythecombinator.space/talks/web-performance-apis-that-you-probably-never-knew-existed</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.ythecombinator.space/talks/inside-fiber-the-in-depth-overview-you-wanted-a-tldr-for</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.ythecombinator.space/talks/consistent-ux-at-scale-lessons-learned-when-i-wore-the-designops-hat</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://www.ythecombinator.space/talks/the-best-is-yet-to-come-the-future-of-react</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://www.ythecombinator.space/talks/the-hitchhikers-guide-to-the-front-end-performance</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://www.ythecombinator.space/talks/code-sharing-at-scale-one-codebase-for-web-mobile-and-desktop</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
@@ -43,5 +48,4 @@
 <url><loc>https://www.ythecombinator.space/talks/the-future-favors-swift</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://www.ythecombinator.space/talks/sweet-macros-o-mine</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://www.ythecombinator.space/talks/spritekit-up-and-running</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.ythecombinator.space/talks/the-state-of-the-state-react-state-management-in-2019</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>
