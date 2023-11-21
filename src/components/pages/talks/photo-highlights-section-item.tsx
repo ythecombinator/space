@@ -20,9 +20,7 @@ export type PhotoHighlightsSectionItemProps = {
  * COMPONENT
  */
 
-const PhotoHighlightsSectionItem: FunctionComponent<
-  PropsWithChildren<PhotoHighlightsSectionItemProps>
-> = (props) => {
+const PhotoHighlightsSectionItem: FunctionComponent<PropsWithChildren<PhotoHighlightsSectionItemProps>> = (props) => {
   const { photoURL, talkSlug, eventName } = props;
 
   return (
@@ -32,10 +30,10 @@ const PhotoHighlightsSectionItem: FunctionComponent<
       shallow
       className="group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg"
     >
-      <figure className="relative max-w-sm cursor-pointer transition-all duration-300">
+      <figure className="relative max-w-sm cursor-pointer">
         <Image
           alt={eventName}
-          className="h-auto max-w-lg rounded-lg blur-sm grayscale transition-all duration-300 hover:blur-none"
+          className="h-auto max-w-lg rounded-lg"
           src={photoURL}
           width={720}
           height={480}
@@ -44,7 +42,7 @@ const PhotoHighlightsSectionItem: FunctionComponent<
             height: 'auto',
           }}
         />
-        <figcaption className="absolute bottom-6 px-4">
+        <figcaption className="absolute bottom-0 p-2 text-center w-full backdrop-blur-md hidden group-hover:block">
           <Typography.lead>{eventName}</Typography.lead>
         </figcaption>
       </figure>
