@@ -66,7 +66,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
     "react-rough-notation": "^1.0.3",
-    "react-spring": "9.6.1",
+    "react-spring": "9.7.1",
     "reading-time": "^1.5.0",
     "rehype-accessible-emojis": "^0.3.2",
     "rehype-autolink-headings": "^6.1.1",
