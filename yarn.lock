@@ -4755,11 +4755,12 @@ constant-case@^3.0.4:
     tslib "^2.0.3"
     upper-case "^2.0.2"
 
-contentful-management@^10.29.1:
-  version "10.30.0"
-  resolved "https://registry.yarnpkg.com/contentful-management/-/contentful-management-10.30.0.tgz#48edbe726155ed257ab2fc67d8499f7c3b95fc33"
-  integrity sha512-CYeZqezYP7q++EuHgCHKakemsJqCHC784uOWyYp00Rc6+iMw5glK8GjwksbgUsbnZFfCywGyZCj4Xsd4lZ0ZaQ==
+contentful-management@^10.36.0:
+  version "10.36.0"
+  resolved "https://registry.yarnpkg.com/contentful-management/-/contentful-management-10.36.0.tgz#44a0f9100d3adfaaceccbb4294df2aa117a5725c"
+  integrity sha512-YcTkIpDpk4Z5mduFTdcVCH8cfwsm1yWv5sKkS1i9NXVCU1AnEU1BwyvEVwsp5cDuknaXXadkLVYFqovPHT96Qg==
   dependencies:
+    "@contentful/rich-text-types" "^16.0.3"
     "@types/json-patch" "0.0.30"
     axios "^0.27.1"
     contentful-sdk-core "^7.0.1"
