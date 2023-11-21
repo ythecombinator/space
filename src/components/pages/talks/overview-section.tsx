@@ -25,7 +25,7 @@ const OverviewSection: FunctionComponent<PropsWithChildren<OverviewSectionProps>
   const { citiesTotal, countriesTotal, talksTotal, eventsTotal } = props;
 
   return (
-    <SectionContainer className="prose dark:prose-dark">
+    <SectionContainer className="prose dark:prose-invert">
       <Typography.p>
         {`I've`} been speaking and learning in public since 2015, mostly about web performance, JavaScript/TypeScript,
         React, and their ecosystem. Other topics also include programming languages design and iOS engineering.
@@ -37,6 +37,10 @@ const OverviewSection: FunctionComponent<PropsWithChildren<OverviewSectionProps>
       <Typography.p>
         Want me to speak at your event? Please check my <Link href={Routes.talksRider}>speaker rider</Link> and hit me
         up!
+      </Typography.p>
+      <Typography.p>
+        Want to see how {`I'm`} doing when it comes to call-for-papers of known events? I keep an open record of my
+        acceptances, rejections, etc. <Link href={Routes.talksCFP}>here</Link>!
       </Typography.p>
     </SectionContainer>
   );

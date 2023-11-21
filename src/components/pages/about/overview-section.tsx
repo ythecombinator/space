@@ -16,7 +16,7 @@ import Typography from 'components/shared/typography';
 
 const OverviewSection: FunctionComponent<PropsWithChildren<{}>> = () => {
   return (
-    <SectionContainer className="prose dark:prose-dark">
+    <SectionContainer className="prose dark:prose-invert">
       <SectionCover alt="This is me!" src="/content/misc/intro.jpg" />
       <Typography.p>
         Hey, {`I'm`} Matheus Albuquerque—but most folks know me as <Typography.mark>ythecombinator</Typography.mark>{' '}

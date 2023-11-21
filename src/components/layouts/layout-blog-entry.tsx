@@ -51,7 +51,7 @@ const BlogEntryLayout: FunctionComponent<PropsWithChildren<BlogEntryLayoutProps>
         <div className="pb-8 " style={{ gridTemplateRows: 'auto 1fr' }}>
           <div className="space-y-4 xl:col-span-3 xl:row-span-2 xl:pb-0">
             <SectionCover alt={title} src={cover} />
-            <div className="prose max-w-none pb-4 dark:prose-dark">{children}</div>
+            <div className="prose max-w-none pb-4 dark:prose-invert">{children}</div>
             <div className="flex justify-between pt-6 text-sm text-gray-700 dark:text-gray-300">
               Thanks for reading 💖
               <Link href={discussOnTwitter(title, `${Routes.posts}/${slug}`)} rel="me">

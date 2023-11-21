@@ -32,7 +32,7 @@ const AllPostsSectionItem: FunctionComponent<PropsWithChildren<AllPostsSectionIt
             {language === 'pt' ? `🇧🇷 • ${title}` : `${title}`}
           </Link>
         </h2>
-        <div className="prose max-w-none text-gray-500 dark:prose-dark dark:text-gray-400">{summary}</div>
+        <div className="prose max-w-none text-gray-500 dark:prose-invert dark:text-gray-400">{summary}</div>
       </article>
     </li>
   );

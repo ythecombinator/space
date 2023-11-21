@@ -30,7 +30,7 @@ const MDXEntryLayout: FunctionComponent<PropsWithChildren<MDXEntryLayoutProps>> 
       </div>
 
       <div className="items-start space-y-2  xl:gap-x-8 xl:space-y-0">
-        <div className="prose max-w-none py-8 dark:prose-dark xl:col-span-2">{children}</div>
+        <div className="prose max-w-none py-8 dark:prose-invert xl:col-span-2">{children}</div>
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ import Layout from 'components/layouts/layout-page';
 
 const metadata = {
   title: `Talks / Speaker Rider / ${siteMetadata.title}`,
-  description: 'Me + Your Event',
+  description: 'Your Event & I!',
 };
 
 /*~

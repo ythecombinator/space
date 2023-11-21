@@ -24,10 +24,7 @@ const config = {
       },
       fontFamily: {
         sans: ['var(--font-biotify)', ...defaultTheme.fontFamily.sans],
-        heading: [
-          'var(--font-neuzeitGrotesk)',
-          ...defaultTheme.fontFamily.sans,
-        ],
+        heading: ['var(--font-neuzeitGrotesk)', ...defaultTheme.fontFamily.sans],
       },
       backgroundImage: {
         'texture-pattern': "url('/img/texture-pattern.svg')",
@@ -114,14 +111,16 @@ const config = {
             color: theme('colors.gray.700'),
             a: {
               color: theme('colors.primary.500'),
-              textDecoration: 'none',
+              textDecorationLine: 'none',
+              textUnderlineOffset: '0.2em',
               '&:hover': {
+                textDecorationLine: 'underline',
                 color: theme('colors.primary.700'),
               },
               code: { color: theme('colors.primary.400') },
             },
             mark: {
-              color: colors.slate[900],
+              color: theme('colors.slate.900'),
               backgroundColor: 'transparent',
             },
             p: {
@@ -194,7 +193,7 @@ const config = {
             },
           },
         },
-        dark: {
+        invert: {
           css: {
             color: theme('colors.gray.300'),
             a: {
@@ -205,7 +204,7 @@ const config = {
               code: { color: theme('colors.primary.400') },
             },
             mark: {
-              color: colors.slate[100],
+              color: theme('colors.slate.100'),
               backgroundColor: 'transparent',
             },
             h1: {

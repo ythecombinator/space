@@ -78,12 +78,12 @@ const Page: NextPage<CareerPageProps> = ({ content, work, volunteering }) => {
         }}
       />
       <Layout heading="Build. Share. Rewind." headingGradient="peachy">
-        <SectionContainer className="prose dark:prose-dark">
+        <SectionContainer className="prose dark:prose-invert">
           <SectionCover alt="This is me!" src="/content/misc/work.jpg" />
           <MDXRenderer content={mdxContent} />
         </SectionContainer>
 
-        <SectionContainer className="prose dark:prose-dark">
+        <SectionContainer className="prose dark:prose-invert">
           <Typography.h2>Experience</Typography.h2>
 
           {work.map((item, index) => {
@@ -106,7 +106,7 @@ const Page: NextPage<CareerPageProps> = ({ content, work, volunteering }) => {
           })}
         </SectionContainer>
 
-        <SectionContainer className="prose dark:prose-dark">
+        <SectionContainer className="prose dark:prose-invert">
           <Typography.h2>Communities</Typography.h2>
 
           {volunteering.map((item, index) => {

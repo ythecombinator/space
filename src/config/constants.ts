@@ -23,7 +23,7 @@ export const siteMetadata = {
   github: 'https://github.com/ythecombinator',
   twitterHandle: '@ythecombinator',
   twitter: 'https://twitter.com/ythecombinator',
-  avatar: 'https://pbs.twimg.com/profile_images/1615068105977331712/TOWGdEEO_400x400.jpg',
+  avatar: 'https://avatars.githubusercontent.com/u/2644563?v=4',
 };
 
 export const socialNetworks = [
