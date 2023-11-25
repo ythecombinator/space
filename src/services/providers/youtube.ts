@@ -95,7 +95,7 @@ export interface Thumbnails {
 }
 
 export interface Resolution {
-  queryURL: string;
+  url: string;
   width: number;
   height: number;
 }

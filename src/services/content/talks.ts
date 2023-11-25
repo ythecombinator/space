@@ -17,14 +17,30 @@ import {
   ContentfulTag,
   Talk,
 } from 'graphql/schema';
-import { DeepNonNullable } from 'utility-types';
+import { DeepNonNullable, ValuesType } from 'utility-types';
 
 import ContentfulService from 'services/providers/contentful';
+import YoutubeService from 'services/providers/youtube';
 
 import { formatDate, isSingleDayTimeSpan } from 'utils/date';
 import { toIndexableCollection } from 'utils/search';
 
+/*~
+ * CONFIG
+ */
+
 const contentfulServiceInstance = ContentfulService.getInstance();
+const youtubeServiceInstance = YoutubeService.getInstance();
+
+/*~
+ * TYPES
+ */
+
+export type YoutubeHighlight = ValuesType<Awaited<ReturnType<TalksContentService['getYoutubeHighlights']>>>;
+
+/*~
+ * SERVICE
+ */
 
 export default class TalksContentService {
   private static instance: TalksContentService;
@@ -104,6 +120,25 @@ export default class TalksContentService {
     });
 
     return transformers.stats(doc.data);
+  }
+
+  public async getYoutubeHighlights() {
+    const playlistID = 'PLu_DF4548Ne1jbT5opOMswazXhMiCLpRP';
+    const playlistData = await youtubeServiceInstance.queryPlaylist(playlistID);
+
+    const videoIDs = playlistData.items.map((item) => item.snippet.resourceId.videoId);
+    const videoFetchers = videoIDs.map((video) => youtubeServiceInstance.queryVideo(video));
+    const videoCollection = await Promise.all(videoFetchers);
+
+    return videoCollection
+      .map((video) => ({
+        title: video.items[0].snippet.title,
+        thumbnail: video.items[0].snippet.thumbnails.high.url,
+        link: `https://www.youtube.com/watch?v=${video.items[0].id}`,
+        viewCount: video.items[0].statistics.viewCount,
+        likeCount: video.items[0].statistics.likeCount,
+      }))
+      .sort((a, b) => parseInt(b.viewCount) - parseInt(a.viewCount));
   }
 }
 
