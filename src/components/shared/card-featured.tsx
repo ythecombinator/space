@@ -45,14 +45,9 @@ const CardFeatured: FunctionComponent<PropsWithChildren<CardFeaturedProps>> = ({
   const props = useSpring({ xys, config: config.molasses });
 
   return (
-    <div
-      className={`${
-        fullWidth && 'w-full md:w-1/2'
-      } ${className} overflow-hidden`}
-      ref={ref}
-    >
+    <div className={`${fullWidth && 'w-full md:w-1/2'} ${className} overflow-hidden`} ref={ref}>
       <div
-        className={`-z-10 h-full rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-0.5 dark:p-px`}
+        className={`-z-10 h-full rounded-md bg-gradient-to-r from-[#37CCE5] via-[#3775e5] to-[#37e5a7] p-0.5 dark:p-px`}
       >
         <Link href={href} aria-label={`Link to ${title}`}>
           <animated.div
@@ -68,18 +63,10 @@ const CardFeatured: FunctionComponent<PropsWithChildren<CardFeaturedProps>> = ({
           after:will-change-auto hover:after:animate-hue hover:after:opacity-100 dark:bg-violet-950`}
           >
             <div className="p-5">
-              <h2 className="mb-2 text-2xl font-bold leading-8 tracking-tight">
-                {title}
-              </h2>
+              <h2 className="mb-2 text-2xl font-bold leading-8 tracking-tight">{title}</h2>
               <Typography.p>{description}</Typography.p>
               <div className="text-2xl font-thin leading-6 text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                <svg
-                  className="rotate-180"
-                  width="24"
-                  height="24"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
+                <svg className="rotate-180" width="24" height="24" fill="none" viewBox="0 0 24 24">
                   <path
                     stroke="currentColor"
                     strokeLinecap="round"
