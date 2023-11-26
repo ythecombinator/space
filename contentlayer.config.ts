@@ -87,6 +87,7 @@ export default makeSource({
   mdx: {
     cwd: process.cwd(),
     remarkPlugins: [
+      // @ts-ignore
       remarkExtractFrontmatter,
       remarkGfm,
       remarkCodeTitles,
@@ -98,8 +99,11 @@ export default makeSource({
       rehypeAccessibleEmojis,
       rehypeSlug,
       rehypeAutolinkHeadings,
+      // @ts-ignore
       [rehypeCitation, { path: path.join(root, 'data') }],
+      // @ts-ignore
       [rehypePrismPlus, { ignoreMissing: true }],
+      // @ts-ignore
       rehypePresetMinify,
     ],
   },

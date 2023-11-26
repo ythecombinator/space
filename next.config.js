@@ -20,10 +20,6 @@ const nextConfig = {
   images: {
     domains: ['images.ctfassets.net', 'pbs.twimg.com', 'i.ytimg.com'],
   },
-  typescript: {
-    // TODO: Remove this.
-    ignoreBuildErrors: true,
-  },
   experimental: {
     largePageDataBytes: 128 * 100000,
   },
