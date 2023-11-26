@@ -4,12 +4,7 @@ const nextConfig = {
   compress: true,
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
-  transpilePackages: [
-    'react-spring',
-    '@react-spring/web',
-    'remark',
-    'react-use-callback-ref',
-  ],
+  transpilePackages: ['react-spring', '@react-spring/web', 'remark', 'react-use-callback-ref'],
   webpack: (config) => {
     config.module.rules.push({
       test: /\.svg$/,
@@ -23,7 +18,7 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ['images.ctfassets.net', 'pbs.twimg.com'],
+    domains: ['images.ctfassets.net', 'pbs.twimg.com', 'i.ytimg.com'],
   },
   experimental: {
     largePageDataBytes: 128 * 100000,
