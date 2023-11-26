@@ -17,7 +17,8 @@ import AllTalksSection from 'components/pages/talks/all-talks-section';
 import AllTalksSectionSkeleton from 'components/pages/talks/all-talks-section-skeleton';
 import OverviewSection from 'components/pages/talks/overview-section';
 import PhotoHighlightsSection from 'components/pages/talks/photo-highlights-section';
-import VideoHighlightsSection from 'components/pages/talks/video-highlights-section';
+import TopicHighlightsSection from 'components/pages/talks/topic-highlights-section';
+import YoutubeHighlightsSection from 'components/pages/talks/youtube-highlights-section';
 
 const metadata = {
   title: `Talks / ${siteMetadata.title}`,
@@ -37,9 +38,11 @@ export type Props = InferGetStaticPropsType<typeof getStaticProps>;
 const talksServiceInstance = TalksContentService.getInstance();
 
 export async function getStaticProps() {
-  const [talksStats, featuredTalks, activeTalks, allTalks] = await Promise.all([
+  const [talksStats, reactTalks, featuredTalks, youtubeHighlights, activeTalks, allTalks] = await Promise.all([
     talksServiceInstance.getStats(),
+    talksServiceInstance.getTalksForTag('react'),
     talksServiceInstance.getFeatured(),
+    talksServiceInstance.getYoutubeHighlights(),
     talksServiceInstance.getActive(),
     talksServiceInstance.getAll(),
   ]);
@@ -51,7 +54,7 @@ export async function getStaticProps() {
   });
 
   return {
-    props: { talksStats, featuredTalks, activeTalks, allTalks, ogImage },
+    props: { talksStats, reactTalks, featuredTalks, youtubeHighlights, activeTalks, allTalks, ogImage },
   };
 }
 
@@ -60,7 +63,7 @@ export async function getStaticProps() {
  */
 
 const TalksPage: NextPage<Props> = (props) => {
-  const { talksStats, allTalks, featuredTalks, activeTalks, ogImage } = props;
+  const { talksStats, allTalks, reactTalks, featuredTalks, youtubeHighlights, activeTalks, ogImage } = props;
 
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -91,9 +94,9 @@ const TalksPage: NextPage<Props> = (props) => {
           <AllTalksSection items={allTalks} searchTerm={searchTerm} />
         </Suspense>
 
-        <VideoHighlightsSection items={featuredTalks} />
         <ActiveTalksSection items={activeTalks} />
-
+        <TopicHighlightsSection title="⚛️ React Highlights" items={reactTalks} />
+        <YoutubeHighlightsSection items={youtubeHighlights} />
         <PhotoHighlightsSection items={featuredTalks} />
       </Layout>
     </>

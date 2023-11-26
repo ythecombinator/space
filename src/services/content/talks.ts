@@ -4,8 +4,6 @@ import {
   GetAllTalksQuery,
   GetTalksStatsQuery,
   GetTalksStatsDocument,
-  GetFeaturedTalksQuery,
-  GetFeaturedTalksDocument,
   GetActiveTalksQuery,
   GetActiveTalksDocument,
   Session,
@@ -16,11 +14,15 @@ import {
   GetAllTalkSlugsDocument,
   ContentfulTag,
   Talk,
+  GetTalksForTagDocument,
+  GetTalksForTagQuery,
+  GetFeaturedTalksQuery,
+  GetFeaturedTalksDocument,
 } from 'graphql/schema';
 import { DeepNonNullable, ValuesType } from 'utility-types';
 
 import ContentfulService from 'services/providers/contentful';
-import YoutubeService from 'services/providers/youtube';
+import YoutubeService, { YoutubeResponse } from 'services/providers/youtube';
 
 import { formatDate, isSingleDayTimeSpan } from 'utils/date';
 import { toIndexableCollection } from 'utils/search';
@@ -114,6 +116,21 @@ export default class TalksContentService {
     return transformers.featured(doc.data);
   }
 
+  public async getTalksForTag(tag: string, limit: number = 0) {
+    const doc = await contentfulServiceInstance.query<GetTalksForTagQuery>({
+      query: GetTalksForTagDocument,
+      variables: {
+        tag,
+        limit,
+      },
+    });
+
+    return transformers
+      .talksPerTag(doc.data)
+      .filter((item) => item.sessionsCount > 2)
+      .sort((a, b) => b.sessionsCount - a.sessionsCount);
+  }
+
   public async getStats() {
     const doc = await contentfulServiceInstance.query<GetTalksStatsQuery>({
       query: GetTalksStatsDocument,
@@ -131,13 +148,7 @@ export default class TalksContentService {
     const videoCollection = await Promise.all(videoFetchers);
 
     return videoCollection
-      .map((video) => ({
-        title: video.items[0].snippet.title,
-        thumbnail: video.items[0].snippet.thumbnails.high.url,
-        link: `https://www.youtube.com/watch?v=${video.items[0].id}`,
-        viewCount: video.items[0].statistics.viewCount,
-        likeCount: video.items[0].statistics.likeCount,
-      }))
+      .map(transformers.youtubeHighlights)
       .sort((a, b) => parseInt(b.viewCount) - parseInt(a.viewCount));
   }
 }
@@ -166,6 +177,16 @@ const allTransformer = (result: GetAllTalksQuery) => {
   });
 };
 
+const youtubeHighlightsTransformer = (result: YoutubeResponse) => {
+  return {
+    title: result.items[0].snippet.title,
+    thumbnail: result.items[0].snippet.thumbnails.high.url,
+    link: `https://www.youtube.com/watch?v=${result.items[0].id}`,
+    viewCount: result.items[0].statistics.viewCount,
+    likeCount: result.items[0].statistics.likeCount,
+  };
+};
+
 const featuredTransformer = (result: GetFeaturedTalksQuery) => {
   const items = (result as DeepNonNullable<GetFeaturedTalksQuery>).sessionCollection?.items;
 
@@ -174,6 +195,16 @@ const featuredTransformer = (result: GetFeaturedTalksQuery) => {
     photoURL: item.photo.url,
     talkTitle: item.talk.title,
     talkSlug: item.talk.slug,
+  }));
+};
+
+const talksPerTagTransformer = (result: GetTalksForTagQuery) => {
+  const items = (result as DeepNonNullable<GetTalksForTagQuery>).talkCollection.items;
+
+  return items.map((item) => ({
+    talkTitle: item.title,
+    talkSlug: item.slug,
+    sessionsCount: item.sessionsCollection.total,
   }));
 };
 
@@ -221,6 +252,8 @@ const transformers = {
   all: allTransformer,
   active: activeTransformer,
   featured: featuredTransformer,
+  youtubeHighlights: youtubeHighlightsTransformer,
+  talksPerTag: talksPerTagTransformer,
   stats: statsTransformer,
   latest: latestTransformer,
 };

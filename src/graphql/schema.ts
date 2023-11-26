@@ -2437,6 +2437,14 @@ export type GetTalkQueryVariables = Exact<{
 
 export type GetTalkQuery = { __typename?: 'Query', talkCollection?: { __typename?: 'TalkCollection', items: Array<{ __typename?: 'Talk', title?: string | null, abstract?: { __typename?: 'TalkAbstract', json: any } | null, sessionsCollection?: { __typename?: 'TalkSessionsCollection', items: Array<{ __typename?: 'Session', online?: boolean | null, slides?: string | null, recording?: string | null, audience?: number | null, sys: { __typename?: 'Sys', id: string }, language?: { __typename?: 'Language', flag?: string | null, language?: string | null } | null, event?: { __typename?: 'Event', name?: string | null, website?: string | null, startingDate?: any | null, endingDate?: any | null, city?: { __typename?: 'City', name?: string | null, country?: { __typename?: 'Country', name?: string | null, flag?: string | null } | null } | null } | null } | null> } | null } | null> } | null };
 
+export type GetTalksForTagQueryVariables = Exact<{
+  tag?: InputMaybe<Scalars['String']>;
+  limit?: InputMaybe<Scalars['Int']>;
+}>;
+
+
+export type GetTalksForTagQuery = { __typename?: 'Query', talkCollection?: { __typename?: 'TalkCollection', items: Array<{ __typename?: 'Talk', title?: string | null, slug?: string | null, sessionsCollection?: { __typename?: 'TalkSessionsCollection', total: number } | null } | null> } | null };
+
 export type GetTalksStatsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2711,6 +2719,52 @@ export function useGetTalkLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Ge
 export type GetTalkQueryHookResult = ReturnType<typeof useGetTalkQuery>;
 export type GetTalkLazyQueryHookResult = ReturnType<typeof useGetTalkLazyQuery>;
 export type GetTalkQueryResult = Apollo.QueryResult<GetTalkQuery, GetTalkQueryVariables>;
+export const GetTalksForTagDocument = gql`
+    query GetTalksForTag($tag: String, $limit: Int) {
+  talkCollection(
+    where: {contentfulMetadata: {tags: {id_contains_some: [$tag]}}}
+    order: lastRelevant_DESC
+    limit: $limit
+  ) {
+    items {
+      title
+      slug
+      sessionsCollection {
+        total
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetTalksForTagQuery__
+ *
+ * To run a query within a React component, call `useGetTalksForTagQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTalksForTagQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetTalksForTagQuery({
+ *   variables: {
+ *      tag: // value for 'tag'
+ *      limit: // value for 'limit'
+ *   },
+ * });
+ */
+export function useGetTalksForTagQuery(baseOptions?: Apollo.QueryHookOptions<GetTalksForTagQuery, GetTalksForTagQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetTalksForTagQuery, GetTalksForTagQueryVariables>(GetTalksForTagDocument, options);
+      }
+export function useGetTalksForTagLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTalksForTagQuery, GetTalksForTagQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetTalksForTagQuery, GetTalksForTagQueryVariables>(GetTalksForTagDocument, options);
+        }
+export type GetTalksForTagQueryHookResult = ReturnType<typeof useGetTalksForTagQuery>;
+export type GetTalksForTagLazyQueryHookResult = ReturnType<typeof useGetTalksForTagLazyQuery>;
+export type GetTalksForTagQueryResult = Apollo.QueryResult<GetTalksForTagQuery, GetTalksForTagQueryVariables>;
 export const GetTalksStatsDocument = gql`
     query GetTalksStats {
   talkCollection {

@@ -22,7 +22,7 @@ export default class YoutubeService {
     return this.instance;
   }
 
-  public async queryPlaylist(id: string): Promise<Response> {
+  public async queryPlaylist(id: string): Promise<YoutubeResponse> {
     const queryURL = new URL(PLAYLIST_ITEMS_API);
 
     queryURL.searchParams.set('part', 'snippet');
@@ -34,7 +34,7 @@ export default class YoutubeService {
     return response.json();
   }
 
-  public async queryVideo(id: string): Promise<Response> {
+  public async queryVideo(id: string): Promise<YoutubeResponse> {
     const queryURL = new URL(VIDEO_API);
 
     queryURL.searchParams.set('part', ['statistics', 'snippet'].join(','));
@@ -50,7 +50,7 @@ export default class YoutubeService {
  * TYPES
  */
 
-export interface Response {
+export interface YoutubeResponse {
   kind: string;
   etag: string;
   items: Item[];
