@@ -26,7 +26,7 @@ const PhotoHighlightsSectionItem: FunctionComponent<PropsWithChildren<PhotoHighl
   return (
     <Link
       key={talkSlug}
-      href={`/${Routes.talks}/${talkSlug}`}
+      href={talkSlug}
       shallow
       className="group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg"
     >

@@ -69,7 +69,7 @@ const AllTalksSection: FunctionComponent<PropsWithChildren<AllTalksSectionProps>
               key={talkSlug}
               label={talkTitle}
               index={reversedIndexOf(items.length, index)}
-              href={`/${Routes.talks}/${talkSlug}`}
+              href={talkSlug}
               prefix={talkCategory === 'workshop' ? 'workshop' : null}
             />
           );

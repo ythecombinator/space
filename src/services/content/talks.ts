@@ -21,6 +21,8 @@ import {
 } from 'graphql/schema';
 import { DeepNonNullable, ValuesType } from 'utility-types';
 
+import { Routes } from 'config/constants';
+
 import ContentfulService from 'services/providers/contentful';
 import YoutubeService, { YoutubeResponse } from 'services/providers/youtube';
 
@@ -165,7 +167,7 @@ const allTransformer = (result: GetAllTalksQuery) => {
 
     return {
       talkTitle: title,
-      talkSlug: slug,
+      talkSlug: `/${Routes.talks}/${item.slug}`,
       talkCategory: category,
       // Indexable search metadata
       _description: JSON.stringify(abstract.json),
@@ -194,7 +196,7 @@ const featuredTransformer = (result: GetFeaturedTalksQuery) => {
     eventName: item.event.name,
     photoURL: item.photo.url,
     talkTitle: item.talk.title,
-    talkSlug: item.talk.slug,
+    talkSlug: `/${Routes.talks}/${item.talk.slug}`,
   }));
 };
 
@@ -203,7 +205,7 @@ const talksPerTagTransformer = (result: GetTalksForTagQuery) => {
 
   return items.map((item) => ({
     talkTitle: item.title,
-    talkSlug: item.slug,
+    talkSlug: `/${Routes.talks}/${item.slug}`,
     sessionsCount: item.sessionsCollection.total,
   }));
 };
@@ -213,7 +215,7 @@ const activeTransformer = (result: GetActiveTalksQuery) => {
 
   return items.map((item) => ({
     talkTitle: item.title,
-    talkSlug: item.slug,
+    talkSlug: `/${Routes.talks}/${item.slug}`,
     sessions: item.sessionsCollection.items.map((session) => ({
       eventName: session.event.name,
       eventPage: session.event.website,
