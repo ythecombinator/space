@@ -81,20 +81,15 @@ const columns = [
       return <Tag variant={secondaryTagMap[status]}>{status}</Tag>;
     },
   }),
+  columnHelper.accessor('deadline', {
+    header: 'CFP Deadline',
+    cell: (cell) => {
+      const { formatted, raw } = cell.getValue();
+      return <time dateTime={raw}>{formatted}</time>;
+    },
+  }),
   columnHelper.accessor('dates', {
-    header: ({ column }) => {
-      return (
-        <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
-          Event Dates
-          <BiSort className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    sortingFn: (rowA, rowB) => {
-      const dateA = new Date(rowA.original.dates.start.raw);
-      const dateB = new Date(rowB.original.dates.start.raw);
-      return dateA.getTime() - dateB.getTime();
-    },
+    header: 'Event Dates',
     cell: (cell) => {
       const { start, end, isSingleDayEvent } = cell.getValue();
       return (
@@ -108,20 +103,6 @@ const columns = [
           )}
         </>
       );
-    },
-  }),
-  columnHelper.accessor('deadline', {
-    header: ({ column }) => {
-      return (
-        <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
-          CFP Deadline
-          <BiSort className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    cell: (cell) => {
-      const { formatted, raw } = cell.getValue();
-      return <time dateTime={raw}>{formatted}</time>;
     },
   }),
 ];
