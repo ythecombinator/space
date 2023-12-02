@@ -32,9 +32,6 @@ dependencies:
   '@graphql-codegen/typescript-react-apollo':
     specifier: 4.1.0
     version: 4.1.0(graphql-tag@2.12.6)(graphql@16.8.1)
-  '@next/font':
-    specifier: 14.0.3
-    version: 14.0.3(next@14.0.3)
   '@notionhq/client':
     specifier: 2.2.13
     version: 2.2.13
@@ -3783,14 +3780,6 @@ packages:
     dependencies:
       glob: 7.1.7
     dev: true
-
-  /@next/font@14.0.3(next@14.0.3):
-    resolution: {integrity: sha512-M96skA6j99ri/J9+BpoDOoO9ntadHUyX2CmwSzsLDm3fL3hgyPfskH6Kd92sz6H8cr7ZHV3xNkCTggFvnLdq2Q==}
-    peerDependencies:
-      next: '*'
-    dependencies:
-      next: 14.0.3(@babel/core@7.23.3)(@opentelemetry/api@1.1.0)(react-dom@18.2.0)(react@18.2.0)
-    dev: false
 
   /@next/swc-darwin-arm64@14.0.3:
     resolution: {integrity: sha512-64JbSvi3nbbcEtyitNn2LEDS/hcleAFpHdykpcnrstITFlzFgB/bW0ER5/SJJwUPj+ZPY+z3e+1jAfcczRLVGw==}
