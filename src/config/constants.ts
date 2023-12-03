@@ -1,7 +1,7 @@
 import { ComponentType } from 'react';
 import { FaDev, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
-import LayoutMDXEntry from 'components/layouts/layout-biography-entry';
+import LayoutMDXEntry from 'components/layouts/layout-mdx-entry';
 import LayoutBlogEntry from 'components/layouts/layout-blog-entry';
 import LayoutPage from 'components/layouts/layout-page';
 
@@ -73,11 +73,11 @@ export const headerNavigationLinks = [
 export enum Layouts {
   page = 'layout-page',
   blog = 'layout-blog-entry',
-  biography = 'layout-biography-entry',
+  mdx = 'layout-mdx-entry',
 }
 
 export const LayoutsMap: Record<Layouts, ComponentType<any>> = {
-  'layout-biography-entry': LayoutMDXEntry,
+  'layout-mdx-entry': LayoutMDXEntry,
   'layout-page': LayoutPage,
   'layout-blog-entry': LayoutBlogEntry,
 };

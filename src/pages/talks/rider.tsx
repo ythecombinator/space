@@ -63,7 +63,7 @@ const Page: NextPage<SpeakerRiderPageProps> = ({ content }) => {
   return (
     <>
       <Metadata title={metadata.title} description={metadata.description} />
-      <MDXLayoutRenderer layout={Layouts.biography} content={content} />
+      <MDXLayoutRenderer layout={Layouts.mdx} content={content} />
     </>
   );
 };
