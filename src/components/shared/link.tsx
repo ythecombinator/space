@@ -1,6 +1,7 @@
 import NextLink from 'next/link';
 import {
   AnchorHTMLAttributes,
+  CSSProperties,
   DetailedHTMLProps,
   FunctionComponent,
   PropsWithChildren,
@@ -13,12 +14,10 @@ import { isAnchorLink, isInternalLink } from 'utils/link';
  * TYPES
  */
 
-export type LinkProps = DetailedHTMLProps<
-  AnchorHTMLAttributes<HTMLAnchorElement>,
-  HTMLAnchorElement
-> & {
+export type LinkProps = DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> & {
   href: string;
   ref?: Ref<HTMLAnchorElement>;
+  clearDecoration?: boolean;
 };
 
 /*~
@@ -28,11 +27,16 @@ export type LinkProps = DetailedHTMLProps<
 const Link: FunctionComponent<PropsWithChildren<LinkProps>> = ({
   href,
   children,
+  clearDecoration = false,
   ...rest
 }) => {
+  const style: CSSProperties = {
+    ...(clearDecoration ? { textDecoration: 'none' } : {}),
+  };
+
   if (isInternalLink(href)) {
     return (
-      <NextLink href={href} {...rest}>
+      <NextLink href={href} {...rest} style={style}>
         {children}
       </NextLink>
     );
@@ -40,14 +44,14 @@ const Link: FunctionComponent<PropsWithChildren<LinkProps>> = ({
 
   if (isAnchorLink(href)) {
     return (
-      <a href={href} {...rest}>
+      <a href={href} {...rest} style={style}>
         {children}
       </a>
     );
   }
 
   return (
-    <a target="_blank" rel="noopener noreferrer" href={href} {...rest}>
+    <a target="_blank" rel="noopener noreferrer" href={href} {...rest} style={style}>
       {children}
     </a>
   );
