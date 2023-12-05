@@ -1,4 +1,4 @@
-{
+module.exports = {
   "printWidth": 120,
   "semi": true,
   "singleQuote": true,
@@ -17,5 +17,6 @@
     "^styles/(.*)$",
     "^[./]"
   ],
-  "importOrderSeparation": true
+  "importOrderSeparation": true,
+  "plugins": ["@trivago/prettier-plugin-sort-imports"]
 }
