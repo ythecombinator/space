@@ -1,5 +1,5 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
-import { FaLaptopCode } from 'react-icons/fa';
+import { FaLaptopCode, FaHammer } from 'react-icons/fa';
 import { GiCardRandom, GiTakeMyMoney } from 'react-icons/gi';
 
 import { Routes } from 'config/constants';
@@ -66,6 +66,9 @@ const OverviewSection: FunctionComponent<PropsWithChildren<{}>> = () => {
         </ButtonLink>
         <ButtonLink href={`/${Routes.clients}`} icon={<GiTakeMyMoney aria-hidden />}>
           Clients
+        </ButtonLink>
+        <ButtonLink href={`/${Routes.uses}`} icon={<FaHammer aria-hidden />}>
+          My Setup
         </ButtonLink>
       </div>
     </SectionContainer>

@@ -55,6 +55,7 @@ export enum Routes {
   experience = 'about/experience',
   clients = 'about/clients',
   life = 'about/life',
+  uses = 'about/uses',
   posts = 'posts',
   talks = 'talks',
   talksCFP = 'talks/cfp',

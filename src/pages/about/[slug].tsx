@@ -78,7 +78,7 @@ const AboutPage: NextPage<Props> = ({ content }) => {
           ],
         }}
       />
-      <MDXLayoutRenderer layout={Layouts.mdx} content={content} />{' '}
+      <MDXLayoutRenderer layout={Layouts.mdx} content={content} />
     </>
   );
 };
