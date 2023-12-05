@@ -11,6 +11,7 @@ import { RawBlogEntry } from 'services/content/posts';
 
 import Pre from 'components/shared/pre';
 import Typography from 'components/shared/typography';
+import Inventory from 'components/shared/inventory';
 
 /*~
  * TYPES
@@ -39,6 +40,7 @@ const MDXComponents: MDXContentProps['components'] = {
   wrapper: Wrapper,
   Lead: Typography.lead,
   Subtle: Typography.subtle,
+  Inventory: Inventory,
 };
 
 /*~
