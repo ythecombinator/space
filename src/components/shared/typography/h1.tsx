@@ -7,9 +7,11 @@ import { classNames } from 'utils/styles';
  * COMPONENT
  */
 
-const H1: FunctionComponent<
-  PropsWithChildren<HTMLAttributes<HTMLHeadingElement>>
-> = ({ children, className, ...props }) => {
+const H1: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLHeadingElement>>> = ({
+  children,
+  className,
+  ...props
+}) => {
   return (
     <h1
       className={classNames(

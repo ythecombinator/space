@@ -25,8 +25,7 @@ interface ImageProps {
   content: string;
 }
 
-type Options = Pick<TemplateProps, 'title' | 'postPath'> &
-  Pick<ImageProps, 'width' | 'height'> & { path: string };
+type Options = Pick<TemplateProps, 'title' | 'postPath'> & Pick<ImageProps, 'width' | 'height'> & { path: string };
 
 /*~
  * CONFIG
@@ -40,14 +39,7 @@ const DEFAULT_HEIGHT = 630;
  * UTILS
  */
 
-function compileTemplate({
-  title,
-  authorName,
-  authorTwitter,
-  authorPic,
-  basePath,
-  postPath,
-}: TemplateProps) {
+function compileTemplate({ title, authorName, authorTwitter, authorPic, basePath, postPath }: TemplateProps) {
   const templateHTML = readFileSync(templatePath, 'utf-8');
   return compile(templateHTML)({
     title,

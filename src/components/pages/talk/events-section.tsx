@@ -4,9 +4,7 @@ import SectionContainer from 'components/shared/section-container';
 import SectionHeading from 'components/shared/section-heading';
 import SectionList from 'components/shared/section-list';
 
-import EventsSectionItem, {
-  EventsSectionItemProps,
-} from 'components/pages/talk/events-section-item';
+import EventsSectionItem, { EventsSectionItemProps } from 'components/pages/talk/events-section-item';
 
 /*~
  * TYPES
@@ -20,9 +18,7 @@ export type EventsSectionProps = {
  * COMPONENT
  */
 
-const EventsSection: FunctionComponent<
-  PropsWithChildren<EventsSectionProps>
-> = (props) => {
+const EventsSection: FunctionComponent<PropsWithChildren<EventsSectionProps>> = (props) => {
   const { items } = props;
 
   return (

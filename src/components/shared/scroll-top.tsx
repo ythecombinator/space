@@ -1,9 +1,4 @@
-import {
-  FunctionComponent,
-  PropsWithChildren,
-  useEffect,
-  useState,
-} from 'react';
+import { FunctionComponent, PropsWithChildren, useEffect, useState } from 'react';
 import smoothscroll from 'smoothscroll-polyfill';
 
 /*~
@@ -29,11 +24,7 @@ const ScrollTop: FunctionComponent<PropsWithChildren<{}>> = () => {
   };
 
   return (
-    <div
-      className={`fixed right-8 bottom-8 hidden flex-col gap-3 ${
-        show ? 'md:flex' : 'md:hidden'
-      }`}
-    >
+    <div className={`fixed right-8 bottom-8 hidden flex-col gap-3 ${show ? 'md:flex' : 'md:hidden'}`}>
       <button
         aria-label="Scroll To Top"
         type="button"

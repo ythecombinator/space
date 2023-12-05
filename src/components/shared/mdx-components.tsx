@@ -9,9 +9,9 @@ import { Layouts, LayoutsMap } from 'config/constants';
 import { RawMDXEntry } from 'services/content/markdown';
 import { RawBlogEntry } from 'services/content/posts';
 
+import Inventory from 'components/shared/inventory';
 import Pre from 'components/shared/pre';
 import Typography from 'components/shared/typography';
-import Inventory from 'components/shared/inventory';
 
 /*~
  * TYPES

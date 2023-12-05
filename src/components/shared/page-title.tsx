@@ -1,11 +1,6 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
 
-import {
-  classNames,
-  Gradient,
-  useRandomGradient,
-  gradients,
-} from 'utils/styles';
+import { classNames, Gradient, useRandomGradient, gradients } from 'utils/styles';
 
 import Typography from 'components/shared/typography';
 
@@ -21,16 +16,11 @@ export interface PageTitleProps {
  * COMPONENT
  */
 
-const PageTitle: FunctionComponent<PropsWithChildren<PageTitleProps>> = ({
-  gradient,
-  children,
-}) => {
+const PageTitle: FunctionComponent<PropsWithChildren<PageTitleProps>> = ({ gradient, children }) => {
   return (
     <Typography.h1
       className={classNames({
-        [`text-transparent bg-clip-text bg-gradient-to-r ${
-          gradients[gradient as Gradient]
-        }`]: gradient,
+        [`text-transparent bg-clip-text bg-gradient-to-r ${gradients[gradient as Gradient]}`]: gradient,
       })}
     >
       {children}

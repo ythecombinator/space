@@ -7,8 +7,7 @@ import { ElementRef, forwardRef, PropsWithChildren } from 'react';
  * TYPES
  */
 
-type NavigationMenuControlLinkProps = LinkProps &
-  Pick<NavigationMenuLinkProps, 'className'>;
+type NavigationMenuControlLinkProps = LinkProps & Pick<NavigationMenuLinkProps, 'className'>;
 
 /*~
  * COMPONENT

@@ -7,9 +7,7 @@ type SectionCoverProps = Pick<ImageProps, 'src' | 'alt'>;
  * COMPONENT
  */
 
-export const SectionCover: FunctionComponent<
-  PropsWithChildren<SectionCoverProps>
-> = ({ src, alt }) => {
+export const SectionCover: FunctionComponent<PropsWithChildren<SectionCoverProps>> = ({ src, alt }) => {
   return (
     <Image
       alt={alt}

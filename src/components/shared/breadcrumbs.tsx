@@ -1,8 +1,9 @@
 import { FunctionComponent } from 'react';
 
-import Link from 'components/shared/link';
 import { toBreadcrumbs } from 'utils/string';
 import { classNames } from 'utils/styles';
+
+import Link from 'components/shared/link';
 
 /*~
  * TYPES

@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react';
 
-import Link from 'components/shared/link';
 import Image from 'components/shared/image';
+import Link from 'components/shared/link';
 import Typography from 'components/shared/typography';
 
 /*~

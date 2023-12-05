@@ -1,14 +1,14 @@
+import { usePathname } from 'next/navigation';
 import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { MDXEntry } from 'services/content/markdown';
-import { usePathname } from 'next/navigation';
 
+import { toBreadcrumbs } from 'utils/string';
 import { Gradient } from 'utils/styles';
 
+import Breadcrumbs from 'components/shared/breadcrumbs';
 import PageTitle from 'components/shared/page-title';
 import SectionCover from 'components/shared/section-cover';
-import Breadcrumbs from 'components/shared/breadcrumbs';
-import { toBreadcrumbs } from 'utils/string';
 
 /*~
  * TYPES

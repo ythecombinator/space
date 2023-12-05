@@ -1,5 +1,4 @@
-export const randomElement = <T>(arr: Array<T>) =>
-  arr[Math.floor(Math.random() * arr.length)];
+export const randomElement = <T>(arr: Array<T>) => arr[Math.floor(Math.random() * arr.length)];
 
 export const reversedIndexOf = (length: number, index: number) => {
   if (index === -1) {

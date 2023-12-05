@@ -6,9 +6,7 @@ import Highlight from 'components/shared/typography/highlight';
  * COMPONENT
  */
 
-const Mark: FunctionComponent<
-  PropsWithChildren<HTMLAttributes<HTMLElement>>
-> = ({ children }) => {
+const Mark: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLElement>>> = ({ children }) => {
   return (
     <Highlight color="indigo" customElement="mark" multiline>
       {children}

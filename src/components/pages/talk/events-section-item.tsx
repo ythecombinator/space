@@ -33,9 +33,7 @@ export type EventsSectionItemProps = {
  * COMPONENT
  */
 
-const EventsSectionItem: FunctionComponent<
-  PropsWithChildren<EventsSectionItemProps>
-> = (props) => {
+const EventsSectionItem: FunctionComponent<PropsWithChildren<EventsSectionItemProps>> = (props) => {
   const {
     eventName,
     eventLocation,
@@ -50,23 +48,15 @@ const EventsSectionItem: FunctionComponent<
   return (
     <CardOutlined heading={eventName}>
       <div className="flex-col">
-        <CardOutlinedListItem icon={<FaMapMarkedAlt size={20} aria-hidden />}>
-          {eventLocation}
-        </CardOutlinedListItem>
+        <CardOutlinedListItem icon={<FaMapMarkedAlt size={20} aria-hidden />}>{eventLocation}</CardOutlinedListItem>
 
-        <CardOutlinedListItem
-          icon={<BsFillCalendarEventFill size={20} aria-hidden />}
-        >
-          <time dateTime={eventStartingDate.raw}>
-            {eventStartingDate.formatted}
-          </time>
+        <CardOutlinedListItem icon={<BsFillCalendarEventFill size={20} aria-hidden />}>
+          <time dateTime={eventStartingDate.raw}>{eventStartingDate.formatted}</time>
 
           {!isSingleDayEvent && (
             <>
               {'-'}
-              <time dateTime={eventEndingDate.raw}>
-                {eventEndingDate.formatted}
-              </time>
+              <time dateTime={eventEndingDate.raw}>{eventEndingDate.formatted}</time>
             </>
           )}
         </CardOutlinedListItem>

@@ -1,8 +1,8 @@
 import { ComponentType } from 'react';
 import { FaDev, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
-import LayoutMDXEntry from 'components/layouts/layout-mdx-entry';
 import LayoutBlogEntry from 'components/layouts/layout-blog-entry';
+import LayoutMDXEntry from 'components/layouts/layout-mdx-entry';
 import LayoutPage from 'components/layouts/layout-page';
 
 export const siteMetadata = {

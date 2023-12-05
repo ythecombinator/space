@@ -1,12 +1,5 @@
 import { AnimatePresence, motion, useAnimation } from 'framer-motion';
-import {
-  useEffect,
-  useRef,
-  Dispatch,
-  SetStateAction,
-  FunctionComponent,
-  PropsWithChildren,
-} from 'react';
+import { useEffect, useRef, Dispatch, SetStateAction, FunctionComponent, PropsWithChildren } from 'react';
 
 /*~
  * TYPES
@@ -20,10 +13,7 @@ export type LeafletProps = {
  * COMPONENT
  */
 
-const Leaflet: FunctionComponent<PropsWithChildren<LeafletProps>> = ({
-  setShow,
-  children,
-}) => {
+const Leaflet: FunctionComponent<PropsWithChildren<LeafletProps>> = ({ setShow, children }) => {
   const leafletRef = useRef<HTMLDivElement>(null);
   const controls = useAnimation();
   const transitionProps = { type: 'spring', stiffness: 500, damping: 30 };
@@ -63,9 +53,7 @@ const Leaflet: FunctionComponent<PropsWithChildren<LeafletProps>> = ({
         dragElastic={{ top: 0, bottom: 1 }}
         dragConstraints={{ top: 0, bottom: 0 }}
       >
-        <div
-          className={`-mb-1 flex h-7 w-full items-center justify-center border-t border-gray-200`}
-        >
+        <div className={`-mb-1 flex h-7 w-full items-center justify-center border-t border-gray-200`}>
           <div className="-mr-1 h-1 w-6 rounded-full bg-gray-300 transition-all group-active:rotate-12" />
           <div className="h-1 w-6 rounded-full bg-gray-300 transition-all group-active:-rotate-12" />
         </div>

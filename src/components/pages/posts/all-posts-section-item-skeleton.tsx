@@ -7,9 +7,7 @@ import colors from 'tailwindcss/colors';
  * COMPONENT
  */
 
-const AllPostsSectionItemSkeleton: FunctionComponent<
-  PropsWithChildren<{}>
-> = () => {
+const AllPostsSectionItemSkeleton: FunctionComponent<PropsWithChildren<{}>> = () => {
   const { theme } = useTheme();
 
   return (

@@ -17,9 +17,7 @@ export type AllTalksSectionSkeletonProps = {
  * COMPONENT
  */
 
-const AllTalksSectionSkeleton: FunctionComponent<
-  PropsWithChildren<AllTalksSectionSkeletonProps>
-> = ({ items }) => {
+const AllTalksSectionSkeleton: FunctionComponent<PropsWithChildren<AllTalksSectionSkeletonProps>> = ({ items }) => {
   const itemSkeletons = useMemo(() => Array.from(Array(items).keys()), [items]);
 
   return (

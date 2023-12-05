@@ -18,18 +18,14 @@ export type OverviewSectionProps = {
  * COMPONENT
  */
 
-const OverviewSection: FunctionComponent<
-  PropsWithChildren<OverviewSectionProps>
-> = (props) => {
+const OverviewSection: FunctionComponent<PropsWithChildren<OverviewSectionProps>> = (props) => {
   const { abstract } = props;
 
   return (
     <SectionContainer>
       {documentToReactComponents(abstract, {
         renderNode: {
-          [BLOCKS.PARAGRAPH]: (_node, children) => (
-            <Typography.p>{children}</Typography.p>
-          ),
+          [BLOCKS.PARAGRAPH]: (_node, children) => <Typography.p>{children}</Typography.p>,
         },
       })}
     </SectionContainer>

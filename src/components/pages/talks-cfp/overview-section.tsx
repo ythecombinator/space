@@ -20,8 +20,8 @@ const OverviewSection: FunctionComponent<{}> = () => {
         equation (Google Calendar), I decided it was about time to shift to something else.
       </Typography.p>
       <Typography.p>
-        In 2022, I decided to try Notion as my all-in-one sessions ↔ conferences solution — and it worked really well in
-        my opinion.
+        In 2022, I decided to try Notion as my all-in-one sessions ↔ conferences solution — and it worked really well
+        in my opinion.
       </Typography.p>
       <Typography.p>
         In 2023, I realized that many speakers could benefit from insights around conferences, so I decided to make this

@@ -33,20 +33,13 @@ const Pre: FunctionComponent<PropsWithChildren<{}>> = ({ children }) => {
   };
 
   return (
-    <div
-      ref={textInput}
-      onMouseEnter={onEnter}
-      onMouseLeave={onExit}
-      className="relative"
-    >
+    <div ref={textInput} onMouseEnter={onEnter} onMouseLeave={onExit} className="relative">
       {hovered && (
         <button
           aria-label="Copy code"
           type="button"
           className={`absolute right-2 top-2 h-8 w-8 rounded border-2 bg-gray-700 p-1 dark:bg-gray-800 ${
-            copied
-              ? 'border-green-400 focus:border-green-400 focus:outline-none'
-              : 'border-gray-300'
+            copied ? 'border-green-400 focus:border-green-400 focus:outline-none' : 'border-gray-300'
           }`}
           onClick={onCopy}
         >

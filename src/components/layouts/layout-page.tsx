@@ -1,9 +1,10 @@
+import { usePathname } from 'next/navigation';
 import { FunctionComponent, PropsWithChildren } from 'react';
 
-import PageTitle, { PageTitleProps } from 'components/shared/page-title';
-import { usePathname } from 'next/navigation';
 import { toBreadcrumbs } from 'utils/string';
+
 import Breadcrumbs from 'components/shared/breadcrumbs';
+import PageTitle, { PageTitleProps } from 'components/shared/page-title';
 
 /*~
  * TYPES

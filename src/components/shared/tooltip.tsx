@@ -1,10 +1,5 @@
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
-import {
-  FunctionComponent,
-  PropsWithChildren,
-  ReactNode,
-  useState,
-} from 'react';
+import { FunctionComponent, PropsWithChildren, ReactNode, useState } from 'react';
 
 import { useWindowSize } from 'utils/window';
 
@@ -23,11 +18,7 @@ export type TooltipProps = {
  * COMPONENT
  */
 
-const Tooltip: FunctionComponent<PropsWithChildren<TooltipProps>> = ({
-  children,
-  content,
-  fullWidth,
-}) => {
+const Tooltip: FunctionComponent<PropsWithChildren<TooltipProps>> = ({ children, content, fullWidth }) => {
   const [openTooltip, setOpenTooltip] = useState(false);
 
   const { isMobile, isDesktop } = useWindowSize();
@@ -68,9 +59,7 @@ const Tooltip: FunctionComponent<PropsWithChildren<TooltipProps>> = ({
               <TooltipPrimitive.Arrow className="fill-current text-gray-800 dark:text-gray-200" />
               {typeof content === 'string' ? (
                 <div className="p-5">
-                  <span className="block max-w-xs text-center text-sm text-gray-800 dark:text-gray-200">
-                    {content}
-                  </span>
+                  <span className="block max-w-xs text-center text-sm text-gray-800 dark:text-gray-200">{content}</span>
                 </div>
               ) : (
                 content

@@ -4,9 +4,7 @@ import SectionContainer from 'components/shared/section-container';
 import SectionHeading from 'components/shared/section-heading';
 import SectionList from 'components/shared/section-list';
 
-import ActiveTalksSectionItem, {
-  ActiveTalksSectionItemProps,
-} from 'components/pages/talks/active-talks-section-item';
+import ActiveTalksSectionItem, { ActiveTalksSectionItemProps } from 'components/pages/talks/active-talks-section-item';
 
 /*~
  * TYPES
@@ -20,9 +18,7 @@ export type ActiveTalksSectionProps = {
  * COMPONENT
  */
 
-const ActiveTalksSection: FunctionComponent<
-  PropsWithChildren<ActiveTalksSectionProps>
-> = ({ items }) => {
+const ActiveTalksSection: FunctionComponent<PropsWithChildren<ActiveTalksSectionProps>> = ({ items }) => {
   return (
     <SectionContainer>
       <SectionHeading title="️‍🔥 Active Sessions" />
@@ -31,11 +27,7 @@ const ActiveTalksSection: FunctionComponent<
           const { talkTitle, talkSlug, sessions } = item;
           return (
             <li key={item.talkSlug}>
-              <ActiveTalksSectionItem
-                talkTitle={talkTitle}
-                talkSlug={talkSlug}
-                sessions={sessions}
-              />
+              <ActiveTalksSectionItem talkTitle={talkTitle} talkSlug={talkSlug} sessions={sessions} />
             </li>
           );
         })}

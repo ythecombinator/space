@@ -13,9 +13,7 @@ import ThemeSwitch from 'components/shared/theme-switch';
  * COMPONENT
  */
 
-const LayoutWrapper: FunctionComponent<PropsWithChildren<{}>> = ({
-  children,
-}) => {
+const LayoutWrapper: FunctionComponent<PropsWithChildren<{}>> = ({ children }) => {
   return (
     <>
       <LayoutGradient />
@@ -25,11 +23,7 @@ const LayoutWrapper: FunctionComponent<PropsWithChildren<{}>> = ({
             <div className="flex flex-auto items-center justify-between">
               <div className="flex flex-1 items-center justify-between text-base leading-5">
                 <div className="hidden sm:block">
-                  <NavigationMenu
-                    items={headerNavigationLinks.filter(
-                      (item) => item.href !== Routes.base
-                    )}
-                  />
+                  <NavigationMenu items={headerNavigationLinks.filter((item) => item.href !== Routes.base)} />
                 </div>
                 <ThemeSwitch />
               </div>

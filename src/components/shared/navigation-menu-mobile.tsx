@@ -14,9 +14,7 @@ interface NavigationMenuProps {
  * COMPONENT
  */
 
-const NavigationMenuMobile: FunctionComponent<
-  PropsWithChildren<NavigationMenuProps>
-> = ({ items }) => {
+const NavigationMenuMobile: FunctionComponent<PropsWithChildren<NavigationMenuProps>> = ({ items }) => {
   const [navShow, setNavShow] = useState(false);
 
   const onToggleNav = () => {
@@ -33,12 +31,7 @@ const NavigationMenuMobile: FunctionComponent<
 
   return (
     <div className="sm:hidden">
-      <button
-        type="button"
-        className="w-8 h-8 py-1 ml-1 mr-1 rounded"
-        aria-label="Toggle Menu"
-        onClick={onToggleNav}
-      >
+      <button type="button" className="w-8 h-8 py-1 ml-1 mr-1 rounded" aria-label="Toggle Menu" onClick={onToggleNav}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"

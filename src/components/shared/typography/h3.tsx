@@ -7,16 +7,14 @@ import { classNames } from 'utils/styles';
  * COMPONENT
  */
 
-const H3: FunctionComponent<
-  PropsWithChildren<HTMLAttributes<HTMLHeadingElement>>
-> = ({ children, className, ...props }) => {
+const H3: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLHeadingElement>>> = ({
+  children,
+  className,
+  ...props
+}) => {
   return (
     <h3
-      className={classNames(
-        'mt-8 scroll-m-20 text-xl font-semibold tracking-tight',
-        fonts.neuzeitGrotesk,
-        className
-      )}
+      className={classNames('mt-8 scroll-m-20 text-xl font-semibold tracking-tight', fonts.neuzeitGrotesk, className)}
       {...props}
     >
       {children}
