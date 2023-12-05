@@ -27,7 +27,7 @@ const Image = (props: ImageProps) => {
       data-testid="image-container"
     >
       <NextImage
-        xwx={classNames(
+        className={classNames(
           'transition-[scale,filter] duration-700',
           isLoading && 'scale-[1.02] blur-xl grayscale',
           imageClassName
