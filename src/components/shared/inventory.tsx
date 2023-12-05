@@ -1,7 +1,8 @@
-import Image from 'next/image';
 import { FunctionComponent } from 'react';
 
 import Link from 'components/shared/link';
+import Image from 'components/shared/image';
+import Typography from 'components/shared/typography';
 
 /*~
  * TYPES
@@ -31,12 +32,13 @@ const Inventory: FunctionComponent<InventoryProps> = ({ items }) => {
           href={item.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex gap-6 rounded-lg border p-4 no-underline transition-colors duration-150 hover:bg-accent sm:flex-col sm:gap-3"
+          className="flex flex-col gap-6 rounded-lg border p-4 transition-colors duration-150 hover:bg-accent sm:gap-3"
+          clearDecoration
         >
-          <Image src={item.image} width={256} height={256} alt={item.name} className="shrink-0" />
+          <Image src={item.image} width={256} height={256} alt={item.name} containerClassName="flex justify-center" />
           <div className="flex flex-col justify-center gap-2">
-            <div className="text-lg font-extrabold">{item.name}</div>
-            <div className="text-sm text-muted-foreground">{item.description}</div>
+            <Typography.lead>{item.name}</Typography.lead>
+            <Typography.subtle>{item.description}</Typography.subtle>
           </div>
         </Link>
       ))}
