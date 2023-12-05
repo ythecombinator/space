@@ -19,7 +19,8 @@ type ButtonLinkProps = LinkProps & { className?: string; icon: JSX.Element };
 export const ButtonLink: FunctionComponent<PropsWithChildren<ButtonLinkProps>> = ({ children, icon, href }) => (
   <Link
     href={href}
-    className="flex w-full items-center justify-between rounded-lg border border-neutral-200 p-4 text-neutral-800 no-underline transition-all hover:bg-neutral-100 dark:border-neutral-800 dark:text-neutral-200 hover:dark:bg-neutral-900"
+    className="flex w-full items-center justify-between rounded-lg border border-neutral-200 p-4 text-neutral-800 transition-all hover:bg-neutral-100 dark:border-neutral-800 dark:text-neutral-200 hover:dark:bg-neutral-900"
+    clearDecoration
   >
     <div className="flex items-center">
       {icon}
