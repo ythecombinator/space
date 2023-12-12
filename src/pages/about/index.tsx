@@ -1,5 +1,6 @@
 import { NextPage } from 'next';
 import { NextSeo as Metadata } from 'next-seo';
+import { BsQuestionSquareFill } from 'react-icons/bs';
 import { FaLaptopCode, FaHammer } from 'react-icons/fa';
 import { GiCardRandom, GiTakeMyMoney } from 'react-icons/gi';
 
@@ -48,8 +49,8 @@ const AboutPage: NextPage = () => {
             online.
           </Typography.p>
 
-          <Admonition.Box>
-            <Admonition.Title>Why... the... combinator? 🤔</Admonition.Title>
+          <Admonition.Box icon={BsQuestionSquareFill}>
+            <Admonition.Title>Why... the... combinator?</Admonition.Title>
             <Admonition.Description>
               <Typography.p>
                 Long story short; back in 2014-15 my handle everywhere used to be something around my full name — e.g.{' '}
