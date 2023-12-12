@@ -20,7 +20,7 @@ import Typography from 'components/shared/typography';
 import Layout from 'components/layouts/layout-page';
 
 const metadata = {
-  title: `Talks / Speaker Rider / ${siteMetadata.title}`,
+  title: `Speaker Rider — ${siteMetadata.title}`,
   description: 'Your Event & I!',
 };
 

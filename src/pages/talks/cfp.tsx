@@ -12,8 +12,8 @@ import ListSection from 'components/pages/talks-cfp/list-section';
 import OverviewSection from 'components/pages/talks-cfp/overview-section';
 
 const metadata = {
-  title: `Talks / CFPs / ${siteMetadata.title}`,
-  description: 'CFPs. Rejections. Open.',
+  title: `Call for Papers — ${siteMetadata.title}`,
+  description: 'Call for Papers',
 };
 
 /*~

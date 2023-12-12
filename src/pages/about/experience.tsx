@@ -60,7 +60,7 @@ const Page: NextPage<CareerPageProps> = ({ content, work, volunteering }) => {
   return (
     <>
       <Metadata
-        title={`About / ${siteMetadata.title}`}
+        title={`About — ${siteMetadata.title}`}
         openGraph={{
           type: 'profile',
           profile: {

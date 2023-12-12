@@ -23,7 +23,7 @@ const AboutPage: NextPage = () => {
   return (
     <>
       <Metadata
-        title={`About / ${siteMetadata.title}`}
+        title={`About — ${siteMetadata.title}`}
         openGraph={{
           type: 'profile',
           profile: {
@@ -67,12 +67,12 @@ const AboutPage: NextPage = () => {
               <Typography.p>
                 I was also inspired by the pseudonym of the brilliant{' '}
                 <Typography.a href="https://en.wikipedia.org/wiki/Why_the_lucky_stiff">Jonathan Gillette</Typography.a>{' '}
-                — ie. "why the lucky stiff" or "_why" — and I realized <Typography.mark>ythecombinator</Typography.mark>{' '}
-                was available pretty everywhere; so I took it!
+                — ie. {`"`}why the lucky stiff{`"`} or {`"`}_why{`"`} — and I realized{' '}
+                <Typography.mark>ythecombinator</Typography.mark> was available pretty everywhere; so I took it!
               </Typography.p>
 
               <Typography.p>
-                By the way, if you're up for a long read, Mike Vanier has{' '}
+                By the way, if you{`'`}re up for a long read, Mike Vanier has{' '}
                 <Typography.a href="https://mvanier.livejournal.com/2897.html">
                   a great explanation concerning the topic
                 </Typography.a>
@@ -86,7 +86,7 @@ const AboutPage: NextPage = () => {
             <Typography.a href="https://developers.google.com/community/experts/directory">
               Google Developer Expert
             </Typography.a>{' '}
-            from Fortaleza, Brazil. {`I've `} worked as a software engineer and architect in product and consultancy
+            from Fortaleza, Brazil. {`I've`} worked as a software engineer and architect in product and consultancy
             companies, taking the best from both worlds.
           </Typography.p>
 

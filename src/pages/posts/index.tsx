@@ -16,7 +16,7 @@ import AllPostsSection from 'components/pages/posts/all-posts-section';
 import AllPostsSectionSkeleton from 'components/pages/posts/all-posts-section-skeleton';
 
 const metadata = {
-  title: `Posts / ${siteMetadata.title}`,
+  title: `Posts — ${siteMetadata.title}`,
   description: 'Ideas. Stories. Updates.',
 };
 

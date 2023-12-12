@@ -21,7 +21,7 @@ import TopicHighlightsSection from 'components/pages/talks/topic-highlights-sect
 import YoutubeHighlightsSection from 'components/pages/talks/youtube-highlights-section';
 
 const metadata = {
-  title: `Talks / ${siteMetadata.title}`,
+  title: `Talks — ${siteMetadata.title}`,
   description: 'Confs. Meetups. More.',
 };
 
