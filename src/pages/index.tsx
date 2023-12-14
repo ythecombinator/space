@@ -17,7 +17,7 @@ const HomePage: NextPage<{}> = () => {
   return (
     <Layout heading="Hi, I'm Matheus! 👋">
       <SectionContainer className="prose dark:prose-invert">
-        <div className="flex flex-wrap gap-4">
+        <div className="flex-wrap gap-4 hidden sm:flex">
           <Typography.Highlight color="fuchsia">
             <Typography.lead className="px-3 font-bold text-slate-800 dark:text-white">
               Sr. Software Engineer
