@@ -24,26 +24,31 @@ const HomePage: NextPage<{}> = () => {
             </Typography.lead>
           </Typography.Highlight>
 
-          <Typography.Highlight color="emerald">
-            <Typography.lead className="px-3 font-bold text-slate-800 dark:text-white">
-              Mentor @ TechLabs
-            </Typography.lead>
-          </Typography.Highlight>
-
           <Typography.Highlight color="pink">
             <Typography.lead className="px-3 font-bold text-slate-800 dark:text-white">
               International Speaker
             </Typography.lead>
           </Typography.Highlight>
-          <Typography.Highlight color="cyan">
+
+          <Typography.Highlight color="lime">
             <Typography.lead className="px-3 font-bold text-slate-800 dark:text-white">
-              Google Developer Expert
+              Technical Reviewer
             </Typography.lead>
           </Typography.Highlight>
 
           <Typography.Highlight color="yellow">
             <Typography.lead className="px-3 font-bold text-slate-800 dark:text-white">
-              Program Committee @ React Summit
+              React Summit NYC Program Committee
+            </Typography.lead>
+          </Typography.Highlight>
+
+          <Typography.Highlight color="emerald">
+            <Typography.lead className="px-3 font-bold text-slate-800 dark:text-white">TechLabs Mentor</Typography.lead>
+          </Typography.Highlight>
+
+          <Typography.Highlight color="cyan">
+            <Typography.lead className="px-3 font-bold text-slate-800 dark:text-white">
+              Google Developer Expert
             </Typography.lead>
           </Typography.Highlight>
         </div>
