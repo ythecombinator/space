@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://www.ythecombinator.space
+Host: https://www.albuquerque.dev
 
 # Sitemaps
-Sitemap: https://www.ythecombinator.space/sitemap.xml
+Sitemap: https://www.albuquerque.dev/sitemap.xml

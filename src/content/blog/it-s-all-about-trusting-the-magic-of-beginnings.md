@@ -23,7 +23,7 @@ It all happened combined with efforts to shape a culture of sharing and openness
   </figcaption>
 </figure>
 
-I also had the opportunity to present [some of the cool things I learned](https://www.ythecombinator.space/talks) while working on our projects in conferences and meetups. This allowed me to grow my presentation skills (I know there is always a wide room for improvement here, tho) and to create a great network of contacts among our community.
+I also had the opportunity to present [some of the cool things I learned](https://www.albuquerque.dev/talks) while working on our projects in conferences and meetups. This allowed me to grow my presentation skills (I know there is always a wide room for improvement here, tho) and to create a great network of contacts among our community.
 
 <figure>
   <img src="/content/blog/it-s-all-about-trusting-the-magic-of-beginnings/talks.jpg" alt="A few talks" />

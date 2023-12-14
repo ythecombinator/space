@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 
-import { socialNetworks } from 'config/constants';
+import { siteMetadata, socialNetworks } from 'config/constants';
 
 import Badge from 'components/shared/badge';
 import ButtonLink from 'components/shared/button-link';
@@ -77,7 +77,8 @@ const HomePage: NextPage<{}> = () => {
         </Typography.p>
 
         <Typography.p>
-          Feel free to reach me out on social networks or write to me through land@ythecombinator.space.
+          Feel free to reach me out on social networks or write to me through{' '}
+          <Typography.a href={`mailto:${siteMetadata.email}`}>{siteMetadata.email}</Typography.a>.
         </Typography.p>
       </SectionContainer>
 
