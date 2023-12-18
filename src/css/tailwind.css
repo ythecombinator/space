@@ -22,11 +22,8 @@
 
 .breadcrumb-separator:before {
   display: inline-block;
-  margin: 0 0.6em;
-  transform: rotate(15deg);
-  border-right: 0.1em solid currentcolor;
-  height: 0.8em;
-  content: '';
+  margin-right: 0.6em;
+  content: '—';
 }
 
 @layer base {
