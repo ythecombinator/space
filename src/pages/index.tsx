@@ -20,7 +20,7 @@ const HomePage: NextPage<{}> = () => {
         <div className="flex-wrap gap-4 hidden sm:flex">
           <Typography.Highlight color="fuchsia">
             <Typography.lead className="px-3 font-bold text-slate-800 dark:text-white">
-              Sr. Software Engineer
+              Senior/Staff/Principal Software Engineer
             </Typography.lead>
           </Typography.Highlight>
 
@@ -59,7 +59,7 @@ const HomePage: NextPage<{}> = () => {
         </Typography.p>
 
         <Typography.p>
-          I’m currently a Sr. UI Engineer at{' '}
+          I’m currently a Sr. Software Engineer at{' '}
           <Badge label="Medallia" avatar="/img/logos/medallia.png" href="https://www.medallia.com" />, where I’ve been
           helping them build their surveys platform with{' '}
           <Badge label="React" avatar="/img/logos/react.png" href="https://react.dev" /> and{' '}
