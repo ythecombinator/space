@@ -29,7 +29,7 @@ const AllPostsSectionItem: FunctionComponent<PropsWithChildren<AllPostsSectionIt
         </div>
         <h2 className="grow text-2xl font-bold leading-8 tracking-tight">
           <Link href={`/${Routes.posts}/${slug}`} className="text-gray-900 dark:text-gray-100">
-            {language === 'pt' ? `🇧🇷 • ${title}` : `${title}`}
+            {language === 'pt' ? `🇧🇷 — ${title}` : `${title}`}
           </Link>
         </h2>
         <div className="prose max-w-none text-gray-500 dark:prose-invert dark:text-gray-400">{summary}</div>

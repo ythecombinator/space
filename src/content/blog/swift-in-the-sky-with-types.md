@@ -3,7 +3,7 @@ title: 'Swift In The Sky With Types'
 date: '2016-03-28'
 tags: ['swift', 'type systems']
 language: pt
-summary: "This is pretty much a controversial decentralized web technologies research story but, before starting, there are a few things I'd like to ensure you all, my beloved readers, are aware of."
+summary: '... Ou apenas mais uma conversa sobre linguagens, compiladores, tipos e... Swift!'
 ---
 
 > Originally published [here](http://equinocios.com/swift/2016/03/28/swift-in-the-sky-with-types/). It'll
@@ -524,6 +524,6 @@ de vocês.
 
 - [The Swift Programming Language (Swift 2.2) - The Basics](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html) ↝ Documentação oficial provida pela Apple.
 
-- [Type Systems\*\*](http://lucacardelli.name/Papers/TypeSystems.pdf) ↝ Artigo por [Luca Cardelli](http://lucacardelli.name/).
+- [Type Systems](http://lucacardelli.name/Papers/TypeSystems.pdf) ↝ Artigo por [Luca Cardelli](http://lucacardelli.name/).
 
 - [Types and Programming Languages](https://www.cis.upenn.edu/~bcpierce/tapl/) ↝ Livro de [Benjamin Pierce](http://www.cis.upenn.edu/~bcpierce/).
