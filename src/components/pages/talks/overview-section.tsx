@@ -35,12 +35,12 @@ const OverviewSection: FunctionComponent<PropsWithChildren<OverviewSectionProps>
         <b>{citiesTotal}</b> cities in <b>{countriesTotal}</b> different countries.
       </Typography.p>
       <Typography.p>
-        Want me to speak at your event? Please check my <Link href={Routes.talksRider}>speaker rider</Link> and hit me
+        Want me to speak at your event? Please check my <Link href={`/${Routes.talksRider}`}>speaker rider</Link> and hit me
         up!
       </Typography.p>
       <Typography.p>
         Want to see how {`I'm`} doing when it comes to call-for-papers of known events? I keep an open record of my
-        acceptances, rejections, etc. <Link href={Routes.talksCFP}>here</Link>!
+        acceptances, rejections, etc. <Link href={`/${Routes.talksCFP}`}>here</Link>!
       </Typography.p>
     </SectionContainer>
   );
