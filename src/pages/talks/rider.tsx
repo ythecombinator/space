@@ -17,7 +17,7 @@ import SectionContainer from 'components/shared/section-container';
 import SectionCover from 'components/shared/section-cover';
 import Typography from 'components/shared/typography';
 
-import Layout from 'components/layouts/layout-page';
+import Layout from 'components/layouts/page';
 
 const metadata = {
   title: `Speaker Rider — ${siteMetadata.title}`,

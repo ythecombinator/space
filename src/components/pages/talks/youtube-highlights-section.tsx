@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren, useMemo } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { YoutubeHighlight } from 'services/content/talks';
 

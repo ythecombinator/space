@@ -1,3 +1,5 @@
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { BLOCKS } from '@contentful/rich-text-types';
 import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next';
 import { NextSeo as Metadata } from 'next-seo';
 import { ParsedUrlQuery } from 'querystring';
@@ -9,10 +11,12 @@ import TalksContentService from 'services/content/talks';
 import { documentToString } from 'utils/contentful';
 import { generateOpenGraphImage } from 'utils/open-graph';
 
-import Layout from 'components/layouts/layout-page';
+import SectionContainer from 'components/shared/section-container';
+import Typography from 'components/shared/typography';
+
+import Layout from 'components/layouts/page';
 
 import EventsSection from 'components/pages/talk/events-section';
-import OverviewSection from 'components/pages/talk/overview-section';
 
 /*~
  * TYPES
@@ -84,7 +88,13 @@ const TalkPage: NextPage<Props> = (props) => {
         }}
       />
       <Layout heading={title!}>
-        <OverviewSection abstract={abstract} />
+        <SectionContainer>
+          {documentToReactComponents(abstract, {
+            renderNode: {
+              [BLOCKS.PARAGRAPH]: (_node, children) => <Typography.p>{children}</Typography.p>,
+            },
+          })}
+        </SectionContainer>
         <EventsSection items={sessions} />
       </Layout>
     </>

@@ -10,7 +10,7 @@ import { generateOpenGraphImage } from 'utils/open-graph';
 
 import SearchBar, { SearchBarProps } from 'components/shared/seach-bar';
 
-import Layout from 'components/layouts/layout-page';
+import Layout from 'components/layouts/page';
 
 import AllPostsSection from 'components/pages/posts/all-posts-section';
 import AllPostsSectionSkeleton from 'components/pages/posts/all-posts-section-skeleton';

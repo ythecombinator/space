@@ -1,9 +1,9 @@
 import { ComponentType } from 'react';
 import { FaDev, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
-import LayoutBlogEntry from 'components/layouts/layout-blog-entry';
-import LayoutMDXEntry from 'components/layouts/layout-mdx-entry';
-import LayoutPage from 'components/layouts/layout-page';
+import LayoutBlogEntry from 'components/layouts/blog-entry';
+import LayoutMDXEntry from 'components/layouts/mdx-entry';
+import LayoutPage from 'components/layouts/page';
 
 export const siteMetadata = {
   title: 'Matheus Albuquerque',

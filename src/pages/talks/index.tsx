@@ -8,14 +8,16 @@ import TalksContentService from 'services/content/talks';
 
 import { generateOpenGraphImage } from 'utils/open-graph';
 
+import Link from 'components/shared/link';
 import SearchBar, { SearchBarProps } from 'components/shared/seach-bar';
+import SectionContainer from 'components/shared/section-container';
+import Typography from 'components/shared/typography';
 
-import Layout from 'components/layouts/layout-page';
+import Layout from 'components/layouts/page';
 
 import ActiveTalksSection from 'components/pages/talks/active-talks-section';
 import AllTalksSection from 'components/pages/talks/all-talks-section';
 import AllTalksSectionSkeleton from 'components/pages/talks/all-talks-section-skeleton';
-import OverviewSection from 'components/pages/talks/overview-section';
 import PhotoHighlightsSection from 'components/pages/talks/photo-highlights-section';
 import TopicHighlightsSection from 'components/pages/talks/topic-highlights-section';
 import YoutubeHighlightsSection from 'components/pages/talks/youtube-highlights-section';
@@ -64,6 +66,7 @@ export async function getStaticProps() {
 
 const TalksPage: NextPage<Props> = (props) => {
   const { talksStats, allTalks, reactTalks, featuredTalks, youtubeHighlights, activeTalks, ogImage } = props;
+  const { citiesTotal, countriesTotal, talksTotal, eventsTotal } = talksStats;
 
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -88,7 +91,25 @@ const TalksPage: NextPage<Props> = (props) => {
         headingGradient="borealis"
         subHeading={<SearchBar label={`Search topics, events and places`} onChange={onChange} />}
       >
-        <OverviewSection {...talksStats} />
+        <SectionContainer className="prose dark:prose-invert">
+          <Typography.p>
+            {`I've`} been speaking and learning in public since 2015, mostly about web performance,
+            JavaScript/TypeScript, React, and their ecosystem. Other topics also include programming languages design
+            and iOS engineering.
+          </Typography.p>
+          <Typography.p>
+            In total, {`I've`} presented <b>{talksTotal}</b> different sessions in <b>{eventsTotal}</b> events across{' '}
+            <b>{citiesTotal}</b> cities in <b>{countriesTotal}</b> different countries.
+          </Typography.p>
+          <Typography.p>
+            Want me to speak at your event? Please check my <Link href={`/${Routes.talksRider}`}>speaker rider</Link>{' '}
+            and hit me up!
+          </Typography.p>
+          <Typography.p>
+            Want to see how {`I'm`} doing when it comes to call-for-papers of known events? I keep an open record of my
+            acceptances, rejections, etc. <Link href={`/${Routes.talksCFP}`}>here</Link>!
+          </Typography.p>
+        </SectionContainer>
 
         <Suspense fallback={<AllTalksSectionSkeleton items={5} />}>
           <AllTalksSection items={allTalks} searchTerm={searchTerm} />

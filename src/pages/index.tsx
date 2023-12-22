@@ -7,7 +7,7 @@ import ButtonLink from 'components/shared/button-link';
 import SectionContainer from 'components/shared/section-container';
 import Typography from 'components/shared/typography';
 
-import Layout from 'components/layouts/layout-page';
+import Layout from 'components/layouts/page';
 
 /*~
  * PAGE
@@ -18,39 +18,39 @@ const HomePage: NextPage<{}> = () => {
     <Layout heading="Hi, I'm Matheus! 👋">
       <SectionContainer className="prose dark:prose-invert">
         <div className="flex-wrap gap-4 hidden sm:flex">
-          <Typography.Highlight color="fuchsia">
+          <Typography.highlight color="fuchsia">
             <Typography.lead className="px-3 font-bold text-slate-800 dark:text-white">
               Senior/Staff/Principal Software Engineer
             </Typography.lead>
-          </Typography.Highlight>
+          </Typography.highlight>
 
-          <Typography.Highlight color="pink">
+          <Typography.highlight color="pink">
             <Typography.lead className="px-3 font-bold text-slate-800 dark:text-white">
               International Speaker
             </Typography.lead>
-          </Typography.Highlight>
+          </Typography.highlight>
 
-          <Typography.Highlight color="lime">
+          <Typography.highlight color="lime">
             <Typography.lead className="px-3 font-bold text-slate-800 dark:text-white">
               Technical Reviewer
             </Typography.lead>
-          </Typography.Highlight>
+          </Typography.highlight>
 
-          <Typography.Highlight color="yellow">
+          <Typography.highlight color="yellow">
             <Typography.lead className="px-3 font-bold text-slate-800 dark:text-white">
               React Summit NYC Program Committee
             </Typography.lead>
-          </Typography.Highlight>
+          </Typography.highlight>
 
-          <Typography.Highlight color="emerald">
+          <Typography.highlight color="emerald">
             <Typography.lead className="px-3 font-bold text-slate-800 dark:text-white">TechLabs Mentor</Typography.lead>
-          </Typography.Highlight>
+          </Typography.highlight>
 
-          <Typography.Highlight color="cyan">
+          <Typography.highlight color="cyan">
             <Typography.lead className="px-3 font-bold text-slate-800 dark:text-white">
               Google Developer Expert
             </Typography.lead>
-          </Typography.Highlight>
+          </Typography.highlight>
         </div>
 
         <Typography.p>
