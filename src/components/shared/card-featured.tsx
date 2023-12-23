@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren, useRef } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 
 import Link from 'components/shared/link';
 import Typography from 'components/shared/typography';

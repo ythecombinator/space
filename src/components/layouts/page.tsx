@@ -1,7 +1,7 @@
 import { usePathname } from 'next/navigation';
 import { FunctionComponent, PropsWithChildren } from 'react';
 
-import { toBreadcrumbs } from 'utils/string';
+import { shouldBreadcrumbsRender, toBreadcrumbs } from 'utils/string';
 
 import Breadcrumbs from 'components/shared/breadcrumbs';
 import PageTitle, { PageTitleProps } from 'components/shared/page-title';
@@ -31,7 +31,7 @@ const PageLayout: FunctionComponent<PropsWithChildren<PageLayoutProps>> = ({
 
   return (
     <div className="mt-6 px-2 sm:px-0">
-      {breadcrumbs.length > 1 && <Breadcrumbs items={breadcrumbs} />}
+      {shouldBreadcrumbsRender(breadcrumbs) && <Breadcrumbs items={breadcrumbs} />}
       <div className="space-y-2 pt-6 pb-8 md:space-y-5">
         <PageTitle gradient={headingGradient}>{heading}</PageTitle>
         {subHeading}

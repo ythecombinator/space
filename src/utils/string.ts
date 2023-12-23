@@ -1,3 +1,5 @@
+import { Routes } from 'config/constants';
+
 interface BreadcrumbItem {
   label: string;
   path: string;
@@ -14,4 +16,9 @@ export function toBreadcrumbs(pathname: string): BreadcrumbItem[] {
       path: currentPath,
     };
   });
+}
+
+export function shouldBreadcrumbsRender(items: ReturnType<typeof toBreadcrumbs>) {
+  const includePaths = [Routes.about];
+  return items.length > 1 && includePaths.some((path) => path.includes(items[0].label));
 }
