@@ -38,7 +38,7 @@
     },
     {
       "company": "Beakyn Company",
-      "companyUrl": "https://linkedin.com/company/beakyn-company",
+      "companyUrl": "https://linkedin.com/company/beakyn",
       "startDate": "February, 2018",
       "endDate": "August, 2019",
       "location": "Greater New York City Area",
@@ -47,7 +47,7 @@
     },
     {
       "company": "Beakyn Company",
-      "companyUrl": "https://linkedin.com/company/beakyn-company",
+      "companyUrl": "https://linkedin.com/company/beakyn",
       "startDate": "September, 2017",
       "endDate": "August, 2019",
       "location": "Greater New York City Area",
@@ -55,8 +55,8 @@
       "description": "Building large-scale geographic data visualization platforms and assets curation systems.\n\nMostly working with:\n\n- JavaScript and TypeScript\n- React and Next.js\n- React Native and iOS native development\n- redux and related tooling (e.g. redux-saga, redux-act, reselect, etc.)\n- Webpack and bundle optimization techniques\n- Map data plotting and analyzation tools (e.g. Mapbox GL, Turf.js, pbf, etc.)\n- Firebase services (Auth, Cloud Functions, Firestore, etc.)\n- Authentication, authorization, and accounting infrastructure (mostly with Auth0 and node.js)\n- Chat & Chatbots tooling (Intercom, Tokbox, Dialogflow, etc.)\n- Buddy CI and other continuous integration workflows\n- Vercel, Heroku, and other cloud platforms\n- Github Projects and other project management solutions"
     },
     {
-      "company": "Apple Developer Academy",
-      "companyUrl": "https://linkedin.com/company/apple-developer-academy",
+      "company": "Apple Developer Academy | IFCE",
+      "companyUrl": "https://linkedin.com/company/appledeveloperacademyifce",
       "startDate": "January, 2016",
       "endDate": "December, 2017",
       "location": "Fortaleza e Região, Brasil",
@@ -66,11 +66,27 @@
   ],
   "volunteering": [
     {
+      "company": "Google Developer Experts",
+      "companyUrl": "https://linkedin.com/company/experts-program",
+      "startDate": "February, 2023",
+      "endDate": "Present",
+      "title": "Member",
+      "description": "The Google Developer Experts program is a global network of highly experienced technology experts, influencers, and thought leaders who have expertise in Google technologies, are active leaders in the space, natural mentors, and contribute to the wider developer and startup ecosystem."
+    },
+    {
+      "company": "GitNation",
+      "companyUrl": "https://linkedin.com/company/gitnation",
+      "startDate": "February, 2023",
+      "endDate": "Present",
+      "title": "Programme Committee, React Summit US",
+      "description": "As a member of this committee I go over the proposed talks for the United States chapter of React Summit and, with the rest of the team, I help decide which sessions get a slot on the agenda."
+    },
+    {
       "company": "TechLabs Berlin",
       "companyUrl": "https://linkedin.com/company/techlabs-berlin",
       "startDate": "November, 2020",
       "endDate": "Present",
-      "title": "Project Mentor • Mentoring Coordinator",
+      "title": "Mentor",
       "description": "TechLabs is a completely free platform for people from all disciplines to learn different programming skills.\n\nAs a mentorship coordinator—and a mentor—, I had a chance to:\n\n- Take an active part in the project ideation phase to help the students develop their own vision\n- Regularly the project team, helping them making progress with their project\n- Give feedback on the current track\n- Present workshops on technologies I have expertise in, like React.js, TypeScript, Firebase, etc.\n- Helped recruiting more volunteers to help the team\n- Promoted improvements to how mentoring happens"
     },
     {
