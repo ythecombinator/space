@@ -17,7 +17,7 @@
     "lint:a11y": "pa11y-ci --sitemap http://localhost:3000/sitemap.xml",
     "format": "prettier --write src/",
     "codegen:schema": "graphql-codegen --config codegen.ts --require dotenv/config",
-    "codegen:linkedin": "esno scripts/codegen-linkedin.ts"
+    "codegen:linkedin": "tsx scripts/codegen-linkedin.ts"
   },
   "dependencies": {
     "@apollo/client": "3.8.7",
@@ -100,12 +100,12 @@
     "eslint-config-next": "14.0.4",
     "eslint-plugin-jsx-a11y": "6.8.0",
     "eslint-plugin-tailwindcss": "3.13.0",
-    "esno": "4.0.0",
     "husky": "8.0.3",
     "lint-staged": "15.2.0",
     "pa11y-ci": "3.1.0",
     "prettier": "3.1.1",
     "ts-prune": "0.10.3",
+    "tsx": "^4.7.0",
     "typescript": "5.3.3",
     "utility-types": "3.10.0"
   }
