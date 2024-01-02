@@ -14,6 +14,8 @@ const DEST_PATH = 'src/content/misc/experience.json';
 const API_BASE_URL = 'https://nubela.co/proxycurl/api/v2/linkedin';
 const API_TOKEN = `Bearer ${process.env.NUBELA_TOKEN}`;
 
+const SHOW_LESS_CS = '\n            \n\n    \n    \n\n    \n        Zobrazit méně';
+
 /*~
  * UTILS
  */
@@ -45,6 +47,14 @@ function getCompanyUrl(url: string) {
   return null;
 }
 
+function getDescription(rawDescription: string) {
+  if (rawDescription) {
+    return rawDescription.replace(SHOW_LESS_CS, '');
+  }
+
+  return null;
+}
+
 function mapExperience(experiences: ExperienceEntry[]) {
   return experiences
     .map((experience) => {
@@ -55,7 +65,7 @@ function mapExperience(experiences: ExperienceEntry[]) {
         endDate: getEndDate(experience.ends_at),
         location: experience.location,
         title: experience.title,
-        description: experience.description,
+        description: getDescription(experience.description),
       };
     })
     .filter((experience) => Boolean(experience.companyUrl));
