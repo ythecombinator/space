@@ -13,6 +13,8 @@ import Inventory from 'components/shared/inventory';
 import Pre from 'components/shared/pre';
 import Typography from 'components/shared/typography';
 
+import CustomerPortfolio from 'components/pages/about/customer-portfolio';
+
 /*~
  * TYPES
  */
@@ -41,6 +43,7 @@ const MDXComponents: MDXContentProps['components'] = {
   Lead: Typography.lead,
   Subtle: Typography.subtle,
   Inventory: Inventory,
+  CustomerPortfolio: CustomerPortfolio,
 };
 
 /*~
