@@ -46,10 +46,6 @@ export async function getStaticProps() {
 }
 
 /*~
- * COMPONENTS
- */
-
-/*~
  * PAGE
  */
 

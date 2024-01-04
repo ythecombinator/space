@@ -92,8 +92,8 @@ const AboutPage: NextPage = () => {
           </Typography.p>
 
           <CurrentLocation
-            href="http://maps.apple.com/?address=Prague%CZ&z=15"
-            location="Prague, Czech Republic"
+            href={siteMetadata.locationLink}
+            location={siteMetadata.location}
             locationImage="/content/misc/prague.jpg"
           />
 
