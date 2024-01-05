@@ -3,16 +3,16 @@ import { CoreContent } from 'pliny/utils/contentlayer';
 
 import ContentlayerService from 'services/providers/contentlayer';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type MDXEntry = CoreContent<RawMDXEntry>;
 export type { RawMDXEntry };
 
-/*~
- * SERVICE
- */
+//  ---------------------------------------------------------------------------
+//  CORE
+//  ---------------------------------------------------------------------------
 
 export default class MarkdownContentService extends ContentlayerService<MDXEntry> {
   private static instance: MarkdownContentService;

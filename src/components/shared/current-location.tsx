@@ -6,9 +6,9 @@ import { siteMetadata } from 'config/constants';
 
 import Link from 'components/shared/link';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 interface CurrentLocationProps {
   href: string;
@@ -16,9 +16,9 @@ interface CurrentLocationProps {
   locationImage: string;
 }
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const CurrentLocation: FunctionComponent<PropsWithChildren<CurrentLocationProps>> = ({
   href,

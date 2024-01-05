@@ -9,17 +9,17 @@ import { classNames } from 'utils/styles';
 
 import Link, { LinkProps } from 'components/shared/link';
 
-/*~
- * Typography.a
- */
+//  ---------------------------------------------------------------------------
+//  UI: Typography.a
+//  ---------------------------------------------------------------------------
 
 const Anchor: FunctionComponent<LinkProps> = ({ className, href, ...props }) => {
   return <Link className={classNames(className)} target="_blank" rel="noopener noreferrer" href={href} {...props} />;
 };
 
-/*~
- * Typography.h1
- */
+//  ---------------------------------------------------------------------------
+//  UI: Typography.h1
+//  ---------------------------------------------------------------------------
 
 const Heading1: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLHeadingElement>>> = ({
   children,
@@ -40,9 +40,9 @@ const Heading1: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLHeadingEl
   );
 };
 
-/*~
- * Typography.h2
- */
+//  ---------------------------------------------------------------------------
+//  UI: Typography.h2
+//  ---------------------------------------------------------------------------
 
 const Heading2: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLHeadingElement>>> = ({
   children,
@@ -63,9 +63,9 @@ const Heading2: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLHeadingEl
   );
 };
 
-/*~
- * Typography.h3
- */
+//  ---------------------------------------------------------------------------
+//  UI: Typography.h3
+//  ---------------------------------------------------------------------------
 
 const Heading3: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLHeadingElement>>> = ({
   children,
@@ -82,9 +82,9 @@ const Heading3: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLHeadingEl
   );
 };
 
-/*~
- * Typography.highlight
- */
+//  ---------------------------------------------------------------------------
+//  UI: Typography.highlight
+//  ---------------------------------------------------------------------------
 
 interface HighlightProps extends Omit<RoughNotationProps, 'type' | 'show' | 'color'> {
   color: keyof typeof colors;
@@ -101,9 +101,9 @@ const Highlight: FunctionComponent<PropsWithChildren<HighlightProps>> = ({ child
   );
 };
 
-/*~
- * Typography.lead
- */
+//  ---------------------------------------------------------------------------
+//  UI: Typography.lead
+//  ---------------------------------------------------------------------------
 
 const Lead: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLParagraphElement>>> = ({ children, ...props }) => {
   return (
@@ -113,9 +113,9 @@ const Lead: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLParagraphElem
   );
 };
 
-/*~
- * Typography.mark
- */
+//  ---------------------------------------------------------------------------
+//  UI: Typography.mark
+//  ---------------------------------------------------------------------------
 
 const Mark: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLElement>>> = ({ children }) => {
   return (
@@ -125,9 +125,9 @@ const Mark: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLElement>>> = 
   );
 };
 
-/*~
- * Typography.p
- */
+//  ---------------------------------------------------------------------------
+//  UI: Typography.P
+//  ---------------------------------------------------------------------------
 
 const Paragraph: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLParagraphElement>>> = ({
   children,
@@ -141,9 +141,9 @@ const Paragraph: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLParagrap
   );
 };
 
-/*~
- * Typography.small
- */
+//  ---------------------------------------------------------------------------
+//  UI: Typography.small
+//  ---------------------------------------------------------------------------
 
 const Small: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLHeadingElement>>> = ({
   children,
@@ -157,9 +157,9 @@ const Small: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLHeadingEleme
   );
 };
 
-/*~
- * Typography.subtle
- */
+//  ---------------------------------------------------------------------------
+//  UI: Typography.subtle
+//  ---------------------------------------------------------------------------
 
 const Subtle: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLParagraphElement>>> = ({ children, ...props }) => {
   return (
@@ -169,9 +169,9 @@ const Subtle: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLParagraphEl
   );
 };
 
-/*~
- * API
- */
+//  ---------------------------------------------------------------------------
+//  UI: API
+//  ---------------------------------------------------------------------------
 
 const Typography = {
   mark: Mark,

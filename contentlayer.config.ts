@@ -16,9 +16,9 @@ import remarkMath from 'remark-math';
 
 const root = process.cwd();
 
-/*~
- * UTILS
- */
+//  ---------------------------------------------------------------------------
+//  UTILS
+//  ---------------------------------------------------------------------------
 
 const fields: FieldDefs = { title: { type: 'string', required: true } };
 
@@ -30,9 +30,9 @@ const computedFields: ComputedFields = {
   },
 };
 
-/*~
- * MODELS
- */
+//  ---------------------------------------------------------------------------
+//  MODELS
+//  ---------------------------------------------------------------------------
 
 export const BlogEntry = defineDocumentType(() => ({
   name: 'BlogEntry',

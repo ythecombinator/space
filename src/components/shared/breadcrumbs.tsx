@@ -5,17 +5,17 @@ import { classNames } from 'utils/styles';
 
 import Link from 'components/shared/link';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 interface BreadcrumbsProps {
   items: ReturnType<typeof toBreadcrumbs>;
 }
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const Breadcrumbs: FunctionComponent<BreadcrumbsProps> = ({ items }) => {
   return (

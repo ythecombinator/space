@@ -19,15 +19,15 @@ import Button from 'components/pages/cv/button';
 import Card from 'components/pages/cv/card';
 import Section from 'components/pages/cv/section';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-/*~
- * NEXTJS
- */
+//  ---------------------------------------------------------------------------
+//  NEXT
+//  ---------------------------------------------------------------------------
 
 export async function getStaticProps() {
   const workData = linkedinData.work
@@ -41,9 +41,9 @@ export async function getStaticProps() {
   return { props: { work } };
 }
 
-/*~
- * PAGE
- */
+//  ---------------------------------------------------------------------------
+//  NEXT
+//  ---------------------------------------------------------------------------
 
 const Page: NextPage<PageProps> = ({ work }) => {
   return (

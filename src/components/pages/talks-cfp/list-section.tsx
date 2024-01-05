@@ -22,9 +22,9 @@ import Table from 'components/shared/table';
 import Tag, { TagVariant } from 'components/shared/tag';
 import Typography from 'components/shared/typography';
 
-/*~
- * UTILS
- */
+//  ---------------------------------------------------------------------------
+//  UTILS
+//  ---------------------------------------------------------------------------
 
 const primaryTagMap: Record<EngagementStatusPrimary, TagVariant> = {
   CANCELED: 'slate',
@@ -107,17 +107,17 @@ const columns = [
   }),
 ];
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 interface DataSectionProps {
   data: Record<ConferenceSeason, EventEntry[]>;
 }
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const DataSection: FunctionComponent<PropsWithChildren<DataSectionProps>> = ({ data }) => {
   const currentYear = String(new Date().getFullYear()) as ConferenceSeason;

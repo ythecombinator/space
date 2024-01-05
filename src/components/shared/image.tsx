@@ -3,9 +3,9 @@ import React, { ComponentPropsWithoutRef, useState } from 'react';
 
 import { classNames } from 'utils/styles';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type ImageProps = {
   containerClassName?: string;
@@ -13,9 +13,9 @@ export type ImageProps = {
   lazy?: boolean;
 } & ComponentPropsWithoutRef<typeof NextImage>;
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const Image = (props: ImageProps) => {
   const { alt, src, containerClassName, imageClassName, lazy = true, ...rest } = props;

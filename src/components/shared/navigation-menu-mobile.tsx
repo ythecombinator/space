@@ -2,17 +2,17 @@ import { FunctionComponent, PropsWithChildren, useState } from 'react';
 
 import Link from 'components/shared/link';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 interface NavigationMenuProps {
   items: Array<{ href: string; title: string }>;
 }
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const NavigationMenuMobile: FunctionComponent<PropsWithChildren<NavigationMenuProps>> = ({ items }) => {
   const [navShow, setNavShow] = useState(false);

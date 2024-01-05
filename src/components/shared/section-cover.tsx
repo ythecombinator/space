@@ -3,9 +3,9 @@ import { FunctionComponent, PropsWithChildren } from 'react';
 
 type SectionCoverProps = Pick<ImageProps, 'src' | 'alt'>;
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 export const SectionCover: FunctionComponent<PropsWithChildren<SectionCoverProps>> = ({ src, alt }) => {
   return (

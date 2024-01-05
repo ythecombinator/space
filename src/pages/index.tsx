@@ -9,9 +9,9 @@ import Typography from 'components/shared/typography';
 
 import Layout from 'components/layouts/page';
 
-/*~
- * PAGE
- */
+//  ---------------------------------------------------------------------------
+//  NEXT
+//  ---------------------------------------------------------------------------
 
 const HomePage: NextPage<{}> = () => {
   return (

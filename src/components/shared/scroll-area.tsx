@@ -3,9 +3,9 @@ import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react';
 
 import { classNames } from 'utils/styles';
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const ScrollArea = forwardRef<
   ElementRef<typeof ScrollAreaPrimitive.Root>,

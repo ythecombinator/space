@@ -7,9 +7,9 @@ import CardOutlined from 'components/shared/card-outlined';
 import Link from 'components/shared/link';
 import Tooltip from 'components/shared/tooltip';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type ActiveTalksSectionItemProps = {
   talkTitle: string;
@@ -17,9 +17,9 @@ export type ActiveTalksSectionItemProps = {
   sessions: Array<{ eventName: string; eventPage: string; eventFlag: string }>;
 };
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const ActiveTalksSectionItem: FunctionComponent<PropsWithChildren<ActiveTalksSectionItemProps>> = (props) => {
   const { talkTitle, talkSlug, sessions } = props;

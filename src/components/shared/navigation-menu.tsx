@@ -8,17 +8,17 @@ import { classNames } from 'utils/styles';
 import Logo from 'components/shared/logo';
 import NavigationMenuControlLink from 'components/shared/navigation-menu-control-link';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 interface NavigationMenuProps {
   items: Array<{ href: string; title: string }>;
 }
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 export const NavigationMenu: FunctionComponent<PropsWithChildren<NavigationMenuProps>> = ({ items }) => {
   return (

@@ -6,9 +6,9 @@ import { Routes } from 'config/constants';
 
 import Typography from 'components/shared/typography';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type PhotoHighlightsSectionItemProps = {
   talkSlug: string;
@@ -16,9 +16,9 @@ export type PhotoHighlightsSectionItemProps = {
   photoURL: string;
 };
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const PhotoHighlightsSectionItem: FunctionComponent<PropsWithChildren<PhotoHighlightsSectionItemProps>> = (props) => {
   const { photoURL, talkSlug, eventName } = props;

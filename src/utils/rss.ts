@@ -1,5 +1,4 @@
-import { Routes } from 'config/constants';
-import { siteMetadata } from 'config/constants';
+import { Routes, siteMetadata } from 'config/constants';
 
 import { BlogEntry } from 'services/content/posts';
 

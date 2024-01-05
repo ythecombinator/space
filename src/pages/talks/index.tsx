@@ -27,15 +27,15 @@ const metadata = {
   description: 'Confs. Meetups. More.',
 };
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-/*~
- * NEXTJS
- */
+//  ---------------------------------------------------------------------------
+//  NEXT
+//  ---------------------------------------------------------------------------
 
 const talksServiceInstance = TalksContentService.getInstance();
 
@@ -60,9 +60,9 @@ export async function getStaticProps() {
   };
 }
 
-/*~
- * PAGE
- */
+//  ---------------------------------------------------------------------------
+//  NEXT
+//  ---------------------------------------------------------------------------
 
 const TalksPage: NextPage<Props> = (props) => {
   const { talksStats, allTalks, reactTalks, featuredTalks, youtubeHighlights, activeTalks, ogImage } = props;

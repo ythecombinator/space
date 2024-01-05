@@ -5,9 +5,9 @@ import { Routes } from 'config/constants';
 import Chip from 'components/shared/chip';
 import Link from 'components/shared/link';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type OrderedListItemProps = {
   href: string;
@@ -16,9 +16,9 @@ export type OrderedListItemProps = {
   prefix?: string | null;
 };
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const OrderedListItem: FunctionComponent<PropsWithChildren<OrderedListItemProps>> = (props) => {
   const { label, href, index, prefix } = props;

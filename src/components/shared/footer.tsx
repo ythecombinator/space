@@ -8,9 +8,9 @@ import Link from 'components/shared/link';
 import Signature from 'components/shared/signature';
 import Typography from 'components/shared/typography';
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const Footer: FunctionComponent<PropsWithChildren<{}>> = () => {
   return (

@@ -9,9 +9,9 @@ import CardOutlined from 'components/shared/card-outlined';
 import CardOutlinedListItem from 'components/shared/card-outlined-list-item';
 import Link from 'components/shared/link';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type EventsSectionItemProps = {
   // Event
@@ -29,9 +29,9 @@ export type EventsSectionItemProps = {
   sessionRecording: string;
 };
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const EventsSectionItem: FunctionComponent<PropsWithChildren<EventsSectionItemProps>> = (props) => {
   const {

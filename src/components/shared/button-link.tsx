@@ -6,15 +6,15 @@ import { isInternalLink } from 'utils/link';
 
 import Link, { LinkProps } from 'components/shared/link';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 type ButtonLinkProps = LinkProps & { className?: string; icon: JSX.Element };
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 export const ButtonLink: FunctionComponent<PropsWithChildren<ButtonLinkProps>> = ({ children, icon, href }) => (
   <Link

@@ -1,8 +1,8 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const Chip: FunctionComponent<PropsWithChildren<{}>> = ({ children }) => {
   return (

@@ -8,15 +8,15 @@ import { formatDate } from 'utils/date';
 
 import Link from 'components/shared/link';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type AllPostsSectionItemProps = Pick<BlogEntry, 'slug' | 'title' | 'date' | 'summary' | 'tags' | 'language'>;
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const AllPostsSectionItem: FunctionComponent<PropsWithChildren<AllPostsSectionItemProps>> = (props) => {
   const { slug, date, title, summary, language } = props;

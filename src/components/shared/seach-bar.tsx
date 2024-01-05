@@ -1,18 +1,18 @@
 import { FunctionComponent, InputHTMLAttributes, PropsWithChildren } from 'react';
 import { FaSearch } from 'react-icons/fa';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type SearchBarProps = {
   label: string;
   onChange: InputHTMLAttributes<HTMLInputElement>['onChange'];
 };
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const SearchBar: FunctionComponent<PropsWithChildren<SearchBarProps>> = ({ label, onChange }) => {
   return (

@@ -10,9 +10,9 @@ import OrderedListItem from 'components/shared/ordered-list-item';
 import SectionContainer from 'components/shared/section-container';
 import SectionHeading from 'components/shared/section-heading';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 type Schema = {
   talkSlug: string;
@@ -30,9 +30,9 @@ export type AllTalksSectionProps = {
   searchTerm: string;
 };
 
-/*~
- * UTILS
- */
+//  ---------------------------------------------------------------------------
+//  UTILS
+//  ---------------------------------------------------------------------------
 
 const searchSchema = {
   talkTitle: 'string',
@@ -45,9 +45,9 @@ const searchSchema = {
   _countries: 'string',
 } as const;
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const AllTalksSection: FunctionComponent<PropsWithChildren<AllTalksSectionProps>> = ({
   items: baseItems,

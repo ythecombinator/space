@@ -2,18 +2,18 @@ import { FunctionComponent, PropsWithChildren } from 'react';
 
 import Typography from 'components/shared/typography';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 interface EmptyListProps {
   heading: string;
   subHeading: string;
 }
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 export const EmptyList: FunctionComponent<PropsWithChildren<EmptyListProps>> = ({ heading, subHeading }) => {
   return (

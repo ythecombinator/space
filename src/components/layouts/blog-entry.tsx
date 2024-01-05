@@ -14,17 +14,17 @@ import ScrollTop from 'components/shared/scroll-top';
 import SectionCover from 'components/shared/section-cover';
 import Typography from 'components/shared/typography';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 interface BlogEntryLayoutProps {
   content: BlogEntry;
 }
 
-/*~
- * LAYOUT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const BlogEntryLayout: FunctionComponent<PropsWithChildren<BlogEntryLayoutProps>> = ({ content, children }) => {
   const { date, title, slug, readingTime, cover } = content;

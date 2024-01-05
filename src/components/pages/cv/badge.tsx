@@ -3,9 +3,9 @@ import { HTMLAttributes } from 'react';
 
 import { classNames } from 'utils/styles';
 
-/*~
- * UTILS
- */
+//  ---------------------------------------------------------------------------
+//  UTILS
+//  ---------------------------------------------------------------------------
 
 const badgeVariants = cva(
   'inline-flex items-center rounded-md border px-2 py-0.5 text-xs font-semibold font-mono transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-nowrap',
@@ -24,15 +24,15 @@ const badgeVariants = cva(
   }
 );
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export interface BadgeProps extends HTMLAttributes<HTMLDivElement>, VariantProps<typeof badgeVariants> {}
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 function Badge({ className, variant, ...props }: BadgeProps) {
   return <div className={classNames(badgeVariants({ variant }), className)} {...props} />;

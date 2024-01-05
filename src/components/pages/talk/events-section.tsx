@@ -6,17 +6,17 @@ import SectionList from 'components/shared/section-list';
 
 import EventsSectionItem, { EventsSectionItemProps } from 'components/pages/talk/events-section-item';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type EventsSectionProps = {
   items: Array<EventsSectionItemProps>;
 };
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const EventsSection: FunctionComponent<PropsWithChildren<EventsSectionProps>> = (props) => {
   const { items } = props;

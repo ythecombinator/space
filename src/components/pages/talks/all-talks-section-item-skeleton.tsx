@@ -3,9 +3,9 @@ import { FunctionComponent, PropsWithChildren } from 'react';
 import ContentLoader from 'react-content-loader';
 import colors from 'tailwindcss/colors';
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const AllTalksSectionItemSkeleton: FunctionComponent<PropsWithChildren<{}>> = () => {
   const { theme } = useTheme();

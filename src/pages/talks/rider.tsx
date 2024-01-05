@@ -1,6 +1,5 @@
 import { InferGetStaticPropsType, NextPage } from 'next';
 import { useMDXComponent } from 'next-contentlayer/hooks';
-import { MDXRemote } from 'next-mdx-remote';
 import { NextSeo as Metadata } from 'next-seo';
 import { coreContent } from 'pliny/utils/contentlayer';
 
@@ -8,31 +7,22 @@ import { Layouts, siteMetadata } from 'config/constants';
 
 import MarkdownContentService from 'services/content/markdown';
 
-import { serializeExperience } from 'utils/linkedin';
-
-import experience from 'content/misc/experience.json';
-
 import MDXLayoutRenderer from 'components/shared/mdx-components';
-import SectionContainer from 'components/shared/section-container';
-import SectionCover from 'components/shared/section-cover';
-import Typography from 'components/shared/typography';
-
-import Layout from 'components/layouts/page';
 
 const metadata = {
   title: `Speaker Rider — ${siteMetadata.title}`,
   description: 'Your Event & I!',
 };
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type SpeakerRiderPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-/*~
- * NEXTJS
- */
+//  ---------------------------------------------------------------------------
+//  NEXT
+//  ---------------------------------------------------------------------------
 
 const markdownServiceInstance = MarkdownContentService.getInstance();
 
@@ -47,14 +37,6 @@ export async function getStaticProps() {
 
   return { props: { content } };
 }
-
-/*~
- * COMPONENTS
- */
-
-/*~
- * PAGE
- */
 
 const Page: NextPage<SpeakerRiderPageProps> = ({ content }) => {
   const MDXRenderer = useMDXComponent(content.body.code);

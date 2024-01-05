@@ -3,9 +3,9 @@ import { FunctionComponent, PropsWithChildren } from 'react';
 import fonts from 'utils/fonts';
 import { classNames } from 'utils/styles';
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const LayoutContainer: FunctionComponent<PropsWithChildren<{}>> = ({ children }) => {
   return (

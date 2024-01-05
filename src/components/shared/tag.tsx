@@ -4,9 +4,9 @@ import { classNames } from 'utils/styles';
 
 import Typography from 'components/shared/typography';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type TagVariant = 'pink' | 'slate' | 'sky' | 'green' | 'red' | 'orange' | 'gray';
 
@@ -14,9 +14,9 @@ export interface TagProps {
   variant: TagVariant;
 }
 
-/*~
- * UTILS
- */
+//  ---------------------------------------------------------------------------
+//  UTILS
+//  ---------------------------------------------------------------------------
 
 const variantMap: Record<TagVariant, string> = {
   pink: 'text-fuchsia-700 border-pink-300 bg-pink-100 dark:text-fuchsia-300 dark:border-pink-600 dark:bg-pink-900',
@@ -29,9 +29,9 @@ const variantMap: Record<TagVariant, string> = {
   slate: 'text-slate-700 border-slate-300 bg-slate-100 dark:text-slate-300 dark:border-slate-600 dark:bg-slate-900',
 };
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const Tag: FunctionComponent<PropsWithChildren<TagProps>> = ({ variant, children }) => {
   return (

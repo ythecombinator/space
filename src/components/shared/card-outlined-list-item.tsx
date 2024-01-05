@@ -1,16 +1,16 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type CardOutlinedListItemProps = {
   icon: JSX.Element;
 };
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const CardOutlinedListItem: FunctionComponent<PropsWithChildren<CardOutlinedListItemProps>> = ({ icon, children }) => {
   return (

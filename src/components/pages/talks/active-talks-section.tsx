@@ -6,17 +6,17 @@ import SectionList from 'components/shared/section-list';
 
 import ActiveTalksSectionItem, { ActiveTalksSectionItemProps } from 'components/pages/talks/active-talks-section-item';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type ActiveTalksSectionProps = {
   items: Array<ActiveTalksSectionItemProps>;
 };
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const ActiveTalksSection: FunctionComponent<PropsWithChildren<ActiveTalksSectionProps>> = ({ items }) => {
   return (

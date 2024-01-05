@@ -9,9 +9,9 @@ import Button from 'components/shared/button';
 
 import Typography from './typography';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 interface DropdownMenuProps {
   label: string;
@@ -20,9 +20,9 @@ interface DropdownMenuProps {
   onSelect: (id: string) => void;
 }
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const DropdownMenu: FunctionComponent<DropdownMenuProps> = (props) => {
   const { label, items, initialSelectedItem, onSelect } = props;

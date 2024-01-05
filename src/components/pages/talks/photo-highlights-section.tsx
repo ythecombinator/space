@@ -9,17 +9,17 @@ import PhotoHighlightsSectionItem, {
   PhotoHighlightsSectionItemProps,
 } from 'components/pages/talks/photo-highlights-section-item';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type PhotoHighlightsSectionProps = {
   items: Array<PhotoHighlightsSectionItemProps>;
 };
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const PhotoHighlightsSection: FunctionComponent<PropsWithChildren<PhotoHighlightsSectionProps>> = ({ items }) => {
   return (

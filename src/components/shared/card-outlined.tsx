@@ -2,21 +2,21 @@ import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { classNames, useRandomGradient } from 'utils/styles';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type CardOutlinedProps = {
   heading: string;
 };
 
-/*~
- * UTILS
- */
+//  ---------------------------------------------------------------------------
+//  UTILS
+//  ---------------------------------------------------------------------------
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const CardOutlined: FunctionComponent<PropsWithChildren<CardOutlinedProps>> = ({ heading, children }) => {
   const gradientClassName = useRandomGradient();

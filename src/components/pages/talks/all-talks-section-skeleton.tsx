@@ -5,17 +5,17 @@ import SectionHeading from 'components/shared/section-heading';
 
 import AllTalksSectionItemSkeleton from 'components/pages/talks/all-talks-section-item-skeleton';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type AllTalksSectionSkeletonProps = {
   items: number;
 };
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const AllTalksSectionSkeleton: FunctionComponent<PropsWithChildren<AllTalksSectionSkeletonProps>> = ({ items }) => {
   const itemSkeletons = useMemo(() => Array.from(Array(items).keys()), [items]);

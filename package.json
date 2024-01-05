@@ -101,6 +101,7 @@
     "eslint-config-next": "14.0.4",
     "eslint-plugin-jsx-a11y": "6.8.0",
     "eslint-plugin-tailwindcss": "3.13.0",
+    "eslint-plugin-unused-imports": "^3.0.0",
     "husky": "8.0.3",
     "lint-staged": "15.2.0",
     "pa11y-ci": "3.1.0",

@@ -4,17 +4,17 @@ import { classNames, Gradient, useRandomGradient, gradients } from 'utils/styles
 
 import Typography from 'components/shared/typography';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export interface PageTitleProps {
   gradient?: Gradient;
 }
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const PageTitle: FunctionComponent<PropsWithChildren<PageTitleProps>> = ({ gradient, children }) => {
   return (

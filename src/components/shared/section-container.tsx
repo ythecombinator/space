@@ -6,9 +6,9 @@ interface SectionContainerProps {
   className?: string;
 }
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 export const SectionContainer: FunctionComponent<PropsWithChildren<SectionContainerProps>> = ({
   children,

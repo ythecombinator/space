@@ -8,9 +8,9 @@ import MarkdownContentService from 'services/content/markdown';
 
 import MDXLayoutRenderer from 'components/shared/mdx-components';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 interface Params extends ParsedUrlQuery {
   slug: string;
@@ -18,9 +18,9 @@ interface Params extends ParsedUrlQuery {
 
 export type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-/*~
- * NEXTJS
- */
+//  ---------------------------------------------------------------------------
+//  NEXT
+//  ---------------------------------------------------------------------------
 
 const markdownServiceInstance = MarkdownContentService.getInstance();
 
@@ -53,9 +53,9 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
   return { props: { content } };
 }
 
-/*~
- * PAGE
- */
+//  ---------------------------------------------------------------------------
+//  NEXT
+//  ---------------------------------------------------------------------------
 
 const AboutPage: NextPage<Props> = ({ content }) => {
   return (

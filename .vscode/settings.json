@@ -9,5 +9,10 @@
     "**/.netlify": true,
     "**/.next": true
   },
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true,
+    "source.sortMembers": true
+  }
 }

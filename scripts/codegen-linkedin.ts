@@ -2,9 +2,9 @@ import * as dotenv from 'dotenv';
 import { outputFile } from 'fs-extra';
 import got from 'got';
 
-/*~
- * CONSTANTS
- */
+//  ---------------------------------------------------------------------------
+//  CONFIG
+//  ---------------------------------------------------------------------------
 
 dotenv.config();
 
@@ -16,9 +16,9 @@ const API_TOKEN = `Bearer ${process.env.NUBELA_TOKEN}`;
 
 const SHOW_LESS_CS = '\n            \n\n    \n    \n\n    \n        Zobrazit méně';
 
-/*~
- * UTILS
- */
+//  ---------------------------------------------------------------------------
+//  UTILS
+//  ---------------------------------------------------------------------------
 
 function getMonthName(monthNumber: number) {
   const date = new Date();
@@ -71,9 +71,9 @@ function mapExperience(experiences: ExperienceEntry[]) {
     .filter((experience) => Boolean(experience.companyUrl));
 }
 
-/*~
- * CORE
- */
+//  ---------------------------------------------------------------------------
+//  CORE
+//  ---------------------------------------------------------------------------
 
 async function fetchData() {
   const searchParams = new URLSearchParams([
@@ -102,9 +102,9 @@ async function codegenLinkedin() {
 
 codegenLinkedin();
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 // Derived from: https://nubela.co/proxycurl/docs#people-api-person-profile-endpoint
 // Using: https://jvilk.com/MakeTypes/

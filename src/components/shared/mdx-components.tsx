@@ -15,9 +15,9 @@ import Typography from 'components/shared/typography';
 import CustomerPortfolio from 'components/pages/about/customer-portfolio';
 import Inventory from 'components/pages/about/inventory';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 interface MDXLayout {
   layout: Layouts;
@@ -25,9 +25,9 @@ interface MDXLayout {
   [key: string]: unknown;
 }
 
-/*~
- * UTILS
- */
+//  ---------------------------------------------------------------------------
+//  UTILS
+//  ---------------------------------------------------------------------------
 
 const Wrapper: FunctionComponent<PropsWithChildren<MDXLayout>> = ({ layout, content, ...rest }) => {
   const Layout = LayoutsMap[layout];
@@ -46,9 +46,9 @@ const MDXComponents: MDXContentProps['components'] = {
   CustomerPortfolio: CustomerPortfolio,
 };
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const MDXLayoutRenderer: FunctionComponent<PropsWithChildren<MDXLayout>> = ({ layout, content, ...rest }) => {
   const MDXLayout = useMDXComponent(content.body.code);

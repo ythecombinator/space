@@ -7,17 +7,17 @@ import {
   QueryOptions,
 } from '@apollo/client';
 
-/*~
- * CONFIG
- */
+//  ---------------------------------------------------------------------------
+//  CONFIG
+//  ---------------------------------------------------------------------------
 
 const CONTENTFUL_HEADERS = {
   Authorization: `Bearer ${process.env.CONTENTFUL_TOKEN}`,
 };
 
-/*~
- * SERVICE
- */
+//  ---------------------------------------------------------------------------
+//  CORE
+//  ---------------------------------------------------------------------------
 
 export default class ContentfulService {
   private static instance: ContentfulService;

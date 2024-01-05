@@ -10,9 +10,9 @@ import {
 
 import { isAnchorLink, isInternalLink } from 'utils/link';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type LinkProps = DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> & {
   href: string;
@@ -20,9 +20,9 @@ export type LinkProps = DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement
   clearDecoration?: boolean;
 };
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const Link: FunctionComponent<PropsWithChildren<LinkProps>> = ({
   href,

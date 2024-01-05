@@ -3,15 +3,15 @@ import { NavigationMenuLinkProps } from '@radix-ui/react-navigation-menu';
 import Link, { LinkProps } from 'next/link';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 type NavigationMenuControlLinkProps = LinkProps & Pick<NavigationMenuLinkProps, 'className'>;
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 export const NavigationMenuControlLink = forwardRef<
   ElementRef<typeof NavigationMenuPrimitive.Link>,

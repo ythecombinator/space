@@ -1,8 +1,8 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 export const LayoutGradient: FunctionComponent<PropsWithChildren<{}>> = () => {
   return (

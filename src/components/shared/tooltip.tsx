@@ -5,18 +5,18 @@ import { useWindowSize } from 'utils/window';
 
 import Leaflet from 'components/shared/leaflet';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type TooltipProps = {
   content: ReactNode | string;
   fullWidth?: boolean;
 };
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const Tooltip: FunctionComponent<PropsWithChildren<TooltipProps>> = ({ children, content, fullWidth }) => {
   const [openTooltip, setOpenTooltip] = useState(false);

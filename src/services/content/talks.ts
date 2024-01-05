@@ -29,22 +29,22 @@ import YoutubeService, { YoutubeResponse } from 'services/providers/youtube';
 import { formatDate, isSingleDayTimeSpan } from 'utils/date';
 import { toIndexableCollection } from 'utils/search';
 
-/*~
- * CONFIG
- */
+//  ---------------------------------------------------------------------------
+//  CONFIG
+//  ---------------------------------------------------------------------------
 
 const contentfulServiceInstance = ContentfulService.getInstance();
 const youtubeServiceInstance = YoutubeService.getInstance();
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type YoutubeHighlight = ValuesType<Awaited<ReturnType<TalksContentService['getYoutubeHighlights']>>>;
 
-/*~
- * SERVICE
- */
+//  ---------------------------------------------------------------------------
+//  CORE
+//  ---------------------------------------------------------------------------
 
 export default class TalksContentService {
   private static instance: TalksContentService;
@@ -155,9 +155,9 @@ export default class TalksContentService {
   }
 }
 
-/*~
- * TRANSFORMERS (MAIN)
- */
+//  ---------------------------------------------------------------------------
+//  TRANSFORMERS: MAIN
+//  ---------------------------------------------------------------------------
 
 const allTransformer = (result: GetAllTalksQuery) => {
   const items = (result as DeepNonNullable<GetAllTalksQuery>).talkCollection.items;
@@ -260,9 +260,9 @@ const transformers = {
   latest: latestTransformer,
 };
 
-/*~
- * TRANSFORMERS (HELPERS)
- */
+//  ---------------------------------------------------------------------------
+//  TRANSFORMERS: UTILS
+//  ---------------------------------------------------------------------------
 
 const locationTransformer = (city: City) => `${city.name}, ${city.country?.name} ${city.country?.flag} `;
 
@@ -303,9 +303,9 @@ const tagTransformer = (tag: DeepNonNullable<ContentfulTag>) => {
   return { id, name };
 };
 
-/*~
- * FORMATTERS
- */
+//  ---------------------------------------------------------------------------
+//  FORMATTERS
+//  ---------------------------------------------------------------------------
 
 const formatAudience = (data: Session['audience']) => (data ? `Est. ${data} people audience` : 'No audience data');
 

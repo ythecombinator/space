@@ -3,9 +3,9 @@ import { FunctionComponent, PropsWithChildren } from 'react';
 import Link from 'components/shared/link';
 import Typography from 'components/shared/typography';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export interface CardFeaturedProps {
   title: string;
@@ -15,9 +15,9 @@ export interface CardFeaturedProps {
   fullWidth?: boolean;
 }
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const CardFeatured: FunctionComponent<PropsWithChildren<CardFeaturedProps>> = ({
   title,

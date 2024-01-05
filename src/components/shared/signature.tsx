@@ -2,9 +2,9 @@ import { FunctionComponent, SVGProps } from 'react';
 
 import { siteMetadata } from 'config/constants';
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const Signature: FunctionComponent<{}> = () => (
   <svg width={200} viewBox="0 0 1158 91" xmlns="http://www.w3.org/2000/svg" aria-labelledby={'signature'} role="img">

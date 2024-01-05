@@ -6,16 +6,16 @@ import ContentlayerService from 'services/providers/contentlayer';
 import { sortEntries } from 'utils/contentlayer';
 import { toIndexableCollection } from 'utils/search';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type BlogEntry = CoreContent<RawBlogEntry>;
 export type { RawBlogEntry };
 
-/*~
- * SERVICE
- */
+//  ---------------------------------------------------------------------------
+//  CORE
+//  ---------------------------------------------------------------------------
 
 export default class PostsContentService extends ContentlayerService<BlogEntry> {
   private static instance: PostsContentService;

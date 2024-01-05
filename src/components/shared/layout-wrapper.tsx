@@ -9,9 +9,9 @@ import NavigationMenu from 'components/shared/navigation-menu';
 import NavigationMenuMobile from 'components/shared/navigation-menu-mobile';
 import ThemeSwitch from 'components/shared/theme-switch';
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const LayoutWrapper: FunctionComponent<PropsWithChildren<{}>> = ({ children }) => {
   return (

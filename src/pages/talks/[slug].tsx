@@ -18,9 +18,9 @@ import Layout from 'components/layouts/page';
 
 import EventsSection from 'components/pages/talk/events-section';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 interface Params extends ParsedUrlQuery {
   slug: string;
@@ -28,9 +28,9 @@ interface Params extends ParsedUrlQuery {
 
 export type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-/*~
- * NEXTJS
- */
+//  ---------------------------------------------------------------------------
+//  NEXT
+//  ---------------------------------------------------------------------------
 
 const talksServiceInstance = TalksContentService.getInstance();
 
@@ -67,9 +67,9 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
   };
 }
 
-/*~
- * PAGE
- */
+//  ---------------------------------------------------------------------------
+//  NEXT
+//  ---------------------------------------------------------------------------
 
 const TalkPage: NextPage<Props> = (props) => {
   const { title, abstract, sessions, ogImage } = props;

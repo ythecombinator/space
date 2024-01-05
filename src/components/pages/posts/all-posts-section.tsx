@@ -8,9 +8,9 @@ import SectionContainer from 'components/shared/section-container';
 
 import AllPostsSectionItem, { AllPostsSectionItemProps } from 'components/pages/posts/all-posts-section-item';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type AllPostsSectionProps = {
   items: Array<
@@ -21,9 +21,9 @@ export type AllPostsSectionProps = {
   searchTerm: string;
 };
 
-/*~
- * UTILS
- */
+//  ---------------------------------------------------------------------------
+//  UTILS
+//  ---------------------------------------------------------------------------
 
 const searchSchema = {
   title: 'string',
@@ -32,9 +32,9 @@ const searchSchema = {
   _tags: 'string',
 } as const;
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const AllPostsSection: FunctionComponent<PropsWithChildren<AllPostsSectionProps>> = ({
   items: baseItems,

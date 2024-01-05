@@ -1,9 +1,9 @@
 import { useState, useRef, PropsWithChildren } from 'react';
 import { FunctionComponent } from 'react';
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const Pre: FunctionComponent<PropsWithChildren<{}>> = ({ children }) => {
   const textInput = useRef<HTMLDivElement>(null);

@@ -8,17 +8,17 @@ import SectionHeading from 'components/shared/section-heading';
 
 import YoutubeHighlightsSectionItem from 'components/pages/talks/youtube-highlights-section-item';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type YoutubeHighlightsSectionProps = {
   items: Array<YoutubeHighlight>;
 };
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const YoutubeHighlightsSection: FunctionComponent<PropsWithChildren<YoutubeHighlightsSectionProps>> = (props) => {
   return (

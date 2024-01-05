@@ -20,15 +20,15 @@ const metadata = {
   description: 'Ideas. Stories. Updates.',
 };
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-/*~
- * NEXTJS
- */
+//  ---------------------------------------------------------------------------
+//  NEXT
+//  ---------------------------------------------------------------------------
 
 const postsServiceInstance = PostsContentService.getInstance();
 
@@ -44,9 +44,9 @@ export async function getStaticProps() {
   return { props: { allPosts, ogImage } };
 }
 
-/*~
- * PAGE
- */
+//  ---------------------------------------------------------------------------
+//  NEXT
+//  ---------------------------------------------------------------------------
 
 const PostsPage: NextPage<Props> = ({ allPosts, ogImage }) => {
   const [searchTerm, setSearchTerm] = useState('');

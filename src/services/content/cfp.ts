@@ -41,9 +41,9 @@ export default class TalksCFPContentService {
   }
 }
 
-/*~
- * TRANSFORMERS (MAIN)
- */
+//  ---------------------------------------------------------------------------
+//  TRANSFORMERS: MAIN
+//  ---------------------------------------------------------------------------
 
 const notionResponseTransformer = (response: NotionResponse) => {
   const { event, country, city, dates, deadline, result } = response.properties;
@@ -76,9 +76,9 @@ const notionResponseTransformer = (response: NotionResponse) => {
   };
 };
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type ConferenceSeason = '2022' | '2023' | '2024';
 

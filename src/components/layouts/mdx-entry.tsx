@@ -10,17 +10,17 @@ import Breadcrumbs from 'components/shared/breadcrumbs';
 import PageTitle from 'components/shared/page-title';
 import SectionCover from 'components/shared/section-cover';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 interface MDXEntryLayoutProps {
   content: MDXEntry;
 }
 
-/*~
- * LAYOUT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const MDXEntryLayout: FunctionComponent<PropsWithChildren<MDXEntryLayoutProps>> = ({ children, content }) => {
   const { title, color, cover } = content;

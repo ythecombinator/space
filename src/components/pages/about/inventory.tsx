@@ -4,9 +4,9 @@ import Image from 'components/shared/image';
 import Link from 'components/shared/link';
 import Typography from 'components/shared/typography';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type InventoryItem = {
   image: string;
@@ -19,9 +19,9 @@ export type InventoryProps = {
   items: Array<InventoryItem>;
 };
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const Inventory: FunctionComponent<InventoryProps> = ({ items }) => {
   return (

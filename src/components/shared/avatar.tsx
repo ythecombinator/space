@@ -3,9 +3,9 @@ import { forwardRef } from 'react';
 
 import { classNames } from 'utils/styles';
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const AvatarRoot = forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Root>,

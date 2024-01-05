@@ -1,15 +1,15 @@
-/*~
- * CONFIG
- */
+//  ---------------------------------------------------------------------------
+//  CONFIG
+//  ---------------------------------------------------------------------------
 
 const BASE_URL = 'https://www.googleapis.com/youtube/v3';
 
 const PLAYLIST_ITEMS_API = `${BASE_URL}/playlistItems`;
 const VIDEO_API = `${BASE_URL}/videos`;
 
-/*~
- * SERVICE
- */
+//  ---------------------------------------------------------------------------
+//  CORE
+//  ---------------------------------------------------------------------------
 
 export default class YoutubeService {
   private static instance: YoutubeService;
@@ -46,9 +46,9 @@ export default class YoutubeService {
   }
 }
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export interface YoutubeResponse {
   kind: string;

@@ -7,9 +7,9 @@ import { classNames } from 'utils/styles';
 
 import Typography from 'components/shared/typography';
 
-/*~
- * UTILS
- */
+//  ---------------------------------------------------------------------------
+//  UTILS
+//  ---------------------------------------------------------------------------
 
 const severity = {
   info: 'text-blue-800 border-blue-300 bg-blue-50 dark:text-blue-400 dark:bg-gray-800 dark:border-blue-800',
@@ -35,19 +35,18 @@ const icons: Record<keyof typeof severity, IconType> = {
   error: FaTimesCircle,
 };
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 interface AdmonitionBoxProps extends Pick<HTMLAttributes<HTMLDivElement>, 'className'> {
   icon?: IconType;
   severity?: keyof typeof severity;
 }
 
-/*~
- * COMPONENTS
- * Inspired by: https://ui.shadcn.com/docs/components/alert
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const AdmonitionBox: FunctionComponent<PropsWithChildren<AdmonitionBoxProps>> = ({
   className,

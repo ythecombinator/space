@@ -2,9 +2,9 @@ import { FunctionComponent, PropsWithChildren } from 'react';
 
 import CardFeatured from 'components/shared/card-featured';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type TopicHighlightsSectionItemProps = {
   talkTitle: string;
@@ -12,9 +12,9 @@ export type TopicHighlightsSectionItemProps = {
   sessionsCount: number;
 };
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const TopicHighlightsSectionItem: FunctionComponent<PropsWithChildren<TopicHighlightsSectionItemProps>> = (props) => {
   const { talkTitle, talkSlug, sessionsCount } = props;

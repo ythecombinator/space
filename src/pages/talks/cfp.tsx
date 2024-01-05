@@ -17,15 +17,15 @@ const metadata = {
   description: 'Call for Papers',
 };
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-/*~
- * NEXTJS
- */
+//  ---------------------------------------------------------------------------
+//  NEXT
+//  ---------------------------------------------------------------------------
 
 const talksCFPServiceInstance = TalksCFPContentService.getInstance();
 
@@ -39,9 +39,9 @@ export async function getStaticProps() {
   };
 }
 
-/*~
- * PAGE
- */
+//  ---------------------------------------------------------------------------
+//  NEXT
+//  ---------------------------------------------------------------------------
 
 const TalkPage: NextPage<Props> = ({ data }) => {
   return (

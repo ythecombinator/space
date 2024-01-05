@@ -1,9 +1,9 @@
 import { FunctionComponent, PropsWithChildren, useEffect, useState } from 'react';
 import smoothscroll from 'smoothscroll-polyfill';
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const ScrollTop: FunctionComponent<PropsWithChildren<{}>> = () => {
   const [show, setShow] = useState(false);

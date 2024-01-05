@@ -2,9 +2,9 @@ import { HTMLAttributes, forwardRef } from 'react';
 
 import { classNames } from 'utils/styles';
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const CardRoot = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(({ className, ...props }, ref) => (
   <div ref={ref} className={classNames('rounded-lg bg-card text-card-foreground', className)} {...props} />

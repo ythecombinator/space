@@ -3,9 +3,9 @@ import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import { FaMoon, FaSun } from 'react-icons/fa';
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const ThemeSwitch = () => {
   const [mounted, setMounted] = useState(false);

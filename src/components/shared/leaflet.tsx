@@ -1,17 +1,17 @@
 import { AnimatePresence, motion, useAnimation } from 'framer-motion';
 import { useEffect, useRef, Dispatch, SetStateAction, FunctionComponent, PropsWithChildren } from 'react';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type LeafletProps = {
   setShow: Dispatch<SetStateAction<boolean>>;
 };
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const Leaflet: FunctionComponent<PropsWithChildren<LeafletProps>> = ({ setShow, children }) => {
   const leafletRef = useRef<HTMLDivElement>(null);

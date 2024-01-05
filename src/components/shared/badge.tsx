@@ -2,9 +2,9 @@ import { FunctionComponent } from 'react';
 
 import Link from 'components/shared/link';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 interface BadgeProps {
   href: string;
@@ -12,9 +12,9 @@ interface BadgeProps {
   avatar: string;
 }
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const Badge: FunctionComponent<BadgeProps> = ({ label, avatar, href }) => {
   return (

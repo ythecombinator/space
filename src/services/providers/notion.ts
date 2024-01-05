@@ -1,8 +1,8 @@
 import { Client as NotionClient } from '@notionhq/client';
 
-/*~
- * SERVICE
- */
+//  ---------------------------------------------------------------------------
+//  CORE
+//  ---------------------------------------------------------------------------
 
 export default class NotionService {
   private static instance: NotionService;
@@ -31,9 +31,9 @@ export default class NotionService {
   }
 }
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export interface NotionResponse {
   object: string;
@@ -83,9 +83,9 @@ export interface Properties {
   'previously-accepted': SelectProperty;
 }
 
-/*~
- * PROPERTIES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES: PROPERTIES
+//  ---------------------------------------------------------------------------
 
 export interface RichTextProperty {
   id: string;
@@ -123,9 +123,9 @@ export interface TitleProperty {
   title: RichTextEntry[];
 }
 
-/*~
- * ENTRIES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES: ENTRIES
+//  ---------------------------------------------------------------------------
 
 export interface RichTextEntry {
   type: string;
@@ -146,9 +146,9 @@ export interface DateEntry {
   end: string;
 }
 
-/*~
- * PRIMITIVES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES: PRIMITIVES
+//  ---------------------------------------------------------------------------
 
 export interface Text {
   content: string;

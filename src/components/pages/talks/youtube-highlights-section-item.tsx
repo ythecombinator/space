@@ -4,15 +4,15 @@ import { YoutubeHighlight } from 'services/content/talks';
 
 import { VideoPreview } from 'components/shared/video-preview';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type YoutubeHighlightsSectionItemProps = YoutubeHighlight;
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const YoutubeHighlightsSectionItem: FunctionComponent<PropsWithChildren<YoutubeHighlightsSectionItemProps>> = (
   props

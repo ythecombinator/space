@@ -4,17 +4,17 @@ import SectionContainer from 'components/shared/section-container';
 
 import AllPostsSectionItemSkeleton from 'components/pages/posts/all-posts-section-item-skeleton';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type AllPostsSectionSkeletonProps = {
   items: number;
 };
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const AllPostsSectionSkeleton: FunctionComponent<PropsWithChildren<AllPostsSectionSkeletonProps>> = ({ items }) => {
   const itemSkeletons = useMemo(() => Array.from(Array(items).keys()), [items]);

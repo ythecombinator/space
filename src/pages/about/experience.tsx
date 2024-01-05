@@ -18,15 +18,15 @@ import Typography from 'components/shared/typography';
 
 import Layout from 'components/layouts/page';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type CareerPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-/*~
- * NEXTJS
- */
+//  ---------------------------------------------------------------------------
+//  NEXT
+//  ---------------------------------------------------------------------------
 
 const markdownServiceInstance = MarkdownContentService.getInstance();
 
@@ -45,9 +45,9 @@ export async function getStaticProps() {
   return { props: { content, work, volunteering } };
 }
 
-/*~
- * PAGE
- */
+//  ---------------------------------------------------------------------------
+//  NEXT
+//  ---------------------------------------------------------------------------
 
 const Page: NextPage<CareerPageProps> = ({ content, work, volunteering }) => {
   const MDXRenderer = useMDXComponent(content.body.code);

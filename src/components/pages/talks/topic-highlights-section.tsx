@@ -8,18 +8,18 @@ import TopicHighlightsSectionItem, {
   TopicHighlightsSectionItemProps,
 } from 'components/pages/talks/topic-highlights-section-item';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 export type TopicHighlightsSectionProps = {
   title: string;
   items: Array<TopicHighlightsSectionItemProps>;
 };
 
-/*~
- * COMPONENT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const TopicHighlightsSection: FunctionComponent<PropsWithChildren<TopicHighlightsSectionProps>> = (props) => {
   const { title, items } = props;

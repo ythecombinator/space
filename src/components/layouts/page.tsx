@@ -6,9 +6,9 @@ import { shouldBreadcrumbsRender, toBreadcrumbs } from 'utils/string';
 import Breadcrumbs from 'components/shared/breadcrumbs';
 import PageTitle, { PageTitleProps } from 'components/shared/page-title';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 interface PageLayoutProps {
   heading: string;
@@ -16,9 +16,9 @@ interface PageLayoutProps {
   subHeading?: JSX.Element;
 }
 
-/*~
- * LAYOUT
- */
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const PageLayout: FunctionComponent<PropsWithChildren<PageLayoutProps>> = ({
   heading,

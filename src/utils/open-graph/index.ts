@@ -6,9 +6,9 @@ import { launch } from 'puppeteer';
 
 import { siteMetadata } from 'config/constants';
 
-/*~
- * TYPES
- */
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
 
 interface TemplateProps {
   title: string;
@@ -27,17 +27,17 @@ interface ImageProps {
 
 type Options = Pick<TemplateProps, 'title' | 'postPath'> & Pick<ImageProps, 'width' | 'height'> & { path: string };
 
-/*~
- * CONFIG
- */
+//  ---------------------------------------------------------------------------
+//  CONFIG
+//  ---------------------------------------------------------------------------
 
 const templatePath = join(process.cwd(), 'src/utils/open-graph/template.hbs');
 const DEFAULT_WIDTH = 1200;
 const DEFAULT_HEIGHT = 630;
 
-/*~
- * UTILS
- */
+//  ---------------------------------------------------------------------------
+//  UTILS
+//  ---------------------------------------------------------------------------
 
 function compileTemplate({ title, authorName, authorTwitter, authorPic, basePath, postPath }: TemplateProps) {
   const templateHTML = readFileSync(templatePath, 'utf-8');
@@ -81,9 +81,9 @@ async function generateImage({ width, height, content }: ImageProps) {
   return image;
 }
 
-/*~
- * MAIN
- */
+//  ---------------------------------------------------------------------------
+//  CORE
+//  ---------------------------------------------------------------------------
 
 export async function generateOpenGraphImage(options: Options) {
   const compiledHTML = compileTemplate({
