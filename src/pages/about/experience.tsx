@@ -4,11 +4,12 @@ import { MDXRemote } from 'next-mdx-remote';
 import { NextSeo as Metadata } from 'next-seo';
 import { coreContent } from 'pliny/utils/contentlayer';
 
-import { siteMetadata } from 'config/constants';
+import { Routes, siteMetadata } from 'config/constants';
 
 import MarkdownContentService from 'services/content/markdown';
 
 import { serializeExperience } from 'utils/linkedin';
+import { generateOpenGraphImage } from 'utils/open-graph';
 
 import experience from 'content/misc/experience.json';
 
@@ -19,10 +20,18 @@ import Typography from 'components/shared/typography';
 import Layout from 'components/layouts/page';
 
 //  ---------------------------------------------------------------------------
+//  CONFIG
+//  ---------------------------------------------------------------------------
+
+const metadata = {
+  title: `Experience — ${siteMetadata.title}`,
+};
+
+//  ---------------------------------------------------------------------------
 //  TYPES
 //  ---------------------------------------------------------------------------
 
-export type CareerPageProps = InferGetStaticPropsType<typeof getStaticProps>;
+export type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 //  ---------------------------------------------------------------------------
 //  NEXT
@@ -31,32 +40,28 @@ export type CareerPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 const markdownServiceInstance = MarkdownContentService.getInstance();
 
 export async function getStaticProps() {
-  const content = markdownServiceInstance.get('experience');
+  const content = markdownServiceInstance.get('experience')!;
 
   const work = await Promise.all(experience.work.map(serializeExperience));
   const volunteering = await Promise.all(experience.volunteering.map(serializeExperience));
 
-  if (!content) {
-    return {
-      notFound: true,
-    };
-  }
+  const openGraphImage = await generateOpenGraphImage({
+    title: metadata.title,
+    postPath: Routes.experience,
+    path: `content/${Routes.experience}/cover.png`,
+  });
 
-  return { props: { content, work, volunteering } };
+  return { props: { content, work, volunteering, openGraphImage } };
 }
 
-//  ---------------------------------------------------------------------------
-//  NEXT
-//  ---------------------------------------------------------------------------
-
-const Page: NextPage<CareerPageProps> = ({ content, work, volunteering }) => {
+const Page: NextPage<PageProps> = ({ content, work, volunteering, openGraphImage }) => {
   const MDXRenderer = useMDXComponent(content.body.code);
   const mdxContent = coreContent(content);
 
   return (
     <>
       <Metadata
-        title={`About — ${siteMetadata.title}`}
+        title={metadata.title}
         openGraph={{
           type: 'profile',
           profile: {
@@ -64,13 +69,7 @@ const Page: NextPage<CareerPageProps> = ({ content, work, volunteering }) => {
             lastName: siteMetadata.authorLastName,
             username: siteMetadata.twitterHandle,
           },
-          images: [
-            {
-              url: siteMetadata.avatar,
-              width: 400,
-              height: 400,
-            },
-          ],
+          images: [{ url: openGraphImage }],
         }}
       />
       <Layout heading="Build. Share. Rewind." headingGradient="peachy">

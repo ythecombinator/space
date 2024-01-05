@@ -22,6 +22,10 @@ import PhotoHighlightsSection from 'components/pages/talks/photo-highlights-sect
 import TopicHighlightsSection from 'components/pages/talks/topic-highlights-section';
 import YoutubeHighlightsSection from 'components/pages/talks/youtube-highlights-section';
 
+//  ---------------------------------------------------------------------------
+//  CONFIG
+//  ---------------------------------------------------------------------------
+
 const metadata = {
   title: `Talks — ${siteMetadata.title}`,
   description: 'Confs. Meetups. More.',
@@ -49,23 +53,19 @@ export async function getStaticProps() {
     talksServiceInstance.getAll(),
   ]);
 
-  const ogImage = await generateOpenGraphImage({
-    title: `🎙️ ${metadata.description}`,
+  const openGraphImage = await generateOpenGraphImage({
+    title: metadata.title,
     postPath: Routes.talks,
     path: `content/${Routes.talks}/cover.png`,
   });
 
   return {
-    props: { talksStats, reactTalks, featuredTalks, youtubeHighlights, activeTalks, allTalks, ogImage },
+    props: { talksStats, reactTalks, featuredTalks, youtubeHighlights, activeTalks, allTalks, openGraphImage },
   };
 }
 
-//  ---------------------------------------------------------------------------
-//  NEXT
-//  ---------------------------------------------------------------------------
-
-const TalksPage: NextPage<Props> = (props) => {
-  const { talksStats, allTalks, reactTalks, featuredTalks, youtubeHighlights, activeTalks, ogImage } = props;
+const Page: NextPage<Props> = (props) => {
+  const { talksStats, allTalks, reactTalks, featuredTalks, youtubeHighlights, activeTalks, openGraphImage } = props;
   const { citiesTotal, countriesTotal, talksTotal, eventsTotal } = talksStats;
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -83,7 +83,7 @@ const TalksPage: NextPage<Props> = (props) => {
           type: 'website',
           title: metadata.title,
           description: metadata.description,
-          images: [{ url: ogImage }],
+          images: [{ url: openGraphImage }],
         }}
       />
       <Layout
@@ -124,4 +124,4 @@ const TalksPage: NextPage<Props> = (props) => {
   );
 };
 
-export default TalksPage;
+export default Page;

@@ -16,7 +16,7 @@ interface Params extends ParsedUrlQuery {
   slug: string;
 }
 
-export type Props = InferGetStaticPropsType<typeof getStaticProps>;
+export type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 //  ---------------------------------------------------------------------------
 //  NEXT
@@ -53,11 +53,7 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
   return { props: { content } };
 }
 
-//  ---------------------------------------------------------------------------
-//  NEXT
-//  ---------------------------------------------------------------------------
-
-const AboutPage: NextPage<Props> = ({ content }) => {
+const Page: NextPage<PageProps> = ({ content }) => {
   return (
     <>
       <Metadata
@@ -83,4 +79,4 @@ const AboutPage: NextPage<Props> = ({ content }) => {
   );
 };
 
-export default AboutPage;
+export default Page;

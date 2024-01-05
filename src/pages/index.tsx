@@ -13,7 +13,7 @@ import Layout from 'components/layouts/page';
 //  NEXT
 //  ---------------------------------------------------------------------------
 
-const HomePage: NextPage<{}> = () => {
+const Page: NextPage<{}> = () => {
   return (
     <Layout heading="Hi, I'm Matheus! 👋">
       <SectionContainer className="prose dark:prose-invert">
@@ -98,4 +98,4 @@ const HomePage: NextPage<{}> = () => {
   );
 };
 
-export default HomePage;
+export default Page;

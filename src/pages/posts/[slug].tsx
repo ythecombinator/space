@@ -21,7 +21,7 @@ interface Params extends ParsedUrlQuery {
   slug: string;
 }
 
-export type Props = InferGetStaticPropsType<typeof getStaticProps>;
+export type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 //  ---------------------------------------------------------------------------
 //  NEXT
@@ -59,20 +59,16 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
     };
   }
 
-  const ogImage = await generateOpenGraphImage({
+  const openGraphImage = await generateOpenGraphImage({
     title: post.title,
     postPath: `${Routes.posts}/${post.slug}`,
     path: `content/${Routes.posts}/${post.slug}/cover.png`,
   });
 
-  return { props: { post, ogImage } };
+  return { props: { post, openGraphImage } };
 }
 
-//  ---------------------------------------------------------------------------
-//  NEXT
-//  ---------------------------------------------------------------------------
-
-const PostPage: NextPage<Props> = ({ post, ogImage }) => {
+const Page: NextPage<PageProps> = ({ post, openGraphImage }) => {
   const { title, summary, tags, date, cover } = post;
   const url = usePathName();
 
@@ -85,7 +81,7 @@ const PostPage: NextPage<Props> = ({ post, ogImage }) => {
           type: 'article',
           title,
           description: summary,
-          images: [{ url: ogImage }],
+          images: [{ url: openGraphImage }],
           article: {
             publishedTime: date,
             authors: [siteMetadata.siteUrl],
@@ -107,4 +103,4 @@ const PostPage: NextPage<Props> = ({ post, ogImage }) => {
   );
 };
 
-export default PostPage;
+export default Page;

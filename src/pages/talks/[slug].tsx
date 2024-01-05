@@ -26,7 +26,7 @@ interface Params extends ParsedUrlQuery {
   slug: string;
 }
 
-export type Props = InferGetStaticPropsType<typeof getStaticProps>;
+export type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 //  ---------------------------------------------------------------------------
 //  NEXT
@@ -56,23 +56,19 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
     };
   }
 
-  const ogImage = await generateOpenGraphImage({
+  const openGraphImage = await generateOpenGraphImage({
     title: talkData.title!,
     postPath: `${Routes.talks}/${id}`,
     path: `content/${Routes.talks}/${id}/cover.png`,
   });
 
   return {
-    props: { ...talkData, ogImage },
+    props: { ...talkData, openGraphImage },
   };
 }
 
-//  ---------------------------------------------------------------------------
-//  NEXT
-//  ---------------------------------------------------------------------------
-
-const TalkPage: NextPage<Props> = (props) => {
-  const { title, abstract, sessions, ogImage } = props;
+const Page: NextPage<PageProps> = (props) => {
+  const { title, abstract, sessions, openGraphImage } = props;
   const description = documentToString(abstract);
 
   return (
@@ -84,7 +80,7 @@ const TalkPage: NextPage<Props> = (props) => {
           type: 'website',
           title,
           description,
-          images: [{ url: ogImage }],
+          images: [{ url: openGraphImage }],
         }}
       />
       <Layout heading={title!}>
@@ -101,4 +97,4 @@ const TalkPage: NextPage<Props> = (props) => {
   );
 };
 
-export default TalkPage;
+export default Page;

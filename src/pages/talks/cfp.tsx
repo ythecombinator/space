@@ -1,9 +1,11 @@
 import { InferGetStaticPropsType, NextPage } from 'next';
 import { NextSeo as Metadata } from 'next-seo';
 
-import { siteMetadata } from 'config/constants';
+import { Routes, siteMetadata } from 'config/constants';
 
 import TalksCFPContentService from 'services/content/cfp';
+
+import { generateOpenGraphImage } from 'utils/open-graph';
 
 import SectionContainer from 'components/shared/section-container';
 import Typography from 'components/shared/typography';
@@ -11,6 +13,10 @@ import Typography from 'components/shared/typography';
 import Layout from 'components/layouts/page';
 
 import ListSection from 'components/pages/talks-cfp/list-section';
+
+//  ---------------------------------------------------------------------------
+//  CONFIG
+//  ---------------------------------------------------------------------------
 
 const metadata = {
   title: `Call for Papers — ${siteMetadata.title}`,
@@ -32,21 +38,33 @@ const talksCFPServiceInstance = TalksCFPContentService.getInstance();
 export async function getStaticProps() {
   const data = await talksCFPServiceInstance.getAll();
 
+  const openGraphImage = await generateOpenGraphImage({
+    title: metadata.title,
+    postPath: Routes.talksCFP,
+    path: `content/${Routes.talksCFP}/cover.png`,
+  });
+
   return {
     props: {
       data,
+      openGraphImage,
     },
   };
 }
 
-//  ---------------------------------------------------------------------------
-//  NEXT
-//  ---------------------------------------------------------------------------
-
-const TalkPage: NextPage<Props> = ({ data }) => {
+const Page: NextPage<Props> = ({ data, openGraphImage }) => {
   return (
     <>
-      <Metadata title={metadata.title} description={metadata.description} />
+      <Metadata
+        title={metadata.title}
+        description={metadata.description}
+        openGraph={{
+          type: 'website',
+          title: metadata.title,
+          description: metadata.description,
+          images: [{ url: openGraphImage }],
+        }}
+      />
       <Layout heading={metadata.description} headingGradient="sublime">
         <SectionContainer className="prose dark:prose-invert">
           <Typography.p>
@@ -73,4 +91,4 @@ const TalkPage: NextPage<Props> = ({ data }) => {
   );
 };
 
-export default TalkPage;
+export default Page;

@@ -1,11 +1,12 @@
-import { NextPage } from 'next';
+import { InferGetStaticPropsType, NextPage } from 'next';
 import { NextSeo as Metadata } from 'next-seo';
 import { BsQuestionSquareFill } from 'react-icons/bs';
-import { FaLaptopCode, FaHammer } from 'react-icons/fa';
+import { FaHammer, FaLaptopCode } from 'react-icons/fa';
 import { GiCardRandom, GiTakeMyMoney } from 'react-icons/gi';
 
-import { siteMetadata } from 'config/constants';
-import { Routes } from 'config/constants';
+import { Routes, siteMetadata } from 'config/constants';
+
+import { generateOpenGraphImage } from 'utils/open-graph';
 
 import Admonition from 'components/shared/admonition';
 import ButtonLink from 'components/shared/button-link';
@@ -17,14 +18,38 @@ import Typography from 'components/shared/typography';
 import Layout from 'components/layouts/page';
 
 //  ---------------------------------------------------------------------------
+//  CONFIG
+//  ---------------------------------------------------------------------------
+
+const metadata = {
+  title: `About — ${siteMetadata.title}`,
+};
+
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
+
+export type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
+
+//  ---------------------------------------------------------------------------
 //  NEXT
 //  ---------------------------------------------------------------------------
 
-const AboutPage: NextPage = () => {
+export async function getStaticProps() {
+  const openGraphImage = await generateOpenGraphImage({
+    title: metadata.title,
+    postPath: Routes.about,
+    path: `content/${Routes.about}/cover.png`,
+  });
+
+  return { props: { openGraphImage } };
+}
+
+const Page: NextPage<PageProps> = ({ openGraphImage }) => {
   return (
     <>
       <Metadata
-        title={`About — ${siteMetadata.title}`}
+        title={metadata.title}
         openGraph={{
           type: 'profile',
           profile: {
@@ -32,13 +57,7 @@ const AboutPage: NextPage = () => {
             lastName: siteMetadata.authorLastName,
             username: siteMetadata.twitterHandle,
           },
-          images: [
-            {
-              url: siteMetadata.avatar,
-              width: 400,
-              height: 400,
-            },
-          ],
+          images: [{ url: openGraphImage }],
         }}
       />
       <Layout heading="Build. Share. Rewind." headingGradient="cottonCandy">
@@ -136,4 +155,4 @@ const AboutPage: NextPage = () => {
   );
 };
 
-export default AboutPage;
+export default Page;

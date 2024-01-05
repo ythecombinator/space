@@ -66,9 +66,7 @@ const DropdownMenu: FunctionComponent<DropdownMenuProps> = (props) => {
                     'text-gray-400 focus:bg-gray-50 dark:text-gray-500 dark:focus:bg-gray-900'
                   )}
                 >
-                  <Typography.small className="grow text-gray-700 dark:text-gray-300">
-                    {item.label}
-                  </Typography.small>
+                  <Typography.small className="grow text-gray-700 dark:text-gray-300">{item.label}</Typography.small>
                   <DropdownMenuPrimitive.ItemIndicator>
                     <FaCheck className="h-3.5 w-3.5" />
                   </DropdownMenuPrimitive.ItemIndicator>

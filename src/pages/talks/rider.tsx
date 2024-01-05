@@ -1,13 +1,17 @@
 import { InferGetStaticPropsType, NextPage } from 'next';
-import { useMDXComponent } from 'next-contentlayer/hooks';
 import { NextSeo as Metadata } from 'next-seo';
-import { coreContent } from 'pliny/utils/contentlayer';
 
-import { Layouts, siteMetadata } from 'config/constants';
+import { Layouts, Routes, siteMetadata } from 'config/constants';
 
 import MarkdownContentService from 'services/content/markdown';
 
+import { generateOpenGraphImage } from 'utils/open-graph';
+
 import MDXLayoutRenderer from 'components/shared/mdx-components';
+
+//  ---------------------------------------------------------------------------
+//  CONFIG
+//  ---------------------------------------------------------------------------
 
 const metadata = {
   title: `Speaker Rider — ${siteMetadata.title}`,
@@ -18,7 +22,7 @@ const metadata = {
 //  TYPES
 //  ---------------------------------------------------------------------------
 
-export type SpeakerRiderPageProps = InferGetStaticPropsType<typeof getStaticProps>;
+export type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 //  ---------------------------------------------------------------------------
 //  NEXT
@@ -35,16 +39,28 @@ export async function getStaticProps() {
     };
   }
 
-  return { props: { content } };
+  const openGraphImage = await generateOpenGraphImage({
+    title: metadata.title,
+    postPath: Routes.talksRider,
+    path: `content/${Routes.talksRider}/cover.png`,
+  });
+
+  return { props: { content, openGraphImage } };
 }
 
-const Page: NextPage<SpeakerRiderPageProps> = ({ content }) => {
-  const MDXRenderer = useMDXComponent(content.body.code);
-  const mdxContent = coreContent(content);
-
+const Page: NextPage<PageProps> = ({ content, openGraphImage }) => {
   return (
     <>
-      <Metadata title={metadata.title} description={metadata.description} />
+      <Metadata
+        title={metadata.title}
+        description={metadata.description}
+        openGraph={{
+          type: 'website',
+          title: metadata.title,
+          description: metadata.description,
+          images: [{ url: openGraphImage }],
+        }}
+      />
       <MDXLayoutRenderer layout={Layouts.mdx} content={content} />
     </>
   );

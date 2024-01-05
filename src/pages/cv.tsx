@@ -41,10 +41,6 @@ export async function getStaticProps() {
   return { props: { work } };
 }
 
-//  ---------------------------------------------------------------------------
-//  NEXT
-//  ---------------------------------------------------------------------------
-
 const Page: NextPage<PageProps> = ({ work }) => {
   return (
     <main
@@ -97,8 +93,8 @@ const Page: NextPage<PageProps> = ({ work }) => {
         <Section>
           <h2 className="text-xl font-bold">About</h2>
           <p className="text-pretty font-mono text-sm text-muted-foreground">
-            {`I'm`} a Sr. Front-End Engineer focused on new and scalable technologies based in Prague. As a consultant, I
-            have shipped solutions to small, medium, and huge companies to help them meet their business goals without
+            {`I'm`} a Sr. Front-End Engineer focused on new and scalable technologies based in Prague. As a consultant,
+            I have shipped solutions to small, medium, and huge companies to help them meet their business goals without
             leaving quality aside.
           </p>
         </Section>

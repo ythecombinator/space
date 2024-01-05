@@ -24,7 +24,7 @@ const metadata = {
 //  TYPES
 //  ---------------------------------------------------------------------------
 
-export type Props = InferGetStaticPropsType<typeof getStaticProps>;
+export type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 //  ---------------------------------------------------------------------------
 //  NEXT
@@ -35,20 +35,16 @@ const postsServiceInstance = PostsContentService.getInstance();
 export async function getStaticProps() {
   const allPosts = postsServiceInstance.getAll();
 
-  const ogImage = await generateOpenGraphImage({
-    title: `✍️ ${metadata.description}`,
+  const openGraphImage = await generateOpenGraphImage({
+    title: metadata.title,
     postPath: Routes.posts,
     path: `content/${Routes.posts}/cover.png`,
   });
 
-  return { props: { allPosts, ogImage } };
+  return { props: { allPosts, openGraphImage } };
 }
 
-//  ---------------------------------------------------------------------------
-//  NEXT
-//  ---------------------------------------------------------------------------
-
-const PostsPage: NextPage<Props> = ({ allPosts, ogImage }) => {
+const Page: NextPage<PageProps> = ({ allPosts, openGraphImage }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const onChange: SearchBarProps['onChange'] = (evt) => {
@@ -64,7 +60,7 @@ const PostsPage: NextPage<Props> = ({ allPosts, ogImage }) => {
           type: 'website',
           title: metadata.title,
           description: metadata.description,
-          images: [{ url: ogImage }],
+          images: [{ url: openGraphImage }],
         }}
       />
       <Layout
@@ -80,4 +76,4 @@ const PostsPage: NextPage<Props> = ({ allPosts, ogImage }) => {
   );
 };
 
-export default PostsPage;
+export default Page;
