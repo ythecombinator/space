@@ -39,7 +39,7 @@ export function VideoPreview({
         </Link>
       </div>
       <Typography.h3 className="font-medium">{title}</Typography.h3>
-      <div className="space-x-6 flex">
+      <div className="flex space-x-6">
         <CardOutlinedListItem icon={<FaEye size={20} aria-hidden />}>{viewCount}</CardOutlinedListItem>
         <CardOutlinedListItem icon={<FaRegThumbsUp size={20} aria-hidden />}>{likeCount}</CardOutlinedListItem>
       </div>

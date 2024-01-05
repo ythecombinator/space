@@ -73,7 +73,7 @@ const animation = [
 
 const Logo: FunctionComponent<LogoProps> = ({ name, logo }) => {
   return (
-    <div className="flex w-[200px] justify-center items-center px-4">
+    <div className="flex w-[200px] items-center justify-center px-4">
       <Image
         className="object-contain object-center"
         src={`/content/clients/${logo}.png`}
@@ -87,20 +87,20 @@ const Logo: FunctionComponent<LogoProps> = ({ name, logo }) => {
 
 const CustomerPortfolio: FunctionComponent<{}> = () => {
   return (
-    <div className="w-full rounded-xl shadow-sm border p-2 mt-8 mb-8">
-      <motion.div className="relative flex overflow-x-hidden mx-auto">
-        <div className="w-full h-full absolute left-0 top-0 z-10 bg-gradient-to-r from-white to-white/0 dark:from-black dark:to-black/0"></div>
+    <div className="my-8 w-full rounded-xl border p-2 shadow-sm">
+      <motion.div className="relative mx-auto flex overflow-x-hidden">
+        <div className="absolute left-0 top-0 z-10 h-full w-full bg-gradient-to-r from-white to-white/0 dark:from-black dark:to-black/0"></div>
         <motion.div animate={animation[0]} className="flex">
           {customers.map((customer) => {
             return <Logo key={customer.name} {...customer} />;
           })}
         </motion.div>
-        <motion.div animate={animation[1]} className="flex absolute top-0">
+        <motion.div animate={animation[1]} className="absolute top-0 flex">
           {customers.map((customer) => {
             return <Logo key={customer.name} {...customer} />;
           })}
         </motion.div>
-        <div className="w-24 h-full absolute right-0 top-0 z-10 bg-gradient-to-l from-white to-white/0 dark:from-black dark:to-black/0"></div>
+        <div className="absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-white to-white/0 dark:from-black dark:to-black/0"></div>
       </motion.div>
     </div>
   );

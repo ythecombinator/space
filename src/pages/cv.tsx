@@ -57,8 +57,8 @@ const Page: NextPage<PageProps> = ({ work }) => {
         <div className="flex items-center justify-between">
           <div className="flex-1 space-y-1.5">
             <h1 className="text-2xl font-bold">{siteMetadata.author}</h1>
-            <p className="max-w-md text-pretty font-mono text-sm text-muted-foreground">{siteMetadata.description}</p>
-            <p className="max-w-md items-center text-pretty font-mono text-xs text-muted-foreground">
+            <p className="text-pretty max-w-md font-mono text-sm text-muted-foreground">{siteMetadata.description}</p>
+            <p className="text-pretty max-w-md items-center font-mono text-xs text-muted-foreground">
               <Link
                 className="inline-flex gap-x-1.5 align-baseline leading-none hover:underline"
                 href={siteMetadata.locationLink}
@@ -97,7 +97,7 @@ const Page: NextPage<PageProps> = ({ work }) => {
         <Section>
           <h2 className="text-xl font-bold">About</h2>
           <p className="text-pretty font-mono text-sm text-muted-foreground">
-            I'm a Sr. Front-End Engineer focused on new and scalable technologies based in Prague. As a consultant, I
+            {`I'm`} a Sr. Front-End Engineer focused on new and scalable technologies based in Prague. As a consultant, I
             have shipped solutions to small, medium, and huge companies to help them meet their business goals without
             leaving quality aside.
           </p>
@@ -123,7 +123,7 @@ const Page: NextPage<PageProps> = ({ work }) => {
                   <h4 className="font-mono text-sm leading-none">{work.title}</h4>
                 </Card.Header>
                 {description && (
-                  <Card.Content className="mt-2 text-xs space-y-6">
+                  <Card.Content className="mt-2 space-y-6 text-xs">
                     <MDXRemote {...description} />
                   </Card.Content>
                 )}

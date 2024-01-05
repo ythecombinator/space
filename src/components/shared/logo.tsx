@@ -11,7 +11,7 @@ const Logo: React.FunctionComponent<{}> = () => {
 
   return (
     <Image
-      className="hover:animate-wave w-12"
+      className="w-12 hover:animate-wave"
       width={48}
       height={48}
       src={`/content/me/${me}.png`}

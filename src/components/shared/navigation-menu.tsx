@@ -23,7 +23,7 @@ interface NavigationMenuProps {
 export const NavigationMenu: FunctionComponent<PropsWithChildren<NavigationMenuProps>> = ({ items }) => {
   return (
     <NavigationMenuPrimitive.Root className="relative">
-      <NavigationMenuPrimitive.List className="flex flex-row space-x-2 p-2 items-center">
+      <NavigationMenuPrimitive.List className="flex flex-row items-center space-x-2 p-2">
         <NavigationMenuPrimitive.Item className="mr-4">
           <NavigationMenuControlLink href={Routes.base}>
             <Logo />

@@ -42,7 +42,7 @@ const PhotoHighlightsSectionItem: FunctionComponent<PropsWithChildren<PhotoHighl
             height: 'auto',
           }}
         />
-        <figcaption className="absolute bottom-0 p-2 text-center w-full hidden group-hover:block backdrop-blur-sm">
+        <figcaption className="absolute bottom-0 hidden w-full p-2 text-center backdrop-blur-sm group-hover:block">
           <Typography.lead className="drop-shadow-[3px_3px_3px_rgba(0,0,0,0.8)]">{eventName}</Typography.lead>
         </figcaption>
       </figure>

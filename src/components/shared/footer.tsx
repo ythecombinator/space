@@ -30,7 +30,7 @@ const Footer: FunctionComponent<PropsWithChildren<{}>> = () => {
             <Link href={siteMetadata.linkedin}>LinkedIn</Link>
           </div>
         </div>
-        <Typography.subtle className="mb-5 justify-center sm:justify-start flex items-center gap-2">
+        <Typography.subtle className="mb-5 flex items-center justify-center gap-2 sm:justify-start">
           <Signature /> © <time>{new Date().getFullYear()}</time>
         </Typography.subtle>
       </div>

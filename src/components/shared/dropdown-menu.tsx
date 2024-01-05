@@ -46,7 +46,7 @@ const DropdownMenu: FunctionComponent<DropdownMenuProps> = (props) => {
               fonts.biotify
             )}
           >
-            <DropdownMenuPrimitive.Label className="select-none px-2 py-2 text-xs text-gray-700 dark:text-gray-200">
+            <DropdownMenuPrimitive.Label className="select-none p-2 text-xs text-gray-700 dark:text-gray-200">
               <Typography.subtle>{label}</Typography.subtle>
             </DropdownMenuPrimitive.Label>
 
@@ -66,7 +66,7 @@ const DropdownMenu: FunctionComponent<DropdownMenuProps> = (props) => {
                     'text-gray-400 focus:bg-gray-50 dark:text-gray-500 dark:focus:bg-gray-900'
                   )}
                 >
-                  <Typography.small className="flex-grow text-gray-700 dark:text-gray-300">
+                  <Typography.small className="grow text-gray-700 dark:text-gray-300">
                     {item.label}
                   </Typography.small>
                   <DropdownMenuPrimitive.ItemIndicator>

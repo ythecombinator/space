@@ -19,7 +19,7 @@ const severity = {
   error: 'text-red-800 border-red-300 bg-red-50 dark:text-red-400 dark:bg-gray-800 dark:border-red-800',
 };
 
-const variants = cva('flex items-start p-4 mb-4 border-t-4', {
+const variants = cva('mb-4 flex items-start border-t-4 p-4', {
   variants: {
     severity,
   },

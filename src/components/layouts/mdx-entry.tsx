@@ -30,7 +30,7 @@ const MDXEntryLayout: FunctionComponent<PropsWithChildren<MDXEntryLayoutProps>> 
   return (
     <div className="mt-6 px-2 sm:px-0">
       {shouldBreadcrumbsRender(breadcrumbs) && <Breadcrumbs items={breadcrumbs} />}
-      <div className="space-y-2 pt-6 pb-8 md:space-y-5">
+      <div className="space-y-2 pb-8 pt-6 md:space-y-5">
         <PageTitle gradient={color as Gradient}>{title}</PageTitle>
         <SectionCover alt={title} src={cover} />
       </div>

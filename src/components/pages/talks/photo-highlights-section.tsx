@@ -25,8 +25,8 @@ const PhotoHighlightsSection: FunctionComponent<PropsWithChildren<PhotoHighlight
   return (
     <SectionContainer>
       <SectionHeading title="📸 Captured Highlights" />
-      <div className="columns-2 sm:columns-3 gap-4 my-8">
-        <div className="relative h-40 mb-4">
+      <div className="my-8 columns-2 gap-4 sm:columns-3">
+        <div className="relative mb-4 h-40">
           {items.map((item) => (
             <PhotoHighlightsSectionItem key={`${item.talkSlug}-${item.eventName}`} {...item} />
           ))}

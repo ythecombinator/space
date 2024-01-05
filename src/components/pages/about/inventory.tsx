@@ -25,7 +25,7 @@ export type InventoryProps = {
 
 const Inventory: FunctionComponent<InventoryProps> = ({ items }) => {
   return (
-    <div className="mt-8 mb-8 grid grid-cols-1 gap-8 sm:grid-cols-3">
+    <div className="my-8 grid grid-cols-1 gap-8 sm:grid-cols-3">
       {items.map((item) => (
         <Link
           key={item.name}

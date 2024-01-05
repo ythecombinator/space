@@ -27,7 +27,7 @@ const Breadcrumbs: FunctionComponent<BreadcrumbsProps> = ({ items }) => {
               key={item.path}
               className={classNames('inline-flex items-center', { 'breadcrumb-separator': index !== 0 })}
             >
-              <Link className="inline-flex items-center text-sm font-semibold truncate" href={item.path}>
+              <Link className="inline-flex items-center truncate text-sm font-semibold" href={item.path}>
                 {item.label}
               </Link>
             </li>

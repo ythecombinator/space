@@ -24,7 +24,7 @@ const TopicHighlightsSectionItem: FunctionComponent<PropsWithChildren<TopicHighl
       title={talkTitle}
       description={`Presented ${sessionsCount} times`}
       href={talkSlug}
-      className="py-4 md:px-4 min-w-[300px]"
+      className="min-w-[300px] py-4 md:px-4"
     />
   );
 };
