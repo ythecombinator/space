@@ -1,6 +1,6 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
 
-import { classNames, Gradient, useRandomGradient, gradients } from 'utils/styles';
+import { classNames, Gradient, gradients } from 'utils/styles';
 
 import Typography from 'components/shared/typography';
 

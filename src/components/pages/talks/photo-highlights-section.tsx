@@ -1,6 +1,5 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
 
-import { useSearch } from 'utils/search';
 
 import SectionContainer from 'components/shared/section-container';
 import SectionHeading from 'components/shared/section-heading';

@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority';
-import { forwardRef, FunctionComponent, HTMLAttributes, PropsWithChildren } from 'react';
+import { FunctionComponent, HTMLAttributes, PropsWithChildren } from 'react';
 import { FaCheckCircle, FaExclamationCircle, FaInfoCircle, FaTimesCircle } from 'react-icons/fa';
 import { IconType } from 'react-icons/lib';
 

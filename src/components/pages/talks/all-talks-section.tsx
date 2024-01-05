@@ -1,6 +1,5 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
 
-import { Routes } from 'config/constants';
 
 import { isEmpty, reversedIndexOf } from 'utils/array';
 import { useSearch } from 'utils/search';

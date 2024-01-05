@@ -1,7 +1,6 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
 import { FaMapMarkedAlt } from 'react-icons/fa';
 
-import { Routes } from 'config/constants';
 
 import CardOutlined from 'components/shared/card-outlined';
 import Link from 'components/shared/link';

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { FaEye, FaRegThumbsUp, FaYoutube } from 'react-icons/fa';
+import { FaEye, FaRegThumbsUp } from 'react-icons/fa';
 
 import { YoutubeHighlight } from 'services/content/talks';
 

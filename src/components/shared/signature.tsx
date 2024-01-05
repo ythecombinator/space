@@ -1,4 +1,4 @@
-import { FunctionComponent, SVGProps } from 'react';
+import { FunctionComponent } from 'react';
 
 import { siteMetadata } from 'config/constants';
 

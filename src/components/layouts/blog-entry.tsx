@@ -1,7 +1,6 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { Routes } from 'config/constants';
-import { siteMetadata } from 'config/constants';
 
 import { BlogEntry } from 'services/content/posts';
 

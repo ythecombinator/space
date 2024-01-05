@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren, useMemo } from 'react';
+import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { ScrollArea, ScrollBar } from 'components/shared/scroll-area';
 import SectionContainer from 'components/shared/section-container';

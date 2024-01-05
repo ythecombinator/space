@@ -2,7 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FunctionComponent, PropsWithChildren } from 'react';
 
-import { Routes } from 'config/constants';
 
 import Typography from 'components/shared/typography';
 
