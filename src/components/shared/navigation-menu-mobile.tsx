@@ -31,7 +31,7 @@ const NavigationMenuMobile: FunctionComponent<PropsWithChildren<NavigationMenuPr
 
   return (
     <div className="sm:hidden">
-      <button type="button" className="mx-1 h-8 w-8 rounded py-1" aria-label="Toggle Menu" onClick={onToggleNav}>
+      <button type="button" className="w-8 h-8 py-1 ml-1 mr-1 rounded" aria-label="Toggle Menu" onClick={onToggleNav}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
@@ -54,17 +54,17 @@ const NavigationMenuMobile: FunctionComponent<PropsWithChildren<NavigationMenuPr
         </svg>
       </button>
       <div
-        className={`fixed right-0 top-24 z-10 h-full w-full bg-gray-200 opacity-95 duration-300 ease-in-out dark:bg-gray-800${
+        className={`fixed w-full h-full top-24 right-0 bg-gray-200 dark:bg-gray-800 opacity-95 z-10 transform ease-in-out duration-300 ${
           navShow ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         <button
           type="button"
           aria-label="toggle modal"
-          className="fixed h-full w-full cursor-auto focus:outline-none"
+          className="fixed w-full h-full cursor-auto focus:outline-none"
           onClick={onToggleNav}
         ></button>
-        <nav className="fixed mt-8 h-full">
+        <nav className="fixed h-full mt-8">
           {items.map((link) => (
             <div key={link.title} className="px-12 py-4">
               <Link
