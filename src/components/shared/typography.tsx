@@ -4,8 +4,7 @@ import { RoughNotation, RoughNotationProps } from 'react-rough-notation';
 import colors from 'tailwindcss/colors';
 
 import fonts from 'utils/fonts';
-import { hexToRGBA } from 'utils/styles';
-import { classNames } from 'utils/styles';
+import { classNames, hexToRGBA } from 'utils/styles';
 
 import Link, { LinkProps } from 'components/shared/link';
 
@@ -30,7 +29,7 @@ const Heading1: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLHeadingEl
     <h1
       className={classNames(
         'text-3xl font-extrabold tracking-tight sm:text-4xl md:text-6xl',
-        fonts.neuzeitGrotesk,
+        fonts.recoleta.className,
         className
       )}
       {...props}
@@ -53,7 +52,7 @@ const Heading2: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLHeadingEl
     <h2
       className={classNames(
         'font-bold text-2xl md:text-3xl tracking-tight my-4 text-black dark:text-white',
-        fonts.neuzeitGrotesk,
+        fonts.recoleta.className,
         className
       )}
       {...props}
@@ -74,7 +73,11 @@ const Heading3: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLHeadingEl
 }) => {
   return (
     <h3
-      className={classNames('mt-8 scroll-m-20 text-xl font-semibold tracking-tight', fonts.neuzeitGrotesk, className)}
+      className={classNames(
+        'mt-8 scroll-m-20 text-xl font-semibold tracking-tight',
+        fonts.recoleta.className,
+        className
+      )}
       {...props}
     >
       {children}
@@ -135,7 +138,7 @@ const Paragraph: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLParagrap
   ...props
 }) => {
   return (
-    <p className={classNames('leading-7 text-gray-500 my-2 dark:text-gray-400', className)} {...props}>
+    <p className={classNames('leading-8 text-gray-500 my-2 dark:text-gray-400', className)} {...props}>
       {children}
     </p>
   );

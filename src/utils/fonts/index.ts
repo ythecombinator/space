@@ -1,48 +1,59 @@
 import localFont from 'next/font/local';
 
-const biotifyFont = localFont({
-  variable: '--font-biotify',
+const generalSansFont = localFont({
+  variable: '--font-general-sans',
   src: [
     {
-      path: './Biotif-Bold.woff2',
-      weight: '400',
-      style: 'normal',
+      path: './GeneralSans/GeneralSans-VariableItalic.ttf',
     },
     {
-      path: './Biotif-Book.woff2',
-      weight: '400',
-      style: 'normal',
-    },
-    {
-      path: './Biotif-Regular.woff2',
-      weight: '700',
-      style: 'normal',
-    },
-    {
-      path: './Biotif-RegularItalic.woff2',
-      weight: '700',
-      style: 'italic',
-    },
-    {
-      path: './Biotif-SemiBold.woff2',
-      weight: '700',
-      style: 'italic',
+      path: './GeneralSans/GeneralSans-Variable.ttf',
     },
   ],
 });
 
-const neuzeitGroteskFont = localFont({
-  variable: '--font-neuzeitGrotesk',
+const recoletaFont = localFont({
+  variable: '--font-recoleta',
   src: [
     {
-      path: './NeuzeitGrotesk-Bold.woff2',
-      weight: '400',
+      path: './Recoleta/Recoleta-Light.woff2',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: './Recoleta/Recoleta-Black.woff2',
+      weight: '900',
+      style: 'normal',
+    },
+    {
+      path: './Recoleta/Recoleta-Bold.woff2',
+      weight: 'bold',
+      style: 'normal',
+    },
+    {
+      path: './Recoleta/Recoleta-Regular.woff2',
+      weight: 'normal',
+      style: 'normal',
+    },
+    {
+      path: './Recoleta/Recoleta-SemiBold.woff2',
+      weight: '600',
+      style: 'normal',
+    },
+    {
+      path: './Recoleta/Recoleta-Thin.woff2',
+      weight: '100',
+      style: 'normal',
+    },
+    {
+      path: './Recoleta/Recoleta-Medium.woff2',
+      weight: '500',
       style: 'normal',
     },
   ],
 });
 
 export default {
-  biotify: biotifyFont.className,
-  neuzeitGrotesk: neuzeitGroteskFont.className,
+  recoleta: recoletaFont,
+  generalSans: generalSansFont,
 };

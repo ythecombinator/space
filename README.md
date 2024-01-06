@@ -2,16 +2,32 @@
 
 ## Stack
 
-- **🛠️ Framework**: [Next.js](https://nextjs.org/)
-- **📁 Data Sources:** [Contentful](https://www.contentful.com/) + [Apollo](https://www.apollographql.com/) / [mdx](https://mdxjs.com) + [Contentlayer](https://www.contentlayer.dev/) + [pliny](https://github.com/timlrx/pliny) / [proxycurl](https://nubela.co/proxycurl/)
-- **🔍 Searching:** [Lyra](https://github.com/LyraSearch/lyra)
+- **🛠️ Framework**: [Next.js](https://nextjs.org)
 - **👍 A11y:** [Radix UI Primitives](https://www.radix-ui.com/) + [axe](https://www.deque.com/axe/)
-- **💅 Styling:** [Tailwind CSS](https://tailwindcss.com/) + [tailwind-merge](https://github.com/dcastil/tailwind-merge) + [clsx](https://github.com/lukeed/clsx)
 - **🌙 Dark Mode:** [next-themes](https://github.com/pacocoursey/next-themes)
-- **🔤 Fonts:** [next/font](https://nextjs.org/docs/basic-features/font-optimization) + [Biotif](https://www.myfonts.com/collections/biotif-font-degarism-studio) / [Neuzeit Grotesk](https://www.myfonts.com/collections/neuzeit-grotesk-font-urw)
 - **🧑‍🎨 Animations:** [Framer](https://www.framer.com/docs/animation/)
 - **🗄️ Deployment:** [Netlify](https://www.netlify.com/)
+- **🔍 Searching:** [Orama](hhttps://github.com/oramasearch/orama)
 - **🤖 AI Helpers:** [ChatGPT](https://chat.openai.com) + [Copilot](https://github.com/features/copilot)
+
+### 📁 Data Sources
+
+- Talks: [Contentful](https://www.contentful.com) + [Apollo](https://www.apollographql.com)
+- CFPs: [Notion](https://www.notion.so) + [@notionhq/client](https://github.com/makenotion/notion-sdk-js)
+- LinkedIn: [proxycurl](https://nubela.co/proxycurl/)
+- Misc: [Contentlayer](https://www.contentlayer.dev) + [mdx](https://mdxjs.com) + [pliny](https://github.com/timlrx/pliny)
+
+### 💅 Styling
+
+- [Tailwind CSS](https://tailwindcss.com/)
+- [tailwind-merge](https://github.com/dcastil/tailwind-merge)
+- [clsx](https://github.com/lukeed/clsx)
+
+### 🔤 Fonts
+
+- [next/font](https://nextjs.org/docs/basic-features/font-optimization)
+- [General Sans](https://www.fontshare.com/fonts/general-sans)
+- [Recoleta](https://www.myfonts.com/collections/recoleta-font-latinotype)
 
 ## Running Locally
 

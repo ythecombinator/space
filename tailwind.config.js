@@ -23,8 +23,8 @@ const config = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['var(--font-biotify)', ...defaultTheme.fontFamily.sans],
-        heading: ['var(--font-neuzeitGrotesk)', ...defaultTheme.fontFamily.sans],
+        body: ['var(--font-general-sans)'],
+        heading: ['var(--font-recoleta)'],
       },
       backgroundImage: {
         'texture-pattern': "url('/img/texture-pattern.svg')",
@@ -108,6 +108,8 @@ const config = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
+            fontFamily: theme('fontFamily.body'),
+            lineHeight: '2rem',
             color: theme('colors.gray.700'),
             a: {
               color: theme('colors.primary.500'),
@@ -124,11 +126,12 @@ const config = {
               backgroundColor: 'transparent',
             },
             p: {
-              marginTop: '6px',
-              marginBottom: '6px',
+              marginTop: '0.75rem',
+              marginBottom: '0.75rem',
             },
             h1: {
               fontWeight: '700',
+              fontFamily: theme('fontFamily.heading'),
               letterSpacing: theme('letterSpacing.tight'),
               color: theme('colors.gray.900'),
               marginTop: '24px',
@@ -136,6 +139,7 @@ const config = {
             },
             h2: {
               fontWeight: '700',
+              fontFamily: theme('fontFamily.heading'),
               letterSpacing: theme('letterSpacing.tight'),
               color: theme('colors.gray.900'),
               marginBottom: '4px',
@@ -143,11 +147,13 @@ const config = {
             },
             h3: {
               fontWeight: '600',
+              fontFamily: theme('fontFamily.heading'),
               color: theme('colors.gray.900'),
               marginBottom: '4px',
               marginTop: '24px',
             },
             'h4,h5,h6': {
+              fontFamily: theme('fontFamily.heading'),
               color: theme('colors.gray.800'),
               marginBottom: '4px',
               marginTop: '24px',

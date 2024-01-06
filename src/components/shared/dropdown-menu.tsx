@@ -1,5 +1,5 @@
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import React, { FunctionComponent, useState } from 'react';
+import { FunctionComponent, useState } from 'react';
 import { FaCheck } from 'react-icons/fa';
 
 import fonts from 'utils/fonts';
@@ -43,7 +43,7 @@ const DropdownMenu: FunctionComponent<DropdownMenuProps> = (props) => {
               'radix-side-top:animate-slide-up radix-side-bottom:animate-slide-down',
               'w-48 rounded-lg px-1.5 py-1 shadow-md md:w-56',
               'bg-white dark:bg-gray-800',
-              fonts.biotify
+              fonts.generalSans.className
             )}
           >
             <DropdownMenuPrimitive.Label className="select-none p-2 text-xs text-gray-700 dark:text-gray-200">
