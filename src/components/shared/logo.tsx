@@ -1,20 +1,49 @@
+import { useRouter } from 'next/router';
+
+import { Routes, siteMetadata } from 'config/constants';
 import Image from 'next/image';
 
-import { siteMetadata } from 'config/constants';
+//  ---------------------------------------------------------------------------
+//  UTILS
+//  ---------------------------------------------------------------------------
 
-import { randomElement } from 'utils/array';
+const memojiRecord = {
+  about: 'screaming',
+  talks: 'punch',
+  posts: 'exploding',
+  _: 'thinking',
+};
 
-const memojis = ['exploding', 'punch', 'screaming', 'thinking'];
+function memojiForPath(path: string) {
+  if (path.includes(Routes.about)) {
+    return memojiRecord.about;
+  }
+
+  if (path.includes(Routes.posts)) {
+    return memojiRecord.posts;
+  }
+
+  if (path.includes(Routes.talks)) {
+    return memojiRecord.talks;
+  }
+
+  return memojiRecord._;
+}
+
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
 
 const Logo: React.FunctionComponent<{}> = () => {
-  const me = randomElement(memojis);
+  const { route } = useRouter();
+  const memoji = memojiForPath(route);
 
   return (
     <Image
       className="w-12 hover:animate-wave"
       width={48}
       height={48}
-      src={`/content/me/${me}.png`}
+      src={`/content/me/${memoji}.png`}
       alt={siteMetadata.author}
     />
   );

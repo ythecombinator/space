@@ -17,6 +17,7 @@ const AvatarRoot = forwardRef<
     {...props}
   />
 ));
+
 AvatarRoot.displayName = AvatarPrimitive.Root.displayName;
 
 const AvatarImage = forwardRef<
@@ -25,6 +26,7 @@ const AvatarImage = forwardRef<
 >(({ className, ...props }, ref) => (
   <AvatarPrimitive.Image ref={ref} className={classNames('aspect-square h-full w-full', className)} {...props} />
 ));
+
 AvatarImage.displayName = AvatarPrimitive.Image.displayName;
 
 export default { Root: AvatarRoot, Image: AvatarImage };

@@ -64,8 +64,6 @@ export enum Routes {
   talks = 'talks',
   talksCFP = 'talks/cfp',
   talksRider = 'talks/rider',
-  projects = 'projects',
-  tags = 'tags',
 }
 
 export const headerNavigationLinks = [
