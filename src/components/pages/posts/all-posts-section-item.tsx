@@ -28,7 +28,7 @@ const AllPostsSectionItem: FunctionComponent<PropsWithChildren<AllPostsSectionIt
         <div className="text-sm font-medium leading-6 text-gray-500 dark:text-gray-400 sm:text-base">
           <time dateTime={date}>{formatDate(date)}</time>
         </div>
-        <Typography.h2 className="grow text-2xl font-bold leading-8 my-2 tracking-tight">
+        <Typography.h2 className="my-2 grow text-2xl font-bold leading-8 tracking-tight">
           <Link href={`/${Routes.posts}/${slug}`} className="text-gray-900 dark:text-gray-100">
             {language === 'pt' ? `🇧🇷 — ${title}` : `${title}`}
           </Link>

@@ -1,6 +1,5 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
 
-
 import { isEmpty, reversedIndexOf } from 'utils/array';
 import { useSearch } from 'utils/search';
 

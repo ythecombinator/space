@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { FunctionComponent } from 'react';
 
-
 //  ---------------------------------------------------------------------------
 //  TYPES
 //  ---------------------------------------------------------------------------

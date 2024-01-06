@@ -1,6 +1,5 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
 
-
 import Chip from 'components/shared/chip';
 import Link from 'components/shared/link';
 
