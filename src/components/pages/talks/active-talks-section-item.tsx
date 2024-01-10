@@ -30,11 +30,16 @@ const ActiveTalksSectionItem: FunctionComponent<PropsWithChildren<ActiveTalksSec
             <FaMapMarkedAlt size={20} role="img" aria-label="Presented in these countries" />
           </div>
           {sessions.map((event) => (
-            <Tooltip key={event.eventName} content={event.eventName}>
-              <span key={event.eventName} className="ml-1" role="img" aria-label={event.eventName}>
-                {event.eventFlag}
-              </span>
-            </Tooltip>
+            <Tooltip.Provider key={event.eventName}>
+              <Tooltip.Root>
+                <Tooltip.Trigger>
+                  <span key={event.eventName} className="ml-1" role="img" aria-label={event.eventName}>
+                    {event.eventFlag}
+                  </span>
+                </Tooltip.Trigger>
+                <Tooltip.Content>{event.eventName}</Tooltip.Content>
+              </Tooltip.Root>
+            </Tooltip.Provider>
           ))}
         </div>
       </CardOutlined>

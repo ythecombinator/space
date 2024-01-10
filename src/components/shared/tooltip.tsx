@@ -1,76 +1,26 @@
-import * as TooltipPrimitive from '@radix-ui/react-tooltip';
-import { FunctionComponent, PropsWithChildren, ReactNode, useState } from 'react';
+import { Content, Provider, Root, Trigger } from '@radix-ui/react-tooltip';
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react';
 
-import { useWindowSize } from 'utils/window';
-
-import Leaflet from 'components/shared/leaflet';
-
-//  ---------------------------------------------------------------------------
-//  TYPES
-//  ---------------------------------------------------------------------------
-
-export type TooltipProps = {
-  content: ReactNode | string;
-  fullWidth?: boolean;
-};
+import { classNames } from 'utils/styles';
 
 //  ---------------------------------------------------------------------------
 //  UI
 //  ---------------------------------------------------------------------------
 
-const Tooltip: FunctionComponent<PropsWithChildren<TooltipProps>> = ({ children, content, fullWidth }) => {
-  const [openTooltip, setOpenTooltip] = useState(false);
-
-  const { isMobile, isDesktop } = useWindowSize();
-
-  return (
-    <>
-      {isMobile && (
-        <button
-          type="button"
-          className={`${fullWidth ? 'w-full' : 'inline-flex'} sm:hidden`}
-          onClick={() => setOpenTooltip(true)}
-        >
-          {children}
-        </button>
+const TooltipContent = forwardRef<ElementRef<typeof Content>, ComponentPropsWithoutRef<typeof Content>>(
+  ({ className, sideOffset = 4, ...props }, ref) => (
+    <Content
+      ref={ref}
+      sideOffset={sideOffset}
+      className={classNames(
+        'z-50 overflow-hidden rounded-md border bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
+        className
       )}
-      {openTooltip && isMobile && (
-        <Leaflet setShow={setOpenTooltip}>
-          {typeof content === 'string' ? (
-            <span className="flex min-h-[150px] w-full items-center justify-center bg-gray-100 px-10 text-center text-sm text-gray-800 dark:bg-gray-800 dark:text-gray-200">
-              {content}
-            </span>
-          ) : (
-            content
-          )}
-        </Leaflet>
-      )}
-      {isDesktop && (
-        <TooltipPrimitive.Provider delayDuration={100}>
-          <TooltipPrimitive.Root>
-            <TooltipPrimitive.Trigger className="hidden sm:inline-flex" asChild>
-              {children}
-            </TooltipPrimitive.Trigger>
-            <TooltipPrimitive.Content
-              sideOffset={4}
-              side="top"
-              className="z-30 hidden items-center overflow-hidden rounded-md border border-gray-200 bg-gray-100 drop-shadow-lg dark:bg-gray-800 sm:block"
-            >
-              <TooltipPrimitive.Arrow className="fill-current text-gray-800 dark:text-gray-200" />
-              {typeof content === 'string' ? (
-                <div className="p-5">
-                  <span className="block max-w-xs text-center text-sm text-gray-800 dark:text-gray-200">{content}</span>
-                </div>
-              ) : (
-                content
-              )}
-              <TooltipPrimitive.Arrow className="fill-current text-gray-800 dark:text-gray-200" />
-            </TooltipPrimitive.Content>
-          </TooltipPrimitive.Root>
-        </TooltipPrimitive.Provider>
-      )}
-    </>
-  );
-};
+      {...props}
+    />
+  )
+);
 
-export default Tooltip;
+TooltipContent.displayName = Content.displayName;
+
+export default { Root, Provider, Trigger, Content: TooltipContent };
