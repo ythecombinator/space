@@ -1,6 +1,6 @@
-import { defineDocumentType, ComputedFields, makeSource, FieldDefs } from 'contentlayer/source-files';
+import { ComputedFields, FieldDefs, defineDocumentType, makeSource } from 'contentlayer/source-files';
 import path from 'path';
-import { remarkExtractFrontmatter, remarkCodeTitles, remarkImgToJsx } from 'pliny/mdx-plugins.js';
+import { remarkCodeTitles, remarkExtractFrontmatter, remarkImgToJsx } from 'pliny/mdx-plugins.js';
 import readingTime from 'reading-time';
 import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
 // Rehype packages
@@ -36,7 +36,7 @@ const computedFields: ComputedFields = {
 
 export const BlogEntry = defineDocumentType(() => ({
   name: 'BlogEntry',
-  filePathPattern: 'blog/**/*.md',
+  filePathPattern: 'blog/**/*.{md,mdx}',
   contentType: 'mdx',
   fields: {
     title: fields.title,
