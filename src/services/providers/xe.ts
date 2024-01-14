@@ -40,7 +40,7 @@ export default class XEService {
     queryURL.searchParams.set('To', target);
 
     await page.goto(queryURL.toString());
-    await page.waitForSelector('p[class*="BigRate"]', { timeout: 5000, visible: true });
+    await page.waitForSelector('p[class*="BigRate"]', { timeout: 0, visible: true });
 
     const exchangeRate = (await page.evaluate(() => {
       const rateElement = document.querySelectorAll('p[class*="BigRate"]')[0] as HTMLElement;
