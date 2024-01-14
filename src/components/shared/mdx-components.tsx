@@ -9,7 +9,9 @@ import { Layouts, LayoutsMap } from 'config/constants';
 import { RawMDXEntry } from 'services/content/markdown';
 import { RawBlogEntry } from 'services/content/posts';
 
+import Admonition from 'components/shared/admonition';
 import Pre from 'components/shared/pre';
+import Price from 'components/shared/price';
 import Typography from 'components/shared/typography';
 
 import CustomerPortfolio from 'components/pages/about/customer-portfolio';
@@ -42,8 +44,10 @@ const MDXComponents: MDXContentProps['components'] = {
   wrapper: Wrapper,
   Lead: Typography.lead,
   Subtle: Typography.subtle,
-  Inventory: Inventory,
-  CustomerPortfolio: CustomerPortfolio,
+  Inventory,
+  CustomerPortfolio,
+  Admonition,
+  Price,
 };
 
 //  ---------------------------------------------------------------------------
