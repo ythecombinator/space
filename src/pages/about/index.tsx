@@ -1,6 +1,5 @@
 import { InferGetStaticPropsType, NextPage } from 'next';
 import { NextSeo as Metadata } from 'next-seo';
-import { BsQuestionSquareFill } from 'react-icons/bs';
 import { FaHammer, FaLaptopCode } from 'react-icons/fa';
 import { GiCardRandom, GiTakeMyMoney } from 'react-icons/gi';
 
@@ -68,7 +67,7 @@ const Page: NextPage<PageProps> = ({ openGraphImage }) => {
             online.
           </Typography.p>
 
-          <Admonition.Box icon={BsQuestionSquareFill}>
+          <Admonition.Box>
             <Admonition.Title>Why... the... combinator?</Admonition.Title>
             <Admonition.Description>
               <Typography.p>
