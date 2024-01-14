@@ -1,7 +1,7 @@
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 import { Routes, siteMetadata } from 'config/constants';
-import Image from 'next/image';
 
 //  ---------------------------------------------------------------------------
 //  UTILS

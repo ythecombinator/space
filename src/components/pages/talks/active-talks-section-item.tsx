@@ -33,7 +33,7 @@ const ActiveTalksSectionItem: FunctionComponent<PropsWithChildren<ActiveTalksSec
             <Tooltip.Provider key={event.eventName}>
               <Tooltip.Root>
                 <Tooltip.Trigger>
-                  <span key={event.eventName} className="ml-1" role="img" aria-label={event.eventName}>
+                  <span className="ml-1" role="img" aria-label={event.eventName}>
                     {event.eventFlag}
                   </span>
                 </Tooltip.Trigger>
