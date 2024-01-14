@@ -6,7 +6,9 @@ import { ParsedUrlQuery } from 'querystring';
 import { Layouts, Routes, siteMetadata } from 'config/constants';
 
 import PostsContentService from 'services/content/posts';
+import XEService from 'services/providers/xe';
 
+import { CurrencyContext } from 'utils/currency';
 import { generateOpenGraphImage } from 'utils/open-graph';
 import { generateRSS } from 'utils/rss';
 import { usePathName } from 'utils/url';
@@ -28,6 +30,7 @@ export type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 //  ---------------------------------------------------------------------------
 
 const postsServiceInstance = PostsContentService.getInstance();
+const currencyServiceInstance = XEService.getInstance();
 
 export async function getStaticPaths() {
   const paths = postsServiceInstance.getAllSlugs();
@@ -59,16 +62,20 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
     };
   }
 
+  // Currency data is available for blog posts.
+  const czkRates = await currencyServiceInstance.getRates('CZK');
+  const rates = { CZK: czkRates };
+
   const openGraphImage = await generateOpenGraphImage({
     title: post.title,
     postPath: `${Routes.posts}/${post.slug}`,
     path: `content/${Routes.posts}/${post.slug}/cover.png`,
   });
 
-  return { props: { post, openGraphImage } };
+  return { props: { post, rates, openGraphImage } };
 }
 
-const Page: NextPage<PageProps> = ({ post, openGraphImage }) => {
+const Page: NextPage<PageProps> = ({ post, rates, openGraphImage }) => {
   const { title, summary, tags, date, cover } = post;
   const url = usePathName();
 
@@ -98,7 +105,9 @@ const Page: NextPage<PageProps> = ({ post, openGraphImage }) => {
         authorName={siteMetadata.author}
         description={summary}
       />
-      <MDXLayoutRenderer layout={Layouts.blog} content={post} />
+      <CurrencyContext.Provider value={rates}>
+        <MDXLayoutRenderer layout={Layouts.blog} content={post} />
+      </CurrencyContext.Provider>
     </>
   );
 };
