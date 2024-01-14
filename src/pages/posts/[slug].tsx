@@ -76,7 +76,7 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
 }
 
 const Page: NextPage<PageProps> = ({ post, rates, openGraphImage }) => {
-  const { title, summary, tags, date, cover } = post;
+  const { title, summary, tags, date } = post;
   const url = usePathName();
 
   return (
@@ -100,7 +100,7 @@ const Page: NextPage<PageProps> = ({ post, rates, openGraphImage }) => {
         type="BlogPosting"
         url={url}
         title={title}
-        images={[cover]}
+        images={[openGraphImage]}
         datePublished={date}
         authorName={siteMetadata.author}
         description={summary}

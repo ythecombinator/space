@@ -54,9 +54,9 @@ export const BlogEntry = defineDocumentType(() => ({
   },
   computedFields: {
     ...computedFields,
-    cover: {
+    hero: {
       type: 'string',
-      resolve: (doc) => `/content/${doc._raw.flattenedPath}/cover.png`,
+      resolve: (doc) => `/content/${doc._raw.flattenedPath.replace('blog', 'posts')}/hero.png`,
     },
   },
 }));
@@ -73,7 +73,7 @@ export const MDXEntry = defineDocumentType(() => ({
     },
   },
   computedFields: {
-    cover: {
+    hero: {
       type: 'string',
       resolve: (doc) => `/content/${doc._raw.flattenedPath}.jpg`,
     },

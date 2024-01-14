@@ -23,7 +23,7 @@ interface MDXEntryLayoutProps {
 //  ---------------------------------------------------------------------------
 
 const MDXEntryLayout: FunctionComponent<PropsWithChildren<MDXEntryLayoutProps>> = ({ children, content }) => {
-  const { title, color, cover } = content;
+  const { title, color, hero } = content;
   const pathname = usePathname();
   const breadcrumbs = toBreadcrumbs(pathname);
 
@@ -32,7 +32,7 @@ const MDXEntryLayout: FunctionComponent<PropsWithChildren<MDXEntryLayoutProps>> 
       {shouldBreadcrumbsRender(breadcrumbs) && <Breadcrumbs items={breadcrumbs} />}
       <div className="space-y-2 pb-8 pt-6 md:space-y-5">
         <PageTitle gradient={color as Gradient}>{title}</PageTitle>
-        <SectionCover alt={title} src={cover} />
+        <SectionCover alt={title} src={hero} />
       </div>
 
       <div className="items-start space-y-2  xl:gap-x-8 xl:space-y-0">

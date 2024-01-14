@@ -26,7 +26,8 @@ interface BlogEntryLayoutProps {
 //  ---------------------------------------------------------------------------
 
 const BlogEntryLayout: FunctionComponent<PropsWithChildren<BlogEntryLayoutProps>> = ({ content, children }) => {
-  const { date, title, slug, readingTime, cover } = content;
+  const { date, title, slug, readingTime, hero } = content;
+  console.log('hero', hero);
   return (
     <>
       <ScrollTop />
@@ -49,7 +50,7 @@ const BlogEntryLayout: FunctionComponent<PropsWithChildren<BlogEntryLayoutProps>
         </header>
         <div className="pb-8 " style={{ gridTemplateRows: 'auto 1fr' }}>
           <div className="space-y-4 xl:col-span-3 xl:row-span-2 xl:pb-0">
-            <SectionCover alt={title} src={cover} />
+            <SectionCover alt={title} src={hero} />
             <div className="prose max-w-none pb-4 dark:prose-invert">{children}</div>
             <div className="flex justify-between pt-6 text-sm text-gray-700 dark:text-gray-300">
               Thanks for reading 💖

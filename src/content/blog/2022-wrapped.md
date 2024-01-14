@@ -41,7 +41,7 @@ I'd say this practice has an easy adoption: you can start with a vague outline, 
 
 Overall, the structure will be more digestible in the end, not only for you but also for the program committees of the conferences you're submitting to, as many of them—e.g., GitNation and CityJS conferences—actually ask for an outline including a more detailed description of the shape and structure of your talk.
 
-![Multiple CFPs](/content/blog/2022-wrapped/cfp.jpg)
+![Multiple CFPs](/content/posts/2022-wrapped/cfp.jpg)
 
 When building the outline, I often structure the presentation following the [“Hero’s Journey” pattern](https://tvtropes.org/pmwiki/pmwiki.php/Main/TheHerosJourney). It's a classic story structure, often employed in literature and film, that follows the tale of a protagonist as they embark on a transformative journey.
 
@@ -73,7 +73,7 @@ Last but not least, whenever I get an existing session approved for another even
 
 #### Audience Interactions
 
-![Audience raising hands at React Day Berlin 2022](/content/blog/2022-wrapped/audience-interactions.jpg)
+![Audience raising hands at React Day Berlin 2022](/content/posts/2022-wrapped/audience-interactions.jpg)
 
 Last but not least, there's another practice that I've seen to increase audience engagement is to turn your presentation into an open dialogue.
 
@@ -121,7 +121,7 @@ In the example of the Concurrent React session, I was able to draft a few conclu
 
 These will turn into long-term insights you can also use to engage the audience after the session, like when I built a report around the impressions above of React engineers over the new Concurrent React features.
 
-![Poll results](/content/blog/2022-wrapped/results.jpg)
+![Poll results](/content/posts/2022-wrapped/results.jpg)
 
 Depending on what you use for your speaker decks, there are different technologies you can choose to allow your audience to watch results come in live on the big screen. The best option I've found so far for Keynote was the [Poll Everywhere](https://www.polleverywhere.com) plugin, which is also available for other platforms like PowerPoint and Google Slides.
 
@@ -137,7 +137,7 @@ I never got another chance to prepare something similar ever since, but the tech
 
 During the ideation of the activities we'd be doing at the booth, the Kahoot idea popped up again and we decided to give it a try. We prepared some trivia React/TypeScript questions, targeting different seniority levels, and the result went way better than expected!
 
-![Tech Trivia at React Alicante](/content/blog/2022-wrapped/trivia.jpg)
+![Tech Trivia at React Alicante](/content/posts/2022-wrapped/trivia.jpg)
 
 Everyone was hyped to test how much they knew about these technologies and learn a thing or two. The numbers went like this:
 
@@ -172,21 +172,21 @@ First, I'd like to share my strategy for 2019-20. I had a Trello board with:
 
 - **Cards** representing the sessions that I'd copy-paste all over the four different categories above and label them accordingly.
 
-![Trello: Board with all the sessions](/content/blog/2022-wrapped/trello-board.png)
+![Trello: Board with all the sessions](/content/posts/2022-wrapped/trello-board.png)
 
 You could then think I'd have information for each of the sessions stored within the card for that session, right?
 
-![Trello: Card for one session](/content/blog/2022-wrapped/trello-card.png)
+![Trello: Card for one session](/content/posts/2022-wrapped/trello-card.png)
 
 Nope! It turns out that Trello didn't have support for rich text descriptions of the cards back then. This was a dealbreaker for me, given that, when submitting a proposal, most of the conferences ask you for more information than a simple title/abstract pair; it's fairly common to get prompted for stuff like an **elevator pitch**, **keywords**, **target audience**, **required knowledge of participants**, etc.
 
 To suppress this lack of _RTE_ support, I started then using Trello alongside Google Documents.
 
-![Google Docs: Session details](/content/blog/2022-wrapped/google-docs-talks.png)
+![Google Docs: Session details](/content/posts/2022-wrapped/google-docs-talks.png)
 
 Last but not least, I had another Google Document where I'd keep my personal data useful for submitting, like current location, position, company, etc.
 
-![Google Docs: Personal details](/content/blog/2022-wrapped/google-docs-bio.png)
+![Google Docs: Personal details](/content/posts/2022-wrapped/google-docs-bio.png)
 
 I wasn't happy with the way things were going already—it simply didn't scale—and when I faced myself about to add a third app to the equation (Google Calendar), I decided it was about time to shift to something else.
 
@@ -198,15 +198,15 @@ Because I was using Notion already to organize some personal stuff like travelin
 
 I start from the main sources I listed in the section above—I do check other websites, but these are the best ones IMHO. I then gather and reconcile all the data in Notion. It looks like this:
 
-![Notion: All sessions](/content/blog/2022-wrapped/notion-list.png)
+![Notion: All sessions](/content/posts/2022-wrapped/notion-list.png)
 
 This also helps me organize their status on a calendar:
 
-![Notion: Calendar](/content/blog/2022-wrapped/notion-calendar.png)
+![Notion: Calendar](/content/posts/2022-wrapped/notion-calendar.png)
 
 Last but not least, I track which sessions I submitted to a given event so that I can get a better understanding of the actual profile of this conference and what kind of topics they tend to approve/reject.
 
-![Notion: Info for each session](/content/blog/2022-wrapped/notion-session.png)
+![Notion: Info for each session](/content/posts/2022-wrapped/notion-session.png)
 
 To be honest, I am still iterating on this approach but so far, I've enjoyed the experience! Among other stuff, I'd highlight in Notion:
 
@@ -256,13 +256,13 @@ That simple!
 
 ## Accomplishments
 
-![Me out there](/content/blog/2022-wrapped/accomplishments.jpg)
+![Me out there](/content/posts/2022-wrapped/accomplishments.jpg)
 
 I'd say this year brought a lot of new experiences and a ton of wins! I know this post is a bit long already, but I will share a few of them as I feel fortunate and proud of them. Here you'll find some of those mentioned wins and also some not-so-great results.
 
 - I helped draft a developer communities program at Medallia from almost nothing with a fantastic crew and we went from zero to sponsoring three conferences: [DevConf 2022](https://devconf.pl), [React India 2022](https://www.reactindia.io/) and [React Alicante 2022](https://reactalicante.es). We learned a lot together and are still evolving. This is our Spanish squad in React Alicante! 🤩
 
-![Medallia at React Alicante](/content/blog/2022-wrapped/medallia+react-alicante.jpg)
+![Medallia at React Alicante](/content/posts/2022-wrapped/medallia+react-alicante.jpg)
 
 - I crafted eight different sessions, and four of them I managed to present throughout the year.
 
