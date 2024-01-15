@@ -32,7 +32,7 @@ const Price: FunctionComponent<Props> = ({ amount, source = 'CZK', prefix = ' ',
   if (source === target) {
     const result = formatters[target].format(amount);
     return (
-      <Typography.small className="text-blue-800 dark:text-blue-300 ml-1 mr-1">
+      <Typography.small className="mx-1 text-blue-800 dark:text-blue-300">
         {prefix} {result} {postfix}
       </Typography.small>
     );
@@ -45,7 +45,7 @@ const Price: FunctionComponent<Props> = ({ amount, source = 'CZK', prefix = ' ',
     <Tooltip.Provider>
       <Tooltip.Root>
         <Tooltip.Trigger>
-          <Typography.small className="text-blue-800 dark:text-blue-300 ml-1 mr-1">
+          <Typography.small className="mx-1 text-blue-800 dark:text-blue-300">
             {prefix} {result} {postfix}
           </Typography.small>
         </Tooltip.Trigger>

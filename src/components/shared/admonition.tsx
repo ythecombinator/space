@@ -16,7 +16,7 @@ const severity = {
   error: 'bg-red-50 border-red-500 dark:bg-red-800/30',
 };
 
-const variants = cva('border-t-2 rounded-lg p-4 flex', {
+const variants = cva('flex rounded-lg border-t-2 p-4', {
   variants: { severity: severity },
 });
 
