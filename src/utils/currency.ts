@@ -1,6 +1,6 @@
-import { createContext, useContext } from 'react';
+import conversionMap from 'data/currency.json';
 
-import XEService from 'services/providers/xe';
+import { formatDate } from 'utils/date';
 
 //  ---------------------------------------------------------------------------
 //  CONFIG
@@ -12,7 +12,7 @@ export const SUPPORTED_CURRENCIES = ['USD', 'EUR', 'GBP', 'JPY', 'BRL', 'CZK'] a
 //  UTILS
 //  ---------------------------------------------------------------------------
 
-const formatters = SUPPORTED_CURRENCIES.reduce(
+export const formatters = SUPPORTED_CURRENCIES.reduce(
   (formatters, currency) => {
     formatters[currency] = new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -47,15 +47,21 @@ export function currencyInvariant(value: string | null, defaultValue: SupportedC
   return value as SupportedCurrency;
 }
 
-export function useCurrencyConversion({ source, target, amount }: CurrencyConversionQuery) {
-  const conversionMap = useContext(CurrencyContext);
-  const conversionRate = conversionMap[source]?.rates[target] ?? 1;
+export function useCurrencyConversion({ source = 'CZK', target, amount }: CurrencyConversionQuery) {
+  if (source === target) {
+    return { result: amount, lastUpdated: null };
+  }
+
+  // @ts-ignore
+  const conversionRate = conversionMap[source].rates[target];
   const formatter = formatters[target];
-
   const convertedValue = amount * conversionRate;
-  const formattedValue = formatter.format(convertedValue);
 
-  return formattedValue;
+  const result = formatter.format(convertedValue);
+  // @ts-ignore
+  const lastUpdated = formatDate(conversionMap[source].timestamp);
+
+  return { result, lastUpdated };
 }
 
 //  ---------------------------------------------------------------------------
@@ -64,16 +70,8 @@ export function useCurrencyConversion({ source, target, amount }: CurrencyConver
 
 export type SupportedCurrency = (typeof SUPPORTED_CURRENCIES)[number];
 
-export type CurrencyContextModel = Partial<Record<SupportedCurrency, Awaited<ReturnType<XEService['getRates']>>>>;
-
 export interface CurrencyConversionQuery {
   amount: number;
   source: SupportedCurrency;
   target: SupportedCurrency;
 }
-
-//  ---------------------------------------------------------------------------
-//  CONTEXT
-//  ---------------------------------------------------------------------------
-
-export const CurrencyContext = createContext<CurrencyContextModel>({});

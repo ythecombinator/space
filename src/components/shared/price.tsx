@@ -1,7 +1,13 @@
 import { useSearchParams } from 'next/navigation';
 import { FunctionComponent } from 'react';
 
-import { CurrencyConversionQuery, SupportedCurrency, currencyInvariant, useCurrencyConversion } from 'utils/currency';
+import {
+  CurrencyConversionQuery,
+  SupportedCurrency,
+  currencyInvariant,
+  formatters,
+  useCurrencyConversion,
+} from 'utils/currency';
 
 import Tooltip from 'components/shared/tooltip';
 import Typography from 'components/shared/typography';
@@ -10,27 +16,40 @@ import Typography from 'components/shared/typography';
 //  TYPES
 //  ---------------------------------------------------------------------------
 
-interface Props extends CurrencyConversionQuery {}
+interface Props extends CurrencyConversionQuery {
+  prefix: string | undefined;
+  postfix: string | undefined;
+}
 
 //  ---------------------------------------------------------------------------
 //  UI
 //  ---------------------------------------------------------------------------
 
-const Price: FunctionComponent<Props> = ({ amount, source = 'CZK' }) => {
+const Price: FunctionComponent<Props> = ({ amount, source = 'CZK', prefix = ' ', postfix = ' ' }) => {
   const searchParams = useSearchParams();
+  const target = currencyInvariant(searchParams.get('currency')) as SupportedCurrency;
 
-  const currency = currencyInvariant(searchParams.get('currency')) as SupportedCurrency;
-  const finalAmount = useCurrencyConversion({ amount, source, target: currency });
+  if (source === target) {
+    const result = formatters[target].format(amount);
+    return (
+      <Typography.small className="text-blue-800 dark:text-blue-300 ml-1 mr-1">
+        {prefix} {result} {postfix}
+      </Typography.small>
+    );
+  }
+
+  const { result, lastUpdated } = useCurrencyConversion({ amount, source, target });
+  const disclaimer = `Last converted from ${source} on ${lastUpdated}. Orginal amount: ${amount}.`;
 
   return (
     <Tooltip.Provider>
       <Tooltip.Root>
         <Tooltip.Trigger>
-          <Typography.small>{finalAmount}</Typography.small> {` `}
+          <Typography.small className="text-blue-800 dark:text-blue-300 ml-1 mr-1">
+            {prefix} {result} {postfix}
+          </Typography.small>
         </Tooltip.Trigger>
-        <Tooltip.Content>
-          Converted from {source}. Orginal amount: {amount}.
-        </Tooltip.Content>
+        <Tooltip.Content>{disclaimer}</Tooltip.Content>
       </Tooltip.Root>
     </Tooltip.Provider>
   );
