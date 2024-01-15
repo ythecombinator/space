@@ -37,7 +37,6 @@ export type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 export async function getStaticProps() {
   const openGraphImage = await generateOpenGraphImage({
     title: metadata.title,
-    postPath: Routes.about,
     path: `content/${Routes.about}/cover.png`,
   });
 

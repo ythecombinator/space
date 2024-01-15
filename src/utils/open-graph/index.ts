@@ -15,8 +15,7 @@ interface TemplateProps {
   authorName: string;
   authorTwitter: string;
   authorPic: string;
-  basePath: string;
-  postPath: string;
+  authorBio: string;
 }
 
 interface ImageProps {
@@ -25,7 +24,7 @@ interface ImageProps {
   content: string;
 }
 
-type Options = Pick<TemplateProps, 'title' | 'postPath'> & Pick<ImageProps, 'width' | 'height'> & { path: string };
+type Options = Pick<TemplateProps, 'title'> & Pick<ImageProps, 'width' | 'height'> & { path: string };
 
 //  ---------------------------------------------------------------------------
 //  CONFIG
@@ -39,15 +38,14 @@ const DEFAULT_HEIGHT = 630;
 //  UTILS
 //  ---------------------------------------------------------------------------
 
-function compileTemplate({ title, authorName, authorTwitter, authorPic, basePath, postPath }: TemplateProps) {
+function compileTemplate({ title, authorName, authorTwitter, authorPic, authorBio }: TemplateProps) {
   const templateHTML = readFileSync(templatePath, 'utf-8');
   return compile(templateHTML)({
     title,
     authorName,
     authorTwitter,
     authorPic,
-    basePath,
-    postPath,
+    authorBio,
   });
 }
 
@@ -88,10 +86,10 @@ async function generateImage({ width, height, content }: ImageProps) {
 export async function generateOpenGraphImage(options: Options) {
   const compiledHTML = compileTemplate({
     ...options,
-    basePath: siteMetadata.siteUrl,
     authorName: siteMetadata.author,
-    authorTwitter: siteMetadata.twitterHandle,
     authorPic: siteMetadata.avatar,
+    authorBio: siteMetadata.description,
+    authorTwitter: siteMetadata.twitterHandle,
   });
 
   const image = await generateImage({

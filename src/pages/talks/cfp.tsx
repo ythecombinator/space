@@ -40,7 +40,6 @@ export async function getStaticProps() {
 
   const openGraphImage = await generateOpenGraphImage({
     title: metadata.title,
-    postPath: Routes.talksCFP,
     path: `content/${Routes.talksCFP}/cover.png`,
   });
 
