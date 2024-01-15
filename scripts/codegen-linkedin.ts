@@ -9,7 +9,7 @@ import got from 'got';
 dotenv.config();
 
 const LINKEDIN_URL = 'https://www.linkedin.com/in/ythecombinator';
-const DEST_PATH = 'src/content/misc/experience.json';
+const DEST_PATH = 'src/data/experience.json';
 
 const API_BASE_URL = 'https://nubela.co/proxycurl/api/v2/linkedin';
 const API_TOKEN = `Bearer ${process.env.NUBELA_TOKEN}`;

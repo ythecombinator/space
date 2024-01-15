@@ -1,3 +1,4 @@
+import experience from 'data/experience.json';
 import { InferGetStaticPropsType, NextPage } from 'next';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { MDXRemote } from 'next-mdx-remote';
@@ -10,8 +11,6 @@ import MarkdownContentService from 'services/content/markdown';
 
 import { serializeExperience } from 'utils/linkedin';
 import { generateOpenGraphImage } from 'utils/open-graph';
-
-import experience from 'content/misc/experience.json';
 
 import SectionContainer from 'components/shared/section-container';
 import SectionCover from 'components/shared/section-cover';

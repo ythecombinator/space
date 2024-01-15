@@ -27,7 +27,6 @@ interface BlogEntryLayoutProps {
 
 const BlogEntryLayout: FunctionComponent<PropsWithChildren<BlogEntryLayoutProps>> = ({ content, children }) => {
   const { date, title, slug, readingTime, hero } = content;
-  console.log('hero', hero);
   return (
     <>
       <ScrollTop />

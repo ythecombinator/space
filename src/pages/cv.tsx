@@ -1,3 +1,4 @@
+import linkedinData from 'data/experience.json';
 import { InferGetStaticPropsType, NextPage } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { FaMapMarked } from 'react-icons/fa';
@@ -8,8 +9,6 @@ import { siteMetadata, socialNetworks } from 'config/constants';
 import fonts from 'utils/fonts';
 import { serializeExperience } from 'utils/linkedin';
 import { classNames } from 'utils/styles';
-
-import linkedinData from 'content/misc/experience.json';
 
 import Avatar from 'components/shared/avatar';
 import Link from 'components/shared/link';
