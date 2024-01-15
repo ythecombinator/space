@@ -4,9 +4,9 @@ import { FunctionComponent } from 'react';
 import {
   CurrencyConversionQuery,
   SupportedCurrency,
+  convertCurrency,
   currencyInvariant,
   formatters,
-  useCurrencyConversion,
 } from 'utils/currency';
 
 import Tooltip from 'components/shared/tooltip';
@@ -38,7 +38,7 @@ const Price: FunctionComponent<Props> = ({ amount, source = 'CZK', prefix = ' ',
     );
   }
 
-  const { result, lastUpdated } = useCurrencyConversion({ amount, source, target });
+  const { result, lastUpdated } = convertCurrency({ amount, source, target });
   const disclaimer = `Last converted from ${source} on ${lastUpdated}. Orginal amount: ${amount}.`;
 
   return (

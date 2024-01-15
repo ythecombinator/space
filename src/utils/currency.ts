@@ -47,7 +47,7 @@ export function currencyInvariant(value: string | null, defaultValue: SupportedC
   return value as SupportedCurrency;
 }
 
-export function useCurrencyConversion({ source = 'CZK', target, amount }: CurrencyConversionQuery) {
+export function convertCurrency({ source = 'CZK', target, amount }: CurrencyConversionQuery) {
   if (source === target) {
     return { result: amount, lastUpdated: null };
   }
