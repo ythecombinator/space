@@ -6,28 +6,16 @@
   </head>
   <body id='body' class='bg-gradient-to-br from-teal-700 via-black to-amber-800 text-gray-100'>
     <div
-      class='relative flex flex-col justify-between p-16 h-full w-full bg-black-900 bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-50'
+      class='bg-black-900 relative flex w-full flex-col justify-center space-y-12 bg-opacity-50 bg-clip-padding p-16 backdrop-blur-3xl backdrop-filter'
       style='width: 1200px; height: 630px'
     >
-      <div class='max-w-screen-lg space-y-2'>
-        <h1 class='text-7xl font-bold leading-[1.3]'>
-          {{title}}
-        </h1>
-      </div>
-      <div class='flex justify-between'>
-        <div class='flex items-center space-x-6'>
-          <img src='{{authorPic}}' class='flex-none w-24 h-24 border-4 border-gray-200 rounded-full' />
-          <div class='flex flex-col gap'>
-            <p class='mb-1 text-3xl font-semibold font-source-sans-pro'>
-              {{authorName}}
-            </p>
-            <p class='text-2xl font-semibold tracking-wide font-open-sans'>
-              <span>{{authorBio}}</span>
-            </p>
-            <p class='text-2xl font-semibold tracking-wide font-source-sans-pro'>
-              {{authorTwitter}}
-            </p>
-          </div>
+      <h1 class='max-w-screen-lg text-6xl font-bold leading-[1.3]'>{{title}}</h1>
+      <div class='flex items-center space-x-6'>
+        <img src='{{authorPic}}' class='h-24 w-24 flex-none rounded-full border-4 border-gray-200' />
+        <div class='flex flex-col gap-2'>
+          <p class='mb-1 text-3xl font-semibold text-gray-300'>{{authorName}}</p>
+          <p class='text-2xl font-semibold tracking-wide text-gray-300'>{{authorBio}}</p>
+          <p class='text-2xl font-semibold tracking-wide text-gray-300'>{{authorTwitter}}</p>
         </div>
       </div>
     </div>
