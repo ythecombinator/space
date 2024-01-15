@@ -10,6 +10,7 @@ type SectionCoverProps = Pick<ImageProps, 'src' | 'alt'>;
 export const SectionCover: FunctionComponent<PropsWithChildren<SectionCoverProps>> = ({ src, alt }) => {
   return (
     <Image
+      priority
       alt={alt}
       src={src}
       width={700}
