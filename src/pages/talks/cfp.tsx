@@ -5,7 +5,7 @@ import { Routes, siteMetadata } from 'config/constants';
 
 import TalksCFPContentService from 'services/content/cfp';
 
-import { generateOpenGraphImage } from 'utils/open-graph';
+import { MetadataConfig, generateOpenGraphImage } from 'utils/open-graph';
 
 import SectionContainer from 'components/shared/section-container';
 import Typography from 'components/shared/typography';
@@ -18,7 +18,7 @@ import ListSection from 'components/pages/talks-cfp/list-section';
 //  CONFIG
 //  ---------------------------------------------------------------------------
 
-const metadata = {
+const metadata: MetadataConfig = {
   title: `Call for Papers — ${siteMetadata.title}`,
   description: 'Call for Papers',
 };
@@ -39,8 +39,9 @@ export async function getStaticProps() {
   const data = await talksCFPServiceInstance.getAll();
 
   const openGraphImage = await generateOpenGraphImage({
-    title: metadata.title,
+    title: metadata.description,
     path: `content/${Routes.talksCFP}/cover.png`,
+    type: Routes.talks,
   });
 
   return {

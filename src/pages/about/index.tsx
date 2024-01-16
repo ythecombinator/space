@@ -5,7 +5,7 @@ import { GiCardRandom, GiTakeMyMoney } from 'react-icons/gi';
 
 import { Routes, siteMetadata } from 'config/constants';
 
-import { generateOpenGraphImage } from 'utils/open-graph';
+import { MetadataConfig, generateOpenGraphImage } from 'utils/open-graph';
 
 import Admonition from 'components/shared/admonition';
 import ButtonLink from 'components/shared/button-link';
@@ -20,8 +20,9 @@ import Layout from 'components/layouts/page';
 //  CONFIG
 //  ---------------------------------------------------------------------------
 
-const metadata = {
+const metadata: MetadataConfig = {
   title: `About — ${siteMetadata.title}`,
+  description: 'Who am I?',
 };
 
 //  ---------------------------------------------------------------------------
@@ -36,8 +37,9 @@ export type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 export async function getStaticProps() {
   const openGraphImage = await generateOpenGraphImage({
-    title: metadata.title,
+    title: metadata.description,
     path: `content/${Routes.about}/cover.png`,
+    type: Routes.about,
   });
 
   return { props: { openGraphImage } };

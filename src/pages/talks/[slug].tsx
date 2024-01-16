@@ -59,6 +59,7 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
   const openGraphImage = await generateOpenGraphImage({
     title: talkData.title!,
     path: `content/${Routes.talks}/${id}/cover.png`,
+    type: Routes.talks,
   });
 
   return {

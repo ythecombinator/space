@@ -6,7 +6,7 @@ import { Routes, siteMetadata } from 'config/constants';
 
 import TalksContentService from 'services/content/talks';
 
-import { generateOpenGraphImage } from 'utils/open-graph';
+import { MetadataConfig, generateOpenGraphImage } from 'utils/open-graph';
 
 import Link from 'components/shared/link';
 import SearchBar, { SearchBarProps } from 'components/shared/seach-bar';
@@ -26,7 +26,7 @@ import YoutubeHighlightsSection from 'components/pages/talks/youtube-highlights-
 //  CONFIG
 //  ---------------------------------------------------------------------------
 
-const metadata = {
+const metadata: MetadataConfig = {
   title: `Talks — ${siteMetadata.title}`,
   description: 'Confs. Meetups. More.',
 };
@@ -54,8 +54,9 @@ export async function getStaticProps() {
   ]);
 
   const openGraphImage = await generateOpenGraphImage({
-    title: metadata.title,
+    title: metadata.description,
     path: `content/${Routes.talks}/cover.png`,
+    type: Routes.talks,
   });
 
   return {

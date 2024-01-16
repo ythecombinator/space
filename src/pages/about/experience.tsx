@@ -10,7 +10,7 @@ import { Routes, siteMetadata } from 'config/constants';
 import MarkdownContentService from 'services/content/markdown';
 
 import { serializeExperience } from 'utils/linkedin';
-import { generateOpenGraphImage } from 'utils/open-graph';
+import { MetadataConfig, generateOpenGraphImage } from 'utils/open-graph';
 
 import SectionContainer from 'components/shared/section-container';
 import SectionCover from 'components/shared/section-cover';
@@ -22,8 +22,9 @@ import Layout from 'components/layouts/page';
 //  CONFIG
 //  ---------------------------------------------------------------------------
 
-const metadata = {
+const metadata: MetadataConfig = {
   title: `Experience — ${siteMetadata.title}`,
+  description: 'My Experience',
 };
 
 //  ---------------------------------------------------------------------------
@@ -45,8 +46,9 @@ export async function getStaticProps() {
   const volunteering = await Promise.all(experience.volunteering.map(serializeExperience));
 
   const openGraphImage = await generateOpenGraphImage({
-    title: metadata.title,
+    title: metadata.description,
     path: `content/${Routes.experience}/cover.png`,
+    type: Routes.about,
   });
 
   return { props: { content, work, volunteering, openGraphImage } };

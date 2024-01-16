@@ -6,7 +6,7 @@ import { Routes, siteMetadata } from 'config/constants';
 
 import PostsContentService from 'services/content/posts';
 
-import { generateOpenGraphImage } from 'utils/open-graph';
+import { MetadataConfig, generateOpenGraphImage } from 'utils/open-graph';
 
 import SearchBar, { SearchBarProps } from 'components/shared/seach-bar';
 
@@ -15,7 +15,7 @@ import Layout from 'components/layouts/page';
 import AllPostsSection from 'components/pages/posts/all-posts-section';
 import AllPostsSectionSkeleton from 'components/pages/posts/all-posts-section-skeleton';
 
-const metadata = {
+const metadata: MetadataConfig = {
   title: `Posts — ${siteMetadata.title}`,
   description: 'Ideas. Stories. Updates.',
 };
@@ -36,8 +36,9 @@ export async function getStaticProps() {
   const allPosts = postsServiceInstance.getAll();
 
   const openGraphImage = await generateOpenGraphImage({
-    title: metadata.title,
+    title: metadata.description,
     path: `content/${Routes.posts}/cover.png`,
+    type: Routes.posts,
   });
 
   return { props: { allPosts, openGraphImage } };

@@ -5,7 +5,7 @@ import { Layouts, Routes, siteMetadata } from 'config/constants';
 
 import MarkdownContentService from 'services/content/markdown';
 
-import { generateOpenGraphImage } from 'utils/open-graph';
+import { MetadataConfig, generateOpenGraphImage } from 'utils/open-graph';
 
 import MDXLayoutRenderer from 'components/shared/mdx-components';
 
@@ -13,7 +13,7 @@ import MDXLayoutRenderer from 'components/shared/mdx-components';
 //  CONFIG
 //  ---------------------------------------------------------------------------
 
-const metadata = {
+const metadata: MetadataConfig = {
   title: `Speaker Rider — ${siteMetadata.title}`,
   description: 'Your Event & I!',
 };
@@ -40,8 +40,9 @@ export async function getStaticProps() {
   }
 
   const openGraphImage = await generateOpenGraphImage({
-    title: metadata.title,
+    title: metadata.description,
     path: `content/${Routes.talksRider}/cover.png`,
+    type: Routes.talks,
   });
 
   return { props: { content, openGraphImage } };

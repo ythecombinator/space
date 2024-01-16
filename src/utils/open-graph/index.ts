@@ -4,7 +4,7 @@ import { compile } from 'handlebars';
 import { join } from 'path';
 import { launch } from 'puppeteer';
 
-import { siteMetadata } from 'config/constants';
+import { Routes, siteMetadata } from 'config/constants';
 
 //  ---------------------------------------------------------------------------
 //  TYPES
@@ -12,6 +12,7 @@ import { siteMetadata } from 'config/constants';
 
 interface TemplateProps {
   title: string;
+  type: Routes.talks | Routes.posts | Routes.about;
   authorName: string;
   authorTwitter: string;
   authorPic: string;
@@ -24,7 +25,15 @@ interface ImageProps {
   content: string;
 }
 
-type Options = Pick<TemplateProps, 'title'> & Pick<ImageProps, 'width' | 'height'> & { path: string };
+type Options = Pick<ImageProps, 'height' | 'width'> &
+  Pick<TemplateProps, 'title' | 'type'> & {
+    path: string;
+  };
+
+export interface MetadataConfig {
+  title: string;
+  description: string;
+}
 
 //  ---------------------------------------------------------------------------
 //  CONFIG
@@ -34,18 +43,28 @@ const templatePath = join(process.cwd(), 'src/utils/open-graph/template.hbs');
 const DEFAULT_WIDTH = 1200;
 const DEFAULT_HEIGHT = 630;
 
+const backgroundVariants = {
+  [Routes.talks]: 'bg-gradient-to-br from-teal-700 via-black to-amber-800',
+  [Routes.posts]: 'bg-gradient-to-tr from-purple-900 via-black to-indigo-800',
+  [Routes.about]: 'bg-gradient-to-tr from-current via-violet-500 to-green-300',
+};
+
 //  ---------------------------------------------------------------------------
 //  UTILS
 //  ---------------------------------------------------------------------------
 
-function compileTemplate({ title, authorName, authorTwitter, authorPic, authorBio }: TemplateProps) {
+function compileTemplate({ title, authorName, authorTwitter, authorPic, authorBio, type }: TemplateProps) {
   const templateHTML = readFileSync(templatePath, 'utf-8');
+  const backgroundFilter = backgroundVariants[type];
+
   return compile(templateHTML)({
     title,
     authorName,
     authorTwitter,
     authorPic,
     authorBio,
+    backgroundFilter,
+    type: `${type} — `,
   });
 }
 
@@ -58,6 +77,7 @@ async function generateImage({ width, height, content }: ImageProps) {
       height: DEFAULT_HEIGHT,
     },
   });
+
   const page = await browser.newPage();
 
   if (width || height) {
@@ -84,7 +104,7 @@ async function generateImage({ width, height, content }: ImageProps) {
 //  ---------------------------------------------------------------------------
 
 export async function generateOpenGraphImage(options: Options) {
-  const compiledHTML = compileTemplate({
+  const content = compileTemplate({
     ...options,
     authorName: siteMetadata.author,
     authorPic: siteMetadata.avatar,
@@ -95,10 +115,11 @@ export async function generateOpenGraphImage(options: Options) {
   const image = await generateImage({
     width: options.width,
     height: options.height,
-    content: compiledHTML,
+    content: content,
   });
 
   const path = `./public/${options.path}`;
+
   try {
     await outputFile(path, image);
   } catch (err) {

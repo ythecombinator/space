@@ -2,11 +2,12 @@ import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next';
 import { NextSeo as Metadata } from 'next-seo';
 import { ParsedUrlQuery } from 'querystring';
 
-import { Layouts, siteMetadata } from 'config/constants';
+import { Layouts, Routes, siteMetadata } from 'config/constants';
 
 import MarkdownContentService from 'services/content/markdown';
 
 import MDXLayoutRenderer from 'components/shared/mdx-components';
+import { generateOpenGraphImage } from 'utils/open-graph';
 
 //  ---------------------------------------------------------------------------
 //  TYPES
@@ -50,10 +51,16 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
     };
   }
 
-  return { props: { content } };
+  const openGraphImage = await generateOpenGraphImage({
+    title: content.title,
+    path: `content/${Routes.about}/${slug}/cover.png`,
+    type: Routes.about,
+  });
+
+  return { props: { content, openGraphImage } };
 }
 
-const Page: NextPage<PageProps> = ({ content }) => {
+const Page: NextPage<PageProps> = ({ content, openGraphImage }) => {
   return (
     <>
       <Metadata
@@ -65,13 +72,7 @@ const Page: NextPage<PageProps> = ({ content }) => {
             lastName: siteMetadata.authorLastName,
             username: siteMetadata.twitterHandle,
           },
-          images: [
-            {
-              url: siteMetadata.avatar,
-              width: 400,
-              height: 400,
-            },
-          ],
+          images: [{ url: openGraphImage }],
         }}
       />
       <MDXLayoutRenderer layout={Layouts.mdx} content={content} />
