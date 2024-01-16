@@ -4,7 +4,7 @@ const nextConfig = {
   compress: true,
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
-  transpilePackages: ['remark', 'react-use-callback-ref'],
+  transpilePackages: ['remark', 'react-use-callback-ref', 'react-tweet'],
   webpack: (config) => {
     config.module.rules.push({
       test: /\.svg$/,

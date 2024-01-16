@@ -16,6 +16,7 @@ import Typography from 'components/shared/typography';
 
 import CustomerPortfolio from 'components/pages/about/customer-portfolio';
 import Inventory from 'components/pages/about/inventory';
+import { Tweet } from 'react-tweet';
 
 //  ---------------------------------------------------------------------------
 //  TYPES
@@ -48,6 +49,7 @@ const MDXComponents: MDXContentProps['components'] = {
   CustomerPortfolio,
   Admonition,
   Price,
+  Tweet
 };
 
 //  ---------------------------------------------------------------------------
