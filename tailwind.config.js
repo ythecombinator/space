@@ -23,8 +23,8 @@ const config = {
         14: '3.5rem',
       },
       fontFamily: {
-        body: ['var(--font-general-sans)'],
-        heading: ['var(--font-recoleta)'],
+        body: ['var(--font-karla)'],
+        heading: ['var(--font-space-grotesk)'],
       },
       backgroundImage: {
         'texture-pattern': "url('/img/texture-pattern.svg')",

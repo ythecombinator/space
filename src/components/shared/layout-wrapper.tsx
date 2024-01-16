@@ -22,9 +22,9 @@ const LayoutWrapper: FunctionComponent<PropsWithChildren<{}>> = ({ children }) =
       <div
         className={classNames(
           'm-auto max-w-2xl px-4 sm:px-6 xl:max-w-2xl xl:px-0',
-          fonts.generalSans.className,
-          fonts.generalSans.variable,
-          fonts.recoleta.variable
+          fonts.karla.className,
+          fonts.karla.variable,
+          fonts.spaceGrotesk.variable
         )}
       >
         <div className="flex h-screen flex-col justify-between">

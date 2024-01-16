@@ -29,7 +29,7 @@ const Heading1: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLHeadingEl
     <h1
       className={classNames(
         'text-3xl font-extrabold tracking-tight sm:text-4xl md:text-6xl',
-        fonts.recoleta.className,
+        fonts.spaceGrotesk.className,
         className
       )}
       {...props}
@@ -52,7 +52,7 @@ const Heading2: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLHeadingEl
     <h2
       className={classNames(
         'font-bold text-2xl md:text-3xl tracking-tight my-4 text-black dark:text-white',
-        fonts.recoleta.className,
+        fonts.spaceGrotesk.className,
         className
       )}
       {...props}
@@ -75,7 +75,7 @@ const Heading3: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLHeadingEl
     <h3
       className={classNames(
         'mt-8 scroll-m-20 text-xl font-semibold tracking-tight',
-        fonts.recoleta.className,
+        fonts.spaceGrotesk.className,
         className
       )}
       {...props}

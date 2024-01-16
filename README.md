@@ -23,12 +23,6 @@
 - [tailwind-merge](https://github.com/dcastil/tailwind-merge)
 - [clsx](https://github.com/lukeed/clsx)
 
-### 🔤 Fonts
-
-- [next/font](https://nextjs.org/docs/basic-features/font-optimization)
-- [General Sans](https://www.fontshare.com/fonts/general-sans)
-- [Recoleta](https://www.myfonts.com/collections/recoleta-font-latinotype)
-
 ## Running Locally
 
 > **Warning**

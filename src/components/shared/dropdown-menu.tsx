@@ -43,7 +43,7 @@ const DropdownMenu: FunctionComponent<DropdownMenuProps> = (props) => {
               'radix-side-top:animate-slide-up radix-side-bottom:animate-slide-down',
               'w-48 rounded-lg px-1.5 py-1 shadow-md md:w-56',
               'bg-white dark:bg-gray-800',
-              fonts.generalSans.className
+              fonts.karla.className
             )}
           >
             <DropdownMenuPrimitive.Label className="select-none p-2 text-xs text-gray-700 dark:text-gray-200">
