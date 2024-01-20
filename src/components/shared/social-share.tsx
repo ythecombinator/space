@@ -25,7 +25,7 @@ function SocialShare({
   return (
     <Link
       href={href}
-      className="p-4 hover:scale-105 transition hover:text-gray-100 text-gray-400"
+      className="p-4 text-gray-400 transition hover:scale-105 hover:text-gray-100"
       target="_blank"
       rel="noopener noreferrer"
     >
