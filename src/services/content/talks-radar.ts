@@ -6,8 +6,8 @@ import { formatDate, isSingleDayTimeSpan } from 'utils/date';
 
 const notionServiceInstance = NotionService.getInstance();
 
-export default class TalksCFPContentService {
-  private static instance: TalksCFPContentService;
+export default class TalksRadarContentService {
+  private static instance: TalksRadarContentService;
   private seasonMap: Record<ConferenceSeason, string> = {
     '2024': '57cbd3d5d34c4933bc51a7a49737f4f8',
     '2023': '6f8ad796bb5746a1a479446a7153d470',
@@ -16,7 +16,7 @@ export default class TalksCFPContentService {
 
   static getInstance() {
     if (!this.instance) {
-      this.instance = new TalksCFPContentService();
+      this.instance = new TalksRadarContentService();
     }
 
     return this.instance;

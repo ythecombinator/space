@@ -3,7 +3,7 @@ import { NextSeo as Metadata } from 'next-seo';
 
 import { Routes, siteMetadata } from 'config/constants';
 
-import TalksCFPContentService from 'services/content/cfp';
+import TalksRadarContentService from 'services/content/talks-radar';
 
 import { MetadataConfig, generateOpenGraphImage } from 'utils/open-graph';
 
@@ -12,15 +12,15 @@ import Typography from 'components/shared/typography';
 
 import Layout from 'components/layouts/page';
 
-import ListSection from 'components/pages/talks-cfp/list-section';
+import ListSection from 'components/pages/talks-radar/list-section';
 
 //  ---------------------------------------------------------------------------
 //  CONFIG
 //  ---------------------------------------------------------------------------
 
 const metadata: MetadataConfig = {
-  title: `Call for Papers — ${siteMetadata.title}`,
-  description: 'Call for Papers',
+  title: `Event CFPs Radar — ${siteMetadata.title}`,
+  description: 'Event CFPs Radar',
 };
 
 //  ---------------------------------------------------------------------------
@@ -33,14 +33,14 @@ export type Props = InferGetStaticPropsType<typeof getStaticProps>;
 //  NEXT
 //  ---------------------------------------------------------------------------
 
-const talksCFPServiceInstance = TalksCFPContentService.getInstance();
+const talksCFPServiceInstance = TalksRadarContentService.getInstance();
 
 export async function getStaticProps() {
   const data = await talksCFPServiceInstance.getAll();
 
   const openGraphImage = await generateOpenGraphImage({
     title: metadata.description,
-    path: `content/${Routes.talksCFP}/cover.png`,
+    path: `content/${Routes.talksRadar}/cover.png`,
     type: Routes.talks,
   });
 

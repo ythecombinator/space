@@ -106,8 +106,9 @@ const Page: NextPage<Props> = (props) => {
             and hit me up!
           </Typography.p>
           <Typography.p>
-            Want to see how {`I'm`} doing when it comes to call-for-papers of known events? I keep an open record of my
-            acceptances, rejections, etc. <Link href={`/${Routes.talksCFP}`}>here</Link>!
+            I also maintain <Link href={`/${Routes.talksRadar}`}>here</Link> a curated list with the CFPs (ie. Calls for
+            Papers/Presentations) of conferences I am personally interested in and a few others I happen to stumble
+            across when navigating different event listings!
           </Typography.p>
         </SectionContainer>
 

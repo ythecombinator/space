@@ -64,7 +64,7 @@ export enum Routes {
   cv = 'cv',
   posts = 'posts',
   talks = 'talks',
-  talksCFP = 'talks/cfp',
+  talksRadar = 'talks/radar',
   talksRider = 'talks/rider',
 }
 
