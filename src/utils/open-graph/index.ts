@@ -10,7 +10,7 @@ import { Routes, siteMetadata } from 'config/constants';
 //  TYPES
 //  ---------------------------------------------------------------------------
 
-interface TemplateProps {
+interface TemplateProps extends Pick<ImageProps, 'width' | 'height'> {
   title: string;
   type: Routes.talks | Routes.posts | Routes.about;
   authorName: string;
@@ -25,7 +25,7 @@ interface ImageProps {
   content: string;
 }
 
-type Options = Pick<ImageProps, 'height' | 'width'> &
+type ImageOptions = Pick<ImageProps, 'height' | 'width'> &
   Pick<TemplateProps, 'title' | 'type'> & {
     path: string;
   };
@@ -42,6 +42,7 @@ export interface MetadataConfig {
 const templatePath = join(process.cwd(), 'src/utils/open-graph/template.hbs');
 const DEFAULT_WIDTH = 1200;
 const DEFAULT_HEIGHT = 630;
+const DEFAULT_MULTIPLIER = 1;
 
 const backgroundVariants = {
   [Routes.talks]: 'bg-gradient-to-br from-teal-700 via-black to-amber-800',
@@ -49,13 +50,29 @@ const backgroundVariants = {
   [Routes.about]: 'bg-gradient-to-tr from-current via-violet-500 to-green-300',
 };
 
+const categoryVariants = {
+  [Routes.talks]: '🎙️',
+  [Routes.posts]: '📝',
+  [Routes.about]: '👋',
+};
+
 //  ---------------------------------------------------------------------------
 //  UTILS
 //  ---------------------------------------------------------------------------
 
-function compileTemplate({ title, authorName, authorTwitter, authorPic, authorBio, type }: TemplateProps) {
+function compileTemplate({
+  title,
+  authorName,
+  authorTwitter,
+  authorPic,
+  authorBio,
+  type,
+  width,
+  height,
+}: TemplateProps) {
   const templateHTML = readFileSync(templatePath, 'utf-8');
   const backgroundFilter = backgroundVariants[type];
+  const categoryEmoji = categoryVariants[type];
 
   return compile(templateHTML)({
     title,
@@ -64,29 +81,23 @@ function compileTemplate({ title, authorName, authorTwitter, authorPic, authorBi
     authorPic,
     authorBio,
     backgroundFilter,
-    type: `${type} — `,
+    width,
+    height,
+    type: `${categoryEmoji} ${type} — `,
   });
 }
 
-async function generateImage({ width, height, content }: ImageProps) {
+async function generateImage({ width, height, content }: Required<ImageProps>) {
   const browser = await launch({
     headless: true,
     args: ['--no-sandbox'],
     defaultViewport: {
-      width: DEFAULT_WIDTH,
-      height: DEFAULT_HEIGHT,
+      width,
+      height,
     },
   });
 
   const page = await browser.newPage();
-
-  if (width || height) {
-    await page.setViewport({
-      width: width ? Number(width) : DEFAULT_WIDTH,
-      height: height ? Number(height) : DEFAULT_HEIGHT,
-    });
-  }
-
   await page.setContent(content, { waitUntil: 'networkidle2' });
   await page.waitForSelector('#body', {
     visible: true,
@@ -103,9 +114,15 @@ async function generateImage({ width, height, content }: ImageProps) {
 //  CORE
 //  ---------------------------------------------------------------------------
 
-export async function generateOpenGraphImage(options: Options) {
+export async function generateOpenGraphImage({
+  width = DEFAULT_WIDTH * DEFAULT_MULTIPLIER,
+  height = DEFAULT_HEIGHT * DEFAULT_MULTIPLIER,
+  ...options
+}: ImageOptions) {
   const content = compileTemplate({
     ...options,
+    width,
+    height,
     authorName: siteMetadata.author,
     authorPic: siteMetadata.avatar,
     authorBio: siteMetadata.description,
@@ -113,8 +130,8 @@ export async function generateOpenGraphImage(options: Options) {
   });
 
   const image = await generateImage({
-    width: options.width,
-    height: options.height,
+    width,
+    height,
     content: content,
   });
 
