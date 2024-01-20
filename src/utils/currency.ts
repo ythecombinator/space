@@ -6,7 +6,7 @@ import { formatDate } from 'utils/date';
 //  CONFIG
 //  ---------------------------------------------------------------------------
 
-export const SUPPORTED_CURRENCIES = ['USD', 'EUR', 'GBP', 'JPY', 'BRL', 'CZK'] as const;
+export const SUPPORTED_CURRENCIES = ['USD', 'EUR', 'GBP', 'JPY', 'BRL', 'AUD', 'CAD', 'CHF', 'INR', 'CZK'] as const;
 
 //  ---------------------------------------------------------------------------
 //  UTILS

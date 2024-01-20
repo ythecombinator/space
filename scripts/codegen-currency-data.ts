@@ -27,7 +27,7 @@ const args = [
 ];
 
 //  ---------------------------------------------------------------------------
-//  CORE
+//  UTILS
 //  ---------------------------------------------------------------------------
 
 async function fetchConversion({ amount, source, target }: CurrencyConversionQuery): Promise<string> {
@@ -83,11 +83,15 @@ async function getRates(base: SupportedCurrency, table = SUPPORTED_CURRENCIES) {
   };
 }
 
-async function codegenXE() {
+//  ---------------------------------------------------------------------------
+//  CORE
+//  ---------------------------------------------------------------------------
+
+async function codegenCurrencyData() {
   const czkRates = await getRates('CZK');
   const rates = { CZK: czkRates };
 
   await outputFile(DEST_PATH, JSON.stringify(rates, null, 2));
 }
 
-codegenXE();
+codegenCurrencyData();

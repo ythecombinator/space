@@ -18,7 +18,7 @@
     "format": "prettier --write src/",
     "codegen:schema": "graphql-codegen --config codegen.ts --require dotenv/config",
     "codegen:linkedin": "tsx scripts/codegen-linkedin.ts",
-    "codegen:xe": "tsx scripts/codegen-xe.ts"
+    "codegen:currency-data": "tsx scripts/codegen-currency-data.ts"
   },
   "dependencies": {
     "@apollo/client": "3.8.7",
