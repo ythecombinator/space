@@ -6,8 +6,7 @@ import fonts from 'utils/fonts';
 import { classNames } from 'utils/styles';
 
 import Button from 'components/shared/button';
-
-import Typography from './typography';
+import Typography from 'components/shared/typography';
 
 //  ---------------------------------------------------------------------------
 //  TYPES

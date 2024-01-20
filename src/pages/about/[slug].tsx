@@ -6,8 +6,9 @@ import { Layouts, Routes, siteMetadata } from 'config/constants';
 
 import MarkdownContentService from 'services/content/markdown';
 
-import MDXLayoutRenderer from 'components/shared/mdx-components';
 import { generateOpenGraphImage } from 'utils/open-graph';
+
+import MDXLayoutRenderer from 'components/shared/mdx-components';
 
 //  ---------------------------------------------------------------------------
 //  TYPES

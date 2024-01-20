@@ -64,10 +64,9 @@ const Page: NextPage<PageProps> = ({ openGraphImage }) => {
         <SectionContainer className="prose dark:prose-invert">
           <SectionCover alt="This is me!" src="/content/misc/intro.jpg" />
           <Typography.p>
-            Hey, {`I'm`} Matheus Albuquerque—but most folks know me as <Typography.mark>ythecombinator</Typography.mark>{' '}
-            online.
+            Hello, {`I'm`} Matheus Albuquerque Brasil—but most folks know me as{' '}
+            <Typography.mark>ythecombinator</Typography.mark> online.
           </Typography.p>
-
           <Admonition.Box>
             <Admonition.Title>Why... the... combinator?</Admonition.Title>
             <Admonition.Description>
@@ -76,21 +75,17 @@ const Page: NextPage<PageProps> = ({ openGraphImage }) => {
                 <Typography.mark>mabrasil</Typography.mark>, <Typography.mark>malbuquerque</Typography.mark>, etc. — and
                 that was usually a huge source of confusion for non-native Portuguese speakers.
               </Typography.p>
-
               <Typography.p>I then realized I needed something in English to reach a broader audience.</Typography.p>
-
               <Typography.p>
                 Back at the time, I was really into functional programming, abstractions, and compilers. When reading
                 about the Y combinator, it all sounded super interesting to me.
               </Typography.p>
-
               <Typography.p>
                 I was also inspired by the pseudonym of the brilliant{' '}
                 <Typography.a href="https://en.wikipedia.org/wiki/Why_the_lucky_stiff">Jonathan Gillette</Typography.a>{' '}
                 — ie. {`"`}why the lucky stiff{`"`} or {`"`}_why{`"`} — and I realized{' '}
                 <Typography.mark>ythecombinator</Typography.mark> was available pretty everywhere; so I took it!
               </Typography.p>
-
               <Typography.p>
                 By the way, if you{`'`}re up for a long read, Mike Vanier has{' '}
                 <Typography.a href="https://mvanier.livejournal.com/2897.html">

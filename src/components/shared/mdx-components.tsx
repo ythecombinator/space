@@ -12,11 +12,11 @@ import { RawBlogEntry } from 'services/content/posts';
 import Admonition from 'components/shared/admonition';
 import Pre from 'components/shared/pre';
 import Price from 'components/shared/price';
+import Tweet from 'components/shared/tweet';
 import Typography from 'components/shared/typography';
 
 import CustomerPortfolio from 'components/pages/about/customer-portfolio';
 import Inventory from 'components/pages/about/inventory';
-import Tweet from 'components/shared/tweet';
 
 //  ---------------------------------------------------------------------------
 //  TYPES
