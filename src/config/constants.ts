@@ -1,5 +1,6 @@
 import { ComponentType } from 'react';
-import { FaDev, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaDev, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 
 import LayoutBlogEntry from 'components/layouts/blog-entry';
 import LayoutMDXEntry from 'components/layouts/mdx-entry';
@@ -33,7 +34,7 @@ export const socialNetworksMap = {
   Twitter: {
     label: 'Twitter',
     href: siteMetadata.twitter,
-    Icon: FaTwitter,
+    Icon: FaXTwitter,
   },
   Github: {
     label: 'Github',

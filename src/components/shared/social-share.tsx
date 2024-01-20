@@ -23,12 +23,7 @@ function SocialShare({
   }
 
   return (
-    <Link
-      href={href}
-      className="p-4 text-gray-400 transition hover:scale-105 hover:text-gray-100"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+    <Link href={href} className="p-4 transition hover:scale-110" target="_blank" rel="noopener noreferrer">
       <Icon />
       <span className="sr-only">Share on {platform}</span>
     </Link>
