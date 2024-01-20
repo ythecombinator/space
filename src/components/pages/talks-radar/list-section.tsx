@@ -8,11 +8,15 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-import * as React from 'react';
 import { FunctionComponent, PropsWithChildren, useState } from 'react';
 import { BiSort } from 'react-icons/bi';
 
-import { EngagementStatusPrimary, EngagementStatusSecondary, EventEntry, ConferenceSeason } from 'services/content/cfp';
+import {
+  ConferenceSeason,
+  EngagementStatusPrimary,
+  EngagementStatusSecondary,
+  EventEntry,
+} from 'services/content/talks-radar';
 
 import Button from 'components/shared/button';
 import DropdownMenu from 'components/shared/dropdown-menu';
