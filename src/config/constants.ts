@@ -29,28 +29,30 @@ export const siteMetadata = {
   avatar: 'https://avatars.githubusercontent.com/u/2644563?v=4',
 };
 
-export const socialNetworks = [
-  {
+export const socialNetworksMap = {
+  Twitter: {
     label: 'Twitter',
     href: siteMetadata.twitter,
     Icon: FaTwitter,
   },
-  {
+  Github: {
     label: 'Github',
     href: siteMetadata.github,
     Icon: FaGithub,
   },
-  {
+  LinkedIn: {
     label: 'LinkedIn',
     href: 'https://www.linkedin.com/in/ythecombinator',
     Icon: FaLinkedin,
   },
-  {
-    label: 'dev.to',
+  DEV: {
+    label: 'DEV',
     href: 'https://dev.to/ythecombinator',
     Icon: FaDev,
   },
-];
+} as const;
+
+export const socialNetworks = Object.values(socialNetworksMap);
 
 export enum Routes {
   base = '/',
