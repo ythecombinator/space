@@ -25,21 +25,22 @@ interface Props extends CurrencyConversionQuery {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const Price: FunctionComponent<Props> = ({ amount, source = 'CZK', prefix = ' ', postfix = ' ' }) => {
+const Price: FunctionComponent<Props> = ({ amount, source = 'CZK', prefix = '', postfix = '' }) => {
   const searchParams = useSearchParams();
+
   const target = currencyInvariant(searchParams.get('currency')) as SupportedCurrency;
+  const formattedSourceAmount = formatters[source].format(amount);
 
   if (source === target) {
-    const result = formatters[target].format(amount);
     return (
       <Typography.small className="mx-1 text-blue-800 dark:text-blue-300">
-        {prefix} {result} {postfix}
+        {prefix} {formattedSourceAmount} {postfix}
       </Typography.small>
     );
   }
 
   const { result, lastUpdated } = convertCurrency({ amount, source, target });
-  const disclaimer = `Last converted from ${source} on ${lastUpdated}. Orginal amount: ${amount}.`;
+  const disclaimer = `Last converted on ${lastUpdated}. Orginal amount: ${formattedSourceAmount}.`;
 
   return (
     <Tooltip.Provider>
