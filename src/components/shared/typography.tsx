@@ -108,9 +108,13 @@ const Highlight: FunctionComponent<PropsWithChildren<HighlightProps>> = ({ child
 //  UI: Typography.lead
 //  ---------------------------------------------------------------------------
 
-const Lead: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLParagraphElement>>> = ({ children, ...props }) => {
+const Lead: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLParagraphElement>>> = ({
+  children,
+  className,
+  ...props
+}) => {
   return (
-    <p className="text-xl font-semibold leading-8 tracking-tight" {...props}>
+    <p className={classNames('text-xl font-semibold leading-8 tracking-tight', className)} {...props}>
       {children}
     </p>
   );
@@ -164,9 +168,13 @@ const Small: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLHeadingEleme
 //  UI: Typography.subtle
 //  ---------------------------------------------------------------------------
 
-const Subtle: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLParagraphElement>>> = ({ children, ...props }) => {
+const Subtle: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLParagraphElement>>> = ({
+  children,
+  className,
+  ...props
+}) => {
   return (
-    <p className="text-sm text-slate-500 dark:text-slate-400" {...props}>
+    <p className={classNames('text-sm text-slate-500 dark:text-slate-400', className)} {...props}>
       {children}
     </p>
   );
