@@ -14,5 +14,9 @@
     "source.fixAll": "explicit",
     "source.organizeImports": "explicit",
     "source.sortMembers": "explicit"
+  },
+  "[handlebars]": {
+    "editor.formatOnSave": false,
+    "editor.formatOnPaste": false
   }
 }

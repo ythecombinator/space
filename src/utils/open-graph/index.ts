@@ -14,9 +14,6 @@ interface TemplateProps extends Pick<ImageProps, 'width' | 'height'> {
   title: string;
   type: Routes.talks | Routes.posts | Routes.about;
   authorName: string;
-  authorTwitter: string;
-  authorPic: string;
-  authorBio: string;
 }
 
 interface ImageProps {
@@ -42,7 +39,7 @@ export interface MetadataConfig {
 const templatePath = join(process.cwd(), 'src/utils/open-graph/template.hbs');
 const DEFAULT_WIDTH = 1200;
 const DEFAULT_HEIGHT = 630;
-const DEFAULT_MULTIPLIER = 1;
+const DEFAULT_MULTIPLIER = 3;
 
 const backgroundVariants = {
   [Routes.talks]: 'bg-gradient-to-br from-teal-700 via-black to-amber-800',
@@ -54,29 +51,17 @@ const backgroundVariants = {
 //  UTILS
 //  ---------------------------------------------------------------------------
 
-function compileTemplate({
-  title,
-  authorName,
-  authorTwitter,
-  authorPic,
-  authorBio,
-  type,
-  width,
-  height,
-}: TemplateProps) {
+function compileTemplate({ title, authorName, type, width, height }: TemplateProps) {
   const templateHTML = readFileSync(templatePath, 'utf-8');
   const backgroundFilter = backgroundVariants[type];
 
   return compile(templateHTML)({
     title,
     authorName,
-    authorTwitter,
-    authorPic,
-    authorBio,
     backgroundFilter,
     width,
     height,
-    type: `${type} — `,
+    type: `${type} →`,
   });
 }
 
@@ -117,9 +102,6 @@ export async function generateOpenGraphImage({
     width,
     height,
     authorName: siteMetadata.author,
-    authorPic: siteMetadata.avatar,
-    authorBio: siteMetadata.description,
-    authorTwitter: siteMetadata.twitterHandle,
   });
 
   const image = await generateImage({
