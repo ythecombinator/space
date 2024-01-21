@@ -26,3 +26,7 @@ src/graphql/schema.ts
 
 # Contentlayer
 .contentlayer
+
+# OG Images
+public/**/cover.png
+!public/content/cover.png
