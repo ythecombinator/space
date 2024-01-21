@@ -50,12 +50,6 @@ const backgroundVariants = {
   [Routes.about]: 'bg-gradient-to-tr from-current via-violet-500 to-green-300',
 };
 
-const categoryVariants = {
-  [Routes.talks]: '🎙️',
-  [Routes.posts]: '📝',
-  [Routes.about]: '👋',
-};
-
 //  ---------------------------------------------------------------------------
 //  UTILS
 //  ---------------------------------------------------------------------------
@@ -72,7 +66,6 @@ function compileTemplate({
 }: TemplateProps) {
   const templateHTML = readFileSync(templatePath, 'utf-8');
   const backgroundFilter = backgroundVariants[type];
-  const categoryEmoji = categoryVariants[type];
 
   return compile(templateHTML)({
     title,
@@ -83,7 +76,7 @@ function compileTemplate({
     backgroundFilter,
     width,
     height,
-    type: `${categoryEmoji} ${type} — `,
+    type: `${type} — `,
   });
 }
 
