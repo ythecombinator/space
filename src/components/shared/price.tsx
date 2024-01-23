@@ -17,15 +17,14 @@ import Typography from 'components/shared/typography';
 //  ---------------------------------------------------------------------------
 
 interface Props extends CurrencyConversionQuery {
-  prefix: string | undefined;
-  postfix: string | undefined;
+  leading?: boolean;
 }
 
 //  ---------------------------------------------------------------------------
 //  UI
 //  ---------------------------------------------------------------------------
 
-const Price: FunctionComponent<Props> = ({ amount, source = 'CZK', prefix = '', postfix = '' }) => {
+const Price: FunctionComponent<Props> = ({ amount, source = 'CZK', leading = false }) => {
   const searchParams = useSearchParams();
 
   const target = currencyInvariant(searchParams.get('currency')) as SupportedCurrency;
@@ -34,7 +33,8 @@ const Price: FunctionComponent<Props> = ({ amount, source = 'CZK', prefix = '', 
   if (source === target) {
     return (
       <Typography.small className="mx-1 text-blue-800 dark:text-blue-300">
-        {prefix} {formattedSourceAmount} {postfix}
+        {formattedSourceAmount}
+        {leading && ' '}
       </Typography.small>
     );
   }
@@ -47,7 +47,8 @@ const Price: FunctionComponent<Props> = ({ amount, source = 'CZK', prefix = '', 
       <Tooltip.Root>
         <Tooltip.Trigger>
           <Typography.small className="mx-1 text-blue-800 dark:text-blue-300">
-            {prefix} {result} {postfix}
+            {result}
+            {leading && ' '}
           </Typography.small>
         </Tooltip.Trigger>
         <Tooltip.Content>{disclaimer}</Tooltip.Content>
