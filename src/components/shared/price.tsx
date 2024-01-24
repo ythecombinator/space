@@ -34,7 +34,7 @@ const Price: FunctionComponent<Props> = ({ amount, source = 'CZK', leading = fal
     return (
       <Typography.small className="mx-1 text-blue-800 dark:text-blue-300">
         {formattedSourceAmount}
-        {leading && ' '}
+        {leading && '\u00A0'}
       </Typography.small>
     );
   }
@@ -48,7 +48,7 @@ const Price: FunctionComponent<Props> = ({ amount, source = 'CZK', leading = fal
         <Tooltip.Trigger>
           <Typography.small className="mx-1 text-blue-800 dark:text-blue-300">
             {result}
-            {leading && ' '}
+            {leading && '\u00A0'}
           </Typography.small>
         </Tooltip.Trigger>
         <Tooltip.Content>{disclaimer}</Tooltip.Content>
