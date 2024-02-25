@@ -1,8 +1,8 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useId } from 'react';
 
-import Image from 'components/shared/image';
-import Link from 'components/shared/link';
 import Typography from 'components/shared/typography';
+
+import Item from 'components/pages/about/inventory-item';
 
 //  ---------------------------------------------------------------------------
 //  TYPES
@@ -16,6 +16,7 @@ export type InventoryItem = {
 };
 
 export type InventoryProps = {
+  title: string;
   items: Array<InventoryItem>;
 };
 
@@ -23,26 +24,27 @@ export type InventoryProps = {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const Inventory: FunctionComponent<InventoryProps> = ({ items }) => {
+const Inventory: FunctionComponent<InventoryProps> = ({ title, items }) => {
+  let id = useId();
+
   return (
-    <div className="my-8 grid grid-cols-1 gap-8 sm:grid-cols-3">
-      {items.map((item) => (
-        <Link
-          key={item.name}
-          href={item.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex flex-col gap-6 rounded-lg border p-4 transition-colors duration-150 hover:bg-accent sm:gap-3"
-          clearDecoration
-        >
-          <Image src={item.image} width={256} height={256} alt={item.name} containerClassName="flex justify-center" />
-          <div className="flex flex-col justify-center gap-2">
-            <Typography.lead>{item.name}</Typography.lead>
-            <Typography.subtle>{item.description}</Typography.subtle>
-          </div>
-        </Link>
-      ))}
-    </div>
+    <section aria-labelledby={id} className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
+      <div className="grid max-w-3xl grid-cols-1 items-baseline gap-y-8 md:grid-cols-4">
+        <Typography.h2 id={id} className="text-sm font-semibold text-zinc-800 dark:text-zinc-100">
+          {title}
+        </Typography.h2>
+        <div className="md:col-span-3">
+          <ul role="list" className="space-y-16">
+            {items.map((item) => (
+              <Item key={item.name}>
+                <Item.Title href={item.url}>{item.name}</Item.Title>
+                <Item.Description>{item.description}</Item.Description>
+              </Item>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
   );
 };
 
