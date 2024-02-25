@@ -34,7 +34,7 @@ const Inventory: FunctionComponent<InventoryProps> = ({ title, items }) => {
           {title}
         </Typography.h2>
         <div className="md:col-span-3">
-          <ul role="list" className="space-y-16">
+          <ul className="space-y-16">
             {items.map((item) => (
               <Item key={item.name}>
                 <Item.Title href={item.url}>{item.name}</Item.Title>
