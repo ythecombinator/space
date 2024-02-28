@@ -1,14 +1,15 @@
 query GetTalksForTag($tag: String, $limit: Int) {
-  talkCollection(
-    where: { contentfulMetadata: { tags: { id_contains_some: [$tag] } } }
-    order: lastRelevant_DESC
-    limit: $limit
-  ) {
+  talkCollection(where: { contentfulMetadata: { tags: { id_contains_some: [$tag] } } }, limit: $limit) {
     items {
       title
       slug
       sessionsCollection {
         total
+        items {
+          event {
+            endingDate
+          }
+        }
       }
     }
   }

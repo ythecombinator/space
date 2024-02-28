@@ -160,24 +160,8 @@ export default class TalksContentService {
 //  ---------------------------------------------------------------------------
 
 const allTransformer = (result: GetAllTalksQuery) => {
-  const items = [...(result as DeepNonNullable<GetAllTalksQuery>).talkCollection.items];
-
-  const sorted = items.sort(function (talkA, talkB) {
-    const aSessions = [...talkA.sessionsCollection.items];
-    const bSessions = [...talkB.sessionsCollection.items];
-
-    const latestA = aSessions.sort((sessionA, sessionB) => {
-      const sub = new Date(sessionB.event.endingDate).getTime() - new Date(sessionA.event.endingDate).getTime();
-      return sub;
-    })[0];
-
-    const latestB = bSessions.sort((sessionA, sessionB) => {
-      const sub = new Date(sessionB.event.endingDate).getTime() - new Date(sessionA.event.endingDate).getTime();
-      return sub;
-    })[0];
-
-    return new Date(latestB.event.endingDate).getTime() - new Date(latestA.event.endingDate).getTime();
-  });
+  const items = extractTalkCollectionItems(result);
+  const sorted = items.sort(talksSorter);
 
   return sorted.map((item) => {
     const { title, category, abstract, slug, sessionsCollection, contentfulMetadata } = item;
@@ -218,9 +202,10 @@ const featuredTransformer = (result: GetFeaturedTalksQuery) => {
 };
 
 const talksPerTagTransformer = (result: GetTalksForTagQuery) => {
-  const items = (result as DeepNonNullable<GetTalksForTagQuery>).talkCollection.items;
+  const items = extractTalkCollectionItems(result);
+  const sorted = items.sort(talksSorter);
 
-  return items.map((item) => ({
+  return sorted.map((item) => ({
     talkTitle: item.title,
     talkSlug: `/${Routes.talks}/${item.slug}`,
     sessionsCount: item.sessionsCollection.total,
@@ -280,6 +265,27 @@ const transformers = {
 //  ---------------------------------------------------------------------------
 //  TRANSFORMERS: UTILS
 //  ---------------------------------------------------------------------------
+
+function extractTalkCollectionItems(result: GetAllTalksQuery | GetTalksForTagQuery) {
+  return [...(result as DeepNonNullable<GetAllTalksQuery>).talkCollection.items] as DeepNonNullable<Talk>[];
+}
+
+function talksSorter(talkA: DeepNonNullable<Talk>, talkB: DeepNonNullable<Talk>) {
+  const aSessions = [...talkA.sessionsCollection.items];
+  const bSessions = [...talkB.sessionsCollection.items];
+
+  const latestA = aSessions.sort((sessionA, sessionB) => {
+    const sub = new Date(sessionB.event.endingDate).getTime() - new Date(sessionA.event.endingDate).getTime();
+    return sub;
+  })[0];
+
+  const latestB = bSessions.sort((sessionA, sessionB) => {
+    const sub = new Date(sessionB.event.endingDate).getTime() - new Date(sessionA.event.endingDate).getTime();
+    return sub;
+  })[0];
+
+  return new Date(latestB.event.endingDate).getTime() - new Date(latestA.event.endingDate).getTime();
+}
 
 const locationTransformer = (city: City) => `${city.name}, ${city.country?.name} ${city.country?.flag} `;
 

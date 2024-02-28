@@ -2457,7 +2457,7 @@ export type GetTalksForTagQueryVariables = Exact<{
 }>;
 
 
-export type GetTalksForTagQuery = { __typename?: 'Query', talkCollection?: { __typename?: 'TalkCollection', items: Array<{ __typename?: 'Talk', title?: string | null, slug?: string | null, sessionsCollection?: { __typename?: 'TalkSessionsCollection', total: number } | null } | null> } | null };
+export type GetTalksForTagQuery = { __typename?: 'Query', talkCollection?: { __typename?: 'TalkCollection', items: Array<{ __typename?: 'Talk', title?: string | null, slug?: string | null, sessionsCollection?: { __typename?: 'TalkSessionsCollection', total: number, items: Array<{ __typename?: 'Session', event?: { __typename?: 'Event', endingDate?: any | null } | null } | null> } | null } | null> } | null };
 
 export type GetTalksStatsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2763,7 +2763,6 @@ export const GetTalksForTagDocument = gql`
     query GetTalksForTag($tag: String, $limit: Int) {
   talkCollection(
     where: {contentfulMetadata: {tags: {id_contains_some: [$tag]}}}
-    order: lastRelevant_DESC
     limit: $limit
   ) {
     items {
@@ -2771,6 +2770,11 @@ export const GetTalksForTagDocument = gql`
       slug
       sessionsCollection {
         total
+        items {
+          event {
+            endingDate
+          }
+        }
       }
     }
   }
