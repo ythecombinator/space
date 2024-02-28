@@ -1,7 +1,7 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
 import { BsFillCalendarEventFill } from 'react-icons/bs';
 import { CgWebsite } from 'react-icons/cg';
-import { FaMapMarkedAlt, FaYoutube, FaSpeakerDeck } from 'react-icons/fa';
+import { FaMapMarkedAlt, FaSpeakerDeck, FaYoutube } from 'react-icons/fa';
 
 import { FormattedDate } from 'utils/date';
 
@@ -55,7 +55,7 @@ const EventsSectionItem: FunctionComponent<PropsWithChildren<EventsSectionItemPr
 
           {!isSingleDayEvent && (
             <>
-              {'-'}
+              <span className="mx-1">—</span>
               <time dateTime={eventEndingDate.raw}>{eventEndingDate.formatted}</time>
             </>
           )}

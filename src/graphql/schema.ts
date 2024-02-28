@@ -1096,6 +1096,7 @@ export type Location = {
 
 export type Query = {
   __typename?: 'Query';
+  _node?: Maybe<_Node>;
   asset?: Maybe<Asset>;
   assetCollection?: Maybe<AssetCollection>;
   city?: Maybe<City>;
@@ -1117,6 +1118,13 @@ export type Query = {
   technologyCollection?: Maybe<TechnologyCollection>;
   title?: Maybe<Title>;
   titleCollection?: Maybe<TitleCollection>;
+};
+
+
+export type Query_NodeArgs = {
+  id: Scalars['ID']['input'];
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -2174,6 +2182,10 @@ export enum TitleStackCollectionOrder {
   TitleDesc = 'title_DESC'
 }
 
+export type _Node = {
+  _id: Scalars['ID']['output'];
+};
+
 export type CfCityNestedFilter = {
   AND?: InputMaybe<Array<InputMaybe<CfCityNestedFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<CfCityNestedFilter>>>;
@@ -2425,7 +2437,7 @@ export type GetAllTalksQueryVariables = Exact<{
 }>;
 
 
-export type GetAllTalksQuery = { __typename?: 'Query', talkCollection?: { __typename?: 'TalkCollection', items: Array<{ __typename?: 'Talk', title?: string | null, category?: string | null, slug?: string | null, abstract?: { __typename?: 'TalkAbstract', json: any } | null, sessionsCollection?: { __typename?: 'TalkSessionsCollection', items: Array<{ __typename?: 'Session', event?: { __typename?: 'Event', name?: string | null, city?: { __typename?: 'City', name?: string | null, country?: { __typename?: 'Country', name?: string | null } | null } | null } | null } | null> } | null, contentfulMetadata: { __typename?: 'ContentfulMetadata', tags: Array<{ __typename?: 'ContentfulTag', id?: string | null, name?: string | null } | null> } } | null> } | null };
+export type GetAllTalksQuery = { __typename?: 'Query', talkCollection?: { __typename?: 'TalkCollection', items: Array<{ __typename?: 'Talk', title?: string | null, category?: string | null, slug?: string | null, abstract?: { __typename?: 'TalkAbstract', json: any } | null, sessionsCollection?: { __typename?: 'TalkSessionsCollection', items: Array<{ __typename?: 'Session', event?: { __typename?: 'Event', name?: string | null, endingDate?: any | null, city?: { __typename?: 'City', name?: string | null, country?: { __typename?: 'Country', name?: string | null } | null } | null } | null } | null> } | null, contentfulMetadata: { __typename?: 'ContentfulMetadata', tags: Array<{ __typename?: 'ContentfulTag', id?: string | null, name?: string | null } | null> } } | null> } | null };
 
 export type GetFeaturedTalksQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2558,7 +2570,7 @@ export type GetAllTalkSlugsSuspenseQueryHookResult = ReturnType<typeof useGetAll
 export type GetAllTalkSlugsQueryResult = Apollo.QueryResult<GetAllTalkSlugsQuery, GetAllTalkSlugsQueryVariables>;
 export const GetAllTalksDocument = gql`
     query GetAllTalks($limit: Int) {
-  talkCollection(order: lastRelevant_DESC, limit: $limit) {
+  talkCollection(limit: $limit) {
     items {
       title
       category
@@ -2570,6 +2582,7 @@ export const GetAllTalksDocument = gql`
         items {
           event {
             name
+            endingDate
             city {
               name
               country {

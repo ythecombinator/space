@@ -803,6 +803,7 @@ The 'Quality' type represents quality as whole numeric values between `1` and `1
 scalar Quality
 
 type Query {
+  _node(id: ID!, locale: String, preview: Boolean): _Node
   asset(id: String!, locale: String, preview: Boolean): Asset
   assetCollection(limit: Int = 100, locale: String, order: [AssetOrder], preview: Boolean, skip: Int = 0, where: AssetFilter): AssetCollection
   city(id: String!, locale: String, preview: Boolean): City
@@ -1418,6 +1419,10 @@ enum TitleStackCollectionOrder {
   sys_publishedVersion_DESC
   title_ASC
   title_DESC
+}
+
+interface _Node {
+  _id: ID!
 }
 
 input cfCityNestedFilter {

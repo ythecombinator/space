@@ -1,5 +1,5 @@
 query GetAllTalks($limit: Int) {
-  talkCollection(order: lastRelevant_DESC, limit: $limit) {
+  talkCollection(limit: $limit) {
     items {
       title
       category
@@ -11,6 +11,7 @@ query GetAllTalks($limit: Int) {
         items {
           event {
             name
+            endingDate
             city {
               name
               country {

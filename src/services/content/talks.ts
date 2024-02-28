@@ -160,9 +160,26 @@ export default class TalksContentService {
 //  ---------------------------------------------------------------------------
 
 const allTransformer = (result: GetAllTalksQuery) => {
-  const items = (result as DeepNonNullable<GetAllTalksQuery>).talkCollection.items;
+  const items = [...(result as DeepNonNullable<GetAllTalksQuery>).talkCollection.items];
 
-  return items.map((item) => {
+  const sorted = items.sort(function (talkA, talkB) {
+    const aSessions = [...talkA.sessionsCollection.items];
+    const bSessions = [...talkB.sessionsCollection.items];
+
+    const latestA = aSessions.sort((sessionA, sessionB) => {
+      const sub = new Date(sessionB.event.endingDate).getTime() - new Date(sessionA.event.endingDate).getTime();
+      return sub;
+    })[0];
+
+    const latestB = bSessions.sort((sessionA, sessionB) => {
+      const sub = new Date(sessionB.event.endingDate).getTime() - new Date(sessionA.event.endingDate).getTime();
+      return sub;
+    })[0];
+
+    return new Date(latestB.event.endingDate).getTime() - new Date(latestA.event.endingDate).getTime();
+  });
+
+  return sorted.map((item) => {
     const { title, category, abstract, slug, sessionsCollection, contentfulMetadata } = item;
 
     return {
