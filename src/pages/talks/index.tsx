@@ -139,7 +139,7 @@ const Page: NextPage<Props> = (props) => {
 
         <UpcomingTalksSection items={upcomingSessions} />
         <ActiveTalksSection items={activeTalks} />
-        <TopicHighlightsSection title="⚛️ React Highlights" items={reactTalks} />
+        <TopicHighlightsSection title="React Highlights" items={reactTalks} />
         <YoutubeHighlightsSection items={youtubeHighlights} />
         <PhotoHighlightsSection items={featuredTalks} />
       </Layout>

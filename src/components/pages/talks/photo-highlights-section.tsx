@@ -22,7 +22,7 @@ export type PhotoHighlightsSectionProps = {
 const PhotoHighlightsSection: FunctionComponent<PropsWithChildren<PhotoHighlightsSectionProps>> = ({ items }) => {
   return (
     <SectionContainer>
-      <SectionHeading title="📸 Captured Highlights" />
+      <SectionHeading title="Captured Highlights" />
       <div className="my-8 columns-2 gap-4 sm:columns-3">
         <div className="relative mb-4 h-40">
           {items.map((item) => (

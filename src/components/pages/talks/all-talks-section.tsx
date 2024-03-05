@@ -55,7 +55,7 @@ const AllTalksSection: FunctionComponent<PropsWithChildren<AllTalksSectionProps>
 
   return (
     <SectionContainer>
-      <SectionHeading title="📚 All Sessions" />
+      <SectionHeading title="All Sessions" />
       <div className="mb-6">
         {isEmpty(items) && (
           <EmptyList heading="No items found 😢" subHeading="I don't have any sessions on this topic." />

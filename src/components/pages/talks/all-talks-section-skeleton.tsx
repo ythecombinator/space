@@ -22,7 +22,7 @@ const AllTalksSectionSkeleton: FunctionComponent<PropsWithChildren<AllTalksSecti
 
   return (
     <SectionContainer>
-      <SectionHeading title="📚 All Sessions" />
+      <SectionHeading title="All Sessions" />
       <div className="mb-6">
         {itemSkeletons.map((skeletonId) => {
           return <AllTalksSectionItemSkeleton key={skeletonId} />;

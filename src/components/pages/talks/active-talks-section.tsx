@@ -21,7 +21,7 @@ export type ActiveTalksSectionProps = {
 const ActiveTalksSection: FunctionComponent<PropsWithChildren<ActiveTalksSectionProps>> = ({ items }) => {
   return (
     <SectionContainer>
-      <SectionHeading title="️‍🔥 Active Sessions" />
+      <SectionHeading title="️Active Sessions" />
       <SectionList>
         {items.map((item) => {
           const { talkTitle, talkSlug, sessions } = item;

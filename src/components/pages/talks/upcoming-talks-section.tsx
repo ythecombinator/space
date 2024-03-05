@@ -48,7 +48,7 @@ const UpcomingTalksSectionItem: FunctionComponent<UpcomingSession> = ({
 const UpcomingTalksSection: FunctionComponent<PropsWithChildren<UpcomingTalksSectionProps>> = ({ items }) => {
   return (
     <SectionContainer>
-      <SectionHeading title="️🔜  Upcoming Sessions" />
+      <SectionHeading title="️Upcoming Sessions" />
       <div className="my-8 flex flex-col space-y-4 w-full">
         {items.map((item) => (
           <UpcomingTalksSectionItem {...item} />

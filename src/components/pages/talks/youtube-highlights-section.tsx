@@ -23,7 +23,7 @@ export type YoutubeHighlightsSectionProps = {
 const YoutubeHighlightsSection: FunctionComponent<PropsWithChildren<YoutubeHighlightsSectionProps>> = (props) => {
   return (
     <SectionContainer>
-      <SectionHeading title="📺 YouTube Highlights" />
+      <SectionHeading title="YouTube Highlights" />
       <div className="flex w-full flex-wrap pb-2">
         <ScrollArea>
           <div className="flex space-x-4 pb-4">
