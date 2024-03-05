@@ -45,7 +45,7 @@ const Logo: React.FunctionComponent<{}> = () => {
       height={48}
       src={`/content/me/${memoji}.png`}
       alt={siteMetadata.author}
-      loading='eager'
+      loading="eager"
     />
   );
 };

@@ -51,7 +51,7 @@ const UpcomingTalksSection: FunctionComponent<PropsWithChildren<UpcomingTalksSec
       <SectionHeading title="️Upcoming Sessions" />
       <div className="my-8 flex flex-col space-y-4 w-full">
         {items.map((item) => (
-          <UpcomingTalksSectionItem {...item} />
+          <UpcomingTalksSectionItem key={`${item.talkSlug}-${item.eventName}`} {...item} />
         ))}
       </div>
     </SectionContainer>
