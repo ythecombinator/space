@@ -1,0 +1,22 @@
+query GetAllSessions($limit: Int) {
+  sessionCollection(limit: $limit) {
+    items {
+      talk {
+        title
+        slug
+      }
+      event {
+        name
+        startingDate
+        endingDate
+        city {
+          name
+          country {
+            name
+            flag
+          }
+        }
+      }
+    }
+  }
+}

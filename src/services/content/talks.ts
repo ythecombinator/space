@@ -4,6 +4,8 @@ import {
   ContentfulTag,
   GetActiveTalksDocument,
   GetActiveTalksQuery,
+  GetAllSessionsDocument,
+  GetAllSessionsQuery,
   GetAllTalkSlugsDocument,
   GetAllTalkSlugsQuery,
   GetAllTalksDocument,
@@ -41,6 +43,7 @@ const youtubeServiceInstance = YoutubeService.getInstance();
 //  ---------------------------------------------------------------------------
 
 export type YoutubeHighlight = ValuesType<Awaited<ReturnType<TalksContentService['getYoutubeHighlights']>>>;
+export type UpcomingSession = ValuesType<Awaited<ReturnType<TalksContentService['getGetUpcomingSessions']>>>;
 
 //  ---------------------------------------------------------------------------
 //  CORE
@@ -108,6 +111,18 @@ export default class TalksContentService {
     });
 
     return transformers.active(doc.data);
+  }
+
+  public async getGetUpcomingSessions() {
+    const currentYear = new Date().getFullYear();
+
+    const doc = await contentfulServiceInstance.query<GetAllSessionsQuery>({
+      query: GetAllSessionsDocument,
+    });
+
+    const items = doc.data.sessionCollection?.items as Array<Session>;
+    const mappedData = items.map(transformers.upcoming).filter((item) => item.eventYear === currentYear)!;
+    return [...mappedData].sort((sessionA, sessionB) => sessionB.eventDate - sessionA.eventDate);
   }
 
   public async getFeatured() {
@@ -252,6 +267,20 @@ const latestTransformer = (result: GetAllTalksQuery) => {
   });
 };
 
+const upcomingSessionsTransformer = (item: Session) => {
+  const startingDate = new Date(item?.event?.startingDate);
+  const location = item?.event?.city!;
+
+  return {
+    talkTitle: item?.talk?.title,
+    talkSlug: `/${Routes.talks}/${item?.talk?.slug}`,
+    eventName: item?.event?.name,
+    eventYear: startingDate.getFullYear(),
+    eventDate: startingDate.getTime(),
+    eventLocation: `${location.country?.flag} ${location.name}`,
+  };
+};
+
 const transformers = {
   all: allTransformer,
   active: activeTransformer,
@@ -260,6 +289,7 @@ const transformers = {
   talksPerTag: talksPerTagTransformer,
   stats: statsTransformer,
   latest: latestTransformer,
+  upcoming: upcomingSessionsTransformer,
 };
 
 //  ---------------------------------------------------------------------------

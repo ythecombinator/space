@@ -2427,6 +2427,13 @@ export type GetActiveTalksQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetActiveTalksQuery = { __typename?: 'Query', talkCollection?: { __typename?: 'TalkCollection', items: Array<{ __typename?: 'Talk', title?: string | null, slug?: string | null, sessionsCollection?: { __typename?: 'TalkSessionsCollection', items: Array<{ __typename?: 'Session', event?: { __typename?: 'Event', name?: string | null, website?: string | null, city?: { __typename?: 'City', country?: { __typename?: 'Country', flag?: string | null } | null } | null } | null } | null> } | null } | null> } | null };
 
+export type GetAllSessionsQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type GetAllSessionsQuery = { __typename?: 'Query', sessionCollection?: { __typename?: 'SessionCollection', items: Array<{ __typename?: 'Session', talk?: { __typename?: 'Talk', title?: string | null, slug?: string | null } | null, event?: { __typename?: 'Event', name?: string | null, startingDate?: any | null, endingDate?: any | null, city?: { __typename?: 'City', name?: string | null, country?: { __typename?: 'Country', name?: string | null, flag?: string | null } | null } | null } | null } | null> } | null };
+
 export type GetAllTalkSlugsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2463,13 +2470,6 @@ export type GetTalksStatsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetTalksStatsQuery = { __typename?: 'Query', talkCollection?: { __typename?: 'TalkCollection', total: number } | null, eventCollection?: { __typename?: 'EventCollection', total: number } | null, cityCollection?: { __typename?: 'CityCollection', total: number } | null, countryCollection?: { __typename?: 'CountryCollection', total: number } | null };
-
-export type GetUpcomingTalksQueryVariables = Exact<{
-  eventStartingDate: Scalars['DateTime']['input'];
-}>;
-
-
-export type GetUpcomingTalksQuery = { __typename?: 'Query', eventCollection?: { __typename?: 'EventCollection', items: Array<{ __typename?: 'Event', name?: string | null, startingDate?: any | null, endingDate?: any | null, city?: { __typename?: 'City', name?: string | null, country?: { __typename?: 'Country', flag?: string | null, name?: string | null } | null } | null, sessionsCollection?: { __typename?: 'EventSessionsCollection', items: Array<{ __typename?: 'Session', talk?: { __typename?: 'Talk', title?: string | null, slug?: string | null } | null } | null> } | null } | null> } | null };
 
 
 export const GetActiveTalksDocument = gql`
@@ -2527,6 +2527,63 @@ export type GetActiveTalksQueryHookResult = ReturnType<typeof useGetActiveTalksQ
 export type GetActiveTalksLazyQueryHookResult = ReturnType<typeof useGetActiveTalksLazyQuery>;
 export type GetActiveTalksSuspenseQueryHookResult = ReturnType<typeof useGetActiveTalksSuspenseQuery>;
 export type GetActiveTalksQueryResult = Apollo.QueryResult<GetActiveTalksQuery, GetActiveTalksQueryVariables>;
+export const GetAllSessionsDocument = gql`
+    query GetAllSessions($limit: Int) {
+  sessionCollection(limit: $limit) {
+    items {
+      talk {
+        title
+        slug
+      }
+      event {
+        name
+        startingDate
+        endingDate
+        city {
+          name
+          country {
+            name
+            flag
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetAllSessionsQuery__
+ *
+ * To run a query within a React component, call `useGetAllSessionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllSessionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAllSessionsQuery({
+ *   variables: {
+ *      limit: // value for 'limit'
+ *   },
+ * });
+ */
+export function useGetAllSessionsQuery(baseOptions?: Apollo.QueryHookOptions<GetAllSessionsQuery, GetAllSessionsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAllSessionsQuery, GetAllSessionsQueryVariables>(GetAllSessionsDocument, options);
+      }
+export function useGetAllSessionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllSessionsQuery, GetAllSessionsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAllSessionsQuery, GetAllSessionsQueryVariables>(GetAllSessionsDocument, options);
+        }
+export function useGetAllSessionsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetAllSessionsQuery, GetAllSessionsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetAllSessionsQuery, GetAllSessionsQueryVariables>(GetAllSessionsDocument, options);
+        }
+export type GetAllSessionsQueryHookResult = ReturnType<typeof useGetAllSessionsQuery>;
+export type GetAllSessionsLazyQueryHookResult = ReturnType<typeof useGetAllSessionsLazyQuery>;
+export type GetAllSessionsSuspenseQueryHookResult = ReturnType<typeof useGetAllSessionsSuspenseQuery>;
+export type GetAllSessionsQueryResult = Apollo.QueryResult<GetAllSessionsQuery, GetAllSessionsQueryVariables>;
 export const GetAllTalkSlugsDocument = gql`
     query GetAllTalkSlugs {
   talkCollection {
@@ -2862,62 +2919,3 @@ export type GetTalksStatsQueryHookResult = ReturnType<typeof useGetTalksStatsQue
 export type GetTalksStatsLazyQueryHookResult = ReturnType<typeof useGetTalksStatsLazyQuery>;
 export type GetTalksStatsSuspenseQueryHookResult = ReturnType<typeof useGetTalksStatsSuspenseQuery>;
 export type GetTalksStatsQueryResult = Apollo.QueryResult<GetTalksStatsQuery, GetTalksStatsQueryVariables>;
-export const GetUpcomingTalksDocument = gql`
-    query GetUpcomingTalks($eventStartingDate: DateTime!) {
-  eventCollection(limit: 5, where: {startingDate_gt: $eventStartingDate}) {
-    items {
-      name
-      city {
-        name
-        country {
-          flag
-          name
-        }
-      }
-      startingDate
-      endingDate
-      sessionsCollection {
-        items {
-          talk {
-            title
-            slug
-          }
-        }
-      }
-    }
-  }
-}
-    `;
-
-/**
- * __useGetUpcomingTalksQuery__
- *
- * To run a query within a React component, call `useGetUpcomingTalksQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetUpcomingTalksQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetUpcomingTalksQuery({
- *   variables: {
- *      eventStartingDate: // value for 'eventStartingDate'
- *   },
- * });
- */
-export function useGetUpcomingTalksQuery(baseOptions: Apollo.QueryHookOptions<GetUpcomingTalksQuery, GetUpcomingTalksQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetUpcomingTalksQuery, GetUpcomingTalksQueryVariables>(GetUpcomingTalksDocument, options);
-      }
-export function useGetUpcomingTalksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUpcomingTalksQuery, GetUpcomingTalksQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetUpcomingTalksQuery, GetUpcomingTalksQueryVariables>(GetUpcomingTalksDocument, options);
-        }
-export function useGetUpcomingTalksSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetUpcomingTalksQuery, GetUpcomingTalksQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<GetUpcomingTalksQuery, GetUpcomingTalksQueryVariables>(GetUpcomingTalksDocument, options);
-        }
-export type GetUpcomingTalksQueryHookResult = ReturnType<typeof useGetUpcomingTalksQuery>;
-export type GetUpcomingTalksLazyQueryHookResult = ReturnType<typeof useGetUpcomingTalksLazyQuery>;
-export type GetUpcomingTalksSuspenseQueryHookResult = ReturnType<typeof useGetUpcomingTalksSuspenseQuery>;
-export type GetUpcomingTalksQueryResult = Apollo.QueryResult<GetUpcomingTalksQuery, GetUpcomingTalksQueryVariables>;

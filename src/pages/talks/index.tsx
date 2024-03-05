@@ -20,6 +20,7 @@ import AllTalksSection from 'components/pages/talks/all-talks-section';
 import AllTalksSectionSkeleton from 'components/pages/talks/all-talks-section-skeleton';
 import PhotoHighlightsSection from 'components/pages/talks/photo-highlights-section';
 import TopicHighlightsSection from 'components/pages/talks/topic-highlights-section';
+import UpcomingTalksSection from 'components/pages/talks/upcoming-talks-section';
 import YoutubeHighlightsSection from 'components/pages/talks/youtube-highlights-section';
 
 //  ---------------------------------------------------------------------------
@@ -44,14 +45,16 @@ export type Props = InferGetStaticPropsType<typeof getStaticProps>;
 const talksServiceInstance = TalksContentService.getInstance();
 
 export async function getStaticProps() {
-  const [talksStats, reactTalks, featuredTalks, youtubeHighlights, activeTalks, allTalks] = await Promise.all([
-    talksServiceInstance.getStats(),
-    talksServiceInstance.getTalksForTag('react'),
-    talksServiceInstance.getFeatured(),
-    talksServiceInstance.getYoutubeHighlights(),
-    talksServiceInstance.getActive(),
-    talksServiceInstance.getAll(),
-  ]);
+  const [talksStats, reactTalks, featuredTalks, youtubeHighlights, activeTalks, upcomingSessions, allTalks] =
+    await Promise.all([
+      talksServiceInstance.getStats(),
+      talksServiceInstance.getTalksForTag('react'),
+      talksServiceInstance.getFeatured(),
+      talksServiceInstance.getYoutubeHighlights(),
+      talksServiceInstance.getActive(),
+      talksServiceInstance.getGetUpcomingSessions(),
+      talksServiceInstance.getAll(),
+    ]);
 
   const openGraphImage = await generateOpenGraphImage({
     title: metadata.description,
@@ -60,12 +63,30 @@ export async function getStaticProps() {
   });
 
   return {
-    props: { talksStats, reactTalks, featuredTalks, youtubeHighlights, activeTalks, allTalks, openGraphImage },
+    props: {
+      talksStats,
+      reactTalks,
+      featuredTalks,
+      youtubeHighlights,
+      activeTalks,
+      upcomingSessions,
+      allTalks,
+      openGraphImage,
+    },
   };
 }
 
 const Page: NextPage<Props> = (props) => {
-  const { talksStats, allTalks, reactTalks, featuredTalks, youtubeHighlights, activeTalks, openGraphImage } = props;
+  const {
+    talksStats,
+    allTalks,
+    reactTalks,
+    featuredTalks,
+    youtubeHighlights,
+    activeTalks,
+    upcomingSessions,
+    openGraphImage,
+  } = props;
   const { citiesTotal, countriesTotal, talksTotal, eventsTotal } = talksStats;
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -116,6 +137,7 @@ const Page: NextPage<Props> = (props) => {
           <AllTalksSection items={allTalks} searchTerm={searchTerm} />
         </Suspense>
 
+        <UpcomingTalksSection items={upcomingSessions} />
         <ActiveTalksSection items={activeTalks} />
         <TopicHighlightsSection title="⚛️ React Highlights" items={reactTalks} />
         <YoutubeHighlightsSection items={youtubeHighlights} />
