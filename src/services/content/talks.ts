@@ -122,7 +122,7 @@ export default class TalksContentService {
 
     const items = doc.data.sessionCollection?.items as Array<Session>;
     const mappedData = items.map(transformers.upcoming).filter((item) => item.eventYear === currentYear)!;
-    return [...mappedData].sort((sessionA, sessionB) => sessionB.eventDate - sessionA.eventDate);
+    return [...mappedData].sort((sessionA, sessionB) => sessionA.eventDate - sessionB.eventDate);
   }
 
   public async getFeatured() {
