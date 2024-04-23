@@ -114,14 +114,14 @@ export default class TalksContentService {
   }
 
   public async getGetUpcomingSessions() {
-    const currentYear = new Date().getFullYear();
+    const today = new Date().getTime();
 
     const doc = await contentfulServiceInstance.query<GetAllSessionsQuery>({
       query: GetAllSessionsDocument,
     });
 
     const items = doc.data.sessionCollection?.items as Array<Session>;
-    const mappedData = items.map(transformers.upcoming).filter((item) => item.eventYear === currentYear)!;
+    const mappedData = items.map(transformers.upcoming).filter((item) => item.eventDate > today)!;
     return [...mappedData].sort((sessionA, sessionB) => sessionA.eventDate - sessionB.eventDate);
   }
 
