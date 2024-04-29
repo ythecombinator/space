@@ -76,6 +76,9 @@ async function generateImage({ width, height, content }: Required<ImageProps>) {
   });
 
   const page = await browser.newPage();
+  page.setDefaultTimeout(0);
+  page.setDefaultNavigationTimeout(0);
+
   await page.setContent(content, { waitUntil: 'networkidle2' });
   await page.waitForSelector('#body', {
     visible: true,
