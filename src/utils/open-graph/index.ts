@@ -84,8 +84,7 @@ async function generateImage({ width, height, content }: Required<ImageProps>) {
     visible: true,
   });
 
-  const element = await page.$('#body');
-  const image = await element!.screenshot();
+  const image = await page.screenshot();
   await browser.close();
 
   return image;
