@@ -1,8 +1,8 @@
-import chromium from 'chrome-aws-lambda';
 import { readFileSync } from 'fs';
 import { outputFile } from 'fs-extra';
 import { compile } from 'handlebars';
 import { join } from 'path';
+import { launch } from 'puppeteer';
 
 import { Routes, siteMetadata } from 'config/constants';
 
@@ -66,12 +66,9 @@ function compileTemplate({ title, authorName, type, width, height }: TemplatePro
 }
 
 async function generateImage({ width, height, content }: Required<ImageProps>) {
-  const executablePath = await chromium.executablePath;
-
-  const browser = await chromium.puppeteer.launch({
+  const browser = await launch({
     headless: true,
-    args: chromium.args,
-    executablePath: executablePath,
+    args: ['--no-sandbox'],
     defaultViewport: {
       width,
       height,

@@ -42,7 +42,6 @@
     "@tailwindcss/typography": "0.5.10",
     "@tanstack/react-table": "8.10.7",
     "autoprefixer": "10.4.16",
-    "chrome-aws-lambda": "^10.1.0",
     "class-variance-authority": "0.7.0",
     "clsx": "2.0.0",
     "contentlayer": "0.3.4",
