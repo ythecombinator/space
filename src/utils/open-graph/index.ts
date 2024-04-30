@@ -1,6 +1,7 @@
 import { readFileSync } from 'fs';
 import { outputFile } from 'fs-extra';
 import { compile } from 'handlebars';
+import isInCi from 'is-in-ci';
 import { join } from 'path';
 import { launch } from 'puppeteer';
 
@@ -99,6 +100,12 @@ export async function generateOpenGraphImage({
   height = DEFAULT_HEIGHT * DEFAULT_MULTIPLIER,
   ...options
 }: ImageOptions) {
+  if (isInCi) {
+    console.info('Running in a CI environment');
+    console.warn('Skipping OG image generation');
+    return `${siteMetadata.siteUrl}/${options.path}`;
+  }
+
   const content = compileTemplate({
     ...options,
     width,

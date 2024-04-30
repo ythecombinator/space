@@ -52,6 +52,7 @@
     "got": "12.6.0",
     "graphql": "16.8.1",
     "handlebars": "4.7.8",
+    "is-in-ci": "^0.1.0",
     "mdx-bundler": "10.0.1",
     "next": "14.2.3",
     "next-contentlayer": "0.3.4",
