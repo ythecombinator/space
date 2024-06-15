@@ -8,10 +8,20 @@ import SectionContainer from 'components/shared/section-container';
 import Typography from 'components/shared/typography';
 
 import Layout from 'components/layouts/page';
+import ForbesCurrencyConverter from 'services/providers/forbes-currency-converter';
 
 //  ---------------------------------------------------------------------------
 //  NEXT
 //  ---------------------------------------------------------------------------
+
+const currencyServiceInstance = ForbesCurrencyConverter.getInstance();
+
+export async function getStaticProps() {
+  await currencyServiceInstance.generateCurrencyTable()
+  return {
+    props: {},
+  };
+}
 
 const Page: NextPage<{}> = () => {
   return (
