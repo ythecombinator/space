@@ -3,7 +3,7 @@ import { outputFile } from 'fs-extra';
 import { compile } from 'handlebars';
 import isInCi from 'is-in-ci';
 import { join } from 'path';
-import { launch } from 'puppeteer';
+import { webkit } from 'playwright';
 
 import { Routes, siteMetadata } from 'config/constants';
 
@@ -67,23 +67,16 @@ function compileTemplate({ title, authorName, type, width, height }: TemplatePro
 }
 
 async function generateImage({ width, height, content }: Required<ImageProps>) {
-  const browser = await launch({
+  const browser = await webkit.launch({
     headless: true,
-    args: ['--no-sandbox'],
-    defaultViewport: {
-      width,
-      height,
-    },
   });
 
   const page = await browser.newPage();
   page.setDefaultTimeout(0);
   page.setDefaultNavigationTimeout(0);
-
-  await page.setContent(content, { waitUntil: 'networkidle2' });
-  await page.waitForSelector('#body', {
-    visible: true,
-  });
+  await page.setViewportSize({ width, height });
+  await page.setContent(content);
+  await page.waitForSelector('#body', { state: 'visible' });
 
   const image = await page.screenshot();
   await browser.close();
