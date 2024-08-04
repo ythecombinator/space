@@ -112,7 +112,7 @@ const Page: NextPage<PageProps> = ({ openGraphImage }) => {
           />
 
           <Typography.p>
-            {`I'm`} currently based in Prague, Czech Republic, working as a Senior Software Engineer at{' '}
+            {`I'm`} currently based in Prague, Czech Republic, working as a Staff Software Engineer at{' '}
             <Typography.a href="https://www.medallia.com">Medallia</Typography.a>, where I lead the development of their
             surveys platform, while writing technical articles and speaking to many international conferences. My
             current focus is on educating advanced developers and growing communities around React, perceived

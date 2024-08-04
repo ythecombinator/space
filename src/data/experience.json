@@ -3,10 +3,19 @@
     {
       "company": "Medallia",
       "companyUrl": "https://linkedin.com/company/medallia-inc.",
-      "startDate": "March, 2022",
+      "startDate": "August, 2024",
       "endDate": "Present",
       "location": "Prague, Czechia",
-      "title": "Senior Software Engineer, Front-End",
+      "title": "Staff Software Engineer, Front-End (Surveys & Assets)",
+      "description": null
+    },
+    {
+      "company": "Medallia",
+      "companyUrl": "https://linkedin.com/company/medallia-inc.",
+      "startDate": "March, 2022",
+      "endDate": "July, 2024",
+      "location": "Prague, Czechia",
+      "title": "Sr. Software Engineer, Front-End (Surveys & Assets)",
       "description": "I've been helping them rebuild their surveys platform with a focus on Developer Experience (DX) and user-perceived performance. \n\nMy work includes measuring performance and its impact on user behavior, identifying culprits for bad experiences and addressing issues like delayed TTIs, high input latency, and janky animations. Also, I've been modernizing the codebase, pushing its rewrite in TypeScript, and adopting new tools.\n\nMostly working with:\n\n- JavaScript and TypeScript\n- React\n- redux and related tooling\n- Lighthouse, size-limit, and other performance measuring tools\n- Webpack and bundle optimization techniques\n- Jest, unit testing, integration testing, and robust testing infrastructure\n- Jenkins and related CI infrastructure\n- JIRA, Confluence, and other project management and documentation solutions"
     },
     {
@@ -15,7 +24,7 @@
       "startDate": "January, 2021",
       "endDate": "January, 2022",
       "location": "Prague, Czechia",
-      "title": "Senior Software Engineer, Front-End",
+      "title": "Sr. Software Engineer, Front-End (Citrix Workspace MicroApps)",
       "description": "I have helped architect and implement new features, address critical bugs, and improve Developer Experience in the MicroApps Builder, a low-code environment part of Citrix Workspace.\n\nMostly working with:\n\n- JavaScript and TypeScript\n- React\n- GraphQL, Apollo and its ecosystem\n- i18next and internationalization\n- Jest, unit testing, integration testing, and robust testing infrastructure\n- Jenkins and related CI infrastructure\n- JIRA, Confluence, and other project management and documentation solutions"
     },
     {
@@ -24,7 +33,7 @@
       "startDate": "September, 2020",
       "endDate": "December, 2020",
       "location": "Prague, Czechia",
-      "title": "Senior Software Engineer, Front-End",
+      "title": "Sr. Software Engineer, Front-End",
       "description": null
     },
     {
@@ -51,7 +60,7 @@
       "startDate": "September, 2017",
       "endDate": "August, 2019",
       "location": "Greater New York City Area",
-      "title": "Senior Software Engineer, Front-End",
+      "title": "Sr. Software Engineer, Front-End",
       "description": "Building large-scale geographic data visualization platforms and assets curation systems.\n\nMostly working with:\n\n- JavaScript and TypeScript\n- React and Next.js\n- React Native and iOS native development\n- redux and related tooling (e.g. redux-saga, redux-act, reselect, etc.)\n- Webpack and bundle optimization techniques\n- Map data plotting and analyzation tools (e.g. Mapbox GL, Turf.js, pbf, etc.)\n- Firebase services (Auth, Cloud Functions, Firestore, etc.)\n- Authentication, authorization, and accounting infrastructure (mostly with Auth0 and node.js)\n- Chat & Chatbots tooling (Intercom, Tokbox, Dialogflow, etc.)\n- Buddy CI and other continuous integration workflows\n- Vercel, Heroku, and other cloud platforms\n- Github Projects and other project management solutions"
     },
     {
