@@ -17,8 +17,7 @@
     "lint:a11y": "pa11y-ci --sitemap http://localhost:3000/sitemap.xml",
     "format": "prettier --write src/",
     "codegen:schema": "graphql-codegen --config codegen.ts --require dotenv/config",
-    "codegen:linkedin": "tsx scripts/codegen-linkedin.ts",
-    "codegen:currency-data": "tsx scripts/codegen-currency-data.ts"
+    "codegen:linkedin": "tsx scripts/codegen-linkedin.ts"
   },
   "dependencies": {
     "@apollo/client": "3.8.7",
