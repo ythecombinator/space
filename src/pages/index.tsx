@@ -69,7 +69,7 @@ const Page: NextPage<{}> = () => {
         </Typography.p>
 
         <Typography.p>
-          I’m currently a Sr. Software Engineer at{' '}
+          I’m currently a Staff Software Engineer at{' '}
           <Badge label="Medallia" avatar="/img/logos/medallia.png" href="https://www.medallia.com" />, where I’ve been
           helping them build their surveys platform with{' '}
           <Badge label="React" avatar="/img/logos/react.png" href="https://react.dev" /> and{' '}
