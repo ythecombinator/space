@@ -1,3 +1,4 @@
+import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import 'leaflet/dist/leaflet.css';
 import { useTheme } from 'next-themes';
 import dynamic from 'next/dynamic';
@@ -5,8 +6,10 @@ import { useState } from 'react';
 
 import { Airline, Flight } from 'services/content/flights';
 
-import { airportCoordinates, getAirlineColor } from 'utils/flights';
+import { airportCoordinates, getAirlineColor, getTileUrl } from 'utils/flights';
 import { classNames } from 'utils/styles';
+
+import Typography from 'components/shared/typography';
 
 const MapContainer = dynamic(() => import('react-leaflet').then((mod) => mod.MapContainer), { ssr: false });
 const TileLayer = dynamic(() => import('react-leaflet').then((mod) => mod.TileLayer), { ssr: false });
@@ -57,15 +60,16 @@ interface MapProps {
 
 function Map({ flights, airports, isDarkMode }: MapProps) {
   const [hoveredFlight, setHoveredFlight] = useState<number | null>(null);
+  const x = useMotionValue(0);
+
+  const config = { damping: 5, stiffness: 100 };
+  const rotate = useSpring(useTransform(x, [-100, 100], [-45, 45]), config);
+  const translateX = useSpring(useTransform(x, [-100, 100], [-47, 47]), config);
 
   return (
     <MapContainer center={[20, 0]} zoom={2} className="absolute inset-0 w-full h-full">
       <TileLayer
-        url={
-          isDarkMode
-            ? 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png'
-            : 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-        }
+        url={getTileUrl(isDarkMode)}
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
       {flights.map((flight, index) => {
@@ -106,15 +110,39 @@ function Map({ flights, airports, isDarkMode }: MapProps) {
               weight={1}
               fillOpacity={1}
             >
-              <Tooltip direction="top" offset={[0, -5]} opacity={1} permanent>
-                <div
-                  className={classNames('px-2 py-1 rounded-full text-xs font-semibold', {
-                    'bg-gray-800 text-white': isDarkMode,
-                    'bg-white text-gray-800 shadow-md border border-gray-200': !isDarkMode,
-                  })}
-                >
-                  {airport}
-                </div>
+              <Tooltip
+                direction="auto"
+                offset={[0, -5]}
+                opacity={1}
+                className="absolute inset-0 w-full h-full"
+                noArrow
+                sticky
+              >
+                <AnimatePresence mode="popLayout">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.6, y: 20 }}
+                    animate={{
+                      opacity: 1,
+                      scale: 1,
+                      transition: { damping: 10, stiffness: 260, type: 'spring' },
+                      y: 0,
+                    }}
+                    exit={{ opacity: 0, scale: 0.6, y: 20 }}
+                    style={{
+                      left: '50%',
+                      rotate,
+                      transform: 'translateX(50%)',
+                      translateX: '-50%',
+                      whiteSpace: 'nowrap',
+                      x: translateX,
+                    }}
+                    className="absolute -top-10 z-50 flex flex-col items-center justify-center rounded-md bg-primary px-4 py-2 text-xs shadow-xl"
+                  >
+                    <Typography.small className="relative z-30 text-base font-bold text-secondary">
+                      {airport}
+                    </Typography.small>
+                  </motion.div>
+                </AnimatePresence>
               </Tooltip>
             </CircleMarker>
           );
@@ -154,7 +182,7 @@ export default function FlightMap({ flights, airlines, airports }: FlightMapProp
               setSelectedAirline={setSelectedAirline}
               isDarkMode={isDarkMode}
             />
-            <span
+            <Typography.small
               className={classNames('text-sm', {
                 'text-gray-300': isDarkMode,
                 'text-gray-600': !isDarkMode,
@@ -163,11 +191,11 @@ export default function FlightMap({ flights, airlines, airports }: FlightMapProp
               {selectedAirline
                 ? `${filteredFlights.length} of ${flights.length} flights`
                 : `${flights.length} total flights`}
-            </span>
+            </Typography.small>
           </div>
         </div>
       </div>
-      <div className="relative h-[60vh] mx-4 mt-4 rounded-lg overflow-hidden shadow-lg">
+      <div className="relative h-[60vh] w-full mt-4 rounded-lg overflow-hidden shadow-lg">
         <Map flights={filteredFlights} airports={airports} isDarkMode={isDarkMode} />
       </div>
     </div>

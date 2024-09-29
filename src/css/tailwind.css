@@ -108,3 +108,23 @@
 .print-force-new-page {
   page-break-before: always;
 }
+
+/* ---------------------------------------------------------------------------
+ Tooltip overrides
+--------------------------------------------------------------------------- */
+
+.leaflet-tooltip {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.leaflet-tooltip-top:before,
+.leaflet-tooltip-bottom:before,
+.leaflet-tooltip-left:before,
+.leaflet-tooltip-right:before {
+  background: transparent;
+  content: '';
+  border: none !important;
+  display: none !important;
+}

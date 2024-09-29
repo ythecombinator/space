@@ -111,4 +111,9 @@ export const airlineNames = {
   O6: 'Avianca Brasil',
 } as const;
 
-export const getAirlineColor = (airline: string) => airlineColors[airline] || '#9E9E9E'; // Default to a neutral gray
+export const getAirlineColor = (airline: string) => airlineColors[airline] || '#9E9E9E';
+
+export const getTileUrl = (isDarkMode: boolean) =>
+  isDarkMode
+    ? 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png'
+    : 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
