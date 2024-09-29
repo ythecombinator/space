@@ -1,4 +1,3 @@
-import { useMotionValue, useSpring, useTransform } from 'framer-motion';
 import 'leaflet/dist/leaflet.css';
 import { useTheme } from 'next-themes';
 import dynamic from 'next/dynamic';
@@ -6,7 +5,7 @@ import { useState } from 'react';
 
 import { Airline, Flight } from 'services/content/flights';
 
-import { airportCoordinates, getAirlineColor, getTileUrl } from 'utils/flights';
+import { AirportCode, airportCoordinates, getAirlineColor, getTileUrl } from 'utils/flights';
 import { classNames } from 'utils/styles';
 
 import Tooltip from 'components/shared/tooltip';
@@ -55,18 +54,12 @@ function AirlineSelector({ airlines, selectedAirline, setSelectedAirline, isDark
 
 interface MapProps {
   flights: Flight[];
-  airports: string[];
+  airports: Array<AirportCode>;
   isDarkMode: boolean;
 }
 
 function Map({ flights, airports, isDarkMode }: MapProps) {
   const [hoveredFlight, setHoveredFlight] = useState<number | null>(null);
-  const x = useMotionValue(0);
-
-  const config = { damping: 5, stiffness: 100 };
-  const rotate = useSpring(useTransform(x, [-100, 100], [-45, 45]), config);
-  const translateX = useSpring(useTransform(x, [-100, 100], [-47, 47]), config);
-
   return (
     <MapContainer center={[20, 0]} zoom={2} className="absolute inset-0 w-full h-full">
       <TileLayer
@@ -137,7 +130,7 @@ function Map({ flights, airports, isDarkMode }: MapProps) {
 interface FlightMapProps {
   flights: Flight[];
   airlines: Airline[];
-  airports: string[];
+  airports: AirportCode[];
 }
 
 export default function FlightMap({ flights, airlines, airports }: FlightMapProps) {

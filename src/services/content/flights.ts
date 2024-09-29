@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
-import { airlineNames } from 'utils/flights';
+import { AirlineCode, airlineNames, AirportCode } from 'utils/flights';
 
 //  ---------------------------------------------------------------------------
 //  UTILS
@@ -14,16 +14,16 @@ const DATA_SRC = join(process.cwd(), 'src/data/flights.txt');
 //  ---------------------------------------------------------------------------
 
 export interface Flight {
-  airline: keyof typeof airlineNames;
+  airline: AirlineCode;
   flightNumber: string;
-  origin: string;
-  destination: string;
+  origin: AirportCode;
+  destination: AirportCode;
   departureTime: string;
   arrivalTime: string;
 }
 
 export interface Airline {
-  code: keyof typeof airlineNames;
+  code: AirlineCode;
   name: string;
 }
 
@@ -53,7 +53,14 @@ export default class FlightsContentService {
       .map((line) => {
         const [, , , , , , , airline, flightNumber, , origin, destination, departureTime, arrivalTime] =
           line.split(';');
-        return { airline, flightNumber, origin, destination, departureTime, arrivalTime };
+        return {
+          airline: airline as AirlineCode,
+          origin: origin as AirportCode,
+          destination: destination as AirportCode,
+          flightNumber,
+          departureTime,
+          arrivalTime,
+        };
       })
       .filter((flight) => flight.airline && flight.flightNumber && flight.origin && flight.destination);
   }
@@ -62,7 +69,7 @@ export default class FlightsContentService {
   //  getters
   //  ---------------------------------------------------------------------------
 
-  public getAirlines(): Airline[] {
+  public getAirlines() {
     const airlineSet = new Set(this.flights.map((flight) => flight.airline));
 
     return Array.from(airlineSet).map((code) => ({
@@ -72,7 +79,7 @@ export default class FlightsContentService {
   }
 
   public getAirports() {
-    const airportSet = new Set<string>();
+    const airportSet = new Set<AirportCode>();
 
     this.flights.forEach((flight) => {
       airportSet.add(flight.origin);

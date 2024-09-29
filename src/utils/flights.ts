@@ -45,7 +45,7 @@ export const airportCoordinates = {
   LHR: [51.47, -0.4543],
   NTE: [47.1531, -1.6111],
   ASR: [38.7704, 35.495],
-} as const;
+} as const satisfies Record<string, [number, number]>;
 
 export const airlineColors: { [key: string]: string } = {
   AD: '#D81B60', // Azul Brazilian Airlines
@@ -117,3 +117,10 @@ export const getTileUrl = (isDarkMode: boolean) =>
   isDarkMode
     ? 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png'
     : 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+
+//  ---------------------------------------------------------------------------
+//  Types
+//  ---------------------------------------------------------------------------
+
+export type AirportCode = keyof typeof airportCoordinates;
+export type AirlineCode = keyof typeof airlineNames;
