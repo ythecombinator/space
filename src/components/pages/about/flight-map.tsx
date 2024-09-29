@@ -1,4 +1,4 @@
-import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { useMotionValue, useSpring, useTransform } from 'framer-motion';
 import 'leaflet/dist/leaflet.css';
 import { useTheme } from 'next-themes';
 import dynamic from 'next/dynamic';
@@ -9,12 +9,13 @@ import { Airline, Flight } from 'services/content/flights';
 import { airportCoordinates, getAirlineColor, getTileUrl } from 'utils/flights';
 import { classNames } from 'utils/styles';
 
+import Tooltip from 'components/shared/tooltip';
 import Typography from 'components/shared/typography';
 
 const MapContainer = dynamic(() => import('react-leaflet').then((mod) => mod.MapContainer), { ssr: false });
 const TileLayer = dynamic(() => import('react-leaflet').then((mod) => mod.TileLayer), { ssr: false });
 const Polyline = dynamic(() => import('react-leaflet').then((mod) => mod.Polyline), { ssr: false });
-const Tooltip = dynamic(() => import('react-leaflet').then((mod) => mod.Tooltip), { ssr: false });
+const TooltipContainer = dynamic(() => import('react-leaflet').then((mod) => mod.Tooltip), { ssr: false });
 const CircleMarker = dynamic(() => import('react-leaflet').then((mod) => mod.CircleMarker), { ssr: false });
 
 //  ---------------------------------------------------------------------------
@@ -110,40 +111,15 @@ function Map({ flights, airports, isDarkMode }: MapProps) {
               weight={1}
               fillOpacity={1}
             >
-              <Tooltip
+              <TooltipContainer
+                className="absolute inset-0 w-full h-full"
                 direction="auto"
                 offset={[0, -5]}
                 opacity={1}
-                className="absolute inset-0 w-full h-full"
-                noArrow
                 sticky
               >
-                <AnimatePresence mode="popLayout">
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.6, y: 20 }}
-                    animate={{
-                      opacity: 1,
-                      scale: 1,
-                      transition: { damping: 10, stiffness: 260, type: 'spring' },
-                      y: 0,
-                    }}
-                    exit={{ opacity: 0, scale: 0.6, y: 20 }}
-                    style={{
-                      left: '50%',
-                      rotate,
-                      transform: 'translateX(50%)',
-                      translateX: '-50%',
-                      whiteSpace: 'nowrap',
-                      x: translateX,
-                    }}
-                    className="absolute -top-10 z-50 flex flex-col items-center justify-center rounded-md bg-primary px-4 py-2 text-xs shadow-xl"
-                  >
-                    <Typography.small className="relative z-30 text-base font-bold text-secondary">
-                      {airport}
-                    </Typography.small>
-                  </motion.div>
-                </AnimatePresence>
-              </Tooltip>
+                <Tooltip.InnerContent>{airport}</Tooltip.InnerContent>
+              </TooltipContainer>
             </CircleMarker>
           );
         }
