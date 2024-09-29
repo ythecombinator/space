@@ -130,7 +130,7 @@ const Page: NextPage<PageProps> = ({ openGraphImage }) => {
             Curious to know further details about the stuff I mentioned above? I keep some pages updated with these!
           </Typography.p>
 
-          <div className="grid sm:grid-cols-2 grid-cols-1 gap-2">
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
             <ButtonLink href={`/${Routes.life}`} icon={<GiCardRandom aria-hidden />}>
               Life
             </ButtonLink>

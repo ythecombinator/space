@@ -16,7 +16,7 @@ export const SectionCover: FunctionComponent<PropsWithChildren<SectionCoverProps
       width={700}
       height={475}
       sizes="100vw"
-      className="w-full aspect-video object-cover rounded-lg grayscale hover:grayscale-0"
+      className="aspect-video w-full rounded-lg object-cover grayscale hover:grayscale-0"
     />
   );
 };

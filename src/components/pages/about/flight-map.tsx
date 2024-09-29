@@ -61,7 +61,7 @@ interface MapProps {
 function Map({ flights, airports, isDarkMode }: MapProps) {
   const [hoveredFlight, setHoveredFlight] = useState<number | null>(null);
   return (
-    <MapContainer center={[20, 0]} zoom={2} className="absolute inset-0 w-full h-full">
+    <MapContainer center={[20, 0]} zoom={2} className="absolute inset-0 h-full w-full">
       <TileLayer
         url={getTileUrl(isDarkMode)}
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -105,7 +105,7 @@ function Map({ flights, airports, isDarkMode }: MapProps) {
               fillOpacity={1}
             >
               <TooltipContainer
-                className="absolute inset-0 w-full h-full"
+                className="absolute inset-0 h-full w-full"
                 direction="auto"
                 offset={[0, -5]}
                 opacity={1}
@@ -141,9 +141,9 @@ export default function FlightMap({ flights, airlines, airports }: FlightMapProp
   const filteredFlights = selectedAirline ? flights.filter((flight) => flight.airline === selectedAirline) : flights;
 
   return (
-    <div className="w-full flex flex-col">
+    <div className="flex w-full flex-col">
       <div className="p-4">
-        <div className="container mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-4 sm:space-y-0 sm:space-x-4">
+        <div className="container mx-auto flex flex-col items-start justify-between space-y-4 sm:flex-row sm:items-center sm:space-x-4 sm:space-y-0">
           <div className="flex items-center space-x-4">
             <AirlineSelector
               airlines={airlines}
@@ -164,7 +164,7 @@ export default function FlightMap({ flights, airlines, airports }: FlightMapProp
           </div>
         </div>
       </div>
-      <div className="relative h-[60vh] w-full mt-4 rounded-lg overflow-hidden shadow-lg">
+      <div className="relative mt-4 h-[60vh] w-full overflow-hidden rounded-lg shadow-lg">
         <Map flights={filteredFlights} airports={airports} isDarkMode={isDarkMode} />
       </div>
     </div>
