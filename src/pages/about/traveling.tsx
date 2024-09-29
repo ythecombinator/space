@@ -74,10 +74,15 @@ const Page: NextPage<PageProps> = ({ openGraphImage, flights, airlines, airports
 
         <SectionContainer className="prose dark:prose-invert">
           <Typography.p>
-            As I started working as a remote developer, in late 2017, besides exploring a lot more Brazil, I decided to
-            travel and live a little around the world for a while – not staying for too long on any city.
+            Since becoming a remote developer in late 2017, I’ve embraced the freedom of working from anywhere, which
+            sparked my passion for traveling. I began by exploring more of Brazil, and soon after, I took the leap to
+            live and travel around the world, immersing myself in different cultures without lingering too long in any
+            one place.
           </Typography.p>
-          <Typography.p>In 2019, my wife and I moved to Prague, Czech Republic.</Typography.p>
+          <Typography.p>
+            In 2019, my wife and I made a significant move to Prague, Czech Republic, marking the start of an exciting
+            new chapter in our journey. The world is vast, and we're determined to see it all!
+          </Typography.p>
         </SectionContainer>
 
         <SectionContainer className="prose dark:prose-invert">

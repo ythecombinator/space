@@ -1,6 +1,6 @@
 import { InferGetStaticPropsType, NextPage } from 'next';
 import { NextSeo as Metadata } from 'next-seo';
-import { FaHammer, FaLaptopCode } from 'react-icons/fa';
+import { FaHammer, FaLaptopCode, FaPlane } from 'react-icons/fa';
 import { GiCardRandom, GiTakeMyMoney } from 'react-icons/gi';
 
 import { Routes, siteMetadata } from 'config/constants';
@@ -130,9 +130,12 @@ const Page: NextPage<PageProps> = ({ openGraphImage }) => {
             Curious to know further details about the stuff I mentioned above? I keep some pages updated with these!
           </Typography.p>
 
-          <div className="flex flex-col gap-2 md:flex-row md:gap-2">
+          <div className="grid sm:grid-cols-2 grid-cols-1 gap-2">
             <ButtonLink href={`/${Routes.life}`} icon={<GiCardRandom aria-hidden />}>
               Life
+            </ButtonLink>
+            <ButtonLink href={`/${Routes.traveling}`} icon={<FaPlane aria-hidden />}>
+              Traveling
             </ButtonLink>
             <ButtonLink href={`/${Routes.experience}`} icon={<FaLaptopCode aria-hidden />}>
               Experience

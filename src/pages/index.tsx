@@ -2,13 +2,14 @@ import { NextPage } from 'next';
 
 import { siteMetadata, socialNetworks } from 'config/constants';
 
+import ForbesCurrencyConverter from 'services/providers/forbes-currency-converter';
+
 import Badge from 'components/shared/badge';
 import ButtonLink from 'components/shared/button-link';
 import SectionContainer from 'components/shared/section-container';
 import Typography from 'components/shared/typography';
 
 import Layout from 'components/layouts/page';
-import ForbesCurrencyConverter from 'services/providers/forbes-currency-converter';
 
 //  ---------------------------------------------------------------------------
 //  NEXT
@@ -17,7 +18,7 @@ import ForbesCurrencyConverter from 'services/providers/forbes-currency-converte
 const currencyServiceInstance = ForbesCurrencyConverter.getInstance();
 
 export async function getStaticProps() {
-  await currencyServiceInstance.generateCurrencyTable()
+  await currencyServiceInstance.generateCurrencyTable();
   return {
     props: {},
   };
