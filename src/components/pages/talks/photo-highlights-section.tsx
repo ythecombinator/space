@@ -1,18 +1,18 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
 
+import { FeaturedTalk } from 'services/content/talks';
+
 import SectionContainer from 'components/shared/section-container';
 import SectionHeading from 'components/shared/section-heading';
 
-import PhotoHighlightsSectionItem, {
-  PhotoHighlightsSectionItemProps,
-} from 'components/pages/talks/photo-highlights-section-item';
+import PhotoHighlightsSectionItem from 'components/pages/talks/photo-highlights-section-item';
 
 //  ---------------------------------------------------------------------------
 //  TYPES
 //  ---------------------------------------------------------------------------
 
 export type PhotoHighlightsSectionProps = {
-  items: Array<PhotoHighlightsSectionItemProps>;
+  items: Array<FeaturedTalk>;
 };
 
 //  ---------------------------------------------------------------------------
@@ -23,12 +23,12 @@ const PhotoHighlightsSection: FunctionComponent<PropsWithChildren<PhotoHighlight
   return (
     <SectionContainer>
       <SectionHeading title="Captured Highlights" />
-      <div className="my-8 columns-2 gap-4 sm:columns-3">
-        <div className="relative mb-4 h-40">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {items.map((item) => (
             <PhotoHighlightsSectionItem key={`${item.talkSlug}-${item.eventName}`} {...item} />
           ))}
-        </div>
+        </div>{' '}
       </div>
     </SectionContainer>
   );
