@@ -1,3 +1,5 @@
+directive @contentSourceMaps on QUERY
+
 """Represents a binary file in a space. An asset can be any file type."""
 type Asset {
   contentType(locale: String): String
@@ -126,7 +128,8 @@ scalar Circle
 """
 [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/city)
 """
-type City implements Entry {
+type City implements Entry & _Node {
+  _id: ID!
   contentfulMetadata: ContentfulMetadata!
   country(locale: String, preview: Boolean, where: CountryFilter): Country
   linkedFrom(allowedLocales: [String]): CityLinkingCollections
@@ -215,7 +218,8 @@ enum CityOrder {
 """
 [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/company)
 """
-type Company implements Entry {
+type Company implements Entry & _Node {
+  _id: ID!
   city(locale: String, preview: Boolean, where: CityFilter): City
   contentfulMetadata: ContentfulMetadata!
   linkedFrom(allowedLocales: [String]): CompanyLinkingCollections
@@ -300,7 +304,7 @@ input ContentfulMetadataTagsFilter {
 
 """
 Represents a tag entity for finding and organizing content easily.
-    Find out more here: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/content-tags
+      Find out more here: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/content-tags
 """
 type ContentfulTag {
   id: String
@@ -310,7 +314,8 @@ type ContentfulTag {
 """
 [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/country)
 """
-type Country implements Entry {
+type Country implements Entry & _Node {
+  _id: ID!
   contentfulMetadata: ContentfulMetadata!
   flag(locale: String): String
   linkedFrom(allowedLocales: [String]): CountryLinkingCollections
@@ -425,7 +430,8 @@ enum EntryOrder {
 """
 [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/event)
 """
-type Event implements Entry {
+type Event implements Entry & _Node {
+  _id: ID!
   city(locale: String, preview: Boolean, where: CityFilter): City
   contentfulMetadata: ContentfulMetadata!
   endingDate(locale: String): DateTime
@@ -703,7 +709,8 @@ scalar JSON
 """
 [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/language)
 """
-type Language implements Entry {
+type Language implements Entry & _Node {
+  _id: ID!
   code(locale: String): String
   contentfulMetadata: ContentfulMetadata!
   flag(locale: String): String
@@ -832,20 +839,20 @@ The Rectangle scalar type represents a rectangle, defined by the coordinates of 
 """
 scalar Rectangle
 
-type ResourceLink {
+interface ResourceLink {
   sys: ResourceSys!
 }
 
 type ResourceSys {
   linkType: String!
-  type: String!
   urn: String!
 }
 
 """
 [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/session)
 """
-type Session implements Entry {
+type Session implements Entry & _Node {
+  _id: ID!
   audience(locale: String): Int
   contentfulMetadata: ContentfulMetadata!
   event(locale: String, preview: Boolean, where: EventFilter): Event
@@ -991,6 +998,9 @@ type Sys {
   environmentId: String!
   firstPublishedAt: DateTime
   id: String!
+
+  """The locale that was requested."""
+  locale: String
   publishedAt: DateTime
   publishedVersion: Int
   spaceId: String!
@@ -1036,7 +1046,8 @@ input SysFilter {
 """
 [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/talk)
 """
-type Talk implements Entry {
+type Talk implements Entry & _Node {
+  _id: ID!
   abstract(locale: String): TalkAbstract
   active(locale: String): Boolean
   category(locale: String): String
@@ -1072,9 +1083,21 @@ type TalkAbstractLinks {
 }
 
 type TalkAbstractResources {
-  block: [ResourceLink!]!
-  hyperlink: [ResourceLink!]!
-  inline: [ResourceLink!]!
+  block: [TalkAbstractResourcesBlock!]!
+  hyperlink: [TalkAbstractResourcesHyperlink!]!
+  inline: [TalkAbstractResourcesInline!]!
+}
+
+type TalkAbstractResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type TalkAbstractResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type TalkAbstractResourcesInline implements ResourceLink {
+  sys: ResourceSys!
 }
 
 type TalkCollection {
@@ -1211,7 +1234,8 @@ enum TalkSessionsCollectionOrder {
 """
 [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/technology)
 """
-type Technology implements Entry {
+type Technology implements Entry & _Node {
+  _id: ID!
   contentfulMetadata: ContentfulMetadata!
   linkedFrom(allowedLocales: [String]): TechnologyLinkingCollections
   slug(locale: String): String
@@ -1287,7 +1311,8 @@ enum TechnologyOrder {
 """
 [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/title)
 """
-type Title implements Entry {
+type Title implements Entry & _Node {
+  _id: ID!
   contentfulMetadata: ContentfulMetadata!
   description(locale: String): TitleDescription
   endingDate(locale: String): DateTime
@@ -1330,9 +1355,21 @@ type TitleDescriptionLinks {
 }
 
 type TitleDescriptionResources {
-  block: [ResourceLink!]!
-  hyperlink: [ResourceLink!]!
-  inline: [ResourceLink!]!
+  block: [TitleDescriptionResourcesBlock!]!
+  hyperlink: [TitleDescriptionResourcesHyperlink!]!
+  inline: [TitleDescriptionResourcesInline!]!
+}
+
+type TitleDescriptionResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type TitleDescriptionResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type TitleDescriptionResourcesInline implements ResourceLink {
+  sys: ResourceSys!
 }
 
 input TitleFilter {

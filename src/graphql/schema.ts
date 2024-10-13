@@ -227,8 +227,9 @@ export enum AssetOrder {
 }
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/city) */
-export type City = Entry & {
+export type City = Entry & _Node & {
   __typename?: 'City';
+  _id: Scalars['ID']['output'];
   contentfulMetadata: ContentfulMetadata;
   country?: Maybe<Country>;
   linkedFrom?: Maybe<CityLinkingCollections>;
@@ -369,8 +370,9 @@ export enum CityOrder {
 }
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/company) */
-export type Company = Entry & {
+export type Company = Entry & _Node & {
   __typename?: 'Company';
+  _id: Scalars['ID']['output'];
   city?: Maybe<City>;
   contentfulMetadata: ContentfulMetadata;
   linkedFrom?: Maybe<CompanyLinkingCollections>;
@@ -502,7 +504,7 @@ export type ContentfulMetadataTagsFilter = {
 
 /**
  * Represents a tag entity for finding and organizing content easily.
- *     Find out more here: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/content-tags
+ *       Find out more here: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/content-tags
  */
 export type ContentfulTag = {
   __typename?: 'ContentfulTag';
@@ -511,8 +513,9 @@ export type ContentfulTag = {
 };
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/country) */
-export type Country = Entry & {
+export type Country = Entry & _Node & {
   __typename?: 'Country';
+  _id: Scalars['ID']['output'];
   contentfulMetadata: ContentfulMetadata;
   flag?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<CountryLinkingCollections>;
@@ -650,8 +653,9 @@ export enum EntryOrder {
 }
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/event) */
-export type Event = Entry & {
+export type Event = Entry & _Node & {
   __typename?: 'Event';
+  _id: Scalars['ID']['output'];
   city?: Maybe<City>;
   contentfulMetadata: ContentfulMetadata;
   endingDate?: Maybe<Scalars['DateTime']['output']>;
@@ -955,8 +959,9 @@ export type ImageTransformOptions = {
 };
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/language) */
-export type Language = Entry & {
+export type Language = Entry & _Node & {
   __typename?: 'Language';
+  _id: Scalars['ID']['output'];
   code?: Maybe<Scalars['String']['output']>;
   contentfulMetadata: ContentfulMetadata;
   flag?: Maybe<Scalars['String']['output']>;
@@ -1308,20 +1313,19 @@ export type QueryTitleCollectionArgs = {
 };
 
 export type ResourceLink = {
-  __typename?: 'ResourceLink';
   sys: ResourceSys;
 };
 
 export type ResourceSys = {
   __typename?: 'ResourceSys';
   linkType: Scalars['String']['output'];
-  type: Scalars['String']['output'];
   urn: Scalars['String']['output'];
 };
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/session) */
-export type Session = Entry & {
+export type Session = Entry & _Node & {
   __typename?: 'Session';
+  _id: Scalars['ID']['output'];
   audience?: Maybe<Scalars['Int']['output']>;
   contentfulMetadata: ContentfulMetadata;
   event?: Maybe<Event>;
@@ -1569,6 +1573,8 @@ export type Sys = {
   environmentId: Scalars['String']['output'];
   firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
   id: Scalars['String']['output'];
+  /** The locale that was requested. */
+  locale?: Maybe<Scalars['String']['output']>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   publishedVersion?: Maybe<Scalars['Int']['output']>;
   spaceId: Scalars['String']['output'];
@@ -1612,8 +1618,9 @@ export type SysFilter = {
 };
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/talk) */
-export type Talk = Entry & {
+export type Talk = Entry & _Node & {
   __typename?: 'Talk';
+  _id: Scalars['ID']['output'];
   abstract?: Maybe<TalkAbstract>;
   active?: Maybe<Scalars['Boolean']['output']>;
   category?: Maybe<Scalars['String']['output']>;
@@ -1707,9 +1714,24 @@ export type TalkAbstractLinks = {
 
 export type TalkAbstractResources = {
   __typename?: 'TalkAbstractResources';
-  block: Array<ResourceLink>;
-  hyperlink: Array<ResourceLink>;
-  inline: Array<ResourceLink>;
+  block: Array<TalkAbstractResourcesBlock>;
+  hyperlink: Array<TalkAbstractResourcesHyperlink>;
+  inline: Array<TalkAbstractResourcesInline>;
+};
+
+export type TalkAbstractResourcesBlock = ResourceLink & {
+  __typename?: 'TalkAbstractResourcesBlock';
+  sys: ResourceSys;
+};
+
+export type TalkAbstractResourcesHyperlink = ResourceLink & {
+  __typename?: 'TalkAbstractResourcesHyperlink';
+  sys: ResourceSys;
+};
+
+export type TalkAbstractResourcesInline = ResourceLink & {
+  __typename?: 'TalkAbstractResourcesInline';
+  sys: ResourceSys;
 };
 
 export type TalkCollection = {
@@ -1864,8 +1886,9 @@ export enum TalkSessionsCollectionOrder {
 }
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/technology) */
-export type Technology = Entry & {
+export type Technology = Entry & _Node & {
   __typename?: 'Technology';
+  _id: Scalars['ID']['output'];
   contentfulMetadata: ContentfulMetadata;
   linkedFrom?: Maybe<TechnologyLinkingCollections>;
   slug?: Maybe<Scalars['String']['output']>;
@@ -1976,8 +1999,9 @@ export enum TechnologyOrder {
 }
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/title) */
-export type Title = Entry & {
+export type Title = Entry & _Node & {
   __typename?: 'Title';
+  _id: Scalars['ID']['output'];
   contentfulMetadata: ContentfulMetadata;
   description?: Maybe<TitleDescription>;
   endingDate?: Maybe<Scalars['DateTime']['output']>;
@@ -2081,9 +2105,24 @@ export type TitleDescriptionLinks = {
 
 export type TitleDescriptionResources = {
   __typename?: 'TitleDescriptionResources';
-  block: Array<ResourceLink>;
-  hyperlink: Array<ResourceLink>;
-  inline: Array<ResourceLink>;
+  block: Array<TitleDescriptionResourcesBlock>;
+  hyperlink: Array<TitleDescriptionResourcesHyperlink>;
+  inline: Array<TitleDescriptionResourcesInline>;
+};
+
+export type TitleDescriptionResourcesBlock = ResourceLink & {
+  __typename?: 'TitleDescriptionResourcesBlock';
+  sys: ResourceSys;
+};
+
+export type TitleDescriptionResourcesHyperlink = ResourceLink & {
+  __typename?: 'TitleDescriptionResourcesHyperlink';
+  sys: ResourceSys;
+};
+
+export type TitleDescriptionResourcesInline = ResourceLink & {
+  __typename?: 'TitleDescriptionResourcesInline';
+  sys: ResourceSys;
 };
 
 export type TitleFilter = {
@@ -2449,7 +2488,7 @@ export type GetAllTalksQuery = { __typename?: 'Query', talkCollection?: { __type
 export type GetFeaturedTalksQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetFeaturedTalksQuery = { __typename?: 'Query', sessionCollection?: { __typename?: 'SessionCollection', items: Array<{ __typename?: 'Session', talk?: { __typename?: 'Talk', title?: string | null, slug?: string | null } | null, photo?: { __typename?: 'Asset', url?: string | null } | null, event?: { __typename?: 'Event', name?: string | null } | null } | null> } | null };
+export type GetFeaturedTalksQuery = { __typename?: 'Query', sessionCollection?: { __typename?: 'SessionCollection', items: Array<{ __typename?: 'Session', talk?: { __typename?: 'Talk', title?: string | null, slug?: string | null } | null, photo?: { __typename?: 'Asset', url?: string | null } | null, event?: { __typename?: 'Event', name?: string | null, city?: { __typename?: 'City', name?: string | null, country?: { __typename?: 'Country', name?: string | null } | null } | null } | null } | null> } | null };
 
 export type GetTalkQueryVariables = Exact<{
   slug: Scalars['String']['input'];
@@ -2705,6 +2744,12 @@ export const GetFeaturedTalksDocument = gql`
       }
       event {
         name
+        city {
+          name
+          country {
+            name
+          }
+        }
       }
     }
   }

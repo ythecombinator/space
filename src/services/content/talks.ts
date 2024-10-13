@@ -44,6 +44,7 @@ const youtubeServiceInstance = YoutubeService.getInstance();
 
 export type YoutubeHighlight = ValuesType<Awaited<ReturnType<TalksContentService['getYoutubeHighlights']>>>;
 export type UpcomingSession = ValuesType<Awaited<ReturnType<TalksContentService['getGetUpcomingSessions']>>>;
+export type FeaturedTalk = ValuesType<Awaited<ReturnType<TalksContentService['getFeatured']>>>;
 
 //  ---------------------------------------------------------------------------
 //  CORE
@@ -210,6 +211,7 @@ const featuredTransformer = (result: GetFeaturedTalksQuery) => {
 
   return items.map((item) => ({
     eventName: item.event.name,
+    eventLocation: `${item.event.city.name}, ${item.event.city.country.name}`,
     photoURL: item.photo.url,
     talkTitle: item.talk.title,
     talkSlug: `/${Routes.talks}/${item.talk.slug}`,
