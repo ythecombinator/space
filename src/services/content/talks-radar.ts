@@ -9,6 +9,7 @@ const notionServiceInstance = NotionService.getInstance();
 export default class TalksRadarContentService {
   private static instance: TalksRadarContentService;
   private seasonMap: Record<ConferenceSeason, string> = {
+    '2025': 'f56a3ba2b74a4339aef9a44d4cdcb2aa',
     '2024': '57cbd3d5d34c4933bc51a7a49737f4f8',
     '2023': '6f8ad796bb5746a1a479446a7153d470',
     '2022': '2dee03c01edf473eb35635ea9f1edcde',
@@ -80,7 +81,7 @@ const notionResponseTransformer = (response: NotionResponse) => {
 //  TYPES
 //  ---------------------------------------------------------------------------
 
-export type ConferenceSeason = '2022' | '2023' | '2024';
+export type ConferenceSeason = '2022' | '2023' | '2024' | '2025';
 
 export type EngagementStatusPrimary =
   | 'CANCELED'
