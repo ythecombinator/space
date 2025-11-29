@@ -1,18 +1,25 @@
 directive @contentSourceMaps on QUERY
 
+"""
+Indicates exactly one field must be supplied and this field must not be `null`.
+"""
+directive @oneOf on INPUT_OBJECT
+
+directive @timeline(where: TimelineFilterInput!) on QUERY
+
 """Represents a binary file in a space. An asset can be any file type."""
 type Asset {
-  contentType(locale: String): String
+  contentType(locale: String, useFallbackLocale: Boolean): String
   contentfulMetadata: ContentfulMetadata!
-  description(locale: String): String
-  fileName(locale: String): String
-  height(locale: String): Int
+  description(locale: String, useFallbackLocale: Boolean): String
+  fileName(locale: String, useFallbackLocale: Boolean): String
+  height(locale: String, useFallbackLocale: Boolean): Int
   linkedFrom(allowedLocales: [String]): AssetLinkingCollections
-  size(locale: String): Int
+  size(locale: String, useFallbackLocale: Boolean): Int
   sys: Sys!
-  title(locale: String): String
-  url(locale: String, transform: ImageTransformOptions): String
-  width(locale: String): Int
+  title(locale: String, useFallbackLocale: Boolean): String
+  url(locale: String, transform: ImageTransformOptions, useFallbackLocale: Boolean): String
+  width(locale: String, useFallbackLocale: Boolean): Int
 }
 
 type AssetCollection {
@@ -92,9 +99,9 @@ input AssetFilter {
 }
 
 type AssetLinkingCollections {
-  companyCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): CompanyCollection
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  sessionCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): SessionCollection
+  companyCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): CompanyCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
+  sessionCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): SessionCollection
 }
 
 enum AssetOrder {
@@ -131,10 +138,10 @@ scalar Circle
 type City implements Entry & _Node {
   _id: ID!
   contentfulMetadata: ContentfulMetadata!
-  country(locale: String, preview: Boolean, where: CountryFilter): Country
+  country(locale: String, preview: Boolean, useFallbackLocale: Boolean, where: CountryFilter): Country
   linkedFrom(allowedLocales: [String]): CityLinkingCollections
-  location(locale: String): Location
-  name(locale: String): String
+  location(locale: String, useFallbackLocale: Boolean): Location
+  name(locale: String, useFallbackLocale: Boolean): String
   sys: Sys!
 }
 
@@ -165,9 +172,9 @@ input CityFilter {
 }
 
 type CityLinkingCollections {
-  companyCollection(limit: Int = 100, locale: String, order: [CityLinkingCollectionsCompanyCollectionOrder], preview: Boolean, skip: Int = 0): CompanyCollection
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  eventCollection(limit: Int = 100, locale: String, order: [CityLinkingCollectionsEventCollectionOrder], preview: Boolean, skip: Int = 0): EventCollection
+  companyCollection(limit: Int = 100, locale: String, order: [CityLinkingCollectionsCompanyCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): CompanyCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
+  eventCollection(limit: Int = 100, locale: String, order: [CityLinkingCollectionsEventCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EventCollection
 }
 
 enum CityLinkingCollectionsCompanyCollectionOrder {
@@ -220,11 +227,11 @@ enum CityOrder {
 """
 type Company implements Entry & _Node {
   _id: ID!
-  city(locale: String, preview: Boolean, where: CityFilter): City
+  city(locale: String, preview: Boolean, useFallbackLocale: Boolean, where: CityFilter): City
   contentfulMetadata: ContentfulMetadata!
   linkedFrom(allowedLocales: [String]): CompanyLinkingCollections
-  logo(locale: String, preview: Boolean): Asset
-  name(locale: String): String
+  logo(locale: String, preview: Boolean, useFallbackLocale: Boolean): Asset
+  name(locale: String, useFallbackLocale: Boolean): String
   sys: Sys!
 }
 
@@ -253,8 +260,8 @@ input CompanyFilter {
 }
 
 type CompanyLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  titleCollection(limit: Int = 100, locale: String, order: [CompanyLinkingCollectionsTitleCollectionOrder], preview: Boolean, skip: Int = 0): TitleCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
+  titleCollection(limit: Int = 100, locale: String, order: [CompanyLinkingCollectionsTitleCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): TitleCollection
 }
 
 enum CompanyLinkingCollectionsTitleCollectionOrder {
@@ -288,10 +295,26 @@ enum CompanyOrder {
 }
 
 type ContentfulMetadata {
+  concepts: [TaxonomyConcept]!
   tags: [ContentfulTag]!
 }
 
+input ContentfulMetadataConceptsDescendantsFilter {
+  id_contains_all: [String]
+  id_contains_none: [String]
+  id_contains_some: [String]
+}
+
+input ContentfulMetadataConceptsFilter {
+  descendants: ContentfulMetadataConceptsDescendantsFilter
+  id_contains_all: [String]
+  id_contains_none: [String]
+  id_contains_some: [String]
+}
+
 input ContentfulMetadataFilter {
+  concepts: ContentfulMetadataConceptsFilter
+  concepts_exists: Boolean
   tags: ContentfulMetadataTagsFilter
   tags_exists: Boolean
 }
@@ -317,9 +340,9 @@ type ContentfulTag {
 type Country implements Entry & _Node {
   _id: ID!
   contentfulMetadata: ContentfulMetadata!
-  flag(locale: String): String
+  flag(locale: String, useFallbackLocale: Boolean): String
   linkedFrom(allowedLocales: [String]): CountryLinkingCollections
-  name(locale: String): String
+  name(locale: String, useFallbackLocale: Boolean): String
   sys: Sys!
 }
 
@@ -352,8 +375,8 @@ input CountryFilter {
 }
 
 type CountryLinkingCollections {
-  cityCollection(limit: Int = 100, locale: String, order: [CountryLinkingCollectionsCityCollectionOrder], preview: Boolean, skip: Int = 0): CityCollection
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  cityCollection(limit: Int = 100, locale: String, order: [CountryLinkingCollectionsCityCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): CityCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
 }
 
 enum CountryLinkingCollectionsCityCollectionOrder {
@@ -432,15 +455,15 @@ enum EntryOrder {
 """
 type Event implements Entry & _Node {
   _id: ID!
-  city(locale: String, preview: Boolean, where: CityFilter): City
+  city(locale: String, preview: Boolean, useFallbackLocale: Boolean, where: CityFilter): City
   contentfulMetadata: ContentfulMetadata!
-  endingDate(locale: String): DateTime
+  endingDate(locale: String, useFallbackLocale: Boolean): DateTime
   linkedFrom(allowedLocales: [String]): EventLinkingCollections
-  name(locale: String): String
-  sessionsCollection(limit: Int = 100, locale: String, order: [EventSessionsCollectionOrder], preview: Boolean, skip: Int = 0, where: SessionFilter): EventSessionsCollection
-  startingDate(locale: String): DateTime
+  name(locale: String, useFallbackLocale: Boolean): String
+  sessionsCollection(limit: Int = 100, locale: String, order: [EventSessionsCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: SessionFilter): EventSessionsCollection
+  startingDate(locale: String, useFallbackLocale: Boolean): DateTime
   sys: Sys!
-  website(locale: String): String
+  website(locale: String, useFallbackLocale: Boolean): String
 }
 
 type EventCollection {
@@ -494,8 +517,8 @@ input EventFilter {
 }
 
 type EventLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  sessionCollection(limit: Int = 100, locale: String, order: [EventLinkingCollectionsSessionCollectionOrder], preview: Boolean, skip: Int = 0): SessionCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
+  sessionCollection(limit: Int = 100, locale: String, order: [EventLinkingCollectionsSessionCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): SessionCollection
 }
 
 enum EventLinkingCollectionsSessionCollectionOrder {
@@ -574,6 +597,7 @@ enum EventSessionsCollectionOrder {
 scalar HexColor
 
 enum ImageFormat {
+  """AVIF image format."""
   AVIF
 
   """JPG image format."""
@@ -711,10 +735,10 @@ scalar JSON
 """
 type Language implements Entry & _Node {
   _id: ID!
-  code(locale: String): String
+  code(locale: String, useFallbackLocale: Boolean): String
   contentfulMetadata: ContentfulMetadata!
-  flag(locale: String): String
-  language(locale: String): String
+  flag(locale: String, useFallbackLocale: Boolean): String
+  language(locale: String, useFallbackLocale: Boolean): String
   linkedFrom(allowedLocales: [String]): LanguageLinkingCollections
   sys: Sys!
 }
@@ -755,8 +779,8 @@ input LanguageFilter {
 }
 
 type LanguageLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  sessionCollection(limit: Int = 100, locale: String, order: [LanguageLinkingCollectionsSessionCollectionOrder], preview: Boolean, skip: Int = 0): SessionCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
+  sessionCollection(limit: Int = 100, locale: String, order: [LanguageLinkingCollectionsSessionCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): SessionCollection
 }
 
 enum LanguageLinkingCollectionsSessionCollectionOrder {
@@ -810,28 +834,29 @@ The 'Quality' type represents quality as whole numeric values between `1` and `1
 scalar Quality
 
 type Query {
-  _node(id: ID!, locale: String, preview: Boolean): _Node
-  asset(id: String!, locale: String, preview: Boolean): Asset
-  assetCollection(limit: Int = 100, locale: String, order: [AssetOrder], preview: Boolean, skip: Int = 0, where: AssetFilter): AssetCollection
-  city(id: String!, locale: String, preview: Boolean): City
-  cityCollection(limit: Int = 100, locale: String, order: [CityOrder], preview: Boolean, skip: Int = 0, where: CityFilter): CityCollection
-  company(id: String!, locale: String, preview: Boolean): Company
-  companyCollection(limit: Int = 100, locale: String, order: [CompanyOrder], preview: Boolean, skip: Int = 0, where: CompanyFilter): CompanyCollection
-  country(id: String!, locale: String, preview: Boolean): Country
-  countryCollection(limit: Int = 100, locale: String, order: [CountryOrder], preview: Boolean, skip: Int = 0, where: CountryFilter): CountryCollection
-  entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, where: EntryFilter): EntryCollection
-  event(id: String!, locale: String, preview: Boolean): Event
-  eventCollection(limit: Int = 100, locale: String, order: [EventOrder], preview: Boolean, skip: Int = 0, where: EventFilter): EventCollection
-  language(id: String!, locale: String, preview: Boolean): Language
-  languageCollection(limit: Int = 100, locale: String, order: [LanguageOrder], preview: Boolean, skip: Int = 0, where: LanguageFilter): LanguageCollection
-  session(id: String!, locale: String, preview: Boolean): Session
-  sessionCollection(limit: Int = 100, locale: String, order: [SessionOrder], preview: Boolean, skip: Int = 0, where: SessionFilter): SessionCollection
-  talk(id: String!, locale: String, preview: Boolean): Talk
-  talkCollection(limit: Int = 100, locale: String, order: [TalkOrder], preview: Boolean, skip: Int = 0, where: TalkFilter): TalkCollection
-  technology(id: String!, locale: String, preview: Boolean): Technology
-  technologyCollection(limit: Int = 100, locale: String, order: [TechnologyOrder], preview: Boolean, skip: Int = 0, where: TechnologyFilter): TechnologyCollection
-  title(id: String!, locale: String, preview: Boolean): Title
-  titleCollection(limit: Int = 100, locale: String, order: [TitleOrder], preview: Boolean, skip: Int = 0, where: TitleFilter): TitleCollection
+  _node(id: ID!, locale: String, preview: Boolean, useFallbackLocale: Boolean): _Node
+  _nodes(ids: [ID!]!, locale: String, preview: Boolean, useFallbackLocale: Boolean): [_Node]!
+  asset(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): Asset
+  assetCollection(limit: Int = 100, locale: String, order: [AssetOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: AssetFilter): AssetCollection
+  city(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): City
+  cityCollection(limit: Int = 100, locale: String, order: [CityOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: CityFilter): CityCollection
+  company(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): Company
+  companyCollection(limit: Int = 100, locale: String, order: [CompanyOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: CompanyFilter): CompanyCollection
+  country(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): Country
+  countryCollection(limit: Int = 100, locale: String, order: [CountryOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: CountryFilter): CountryCollection
+  entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: EntryFilter): EntryCollection
+  event(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): Event
+  eventCollection(limit: Int = 100, locale: String, order: [EventOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: EventFilter): EventCollection
+  language(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): Language
+  languageCollection(limit: Int = 100, locale: String, order: [LanguageOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: LanguageFilter): LanguageCollection
+  session(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): Session
+  sessionCollection(limit: Int = 100, locale: String, order: [SessionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: SessionFilter): SessionCollection
+  talk(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): Talk
+  talkCollection(limit: Int = 100, locale: String, order: [TalkOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: TalkFilter): TalkCollection
+  technology(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): Technology
+  technologyCollection(limit: Int = 100, locale: String, order: [TechnologyOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: TechnologyFilter): TechnologyCollection
+  title(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): Title
+  titleCollection(limit: Int = 100, locale: String, order: [TitleOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: TitleFilter): TitleCollection
 }
 
 """
@@ -853,19 +878,19 @@ type ResourceSys {
 """
 type Session implements Entry & _Node {
   _id: ID!
-  audience(locale: String): Int
+  audience(locale: String, useFallbackLocale: Boolean): Int
   contentfulMetadata: ContentfulMetadata!
-  event(locale: String, preview: Boolean, where: EventFilter): Event
-  featured(locale: String): Boolean
-  language(locale: String, preview: Boolean, where: LanguageFilter): Language
+  event(locale: String, preview: Boolean, useFallbackLocale: Boolean, where: EventFilter): Event
+  featured(locale: String, useFallbackLocale: Boolean): Boolean
+  language(locale: String, preview: Boolean, useFallbackLocale: Boolean, where: LanguageFilter): Language
   linkedFrom(allowedLocales: [String]): SessionLinkingCollections
-  online(locale: String): Boolean
-  photo(locale: String, preview: Boolean): Asset
-  recording(locale: String): String
-  slides(locale: String): String
+  online(locale: String, useFallbackLocale: Boolean): Boolean
+  photo(locale: String, preview: Boolean, useFallbackLocale: Boolean): Asset
+  recording(locale: String, useFallbackLocale: Boolean): String
+  slides(locale: String, useFallbackLocale: Boolean): String
   sys: Sys!
-  talk(locale: String, preview: Boolean, where: TalkFilter): Talk
-  title(locale: String): String
+  talk(locale: String, preview: Boolean, useFallbackLocale: Boolean, where: TalkFilter): Talk
+  title(locale: String, useFallbackLocale: Boolean): String
 }
 
 type SessionCollection {
@@ -926,9 +951,9 @@ input SessionFilter {
 }
 
 type SessionLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  eventCollection(limit: Int = 100, locale: String, order: [SessionLinkingCollectionsEventCollectionOrder], preview: Boolean, skip: Int = 0): EventCollection
-  talkCollection(limit: Int = 100, locale: String, order: [SessionLinkingCollectionsTalkCollectionOrder], preview: Boolean, skip: Int = 0): TalkCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
+  eventCollection(limit: Int = 100, locale: String, order: [SessionLinkingCollectionsEventCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EventCollection
+  talkCollection(limit: Int = 100, locale: String, order: [SessionLinkingCollectionsTalkCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): TalkCollection
 }
 
 enum SessionLinkingCollectionsEventCollectionOrder {
@@ -1048,16 +1073,16 @@ input SysFilter {
 """
 type Talk implements Entry & _Node {
   _id: ID!
-  abstract(locale: String): TalkAbstract
-  active(locale: String): Boolean
-  category(locale: String): String
+  abstract(locale: String, useFallbackLocale: Boolean): TalkAbstract
+  active(locale: String, useFallbackLocale: Boolean): Boolean
+  category(locale: String, useFallbackLocale: Boolean): String
   contentfulMetadata: ContentfulMetadata!
-  lastRelevant(locale: String): DateTime
+  lastRelevant(locale: String, useFallbackLocale: Boolean): DateTime
   linkedFrom(allowedLocales: [String]): TalkLinkingCollections
-  sessionsCollection(limit: Int = 100, locale: String, order: [TalkSessionsCollectionOrder], preview: Boolean, skip: Int = 0, where: SessionFilter): TalkSessionsCollection
-  slug(locale: String): String
+  sessionsCollection(limit: Int = 100, locale: String, order: [TalkSessionsCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: SessionFilter): TalkSessionsCollection
+  slug(locale: String, useFallbackLocale: Boolean): String
   sys: Sys!
-  title(locale: String): String
+  title(locale: String, useFallbackLocale: Boolean): String
 }
 
 type TalkAbstract {
@@ -1153,8 +1178,8 @@ input TalkFilter {
 }
 
 type TalkLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  sessionCollection(limit: Int = 100, locale: String, order: [TalkLinkingCollectionsSessionCollectionOrder], preview: Boolean, skip: Int = 0): SessionCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
+  sessionCollection(limit: Int = 100, locale: String, order: [TalkLinkingCollectionsSessionCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): SessionCollection
 }
 
 enum TalkLinkingCollectionsSessionCollectionOrder {
@@ -1232,15 +1257,23 @@ enum TalkSessionsCollectionOrder {
 }
 
 """
+Represents a taxonomy concept entity for finding and organizing content easily.
+        Find out more here: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/content-concepts
+"""
+type TaxonomyConcept {
+  id: String
+}
+
+"""
 [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/technology)
 """
 type Technology implements Entry & _Node {
   _id: ID!
   contentfulMetadata: ContentfulMetadata!
   linkedFrom(allowedLocales: [String]): TechnologyLinkingCollections
-  slug(locale: String): String
+  slug(locale: String, useFallbackLocale: Boolean): String
   sys: Sys!
-  title(locale: String): String
+  title(locale: String, useFallbackLocale: Boolean): String
 }
 
 type TechnologyCollection {
@@ -1272,8 +1305,8 @@ input TechnologyFilter {
 }
 
 type TechnologyLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  titleCollection(limit: Int = 100, locale: String, order: [TechnologyLinkingCollectionsTitleCollectionOrder], preview: Boolean, skip: Int = 0): TitleCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
+  titleCollection(limit: Int = 100, locale: String, order: [TechnologyLinkingCollectionsTitleCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): TitleCollection
 }
 
 enum TechnologyLinkingCollectionsTitleCollectionOrder {
@@ -1308,21 +1341,29 @@ enum TechnologyOrder {
   title_DESC
 }
 
+input TimelineFilterInput {
+  """Preview content starting from a given release date"""
+  release_lte: String
+
+  """Preview content starting from a given timestamp"""
+  timestamp_lte: DateTime
+}
+
 """
 [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/title)
 """
 type Title implements Entry & _Node {
   _id: ID!
   contentfulMetadata: ContentfulMetadata!
-  description(locale: String): TitleDescription
-  endingDate(locale: String): DateTime
+  description(locale: String, useFallbackLocale: Boolean): TitleDescription
+  endingDate(locale: String, useFallbackLocale: Boolean): DateTime
   linkedFrom(allowedLocales: [String]): TitleLinkingCollections
-  organization(locale: String, preview: Boolean, where: CompanyFilter): Company
-  roles(locale: String): [String]
-  stackCollection(limit: Int = 100, locale: String, order: [TitleStackCollectionOrder], preview: Boolean, skip: Int = 0, where: TechnologyFilter): TitleStackCollection
-  startingDate(locale: String): DateTime
+  organization(locale: String, preview: Boolean, useFallbackLocale: Boolean, where: CompanyFilter): Company
+  roles(locale: String, useFallbackLocale: Boolean): [String]
+  stackCollection(limit: Int = 100, locale: String, order: [TitleStackCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: TechnologyFilter): TitleStackCollection
+  startingDate(locale: String, useFallbackLocale: Boolean): DateTime
   sys: Sys!
-  title(locale: String): String
+  title(locale: String, useFallbackLocale: Boolean): String
 }
 
 type TitleCollection {
@@ -1416,7 +1457,7 @@ input TitleFilter {
 }
 
 type TitleLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
 }
 
 enum TitleOrder {
