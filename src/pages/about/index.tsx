@@ -105,11 +105,7 @@ const Page: NextPage<PageProps> = ({ openGraphImage }) => {
             companies, taking the best from both worlds.
           </Typography.p>
 
-          <CurrentLocation
-            href={siteMetadata.locationLink}
-            location={siteMetadata.location}
-            locationImage="/content/misc/prague.jpg"
-          />
+          <CurrentLocation />
 
           <Typography.p>
             {`I'm`} currently based in Prague, Czech Republic, working as a Staff Software Engineer at{' '}
