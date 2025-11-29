@@ -1,59 +1,127 @@
-import Image from 'next/image';
-import { FunctionComponent, PropsWithChildren } from 'react';
-import { FiMapPin } from 'react-icons/fi';
+import createGlobe from 'cobe';
+import { useMotionValue, useSpring } from 'framer-motion';
+import { useTheme } from 'next-themes';
+import { useEffect, useRef } from 'react';
 
-import { siteMetadata } from 'config/constants';
+function CurrentLocation() {
+  const { resolvedTheme } = useTheme();
+  const isDarkMode = resolvedTheme === 'dark';
 
-import Link from 'components/shared/link';
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const pointerInteracting = useRef<number | null>(null);
+  const pointerInteractionMovement = useRef(0);
+  const fadeMask = 'radial-gradient(circle at 50% 50%, rgb(0, 0, 0) 60%, rgb(0, 0, 0, 0) 70%)';
 
-//  ---------------------------------------------------------------------------
-//  TYPES
-//  ---------------------------------------------------------------------------
+  const rotation = useMotionValue(0);
+  const springRotation = useSpring(rotation, {
+    stiffness: 280,
+    damping: 40,
+    mass: 1,
+  });
 
-interface CurrentLocationProps {
-  href: string;
-  location: string;
-  locationImage: string;
-}
+  useEffect(() => {
+    let width = 0;
 
-//  ---------------------------------------------------------------------------
-//  UI
-//  ---------------------------------------------------------------------------
+    const onResize = () => {
+      if (canvasRef.current && (width = canvasRef.current.offsetWidth)) {
+        window.addEventListener('resize', onResize);
+      }
+    };
+    onResize();
 
-const CurrentLocation: FunctionComponent<PropsWithChildren<CurrentLocationProps>> = ({
-  href,
-  location,
-  locationImage,
-}) => {
+    if (!canvasRef.current) return;
+
+    const globe = createGlobe(canvasRef.current, {
+      devicePixelRatio: 2,
+      width: width * 2,
+      height: width * 2,
+      phi: 0,
+      theta: 0,
+      dark: isDarkMode ? 1 : 0,
+      diffuse: isDarkMode ? 2 : 1.2,
+      mapSamples: 16_000,
+      mapBrightness: isDarkMode ? 2 : 3,
+      baseColor: isDarkMode ? [0.8, 0.8, 0.8] : [0.9, 0.9, 0.9],
+      markerColor: isDarkMode ? [1, 1, 1] : [0.2, 0.4, 0.8],
+      glowColor: isDarkMode ? [0.5, 0.5, 0.5] : [0.9, 0.9, 1],
+      markers: [{ location: [50.0755, 14.4378], size: 0.1 }],
+      scale: 1.05,
+      onRender: (state) => {
+        state.phi = 2.75 + springRotation.get();
+        state.width = width * 2;
+        state.height = width * 2;
+      },
+    });
+
+    return () => {
+      globe.destroy();
+      window.removeEventListener('resize', onResize);
+    };
+  }, [springRotation, isDarkMode]);
+
   return (
-    <Link
-      href={href}
-      target="_blank"
-      className="relative flex min-h-[20rem] min-w-[20rem] items-center justify-center overflow-hidden rounded-xl bg-gray-900 p-5 text-black shadow"
-    >
-      <Image
-        className="absolute inset-0 m-auto object-cover"
-        alt={location}
-        src={locationImage}
-        priority
-        fill
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-      />
-      <div className="z-10 flex h-32 w-32 items-center justify-center rounded-full border-4 border-white/70 bg-[#37CCE5]/60">
-        <Image
-          className="rounded-full p-1 ring-2 ring-gray-300 dark:ring-gray-500"
-          src="/content/misc/avatar.jpg"
-          alt={`Avatar of ${siteMetadata.author}`}
-          width={100}
-          height={100}
-        />
+    <div className="relative flex h-60 flex-col gap-6 overflow-hidden rounded-xl p-4 shadow-feature-card lg:p-6">
+      <div className="absolute inset-x-0 -bottom-44 mx-auto aspect-square h-84 lg:-bottom-48 lg:h-96">
+        <div
+          style={{
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            placeItems: 'center',
+            placeContent: 'center',
+            overflow: 'visible',
+          }}
+        >
+          <div
+            style={{
+              width: '100%',
+              aspectRatio: '1/1',
+              maxWidth: 800,
+              WebkitMaskImage: fadeMask,
+              maskImage: fadeMask,
+            }}
+          >
+            <canvas
+              ref={canvasRef}
+              onPointerDown={(e) => {
+                pointerInteracting.current = e.clientX - pointerInteractionMovement.current;
+                if (canvasRef.current) canvasRef.current.style.cursor = 'grabbing';
+              }}
+              onPointerUp={() => {
+                pointerInteracting.current = null;
+                if (canvasRef.current) canvasRef.current.style.cursor = 'grab';
+              }}
+              onPointerOut={() => {
+                pointerInteracting.current = null;
+                if (canvasRef.current) canvasRef.current.style.cursor = 'grab';
+              }}
+              onMouseMove={(e) => {
+                if (pointerInteracting.current !== null) {
+                  const delta = e.clientX - pointerInteracting.current;
+                  pointerInteractionMovement.current = delta;
+                  rotation.set(delta / 200);
+                }
+              }}
+              onTouchMove={(e) => {
+                if (pointerInteracting.current !== null && e.touches[0]) {
+                  const delta = e.touches[0].clientX - pointerInteracting.current;
+                  pointerInteractionMovement.current = delta;
+                  rotation.set(delta / 100);
+                }
+              }}
+              style={{
+                width: '100%',
+                height: '100%',
+                contain: 'layout paint size',
+                cursor: 'auto',
+                userSelect: 'none',
+              }}
+            />
+          </div>
+        </div>
       </div>
-      <div className="absolute bottom-0 right-0 flex items-center space-x-1 rounded-tl-lg bg-black/20 px-2 py-1 text-black/40 backdrop-blur-lg backdrop-saturate-150 dark:bg-white/10 dark:text-white/60">
-        <FiMapPin />
-        <span className="text-sm">{location}</span>
-      </div>
-    </Link>
+    </div>
   );
-};
+}
 
 export default CurrentLocation;
