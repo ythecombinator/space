@@ -2,8 +2,10 @@ import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { UpcomingSession } from 'services/content/talks';
 
+import { isEmpty } from 'utils/array';
 import { formatDate } from 'utils/date';
 
+import EmptyList from 'components/shared/empty-list';
 import Link from 'components/shared/link';
 import SectionContainer from 'components/shared/section-container';
 import SectionHeading from 'components/shared/section-heading';
@@ -47,6 +49,9 @@ const UpcomingTalksSection: FunctionComponent<PropsWithChildren<UpcomingTalksSec
     <SectionContainer>
       <SectionHeading title="️Upcoming Sessions" />
       <div className="my-8 flex w-full flex-col space-y-4">
+        {isEmpty(items) && (
+          <EmptyList heading="No items found 😢" subHeading="I don't have any sessions scheduled for now." />
+        )}
         {items.map((item) => (
           <UpcomingTalksSectionItem key={`${item.talkSlug}-${item.eventName}`} {...item} />
         ))}
