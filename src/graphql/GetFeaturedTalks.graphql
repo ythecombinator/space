@@ -10,6 +10,7 @@ query GetFeaturedTalks {
       }
       event {
         name
+        startingDate
         city {
           name
           country {

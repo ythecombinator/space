@@ -209,13 +209,15 @@ const youtubeHighlightsTransformer = (result: YoutubeResponse) => {
 const featuredTransformer = (result: GetFeaturedTalksQuery) => {
   const items = (result as DeepNonNullable<GetFeaturedTalksQuery>).sessionCollection?.items;
 
-  return items.map((item) => ({
-    eventName: item.event.name,
-    eventLocation: `${item.event.city.name}, ${item.event.city.country.name}`,
-    photoURL: item.photo.url,
-    talkTitle: item.talk.title,
-    talkSlug: `/${Routes.talks}/${item.talk.slug}`,
-  }));
+  return [...items]
+    .sort((a, b) => new Date(b.event.startingDate).getTime() - new Date(a.event.startingDate).getTime())
+    .map((item) => ({
+      eventName: item.event.name,
+      eventLocation: `${item.event.city.name}, ${item.event.city.country.name}`,
+      photoURL: item.photo.url,
+      talkTitle: item.talk.title,
+      talkSlug: `/${Routes.talks}/${item.talk.slug}`,
+    }));
 };
 
 const talksPerTagTransformer = (result: GetTalksForTagQuery) => {
