@@ -10,7 +10,7 @@ import Link, { LinkProps } from 'components/shared/link';
 //  TYPES
 //  ---------------------------------------------------------------------------
 
-type ButtonLinkProps = LinkProps & { className?: string; icon: JSX.Element };
+type ButtonLinkProps = LinkProps & { className?: string; icon: React.JSX.Element };
 
 //  ---------------------------------------------------------------------------
 //  UI

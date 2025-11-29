@@ -13,7 +13,7 @@ import PageTitle, { PageTitleProps } from 'components/shared/page-title';
 interface PageLayoutProps {
   heading: string;
   headingGradient?: PageTitleProps['gradient'];
-  subHeading?: JSX.Element;
+  subHeading?: React.JSX.Element;
 }
 
 //  ---------------------------------------------------------------------------

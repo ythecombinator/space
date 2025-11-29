@@ -5,7 +5,7 @@ import { FunctionComponent, PropsWithChildren } from 'react';
 //  ---------------------------------------------------------------------------
 
 export type CardOutlinedListItemProps = {
-  icon: JSX.Element;
+  icon: React.JSX.Element;
 };
 
 //  ---------------------------------------------------------------------------
