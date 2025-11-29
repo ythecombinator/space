@@ -81,7 +81,7 @@ It's a classic story structure, often employed in literature and film, that
 follows the tale of a protagonist as they embark on a transformative journey.
 
 Here's an example from my
-“[Web Performance APIs That You (Probably) Never Knew Existed](https://www.albuquerque.dev/talks/web-performance-apis-you-probably-didnt-know-existed)”
+“[Web Performance APIs That You (Probably) Never Knew Existed](https://www.ythecombinator.space/talks/web-performance-apis-you-probably-didnt-know-existed)”
 session:
 
 1. **An initial conflict**: A section that usually goes by _“A Little Bit of
@@ -185,7 +185,7 @@ Recent examples of this:
 - In [Frontmania 2022](https://frontmania.com/), I found out that a considerable
   part of the audience was working mostly with Angular and Vue. Even though they
   had knowledge of React, given that my session
-  (“[Inside Fiber: the in-depth overview you wanted a TLDR for](https://www.albuquerque.dev/talks/inside-fiber-the-in-depth-overview-you-wanted-a-tldr-for)”)
+  (“[Inside Fiber: the in-depth overview you wanted a TLDR for](https://www.ythecombinator.space/talks/inside-fiber-the-in-depth-overview-you-wanted-a-tldr-for)”)
   was a deep dive into the internals, I had to provide some extra context in
   some situations.
 
@@ -205,11 +205,11 @@ in my sessions, usually with tricky mental exercises:
 
 - _“If you were to summarize web performance in one metric, what’d be your
   pick?”_ I asked during my session
-  “[Web Performance APIs That You (Probably) Never Knew Existed](https://www.albuquerque.dev/talks/web-performance-apis-you-probably-didnt-know-existed)”.
+  “[Web Performance APIs That You (Probably) Never Knew Existed](https://www.ythecombinator.space/talks/web-performance-apis-you-probably-didnt-know-existed)”.
 
 - _“If you were to summarize Concurrent React in one word/expression, what’d be
   your pick?”_ during
-  “[Deep diving on Concurrent React](https://www.albuquerque.dev/talks/deep-diving-on-concurrent-react)”
+  “[Deep diving on Concurrent React](https://www.ythecombinator.space/talks/deep-diving-on-concurrent-react)”
 
 This also allows you to run detailed reports and analyze the results after the
 conference. Then you can power the content/structure decisions we discussed a

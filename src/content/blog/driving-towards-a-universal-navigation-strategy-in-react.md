@@ -275,7 +275,7 @@ with `<Redirect />`
 [here](https://tylermcginnis.com/react-router-programmatically-navigate/).
 
 7 • If you're interested in this topic, in
-[this talk](https://www.albuquerque.dev/talks/code-sharing-at-scale-one-codebase-for-web-mobile-and-desktop)
+[this talk](https://www.ythecombinator.space/talks/code-sharing-at-scale-one-codebase-for-web-mobile-and-desktop)
 I share a couple of lessons learned while building an app with code sharing as a
 primary objective — from project setup, through shared infrastructure, all the
 way up to shared components and styling — and how you can achieve the same

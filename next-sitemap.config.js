@@ -1,5 +1,5 @@
 module.exports = {
-  siteUrl: 'https://www.albuquerque.dev',
+  siteUrl: 'https://www.ythecombinator.space',
   autoLastmod: false,
   generateRobotsTxt: true,
   generateIndexSitemap: false,
