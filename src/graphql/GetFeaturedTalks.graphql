@@ -1,5 +1,5 @@
 query GetFeaturedTalks {
-  sessionCollection(where: { featured: true }) {
+  sessionCollection(where: { photo_exists: true }) {
     items {
       talk {
         title
