@@ -24,10 +24,12 @@ const OrderedListItem: FunctionComponent<PropsWithChildren<OrderedListItemProps>
     <Link href={href} className="w-full" aria-label={label}>
       <div className="w-full border-b border-gray-200 py-3 transition-all hover:scale-[1.01] dark:border-gray-700">
         <div className="flex flex-col justify-between sm:flex-row sm:items-center">
-          <div className="flex items-center">
-            <div className="mr-6 text-left text-gray-300 dark:text-gray-400">{index}</div>
-            {prefix}
-            <h3 className="w-full text-base font-medium text-gray-800 dark:text-gray-100 sm:text-lg">{label}</h3>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2">
+            <div className="mr-6 text-left text-gray-300 dark:text-gray-400 mb-2">{index}</div>
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-0">
+              {prefix}
+              <h3 className="w-full text-base font-medium text-gray-800 dark:text-gray-100 sm:text-lg">{label}</h3>
+            </div>
           </div>
         </div>
       </div>

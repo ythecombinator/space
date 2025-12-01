@@ -5,7 +5,7 @@ import { FunctionComponent, PropsWithChildren } from 'react';
 //  STYLES
 //  ---------------------------------------------------------------------------
 
-const chipVariants = cva('group relative mr-4 inline-block text-sm font-medium no-underline uppercase', {
+const chipVariants = cva('group max-w-fit relative mr-4 inline-block text-sm font-medium no-underline uppercase', {
   variants: {
     variant: {
       default: 'text-blue-700 dark:text-blue-300',
