@@ -1,6 +1,5 @@
-import { FunctionComponent, PropsWithChildren } from 'react';
+import { FunctionComponent, PropsWithChildren, ReactNode } from 'react';
 
-import Chip from 'components/shared/chip';
 import Link from 'components/shared/link';
 
 //  ---------------------------------------------------------------------------
@@ -11,7 +10,7 @@ export type OrderedListItemProps = {
   href: string;
   label: string;
   index: number;
-  prefix?: string | null;
+  prefix?: ReactNode;
 };
 
 //  ---------------------------------------------------------------------------
@@ -27,7 +26,7 @@ const OrderedListItem: FunctionComponent<PropsWithChildren<OrderedListItemProps>
         <div className="flex flex-col justify-between sm:flex-row sm:items-center">
           <div className="flex items-center">
             <div className="mr-6 text-left text-gray-300 dark:text-gray-400">{index}</div>
-            {prefix && <Chip>{prefix}</Chip>}
+            {prefix}
             <h3 className="w-full text-base font-medium text-gray-800 dark:text-gray-100 sm:text-lg">{label}</h3>
           </div>
         </div>

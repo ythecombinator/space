@@ -3,6 +3,7 @@ import { FunctionComponent, PropsWithChildren } from 'react';
 import { isEmpty, reversedIndexOf } from 'utils/array';
 import { useSearch } from 'utils/search';
 
+import Chip from 'components/shared/chip';
 import EmptyList from 'components/shared/empty-list';
 import OrderedListItem from 'components/shared/ordered-list-item';
 import SectionContainer from 'components/shared/section-container';
@@ -43,6 +44,18 @@ const searchSchema = {
   _countries: 'string',
 } as const;
 
+function renderPrefix(talkCategory: string) {
+  if (talkCategory === 'workshop') {
+    return <Chip variant="default">Workshop</Chip>;
+  }
+
+  if (talkCategory === 'panel') {
+    return <Chip variant="secondary">Panel</Chip>;
+  }
+
+  return null;
+}
+
 //  ---------------------------------------------------------------------------
 //  UI
 //  ---------------------------------------------------------------------------
@@ -62,13 +75,14 @@ const AllTalksSection: FunctionComponent<PropsWithChildren<AllTalksSectionProps>
         )}
         {items.map((item, index) => {
           const { talkTitle, talkSlug, talkCategory } = item;
+
           return (
             <OrderedListItem
               key={talkSlug}
               label={talkTitle}
               index={reversedIndexOf(items.length, index)}
               href={talkSlug}
-              prefix={talkCategory === 'workshop' ? 'workshop' : null}
+              prefix={renderPrefix(talkCategory)}
             />
           );
         })}
