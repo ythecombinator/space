@@ -1,9 +1,10 @@
-import { FunctionComponent, PropsWithChildren } from 'react';
+import { FunctionComponent, PropsWithChildren, useState } from 'react';
 
 import { isEmpty, reversedIndexOf } from 'utils/array';
 import { useSearch } from 'utils/search';
 
 import Chip from 'components/shared/chip';
+import DropdownMenu from 'components/shared/dropdown-menu';
 import EmptyList from 'components/shared/empty-list';
 import OrderedListItem from 'components/shared/ordered-list-item';
 import SectionContainer from 'components/shared/section-container';
@@ -32,6 +33,12 @@ export type AllTalksSectionProps = {
 //  ---------------------------------------------------------------------------
 //  UTILS
 //  ---------------------------------------------------------------------------
+
+const SESSION_TYPE_FILTERS = [
+  { label: 'Talk', id: 'talk' },
+  { label: 'Workshop', id: 'workshop' },
+  { label: 'Panel', id: 'panel' },
+];
 
 const searchSchema = {
   talkTitle: 'string',
@@ -64,11 +71,23 @@ const AllTalksSection: FunctionComponent<PropsWithChildren<AllTalksSectionProps>
   items: baseItems,
   searchTerm,
 }) => {
-  const items = useSearch<typeof searchSchema, Schema>(searchSchema, baseItems, searchTerm);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(['talk', 'workshop', 'panel']);
+  const searchedItems = useSearch<typeof searchSchema, Schema>(searchSchema, baseItems, searchTerm);
+  
+  const items = searchedItems.filter((item) => selectedCategories.includes(item.talkCategory));
 
   return (
     <SectionContainer>
-      <SectionHeading title="All Sessions" />
+      <div className="mb-6 flex items-center justify-between">
+        <SectionHeading title="All Sessions" />
+        <DropdownMenu
+          label="Session Type"
+          items={SESSION_TYPE_FILTERS}
+          multiSelect
+          initialSelectedItems={selectedCategories}
+          onMultiSelect={setSelectedCategories}
+        />
+      </div>
       <div className="mb-6">
         {isEmpty(items) && (
           <EmptyList heading="No items found 😢" subHeading="I don't have any sessions on this topic." />

@@ -16,7 +16,10 @@ interface DropdownMenuProps {
   label: string;
   items: Array<{ label: string; id: string }>;
   initialSelectedItem?: string;
-  onSelect: (id: string) => void;
+  initialSelectedItems?: string[];
+  multiSelect?: boolean;
+  onSelect?: (id: string) => void;
+  onMultiSelect?: (ids: string[]) => void;
 }
 
 //  ---------------------------------------------------------------------------
@@ -24,8 +27,9 @@ interface DropdownMenuProps {
 //  ---------------------------------------------------------------------------
 
 const DropdownMenu: FunctionComponent<DropdownMenuProps> = (props) => {
-  const { label, items, initialSelectedItem, onSelect } = props;
+  const { label, items, initialSelectedItem, initialSelectedItems, multiSelect, onSelect, onMultiSelect } = props;
   const [currentItem, setCurrentItem] = useState<string>(initialSelectedItem ?? '');
+  const [selectedItems, setSelectedItems] = useState<string[]>(initialSelectedItems ?? []);
 
   return (
     <div className="relative inline-block text-left">
@@ -50,14 +54,24 @@ const DropdownMenu: FunctionComponent<DropdownMenuProps> = (props) => {
             </DropdownMenuPrimitive.Label>
 
             {items.map((item) => {
+              const isChecked = multiSelect ? selectedItems.includes(item.id) : currentItem === item.id;
+              
               return (
                 <DropdownMenuPrimitive.CheckboxItem
                   key={item.id}
-                  checked={currentItem === item.id}
+                  checked={isChecked}
                   onCheckedChange={(state) => {
-                    if (state) {
-                      setCurrentItem(item.id);
-                      onSelect(item.id);
+                    if (multiSelect) {
+                      const newSelectedItems = state
+                        ? [...selectedItems, item.id]
+                        : selectedItems.filter((id) => id !== item.id);
+                      setSelectedItems(newSelectedItems);
+                      onMultiSelect?.(newSelectedItems);
+                    } else {
+                      if (state) {
+                        setCurrentItem(item.id);
+                        onSelect?.(item.id);
+                      }
                     }
                   }}
                   className={classNames(
