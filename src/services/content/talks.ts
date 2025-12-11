@@ -167,6 +167,7 @@ export default class TalksContentService {
 
     return videoCollection
       .map(transformers.youtubeHighlights)
+      .filter((item) => Boolean(item.viewCount))
       .sort((a, b) => parseInt(b.viewCount) - parseInt(a.viewCount));
   }
 }
