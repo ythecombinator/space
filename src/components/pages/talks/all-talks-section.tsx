@@ -1,4 +1,7 @@
-import { FunctionComponent, PropsWithChildren, useState } from 'react';
+import { useTheme } from 'next-themes';
+import { FunctionComponent, PropsWithChildren, Suspense, useMemo, useState } from 'react';
+import ContentLoader from 'react-content-loader';
+import colors from 'tailwindcss/colors';
 
 import { isEmpty, reversedIndexOf } from 'utils/array';
 import { useSearch } from 'utils/search';
@@ -7,6 +10,7 @@ import Chip from 'components/shared/chip';
 import DropdownMenu from 'components/shared/dropdown-menu';
 import EmptyList from 'components/shared/empty-list';
 import OrderedListItem from 'components/shared/ordered-list-item';
+import SearchBar, { SearchBarProps } from 'components/shared/seach-bar';
 import SectionContainer from 'components/shared/section-container';
 import SectionHeading from 'components/shared/section-heading';
 
@@ -27,7 +31,6 @@ type Schema = {
 
 export type AllTalksSectionProps = {
   items: Array<Schema>;
-  searchTerm: string;
 };
 
 //  ---------------------------------------------------------------------------
@@ -64,17 +67,16 @@ function renderPrefix(talkCategory: string) {
 }
 
 //  ---------------------------------------------------------------------------
-//  UI
+//  UI: CORE
 //  ---------------------------------------------------------------------------
 
-const AllTalksSection: FunctionComponent<PropsWithChildren<AllTalksSectionProps>> = ({
-  items: baseItems,
-  searchTerm,
-}) => {
+const AllTalksSection: FunctionComponent<PropsWithChildren<AllTalksSectionProps>> = ({ items: baseItems }) => {
+  const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategories, setSelectedCategories] = useState<string[]>(['talk', 'workshop', 'panel']);
-  const searchedItems = useSearch<typeof searchSchema, Schema>(searchSchema, baseItems, searchTerm);
-  
-  const items = searchedItems.filter((item) => selectedCategories.includes(item.talkCategory));
+
+  const onChange: SearchBarProps['onChange'] = (evt) => {
+    setSearchTerm(evt.target.value);
+  };
 
   return (
     <SectionContainer>
@@ -89,25 +91,77 @@ const AllTalksSection: FunctionComponent<PropsWithChildren<AllTalksSectionProps>
         />
       </div>
       <div className="mb-6">
-        {isEmpty(items) && (
-          <EmptyList heading="No items found 😢" subHeading="I don't have any sessions on this topic." />
-        )}
-        {items.map((item, index) => {
-          const { talkTitle, talkSlug, talkCategory } = item;
-
-          return (
-            <OrderedListItem
-              key={talkSlug}
-              label={talkTitle}
-              index={reversedIndexOf(items.length, index)}
-              href={talkSlug}
-              prefix={renderPrefix(talkCategory)}
-            />
-          );
-        })}
+        <SearchBar label="Search topics, events and places" onChange={onChange} />
+      </div>
+      <div className="mb-6">
+        <Suspense fallback={<AllTalksListSkeleton items={3} />}>
+          <AllTalksList items={baseItems} searchTerm={searchTerm} selectedCategories={selectedCategories} />
+        </Suspense>
       </div>
     </SectionContainer>
   );
 };
 
 export default AllTalksSection;
+
+//  ---------------------------------------------------------------------------
+//  UI: AllTalksList
+//  ---------------------------------------------------------------------------
+
+type AllTalksListProps = {
+  items: Array<Schema>;
+  searchTerm: string;
+  selectedCategories: string[];
+};
+
+function AllTalksList({ items: baseItems, searchTerm, selectedCategories }: AllTalksListProps) {
+  const searchedItems = useSearch<typeof searchSchema, Schema>(searchSchema, baseItems, searchTerm);
+  const items = searchedItems.filter((item) => selectedCategories.includes(item.talkCategory));
+
+  if (isEmpty(items)) {
+    return <EmptyList heading="No items found 😢" subHeading="I don't have any sessions on this topic." />;
+  }
+
+  return items.map(({ talkTitle, talkSlug, talkCategory }, index) => (
+    <OrderedListItem
+      key={talkSlug}
+      label={talkTitle}
+      index={reversedIndexOf(items.length, index)}
+      href={talkSlug}
+      prefix={renderPrefix(talkCategory)}
+    />
+  ));
+}
+
+//  ---------------------------------------------------------------------------
+//  UI: AllTalksListSkeleton
+//  ---------------------------------------------------------------------------
+
+type AllTalksListSkeletonProps = {
+  items: number;
+};
+
+function AllTalksListSkeleton({ items }: AllTalksListSkeletonProps) {
+  const itemSkeletons = useMemo(() => Array.from(Array(items).keys()), [items]);
+  const { theme } = useTheme();
+
+  return (
+    <div className="mb-6">
+      {itemSkeletons.map((skeletonId) => {
+        return (
+          <div key={skeletonId} className="w-full border-b border-gray-200 py-3 dark:border-gray-700">
+            <ContentLoader
+              speed={1}
+              viewBox="0 0 400 25"
+              backgroundColor={theme === 'dark' ? colors.gray[800] : colors.gray[300]}
+              foregroundColor={theme === 'dark' ? colors.gray[600] : colors.gray[100]}
+            >
+              <rect x="8" y="6" rx="4" ry="4" width="15" height="15" />
+              <rect x="50" y="6" rx="4" ry="4" width="350" height="15" />
+            </ContentLoader>
+          </div>
+        );
+      })}
+    </div>
+  );
+}

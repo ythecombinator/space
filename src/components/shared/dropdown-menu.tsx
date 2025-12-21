@@ -55,7 +55,7 @@ const DropdownMenu: FunctionComponent<DropdownMenuProps> = (props) => {
 
             {items.map((item) => {
               const isChecked = multiSelect ? selectedItems.includes(item.id) : currentItem === item.id;
-              
+
               return (
                 <DropdownMenuPrimitive.CheckboxItem
                   key={item.id}
