@@ -1,5 +1,3 @@
-import { FunctionComponent } from 'react';
-
 import { toBreadcrumbs } from 'utils/string';
 import { classNames } from 'utils/styles';
 

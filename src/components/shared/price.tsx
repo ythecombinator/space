@@ -1,5 +1,4 @@
 import { useSearchParams } from 'next/navigation';
-import { FunctionComponent } from 'react';
 
 import {
   CurrencyConversionQuery,

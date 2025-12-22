@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 import { BsFillCalendarEventFill } from 'react-icons/bs';
 import { CgWebsite } from 'react-icons/cg';
 import { FaMapMarkedAlt, FaSpeakerDeck, FaYoutube } from 'react-icons/fa';

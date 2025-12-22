@@ -1,5 +1,5 @@
 import { usePathname } from 'next/navigation';
-import { FunctionComponent, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 
 import { MDXEntry } from 'services/content/markdown';
 

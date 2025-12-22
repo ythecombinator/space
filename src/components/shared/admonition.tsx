@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority';
-import { FunctionComponent, HTMLAttributes, PropsWithChildren } from 'react';
+import { HTMLAttributes, PropsWithChildren } from 'react';
 
 import { classNames } from 'utils/styles';
 

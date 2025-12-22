@@ -1,5 +1,3 @@
-import { FunctionComponent } from 'react';
-
 import Link from 'components/shared/link';
 
 //  ---------------------------------------------------------------------------

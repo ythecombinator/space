@@ -8,7 +8,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-import { FunctionComponent, PropsWithChildren, useState } from 'react';
+import { PropsWithChildren, useState } from 'react';
 import { BiSort } from 'react-icons/bi';
 
 import {

@@ -1,5 +1,4 @@
-import { useState, useRef, PropsWithChildren } from 'react';
-import { FunctionComponent } from 'react';
+import { PropsWithChildren, useRef, useState } from 'react';
 
 //  ---------------------------------------------------------------------------
 //  UI

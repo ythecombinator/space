@@ -1,5 +1,5 @@
 import { useTheme } from 'next-themes';
-import { FunctionComponent, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 
 import { FeaturedTalk } from 'services/content/talks';
 

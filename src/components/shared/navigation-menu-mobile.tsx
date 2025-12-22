@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren, useState } from 'react';
+import { PropsWithChildren, useState } from 'react';
 
 import Link from 'components/shared/link';
 

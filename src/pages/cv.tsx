@@ -1,5 +1,5 @@
 import linkedinData from 'data/experience.json';
-import { InferGetStaticPropsType, NextPage } from 'next';
+import { InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { FaMapMarked } from 'react-icons/fa';
 import { MdAlternateEmail } from 'react-icons/md';

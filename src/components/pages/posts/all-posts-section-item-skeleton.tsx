@@ -1,5 +1,4 @@
 import { useTheme } from 'next-themes';
-import { FunctionComponent, PropsWithChildren } from 'react';
 import ContentLoader from 'react-content-loader';
 import colors from 'tailwindcss/colors';
 

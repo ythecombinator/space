@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 
 import { classNames, Gradient, gradients } from 'utils/styles';
 

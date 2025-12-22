@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next';
+import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import { ArticleJsonLd, NextSeo as Metadata } from 'next-seo';
 import { ParsedUrlQuery } from 'querystring';
 

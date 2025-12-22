@@ -1,5 +1,5 @@
 import experience from 'data/experience.json';
-import { InferGetStaticPropsType, NextPage } from 'next';
+import { InferGetStaticPropsType } from 'next';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { MDXRemote } from 'next-mdx-remote';
 import { NextSeo as Metadata } from 'next-seo';

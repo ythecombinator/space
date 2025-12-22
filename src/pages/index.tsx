@@ -1,5 +1,3 @@
-import { NextPage } from 'next';
-
 import { siteMetadata, socialNetworks } from 'config/constants';
 
 import ForbesCurrencyConverter from 'services/providers/forbes-currency-converter';

@@ -1,5 +1,5 @@
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
-import { FunctionComponent, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 
 import { Routes } from 'config/constants';
 

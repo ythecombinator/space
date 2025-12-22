@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren, useMemo } from 'react';
+import { PropsWithChildren, useMemo } from 'react';
 
 import SectionContainer from 'components/shared/section-container';
 

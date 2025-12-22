@@ -1,5 +1,5 @@
 import { AnimatePresence, motion, useAnimation } from 'framer-motion';
-import { useEffect, useRef, Dispatch, SetStateAction, FunctionComponent, PropsWithChildren } from 'react';
+import { Dispatch, PropsWithChildren, SetStateAction, useEffect, useRef } from 'react';
 
 //  ---------------------------------------------------------------------------
 //  TYPES

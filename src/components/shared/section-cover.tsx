@@ -1,5 +1,5 @@
 import Image, { ImageProps } from 'next/image';
-import { FunctionComponent, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 
 type SectionCoverProps = Pick<ImageProps, 'src' | 'alt'>;
 

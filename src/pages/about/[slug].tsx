@@ -1,4 +1,4 @@
-import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next';
+import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import { NextSeo as Metadata } from 'next-seo';
 import { ParsedUrlQuery } from 'querystring';
 

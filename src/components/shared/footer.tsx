@@ -1,7 +1,4 @@
-import { FunctionComponent, PropsWithChildren } from 'react';
-
-import { Routes } from 'config/constants';
-import { siteMetadata } from 'config/constants';
+import { Routes, siteMetadata } from 'config/constants';
 
 import LayoutGradient from 'components/shared/layout-gradient';
 import Link from 'components/shared/link';

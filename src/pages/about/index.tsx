@@ -1,4 +1,4 @@
-import { InferGetStaticPropsType, NextPage } from 'next';
+import { InferGetStaticPropsType } from 'next';
 import { NextSeo as Metadata } from 'next-seo';
 import { FaHammer, FaLaptopCode, FaPlane } from 'react-icons/fa';
 import { GiCardRandom, GiTakeMyMoney } from 'react-icons/gi';

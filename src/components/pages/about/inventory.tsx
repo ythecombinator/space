@@ -1,4 +1,4 @@
-import { FunctionComponent, useId } from 'react';
+import { useId } from 'react';
 
 import Typography from 'components/shared/typography';
 

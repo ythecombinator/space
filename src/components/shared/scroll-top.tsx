@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import smoothscroll from 'smoothscroll-polyfill';
 
 //  ---------------------------------------------------------------------------

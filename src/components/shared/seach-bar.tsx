@@ -1,4 +1,4 @@
-import { FunctionComponent, InputHTMLAttributes, PropsWithChildren } from 'react';
+import { InputHTMLAttributes, PropsWithChildren } from 'react';
 import { FaSearch } from 'react-icons/fa';
 
 //  ---------------------------------------------------------------------------

@@ -2,7 +2,7 @@ import { MDXContentProps } from 'mdx-bundler/client';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import Image from 'next/image';
 import { coreContent } from 'pliny/utils/contentlayer';
-import { FunctionComponent, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 
 import { Layouts, LayoutsMap } from 'config/constants';
 

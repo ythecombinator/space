@@ -1,5 +1,5 @@
 import NextImage from 'next/image';
-import React, { ComponentPropsWithoutRef, useState } from 'react';
+import { ComponentPropsWithoutRef, useState } from 'react';
 
 import { classNames } from 'utils/styles';
 

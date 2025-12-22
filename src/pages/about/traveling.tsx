@@ -1,4 +1,4 @@
-import { InferGetStaticPropsType, NextPage } from 'next';
+import { InferGetStaticPropsType } from 'next';
 import { NextSeo as Metadata } from 'next-seo';
 
 import { Routes, siteMetadata } from 'config/constants';
