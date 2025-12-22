@@ -1,14 +1,19 @@
 import { InferGetStaticPropsType } from 'next';
 import { NextSeo as Metadata } from 'next-seo';
-import { FaHammer, FaLaptopCode, FaPlane } from 'react-icons/fa';
-import { GiCardRandom, GiTakeMyMoney } from 'react-icons/gi';
 
 import { Routes, siteMetadata } from 'config/constants';
 
 import { MetadataConfig, generateOpenGraphImage } from 'utils/open-graph';
 
+import clientsAnimation from 'content/animations/clients.json';
+import lifeAnimation from 'content/animations/life.json';
+import travelAnimation from 'content/animations/travel.json';
+import setupAnimation from 'content/animations/uses.json';
+import workAnimation from 'content/animations/work.json';
+
 import Admonition from 'components/shared/admonition';
-import ButtonLink from 'components/shared/button-link';
+import CardLottie from 'components/shared/card-lottie';
+import CardScrollArea from 'components/shared/card-scroll-area';
 import CurrentLocation from 'components/shared/current-location';
 import SectionContainer from 'components/shared/section-container';
 import SectionCover from 'components/shared/section-cover';
@@ -126,23 +131,23 @@ function Page({ openGraphImage }: PageProps) {
             Curious to know further details about the stuff I mentioned above? I keep some pages updated with these!
           </Typography.p>
 
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-            <ButtonLink href={`/${Routes.life}`} icon={<GiCardRandom aria-hidden />}>
-              Life
-            </ButtonLink>
-            <ButtonLink href={`/${Routes.traveling}`} icon={<FaPlane aria-hidden />}>
-              Traveling
-            </ButtonLink>
-            <ButtonLink href={`/${Routes.experience}`} icon={<FaLaptopCode aria-hidden />}>
-              Experience
-            </ButtonLink>
-            <ButtonLink href={`/${Routes.clients}`} icon={<GiTakeMyMoney aria-hidden />}>
-              Clients
-            </ButtonLink>
-            <ButtonLink href={`/${Routes.uses}`} icon={<FaHammer aria-hidden />}>
-              Setup
-            </ButtonLink>
-          </div>
+          <CardScrollArea>
+            <CardLottie href={`/${Routes.life}`} title="Life" animationData={lifeAnimation} gradient="violet" />
+            <CardLottie
+              href={`/${Routes.traveling}`}
+              title="Traveling"
+              animationData={travelAnimation}
+              gradient="blue"
+            />
+            <CardLottie
+              href={`/${Routes.experience}`}
+              title="Experience"
+              animationData={workAnimation}
+              gradient="teal"
+            />
+            <CardLottie href={`/${Routes.clients}`} title="Clients" animationData={clientsAnimation} gradient="rose" />
+            <CardLottie href={`/${Routes.uses}`} title="Setup" animationData={setupAnimation} gradient="amber" />
+          </CardScrollArea>
         </SectionContainer>
       </Layout>
     </>
