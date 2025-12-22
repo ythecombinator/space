@@ -15,7 +15,16 @@ interface VideoPreviewProps extends YoutubeHighlight {
   height?: number;
 }
 
-export function VideoPreview({ className, width, height, link, title, thumbnail, likeCount, viewCount }: VideoPreviewProps) {
+export function VideoPreview({
+  className,
+  width,
+  height,
+  link,
+  title,
+  thumbnail,
+  likeCount,
+  viewCount,
+}: VideoPreviewProps) {
   return (
     <div className={classNames('space-y-3', className)}>
       <div className="overflow-hidden rounded-md">

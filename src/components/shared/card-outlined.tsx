@@ -7,7 +7,7 @@ import { classNames, useRandomGradient } from 'utils/styles';
 //  ---------------------------------------------------------------------------
 
 export type CardOutlinedProps = {
-  heading: JSX.Element;
+  heading: React.JSX.Element | string;
 };
 
 //  ---------------------------------------------------------------------------

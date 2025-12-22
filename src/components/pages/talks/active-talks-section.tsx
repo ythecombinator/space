@@ -24,7 +24,7 @@ function ActiveTalksSection({ items }: PropsWithChildren<ActiveTalksSectionProps
     <SectionContainer>
       <SectionHeading title="️Active Sessions" />
       <Typography.p className="mb-6">
-        These are talks I'm currently delivering and are available to be presented at your event!
+        These are talks {`I'm`} currently delivering and are available to be presented at your event!
       </Typography.p>
       <SectionList>
         {items.map((item) => {
