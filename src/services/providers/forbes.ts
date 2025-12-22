@@ -86,7 +86,7 @@ export default class ForbesCurrencyConverter {
     };
   }
 
-  async generateCurrencyTable() {
+  async bootstrapLocalData() {
     if (isInCi) {
       console.info('Running in a CI environment');
       console.warn('Skipping currency table generation');

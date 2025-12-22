@@ -1,6 +1,6 @@
 import { siteMetadata, socialNetworks } from 'config/constants';
 
-import ForbesCurrencyConverter from 'services/providers/forbes-currency-converter';
+import ForbesService from 'services/providers/forbes';
 
 import Badge from 'components/shared/badge';
 import ButtonLink from 'components/shared/button-link';
@@ -13,10 +13,10 @@ import Layout from 'components/layouts/page';
 //  NEXT
 //  ---------------------------------------------------------------------------
 
-const currencyServiceInstance = ForbesCurrencyConverter.getInstance();
+const currencyServiceInstance = ForbesService.getInstance();
 
 export async function getStaticProps() {
-  await currencyServiceInstance.generateCurrencyTable();
+  await currencyServiceInstance.bootstrapLocalData();
   return {
     props: {},
   };

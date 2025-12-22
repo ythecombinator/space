@@ -3,7 +3,7 @@ import { NextSeo as Metadata } from 'next-seo';
 
 import { Routes, siteMetadata } from 'config/constants';
 
-import FlightsContentService from 'services/content/flights';
+import FlightyService from 'services/providers/flighty';
 
 import { MetadataConfig, generateOpenGraphImage } from 'utils/open-graph';
 
@@ -35,11 +35,11 @@ export type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 //  NEXT
 //  ---------------------------------------------------------------------------
 
-const flightsService = FlightsContentService.getInstance();
+const flightsService = FlightyService.getInstance();
 
 export async function getStaticProps() {
   flightsService.init();
-  await flightsService.generateFlightsData();
+  await flightsService.bootstrapLocalData();
 
   const flights = flightsService.getFlights();
   const airlines = flightsService.getAirlines();

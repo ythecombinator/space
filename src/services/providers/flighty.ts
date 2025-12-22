@@ -73,20 +73,20 @@ export type AirportCode = string;
 //  CORE
 //  ---------------------------------------------------------------------------
 
-export default class FlightsContentService {
-  private static instance: FlightsContentService;
+export default class FlightyService {
+  private static instance: FlightyService;
   private flights: Flight[] = [];
 
   private constructor() {}
 
-  public static getInstance(): FlightsContentService {
-    if (!FlightsContentService.instance) {
-      FlightsContentService.instance = new FlightsContentService();
+  public static getInstance(): FlightyService {
+    if (!FlightyService.instance) {
+      FlightyService.instance = new FlightyService();
     }
-    return FlightsContentService.instance;
+    return FlightyService.instance;
   }
 
-  public async generateFlightsData() {
+  public async bootstrapLocalData() {
     if (isInCi) {
       console.info('Running in CI - skipping flights data generation');
       return null;
