@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 
 import { ScrollArea, ScrollBar } from 'components/shared/scroll-area';
 
@@ -6,7 +6,7 @@ import { ScrollArea, ScrollBar } from 'components/shared/scroll-area';
 //  UI
 //  ---------------------------------------------------------------------------
 
-const CardScrollArea: FunctionComponent<PropsWithChildren> = ({ children }) => {
+function CardScrollArea({ children }: PropsWithChildren) {
   return (
     <div className="flex w-full flex-wrap pb-2">
       <ScrollArea>
@@ -15,6 +15,6 @@ const CardScrollArea: FunctionComponent<PropsWithChildren> = ({ children }) => {
       </ScrollArea>
     </div>
   );
-};
+}
 
 export default CardScrollArea;

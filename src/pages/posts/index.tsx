@@ -44,7 +44,7 @@ export async function getStaticProps() {
   return { props: { allPosts, openGraphImage } };
 }
 
-const Page: NextPage<PageProps> = ({ allPosts, openGraphImage }) => {
+function Page({ allPosts, openGraphImage }: PageProps) {
   const [searchTerm, setSearchTerm] = useState('');
 
   const onChange: SearchBarProps['onChange'] = (evt) => {
@@ -74,6 +74,6 @@ const Page: NextPage<PageProps> = ({ allPosts, openGraphImage }) => {
       </Layout>
     </>
   );
-};
+}
 
 export default Page;

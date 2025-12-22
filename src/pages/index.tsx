@@ -24,7 +24,7 @@ export async function getStaticProps() {
   };
 }
 
-const Page: NextPage<{}> = () => {
+function Page() {
   return (
     <Layout heading="Hi, I'm Matheus! 👋">
       <SectionContainer className="prose dark:prose-invert">
@@ -107,6 +107,6 @@ const Page: NextPage<{}> = () => {
       </div>
     </Layout>
   );
-};
+}
 
 export default Page;

@@ -52,7 +52,7 @@ export async function getStaticProps() {
   };
 }
 
-const Page: NextPage<Props> = ({ data, openGraphImage }) => {
+function Page({ data, openGraphImage }: Props) {
   return (
     <>
       <Metadata
@@ -89,6 +89,6 @@ const Page: NextPage<Props> = ({ data, openGraphImage }) => {
       </Layout>
     </>
   );
-};
+}
 
 export default Page;

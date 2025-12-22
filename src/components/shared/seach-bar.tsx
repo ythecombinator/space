@@ -14,7 +14,7 @@ export type SearchBarProps = {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const SearchBar: FunctionComponent<PropsWithChildren<SearchBarProps>> = ({ label, onChange }) => {
+function SearchBar({ label, onChange }: PropsWithChildren<SearchBarProps>) {
   return (
     <div className="relative">
       <input
@@ -27,6 +27,6 @@ const SearchBar: FunctionComponent<PropsWithChildren<SearchBarProps>> = ({ label
       <FaSearch aria-hidden className="absolute right-3 top-3 h-5 w-5 text-gray-400 dark:text-gray-300" />
     </div>
   );
-};
+}
 
 export default SearchBar;

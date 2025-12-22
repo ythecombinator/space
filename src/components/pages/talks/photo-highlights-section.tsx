@@ -19,7 +19,7 @@ export type PhotoHighlightsSectionProps = {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const PhotoHighlightsSection: FunctionComponent<PropsWithChildren<PhotoHighlightsSectionProps>> = ({ items }) => {
+function PhotoHighlightsSection({ items }: PropsWithChildren<PhotoHighlightsSectionProps>) {
   return (
     <SectionContainer>
       <SectionHeading title="Captured Highlights" />
@@ -32,6 +32,6 @@ const PhotoHighlightsSection: FunctionComponent<PropsWithChildren<PhotoHighlight
       </div>
     </SectionContainer>
   );
-};
+}
 
 export default PhotoHighlightsSection;

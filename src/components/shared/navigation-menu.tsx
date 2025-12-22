@@ -20,7 +20,7 @@ interface NavigationMenuProps {
 //  UI
 //  ---------------------------------------------------------------------------
 
-export const NavigationMenu: FunctionComponent<PropsWithChildren<NavigationMenuProps>> = ({ items }) => {
+export function NavigationMenu({ items }: PropsWithChildren<NavigationMenuProps>) {
   return (
     <NavigationMenuPrimitive.Root className="relative">
       <NavigationMenuPrimitive.List className="flex flex-row items-center space-x-2 p-2">
@@ -55,6 +55,6 @@ export const NavigationMenu: FunctionComponent<PropsWithChildren<NavigationMenuP
       </NavigationMenuPrimitive.List>
     </NavigationMenuPrimitive.Root>
   );
-};
+}
 
 export default NavigationMenu;

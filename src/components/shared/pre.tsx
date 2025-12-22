@@ -5,7 +5,7 @@ import { FunctionComponent } from 'react';
 //  UI
 //  ---------------------------------------------------------------------------
 
-const Pre: FunctionComponent<PropsWithChildren<{}>> = ({ children }) => {
+function Pre({ children }: PropsWithChildren) {
   const textInput = useRef<HTMLDivElement>(null);
   const [hovered, setHovered] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -76,6 +76,6 @@ const Pre: FunctionComponent<PropsWithChildren<{}>> = ({ children }) => {
       <pre>{children}</pre>
     </div>
   );
-};
+}
 
 export default Pre;

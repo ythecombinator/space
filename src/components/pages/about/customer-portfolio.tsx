@@ -69,7 +69,7 @@ const animation = [
 //  UI
 //  ---------------------------------------------------------------------------
 
-const Logo: FunctionComponent<LogoProps> = ({ name, logo }) => {
+function Logo({ name, logo }: LogoProps) {
   return (
     <div className="flex w-[200px] items-center justify-center px-4">
       <Image
@@ -81,9 +81,9 @@ const Logo: FunctionComponent<LogoProps> = ({ name, logo }) => {
       />
     </div>
   );
-};
+}
 
-const CustomerPortfolio: FunctionComponent<{}> = () => {
+function CustomerPortfolio() {
   return (
     <div className="my-8 w-full rounded-xl border p-2 shadow-sm">
       <motion.div className="relative mx-auto flex overflow-x-hidden">
@@ -102,6 +102,6 @@ const CustomerPortfolio: FunctionComponent<{}> = () => {
       </motion.div>
     </div>
   );
-};
+}
 
 export default CustomerPortfolio;

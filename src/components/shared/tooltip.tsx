@@ -11,7 +11,7 @@ import Typography from './typography';
 // Inspired by:
 // https://github.com/lekterable/website/blob/master/src/components/ui/circle-list.tsx
 
-function TooltipInnerContent({ children }: PropsWithChildren<{}>) {
+function TooltipInnerContent({ children }: PropsWithChildren) {
   const x = useMotionValue(0);
   const config = { damping: 5, stiffness: 100 };
   const rotate = useSpring(useTransform(x, [-100, 100], [-45, 45]), config);

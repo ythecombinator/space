@@ -12,7 +12,7 @@ import Typography from 'components/shared/typography';
 //  UI
 //  ---------------------------------------------------------------------------
 
-const Footer: FunctionComponent<PropsWithChildren<{}>> = () => {
+function Footer() {
   return (
     <footer className="mx-auto mb-8 mt-4 flex w-full flex-col items-start justify-center">
       <LayoutGradient />
@@ -36,6 +36,6 @@ const Footer: FunctionComponent<PropsWithChildren<{}>> = () => {
       </div>
     </footer>
   );
-};
+}
 
 export default Footer;

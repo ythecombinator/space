@@ -1,5 +1,5 @@
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import { FunctionComponent, useState } from 'react';
+import { useState } from 'react';
 import { FaCheck } from 'react-icons/fa';
 
 import fonts from 'utils/fonts';
@@ -26,7 +26,7 @@ interface DropdownMenuProps {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const DropdownMenu: FunctionComponent<DropdownMenuProps> = (props) => {
+function DropdownMenu(props: DropdownMenuProps) {
   const { label, items, initialSelectedItem, initialSelectedItems, multiSelect, onSelect, onMultiSelect } = props;
   const [currentItem, setCurrentItem] = useState<string>(initialSelectedItem ?? '');
   const [selectedItems, setSelectedItems] = useState<string[]>(initialSelectedItems ?? []);
@@ -91,6 +91,6 @@ const DropdownMenu: FunctionComponent<DropdownMenuProps> = (props) => {
       </DropdownMenuPrimitive.Root>
     </div>
   );
-};
+}
 
 export default DropdownMenu;

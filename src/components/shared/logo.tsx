@@ -34,7 +34,7 @@ function memojiForPath(path: string) {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const Logo: React.FunctionComponent<{}> = () => {
+function Logo() {
   const { route } = useRouter();
   const memoji = memojiForPath(route);
 
@@ -48,6 +48,6 @@ const Logo: React.FunctionComponent<{}> = () => {
       loading="eager"
     />
   );
-};
+}
 
 export default Logo;

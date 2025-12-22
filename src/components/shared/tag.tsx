@@ -33,7 +33,7 @@ const variantMap: Record<TagVariant, string> = {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const Tag: FunctionComponent<PropsWithChildren<TagProps>> = ({ variant, children }) => {
+function Tag({ variant, children }: PropsWithChildren<TagProps>) {
   return (
     <div
       className={classNames(
@@ -44,6 +44,6 @@ const Tag: FunctionComponent<PropsWithChildren<TagProps>> = ({ variant, children
       <Typography.small>{children}</Typography.small>
     </div>
   );
-};
+}
 
 export default Tag;

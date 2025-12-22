@@ -20,7 +20,7 @@ export type YoutubeHighlightsSectionProps = {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const YoutubeHighlightsSection: FunctionComponent<PropsWithChildren<YoutubeHighlightsSectionProps>> = (props) => {
+function YoutubeHighlightsSection(props: PropsWithChildren<YoutubeHighlightsSectionProps>) {
   return (
     <SectionContainer>
       <SectionHeading title="YouTube Highlights" />
@@ -36,6 +36,6 @@ const YoutubeHighlightsSection: FunctionComponent<PropsWithChildren<YoutubeHighl
       </div>
     </SectionContainer>
   );
-};
+}
 
 export default YoutubeHighlightsSection;

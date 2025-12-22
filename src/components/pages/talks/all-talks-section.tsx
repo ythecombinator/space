@@ -1,5 +1,5 @@
 import { useTheme } from 'next-themes';
-import { FunctionComponent, PropsWithChildren, Suspense, useMemo, useState } from 'react';
+import { PropsWithChildren, Suspense, useMemo, useState } from 'react';
 import ContentLoader from 'react-content-loader';
 import colors from 'tailwindcss/colors';
 
@@ -70,7 +70,7 @@ function renderPrefix(talkCategory: string) {
 //  UI: CORE
 //  ---------------------------------------------------------------------------
 
-const AllTalksSection: FunctionComponent<PropsWithChildren<AllTalksSectionProps>> = ({ items: baseItems }) => {
+function AllTalksSection({ items: baseItems }: PropsWithChildren<AllTalksSectionProps>) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategories, setSelectedCategories] = useState<string[]>(['talk', 'workshop', 'panel']);
 
@@ -100,7 +100,7 @@ const AllTalksSection: FunctionComponent<PropsWithChildren<AllTalksSectionProps>
       </div>
     </SectionContainer>
   );
-};
+}
 
 export default AllTalksSection;
 

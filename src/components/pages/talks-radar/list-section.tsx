@@ -123,7 +123,7 @@ interface DataSectionProps {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const DataSection: FunctionComponent<PropsWithChildren<DataSectionProps>> = ({ data }) => {
+function DataSection({ data }: PropsWithChildren<DataSectionProps>) {
   const currentYear = String(new Date().getFullYear()) as ConferenceSeason;
 
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -211,6 +211,6 @@ const DataSection: FunctionComponent<PropsWithChildren<DataSectionProps>> = ({ d
       </div>
     </div>
   );
-};
+}
 
 export default DataSection;

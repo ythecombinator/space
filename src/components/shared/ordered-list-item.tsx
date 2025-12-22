@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren, ReactNode } from 'react';
+import { PropsWithChildren, ReactNode } from 'react';
 
 import Link from 'components/shared/link';
 
@@ -17,7 +17,7 @@ export type OrderedListItemProps = {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const OrderedListItem: FunctionComponent<PropsWithChildren<OrderedListItemProps>> = (props) => {
+function OrderedListItem(props: PropsWithChildren<OrderedListItemProps>) {
   const { label, href, index, prefix } = props;
 
   return (
@@ -35,6 +35,6 @@ const OrderedListItem: FunctionComponent<PropsWithChildren<OrderedListItemProps>
       </div>
     </Link>
   );
-};
+}
 
 export default OrderedListItem;

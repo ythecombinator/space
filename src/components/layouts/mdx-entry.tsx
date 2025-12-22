@@ -22,7 +22,7 @@ interface MDXEntryLayoutProps {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const MDXEntryLayout: FunctionComponent<PropsWithChildren<MDXEntryLayoutProps>> = ({ children, content }) => {
+function MDXEntryLayout({ children, content }: PropsWithChildren<MDXEntryLayoutProps>) {
   const { title, color, hero } = content;
   const pathname = usePathname();
   const breadcrumbs = toBreadcrumbs(pathname);
@@ -40,6 +40,6 @@ const MDXEntryLayout: FunctionComponent<PropsWithChildren<MDXEntryLayoutProps>> 
       </div>
     </div>
   );
-};
+}
 
 export default MDXEntryLayout;

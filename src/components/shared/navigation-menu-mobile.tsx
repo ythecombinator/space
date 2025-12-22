@@ -14,7 +14,7 @@ interface NavigationMenuProps {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const NavigationMenuMobile: FunctionComponent<PropsWithChildren<NavigationMenuProps>> = ({ items }) => {
+function NavigationMenuMobile({ items }: PropsWithChildren<NavigationMenuProps>) {
   const [navShow, setNavShow] = useState(false);
 
   const onToggleNav = () => {
@@ -80,6 +80,6 @@ const NavigationMenuMobile: FunctionComponent<PropsWithChildren<NavigationMenuPr
       </div>
     </div>
   );
-};
+}
 
 export default NavigationMenuMobile;

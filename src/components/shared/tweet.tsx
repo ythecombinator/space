@@ -14,12 +14,12 @@ interface Props extends TweetCoreProps {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const Tweet = ({ containerClassName, ...props }: Props) => {
+function Tweet({ containerClassName, ...props }: Props) {
   return (
     <div className={classNames('flex justify-center', containerClassName)}>
       <TweetBase {...props} />
     </div>
   );
-};
+}
 
 export default Tweet;

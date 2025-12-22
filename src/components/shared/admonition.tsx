@@ -32,24 +32,24 @@ interface Props extends Pick<HTMLAttributes<HTMLDivElement>, 'className'> {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const Box: FunctionComponent<PropsWithChildren<Props>> = ({ className, severity = 'info', children }) => {
+function Box({ className, severity = 'info', children }: PropsWithChildren<Props>) {
   return (
     <div className={classNames(variants({ severity }), className)} role="alert">
       <div className="ms-3">{children}</div>
     </div>
   );
-};
+}
 
-const Title: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLParagraphElement>>> = ({ className, children }) => {
+function Title({ className, children }: PropsWithChildren<HTMLAttributes<HTMLParagraphElement>>) {
   return (
     <Typography.h3 className={classNames('text-gray-800 font-semibold dark:text-white mt-2', className)}>
       {children}
     </Typography.h3>
   );
-};
+}
 
-const Description: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLDivElement>>> = ({ className, ...props }) => {
+function Description({ className, ...props }: PropsWithChildren<HTMLAttributes<HTMLDivElement>>) {
   return <div className={classNames('text-gray-700 dark:text-gray-400', className)} {...props} />;
-};
+}
 
 export default { Box, Title, Description };

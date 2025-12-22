@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 
 import SectionContainer from 'components/shared/section-container';
 import SectionHeading from 'components/shared/section-heading';
@@ -19,7 +19,7 @@ export type ActiveTalksSectionProps = {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const ActiveTalksSection: FunctionComponent<PropsWithChildren<ActiveTalksSectionProps>> = ({ items }) => {
+function ActiveTalksSection({ items }: PropsWithChildren<ActiveTalksSectionProps>) {
   return (
     <SectionContainer>
       <SectionHeading title="️Active Sessions" />
@@ -37,6 +37,6 @@ const ActiveTalksSection: FunctionComponent<PropsWithChildren<ActiveTalksSection
       </SectionList>
     </SectionContainer>
   );
-};
+}
 
 export default ActiveTalksSection;

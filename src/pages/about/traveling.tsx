@@ -52,7 +52,7 @@ export async function getStaticProps() {
   return { props: { openGraphImage, flights, airlines, airports } };
 }
 
-const Page: NextPage<PageProps> = ({ openGraphImage, flights, airlines, airports }) => {
+function Page({ openGraphImage, flights, airlines, airports }: PageProps) {
   return (
     <>
       <Metadata
@@ -92,6 +92,6 @@ const Page: NextPage<PageProps> = ({ openGraphImage, flights, airlines, airports
       </Layout>
     </>
   );
-};
+}
 
 export default Page;

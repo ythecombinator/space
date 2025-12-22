@@ -16,7 +16,7 @@ export interface PageTitleProps {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const PageTitle: FunctionComponent<PropsWithChildren<PageTitleProps>> = ({ gradient, children }) => {
+function PageTitle({ gradient, children }: PropsWithChildren<PageTitleProps>) {
   return (
     <Typography.h1
       className={classNames({
@@ -26,6 +26,6 @@ const PageTitle: FunctionComponent<PropsWithChildren<PageTitleProps>> = ({ gradi
       {children}
     </Typography.h1>
   );
-};
+}
 
 export default PageTitle;

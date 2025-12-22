@@ -16,7 +16,7 @@ export type AllPostsSectionSkeletonProps = {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const AllPostsSectionSkeleton: FunctionComponent<PropsWithChildren<AllPostsSectionSkeletonProps>> = ({ items }) => {
+function AllPostsSectionSkeleton({ items }: PropsWithChildren<AllPostsSectionSkeletonProps>) {
   const itemSkeletons = useMemo(() => Array.from(Array(items).keys()), [items]);
 
   return (
@@ -28,6 +28,6 @@ const AllPostsSectionSkeleton: FunctionComponent<PropsWithChildren<AllPostsSecti
       </ul>
     </SectionContainer>
   );
-};
+}
 
 export default AllPostsSectionSkeleton;

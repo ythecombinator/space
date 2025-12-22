@@ -67,7 +67,7 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
   };
 }
 
-const Page: NextPage<PageProps> = (props) => {
+function Page(props: PageProps) {
   const { title, abstract, sessions, openGraphImage } = props;
   const description = documentToString(abstract);
 
@@ -95,6 +95,6 @@ const Page: NextPage<PageProps> = (props) => {
       </Layout>
     </>
   );
-};
+}
 
 export default Page;

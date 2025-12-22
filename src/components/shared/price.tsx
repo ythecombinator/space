@@ -24,7 +24,7 @@ interface Props extends CurrencyConversionQuery {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const Price: FunctionComponent<Props> = ({ amount, source = 'CZK', leading = false }) => {
+function Price({ amount, source = 'CZK', leading = false }: Props) {
   const searchParams = useSearchParams();
 
   const target = currencyInvariant(searchParams.get('currency')) as SupportedCurrency;
@@ -55,6 +55,6 @@ const Price: FunctionComponent<Props> = ({ amount, source = 'CZK', leading = fal
       </Tooltip.Root>
     </Tooltip.Provider>
   );
-};
+}
 
 export default Price;

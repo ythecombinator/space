@@ -17,7 +17,7 @@ interface BreadcrumbsProps {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const Breadcrumbs: FunctionComponent<BreadcrumbsProps> = ({ items }) => {
+function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
     <nav aria-label="breadcrumb">
       <ol className="flex items-center space-x-2">
@@ -36,6 +36,6 @@ const Breadcrumbs: FunctionComponent<BreadcrumbsProps> = ({ items }) => {
       </ol>
     </nav>
   );
-};
+}
 
 export default Breadcrumbs;

@@ -68,7 +68,7 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
   return { props: { post, openGraphImage } };
 }
 
-const Page: NextPage<PageProps> = ({ post, openGraphImage }) => {
+function Page({ post, openGraphImage }: PageProps) {
   const { title, summary, tags, date } = post;
   const url = usePathName();
 
@@ -101,6 +101,6 @@ const Page: NextPage<PageProps> = ({ post, openGraphImage }) => {
       <MDXLayoutRenderer layout={Layouts.blog} content={post} />
     </>
   );
-};
+}
 
 export default Page;

@@ -56,7 +56,7 @@ export async function getStaticProps() {
   return { props: { content, activeTalks, openGraphImage } };
 }
 
-const Page: NextPage<PageProps> = ({ content, activeTalks, openGraphImage }) => {
+function Page({ content, activeTalks, openGraphImage }: PageProps) {
   return (
     <>
       <Metadata
@@ -74,6 +74,6 @@ const Page: NextPage<PageProps> = ({ content, activeTalks, openGraphImage }) => 
       <ActiveTalksSection items={activeTalks} />
     </>
   );
-};
+}
 
 export default Page;

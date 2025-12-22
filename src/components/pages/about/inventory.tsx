@@ -24,7 +24,7 @@ export type InventoryProps = {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const Inventory: FunctionComponent<InventoryProps> = ({ title, items }) => {
+function Inventory({ title, items }: InventoryProps) {
   let id = useId();
 
   return (
@@ -46,6 +46,6 @@ const Inventory: FunctionComponent<InventoryProps> = ({ title, items }) => {
       </div>
     </section>
   );
-};
+}
 
 export default Inventory;

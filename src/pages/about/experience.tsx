@@ -54,7 +54,7 @@ export async function getStaticProps() {
   return { props: { content, work, volunteering, openGraphImage } };
 }
 
-const Page: NextPage<PageProps> = ({ content, work, volunteering, openGraphImage }) => {
+function Page({ content, work, volunteering, openGraphImage }: PageProps) {
   const MDXRenderer = useMDXComponent(content.body.code);
   const mdxContent = coreContent(content);
 
@@ -125,6 +125,6 @@ const Page: NextPage<PageProps> = ({ content, work, volunteering, openGraphImage
       </Layout>
     </>
   );
-};
+}
 
 export default Page;

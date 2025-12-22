@@ -19,7 +19,7 @@ export type AllPostsSectionItemProps = Pick<BlogEntry, 'slug' | 'title' | 'date'
 //  UI
 //  ---------------------------------------------------------------------------
 
-const AllPostsSectionItem: FunctionComponent<PropsWithChildren<AllPostsSectionItemProps>> = (props) => {
+function AllPostsSectionItem(props: PropsWithChildren<AllPostsSectionItemProps>) {
   const { slug, date, title, summary, language } = props;
 
   return (
@@ -37,6 +37,6 @@ const AllPostsSectionItem: FunctionComponent<PropsWithChildren<AllPostsSectionIt
       </article>
     </li>
   );
-};
+}
 
 export default AllPostsSectionItem;

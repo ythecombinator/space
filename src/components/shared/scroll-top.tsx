@@ -5,7 +5,7 @@ import smoothscroll from 'smoothscroll-polyfill';
 //  UI
 //  ---------------------------------------------------------------------------
 
-const ScrollTop: FunctionComponent<PropsWithChildren<{}>> = () => {
+function ScrollTop() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -41,6 +41,6 @@ const ScrollTop: FunctionComponent<PropsWithChildren<{}>> = () => {
       </button>
     </div>
   );
-};
+}
 
 export default ScrollTop;

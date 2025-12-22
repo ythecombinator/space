@@ -16,7 +16,7 @@ interface BadgeProps {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const Badge: FunctionComponent<BadgeProps> = ({ label, avatar, href }) => {
+function Badge({ label, avatar, href }: BadgeProps) {
   return (
     <Link
       href={href}
@@ -28,6 +28,6 @@ const Badge: FunctionComponent<BadgeProps> = ({ label, avatar, href }) => {
       {label}
     </Link>
   );
-};
+}
 
 export default Badge;

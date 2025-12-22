@@ -61,7 +61,7 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
   return { props: { content, openGraphImage } };
 }
 
-const Page: NextPage<PageProps> = ({ content, openGraphImage }) => {
+function Page({ content, openGraphImage }: PageProps) {
   return (
     <>
       <Metadata
@@ -79,6 +79,6 @@ const Page: NextPage<PageProps> = ({ content, openGraphImage }) => {
       <MDXLayoutRenderer layout={Layouts.mdx} content={content} />
     </>
   );
-};
+}
 
 export default Page;

@@ -32,10 +32,10 @@ interface MDXLayout {
 //  UTILS
 //  ---------------------------------------------------------------------------
 
-const Wrapper: FunctionComponent<PropsWithChildren<MDXLayout>> = ({ layout, content, ...rest }) => {
+function Wrapper({ layout, content, ...rest }: PropsWithChildren<MDXLayout>) {
   const Layout = LayoutsMap[layout];
   return <Layout content={content} {...rest} />;
-};
+}
 
 const MDXComponents: MDXContentProps['components'] = {
   Image,
@@ -56,11 +56,11 @@ const MDXComponents: MDXContentProps['components'] = {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const MDXLayoutRenderer: FunctionComponent<PropsWithChildren<MDXLayout>> = ({ layout, content, ...rest }) => {
+function MDXLayoutRenderer({ layout, content, ...rest }: PropsWithChildren<MDXLayout>) {
   const MDXLayout = useMDXComponent(content.body.code);
   const mainContent = coreContent(content);
 
   return <MDXLayout layout={layout} content={mainContent} components={MDXComponents} {...rest} />;
-};
+}
 
 export default MDXLayoutRenderer;

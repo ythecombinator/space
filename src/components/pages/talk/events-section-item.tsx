@@ -33,7 +33,7 @@ export type EventsSectionItemProps = {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const EventsSectionItem: FunctionComponent<PropsWithChildren<EventsSectionItemProps>> = (props) => {
+function EventsSectionItem(props: PropsWithChildren<EventsSectionItemProps>) {
   const {
     eventName,
     eventLocation,
@@ -85,6 +85,6 @@ const EventsSectionItem: FunctionComponent<PropsWithChildren<EventsSectionItemPr
       </div>
     </CardOutlined>
   );
-};
+}
 
 export default EventsSectionItem;

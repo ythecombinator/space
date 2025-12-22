@@ -12,13 +12,13 @@ export type CardOutlinedListItemProps = {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const CardOutlinedListItem: FunctionComponent<PropsWithChildren<CardOutlinedListItemProps>> = ({ icon, children }) => {
+function CardOutlinedListItem({ icon, children }: PropsWithChildren<CardOutlinedListItemProps>) {
   return (
     <div className="flex items-center text-gray-800 dark:text-gray-200">
       <div className="mr-2 flex h-10 items-center justify-center bg-transparent text-lg">{icon}</div>
       {children}
     </div>
   );
-};
+}
 
 export default CardOutlinedListItem;

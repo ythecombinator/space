@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 
 import CardFeatured from 'components/shared/card-featured';
 import CardScrollArea from 'components/shared/card-scroll-area';
@@ -22,7 +22,7 @@ export type TopicHighlightsSectionProps = {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const TopicHighlightsSection: FunctionComponent<PropsWithChildren<TopicHighlightsSectionProps>> = (props) => {
+function TopicHighlightsSection(props: PropsWithChildren<TopicHighlightsSectionProps>) {
   const { title, items } = props;
 
   return (
@@ -41,6 +41,6 @@ const TopicHighlightsSection: FunctionComponent<PropsWithChildren<TopicHighlight
       </CardScrollArea>
     </SectionContainer>
   );
-};
+}
 
 export default TopicHighlightsSection;

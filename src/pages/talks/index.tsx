@@ -69,7 +69,7 @@ export async function getStaticProps() {
   };
 }
 
-const Page: NextPage<Props> = (props) => {
+function Page(props: Props) {
   const { talksStats, allTalks, reactTalks, featuredTalks, youtubeHighlights, upcomingSessions, openGraphImage } =
     props;
   const { citiesTotal, countriesTotal, talksTotal, eventsTotal } = talksStats;
@@ -116,6 +116,6 @@ const Page: NextPage<Props> = (props) => {
       </Layout>
     </>
   );
-};
+}
 
 export default Page;

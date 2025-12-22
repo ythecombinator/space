@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 
 import { classNames } from 'utils/styles';
 
@@ -21,13 +21,7 @@ export interface CardFeaturedProps {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const CardFeatured: FunctionComponent<PropsWithChildren<CardFeaturedProps>> = ({
-  title,
-  description,
-  href,
-  className,
-  fullWidth = true,
-}) => {
+function CardFeatured({ title, description, href, className, fullWidth = true }: PropsWithChildren<CardFeaturedProps>) {
   const cardContent = (
     <div
       className={`relative z-20 h-full overflow-hidden rounded-md bg-violet-30
@@ -57,6 +51,6 @@ const CardFeatured: FunctionComponent<PropsWithChildren<CardFeaturedProps>> = ({
       </div>
     </div>
   );
-};
+}
 
 export default CardFeatured;

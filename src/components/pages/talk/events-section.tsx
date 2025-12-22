@@ -18,7 +18,7 @@ export type EventsSectionProps = {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const EventsSection: FunctionComponent<PropsWithChildren<EventsSectionProps>> = (props) => {
+function EventsSection(props: PropsWithChildren<EventsSectionProps>) {
   const { items } = props;
 
   return (
@@ -35,6 +35,6 @@ const EventsSection: FunctionComponent<PropsWithChildren<EventsSectionProps>> = 
       </SectionList>
     </SectionContainer>
   );
-};
+}
 
 export default EventsSection;

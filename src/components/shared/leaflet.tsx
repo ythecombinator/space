@@ -13,7 +13,7 @@ export type LeafletProps = {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const Leaflet: FunctionComponent<PropsWithChildren<LeafletProps>> = ({ setShow, children }) => {
+function Leaflet({ setShow, children }: PropsWithChildren<LeafletProps>) {
   const leafletRef = useRef<HTMLDivElement>(null);
   const controls = useAnimation();
   const transitionProps = { type: 'spring', stiffness: 500, damping: 30 };
@@ -69,6 +69,6 @@ const Leaflet: FunctionComponent<PropsWithChildren<LeafletProps>> = ({ setShow, 
       />
     </AnimatePresence>
   );
-};
+}
 
 export default Leaflet;

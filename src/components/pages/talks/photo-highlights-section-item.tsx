@@ -46,7 +46,7 @@ const getGradientClass = () => {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const PhotoHighlightsSectionItem: FunctionComponent<PropsWithChildren<FeaturedTalk>> = (props) => {
+function PhotoHighlightsSectionItem(props: PropsWithChildren<FeaturedTalk>) {
   const { photoURL, talkSlug, talkTitle, eventName, eventLocation } = props;
   const { resolvedTheme } = useTheme();
   const isDarkMode = resolvedTheme === 'dark';
@@ -74,6 +74,6 @@ const PhotoHighlightsSectionItem: FunctionComponent<PropsWithChildren<FeaturedTa
       </div>
     </div>
   );
-};
+}
 
 export default PhotoHighlightsSectionItem;

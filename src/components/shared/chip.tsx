@@ -1,5 +1,5 @@
 import { cva, type VariantProps } from 'class-variance-authority';
-import { FunctionComponent, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 
 //  ---------------------------------------------------------------------------
 //  STYLES
@@ -52,13 +52,13 @@ interface ChipProps extends VariantProps<typeof chipVariants> {}
 //  UI
 //  ---------------------------------------------------------------------------
 
-const Chip: FunctionComponent<PropsWithChildren<ChipProps>> = ({ children, variant }) => {
+function Chip({ children, variant }: PropsWithChildren<ChipProps>) {
   return (
     <span className={chipVariants({ variant })}>
       <span className={chipBackgroundVariants({ variant })}></span>
       <em className="relative block border border-current bg-white px-2 py-1 dark:bg-gray-800">{children}</em>
     </span>
   );
-};
+}
 
 export default Chip;

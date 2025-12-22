@@ -40,7 +40,7 @@ export async function getStaticProps() {
   return { props: { work } };
 }
 
-const Page: NextPage<PageProps> = ({ work }) => {
+function Page({ work }: PageProps) {
   return (
     <main
       className={classNames(
@@ -138,6 +138,6 @@ const Page: NextPage<PageProps> = ({ work }) => {
       </section>
     </main>
   );
-};
+}
 
 export default Page;

@@ -14,7 +14,7 @@ export type CardOutlinedProps = {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const CardOutlined: FunctionComponent<PropsWithChildren<CardOutlinedProps>> = ({ heading, children }) => {
+function CardOutlined({ heading, children }: PropsWithChildren<CardOutlinedProps>) {
   const gradientClassName = useRandomGradient();
 
   return (
@@ -37,6 +37,6 @@ const CardOutlined: FunctionComponent<PropsWithChildren<CardOutlinedProps>> = ({
       </article>
     </div>
   );
-};
+}
 
 export default CardOutlined;

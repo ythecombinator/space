@@ -25,7 +25,7 @@ interface BlogEntryLayoutProps {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const BlogEntryLayout: FunctionComponent<PropsWithChildren<BlogEntryLayoutProps>> = ({ content, children }) => {
+function BlogEntryLayout({ content, children }: PropsWithChildren<BlogEntryLayoutProps>) {
   const { date, title, slug, readingTime, hero } = content;
   return (
     <>
@@ -65,6 +65,6 @@ const BlogEntryLayout: FunctionComponent<PropsWithChildren<BlogEntryLayoutProps>
       </article>
     </>
   );
-};
+}
 
 export default BlogEntryLayout;

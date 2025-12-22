@@ -17,7 +17,7 @@ export type ImageProps = {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const Image = (props: ImageProps) => {
+function Image(props: ImageProps) {
   const { alt, src, containerClassName, imageClassName, lazy = true, ...rest } = props;
   const [isLoading, setLoading] = useState(true);
 
@@ -42,5 +42,5 @@ const Image = (props: ImageProps) => {
       />
     </div>
   );
-};
+}
 export default Image;

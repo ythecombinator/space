@@ -7,7 +7,7 @@ import { FaMoon, FaSun } from 'react-icons/fa';
 //  UI
 //  ---------------------------------------------------------------------------
 
-const ThemeSwitch = () => {
+function ThemeSwitch() {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme, resolvedTheme } = useTheme();
 
@@ -36,6 +36,6 @@ const ThemeSwitch = () => {
       )}
     </motion.button>
   );
-};
+}
 
 export default ThemeSwitch;

@@ -15,7 +15,7 @@ import ThemeSwitch from 'components/shared/theme-switch';
 //  UI
 //  ---------------------------------------------------------------------------
 
-const LayoutWrapper: FunctionComponent<PropsWithChildren<{}>> = ({ children }) => {
+function LayoutWrapper({ children }: PropsWithChildren) {
   return (
     <>
       <LayoutGradient />
@@ -45,6 +45,6 @@ const LayoutWrapper: FunctionComponent<PropsWithChildren<{}>> = ({ children }) =
       </div>
     </>
   );
-};
+}
 
 export default LayoutWrapper;

@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 import { FiMapPin } from 'react-icons/fi';
 
 import CardOutlined from 'components/shared/card-outlined';
@@ -21,7 +21,7 @@ export type ActiveTalksSectionItemProps = {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const ActiveTalksSectionItem: FunctionComponent<PropsWithChildren<ActiveTalksSectionItemProps>> = (props) => {
+function ActiveTalksSectionItem(props: PropsWithChildren<ActiveTalksSectionItemProps>) {
   const { talkTitle, talkSlug, talkCategory, sessions } = props;
 
   return (
@@ -54,6 +54,6 @@ const ActiveTalksSectionItem: FunctionComponent<PropsWithChildren<ActiveTalksSec
       </CardOutlined>
     </Link>
   );
-};
+}
 
 export default ActiveTalksSectionItem;

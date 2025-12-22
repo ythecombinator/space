@@ -7,7 +7,7 @@ type SectionCoverProps = Pick<ImageProps, 'src' | 'alt'>;
 //  UI
 //  ---------------------------------------------------------------------------
 
-export const SectionCover: FunctionComponent<PropsWithChildren<SectionCoverProps>> = ({ src, alt }) => {
+export function SectionCover({ src, alt }: PropsWithChildren<SectionCoverProps>) {
   return (
     <Image
       priority
@@ -19,6 +19,6 @@ export const SectionCover: FunctionComponent<PropsWithChildren<SectionCoverProps
       className="aspect-video w-full rounded-lg object-cover grayscale hover:grayscale-0"
     />
   );
-};
+}
 
 export default SectionCover;
