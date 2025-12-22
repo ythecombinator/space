@@ -1,9 +1,10 @@
 import { useTheme } from 'next-themes';
 import dynamic from 'next/dynamic';
+import type { ValuesType } from 'utility-types';
 
 import { Airline, Flight } from 'services/content/flights';
 
-import { airportCoordinates } from 'utils/flights';
+import { airportCoordinates, getAirlineColor } from 'utils/flights';
 
 import CardFeatured from 'components/shared/card-featured';
 import CardScrollArea from 'components/shared/card-scroll-area';
@@ -14,41 +15,8 @@ const Globe = dynamic(() => import('react-globe.gl'), { ssr: false });
 //  UTILS
 //  ---------------------------------------------------------------------------
 
-function getAirlineColor(airlineCode: string): string {
-  const colors: Record<string, string> = {
-    AA: '#0078D2', // American Airlines
-    DL: '#003366', // Delta
-    UA: '#0033A0', // United
-    BA: '#075AAA', // British Airways
-    LH: '#F9B000', // Lufthansa
-    AF: '#002157', // Air France
-    KL: '#00A1DE', // KLM
-    EK: '#D71921', // Emirates
-    QR: '#5C0632', // Qatar Airways
-    SQ: '#00205B', // Singapore Airlines
-    TP: '#DC001A', // TAP Portugal
-    AZ: '#006643', // Alitalia/ITA
-    LX: '#E30613', // Swiss
-    OS: '#CC0000', // Austrian
-    default: '#6366f1',
-  };
-
-  return colors[airlineCode] || colors.default;
-}
-
-//  ---------------------------------------------------------------------------
-//  GlobeMap
-//  ---------------------------------------------------------------------------
-
-interface GlobeMapProps {
-  flights: Flight[];
-  airports: string[];
-  isDarkMode: boolean;
-}
-
-function GlobeMap({ flights, airports, isDarkMode }: GlobeMapProps) {
-  // Prepare arcs data for flight paths
-  const arcsData = flights
+function getArcsData(flights: Flight[]) {
+  return flights
     .map((flight) => {
       const startCoords = airportCoordinates[flight.depAirportIata];
       const endCoords = airportCoordinates[flight.arrAirportIata];
@@ -65,9 +33,10 @@ function GlobeMap({ flights, airports, isDarkMode }: GlobeMapProps) {
       };
     })
     .filter((arc): arc is NonNullable<typeof arc> => arc !== null);
+}
 
-  // Prepare points data for airports
-  const pointsData = airports
+function getPointsData(airports: string[]) {
+  return airports
     .map((airport) => {
       const coords = airportCoordinates[airport];
       if (!coords) return null;
@@ -80,6 +49,25 @@ function GlobeMap({ flights, airports, isDarkMode }: GlobeMapProps) {
       };
     })
     .filter((point): point is NonNullable<typeof point> => point !== null);
+}
+
+function getArcLabel(arc: ValuesType<ReturnType<typeof getArcsData>>) {
+  return `${arc.flight.airlineIata} ${arc.flight.number}: ${arc.flight.depAirportIata} → ${arc.flight.arrAirportIata}`;
+}
+
+//  ---------------------------------------------------------------------------
+//  GlobeMap
+//  ---------------------------------------------------------------------------
+
+interface GlobeMapProps {
+  flights: Flight[];
+  airports: string[];
+  isDarkMode: boolean;
+}
+
+function GlobeMap({ flights, airports, isDarkMode }: GlobeMapProps) {
+  const arcsData = getArcsData(flights);
+  const pointsData = getPointsData(airports);
 
   return (
     <div className="h-full w-full">
@@ -89,7 +77,7 @@ function GlobeMap({ flights, airports, isDarkMode }: GlobeMapProps) {
             ? '//unpkg.com/three-globe/example/img/earth-night.jpg'
             : '//unpkg.com/three-globe/example/img/earth-day.jpg'
         }
-        backgroundColor={isDarkMode ? '#1a1a1a' : '#f5f5f5'}
+        backgroundColor="rgba(0,0,0,0)"
         width={800}
         height={500}
         arcsData={arcsData}
@@ -103,9 +91,7 @@ function GlobeMap({ flights, airports, isDarkMode }: GlobeMapProps) {
         arcDashAnimateTime={3000}
         arcStroke={0.5}
         arcsTransitionDuration={0}
-        arcLabel={(d: any) =>
-          `${d.flight.airlineIata} ${d.flight.number}: ${d.flight.depAirportIata} → ${d.flight.arrAirportIata}`
-        }
+        arcLabel={getArcLabel}
         pointsData={pointsData}
         pointLat={(d: any) => d.lat}
         pointLng={(d: any) => d.lng}
@@ -134,7 +120,7 @@ interface FlightMapProps {
   };
 }
 
-export default function FlightMap({ flights, airlines, airports, stats }: FlightMapProps) {
+export default function FlightMap({ flights, airports, stats }: FlightMapProps) {
   const { resolvedTheme } = useTheme();
   const isDarkMode = resolvedTheme === 'dark';
 
