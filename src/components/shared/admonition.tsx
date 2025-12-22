@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority';
-import { HTMLAttributes, PropsWithChildren } from 'react';
+import { DetailsHTMLAttributes, HTMLAttributes, PropsWithChildren } from 'react';
 
 import { classNames } from 'utils/styles';
 
@@ -16,7 +16,7 @@ const severity = {
   error: 'bg-red-50 border-red-500 dark:bg-red-800/30',
 };
 
-const variants = cva('flex rounded-lg border-t-2 p-4', {
+const variants = cva('rounded-lg border-t-2 p-4', {
   variants: { severity: severity },
 });
 
@@ -24,7 +24,7 @@ const variants = cva('flex rounded-lg border-t-2 p-4', {
 //  TYPES
 //  ---------------------------------------------------------------------------
 
-interface Props extends Pick<HTMLAttributes<HTMLDivElement>, 'className'> {
+interface Props extends Pick<DetailsHTMLAttributes<HTMLDetailsElement>, 'className' | 'open'> {
   severity?: keyof typeof severity;
 }
 
@@ -32,24 +32,24 @@ interface Props extends Pick<HTMLAttributes<HTMLDivElement>, 'className'> {
 //  UI
 //  ---------------------------------------------------------------------------
 
-function Box({ className, severity = 'info', children }: PropsWithChildren<Props>) {
+function Box({ className, severity = 'info', open, children }: PropsWithChildren<Props>) {
   return (
-    <div className={classNames(variants({ severity }), className)} role="alert">
-      <div className="ms-3">{children}</div>
-    </div>
+    <details className={classNames(variants({ severity }), className)} open={open}>
+      {children}
+    </details>
   );
 }
 
-function Title({ className, children }: PropsWithChildren<HTMLAttributes<HTMLParagraphElement>>) {
+function Title({ className, children }: PropsWithChildren<HTMLAttributes<HTMLElement>>) {
   return (
-    <Typography.h3 className={classNames('text-gray-800 font-semibold dark:text-white mt-2', className)}>
-      {children}
-    </Typography.h3>
+    <summary className={classNames('text-gray-800 font-semibold dark:text-white cursor-pointer ms-3', className)}>
+      <Typography.h3 className="inline">{children}</Typography.h3>
+    </summary>
   );
 }
 
 function Description({ className, ...props }: PropsWithChildren<HTMLAttributes<HTMLDivElement>>) {
-  return <div className={classNames('text-gray-700 dark:text-gray-400', className)} {...props} />;
+  return <div className={classNames('text-gray-700 dark:text-gray-400 mt-2 ms-3', className)} {...props} />;
 }
 
 export default { Box, Title, Description };
