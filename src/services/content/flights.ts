@@ -51,10 +51,13 @@ SELECT
 FROM
     UserFlight
 JOIN
-    Airline ON Airline.id = Flight.airlineId,
-    Airport as AirportDep on AirportDep.id = Flight.departureAirportId,
-    Airport as AirportArr on AirportArr.id = Flight.scheduledarrivalAirportId,
     Flight ON Flight.id = UserFlight.flightId
+JOIN
+    Airline ON Airline.id = Flight.airlineId
+JOIN
+    Airport as AirportDep ON AirportDep.id = Flight.departureAirportId
+JOIN
+    Airport as AirportArr ON AirportArr.id = Flight.scheduledarrivalAirportId
 LEFT JOIN
     Ticket ON Ticket.flightId = Flight.id
 WHERE
@@ -66,7 +69,7 @@ WHERE
     AND
     UserFlight.isRandom = 0
     AND
-    Ticket.userId IS NOT ''
+    (UserFlight.importSource IS NULL OR UserFlight.importSource != 'CONNECTED_FRIEND')
 `;
 
 //  ---------------------------------------------------------------------------
@@ -80,19 +83,19 @@ const FlightSchema = z.object({
   number: z.string(),
 
   // airline
-  airlineIata: z.string().length(2),
-  airlineIcao: z.string().length(3),
+  airlineIata: z.string().min(1),
+  airlineIcao: z.string().min(1),
   airlineName: z.string(),
 
   // airports
-  depAirportIata: z.string().length(3),
+  depAirportIata: z.string().min(1),
   depCity: z.string(),
-  arrAirportIata: z.string().length(3),
+  arrAirportIata: z.string().min(1),
   arrCity: z.string(),
 
   // aircraft
-  aircraftIata: z.string().length(3).nullable(),
-  aircraftIcao: z.string().length(4).nullable(),
+  aircraftIata: z.string().nullable(),
+  aircraftIcao: z.string().nullable(),
   aircraftName: z.string().nullable(),
   aircraftTailNumber: z.string().nullable(),
 
@@ -172,8 +175,11 @@ export default class FlightsContentService {
 
       if (!result.success) {
         console.error('Failed to parse Flighty data:', result.error);
+        console.error('Total rows from query:', rows.length);
+        console.error('Validation errors:', JSON.stringify(result.error.errors, null, 2));
         this.flights = [];
       } else {
+        console.log(`Successfully loaded ${result.data.length} flights from ${rows.length} rows`);
         // Sort by departure time (most recent first)
         this.flights = result.data.sort((a, b) => b.depTimeOriginal - a.depTimeOriginal);
       }
