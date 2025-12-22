@@ -11,6 +11,7 @@ import { MetadataConfig, generateOpenGraphImage } from 'utils/open-graph';
 import MDXLayoutRenderer from 'components/shared/mdx-components';
 
 import ActiveTalksSection from 'components/pages/talks/active-talks-section';
+import ActiveTopicsSection from 'components/pages/talks/active-topics-section';
 
 //  ---------------------------------------------------------------------------
 //  CONFIG
@@ -69,6 +70,7 @@ const Page: NextPage<PageProps> = ({ content, activeTalks, openGraphImage }) => 
         }}
       />
       <MDXLayoutRenderer layout={Layouts.mdx} content={content} />
+      <ActiveTopicsSection />
       <ActiveTalksSection items={activeTalks} />
     </>
   );
