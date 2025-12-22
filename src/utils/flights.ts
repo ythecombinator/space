@@ -1,4 +1,4 @@
-export const airportCoordinates = {
+export const airportCoordinates: Record<string, [number, number] | undefined> = {
   PRG: [50.1008, 14.26],
   CPV: [-7.2491, -35.8981],
   MIA: [25.7959, -80.287],
@@ -45,7 +45,7 @@ export const airportCoordinates = {
   LHR: [51.47, -0.4543],
   NTE: [47.1531, -1.6111],
   ASR: [38.7704, 35.495],
-} as const satisfies Record<string, [number, number]>;
+};
 
 export const airlineColors: { [key: string]: string } = {
   AD: '#D81B60', // Azul Brazilian Airlines

@@ -20,7 +20,9 @@ function getArcsData(flights: Flight[]) {
       const startCoords = airportCoordinates[flight.depAirportIata];
       const endCoords = airportCoordinates[flight.arrAirportIata];
 
-      if (!startCoords || !endCoords) return null;
+      if (!startCoords || !endCoords) {
+        return null;
+      }
 
       return {
         startLat: startCoords[0],
@@ -90,6 +92,7 @@ function GlobeMap({ flights, airports, isDarkMode }: GlobeMapProps) {
         arcDashAnimateTime={3000}
         arcStroke={0.5}
         arcsTransitionDuration={0}
+        // @ts-expect-error
         arcLabel={getArcLabel}
         pointsData={pointsData}
         pointLat={(d: any) => d.lat}

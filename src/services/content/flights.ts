@@ -1,4 +1,6 @@
 import { existsSync, readFileSync } from 'fs';
+import { outputFile } from 'fs-extra';
+import isInCi from 'is-in-ci';
 import { DatabaseSync } from 'node:sqlite';
 import { homedir } from 'os';
 import { join } from 'path';
@@ -10,6 +12,7 @@ import { z } from 'zod';
 
 const DB_PATH = `${homedir()}/Library/Containers/com.flightyapp.flighty/Data/Documents/MainFlightyDatabase.db`;
 const QUERY_PATH = join(process.cwd(), 'src/sql/flighty.sql');
+const JSON_PATH = join(process.cwd(), 'src/data/flights.json');
 const QUERY = readFileSync(QUERY_PATH, 'utf8');
 
 //  ---------------------------------------------------------------------------
@@ -21,17 +24,14 @@ const TimestampSchema = z.number().int().positive();
 const FlightSchema = z.object({
   id: z.string().uuid(),
   number: z.string(),
-
   // airline
   airlineIata: z.string().min(1),
   airlineIcao: z.string().min(1),
   airlineName: z.string(),
-
   // airports
   depAirportIata: z.string().min(1),
   depCity: z.string(),
   arrAirportIata: z.string().min(1),
-  arrCity: z.string(),
 
   // aircraft
   aircraftIata: z.string().nullable(),
@@ -55,11 +55,6 @@ const FlightSchema = z.object({
   arrTimeActual: TimestampSchema.nullable(),
   arrTerminal: z.string().nullable(),
   arrGate: z.string().nullable(),
-
-  arrBaggageBelt: z.string().nullable(),
-
-  pnr: z.string().nullable(),
-  seatNumber: z.string().nullable(),
 });
 
 //  ---------------------------------------------------------------------------
@@ -82,7 +77,6 @@ export type AirportCode = string;
 export default class FlightsContentService {
   private static instance: FlightsContentService;
   private flights: Flight[] = [];
-  private isInitialized = false;
 
   private constructor() {}
 
@@ -93,55 +87,74 @@ export default class FlightsContentService {
     return FlightsContentService.instance;
   }
 
-  public init() {
-    if (this.isInitialized) return;
+  public async generateFlightsData() {
+    if (isInCi) {
+      console.info('Running in CI - skipping flights data generation');
+      return null;
+    }
 
-    // Check if database exists
     if (!existsSync(DB_PATH)) {
-      console.warn('Flighty database not found. Using empty flight list.');
-      this.flights = [];
-      this.isInitialized = true;
-      return;
+      console.warn('Flighty database not found');
+      return null;
     }
 
     try {
       const db = new DatabaseSync(DB_PATH, { readOnly: true });
-      const stmt = db.prepare(QUERY);
-      const rows = stmt.all();
+      const rows = db.prepare(QUERY).all();
       db.close();
 
-      // Validate and parse data
       const result = z.array(FlightSchema).safeParse(rows);
-
       if (!result.success) {
-        console.error('Failed to parse Flighty data:', result.error);
-        console.error('Total rows from query:', rows.length);
-        console.error('Validation errors:', JSON.stringify(result.error.errors, null, 2));
-        this.flights = [];
-      } else {
-        console.log(`Successfully loaded ${result.data.length} flights from ${rows.length} rows`);
-        // Sort by departure time (most recent first)
-        this.flights = result.data.sort((a, b) => b.depTimeOriginal - a.depTimeOriginal);
+        console.error('Failed to validate Flighty data:', result.error);
+        return null;
       }
 
-      this.isInitialized = true;
+      const flights = result.data.sort((a, b) => b.depTimeOriginal - a.depTimeOriginal);
+      await outputFile(JSON_PATH, JSON.stringify(flights, null, 2));
+      console.log(`Wrote ${flights.length} flights to JSON`);
+
+      return flights;
     } catch (error) {
-      console.error('Failed to read Flighty database:', error);
+      console.error('Failed to generate flights data:', error);
+      return null;
+    }
+  }
+
+  public init() {
+    if (!existsSync(JSON_PATH)) {
+      console.warn('Flights JSON not found');
       this.flights = [];
-      this.isInitialized = true;
+      return;
+    }
+
+    try {
+      const data = JSON.parse(readFileSync(JSON_PATH, 'utf8'));
+      const result = z.array(FlightSchema).safeParse(data);
+
+      if (result.success) {
+        this.flights = result.data;
+        console.log(`Loaded ${this.flights.length} flights`);
+      } else {
+        console.error('Invalid flights JSON:', result.error);
+        this.flights = [];
+      }
+    } catch (error) {
+      console.error('Failed to read flights JSON:', error);
+      this.flights = [];
     }
   }
 
   //  ---------------------------------------------------------------------------
-  //  getters
+  //  GETTERS
   //  ---------------------------------------------------------------------------
+
+  public getFlights(): Flight[] {
+    return this.flights;
+  }
 
   public getAirlines(): Airline[] {
     const airlineMap = new Map<string, string>();
-
-    this.flights.forEach((flight) => {
-      airlineMap.set(flight.airlineIata, flight.airlineName);
-    });
+    this.flights.forEach((flight) => airlineMap.set(flight.airlineIata, flight.airlineName));
 
     return Array.from(airlineMap.entries())
       .map(([code, name]) => ({ code, name }))
@@ -149,61 +162,30 @@ export default class FlightsContentService {
   }
 
   public getAirports(): AirportCode[] {
-    const airportSet = new Set<AirportCode>();
-
+    const airports = new Set<AirportCode>();
     this.flights.forEach((flight) => {
-      airportSet.add(flight.depAirportIata);
-      airportSet.add(flight.arrAirportIata);
+      airports.add(flight.depAirportIata);
+      airports.add(flight.arrAirportIata);
     });
-
-    return Array.from(airportSet).sort();
+    return Array.from(airports).sort();
   }
 
-  public getFlights(): Flight[] {
-    return this.flights;
-  }
-
-  public getFlightCount(): number {
-    return this.flights.length;
-  }
-
-  public getFlightsByAirline(airlineCode: string): Flight[] {
-    return this.flights.filter((flight) => flight.airlineIata === airlineCode);
-  }
-
-  public getFlightsByOrigin(origin: string): Flight[] {
-    return this.flights.filter((flight) => flight.depAirportIata === origin);
-  }
-
-  public getFlightsByDestination(destination: string): Flight[] {
-    return this.flights.filter((flight) => flight.arrAirportIata === destination);
-  }
-
-  public getTotalDistance(): number {
-    return this.flights.reduce((sum, flight) => sum + flight.distance, 0);
-  }
-
-  public getUniqueYears(): number[] {
+  public getStats() {
     const years = new Set<number>();
     const now = Date.now() / 1000;
 
     this.flights.forEach((flight) => {
       if (flight.depTimeOriginal < now) {
-        const date = new Date(flight.depTimeOriginal * 1000);
-        years.add(date.getFullYear());
+        years.add(new Date(flight.depTimeOriginal * 1000).getFullYear());
       }
     });
 
-    return Array.from(years).sort((a, b) => b - a);
-  }
-
-  public getStats() {
     return {
       totalFlights: this.flights.length,
-      totalDistance: this.getTotalDistance(),
+      totalDistance: this.flights.reduce((sum, flight) => sum + flight.distance, 0),
       airlines: this.getAirlines().length,
       airports: this.getAirports().length,
-      years: this.getUniqueYears(),
+      years: Array.from(years).sort((a, b) => b - a),
     };
   }
 }

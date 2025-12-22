@@ -23,10 +23,7 @@ SELECT Flight.id,
     Flight.arrivalScheduleGateEstimated as arrTimeEstimated,
     Flight.arrivalScheduleGateActual as arrTimeActual,
     Flight.arrivalTerminal as arrTerminal,
-    Flight.arrivalGate as arrGate,
-    Flight.arrivalBaggageBelt as arrBaggageBelt,
-    Ticket.pnr as pnr,
-    Ticket.seatNumber as seatNumber
+    Flight.arrivalGate as arrGate
 FROM UserFlight
     JOIN Flight ON Flight.id = UserFlight.flightId
     JOIN Airline ON Airline.id = Flight.airlineId

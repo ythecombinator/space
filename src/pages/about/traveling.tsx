@@ -39,6 +39,7 @@ const flightsService = FlightsContentService.getInstance();
 
 export async function getStaticProps() {
   flightsService.init();
+  await flightsService.generateFlightsData();
 
   const flights = flightsService.getFlights();
   const airlines = flightsService.getAirlines();
