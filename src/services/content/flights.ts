@@ -110,7 +110,13 @@ export default class FlightsContentService {
       }
 
       const flights = result.data.sort((a, b) => b.depTimeOriginal - a.depTimeOriginal);
-      await outputFile(JSON_PATH, JSON.stringify(flights, null, 2));
+
+      const output = {
+        lastUpdatedAt: Date.now(),
+        flights,
+      };
+
+      await outputFile(JSON_PATH, JSON.stringify(output, null, 2));
       console.log(`Wrote ${flights.length} flights to JSON`);
 
       return flights;
@@ -129,7 +135,7 @@ export default class FlightsContentService {
 
     try {
       const data = JSON.parse(readFileSync(JSON_PATH, 'utf8'));
-      const result = z.array(FlightSchema).safeParse(data);
+      const result = z.array(FlightSchema).safeParse(data.flights);
 
       if (result.success) {
         this.flights = result.data;
@@ -168,6 +174,17 @@ export default class FlightsContentService {
       airports.add(flight.arrAirportIata);
     });
     return Array.from(airports).sort();
+  }
+
+  public getLastUpdatedAt(): number | null {
+    if (!existsSync(JSON_PATH)) return null;
+
+    try {
+      const data = JSON.parse(readFileSync(JSON_PATH, 'utf8'));
+      return data.lastUpdatedAt || null;
+    } catch {
+      return null;
+    }
   }
 
   public getStats() {

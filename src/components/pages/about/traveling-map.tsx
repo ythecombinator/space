@@ -4,6 +4,7 @@ import type { ValuesType } from 'utility-types';
 
 import { Flight } from 'services/content/flights';
 
+import { formatDate } from 'utils/date';
 import { airportCoordinates, getAirlineColor } from 'utils/flights';
 
 import Typography from 'components/shared/typography';
@@ -113,22 +114,23 @@ function GlobeMap({ flights, airports, isDarkMode }: GlobeMapProps) {
 interface TravelingMapProps {
   flights: Flight[];
   airports: string[];
+  lastUpdatedAt: number | null;
 }
 
-export default function TravelingMap({ flights, airports }: TravelingMapProps) {
+export default function TravelingMap({ flights, airports, lastUpdatedAt }: TravelingMapProps) {
   const { resolvedTheme } = useTheme();
   const isDarkMode = resolvedTheme === 'dark';
 
   return (
     <div className="flex flex-col space-y-4">
       <GlobeMap flights={flights} airports={airports} isDarkMode={isDarkMode} />
-      <Typography.small className="text-center">
+      <Typography.p className="text-center">
         Data is periodically synced from my{' '}
         <a href="https://flighty.com" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-80">
           Flighty
         </a>{' '}
-        account and may not reflect live flight information.
-      </Typography.small>
+        account and may not reflect live flight information. Last updated: {formatDate(lastUpdatedAt)}.
+      </Typography.p>
     </div>
   );
 }
