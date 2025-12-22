@@ -21,39 +21,13 @@ const QUERY = readFileSync(QUERY_PATH, 'utf8');
 const TimestampSchema = z.number().int().positive();
 
 const FlightSchema = z.object({
-  id: z.string().uuid(),
   number: z.string(),
-  // airline
   airlineIata: z.string().min(1),
-  airlineIcao: z.string().min(1),
   airlineName: z.string(),
-  // airports
   depAirportIata: z.string().min(1),
-  depCity: z.string(),
   arrAirportIata: z.string().min(1),
-
-  // aircraft
-  aircraftIata: z.string().nullable(),
-  aircraftIcao: z.string().nullable(),
-  aircraftName: z.string().nullable(),
-  aircraftTailNumber: z.string().nullable(),
-
-  // details
   distance: z.number(),
-
-  depTz: z.string(),
   depTimeOriginal: TimestampSchema,
-  depTimeEstimated: TimestampSchema.nullable(),
-  depTimeActual: TimestampSchema.nullable(),
-  depTerminal: z.string().nullable(),
-  depGate: z.string().nullable(),
-
-  arrTz: z.string(),
-  arrTimeOriginal: TimestampSchema.nullable(),
-  arrTimeEstimated: TimestampSchema.nullable(),
-  arrTimeActual: TimestampSchema.nullable(),
-  arrTerminal: z.string().nullable(),
-  arrGate: z.string().nullable(),
 });
 
 //  ---------------------------------------------------------------------------
