@@ -2,12 +2,11 @@ import { useTheme } from 'next-themes';
 import dynamic from 'next/dynamic';
 import type { ValuesType } from 'utility-types';
 
-import { Airline, Flight } from 'services/content/flights';
+import { Flight } from 'services/content/flights';
 
 import { airportCoordinates, getAirlineColor } from 'utils/flights';
 
-import CardFeatured from 'components/shared/card-featured';
-import CardScrollArea from 'components/shared/card-scroll-area';
+import Typography from 'components/shared/typography';
 
 const Globe = dynamic(() => import('react-globe.gl'), { ssr: false });
 
@@ -105,46 +104,28 @@ function GlobeMap({ flights, airports, isDarkMode }: GlobeMapProps) {
 }
 
 //  ---------------------------------------------------------------------------
-//  FlightMap
+//  TravelingMap
 //  ---------------------------------------------------------------------------
 
-interface FlightMapProps {
+interface TravelingMapProps {
   flights: Flight[];
-  airlines: Airline[];
   airports: string[];
-  stats: {
-    totalFlights: number;
-    totalDistance: number;
-    airlines: number;
-    airports: number;
-  };
 }
 
-export default function FlightMap({ flights, airports, stats }: FlightMapProps) {
+export default function TravelingMap({ flights, airports }: TravelingMapProps) {
   const { resolvedTheme } = useTheme();
   const isDarkMode = resolvedTheme === 'dark';
 
   return (
-    <div className="flex w-full flex-col gap-6">
-      <div className="space-y-4">
-        {/* Stats */}
-        <CardScrollArea>
-          <CardFeatured title={stats.totalFlights.toString()} description="total flights taken" />
-
-          <CardFeatured
-            title={`${Math.round(stats.totalDistance / 1000).toLocaleString()}K`}
-            description="kilometers traveled"
-          />
-
-          <CardFeatured title={stats.airlines.toString()} description="different carriers" />
-
-          <CardFeatured title={stats.airports.toString()} description="unique destinations" />
-        </CardScrollArea>
-      </div>
-
-      <div className="relative flex h-[70vh] w-full items-center justify-center overflow-hidden rounded-lg">
-        <GlobeMap flights={flights} airports={airports} isDarkMode={isDarkMode} />
-      </div>
+    <div className="flex flex-col space-y-4">
+      <GlobeMap flights={flights} airports={airports} isDarkMode={isDarkMode} />
+      <Typography.small className="text-center">
+        Data is periodically synced from my{' '}
+        <a href="https://flighty.com" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-80">
+          Flighty
+        </a>{' '}
+        account and may not reflect live flight information.
+      </Typography.small>
     </div>
   );
 }

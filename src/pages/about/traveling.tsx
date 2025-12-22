@@ -13,7 +13,8 @@ import Typography from 'components/shared/typography';
 
 import Layout from 'components/layouts/page';
 
-import FlightMap from 'components/pages/about/flight-map';
+import TravelingMap from 'components/pages/about/traveling-map';
+import TravelingStats from 'components/pages/about/traveling-stats';
 
 //  ---------------------------------------------------------------------------
 //  CONFIG
@@ -53,7 +54,7 @@ export async function getStaticProps() {
   return { props: { openGraphImage, flights, airlines, airports, stats } };
 }
 
-function Page({ openGraphImage, flights, airlines, airports, stats }: PageProps) {
+function Page({ openGraphImage, flights, airports, stats }: PageProps) {
   return (
     <>
       <Metadata
@@ -88,7 +89,8 @@ function Page({ openGraphImage, flights, airlines, airports, stats }: PageProps)
 
         <SectionContainer className="prose dark:prose-invert">
           <Typography.h2>Flights</Typography.h2>
-          <FlightMap flights={flights} airlines={airlines} airports={airports} stats={stats} />
+          <TravelingStats {...stats} />
+          <TravelingMap flights={flights} airports={airports} />
         </SectionContainer>
       </Layout>
     </>
