@@ -42,6 +42,7 @@ export async function getStaticProps() {
   const flights = flightsService.getFlights();
   const airlines = flightsService.getAirlines();
   const airports = flightsService.getAirports();
+  const stats = flightsService.getStats();
 
   const openGraphImage = await generateOpenGraphImage({
     title: metadata.description,
@@ -49,10 +50,10 @@ export async function getStaticProps() {
     type: Routes.about,
   });
 
-  return { props: { openGraphImage, flights, airlines, airports } };
+  return { props: { openGraphImage, flights, airlines, airports, stats } };
 }
 
-function Page({ openGraphImage, flights, airlines, airports }: PageProps) {
+function Page({ openGraphImage, flights, airlines, airports, stats }: PageProps) {
   return (
     <>
       <Metadata
@@ -87,7 +88,7 @@ function Page({ openGraphImage, flights, airlines, airports }: PageProps) {
 
         <SectionContainer className="prose dark:prose-invert">
           <Typography.h2>Flights</Typography.h2>
-          <FlightMap flights={flights} airlines={airlines} airports={airports} />
+          <FlightMap flights={flights} airlines={airlines} airports={airports} stats={stats} />
         </SectionContainer>
       </Layout>
     </>
