@@ -1,5 +1,6 @@
 import { useTheme } from 'next-themes';
 import dynamic from 'next/dynamic';
+import { useEffect, useRef, useState } from 'react';
 import type { ValuesType } from 'utility-types';
 
 import { Flight } from 'services/providers/flighty';
@@ -68,11 +69,23 @@ interface GlobeMapProps {
 }
 
 function GlobeMap({ flights, airports, isDarkMode }: GlobeMapProps) {
+  const globeContainerRef = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState(0);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (globeContainerRef.current) {
+      const { offsetWidth, offsetHeight } = globeContainerRef.current;
+      setWidth(offsetWidth);
+      setHeight(offsetHeight);
+    }
+  }, []);
+
   const arcsData = getArcsData(flights);
   const pointsData = getPointsData(airports);
 
   return (
-    <div className="h-full w-full">
+    <div ref={globeContainerRef} className="min-h-[500px] w-full">
       <Globe
         globeImageUrl={
           isDarkMode
@@ -80,8 +93,8 @@ function GlobeMap({ flights, airports, isDarkMode }: GlobeMapProps) {
             : '//unpkg.com/three-globe/example/img/earth-day.jpg'
         }
         backgroundColor="rgba(0,0,0,0)"
-        width={800}
-        height={500}
+        width={width}
+        height={height}
         arcsData={arcsData}
         arcStartLat={(d: any) => d.startLat}
         arcStartLng={(d: any) => d.startLng}
