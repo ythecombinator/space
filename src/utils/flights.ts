@@ -82,35 +82,41 @@ export const airportCoordinates: Record<string, [number, number] | undefined> = 
 };
 
 export const airlineColors: { [key: string]: string } = {
-  AD: '#D81B60', // Azul Brazilian Airlines
-  AA: '#E53935', // American Airlines
-  KL: '#039BE5', // KLM Royal Dutch Airlines
-  DL: '#43A047', // Delta Air Lines
-  LH: '#FBC02D', // Lufthansa
-  AF: '#1E88E5', // Air France
   '6E': '#FF6F00', // IndiGo
+  A3: '#1976D2', // Aegean Airlines
+  AA: '#E53935', // American Airlines
+  AD: '#D81B60', // Azul Brazilian Airlines
+  AF: '#1E88E5', // Air France
+  BA: '#3949AB', // British Airways
+  CY: '#0097A7', // Cyprus Airways
+  DD: '#00695C', // Nok Air
+  DL: '#43A047', // Delta Air Lines
+  DY: '#FF6D00', // Norwegian Air Shuttle
+  EK: '#FDD835', // Emirates
+  EW: '#7B1FA2', // Eurowings
+  FD: '#FF3D00', // Thai AirAsia
+  FR: '#FB8C00', // Ryanair
+  G3: '#00C853', // Gol Transportes Aéreos
+  HU: '#C62828', // Hainan Airlines
+  IB: '#8E24AA', // Iberia
+  JJ: '#D32F2F', // LATAM Brasil
+  KL: '#039BE5', // KLM Royal Dutch Airlines
+  LA: '#1565C0', // LATAM Airlines
+  LH: '#FBC02D', // Lufthansa
+  LJ: '#00897B', // Jin Air
+  LO: '#D50000', // LOT Polish Airlines
+  LX: '#B71C1C', // Swiss International Air Lines
+  O6: '#00BFA5', // Avianca Brasil
+  OS: '#D32F2F', // Austrian Airlines
   QR: '#6D4C41', // Qatar Airways
   QS: '#C0CA33', // SmartWings
-  TP: '#00897B', // TAP Air Portugal
-  LA: '#1565C0', // LATAM Airlines
-  JJ: '#D32F2F', // LATAM Brasil
-  EW: '#7B1FA2', // Eurowings
-  LO: '#D50000', // LOT Polish Airlines
-  CY: '#0097A7', // Cyprus Airways
-  FR: '#FB8C00', // Ryanair
-  EK: '#FDD835', // Emirates
-  LX: '#B71C1C', // Swiss International Air Lines
-  IB: '#8E24AA', // Iberia
-  DY: '#FF6D00', // Norwegian Air Shuttle
-  W6: '#7C4DFF', // Wizz Air
-  TK: '#C62828', // Turkish Airlines
   SN: '#0D47A1', // Brussels Airlines
-  VY: '#FFD600', // Vueling
-  FD: '#FF3D00', // Thai AirAsia
+  TK: '#C62828', // Turkish Airlines
+  TP: '#00897B', // TAP Air Portugal
   U2: '#F4511E', // EasyJet
-  G3: '#00C853', // Gol Transportes Aéreos
-  BA: '#3949AB', // British Airways
-  O6: '#00BFA5', // Avianca Brasil
+  UX: '#EC407A', // Air Europa
+  VY: '#FFD600', // Vueling
+  W6: '#7C4DFF', // Wizz Air
 };
 
 export function getAirlineColor(airline: string) {
