@@ -21,9 +21,11 @@
 <url><loc>https://www.ythecombinator.space/posts/a-whole-day-playing-with-ipfs</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://www.ythecombinator.space/posts/swift-in-the-sky-with-types</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://www.ythecombinator.space/posts/o-que-ha-de-novo-com-o-angularjs</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.ythecombinator.space/talks/compilers-user-interfaces-and-the-rest-of-us</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.ythecombinator.space/talks/thinking-outside-the-box-alternative-architectures-for-modern-web</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://www.ythecombinator.space/talks/react-internals-and-advanced-performance-patterns</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ythecombinator.space/talks/compilers-user-interfaces-and-the-rest-of-us</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ythecombinator.space/talks/react-rendering-strategies</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ythecombinator.space/talks/fundamentals-vs-frameworks-what-developers-need-to-know-when-ai-knows-everything</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ythecombinator.space/talks/thinking-outside-the-box-alternative-architectures-for-modern-web</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://www.ythecombinator.space/talks/hydration-islands-streaming-resumability-oh-my</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://www.ythecombinator.space/talks/speed-at-scale-optimizing-the-largest-cx-platform-out-there</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://www.ythecombinator.space/talks/a-decade-reacts-rhapsody-of-life</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
