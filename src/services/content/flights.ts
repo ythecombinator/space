@@ -1,9 +1,8 @@
-import { existsSync, readFileSync } from 'fs';
-import { outputFile } from 'fs-extra';
+import { existsSync, outputJson, readFileSync, readJsonSync } from 'fs-extra';
 import isInCi from 'is-in-ci';
+import { homedir } from 'node:os';
+import { join } from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
-import { homedir } from 'os';
-import { join } from 'path';
 import { z } from 'zod';
 
 //  ---------------------------------------------------------------------------
@@ -116,7 +115,7 @@ export default class FlightsContentService {
         flights,
       };
 
-      await outputFile(JSON_PATH, JSON.stringify(output, null, 2));
+      await outputJson(JSON_PATH, output, { spaces: 2 });
       console.log(`Wrote ${flights.length} flights to JSON`);
 
       return flights;
@@ -134,7 +133,7 @@ export default class FlightsContentService {
     }
 
     try {
-      const data = JSON.parse(readFileSync(JSON_PATH, 'utf8'));
+      const data = readJsonSync(JSON_PATH);
       const result = z.array(FlightSchema).safeParse(data.flights);
 
       if (result.success) {
@@ -159,8 +158,10 @@ export default class FlightsContentService {
   }
 
   public getAirlines(): Airline[] {
-    const airlineMap = new Map<string, string>();
-    this.flights.forEach((flight) => airlineMap.set(flight.airlineIata, flight.airlineName));
+    const airlineMap = this.flights.reduce(
+      (map, flight) => map.set(flight.airlineIata, flight.airlineName),
+      new Map<string, string>()
+    );
 
     return Array.from(airlineMap.entries())
       .map(([code, name]) => ({ code, name }))
@@ -168,11 +169,7 @@ export default class FlightsContentService {
   }
 
   public getAirports(): AirportCode[] {
-    const airports = new Set<AirportCode>();
-    this.flights.forEach((flight) => {
-      airports.add(flight.depAirportIata);
-      airports.add(flight.arrAirportIata);
-    });
+    const airports = new Set(this.flights.flatMap((flight) => [flight.depAirportIata, flight.arrAirportIata]));
     return Array.from(airports).sort();
   }
 
@@ -180,7 +177,7 @@ export default class FlightsContentService {
     if (!existsSync(JSON_PATH)) return null;
 
     try {
-      const data = JSON.parse(readFileSync(JSON_PATH, 'utf8'));
+      const data = readJsonSync(JSON_PATH);
       return data.lastUpdatedAt || null;
     } catch {
       return null;
@@ -188,14 +185,13 @@ export default class FlightsContentService {
   }
 
   public getStats() {
-    const years = new Set<number>();
     const now = Date.now() / 1000;
 
-    this.flights.forEach((flight) => {
-      if (flight.depTimeOriginal < now) {
-        years.add(new Date(flight.depTimeOriginal * 1000).getFullYear());
-      }
-    });
+    const years = new Set(
+      this.flights
+        .filter((flight) => flight.depTimeOriginal < now)
+        .map((flight) => new Date(flight.depTimeOriginal * 1000).getFullYear())
+    );
 
     return {
       totalFlights: this.flights.length,
