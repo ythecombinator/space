@@ -3,6 +3,7 @@ query GetActiveTalks {
     items {
       title
       slug
+      category
       sessionsCollection {
         items {
           event {

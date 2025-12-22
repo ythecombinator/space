@@ -13,7 +13,6 @@ import Typography from 'components/shared/typography';
 
 import Layout from 'components/layouts/page';
 
-import ActiveTalksSection from 'components/pages/talks/active-talks-section';
 import AllTalksSection from 'components/pages/talks/all-talks-section';
 import PhotoHighlightsSection from 'components/pages/talks/photo-highlights-section';
 import TopicHighlightsSection from 'components/pages/talks/topic-highlights-section';
@@ -42,16 +41,14 @@ export type Props = InferGetStaticPropsType<typeof getStaticProps>;
 const talksServiceInstance = TalksContentService.getInstance();
 
 export async function getStaticProps() {
-  const [talksStats, reactTalks, featuredTalks, youtubeHighlights, activeTalks, upcomingSessions, allTalks] =
-    await Promise.all([
-      talksServiceInstance.getStats(),
-      talksServiceInstance.getTalksForTag('react'),
-      talksServiceInstance.getFeatured(),
-      talksServiceInstance.getYoutubeHighlights(),
-      talksServiceInstance.getActive(),
-      talksServiceInstance.getGetUpcomingSessions(),
-      talksServiceInstance.getAll(),
-    ]);
+  const [talksStats, reactTalks, featuredTalks, youtubeHighlights, upcomingSessions, allTalks] = await Promise.all([
+    talksServiceInstance.getStats(),
+    talksServiceInstance.getTalksForTag('react'),
+    talksServiceInstance.getFeatured(),
+    talksServiceInstance.getYoutubeHighlights(),
+    talksServiceInstance.getGetUpcomingSessions(),
+    talksServiceInstance.getAll(),
+  ]);
 
   const openGraphImage = await generateOpenGraphImage({
     title: metadata.description,
@@ -65,7 +62,6 @@ export async function getStaticProps() {
       reactTalks,
       featuredTalks,
       youtubeHighlights,
-      activeTalks,
       upcomingSessions,
       allTalks,
       openGraphImage,
@@ -74,16 +70,8 @@ export async function getStaticProps() {
 }
 
 const Page: NextPage<Props> = (props) => {
-  const {
-    talksStats,
-    allTalks,
-    reactTalks,
-    featuredTalks,
-    youtubeHighlights,
-    activeTalks,
-    upcomingSessions,
-    openGraphImage,
-  } = props;
+  const { talksStats, allTalks, reactTalks, featuredTalks, youtubeHighlights, upcomingSessions, openGraphImage } =
+    props;
   const { citiesTotal, countriesTotal, talksTotal, eventsTotal } = talksStats;
 
   return (
@@ -121,7 +109,6 @@ const Page: NextPage<Props> = (props) => {
         </SectionContainer>
 
         <UpcomingTalksSection items={upcomingSessions} />
-        <ActiveTalksSection items={activeTalks} />
         <AllTalksSection items={allTalks} />
         <TopicHighlightsSection title="React Highlights" items={reactTalks} />
         <YoutubeHighlightsSection items={youtubeHighlights} />

@@ -524,8 +524,6 @@ type EventLinkingCollections {
 enum EventLinkingCollectionsSessionCollectionOrder {
   audience_ASC
   audience_DESC
-  featured_ASC
-  featured_DESC
   online_ASC
   online_DESC
   recording_ASC
@@ -573,8 +571,6 @@ type EventSessionsCollection {
 enum EventSessionsCollectionOrder {
   audience_ASC
   audience_DESC
-  featured_ASC
-  featured_DESC
   online_ASC
   online_DESC
   recording_ASC
@@ -786,8 +782,6 @@ type LanguageLinkingCollections {
 enum LanguageLinkingCollectionsSessionCollectionOrder {
   audience_ASC
   audience_DESC
-  featured_ASC
-  featured_DESC
   online_ASC
   online_DESC
   recording_ASC
@@ -881,7 +875,6 @@ type Session implements Entry & _Node {
   audience(locale: String, useFallbackLocale: Boolean): Int
   contentfulMetadata: ContentfulMetadata!
   event(locale: String, preview: Boolean, useFallbackLocale: Boolean, where: EventFilter): Event
-  featured(locale: String, useFallbackLocale: Boolean): Boolean
   language(locale: String, preview: Boolean, useFallbackLocale: Boolean, where: LanguageFilter): Language
   linkedFrom(allowedLocales: [String]): SessionLinkingCollections
   online(locale: String, useFallbackLocale: Boolean): Boolean
@@ -915,9 +908,6 @@ input SessionFilter {
   contentfulMetadata: ContentfulMetadataFilter
   event: cfEventNestedFilter
   event_exists: Boolean
-  featured: Boolean
-  featured_exists: Boolean
-  featured_not: Boolean
   language: cfLanguageNestedFilter
   language_exists: Boolean
   online: Boolean
@@ -980,8 +970,6 @@ enum SessionLinkingCollectionsTalkCollectionOrder {
   active_DESC
   category_ASC
   category_DESC
-  lastRelevant_ASC
-  lastRelevant_DESC
   slug_ASC
   slug_DESC
   sys_firstPublishedAt_ASC
@@ -999,8 +987,6 @@ enum SessionLinkingCollectionsTalkCollectionOrder {
 enum SessionOrder {
   audience_ASC
   audience_DESC
-  featured_ASC
-  featured_DESC
   online_ASC
   online_DESC
   recording_ASC
@@ -1077,7 +1063,6 @@ type Talk implements Entry & _Node {
   active(locale: String, useFallbackLocale: Boolean): Boolean
   category(locale: String, useFallbackLocale: Boolean): String
   contentfulMetadata: ContentfulMetadata!
-  lastRelevant(locale: String, useFallbackLocale: Boolean): DateTime
   linkedFrom(allowedLocales: [String]): TalkLinkingCollections
   sessionsCollection(limit: Int = 100, locale: String, order: [TalkSessionsCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: SessionFilter): TalkSessionsCollection
   slug(locale: String, useFallbackLocale: Boolean): String
@@ -1149,15 +1134,6 @@ input TalkFilter {
   category_not_contains: String
   category_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
-  lastRelevant: DateTime
-  lastRelevant_exists: Boolean
-  lastRelevant_gt: DateTime
-  lastRelevant_gte: DateTime
-  lastRelevant_in: [DateTime]
-  lastRelevant_lt: DateTime
-  lastRelevant_lte: DateTime
-  lastRelevant_not: DateTime
-  lastRelevant_not_in: [DateTime]
   sessions: cfSessionNestedFilter
   sessionsCollection_exists: Boolean
   slug: String
@@ -1185,8 +1161,6 @@ type TalkLinkingCollections {
 enum TalkLinkingCollectionsSessionCollectionOrder {
   audience_ASC
   audience_DESC
-  featured_ASC
-  featured_DESC
   online_ASC
   online_DESC
   recording_ASC
@@ -1210,8 +1184,6 @@ enum TalkOrder {
   active_DESC
   category_ASC
   category_DESC
-  lastRelevant_ASC
-  lastRelevant_DESC
   slug_ASC
   slug_DESC
   sys_firstPublishedAt_ASC
@@ -1236,8 +1208,6 @@ type TalkSessionsCollection {
 enum TalkSessionsCollectionOrder {
   audience_ASC
   audience_DESC
-  featured_ASC
-  featured_DESC
   online_ASC
   online_DESC
   recording_ASC
@@ -1641,9 +1611,6 @@ input cfSessionNestedFilter {
   audience_not_in: [Int]
   contentfulMetadata: ContentfulMetadataFilter
   event_exists: Boolean
-  featured: Boolean
-  featured_exists: Boolean
-  featured_not: Boolean
   language_exists: Boolean
   online: Boolean
   online_exists: Boolean
@@ -1691,15 +1658,6 @@ input cfTalkNestedFilter {
   category_not_contains: String
   category_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
-  lastRelevant: DateTime
-  lastRelevant_exists: Boolean
-  lastRelevant_gt: DateTime
-  lastRelevant_gte: DateTime
-  lastRelevant_in: [DateTime]
-  lastRelevant_lt: DateTime
-  lastRelevant_lte: DateTime
-  lastRelevant_not: DateTime
-  lastRelevant_not_in: [DateTime]
   sessionsCollection_exists: Boolean
   slug: String
   slug_contains: String

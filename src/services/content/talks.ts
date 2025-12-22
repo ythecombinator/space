@@ -238,6 +238,7 @@ const activeTransformer = (result: GetActiveTalksQuery) => {
   return items.map((item) => ({
     talkTitle: item.title,
     talkSlug: `/${Routes.talks}/${item.slug}`,
+    talkCategory: item.category,
     sessions: item.sessionsCollection.items.map((session) => ({
       eventName: session.event.name,
       eventPage: session.event.website,

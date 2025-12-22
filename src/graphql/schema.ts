@@ -843,8 +843,6 @@ export type EventLinkingCollectionsSessionCollectionArgs = {
 export enum EventLinkingCollectionsSessionCollectionOrder {
   AudienceAsc = 'audience_ASC',
   AudienceDesc = 'audience_DESC',
-  FeaturedAsc = 'featured_ASC',
-  FeaturedDesc = 'featured_DESC',
   OnlineAsc = 'online_ASC',
   OnlineDesc = 'online_DESC',
   RecordingAsc = 'recording_ASC',
@@ -893,8 +891,6 @@ export type EventSessionsCollection = {
 export enum EventSessionsCollectionOrder {
   AudienceAsc = 'audience_ASC',
   AudienceDesc = 'audience_DESC',
-  FeaturedAsc = 'featured_ASC',
-  FeaturedDesc = 'featured_DESC',
   OnlineAsc = 'online_ASC',
   OnlineDesc = 'online_DESC',
   RecordingAsc = 'recording_ASC',
@@ -1112,8 +1108,6 @@ export type LanguageLinkingCollectionsSessionCollectionArgs = {
 export enum LanguageLinkingCollectionsSessionCollectionOrder {
   AudienceAsc = 'audience_ASC',
   AudienceDesc = 'audience_DESC',
-  FeaturedAsc = 'featured_ASC',
-  FeaturedDesc = 'featured_DESC',
   OnlineAsc = 'online_ASC',
   OnlineDesc = 'online_DESC',
   RecordingAsc = 'recording_ASC',
@@ -1416,7 +1410,6 @@ export type Session = Entry & _Node & {
   audience?: Maybe<Scalars['Int']['output']>;
   contentfulMetadata: ContentfulMetadata;
   event?: Maybe<Event>;
-  featured?: Maybe<Scalars['Boolean']['output']>;
   language?: Maybe<Language>;
   linkedFrom?: Maybe<SessionLinkingCollections>;
   online?: Maybe<Scalars['Boolean']['output']>;
@@ -1442,13 +1435,6 @@ export type SessionEventArgs = {
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<EventFilter>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/session) */
-export type SessionFeaturedArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>;
-  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -1534,9 +1520,6 @@ export type SessionFilter = {
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
   event?: InputMaybe<CfEventNestedFilter>;
   event_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  featured?: InputMaybe<Scalars['Boolean']['input']>;
-  featured_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  featured_not?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<CfLanguageNestedFilter>;
   language_exists?: InputMaybe<Scalars['Boolean']['input']>;
   online?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1629,8 +1612,6 @@ export enum SessionLinkingCollectionsTalkCollectionOrder {
   ActiveDesc = 'active_DESC',
   CategoryAsc = 'category_ASC',
   CategoryDesc = 'category_DESC',
-  LastRelevantAsc = 'lastRelevant_ASC',
-  LastRelevantDesc = 'lastRelevant_DESC',
   SlugAsc = 'slug_ASC',
   SlugDesc = 'slug_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -1648,8 +1629,6 @@ export enum SessionLinkingCollectionsTalkCollectionOrder {
 export enum SessionOrder {
   AudienceAsc = 'audience_ASC',
   AudienceDesc = 'audience_DESC',
-  FeaturedAsc = 'featured_ASC',
-  FeaturedDesc = 'featured_DESC',
   OnlineAsc = 'online_ASC',
   OnlineDesc = 'online_DESC',
   RecordingAsc = 'recording_ASC',
@@ -1725,7 +1704,6 @@ export type Talk = Entry & _Node & {
   active?: Maybe<Scalars['Boolean']['output']>;
   category?: Maybe<Scalars['String']['output']>;
   contentfulMetadata: ContentfulMetadata;
-  lastRelevant?: Maybe<Scalars['DateTime']['output']>;
   linkedFrom?: Maybe<TalkLinkingCollections>;
   sessionsCollection?: Maybe<TalkSessionsCollection>;
   slug?: Maybe<Scalars['String']['output']>;
@@ -1750,13 +1728,6 @@ export type TalkActiveArgs = {
 
 /** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/talk) */
 export type TalkCategoryArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>;
-  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/talk) */
-export type TalkLastRelevantArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
@@ -1866,15 +1837,6 @@ export type TalkFilter = {
   category_not_contains?: InputMaybe<Scalars['String']['input']>;
   category_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  lastRelevant?: InputMaybe<Scalars['DateTime']['input']>;
-  lastRelevant_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  lastRelevant_gt?: InputMaybe<Scalars['DateTime']['input']>;
-  lastRelevant_gte?: InputMaybe<Scalars['DateTime']['input']>;
-  lastRelevant_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
-  lastRelevant_lt?: InputMaybe<Scalars['DateTime']['input']>;
-  lastRelevant_lte?: InputMaybe<Scalars['DateTime']['input']>;
-  lastRelevant_not?: InputMaybe<Scalars['DateTime']['input']>;
-  lastRelevant_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
   sessions?: InputMaybe<CfSessionNestedFilter>;
   sessionsCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
   slug?: InputMaybe<Scalars['String']['input']>;
@@ -1922,8 +1884,6 @@ export type TalkLinkingCollectionsSessionCollectionArgs = {
 export enum TalkLinkingCollectionsSessionCollectionOrder {
   AudienceAsc = 'audience_ASC',
   AudienceDesc = 'audience_DESC',
-  FeaturedAsc = 'featured_ASC',
-  FeaturedDesc = 'featured_DESC',
   OnlineAsc = 'online_ASC',
   OnlineDesc = 'online_DESC',
   RecordingAsc = 'recording_ASC',
@@ -1947,8 +1907,6 @@ export enum TalkOrder {
   ActiveDesc = 'active_DESC',
   CategoryAsc = 'category_ASC',
   CategoryDesc = 'category_DESC',
-  LastRelevantAsc = 'lastRelevant_ASC',
-  LastRelevantDesc = 'lastRelevant_DESC',
   SlugAsc = 'slug_ASC',
   SlugDesc = 'slug_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -1974,8 +1932,6 @@ export type TalkSessionsCollection = {
 export enum TalkSessionsCollectionOrder {
   AudienceAsc = 'audience_ASC',
   AudienceDesc = 'audience_DESC',
-  FeaturedAsc = 'featured_ASC',
-  FeaturedDesc = 'featured_DESC',
   OnlineAsc = 'online_ASC',
   OnlineDesc = 'online_DESC',
   RecordingAsc = 'recording_ASC',
@@ -2500,9 +2456,6 @@ export type CfSessionNestedFilter = {
   audience_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
   event_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  featured?: InputMaybe<Scalars['Boolean']['input']>;
-  featured_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  featured_not?: InputMaybe<Scalars['Boolean']['input']>;
   language_exists?: InputMaybe<Scalars['Boolean']['input']>;
   online?: InputMaybe<Scalars['Boolean']['input']>;
   online_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -2550,15 +2503,6 @@ export type CfTalkNestedFilter = {
   category_not_contains?: InputMaybe<Scalars['String']['input']>;
   category_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  lastRelevant?: InputMaybe<Scalars['DateTime']['input']>;
-  lastRelevant_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  lastRelevant_gt?: InputMaybe<Scalars['DateTime']['input']>;
-  lastRelevant_gte?: InputMaybe<Scalars['DateTime']['input']>;
-  lastRelevant_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
-  lastRelevant_lt?: InputMaybe<Scalars['DateTime']['input']>;
-  lastRelevant_lte?: InputMaybe<Scalars['DateTime']['input']>;
-  lastRelevant_not?: InputMaybe<Scalars['DateTime']['input']>;
-  lastRelevant_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
   sessionsCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
   slug?: InputMaybe<Scalars['String']['input']>;
   slug_contains?: InputMaybe<Scalars['String']['input']>;
@@ -2601,7 +2545,7 @@ export type CfTechnologyNestedFilter = {
 export type GetActiveTalksQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetActiveTalksQuery = { __typename?: 'Query', talkCollection?: { __typename?: 'TalkCollection', items: Array<{ __typename?: 'Talk', title?: string | null, slug?: string | null, sessionsCollection?: { __typename?: 'TalkSessionsCollection', items: Array<{ __typename?: 'Session', event?: { __typename?: 'Event', name?: string | null, website?: string | null, city?: { __typename?: 'City', country?: { __typename?: 'Country', flag?: string | null } | null } | null } | null } | null> } | null } | null> } | null };
+export type GetActiveTalksQuery = { __typename?: 'Query', talkCollection?: { __typename?: 'TalkCollection', items: Array<{ __typename?: 'Talk', title?: string | null, slug?: string | null, category?: string | null, sessionsCollection?: { __typename?: 'TalkSessionsCollection', items: Array<{ __typename?: 'Session', event?: { __typename?: 'Event', name?: string | null, website?: string | null, city?: { __typename?: 'City', country?: { __typename?: 'Country', flag?: string | null } | null } | null } | null } | null> } | null } | null> } | null };
 
 export type GetAllSessionsQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -2654,6 +2598,7 @@ export const GetActiveTalksDocument = gql`
     items {
       title
       slug
+      category
       sessionsCollection {
         items {
           event {

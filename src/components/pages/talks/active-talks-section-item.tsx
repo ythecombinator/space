@@ -1,7 +1,8 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
-import { FaMapMarkedAlt } from 'react-icons/fa';
+import { FiMapPin } from 'react-icons/fi';
 
 import CardOutlined from 'components/shared/card-outlined';
+import Chip from 'components/shared/chip';
 import Link from 'components/shared/link';
 import Tooltip from 'components/shared/tooltip';
 
@@ -12,6 +13,7 @@ import Tooltip from 'components/shared/tooltip';
 export type ActiveTalksSectionItemProps = {
   talkTitle: string;
   talkSlug: string;
+  talkCategory: string;
   sessions: Array<{ eventName: string; eventPage: string; eventFlag: string }>;
 };
 
@@ -20,14 +22,21 @@ export type ActiveTalksSectionItemProps = {
 //  ---------------------------------------------------------------------------
 
 const ActiveTalksSectionItem: FunctionComponent<PropsWithChildren<ActiveTalksSectionItemProps>> = (props) => {
-  const { talkTitle, talkSlug, sessions } = props;
+  const { talkTitle, talkSlug, talkCategory, sessions } = props;
 
   return (
     <Link href={talkSlug}>
-      <CardOutlined heading={talkTitle}>
+      <CardOutlined
+        heading={
+          <div className="flex flex-col gap-2">
+            {talkCategory === 'workshop' && <Chip variant="default">Workshop</Chip>}
+            {talkTitle}
+          </div>
+        }
+      >
         <div className="flex items-center text-gray-800 dark:text-gray-200">
           <div className="mr-1 flex h-11 items-center justify-center bg-transparent text-lg">
-            <FaMapMarkedAlt size={20} role="img" aria-label="Presented in these countries" />
+            <FiMapPin size={20} role="img" aria-label="Presented in these countries" />
           </div>
           {sessions.map((event) => (
             <Tooltip.Provider key={event.eventName}>

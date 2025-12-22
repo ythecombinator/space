@@ -4,10 +4,13 @@ import { NextSeo as Metadata } from 'next-seo';
 import { Layouts, Routes, siteMetadata } from 'config/constants';
 
 import MarkdownContentService from 'services/content/markdown';
+import TalksContentService from 'services/content/talks';
 
 import { MetadataConfig, generateOpenGraphImage } from 'utils/open-graph';
 
 import MDXLayoutRenderer from 'components/shared/mdx-components';
+
+import ActiveTalksSection from 'components/pages/talks/active-talks-section';
 
 //  ---------------------------------------------------------------------------
 //  CONFIG
@@ -29,6 +32,7 @@ export type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 //  ---------------------------------------------------------------------------
 
 const markdownServiceInstance = MarkdownContentService.getInstance();
+const talksServiceInstance = TalksContentService.getInstance();
 
 export async function getStaticProps() {
   const content = markdownServiceInstance.get('speaker-rider');
@@ -39,16 +43,19 @@ export async function getStaticProps() {
     };
   }
 
-  const openGraphImage = await generateOpenGraphImage({
-    title: metadata.description,
-    path: `content/${Routes.talksRider}/cover.png`,
-    type: Routes.talks,
-  });
+  const [activeTalks, openGraphImage] = await Promise.all([
+    talksServiceInstance.getActive(),
+    generateOpenGraphImage({
+      title: metadata.description,
+      path: `content/${Routes.talksRider}/cover.png`,
+      type: Routes.talks,
+    }),
+  ]);
 
-  return { props: { content, openGraphImage } };
+  return { props: { content, activeTalks, openGraphImage } };
 }
 
-const Page: NextPage<PageProps> = ({ content, openGraphImage }) => {
+const Page: NextPage<PageProps> = ({ content, activeTalks, openGraphImage }) => {
   return (
     <>
       <Metadata
@@ -62,6 +69,7 @@ const Page: NextPage<PageProps> = ({ content, openGraphImage }) => {
         }}
       />
       <MDXLayoutRenderer layout={Layouts.mdx} content={content} />
+      <ActiveTalksSection items={activeTalks} />
     </>
   );
 };
