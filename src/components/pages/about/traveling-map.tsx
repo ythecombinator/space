@@ -2,7 +2,7 @@ import { useTheme } from 'next-themes';
 import dynamic from 'next/dynamic';
 import type { ValuesType } from 'utility-types';
 
-import { Flight } from 'services/content/flights';
+import { Flight } from 'services/providers/flighty';
 
 import { formatDate } from 'utils/date';
 import { airportCoordinates, getAirlineColor } from 'utils/flights';
