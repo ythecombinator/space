@@ -100,10 +100,16 @@ const config = {
           '60%': { transform: 'rotate(0.0deg)' },
           '100%': { transform: 'rotate(0.0deg)' },
         },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-33.33%)' },
+        },
       },
       animation: {
         hue: 'hue 10s infinite',
         wave: 'wave 2s linear infinite',
+        marquee: 'marquee 40s linear infinite',
+        'marquee-reverse': 'marquee 40s linear infinite reverse',
       },
       typography: (theme) => ({
         DEFAULT: {
