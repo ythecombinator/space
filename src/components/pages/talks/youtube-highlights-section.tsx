@@ -26,7 +26,7 @@ function YoutubeHighlightsSection(props: PropsWithChildren<YoutubeHighlightsSect
       <SectionHeading title="YouTube Highlights" />
       <div className="flex w-full flex-wrap pb-2">
         <ScrollArea>
-          <div className="flex space-x-4 pb-4">
+          <div className="flex space-x-6 pb-4">
             {props.items.map((item) => (
               <YoutubeHighlightsSectionItem key={item.title} {...item} />
             ))}

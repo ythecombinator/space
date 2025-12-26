@@ -109,10 +109,10 @@ function Page(props: Props) {
         </SectionContainer>
 
         <UpcomingTalksSection items={upcomingSessions} />
-        <AllTalksSection items={allTalks} />
         <TopicHighlightsSection title="React Highlights" items={reactTalks} />
         <YoutubeHighlightsSection items={youtubeHighlights} />
         <PhotoHighlightsSection items={featuredTalks} />
+        <AllTalksSection items={allTalks} />
       </Layout>
     </>
   );

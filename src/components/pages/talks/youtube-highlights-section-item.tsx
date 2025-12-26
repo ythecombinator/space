@@ -17,7 +17,7 @@ export type YoutubeHighlightsSectionItemProps = YoutubeHighlight;
 const YoutubeHighlightsSectionItem: FunctionComponent<PropsWithChildren<YoutubeHighlightsSectionItemProps>> = (
   props
 ) => {
-  return <VideoPreview className="w-[250px]" width={250} height={250} {...props} />;
+  return <VideoPreview className="w-[320px]" width={320} height={180} {...props} />;
 };
 
 export default YoutubeHighlightsSectionItem;
