@@ -67,7 +67,7 @@ export enum Routes {
   posts = 'posts',
   talks = 'talks',
   talksRadar = 'talks/radar',
-  talksRider = 'talks/rider',
+  talksInvite = 'talks/invite',
 }
 
 export const headerNavigationLinks = [

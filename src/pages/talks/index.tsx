@@ -98,7 +98,7 @@ function Page(props: Props) {
             <b>{citiesTotal}</b> cities in <b>{countriesTotal}</b> different countries.
           </Typography.p>
           <Typography.p>
-            Want me to speak at your event? Please check my <Link href={`/${Routes.talksRider}`}>speaker rider</Link>{' '}
+            Want me to speak at your event? Please check my <Link href={`/${Routes.talksInvite}`}>speaker rider</Link>{' '}
             and hit me up!
           </Typography.p>
           <Typography.p>
