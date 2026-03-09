@@ -1,56 +1,66 @@
+import { PropsWithChildren } from 'react';
+import { FaChevronRight } from 'react-icons/fa';
+
 import CardFeatured from 'components/shared/card-featured';
 import CardScrollArea from 'components/shared/card-scroll-area';
+import Link from 'components/shared/link';
 import SectionContainer from 'components/shared/section-container';
 import SectionHeading from 'components/shared/section-heading';
+import Typography from 'components/shared/typography';
+import { Topic } from 'services/content/talks';
 
 //  ---------------------------------------------------------------------------
-//  DATA
+//  TYPES
 //  ---------------------------------------------------------------------------
 
-const TOPICS = [
-  {
-    id: 'real-world-engineering',
-    title: 'Engineering for the Real World',
-    description:
-      'Designing and building applications that work reliably in challenging conditions—flaky networks, low-end devices, and legacy codebases. Progressive enhancement, resilient architecture, offline-first approaches, and modernizing legacy systems.',
-  },
-  {
-    id: 'web-performance',
-    title: 'Web Performance',
-    description:
-      'Taking real-world slow applications, profiling them, and fixing performance bottlenecks. Learn to use profiling tools effectively, recognize common antipatterns like unnecessary re-renders and memory leaks, and apply optimization techniques.',
-  },
-  {
-    id: 'cs-frontend',
-    title: 'Computer Science Meets Front-End',
-    description:
-      "Exploring how fundamental CS concepts apply to front-end development. Compilers, interpreters, scheduling algorithms, how JavaScript engines work, React's reconciliation, browser rendering pipeline, and code transformation.",
-  },
-  {
-    id: 'ux-psychology',
-    title: 'UX, Psychology & Front-End',
-    description:
-      'How psychological principles and UX research inform technical decisions. Perceived vs actual performance, cognitive load, psychology of loading states, designing for attention, and bridging design thinking with engineering.',
-    href: '/talks?category=ux',
-  },
-];
+export type ActiveTopicsSectionProps = {
+  topics: Topic[];
+};
 
 //  ---------------------------------------------------------------------------
 //  UI
 //  ---------------------------------------------------------------------------
 
-function ActiveTopicsSection() {
+function ActiveTopicsSection({ topics }: PropsWithChildren<ActiveTopicsSectionProps>) {
   return (
     <SectionContainer>
       <SectionHeading title="What I Speak About" />
       <CardScrollArea>
-        {TOPICS.map((topic) => (
+        {topics.map((topic) => (
           <CardFeatured
             key={topic.id}
             className="min-w-[500px] py-4 md:px-4"
             title={topic.title}
             description={topic.description}
-          />
+          >
+            <div className="mt-6 space-y-4 overflow-x-hidden">
+              <div className="flex items-center gap-3">
+                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gray-200 to-gray-200 dark:via-gray-800 dark:to-gray-800" />
+                <Typography.small className="text-xs uppercase tracking-widest text-gray-600 dark:text-gray-400">
+                  Example Talks
+                </Typography.small>
+                <div className="h-px flex-1 bg-gradient-to-l from-transparent via-gray-200 to-gray-200 dark:via-gray-800 dark:to-gray-800" />
+              </div>
+              <ul className="max-h-[280px] space-y-1.5 overflow-x-hidden overflow-y-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-300 hover:scrollbar-thumb-gray-400 dark:scrollbar-track-gray-900 dark:scrollbar-thumb-gray-700 dark:hover:scrollbar-thumb-gray-600">
+                {topic.talks.map((talk, index) => (
+                  <li key={talk.slug} className="group">
+                    <Link
+                      href={talk.slug}
+                      className="flex items-start gap-3 rounded-lg p-3 transition-all duration-200 hover:translate-x-1 hover:bg-primary-50/40 dark:hover:bg-primary-950/20"
+                    >
+                      <Typography.small className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full font-bold transition-all duration-200 group-hover:scale-110">
+                        {index + 1}
+                      </Typography.small>
+                      <Typography.p className="my-0 min-w-0 flex-1 break-words text-base leading-relaxed text-gray-700 transition-colors duration-200 group-hover:text-primary-700 dark:text-gray-300 dark:group-hover:text-primary-400">
+                        {talk.title}
+                      </Typography.p>
+                      <FaChevronRight className="mt-1.5 h-4 w-4 shrink-0 text-gray-400 opacity-0 transition-all duration-200 group-hover:translate-x-1 group-hover:opacity-100 dark:text-gray-600" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </CardFeatured>
         ))}
       </CardScrollArea>
     </SectionContainer>

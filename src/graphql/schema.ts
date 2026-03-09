@@ -1174,6 +1174,8 @@ export type Query = {
   technologyCollection?: Maybe<TechnologyCollection>;
   title?: Maybe<Title>;
   titleCollection?: Maybe<TitleCollection>;
+  topic?: Maybe<Topic>;
+  topicCollection?: Maybe<TopicCollection>;
 };
 
 
@@ -1391,6 +1393,25 @@ export type QueryTitleCollectionArgs = {
   skip?: InputMaybe<Scalars['Int']['input']>;
   useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<TitleFilter>;
+};
+
+
+export type QueryTopicArgs = {
+  id: Scalars['String']['input'];
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type QueryTopicCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<TopicOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  where?: InputMaybe<TopicFilter>;
 };
 
 export type ResourceLink = {
@@ -2314,6 +2335,113 @@ export enum TitleStackCollectionOrder {
   TitleDesc = 'title_DESC'
 }
 
+/** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/topic) */
+export type Topic = Entry & _Node & {
+  __typename?: 'Topic';
+  _id: Scalars['ID']['output'];
+  contentfulMetadata: ContentfulMetadata;
+  description?: Maybe<Scalars['String']['output']>;
+  entriesCollection?: Maybe<TopicEntriesCollection>;
+  linkedFrom?: Maybe<TopicLinkingCollections>;
+  sys: Sys;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/topic) */
+export type TopicDescriptionArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/topic) */
+export type TopicEntriesCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/topic) */
+export type TopicLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/topic) */
+export type TopicTitleArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type TopicCollection = {
+  __typename?: 'TopicCollection';
+  items: Array<Maybe<Topic>>;
+  limit: Scalars['Int']['output'];
+  skip: Scalars['Int']['output'];
+  total: Scalars['Int']['output'];
+};
+
+export type TopicEntriesCollection = {
+  __typename?: 'TopicEntriesCollection';
+  items: Array<Maybe<Entry>>;
+  limit: Scalars['Int']['output'];
+  skip: Scalars['Int']['output'];
+  total: Scalars['Int']['output'];
+};
+
+export type TopicFilter = {
+  AND?: InputMaybe<Array<InputMaybe<TopicFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<TopicFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  description_contains?: InputMaybe<Scalars['String']['input']>;
+  description_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  description_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  description_not?: InputMaybe<Scalars['String']['input']>;
+  description_not_contains?: InputMaybe<Scalars['String']['input']>;
+  description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  entriesCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  sys?: InputMaybe<SysFilter>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  title_contains?: InputMaybe<Scalars['String']['input']>;
+  title_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  title_not?: InputMaybe<Scalars['String']['input']>;
+  title_not_contains?: InputMaybe<Scalars['String']['input']>;
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type TopicLinkingCollections = {
+  __typename?: 'TopicLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type TopicLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export enum TopicOrder {
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
+
 export type _Node = {
   _id: Scalars['ID']['output'];
 };
@@ -2590,6 +2718,22 @@ export type GetTalksStatsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetTalksStatsQuery = { __typename?: 'Query', talkCollection?: { __typename?: 'TalkCollection', total: number } | null, eventCollection?: { __typename?: 'EventCollection', total: number } | null, cityCollection?: { __typename?: 'CityCollection', total: number } | null, countryCollection?: { __typename?: 'CountryCollection', total: number } | null };
+
+export type GetTopicsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetTopicsQuery = { __typename?: 'Query', topicCollection?: { __typename?: 'TopicCollection', items: Array<{ __typename?: 'Topic', title?: string | null, description?: string | null, sys: { __typename?: 'Sys', id: string }, entriesCollection?: { __typename?: 'TopicEntriesCollection', items: Array<
+          | { __typename: 'City' }
+          | { __typename: 'Company' }
+          | { __typename: 'Country' }
+          | { __typename: 'Event' }
+          | { __typename: 'Language' }
+          | { __typename: 'Session' }
+          | { __typename: 'Talk', title?: string | null, slug?: string | null }
+          | { __typename: 'Technology' }
+          | { __typename: 'Title' }
+          | { __typename: 'Topic' }
+         | null> } | null } | null> } | null };
 
 
 export const GetActiveTalksDocument = gql`
@@ -3047,3 +3191,57 @@ export type GetTalksStatsQueryHookResult = ReturnType<typeof useGetTalksStatsQue
 export type GetTalksStatsLazyQueryHookResult = ReturnType<typeof useGetTalksStatsLazyQuery>;
 export type GetTalksStatsSuspenseQueryHookResult = ReturnType<typeof useGetTalksStatsSuspenseQuery>;
 export type GetTalksStatsQueryResult = Apollo.QueryResult<GetTalksStatsQuery, GetTalksStatsQueryVariables>;
+export const GetTopicsDocument = gql`
+    query GetTopics {
+  topicCollection(limit: 100, order: title_ASC) {
+    items {
+      sys {
+        id
+      }
+      title
+      description
+      entriesCollection(limit: 5) {
+        items {
+          __typename
+          ... on Talk {
+            title
+            slug
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetTopicsQuery__
+ *
+ * To run a query within a React component, call `useGetTopicsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTopicsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetTopicsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetTopicsQuery(baseOptions?: Apollo.QueryHookOptions<GetTopicsQuery, GetTopicsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetTopicsQuery, GetTopicsQueryVariables>(GetTopicsDocument, options);
+      }
+export function useGetTopicsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTopicsQuery, GetTopicsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetTopicsQuery, GetTopicsQueryVariables>(GetTopicsDocument, options);
+        }
+export function useGetTopicsSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetTopicsQuery, GetTopicsQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetTopicsQuery, GetTopicsQueryVariables>(GetTopicsDocument, options);
+        }
+export type GetTopicsQueryHookResult = ReturnType<typeof useGetTopicsQuery>;
+export type GetTopicsLazyQueryHookResult = ReturnType<typeof useGetTopicsLazyQuery>;
+export type GetTopicsSuspenseQueryHookResult = ReturnType<typeof useGetTopicsSuspenseQuery>;
+export type GetTopicsQueryResult = Apollo.QueryResult<GetTopicsQuery, GetTopicsQueryVariables>;

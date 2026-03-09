@@ -21,7 +21,14 @@ export interface CardFeaturedProps {
 //  UI
 //  ---------------------------------------------------------------------------
 
-function CardFeatured({ title, description, href, className, fullWidth = true }: PropsWithChildren<CardFeaturedProps>) {
+function CardFeatured({
+  title,
+  description,
+  href,
+  className,
+  fullWidth = true,
+  children,
+}: PropsWithChildren<CardFeaturedProps>) {
   const cardContent = (
     <div
       className={`relative z-20 h-full overflow-hidden rounded-md bg-violet-30
@@ -32,6 +39,7 @@ function CardFeatured({ title, description, href, className, fullWidth = true }:
       <div className="p-5">
         <h2 className="mb-2 text-2xl font-bold leading-8 tracking-tight">{title}</h2>
         <Typography.p>{description}</Typography.p>
+        {children}
       </div>
     </div>
   );

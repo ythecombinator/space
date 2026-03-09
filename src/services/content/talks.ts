@@ -18,6 +18,8 @@ import {
   GetTalksForTagQuery,
   GetTalksStatsDocument,
   GetTalksStatsQuery,
+  GetTopicsDocument,
+  GetTopicsQuery,
   Session,
   Talk,
 } from 'graphql/schema';
@@ -45,6 +47,8 @@ const youtubeServiceInstance = YoutubeService.getInstance();
 export type YoutubeHighlight = ValuesType<Awaited<ReturnType<TalksContentService['getYoutubeHighlights']>>>;
 export type UpcomingSession = ValuesType<Awaited<ReturnType<TalksContentService['getGetUpcomingSessions']>>>;
 export type FeaturedTalk = ValuesType<Awaited<ReturnType<TalksContentService['getFeatured']>>>;
+
+export type Topic = ValuesType<ReturnType<typeof topicsTransformer>>;
 
 //  ---------------------------------------------------------------------------
 //  CORE
@@ -157,6 +161,14 @@ export default class TalksContentService {
     return transformers.stats(doc.data);
   }
 
+  public async getTopics() {
+    const doc = await contentfulServiceInstance.query<GetTopicsQuery>({
+      query: GetTopicsDocument,
+    });
+
+    return transformers.topics(doc.data);
+  }
+
   public async getYoutubeHighlights() {
     const playlistID = 'PLu_DF4548Ne1jbT5opOMswazXhMiCLpRP';
     const playlistData = await youtubeServiceInstance.queryPlaylist(playlistID);
@@ -259,6 +271,32 @@ const statsTransformer = (result: GetTalksStatsQuery) => {
   };
 };
 
+const topicsTransformer = (result: GetTopicsQuery) => {
+  const items = result.topicCollection?.items || [];
+
+  return items
+    .map((item) => {
+      if (!item) return null;
+
+      const entriesItems = item.entriesCollection?.items || [];
+
+      const talks = entriesItems
+        .filter((entry) => entry != null)
+        .map((talk: any) => ({
+          title: talk.title,
+          slug: `/${Routes.talks}/${talk.slug}`,
+        }));
+
+      return {
+        id: item.sys.id,
+        title: item.title,
+        description: item.description,
+        talks,
+      };
+    })
+    .filter((item): item is NonNullable<typeof item> => item !== null);
+};
+
 const latestTransformer = (result: GetAllTalksQuery) => {
   const items = (result as DeepNonNullable<GetAllTalksQuery>).talkCollection.items;
 
@@ -294,6 +332,7 @@ const transformers = {
   youtubeHighlights: youtubeHighlightsTransformer,
   talksPerTag: talksPerTagTransformer,
   stats: statsTransformer,
+  topics: topicsTransformer,
   latest: latestTransformer,
   upcoming: upcomingSessionsTransformer,
 };

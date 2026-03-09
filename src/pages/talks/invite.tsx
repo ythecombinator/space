@@ -44,8 +44,9 @@ export async function getStaticProps() {
     };
   }
 
-  const [activeTalks, openGraphImage] = await Promise.all([
+  const [activeTalks, topics, openGraphImage] = await Promise.all([
     talksServiceInstance.getActive(),
+    talksServiceInstance.getTopics(),
     generateOpenGraphImage({
       title: metadata.description,
       path: `content/${Routes.talksInvite}/cover.png`,
@@ -53,10 +54,10 @@ export async function getStaticProps() {
     }),
   ]);
 
-  return { props: { content, activeTalks, openGraphImage } };
+  return { props: { content, activeTalks, topics, openGraphImage } };
 }
 
-function Page({ content, activeTalks, openGraphImage }: PageProps) {
+function Page({ content, activeTalks, topics, openGraphImage }: PageProps) {
   return (
     <>
       <Metadata
@@ -70,7 +71,7 @@ function Page({ content, activeTalks, openGraphImage }: PageProps) {
         }}
       />
       <MDXLayoutRenderer layout={Layouts.mdx} content={content} />
-      <ActiveTopicsSection />
+      <ActiveTopicsSection topics={topics} />
       <ActiveTalksSection items={activeTalks} />
     </>
   );

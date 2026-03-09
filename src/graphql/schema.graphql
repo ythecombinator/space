@@ -1,11 +1,23 @@
 directive @contentSourceMaps on QUERY
 
+directive @contentfulSchemaMetadata(contentTypePublishedCounters: JSON) on SCHEMA
+
+directive @delegatedResourceLink(contentTypeId: String, field: JSON) on FIELD_DEFINITION | OBJECT
+
+directive @enumMapper(value: JSON) on ENUM_VALUE
+
+directive @featureFlag(featureName: String) on FIELD
+
+directive @fieldResolver(data: JSON, kind: String) on FIELD_DEFINITION
+
 """
 Indicates exactly one field must be supplied and this field must not be `null`.
 """
 directive @oneOf on INPUT_OBJECT
 
 directive @timeline(where: TimelineFilterInput!) on QUERY
+
+directive @typeIdentifier(contentTypeId: String) on OBJECT
 
 """Represents a binary file in a space. An asset can be any file type."""
 type Asset {
@@ -851,6 +863,8 @@ type Query {
   technologyCollection(limit: Int = 100, locale: String, order: [TechnologyOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: TechnologyFilter): TechnologyCollection
   title(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): Title
   titleCollection(limit: Int = 100, locale: String, order: [TitleOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: TitleFilter): TitleCollection
+  topic(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): Topic
+  topicCollection(limit: Int = 100, locale: String, order: [TopicOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: TopicFilter): TopicCollection
 }
 
 """
@@ -1457,6 +1471,72 @@ type TitleStackCollection {
 enum TitleStackCollectionOrder {
   slug_ASC
   slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/49ay1wkx3zpm/content_types/topic)
+"""
+type Topic implements Entry & _Node {
+  _id: ID!
+  contentfulMetadata: ContentfulMetadata!
+  description(locale: String, useFallbackLocale: Boolean): String
+  entriesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): TopicEntriesCollection
+  linkedFrom(allowedLocales: [String]): TopicLinkingCollections
+  sys: Sys!
+  title(locale: String, useFallbackLocale: Boolean): String
+}
+
+type TopicCollection {
+  items: [Topic]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+type TopicEntriesCollection {
+  items: [Entry]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input TopicFilter {
+  AND: [TopicFilter]
+  OR: [TopicFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  description: String
+  description_contains: String
+  description_exists: Boolean
+  description_in: [String]
+  description_not: String
+  description_not_contains: String
+  description_not_in: [String]
+  entriesCollection_exists: Boolean
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+type TopicLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
+}
+
+enum TopicOrder {
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC

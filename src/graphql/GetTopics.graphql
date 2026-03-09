@@ -1,0 +1,20 @@
+query GetTopics {
+  topicCollection(limit: 100, order: title_ASC) {
+    items {
+      sys {
+        id
+      }
+      title
+      description
+      entriesCollection(limit: 5) {
+        items {
+          __typename
+          ... on Talk {
+            title
+            slug
+          }
+        }
+      }
+    }
+  }
+}
