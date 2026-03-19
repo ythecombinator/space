@@ -46,7 +46,19 @@ const secondaryTagMap: Record<EngagementStatusSecondary, TagVariant> = {
   'TO BE PRESENTED': 'sky',
 };
 
-const hasUsableLink = (value: string) => value && value !== 'N/A';
+const statusFilterItems: Array<{ id: string; label: string }> = [
+  { id: 'all', label: 'All Statuses' },
+  { id: 'TO SUBMIT', label: 'To Submit' },
+  { id: 'WAITING', label: 'Waiting' },
+  { id: 'SELECTED', label: 'Selected' },
+  { id: 'INVITED', label: 'Invited' },
+  { id: 'REJECTED', label: 'Rejected' },
+  { id: 'NOT SUBMITTED', label: 'Not Submitted' },
+  { id: 'NO FEEDBACK', label: 'No Feedback' },
+  { id: 'CANCELED', label: 'Canceled' },
+];
+
+const hasUsableLink = (value?: string) => Boolean(value && value !== 'N/A');
 
 const columnHelper = createColumnHelper<EventEntry>();
 
@@ -201,17 +213,7 @@ function DataSection({ data }: PropsWithChildren<DataSectionProps>) {
         <DropdownMenu
           label="Status"
           initialSelectedItem="all"
-          items={[
-            { id: 'all', label: 'All Statuses' },
-            { id: 'TO SUBMIT', label: 'To Submit' },
-            { id: 'WAITING', label: 'Waiting' },
-            { id: 'SELECTED', label: 'Selected' },
-            { id: 'INVITED', label: 'Invited' },
-            { id: 'REJECTED', label: 'Rejected' },
-            { id: 'NOT SUBMITTED', label: 'Not Submitted' },
-            { id: 'NO FEEDBACK', label: 'No Feedback' },
-            { id: 'CANCELED', label: 'Canceled' },
-          ]}
+          items={statusFilterItems}
           onSelect={(id: string) => {
             if (id === 'all') {
               table.getColumn('result')?.setFilterValue(undefined);
