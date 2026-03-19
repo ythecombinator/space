@@ -1,4 +1,5 @@
-import { Client as NotionClient } from '@notionhq/client';
+import { Client } from '@notionhq/client';
+import type { DatabaseObjectResponse, PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 
 //  ---------------------------------------------------------------------------
 //  CORE
@@ -6,10 +7,11 @@ import { Client as NotionClient } from '@notionhq/client';
 
 export default class NotionService {
   private static instance: NotionService;
-  private notionClient: NotionClient;
+  private client: Client;
+  private dataSourceIds = new Map<string, string>();
 
   private constructor() {
-    this.notionClient = new NotionClient({
+    this.client = new Client({
       auth: process.env.NOTION_TOKEN,
     });
   }
@@ -22,12 +24,55 @@ export default class NotionService {
     return this.instance;
   }
 
-  public async queryDataBase<T>(id: string) {
-    const response = await this.notionClient.databases.query({
-      database_id: id,
+  private getClient(): Client {
+    return this.client;
+  }
+
+  private async getDataSourceId(databaseId: string): Promise<string> {
+    const cachedDataSourceId = this.dataSourceIds.get(databaseId);
+
+    if (cachedDataSourceId) {
+      return cachedDataSourceId;
+    }
+
+    const database = await this.getClient().databases.retrieve({
+      database_id: databaseId,
     });
 
-    return response.results as NotionResponse[];
+    if (!('data_sources' in database)) {
+      throw new Error(`Database ${databaseId} could not be fully retrieved from Notion.`);
+    }
+
+    const [dataSource] = (database as DatabaseObjectResponse).data_sources;
+
+    if (!dataSource) {
+      throw new Error(`Database ${databaseId} has no data source available for querying.`);
+    }
+
+    this.dataSourceIds.set(databaseId, dataSource.id);
+
+    return dataSource.id;
+  }
+
+  public async queryDataBase(id: string): Promise<PageObjectResponse[]> {
+    const client = this.getClient();
+    const dataSourceId = await this.getDataSourceId(id);
+    const results: PageObjectResponse[] = [];
+    let nextCursor: string | undefined;
+
+    do {
+      const response = await client.dataSources.query({
+        data_source_id: dataSourceId,
+        page_size: 100,
+        start_cursor: nextCursor,
+        result_type: 'page',
+      });
+
+      results.push(...response.results.filter((result: any): result is PageObjectResponse => 'properties' in result));
+      nextCursor = response.next_cursor ?? undefined;
+    } while (nextCursor);
+
+    return results;
   }
 }
 
@@ -35,135 +80,4 @@ export default class NotionService {
 //  TYPES
 //  ---------------------------------------------------------------------------
 
-export interface NotionResponse {
-  object: string;
-  id: string;
-  created_time: string;
-  last_edited_time: string;
-  created_by: Author;
-  last_edited_by: Author;
-  cover?: null;
-  icon: Icon;
-  parent: Parent;
-  archived: boolean;
-  properties: Properties;
-  url: string;
-  public_url?: null;
-}
-
-export interface Author {
-  object: string;
-  id: string;
-}
-
-export interface Icon {
-  type: string;
-  emoji: string;
-}
-
-export interface Parent {
-  type: string;
-  database_id: string;
-}
-
-export interface Properties {
-  event: TitleProperty;
-  city: RichTextProperty;
-  country: SelectProperty;
-  website: RichTextProperty;
-  dates: DateProperty;
-  cfp: RichTextProperty;
-  deadline: DateProperty;
-  duration: NumberProperty;
-  result: SelectProperty;
-  'result-followup': SelectProperty;
-  'result-followup-reason': SelectProperty;
-  'sessions-approved': MultiSelectProperty;
-  'sessions-submitted': MultiSelectProperty;
-  'previously-accepted': SelectProperty;
-}
-
-//  ---------------------------------------------------------------------------
-//  TYPES: PROPERTIES
-//  ---------------------------------------------------------------------------
-
-export interface RichTextProperty {
-  id: string;
-  type: string;
-  rich_text: RichTextEntry[];
-}
-
-export interface SelectProperty {
-  id: string;
-  type: string;
-  select: SelectEntry;
-}
-
-export interface MultiSelectProperty {
-  id: string;
-  type: string;
-  multi_select: SelectEntry[];
-}
-
-export interface DateProperty {
-  id: string;
-  type: string;
-  date: DateEntry;
-}
-
-export interface NumberProperty {
-  id: string;
-  type: string;
-  number: number;
-}
-
-export interface TitleProperty {
-  id: string;
-  type: string;
-  title: RichTextEntry[];
-}
-
-//  ---------------------------------------------------------------------------
-//  TYPES: ENTRIES
-//  ---------------------------------------------------------------------------
-
-export interface RichTextEntry {
-  type: string;
-  text: Text;
-  annotations: Annotations;
-  plain_text: string;
-  href?: string | null;
-}
-
-export interface SelectEntry {
-  id: string;
-  name: string;
-  color: string;
-}
-
-export interface DateEntry {
-  start: string;
-  end: string;
-}
-
-//  ---------------------------------------------------------------------------
-//  TYPES: PRIMITIVES
-//  ---------------------------------------------------------------------------
-
-export interface Text {
-  content: string;
-  link?: Link | null;
-}
-
-export interface Link {
-  url: string;
-}
-
-export interface Annotations {
-  bold: boolean;
-  italic: boolean;
-  strikethrough: boolean;
-  underline: boolean;
-  code: boolean;
-  color: string;
-}
+export type NotionPageResponse = PageObjectResponse;

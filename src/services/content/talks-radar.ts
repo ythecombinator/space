@@ -1,20 +1,11 @@
-import { pathOr } from 'ramda';
-
-import NotionService, { NotionResponse } from 'services/providers/notion';
+import NotionService, { NotionPageResponse } from 'services/providers/notion';
 
 import { formatDate, isSingleDayTimeSpan } from 'utils/date';
 
-const notionServiceInstance = NotionService.getInstance();
+const DATABASE_ID = '28968c90fe33815abd62ec8b72b497f0';
 
 export default class TalksRadarContentService {
   private static instance: TalksRadarContentService;
-  private seasonMap: Record<ConferenceSeason, string> = {
-    '2026': '28968c90fe33815abd62ec8b72b497f0',
-    '2025': 'f56a3ba2b74a4339aef9a44d4cdcb2aa',
-    '2024': '57cbd3d5d34c4933bc51a7a49737f4f8',
-    '2023': '6f8ad796bb5746a1a479446a7153d470',
-    '2022': '2dee03c01edf473eb35635ea9f1edcde',
-  };
 
   static getInstance() {
     if (!this.instance) {
@@ -24,22 +15,10 @@ export default class TalksRadarContentService {
     return this.instance;
   }
 
-  public async get(season: ConferenceSeason) {
-    const result = await notionServiceInstance.queryDataBase(this.seasonMap[season]);
-    return result.map(notionResponseTransformer);
-  }
-
   public async getAll() {
-    const results = await Promise.all(
-      Object.keys(this.seasonMap).map(async (season) => {
-        return { season, data: await this.get(season as ConferenceSeason) };
-      })
-    );
-
-    return results.reduce((acc, { season, data }) => ({ ...acc, [season]: data }), {}) as Record<
-      ConferenceSeason,
-      EventEntry[]
-    >;
+    const notionService = NotionService.getInstance();
+    const result = await notionService.queryDataBase(DATABASE_ID);
+    return result.map(notionResponseTransformer);
   }
 }
 
@@ -47,42 +26,98 @@ export default class TalksRadarContentService {
 //  TRANSFORMERS: MAIN
 //  ---------------------------------------------------------------------------
 
-const notionResponseTransformer = (response: NotionResponse) => {
-  const { event, country, city, dates, deadline, result } = response.properties;
+const notionResponseTransformer = (response: NotionPageResponse) => {
+  const properties = response.properties;
+
+  // Helper to get title property
+  const getTitle = (key: string) => {
+    const prop = properties[key];
+    if (prop?.type === 'title') {
+      return prop.title.map((chunk) => chunk.plain_text).join(' ');
+    }
+    return '';
+  };
+
+  // Helper to get rich text property
+  const getRichText = (key: string) => {
+    const prop = properties[key];
+    if (prop?.type === 'rich_text') {
+      if (prop.rich_text.length > 0 && prop.rich_text[0].type === 'text') {
+        return prop.rich_text[0].text.content;
+      }
+    }
+    return 'N/A';
+  };
+
+  // Helper to get select property
+  const getSelect = (key: string) => {
+    const prop = properties[key];
+    if (prop?.type === 'select' && prop.select) {
+      return prop.select.name;
+    }
+    return 'N/A';
+  };
+
+  // Helper to get date property
+  const getDate = (key: string) => {
+    const prop = properties[key];
+    if (prop?.type === 'date' && prop.date) {
+      return prop.date;
+    }
+    return null;
+  };
+
+  // Helper to get relation property (for sessions-submitted and sessions-approved)
+  const getRelation = (key: string) => {
+    const prop = properties[key];
+    if (prop?.type === 'relation') {
+      return prop.relation.map((rel) => rel.id);
+    }
+    return [];
+  };
+
+  const dates = getDate('dates');
+  const deadline = getDate('deadline');
 
   return {
-    event: event.title.map((chunk) => chunk.plain_text).join(' '),
-    country: country?.select.name,
-    city: city.rich_text.map((chunk) => chunk.plain_text).join(''),
-    eventWebsite: pathOr('N/A', ['properties', 'eventWebsite', 'rich_text', 0, 'text', 'content'], result),
-    dates: {
-      isSingleDayEvent: isSingleDayTimeSpan(dates.date.start, dates.date.end),
-      start: {
-        raw: dates.date.start,
-        formatted: formatDate(dates.date.start),
-      },
-      end: {
-        raw: dates.date.end,
-        formatted: formatDate(dates.date.end),
-      },
-    },
-    deadline: deadline?.date?.start
+    event: getTitle('event'),
+    country: getSelect('country'),
+    city: getRichText('city'),
+    eventWebsite: getRichText('website'),
+    dates: dates
       ? {
-          raw: deadline.date.start,
-          formatted: formatDate(deadline.date.start),
+          isSingleDayEvent: isSingleDayTimeSpan(dates.start, dates.end || dates.start),
+          start: {
+            raw: dates.start,
+            formatted: formatDate(dates.start),
+          },
+          end: {
+            raw: dates.end || dates.start,
+            formatted: formatDate(dates.end || dates.start),
+          },
+        }
+      : {
+          isSingleDayEvent: true,
+          start: { raw: 'N/A', formatted: 'N/A' },
+          end: { raw: 'N/A', formatted: 'N/A' },
+        },
+    deadline: deadline?.start
+      ? {
+          raw: deadline.start,
+          formatted: formatDate(deadline.start),
         }
       : { raw: 'N/A', formatted: 'N/A' },
-    cfpWebsite: pathOr('N/A', ['properties', 'cfpWebsite', 'rich_text', 0, 'text', 'content'], result),
-    result: result.select.name as EngagementStatusPrimary,
-    statusSecondary: response.properties['result-followup']?.select.name as EngagementStatusSecondary,
+    cfpWebsite: getRichText('cfp'),
+    result: getSelect('result') as EngagementStatusPrimary,
+    statusSecondary: getSelect('result-followup') as EngagementStatusSecondary,
+    sessionsSubmitted: getRelation('sessions-submitted'),
+    sessionsApproved: getRelation('sessions-approved'),
   };
 };
 
 //  ---------------------------------------------------------------------------
 //  TYPES
 //  ---------------------------------------------------------------------------
-
-export type ConferenceSeason = '2022' | '2023' | '2024' | '2025' | '2026';
 
 export type EngagementStatusPrimary =
   | 'CANCELED'

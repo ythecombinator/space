@@ -1,26 +1,23 @@
 import {
-  SortingState,
-  createColumnHelper,
-  flexRender,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
+    SortingState,
+    createColumnHelper,
+    flexRender,
+    getCoreRowModel,
+    getFilteredRowModel,
+    getPaginationRowModel,
+    getSortedRowModel,
+    useReactTable,
 } from '@tanstack/react-table';
 import { PropsWithChildren, useState } from 'react';
 import { BiSort } from 'react-icons/bi';
+import { FiExternalLink } from 'react-icons/fi';
 
-import {
-  ConferenceSeason,
-  EngagementStatusPrimary,
-  EngagementStatusSecondary,
-  EventEntry,
-} from 'services/content/talks-radar';
+import { EngagementStatusPrimary, EngagementStatusSecondary, EventEntry } from 'services/content/talks-radar';
 
 import Button from 'components/shared/button';
 import DropdownMenu from 'components/shared/dropdown-menu';
 import EmptyList from 'components/shared/empty-list';
+import Link from 'components/shared/link';
 import SearchBar from 'components/shared/seach-bar';
 import Table from 'components/shared/table';
 import Tag, { TagVariant } from 'components/shared/tag';
@@ -49,12 +46,54 @@ const secondaryTagMap: Record<EngagementStatusSecondary, TagVariant> = {
   'TO BE PRESENTED': 'sky',
 };
 
+const hasUsableLink = (value: string) => value && value !== 'N/A';
+
 const columnHelper = createColumnHelper<EventEntry>();
 
 const columns = [
   columnHelper.accessor('event', {
     header: 'Event',
-    cell: (cell) => <Typography.p>{cell.getValue()}</Typography.p>,
+    cell: (cell) => {
+      const { cfpWebsite, eventWebsite } = cell.row.original;
+      const hasCfpWebsite = hasUsableLink(cfpWebsite);
+      const hasEventWebsite = hasUsableLink(eventWebsite);
+
+      if (!hasCfpWebsite && !hasEventWebsite) {
+        return <Typography.p>{cell.getValue()}</Typography.p>;
+      }
+
+      return (
+        <div className="group relative inline-flex">
+          <Typography.p className="cursor-help underline decoration-dotted underline-offset-4">
+            {cell.getValue()}
+          </Typography.p>
+          <div className="pointer-events-none absolute left-0 top-full z-20 mt-2 w-52 rounded-lg border border-neutral-200 bg-white p-2 opacity-0 shadow-lg transition-opacity duration-150 group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100 dark:border-neutral-800 dark:bg-neutral-950">
+            <div className="flex flex-col gap-1">
+              {hasCfpWebsite && (
+                <Link
+                  href={cfpWebsite}
+                  className="flex items-center justify-between rounded-md px-3 py-2 text-sm text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-200 hover:dark:bg-neutral-900"
+                  clearDecoration
+                >
+                  <span>Visit CFP website</span>
+                  <FiExternalLink aria-hidden />
+                </Link>
+              )}
+              {hasEventWebsite && (
+                <Link
+                  href={eventWebsite}
+                  className="flex items-center justify-between rounded-md px-3 py-2 text-sm text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-200 hover:dark:bg-neutral-900"
+                  clearDecoration
+                >
+                  <span>Visit event website</span>
+                  <FiExternalLink aria-hidden />
+                </Link>
+              )}
+            </div>
+          </div>
+        </div>
+      );
+    },
   }),
   columnHelper.accessor('country', {
     header: 'Country',
@@ -63,6 +102,43 @@ const columns = [
   columnHelper.accessor('city', {
     header: 'City',
     cell: (cell) => <Typography.subtle>{cell.getValue()}</Typography.subtle>,
+  }),
+  columnHelper.accessor('dates', {
+    header: ({ column }) => {
+      return (
+        <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
+          Event Dates
+          <BiSort className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+    sortingFn: (rowA, rowB, columnId) => {
+      const startDateA = rowA.getValue<{ start: { raw: string } }>(columnId).start.raw;
+      const startDateB = rowB.getValue<{ start: { raw: string } }>(columnId).start.raw;
+
+      return new Date(startDateA).getTime() - new Date(startDateB).getTime();
+    },
+    cell: (cell) => {
+      const { start, end, isSingleDayEvent } = cell.getValue();
+      return (
+        <>
+          <time dateTime={start.raw}>{start.formatted}</time>
+          {!isSingleDayEvent && (
+            <>
+              {' - '}
+              <time dateTime={end.raw}>{end.formatted}</time>
+            </>
+          )}
+        </>
+      );
+    },
+  }),
+  columnHelper.accessor('deadline', {
+    header: 'CFP Deadline',
+    cell: (cell) => {
+      const { formatted, raw } = cell.getValue();
+      return <time dateTime={raw}>{formatted}</time>;
+    },
   }),
   columnHelper.accessor('result', {
     header: ({ column }) => {
@@ -85,30 +161,6 @@ const columns = [
       return <Tag variant={secondaryTagMap[status]}>{status}</Tag>;
     },
   }),
-  columnHelper.accessor('deadline', {
-    header: 'CFP Deadline',
-    cell: (cell) => {
-      const { formatted, raw } = cell.getValue();
-      return <time dateTime={raw}>{formatted}</time>;
-    },
-  }),
-  columnHelper.accessor('dates', {
-    header: 'Event Dates',
-    cell: (cell) => {
-      const { start, end, isSingleDayEvent } = cell.getValue();
-      return (
-        <>
-          <time dateTime={start.raw}>{start.formatted}</time>
-          {!isSingleDayEvent && (
-            <>
-              {' - '}
-              <time dateTime={end.raw}>{end.formatted}</time>
-            </>
-          )}
-        </>
-      );
-    },
-  }),
 ];
 
 //  ---------------------------------------------------------------------------
@@ -116,7 +168,7 @@ const columns = [
 //  ---------------------------------------------------------------------------
 
 interface DataSectionProps {
-  data: Record<ConferenceSeason, EventEntry[]>;
+  data: EventEntry[];
 }
 
 //  ---------------------------------------------------------------------------
@@ -124,13 +176,10 @@ interface DataSectionProps {
 //  ---------------------------------------------------------------------------
 
 function DataSection({ data }: PropsWithChildren<DataSectionProps>) {
-  const currentYear = String(new Date().getFullYear()) as ConferenceSeason;
-
-  const [sorting, setSorting] = useState<SortingState>([]);
-  const [currentData, setCurrentData] = useState(data[currentYear]);
+  const [sorting, setSorting] = useState<SortingState>([{ id: 'dates', desc: true }]);
 
   const table = useReactTable({
-    data: currentData,
+    data,
     columns,
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
@@ -150,17 +199,26 @@ function DataSection({ data }: PropsWithChildren<DataSectionProps>) {
           onChange={(event) => table.getColumn('event')?.setFilterValue(event.target.value)}
         />
         <DropdownMenu
-          label="Season"
-          initialSelectedItem={currentYear}
+          label="Status"
+          initialSelectedItem="all"
           items={[
-            { id: '2026', label: '2025-26' },
-            { id: '2025', label: '2024-25' },
-            { id: '2024', label: '2023-24' },
-            { id: '2023', label: '2022-23' },
-            { id: '2022', label: '2021-22' },
+            { id: 'all', label: 'All Statuses' },
+            { id: 'TO SUBMIT', label: 'To Submit' },
+            { id: 'WAITING', label: 'Waiting' },
+            { id: 'SELECTED', label: 'Selected' },
+            { id: 'INVITED', label: 'Invited' },
+            { id: 'REJECTED', label: 'Rejected' },
+            { id: 'NOT SUBMITTED', label: 'Not Submitted' },
+            { id: 'NO FEEDBACK', label: 'No Feedback' },
+            { id: 'CANCELED', label: 'Canceled' },
           ]}
-          // @ts-ignore
-          onSelect={(id: ConferenceSeason) => setCurrentData(data[id])}
+          onSelect={(id: string) => {
+            if (id === 'all') {
+              table.getColumn('result')?.setFilterValue(undefined);
+            } else {
+              table.getColumn('result')?.setFilterValue(id);
+            }
+          }}
         />
       </div>
       {table.getRowModel().rows?.length ? (
