@@ -11,7 +11,7 @@ import Typography from './typography';
 // Inspired by:
 // https://github.com/lekterable/website/blob/master/src/components/ui/circle-list.tsx
 
-function TooltipInnerContent({ children }: PropsWithChildren) {
+function TooltipInnerContent({ children }: PropsWithChildren<{ className?: string }>) {
   const x = useMotionValue(0);
   const config = { damping: 5, stiffness: 100 };
   const rotate = useSpring(useTransform(x, [-100, 100], [-45, 45]), config);
@@ -36,9 +36,11 @@ function TooltipInnerContent({ children }: PropsWithChildren) {
           whiteSpace: 'nowrap',
           x: translateX,
         }}
-        className="absolute -top-10 z-50 flex flex-col items-center justify-center rounded-md bg-primary px-4 py-2 text-xs shadow-xl"
+        className="absolute -top-10 z-50 flex flex-col items-center justify-center rounded-md border border-neutral-200 bg-white px-4 py-2 text-xs shadow-xl dark:border-neutral-700 dark:bg-neutral-900"
       >
-        <Typography.small className="relative z-30 text-base font-bold text-secondary">{children}</Typography.small>
+        <Typography.small className="relative z-30 text-base font-bold text-neutral-900 dark:text-neutral-100">
+          {children}
+        </Typography.small>
       </motion.div>
     </AnimatePresence>
   );
@@ -52,7 +54,7 @@ const TooltipContent = forwardRef<ElementRef<typeof Content>, ComponentPropsWith
   ({ className, children, sideOffset = 4, ...props }, ref) => {
     return (
       <Content ref={ref} sideOffset={sideOffset} {...props}>
-        <TooltipInnerContent>{children}</TooltipInnerContent>
+        <TooltipInnerContent className={className}>{children}</TooltipInnerContent>
       </Content>
     );
   }

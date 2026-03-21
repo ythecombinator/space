@@ -26,6 +26,7 @@ import Link from 'components/shared/link';
 import SearchBar from 'components/shared/seach-bar';
 import Table from 'components/shared/table';
 import Tag, { TagVariant } from 'components/shared/tag';
+import Tooltip from 'components/shared/tooltip';
 import Typography from 'components/shared/typography';
 
 //  ---------------------------------------------------------------------------
@@ -46,7 +47,7 @@ const primaryTagMap: Record<EngagementStatusPrimary, TagVariant> = {
 const secondaryTagMap: Record<EngagementStatusSecondary, TagVariant> = {
   'N/A': 'slate',
   PRESENTED: 'green',
-  REJECTED: 'red',
+  REJECTED: 'orange',
   'TO BE CONFIRMED': 'orange',
   'TO BE PRESENTED': 'sky',
 };
@@ -241,6 +242,21 @@ function renderPrimaryStatusCell(cell: CellContext<EventEntry, EngagementStatusP
 
 function renderSecondaryStatusCell(cell: CellContext<EventEntry, EngagementStatusSecondary>) {
   const status = cell.getValue();
+
+  if (status === 'REJECTED') {
+    return (
+      <Tooltip.Provider>
+        <Tooltip.Root>
+          <Tooltip.Trigger asChild>
+            <div className="cursor-help">
+              <Tag variant={secondaryTagMap[status]}>DECLINED</Tag>
+            </div>
+          </Tooltip.Trigger>
+          <Tooltip.Content>Usually due to calendar conflicts or logistics constraints.</Tooltip.Content>
+        </Tooltip.Root>
+      </Tooltip.Provider>
+    );
+  }
 
   return <Tag variant={secondaryTagMap[status]}>{status}</Tag>;
 }
