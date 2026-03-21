@@ -288,8 +288,8 @@ const topicsTransformer = (result: GetTopicsQuery) => {
 
       return {
         id: item.sys.id,
-        title: item.title,
-        description: item.description,
+        title: item.title!,
+        description: item.description!,
         talks,
       };
     })
