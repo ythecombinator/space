@@ -1,6 +1,60 @@
 {
-  "lastUpdatedAt": 1767218566193,
+  "lastUpdatedAt": 1774064707762,
   "flights": [
+    {
+      "number": "1374",
+      "airlineIata": "FR",
+      "airlineName": "Ryanair",
+      "depAirportIata": "STN",
+      "arrAirportIata": "PRG",
+      "distance": 998,
+      "depTimeOriginal": 1776532200
+    },
+    {
+      "number": "1375",
+      "airlineIata": "FR",
+      "airlineName": "Ryanair",
+      "depAirportIata": "PRG",
+      "arrAirportIata": "STN",
+      "distance": 998,
+      "depTimeOriginal": 1776257100
+    },
+    {
+      "number": "1482",
+      "airlineIata": "LX",
+      "airlineName": "SWISS",
+      "depAirportIata": "ZRH",
+      "arrAirportIata": "PRG",
+      "distance": 512,
+      "depTimeOriginal": 1770840000
+    },
+    {
+      "number": "2817",
+      "airlineIata": "LX",
+      "airlineName": "SWISS",
+      "depAirportIata": "GVA",
+      "arrAirportIata": "ZRH",
+      "distance": 231,
+      "depTimeOriginal": 1770833700
+    },
+    {
+      "number": "2824",
+      "airlineIata": "LX",
+      "airlineName": "SWISS",
+      "depAirportIata": "ZRH",
+      "arrAirportIata": "GVA",
+      "distance": 231,
+      "depTimeOriginal": 1770462300
+    },
+    {
+      "number": "1485",
+      "airlineIata": "LX",
+      "airlineName": "SWISS",
+      "depAirportIata": "PRG",
+      "arrAirportIata": "ZRH",
+      "distance": 512,
+      "depTimeOriginal": 1770453600
+    },
     {
       "number": "1382",
       "airlineIata": "AF",
