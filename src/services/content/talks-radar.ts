@@ -2,7 +2,7 @@ import NotionService, { NotionPageResponse } from 'services/providers/notion';
 
 import { formatDate, isSingleDayTimeSpan } from 'utils/date';
 
-const DATABASE_ID = '28968c90fe33815abd62ec8b72b497f0';
+const DATABASE_ID = process.env.NOTION_DATABASE_ID_EVENTS!;
 
 export default class TalksRadarContentService {
   private static instance: TalksRadarContentService;
