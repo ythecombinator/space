@@ -1,6 +1,6 @@
 import { InferGetStaticPropsType } from 'next';
 import { NextSeo as Metadata } from 'next-seo';
-import { Suspense, useState } from 'react';
+import { useState } from 'react';
 
 import { Routes, siteMetadata } from 'config/constants';
 
@@ -13,7 +13,6 @@ import SearchBar, { SearchBarProps } from 'components/shared/seach-bar';
 import Layout from 'components/layouts/page';
 
 import AllPostsSection from 'components/pages/posts/all-posts-section';
-import AllPostsSectionSkeleton from 'components/pages/posts/all-posts-section-skeleton';
 
 const metadata: MetadataConfig = {
   title: `Posts — ${siteMetadata.title}`,
@@ -68,9 +67,7 @@ function Page({ allPosts, openGraphImage }: PageProps) {
         headingGradient="minnesota"
         subHeading={<SearchBar label={`Search posts`} onChange={onChange} />}
       >
-        <Suspense fallback={<AllPostsSectionSkeleton items={3} />}>
-          <AllPostsSection items={allPosts} searchTerm={searchTerm} />
-        </Suspense>
+        <AllPostsSection items={allPosts} searchTerm={searchTerm} />
       </Layout>
     </>
   );

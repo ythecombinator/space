@@ -39,8 +39,8 @@ importers:
         specifier: 5.13.0
         version: 5.13.0
       '@orama/orama':
-        specifier: 2.1.1
-        version: 2.1.1
+        specifier: 3.1.18
+        version: 3.1.18
       '@radix-ui/react-avatar':
         specifier: ^1.0.4
         version: 1.1.11(@types/react-dom@18.2.18)(@types/react@18.2.45)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -2456,9 +2456,9 @@ packages:
     resolution: {integrity: sha512-wlYG/U6ddW1ilXslnDLLQYJ8nd97W8JJTTfwkGhubx6dzW6SUkd+N4/MzTjjyZlrHQunxHtkHFvVpUKiROvFDw==}
     engines: {node: '>=14'}
 
-  '@orama/orama@2.1.1':
-    resolution: {integrity: sha512-euTV/2kya290SNkl5m8e/H1na8iDygk74nNtl4E0YZNyYIrEMwE1JwamoroMKGZw2Uz+in/8gH3m1+2YfP0j1w==}
-    engines: {node: '>= 16.0.0'}
+  '@orama/orama@3.1.18':
+    resolution: {integrity: sha512-a61ljmRVVyG5MC/698C8/FfFDw5a8LOIvyOLW5fztgUXqUpc1jOfQzOitSCbge657OgXXThmY3Tk8fpiDb4UcA==}
+    engines: {node: '>= 20.0.0'}
 
   '@protobufjs/aspromise@1.1.2':
     resolution: {integrity: sha512-j+gKExEuLmKwvz3OgROXtrJ2UG2x8Ch2YZUxahh+s1F2HZ+wAceUNLkvy6zKCPVRkU++ZWQrdxsUeQXmcg4uoQ==}
@@ -10524,7 +10524,7 @@ snapshots:
 
   '@opentelemetry/semantic-conventions@1.5.0': {}
 
-  '@orama/orama@2.1.1': {}
+  '@orama/orama@3.1.18': {}
 
   '@protobufjs/aspromise@1.1.2': {}
 

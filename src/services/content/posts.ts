@@ -4,7 +4,6 @@ import { CoreContent } from 'pliny/utils/contentlayer';
 import ContentlayerService from 'services/providers/contentlayer';
 
 import { sortEntries } from 'utils/contentlayer';
-import { toIndexableCollection } from 'utils/search';
 
 //  ---------------------------------------------------------------------------
 //  TYPES
@@ -37,7 +36,7 @@ export default class PostsContentService extends ContentlayerService<BlogEntry> 
   public getAll() {
     return sortEntries(allBlogEntries).map((post) => ({
       ...post,
-      _tags: toIndexableCollection(post.tags),
+      _tags: post.tags,
     }));
   }
 }

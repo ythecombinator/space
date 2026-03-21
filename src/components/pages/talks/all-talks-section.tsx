@@ -1,10 +1,10 @@
 import { useTheme } from 'next-themes';
-import { PropsWithChildren, Suspense, useMemo, useState } from 'react';
+import { PropsWithChildren, useMemo, useState } from 'react';
 import ContentLoader from 'react-content-loader';
 import colors from 'tailwindcss/colors';
 
 import { isEmpty, reversedIndexOf } from 'utils/array';
-import { useSearch } from 'utils/search';
+import { SearchProvider, useSearch } from 'utils/search';
 
 import Chip from 'components/shared/chip';
 import DropdownMenu from 'components/shared/dropdown-menu';
@@ -23,10 +23,10 @@ type Schema = {
   talkTitle: string;
   talkCategory: string;
   _description: string;
-  _events: string;
-  _tags: string;
-  _cities: string;
-  _countries: string;
+  _events: string[];
+  _tags: string[];
+  _cities: string[];
+  _countries: string[];
 };
 
 export type AllTalksSectionProps = {
@@ -48,10 +48,10 @@ const searchSchema = {
   talkSlug: 'string',
   talkCategory: 'string',
   _description: 'string',
-  _events: 'string',
-  _tags: 'string',
-  _cities: 'string',
-  _countries: 'string',
+  _events: 'string[]',
+  _tags: 'string[]',
+  _cities: 'string[]',
+  _countries: 'string[]',
 } as const;
 
 function renderPrefix(talkCategory: string) {
@@ -94,9 +94,9 @@ function AllTalksSection({ items: baseItems }: PropsWithChildren<AllTalksSection
         <SearchBar label="Search topics, events and places" onChange={onChange} />
       </div>
       <div className="mb-6">
-        <Suspense fallback={<AllTalksListSkeleton items={3} />}>
-          <AllTalksList items={baseItems} searchTerm={searchTerm} selectedCategories={selectedCategories} />
-        </Suspense>
+        <SearchProvider schema={searchSchema} data={baseItems} fallback={<AllTalksListSkeleton items={3} />}>
+          <AllTalksList searchTerm={searchTerm} selectedCategories={selectedCategories} />
+        </SearchProvider>
       </div>
     </SectionContainer>
   );
@@ -109,13 +109,12 @@ export default AllTalksSection;
 //  ---------------------------------------------------------------------------
 
 type AllTalksListProps = {
-  items: Array<Schema>;
   searchTerm: string;
   selectedCategories: string[];
 };
 
-function AllTalksList({ items: baseItems, searchTerm, selectedCategories }: AllTalksListProps) {
-  const searchedItems = useSearch<typeof searchSchema, Schema>(searchSchema, baseItems, searchTerm);
+function AllTalksList({ searchTerm, selectedCategories }: AllTalksListProps) {
+  const searchedItems = useSearch<Schema>(searchTerm);
   const items = searchedItems.filter((item) => selectedCategories.includes(item.talkCategory));
 
   if (isEmpty(items)) {

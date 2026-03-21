@@ -1,7 +1,7 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { isEmpty } from 'utils/array';
-import { useSearch } from 'utils/search';
+import { SearchProvider, useSearch } from 'utils/search';
 
 import EmptyList from 'components/shared/empty-list';
 import SectionContainer from 'components/shared/section-container';
@@ -12,12 +12,10 @@ import AllPostsSectionItem, { AllPostsSectionItemProps } from 'components/pages/
 //  TYPES
 //  ---------------------------------------------------------------------------
 
+type PostDocument = Omit<AllPostsSectionItemProps, 'index'> & { _tags: string[] };
+
 export type AllPostsSectionProps = {
-  items: Array<
-    Omit<AllPostsSectionItemProps, 'index'> & {
-      _tags: string;
-    }
-  >;
+  items: Array<PostDocument>;
   searchTerm: string;
 };
 
@@ -29,7 +27,7 @@ const searchSchema = {
   title: 'string',
   slug: 'string',
   summary: 'string',
-  _tags: 'string',
+  _tags: 'string[]',
 } as const;
 
 //  ---------------------------------------------------------------------------
@@ -37,10 +35,18 @@ const searchSchema = {
 //  ---------------------------------------------------------------------------
 
 const AllPostsSection: FunctionComponent<PropsWithChildren<AllPostsSectionProps>> = ({
-  items: baseItems,
+  items,
   searchTerm,
-}) => {
-  const items = useSearch(searchSchema, baseItems, searchTerm);
+}) => (
+  <SearchProvider schema={searchSchema} data={items}>
+    <AllPostsList searchTerm={searchTerm} />
+  </SearchProvider>
+);
+
+export default AllPostsSection;
+
+function AllPostsList({ searchTerm }: { searchTerm: string }) {
+  const items = useSearch<PostDocument>(searchTerm);
 
   return (
     <SectionContainer>
@@ -52,6 +58,4 @@ const AllPostsSection: FunctionComponent<PropsWithChildren<AllPostsSectionProps>
       </ul>
     </SectionContainer>
   );
-};
-
-export default AllPostsSection;
+}

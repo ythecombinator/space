@@ -30,7 +30,7 @@
     "@graphql-codegen/typescript-operations": "5.0.6",
     "@graphql-codegen/typescript-react-apollo": "4.3.3",
     "@notionhq/client": "5.13.0",
-    "@orama/orama": "2.1.1",
+    "@orama/orama": "3.1.18",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-dropdown-menu": "2.0.6",
     "@radix-ui/react-navigation-menu": "1.1.4",

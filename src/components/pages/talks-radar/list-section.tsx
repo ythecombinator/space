@@ -1,3 +1,4 @@
+
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import {
   CellContext,
@@ -7,23 +8,22 @@ import {
   createColumnHelper,
   flexRender,
   getCoreRowModel,
-  getFilteredRowModel,
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
 import { useVirtualizer } from '@tanstack/react-virtual';
-import { PropsWithChildren, useEffect, useRef, useState } from 'react';
+import { PropsWithChildren, useEffect, useMemo, useRef, useState } from 'react';
 import { BiSort } from 'react-icons/bi';
 import { FiExternalLink } from 'react-icons/fi';
 
 import { EngagementStatusPrimary, EngagementStatusSecondary, EventEntry } from 'services/content/talks-radar';
 
+import { SearchProvider, useSearch } from 'utils/search';
 import { classNames } from 'utils/styles';
 
 import DropdownMenu from 'components/shared/dropdown-menu';
 import EmptyList from 'components/shared/empty-list';
 import Link from 'components/shared/link';
-import SearchBar from 'components/shared/seach-bar';
 import Table from 'components/shared/table';
 import Tag, { TagVariant } from 'components/shared/tag';
 import Tooltip from 'components/shared/tooltip';
@@ -330,26 +330,79 @@ const columns = [
 //  TYPES
 //  ---------------------------------------------------------------------------
 
+type SearchableEventEntry = EventEntry;
+
 interface DataSectionProps {
   data: EventEntry[];
 }
+
+interface DataSectionTableProps {
+  data: EventEntry[];
+  searchTerm: string;
+  selectedStatus: string;
+}
+
+const searchSchema = {
+  event: 'string',
+  city: 'string',
+  country: 'string',
+} as const;
 
 //  ---------------------------------------------------------------------------
 //  UI
 //  ---------------------------------------------------------------------------
 
 function DataSection({ data }: PropsWithChildren<DataSectionProps>) {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedStatus, setSelectedStatus] = useState('all');
+
+  return (
+    <div className="w-full">
+      <div className="flex items-end gap-4 py-4">
+        <div className="flex-1">
+          <input
+            type="search"
+            placeholder="Find events, countries, cities..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+          />
+        </div>
+        <DropdownMenu
+          label="Status"
+          initialSelectedItem="all"
+          items={statusFilterItems}
+          onSelect={setSelectedStatus}
+        />
+      </div>
+
+      <SearchProvider schema={searchSchema} data={data} fallback={<div className="rounded-md border p-4 text-sm text-muted-foreground">Searching events...</div>}>
+        <DataSectionTable searchTerm={searchTerm} selectedStatus={selectedStatus} />
+      </SearchProvider>
+    </div>
+  );
+}
+
+function DataSectionTable({ searchTerm, selectedStatus }: Omit<DataSectionTableProps, 'data'>) {
   const [sorting, setSorting] = useState<SortingState>([{ id: 'dates', desc: true }]);
   const scrollParentRef = useRef<HTMLDivElement | null>(null);
 
+  const searchedData = useSearch<EventEntry>(searchTerm);
+  const tableData = useMemo(() => {
+    if (selectedStatus === 'all') {
+      return searchedData;
+    }
+
+    return searchedData.filter((item) => item.result === selectedStatus);
+  }, [searchedData, selectedStatus]);
+
   const table = useReactTable({
-    data,
+    data: tableData,
     columns,
     enableSortingRemoval: false,
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
     state: {
       sorting,
     },
@@ -374,29 +427,13 @@ function DataSection({ data }: PropsWithChildren<DataSectionProps>) {
     rowVirtualizer.measure();
   }, [rows.length, sorting, rowVirtualizer]);
 
-  function resetVirtualScroll() {
+  useEffect(() => {
     if (scrollParentRef.current) {
       scrollParentRef.current.scrollTop = 0;
     }
 
     rowVirtualizer.scrollToOffset(0);
-  }
-
-  function handleSearchChange(value: string) {
-    resetVirtualScroll();
-    table.getColumn('event')?.setFilterValue(value);
-  }
-
-  function handleStatusFilterSelect(id: string) {
-    resetVirtualScroll();
-
-    if (id === 'all') {
-      table.getColumn('result')?.setFilterValue(undefined);
-      return;
-    }
-
-    table.getColumn('result')?.setFilterValue(id);
-  }
+  }, [searchTerm, selectedStatus, rowVirtualizer]);
 
   function renderVirtualizedTable() {
     return (
@@ -459,35 +496,17 @@ function DataSection({ data }: PropsWithChildren<DataSectionProps>) {
     );
   }
 
-  function renderTableSection() {
-    if (!rows.length) {
-      return <EmptyList heading="No items found 😢" subHeading="I don't have this event tracked." />;
-    }
-
-    return renderVirtualizedTable();
+  if (!rows.length) {
+    return <EmptyList heading="No items found 😢" subHeading="I don't have this event tracked." />;
   }
 
   return (
-    <div className="w-full">
-      <div className="flex justify-between py-4">
-        <SearchBar
-          label="Find events..."
-          onChange={(event) => handleSearchChange(event.target.value)}
-        />
-        <DropdownMenu
-          label="Status"
-          initialSelectedItem="all"
-          items={statusFilterItems}
-          onSelect={handleStatusFilterSelect}
-        />
-      </div>
-      {renderTableSection()}
+    <>
+      {renderVirtualizedTable()}
       <div className="flex items-center justify-end py-4">
-        <div className="flex-1 text-sm text-muted-foreground">
-          {rows.length} event(s) found.
-        </div>
+        <div className="flex-1 text-sm text-muted-foreground">{rows.length} event(s) found.</div>
       </div>
-    </div>
+    </>
   );
 }
 

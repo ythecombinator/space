@@ -31,7 +31,6 @@ import ContentfulService from 'services/providers/contentful';
 import YoutubeService, { YoutubeResponse } from 'services/providers/youtube';
 
 import { formatDate, isSingleDayTimeSpan } from 'utils/date';
-import { toIndexableCollection } from 'utils/search';
 
 //  ---------------------------------------------------------------------------
 //  CONFIG
@@ -201,10 +200,10 @@ const allTransformer = (result: GetAllTalksQuery) => {
       talkCategory: category,
       // Indexable search metadata
       _description: JSON.stringify(abstract.json),
-      _events: toIndexableCollection(sessionsCollection.items.map((session) => session.event.name)),
-      _cities: toIndexableCollection(sessionsCollection.items.map((session) => session.event.city.name)),
-      _countries: toIndexableCollection(sessionsCollection.items.map((session) => session.event.city.country.name)),
-      _tags: toIndexableCollection(contentfulMetadata.tags.map((tag) => tag.name)),
+      _events: sessionsCollection.items.map((session) => session.event.name),
+      _cities: sessionsCollection.items.map((session) => session.event.city.name),
+      _countries: sessionsCollection.items.map((session) => session.event.city.country.name),
+      _tags: contentfulMetadata.tags.map((tag) => tag.name),
     };
   });
 };
