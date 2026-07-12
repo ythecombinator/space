@@ -1,11 +1,14 @@
 import { useTheme } from 'next-themes';
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { FeaturedTalk } from 'services/content/talks';
 
 import { randomElement } from 'utils/array';
+import { classNames } from 'utils/styles';
 
 import Typography from 'components/shared/typography';
+
+import PhotoHighlightsSectionItemSkeleton from 'components/pages/talks/photo-highlights-section-item-skeleton';
 
 //  ---------------------------------------------------------------------------
 //  UTILS
@@ -42,6 +45,18 @@ const getGradientClass = () => {
   return randomElement(gradients);
 };
 
+function isLoadedImage(img: HTMLImageElement, photoURL: string) {
+  if (!img.complete || img.naturalWidth === 0) {
+    return false;
+  }
+
+  try {
+    return img.currentSrc === new URL(photoURL, window.location.href).href;
+  } catch {
+    return false;
+  }
+}
+
 //  ---------------------------------------------------------------------------
 //  UI
 //  ---------------------------------------------------------------------------
@@ -51,23 +66,102 @@ function PhotoHighlightsSectionItem(props: PropsWithChildren<FeaturedTalk>) {
   const { resolvedTheme } = useTheme();
   const isDarkMode = resolvedTheme === 'dark';
 
+  const imgRef = useRef<HTMLImageElement>(null);
+  const isMountedRef = useRef(true);
+  const photoURLRef = useRef(photoURL);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const gradientClass = useMemo(() => getGradientClass(), []);
+
+  photoURLRef.current = photoURL;
+
+  const setLoadedSafe = useCallback((loaded: boolean) => {
+    if (isMountedRef.current) {
+      setIsLoaded(loaded);
+    }
+  }, []);
+
+  const markLoadedIfReady = useCallback(() => {
+    const img = imgRef.current;
+
+    if (!isMountedRef.current || !img || !isLoadedImage(img, photoURLRef.current)) {
+      return;
+    }
+
+    setLoadedSafe(true);
+  }, [setLoadedSafe]);
+
+  const handleImageError = useCallback(() => {
+    setLoadedSafe(true);
+  }, [setLoadedSafe]);
+
+  useEffect(() => {
+    isMountedRef.current = true;
+
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    setLoadedSafe(false);
+    markLoadedIfReady();
+  }, [photoURL, markLoadedIfReady, setLoadedSafe]);
+
   return (
     <div className="group relative h-[280px] w-full overflow-hidden rounded-2xl text-white">
+      {!isLoaded && (
+        <div className="absolute inset-0 z-0">
+          <PhotoHighlightsSectionItemSkeleton />
+        </div>
+      )}
+
       <img
+        ref={imgRef}
         src={photoURL}
         alt={eventName}
-        className="absolute inset-0 z-0 h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-110"
+        loading="lazy"
+        decoding="async"
+        onLoad={markLoadedIfReady}
+        onError={handleImageError}
+        className={classNames(
+          'absolute inset-0 z-0 h-full w-full object-cover object-center transition-[opacity,transform] duration-500 group-hover:scale-110',
+          isLoaded ? 'opacity-100' : 'opacity-0'
+        )}
       />
 
       <div
-        className={`absolute inset-0 opacity-50 ${isDarkMode ? 'bg-black/50' : 'bg-gray-600/10'} z-5 
-                bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]`}
-      ></div>
-      <div className={`absolute inset-0 ${isDarkMode ? 'bg-black/30' : 'bg-white/30'} z-10`}></div>
-      <div className={`absolute inset-0 bg-gradient-to-br ${getGradientClass()} z-20 opacity-20`}></div>
+        className={classNames(
+          'absolute inset-0 z-5 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] transition-opacity duration-500',
+          isDarkMode ? 'bg-black/50' : 'bg-gray-600/10',
+          isLoaded ? 'opacity-50' : 'opacity-0'
+        )}
+      />
+      <div
+        className={classNames(
+          'absolute inset-0 z-10 transition-opacity duration-500',
+          isLoaded ? 'opacity-100' : 'opacity-0',
+          isDarkMode ? 'bg-black/30' : 'bg-white/30'
+        )}
+      />
+      <div
+        className={classNames(
+          `absolute inset-0 bg-gradient-to-br ${gradientClass} z-20 transition-opacity duration-500`,
+          isLoaded ? 'opacity-20' : 'opacity-0'
+        )}
+      />
+      <div
+        className={classNames(
+          'absolute inset-0 z-40 bg-gradient-to-t from-black/70 via-black/40 to-transparent transition-opacity duration-500',
+          isLoaded ? 'opacity-100' : 'opacity-0'
+        )}
+      />
 
-      <div className="absolute inset-0 z-40 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
-      <div className="relative z-50 flex h-full flex-col justify-end p-6">
+      <div
+        className={classNames(
+          'relative z-50 flex h-full flex-col justify-end p-6 transition-opacity duration-500',
+          isLoaded ? 'opacity-100' : 'opacity-0'
+        )}
+      >
         <Typography.a href={talkSlug}>{talkTitle}</Typography.a>
         <Typography.h3>{eventName}</Typography.h3>
         <Typography.subtle className="text-white">{eventLocation}</Typography.subtle>
