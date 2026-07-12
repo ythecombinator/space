@@ -7,6 +7,7 @@ import fonts from 'utils/fonts';
 import { classNames, hexToRGBA } from 'utils/styles';
 
 import Link, { LinkProps } from 'components/shared/link';
+import Tooltip from 'components/shared/tooltip';
 
 //  ---------------------------------------------------------------------------
 //  UI: Typography.a
@@ -133,6 +134,29 @@ const Mark: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLElement>>> = 
 };
 
 //  ---------------------------------------------------------------------------
+//  UI: Typography.mention
+//  ---------------------------------------------------------------------------
+
+interface MentionProps {
+  hint: string;
+}
+
+const Mention: FunctionComponent<PropsWithChildren<MentionProps>> = ({ children, hint }) => {
+  return (
+    <Tooltip.Provider>
+      <Tooltip.Root>
+        <Tooltip.Trigger className="inline cursor-help border-none bg-transparent p-0 font-inherit underline decoration-dotted decoration-amber-500 underline-offset-4 dark:decoration-amber-400">
+          <Highlight color="amber" customElement="span" multiline>
+            {children}
+          </Highlight>
+        </Tooltip.Trigger>
+        <Tooltip.Content>{hint}</Tooltip.Content>
+      </Tooltip.Root>
+    </Tooltip.Provider>
+  );
+};
+
+//  ---------------------------------------------------------------------------
 //  UI: Typography.P
 //  ---------------------------------------------------------------------------
 
@@ -186,6 +210,7 @@ const Subtle: FunctionComponent<PropsWithChildren<HTMLAttributes<HTMLParagraphEl
 
 const Typography = {
   mark: Mark,
+  mention: Mention,
   a: Anchor,
   lead: Lead,
   h1: Heading1,
