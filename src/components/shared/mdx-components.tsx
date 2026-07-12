@@ -45,6 +45,7 @@ const MDXComponents: MDXContentProps['components'] = {
   wrapper: Wrapper,
   Lead: Typography.lead,
   Subtle: Typography.subtle,
+  Mention: Typography.mention,
   Inventory,
   CustomerPortfolio,
   Admonition,
