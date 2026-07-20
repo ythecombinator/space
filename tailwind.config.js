@@ -104,12 +104,32 @@ const config = {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-33.33%)' },
         },
+        'fade-in': {
+          from: { opacity: '0' },
+          to: { opacity: '1' },
+        },
+        'fade-out': {
+          from: { opacity: '1' },
+          to: { opacity: '0' },
+        },
+        'slide-up': {
+          from: { opacity: '0', transform: 'translateY(8px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
+        },
+        'slide-down': {
+          from: { opacity: '0', transform: 'translateY(-8px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
+        },
       },
       animation: {
         hue: 'hue 10s infinite',
         wave: 'wave 2s linear infinite',
         marquee: 'marquee 40s linear infinite',
         'marquee-reverse': 'marquee 40s linear infinite reverse',
+        'fade-in': 'fade-in 200ms ease-out',
+        'fade-out': 'fade-out 150ms ease-in',
+        'slide-up': 'slide-up 200ms ease-out',
+        'slide-down': 'slide-down 200ms ease-out',
       },
       typography: (theme) => ({
         DEFAULT: {
