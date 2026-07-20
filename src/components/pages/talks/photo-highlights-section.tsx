@@ -50,7 +50,7 @@ function PhotoHighlightsSection({ items }: PropsWithChildren<PhotoHighlightsSect
           {rows.map((row, rowIndex) => (
             <div key={`row-${rowIndex}`} className="relative w-full overflow-hidden">
               <div
-                className={`flex gap-6 will-change-transform ${
+                className={`vt-none flex gap-6 will-change-transform ${
                   rowIndex % 2 === 0 ? 'animate-marquee' : 'animate-marquee-reverse'
                 }`}
               >

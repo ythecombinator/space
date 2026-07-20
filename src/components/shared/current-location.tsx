@@ -60,7 +60,7 @@ function CurrentLocation() {
   }, [springRotation, isDarkMode]);
 
   return (
-    <div className="relative flex h-60 flex-col gap-6 overflow-hidden rounded-xl p-4 shadow-feature-card lg:p-6">
+    <div className="vt-none relative flex h-60 flex-col gap-6 overflow-hidden rounded-xl p-4 shadow-feature-card lg:p-6">
       <div className="absolute inset-x-0 -bottom-44 mx-auto aspect-square h-84 lg:-bottom-48 lg:h-96">
         <div
           style={{

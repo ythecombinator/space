@@ -85,7 +85,7 @@ function GlobeMap({ flights, airports, isDarkMode }: GlobeMapProps) {
   const pointsData = getPointsData(airports);
 
   return (
-    <div ref={globeContainerRef} className="min-h-[500px] w-full">
+    <div ref={globeContainerRef} className="vt-none min-h-[500px] w-full">
       <Globe
         globeImageUrl={
           isDarkMode
