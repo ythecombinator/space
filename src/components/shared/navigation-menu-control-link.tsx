@@ -1,7 +1,8 @@
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 import { NavigationMenuLinkProps } from '@radix-ui/react-navigation-menu';
-import Link, { LinkProps } from 'next/link';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
+
+import Link, { LinkProps } from 'components/shared/link';
 
 //  ---------------------------------------------------------------------------
 //  TYPES
