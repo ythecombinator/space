@@ -1,13 +1,18 @@
 import Image, { ImageProps } from 'next/image';
 import { PropsWithChildren } from 'react';
 
-type SectionCoverProps = Pick<ImageProps, 'src' | 'alt'>;
+import { viewTransitionStyle } from 'utils/view-transition';
+
+type SectionCoverProps = Pick<ImageProps, 'src' | 'alt'> & {
+  /** Full view-transition-name, typically from vtKeys */
+  transitionKey?: string;
+};
 
 //  ---------------------------------------------------------------------------
 //  UI
 //  ---------------------------------------------------------------------------
 
-export function SectionCover({ src, alt }: PropsWithChildren<SectionCoverProps>) {
+export function SectionCover({ src, alt, transitionKey }: PropsWithChildren<SectionCoverProps>) {
   return (
     <Image
       priority
@@ -17,6 +22,7 @@ export function SectionCover({ src, alt }: PropsWithChildren<SectionCoverProps>)
       height={475}
       sizes="100vw"
       className="aspect-video w-full rounded-lg object-cover grayscale hover:grayscale-0"
+      style={viewTransitionStyle(transitionKey)}
     />
   );
 }
