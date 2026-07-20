@@ -6,6 +6,7 @@ import { BlogEntry } from 'services/content/posts';
 
 import { formatDate } from 'utils/date';
 import { discussOnLinkedIn, discussOnReddit, discussOnTwitter } from 'utils/social';
+import { viewTransitionStyle, vtKeys } from 'utils/view-transition';
 
 import PageTitle from 'components/shared/page-title';
 import ScrollTop from 'components/shared/scroll-top';
@@ -34,7 +35,7 @@ function BlogEntryLayout({ content, children }: PropsWithChildren<BlogEntryLayou
         <header className="flex flex-col gap-4 space-y-2 pb-10">
           <dl className="flex gap-4">
             <dt className="sr-only">Published on</dt>
-            <dd>
+            <dd style={viewTransitionStyle(vtKeys.postDate(slug))}>
               <Typography.subtle className="text-gray-500 dark:text-gray-400">
                 <time dateTime={date}>{formatDate(date)}</time>
               </Typography.subtle>
@@ -45,11 +46,11 @@ function BlogEntryLayout({ content, children }: PropsWithChildren<BlogEntryLayou
               <Typography.subtle className="text-gray-500 dark:text-gray-400">{readingTime.text}</Typography.subtle>
             </dd>
           </dl>
-          <PageTitle>{title}</PageTitle>
+          <PageTitle transitionKey={vtKeys.postTitle(slug)}>{title}</PageTitle>
         </header>
         <div className="pb-8 " style={{ gridTemplateRows: 'auto 1fr' }}>
           <div className="space-y-4 xl:col-span-3 xl:row-span-2 xl:pb-0">
-            <SectionCover alt={title} src={hero} />
+            <SectionCover alt={title} src={hero} transitionKey={vtKeys.postHero(slug)} />
             <div className="prose max-w-none pb-4 dark:prose-invert">{children}</div>
             <div className="mx-auto mt-16 flex w-full max-w-3xl flex-col items-center justify-center text-center">
               <Typography.subtle className="flex items-center">Thanks for reading!</Typography.subtle>
