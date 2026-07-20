@@ -6,6 +6,7 @@ import { Routes, siteMetadata } from 'config/constants';
 import FlightyService from 'services/providers/flighty';
 
 import { MetadataConfig, generateOpenGraphImage } from 'utils/open-graph';
+import { viewTransitionStyle, vtKeys } from 'utils/view-transition';
 
 import SectionContainer from 'components/shared/section-container';
 import SectionCover from 'components/shared/section-cover';
@@ -71,9 +72,11 @@ function Page({ openGraphImage, flights, airports, stats, lastUpdatedAt }: PageP
           images: [{ url: openGraphImage }],
         }}
       />
-      <Layout heading="Adventures. Memories." headingGradient="orangeCoral">
+      <Layout heading="Adventures. Memories." headingGradient="orangeCoral" headingTransitionKey={vtKeys.aboutTitle('traveling')}>
         <SectionContainer className="prose dark:prose-invert">
-          <SectionCover alt="This is me!" src="/content/misc/traveling.jpg" />
+          <div className="overflow-hidden rounded-lg" style={viewTransitionStyle(vtKeys.aboutCard('traveling'))}>
+            <SectionCover alt="This is me!" src="/content/misc/traveling.jpg" />
+          </div>
         </SectionContainer>
 
         <SectionContainer className="prose dark:prose-invert">

@@ -11,6 +11,7 @@ import MarkdownContentService from 'services/content/markdown';
 
 import { serializeExperience } from 'utils/linkedin';
 import { MetadataConfig, generateOpenGraphImage } from 'utils/open-graph';
+import { viewTransitionStyle, vtKeys } from 'utils/view-transition';
 
 import SectionContainer from 'components/shared/section-container';
 import SectionCover from 'components/shared/section-cover';
@@ -72,9 +73,11 @@ function Page({ content, work, volunteering, openGraphImage }: PageProps) {
           images: [{ url: openGraphImage }],
         }}
       />
-      <Layout heading="Build. Share. Rewind." headingGradient="peachy">
+      <Layout heading="Build. Share. Rewind." headingGradient="peachy" headingTransitionKey={vtKeys.aboutTitle('experience')}>
         <SectionContainer className="prose dark:prose-invert">
-          <SectionCover alt="This is me!" src="/content/misc/work.jpg" />
+          <div className="overflow-hidden rounded-lg" style={viewTransitionStyle(vtKeys.aboutCard('experience'))}>
+            <SectionCover alt="This is me!" src="/content/misc/work.jpg" />
+          </div>
           <MDXRenderer content={mdxContent} />
         </SectionContainer>
 
