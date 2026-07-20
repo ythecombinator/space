@@ -127,6 +127,7 @@ function AllTalksList({ searchTerm, selectedCategories }: AllTalksListProps) {
       label={talkTitle}
       index={reversedIndexOf(items.length, index)}
       href={talkSlug}
+      talkSlug={talkSlug}
       prefix={renderPrefix(talkCategory)}
     />
   ));

@@ -4,6 +4,7 @@ import { UpcomingSession } from 'services/content/talks';
 
 import { isEmpty } from 'utils/array';
 import { formatDate } from 'utils/date';
+import { viewTransitionStyle, vtKeys } from 'utils/view-transition';
 
 import EmptyList from 'components/shared/empty-list';
 import Link from 'components/shared/link';
@@ -42,11 +43,14 @@ const UpcomingTalksSectionItem: FunctionComponent<UpcomingSession> = ({
     <Link
       href={talkSlug}
       className="flex w-full flex-col justify-between rounded border border-neutral-200 bg-neutral-50 px-3 py-4 dark:border-neutral-700 dark:bg-neutral-800"
+      style={viewTransitionStyle(vtKeys.talkCard(talkSlug))}
     >
       <Typography.subtle className="text-neutral-900 dark:text-neutral-100">
         {eventLocation} • {<time dateTime={eventDate.toString()}>{formatDate(eventDate)}</time>}
       </Typography.subtle>
-      <Typography.h3 className="mt-2">{talkTitle}</Typography.h3>
+      <Typography.h3 className="mt-2" style={viewTransitionStyle(vtKeys.talkTitle(talkSlug))}>
+        {talkTitle}
+      </Typography.h3>
       <Typography.small className="mt-2">{eventName}</Typography.small>
     </Link>
   );

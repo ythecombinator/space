@@ -10,6 +10,7 @@ import TalksContentService from 'services/content/talks';
 
 import { documentToString } from 'utils/contentful';
 import { generateOpenGraphImage } from 'utils/open-graph';
+import { vtKeys } from 'utils/view-transition';
 
 import SectionContainer from 'components/shared/section-container';
 import Typography from 'components/shared/typography';
@@ -63,12 +64,12 @@ export async function getStaticProps(context: GetStaticPropsContext<Params>) {
   });
 
   return {
-    props: { ...talkData, openGraphImage },
+    props: { ...talkData, slug: id, openGraphImage },
   };
 }
 
 function Page(props: PageProps) {
-  const { title, abstract, sessions, openGraphImage } = props;
+  const { title, abstract, sessions, openGraphImage, slug } = props;
   const description = documentToString(abstract);
 
   return (
@@ -83,7 +84,11 @@ function Page(props: PageProps) {
           images: [{ url: openGraphImage }],
         }}
       />
-      <Layout heading={title!}>
+      <Layout
+        heading={title!}
+        headingTransitionKey={vtKeys.talkTitle(slug)}
+        headingShellTransitionKey={vtKeys.talkCard(slug)}
+      >
         <SectionContainer>
           {documentToReactComponents(abstract, {
             renderNode: {

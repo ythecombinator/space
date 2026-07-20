@@ -36,6 +36,7 @@ function TopicHighlightsSection(props: PropsWithChildren<TopicHighlightsSectionP
             title={item.talkTitle}
             description={`Presented ${item.sessionsCount} times`}
             href={item.talkSlug}
+            talkSlug={item.talkSlug}
           />
         ))}
       </CardScrollArea>
