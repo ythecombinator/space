@@ -4,6 +4,7 @@ import { RoughNotation, RoughNotationProps } from 'react-rough-notation';
 import colors from 'tailwindcss/colors';
 
 import fonts from 'utils/fonts';
+import { isInternalLink } from 'utils/link';
 import { classNames, hexToRGBA } from 'utils/styles';
 
 import Link, { LinkProps } from 'components/shared/link';
@@ -13,8 +14,18 @@ import Tooltip from 'components/shared/tooltip';
 //  UI: Typography.a
 //  ---------------------------------------------------------------------------
 
-const Anchor: FunctionComponent<LinkProps> = ({ className, href, ...props }) => {
-  return <Link className={classNames(className)} target="_blank" rel="noopener noreferrer" href={href} {...props} />;
+const Anchor: FunctionComponent<LinkProps> = ({ className, href, target, rel, ...props }) => {
+  const isExternal = !isInternalLink(href);
+
+  return (
+    <Link
+      className={classNames(className)}
+      href={href}
+      target={target ?? (isExternal ? '_blank' : undefined)}
+      rel={rel ?? (isExternal ? 'noopener noreferrer' : undefined)}
+      {...props}
+    />
+  );
 };
 
 //  ---------------------------------------------------------------------------
