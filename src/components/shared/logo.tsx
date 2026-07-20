@@ -40,7 +40,7 @@ function Logo() {
 
   return (
     <Image
-      className="w-12 hover:animate-wave"
+      className="vt-logo w-12 hover:animate-wave"
       width={48}
       height={48}
       src={`/content/me/${memoji}.png`}

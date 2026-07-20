@@ -39,7 +39,7 @@ function LayoutWrapper({ children }: PropsWithChildren) {
               <NavigationMenuMobile items={headerNavigationLinks} />
             </div>
           </header>
-          <main className="mb-auto">{children}</main>
+          <main className="vt-main mb-auto">{children}</main>
           <Footer />
         </div>
       </div>

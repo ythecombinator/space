@@ -10,6 +10,7 @@ import { Routes, siteMetadata } from 'config/constants';
 
 import { getMetadataProps, usePathName } from 'utils/url';
 
+import ViewTransitionProvider from 'components/providers/view-transition-provider';
 import LayoutWrapper from 'components/shared/layout-wrapper';
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -30,10 +31,12 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
       </Head>
-      <LayoutWrapper>
-        <Metadata {...getMetadataProps(url)} />
-        <Component {...pageProps} />
-      </LayoutWrapper>
+      <ViewTransitionProvider>
+        <LayoutWrapper>
+          <Metadata {...getMetadataProps(url)} />
+          <Component {...pageProps} />
+        </LayoutWrapper>
+      </ViewTransitionProvider>
     </ThemeProvider>
   );
 }

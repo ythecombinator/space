@@ -1,5 +1,7 @@
 import { PropsWithChildren, useState } from 'react';
 
+import { withViewTransition } from 'utils/view-transition';
+
 import Link from 'components/shared/link';
 
 //  ---------------------------------------------------------------------------
@@ -18,14 +20,15 @@ function NavigationMenuMobile({ items }: PropsWithChildren<NavigationMenuProps>)
   const [navShow, setNavShow] = useState(false);
 
   const onToggleNav = () => {
-    setNavShow((status) => {
-      if (status) {
-        document.body.style.overflow = 'auto';
-      } else {
-        // Prevent scrolling
-        document.body.style.overflow = 'hidden';
-      }
-      return !status;
+    withViewTransition(() => {
+      setNavShow((status) => {
+        if (status) {
+          document.body.style.overflow = 'auto';
+        } else {
+          document.body.style.overflow = 'hidden';
+        }
+        return !status;
+      });
     });
   };
 
