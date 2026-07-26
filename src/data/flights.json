@@ -1,6 +1,213 @@
 {
-  "lastUpdatedAt": 1774064707762,
+  "lastUpdatedAt": 1784564868375,
   "flights": [
+    {
+      "number": "1761",
+      "airlineIata": "SK",
+      "airlineName": "SAS",
+      "depAirportIata": "CPH",
+      "arrAirportIata": "PRG",
+      "distance": 623,
+      "depTimeOriginal": 1793982000
+    },
+    {
+      "number": "768",
+      "airlineIata": "SK",
+      "airlineName": "SAS",
+      "depAirportIata": "PRG",
+      "arrAirportIata": "CPH",
+      "distance": 623,
+      "depTimeOriginal": 1793697900
+    },
+    {
+      "number": "1488",
+      "airlineIata": "LX",
+      "airlineName": "SWISS",
+      "depAirportIata": "ZRH",
+      "arrAirportIata": "PRG",
+      "distance": 512,
+      "depTimeOriginal": 1790522700
+    },
+    {
+      "number": "2175",
+      "airlineIata": "LX",
+      "airlineName": "SWISS",
+      "depAirportIata": "ALC",
+      "arrAirportIata": "ZRH",
+      "distance": 1259,
+      "depTimeOriginal": 1790506200
+    },
+    {
+      "number": "1174",
+      "airlineIata": "LH",
+      "airlineName": "Lufthansa",
+      "depAirportIata": "FRA",
+      "arrAirportIata": "ALC",
+      "distance": 1494,
+      "depTimeOriginal": 1790164800
+    },
+    {
+      "number": "1395",
+      "airlineIata": "LH",
+      "airlineName": "Lufthansa",
+      "depAirportIata": "PRG",
+      "arrAirportIata": "FRA",
+      "distance": 407,
+      "depTimeOriginal": 1790155800
+    },
+    {
+      "number": "1582",
+      "airlineIata": "AF",
+      "airlineName": "Air France",
+      "depAirportIata": "CDG",
+      "arrAirportIata": "PRG",
+      "distance": 852,
+      "depTimeOriginal": 1789841100
+    },
+    {
+      "number": "1383",
+      "airlineIata": "AF",
+      "airlineName": "Air France",
+      "depAirportIata": "PRG",
+      "arrAirportIata": "CDG",
+      "distance": 852,
+      "depTimeOriginal": 1789551600
+    },
+    {
+      "number": "1488",
+      "airlineIata": "LX",
+      "airlineName": "SWISS",
+      "depAirportIata": "ZRH",
+      "arrAirportIata": "PRG",
+      "distance": 512,
+      "depTimeOriginal": 1789313100
+    },
+    {
+      "number": "1481",
+      "airlineIata": "LX",
+      "airlineName": "SWISS",
+      "depAirportIata": "PRG",
+      "arrAirportIata": "ZRH",
+      "distance": 512,
+      "depTimeOriginal": 1788942300
+    },
+    {
+      "number": "1394",
+      "airlineIata": "LH",
+      "airlineName": "Lufthansa",
+      "depAirportIata": "FRA",
+      "arrAirportIata": "PRG",
+      "distance": 407,
+      "depTimeOriginal": 1786781700
+    },
+    {
+      "number": "445",
+      "airlineIata": "LH",
+      "airlineName": "Lufthansa",
+      "depAirportIata": "ATL",
+      "arrAirportIata": "FRA",
+      "distance": 7409,
+      "depTimeOriginal": 1786737300
+    },
+    {
+      "number": "444",
+      "airlineIata": "LH",
+      "airlineName": "Lufthansa",
+      "depAirportIata": "FRA",
+      "arrAirportIata": "ATL",
+      "distance": 7409,
+      "depTimeOriginal": 1786435800
+    },
+    {
+      "number": "1403",
+      "airlineIata": "LH",
+      "airlineName": "Lufthansa",
+      "depAirportIata": "PRG",
+      "arrAirportIata": "FRA",
+      "distance": 407,
+      "depTimeOriginal": 1786421400
+    },
+    {
+      "number": "1361",
+      "airlineIata": "KL",
+      "airlineName": "KLM",
+      "depAirportIata": "AMS",
+      "arrAirportIata": "PRG",
+      "distance": 706,
+      "depTimeOriginal": 1781464200
+    },
+    {
+      "number": "1354",
+      "airlineIata": "KL",
+      "airlineName": "KLM",
+      "depAirportIata": "PRG",
+      "arrAirportIata": "AMS",
+      "distance": 706,
+      "depTimeOriginal": 1781169300
+    },
+    {
+      "number": "4571",
+      "airlineIata": "D8",
+      "airlineName": "Norwegian Air Sweden",
+      "depAirportIata": "ARN",
+      "arrAirportIata": "PRG",
+      "distance": 1086,
+      "depTimeOriginal": 1780573800
+    },
+    {
+      "number": "4572",
+      "airlineIata": "D8",
+      "airlineName": "Norwegian Air Sweden",
+      "depAirportIata": "PRG",
+      "arrAirportIata": "ARN",
+      "distance": 1086,
+      "depTimeOriginal": 1780214700
+    },
+    {
+      "number": "811",
+      "airlineIata": "IB",
+      "airlineName": "Iberia",
+      "depAirportIata": "MAD",
+      "arrAirportIata": "PRG",
+      "distance": 1750,
+      "depTimeOriginal": 1779544800
+    },
+    {
+      "number": "412",
+      "airlineIata": "IB",
+      "airlineName": "Iberia",
+      "depAirportIata": "BCN",
+      "arrAirportIata": "MAD",
+      "distance": 482,
+      "depTimeOriginal": 1779276900
+    },
+    {
+      "number": "8653",
+      "airlineIata": "VY",
+      "airlineName": "Vueling",
+      "depAirportIata": "PRG",
+      "arrAirportIata": "BCN",
+      "distance": 1359,
+      "depTimeOriginal": 1778922300
+    },
+    {
+      "number": "1428",
+      "airlineIata": "FR",
+      "airlineName": "Ryanair",
+      "depAirportIata": "STN",
+      "arrAirportIata": "PRG",
+      "distance": 998,
+      "depTimeOriginal": 1778688900
+    },
+    {
+      "number": "1014",
+      "airlineIata": "FR",
+      "airlineName": "Ryanair",
+      "depAirportIata": "PRG",
+      "arrAirportIata": "STN",
+      "distance": 998,
+      "depTimeOriginal": 1778327700
+    },
     {
       "number": "1374",
       "airlineIata": "FR",
@@ -98,7 +305,7 @@
       "depAirportIata": "GIG",
       "arrAirportIata": "JFK",
       "distance": 7730,
-      "depTimeOriginal": 1763260800
+      "depTimeOriginal": 1763258400
     },
     {
       "number": "7667",
