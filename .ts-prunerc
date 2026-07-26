@@ -1,4 +1,4 @@
 {
-  "ignore": "src/graphql/schema.ts|contentlayer.config.ts|.contentlayer/generated/|src/pages/",
+  "ignore": "src/graphql/schema.ts|velite.config.ts|.velite/|src/pages/",
   "error": true
 }

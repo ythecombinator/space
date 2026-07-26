@@ -3,7 +3,7 @@ const colors = require('tailwindcss/colors');
 
 /** @type {import('tailwindcss').Config} */
 const config = {
-  content: ['./src/**/*.{js,ts,jsx,tsx}', './contentlayer.config.ts'],
+  content: ['./src/**/*.{js,ts,jsx,tsx}', './velite.config.ts'],
   darkMode: 'class',
   theme: {
     screens: {

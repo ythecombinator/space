@@ -1,20 +1,13 @@
-import { allMDXEntries, MDXEntry as RawMDXEntry } from 'contentlayer/generated';
-import { CoreContent } from 'pliny/utils/contentlayer';
+import { mdxEntries } from '#velite';
 
-import ContentlayerService from 'services/providers/contentlayer';
+import ContentService from 'services/providers/content';
 
-//  ---------------------------------------------------------------------------
-//  TYPES
-//  ---------------------------------------------------------------------------
+import { CoreContent } from 'utils/content';
 
+export type RawMDXEntry = (typeof mdxEntries)[number];
 export type MDXEntry = CoreContent<RawMDXEntry>;
-export type { RawMDXEntry };
 
-//  ---------------------------------------------------------------------------
-//  CORE
-//  ---------------------------------------------------------------------------
-
-export default class MarkdownContentService extends ContentlayerService<MDXEntry> {
+export default class MarkdownContentService extends ContentService<MDXEntry> {
   private static instance: MarkdownContentService;
 
   static getInstance() {
@@ -32,6 +25,6 @@ export default class MarkdownContentService extends ContentlayerService<MDXEntry
   }
 
   public getAll() {
-    return allMDXEntries;
+    return mdxEntries;
   }
 }

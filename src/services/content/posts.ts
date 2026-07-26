@@ -1,22 +1,14 @@
-import { allBlogEntries, BlogEntry as RawBlogEntry } from 'contentlayer/generated';
-import { CoreContent } from 'pliny/utils/contentlayer';
+import { blogEntries } from '#velite';
 
-import ContentlayerService from 'services/providers/contentlayer';
+import ContentService from 'services/providers/content';
 
+import { CoreContent } from 'utils/content';
 import { sortEntries } from 'utils/contentlayer';
 
-//  ---------------------------------------------------------------------------
-//  TYPES
-//  ---------------------------------------------------------------------------
-
+export type RawBlogEntry = (typeof blogEntries)[number];
 export type BlogEntry = CoreContent<RawBlogEntry>;
-export type { RawBlogEntry };
 
-//  ---------------------------------------------------------------------------
-//  CORE
-//  ---------------------------------------------------------------------------
-
-export default class PostsContentService extends ContentlayerService<BlogEntry> {
+export default class PostsContentService extends ContentService<BlogEntry> {
   private static instance: PostsContentService;
 
   static getInstance() {
@@ -34,7 +26,7 @@ export default class PostsContentService extends ContentlayerService<BlogEntry> 
   }
 
   public getAll() {
-    return sortEntries(allBlogEntries).map((post) => ({
+    return sortEntries(blogEntries).map((post) => ({
       ...post,
       _tags: post.tags,
     }));

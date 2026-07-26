@@ -1,5 +1,5 @@
 import { NextRouter } from 'next/router';
-import { CSSProperties, MouseEvent, ReactNode } from 'react';
+import { CSSProperties, MouseEvent, ReactNode, type JSX } from 'react';
 
 //  ---------------------------------------------------------------------------
 //  TYPES

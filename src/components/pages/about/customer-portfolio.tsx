@@ -50,7 +50,7 @@ const animation = [
     x: ['0%', '-100%'],
     transition: {
       duration,
-      ease: 'linear',
+      ease: 'linear' as const,
       repeat: Infinity,
     },
   },
@@ -58,7 +58,7 @@ const animation = [
     x: ['100%', '0%'],
     transition: {
       duration,
-      ease: 'linear',
+      ease: 'linear' as const,
       repeat: Infinity,
     },
   },

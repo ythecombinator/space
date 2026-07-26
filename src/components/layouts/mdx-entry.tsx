@@ -1,4 +1,4 @@
-import { usePathname } from 'next/navigation';
+import { useRouter } from 'next/router';
 import { PropsWithChildren } from 'react';
 
 import { MDXEntry } from 'services/content/markdown';
@@ -25,7 +25,8 @@ interface MDXEntryLayoutProps {
 
 function MDXEntryLayout({ children, content }: PropsWithChildren<MDXEntryLayoutProps>) {
   const { title, color, hero, slug } = content;
-  const pathname = usePathname();
+  const { asPath } = useRouter();
+  const pathname = asPath.split('?')[0].split('#')[0];
   const breadcrumbs = toBreadcrumbs(pathname);
 
   return (

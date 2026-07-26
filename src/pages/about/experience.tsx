@@ -1,9 +1,9 @@
 import experience from 'data/experience.json';
 import { InferGetStaticPropsType } from 'next';
-import { useMDXComponent } from 'next-contentlayer/hooks';
 import { MDXRemote } from 'next-mdx-remote';
 import { NextSeo as Metadata } from 'next-seo';
-import { coreContent } from 'pliny/utils/contentlayer';
+
+import { coreContent } from 'utils/content';
 
 import { Routes, siteMetadata } from 'config/constants';
 
@@ -13,6 +13,7 @@ import { serializeExperience } from 'utils/linkedin';
 import { MetadataConfig, generateOpenGraphImage } from 'utils/open-graph';
 import { viewTransitionStyle, vtKeys } from 'utils/view-transition';
 
+import MDXContent from 'components/shared/mdx-content';
 import SectionContainer from 'components/shared/section-container';
 import SectionCover from 'components/shared/section-cover';
 import Typography from 'components/shared/typography';
@@ -56,7 +57,6 @@ export async function getStaticProps() {
 }
 
 function Page({ content, work, volunteering, openGraphImage }: PageProps) {
-  const MDXRenderer = useMDXComponent(content.body.code);
   const mdxContent = coreContent(content);
 
   return (
@@ -78,7 +78,7 @@ function Page({ content, work, volunteering, openGraphImage }: PageProps) {
           <div className="overflow-hidden rounded-lg" style={viewTransitionStyle(vtKeys.aboutCard('experience'))}>
             <SectionCover alt="This is me!" src="/content/misc/work.jpg" />
           </div>
-          <MDXRenderer content={mdxContent} />
+          <MDXContent code={content.body.code} content={mdxContent} />
         </SectionContainer>
 
         <SectionContainer className="prose dark:prose-invert">

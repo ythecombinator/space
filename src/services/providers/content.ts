@@ -1,4 +1,4 @@
-export default abstract class ContentlayerService<T extends { slug: string }> {
+export default abstract class ContentService<T extends { slug: string }> {
   abstract get(id: string): T | undefined;
 
   abstract getAll(): Array<T>;

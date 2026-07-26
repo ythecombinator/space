@@ -19,8 +19,8 @@
 - CFPs: [Notion](https://www.notion.so) +
   [@notionhq/client](https://github.com/makenotion/notion-sdk-js)
 - LinkedIn: [proxycurl](https://nubela.co/proxycurl/)
-- Misc: [Contentlayer](https://www.contentlayer.dev) +
-  [mdx](https://mdxjs.com) + [pliny](https://github.com/timlrx/pliny)
+- Misc: [Velite](https://velite.js.org) +
+  [mdx](https://mdxjs.com)
 
 ### 💅 Styling
 

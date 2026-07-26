@@ -1,4 +1,4 @@
-import { useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/router';
 
 import {
   CurrencyConversionQuery,
@@ -24,9 +24,11 @@ interface Props extends CurrencyConversionQuery {
 //  ---------------------------------------------------------------------------
 
 function Price({ amount, source = 'CZK', leading = false }: Props) {
-  const searchParams = useSearchParams();
+  const { query } = useRouter();
+  const currencyQuery = query.currency;
+  const currencyParam = Array.isArray(currencyQuery) ? currencyQuery[0] : currencyQuery;
 
-  const target = currencyInvariant(searchParams.get('currency')) as SupportedCurrency;
+  const target = currencyInvariant(currencyParam ?? null) as SupportedCurrency;
   const formattedSourceAmount = formatters[source].format(amount);
 
   if (source === target) {

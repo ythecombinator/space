@@ -1,4 +1,4 @@
-import { usePathname } from 'next/navigation';
+import { useRouter } from 'next/router';
 import { FunctionComponent, PropsWithChildren } from 'react';
 
 import { shouldBreadcrumbsRender, toBreadcrumbs } from 'utils/string';
@@ -31,7 +31,8 @@ const PageLayout: FunctionComponent<PropsWithChildren<PageLayoutProps>> = ({
   headingShellTransitionKey,
   children,
 }) => {
-  const pathname = usePathname();
+  const { asPath } = useRouter();
+  const pathname = asPath.split('?')[0].split('#')[0];
   const breadcrumbs = toBreadcrumbs(pathname);
 
   return (

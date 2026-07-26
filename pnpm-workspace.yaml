@@ -1,6 +1,6 @@
 allowBuilds:
-  contentlayer: true
   esbuild: true
   protobufjs: true
   puppeteer: true
+  sharp: false
   unrs-resolver: true

@@ -1,7 +1,4 @@
-import { MDXContentProps } from 'mdx-bundler/client';
-import { useMDXComponent } from 'next-contentlayer/hooks';
 import Image from 'next/image';
-import { coreContent } from 'pliny/utils/contentlayer';
 import { PropsWithChildren } from 'react';
 
 import { Layouts, LayoutsMap } from 'config/constants';
@@ -9,7 +6,10 @@ import { Layouts, LayoutsMap } from 'config/constants';
 import { RawMDXEntry } from 'services/content/markdown';
 import { RawBlogEntry } from 'services/content/posts';
 
+import { coreContent } from 'utils/content';
+
 import Admonition from 'components/shared/admonition';
+import MDXContent from 'components/shared/mdx-content';
 import Pre from 'components/shared/pre';
 import Price from 'components/shared/price';
 import Tweet from 'components/shared/tweet';
@@ -37,7 +37,7 @@ function Wrapper({ layout, content, ...rest }: PropsWithChildren<MDXLayout>) {
   return <Layout content={content} {...rest} />;
 }
 
-const MDXComponents: MDXContentProps['components'] = {
+const MDXComponents = {
   Image,
   // @ts-ignore
   a: Typography.a,
@@ -58,10 +58,17 @@ const MDXComponents: MDXContentProps['components'] = {
 //  ---------------------------------------------------------------------------
 
 function MDXLayoutRenderer({ layout, content, ...rest }: PropsWithChildren<MDXLayout>) {
-  const MDXLayout = useMDXComponent(content.body.code);
   const mainContent = coreContent(content);
 
-  return <MDXLayout layout={layout} content={mainContent} components={MDXComponents} {...rest} />;
+  return (
+    <MDXContent
+      code={content.body.code}
+      layout={layout}
+      content={mainContent}
+      components={MDXComponents}
+      {...rest}
+    />
+  );
 }
 
 export default MDXLayoutRenderer;

@@ -1,4 +1,4 @@
-import { createElement, PropsWithChildren } from 'react';
+import { createElement, ElementType, PropsWithChildren } from 'react';
 
 import { classNames } from 'utils/styles';
 import { ViewTransitionTargetProps, viewTransitionStyle } from 'utils/view-transition';
@@ -13,7 +13,7 @@ function ViewTransitionTarget({
   className,
   children,
   style,
-}: PropsWithChildren<ViewTransitionTargetProps>) {
+}: PropsWithChildren<ViewTransitionTargetProps & { as?: ElementType }>) {
   return createElement(
     Tag,
     {

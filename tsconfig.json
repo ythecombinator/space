@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -10,16 +14,30 @@
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "baseUrl": "./src",
     "incremental": true,
     "paths": {
-      "contentlayer/generated": ["../.contentlayer/generated"]
+      "#velite": [
+        "../.velite"
+      ]
     }
   },
-  "exclude": ["node_modules", "cypress", "coverage", ".github", "test"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".contentlayer/generated"]
+  "exclude": [
+    "node_modules",
+    "cypress",
+    "coverage",
+    ".github",
+    "test",
+    "velite.config.ts"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".velite"
+  ]
 }
