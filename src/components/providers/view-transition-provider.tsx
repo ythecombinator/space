@@ -1,34 +1,50 @@
-import { useRouter } from 'next/router';
+import { NextRouter, useRouter } from 'next/router';
 import { PropsWithChildren, useEffect } from 'react';
 
-import { normalizePath, shouldUseViewTransition, transitionNavigate } from 'utils/view-transition';
+import { isRoutableLink } from 'utils/link';
+import { isSamePath, shouldUseViewTransition, transitionNavigate } from 'utils/view-transition';
+import { scrollToTop } from 'utils/window';
 
 //  ---------------------------------------------------------------------------
-//  UI
+//  UTILS
 //  ---------------------------------------------------------------------------
 
-function ViewTransitionProvider({ children }: PropsWithChildren) {
-  const router = useRouter();
+const isModifiedClick = (event: MouseEvent) =>
+  event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0;
 
-  // Capture-phase interception keeps every internal link on the same path,
-  // including anchors rendered outside our Link component.
+const opensOutsideCurrentTab = (anchor: HTMLAnchorElement) => {
+  const target = anchor.getAttribute('target');
+
+  return Boolean(target) && target !== '_self';
+};
+
+//  ---------------------------------------------------------------------------
+//  HOOKS
+//  ---------------------------------------------------------------------------
+
+/** Capture-phase interception covers every internal anchor, including those rendered outside our Link */
+const useLinkTransitions = (router: NextRouter) => {
   useEffect(() => {
-    if (!shouldUseViewTransition()) return;
+    if (!shouldUseViewTransition()) {
+      return;
+    }
 
     const onClick = (event: MouseEvent) => {
-      if (event.defaultPrevented) return;
-      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+      if (event.defaultPrevented || isModifiedClick(event)) {
+        return;
+      }
 
       const anchor = (event.target as Element | null)?.closest('a');
-      if (!(anchor instanceof HTMLAnchorElement)) return;
-      if (anchor.hasAttribute('download')) return;
 
-      const target = anchor.getAttribute('target');
-      if (target && target !== '_self') return;
+      if (!anchor || anchor.hasAttribute('download') || opensOutsideCurrentTab(anchor)) {
+        return;
+      }
 
-      const href = anchor.getAttribute('href');
-      if (!href || !href.startsWith('/') || href.startsWith('//') || href.startsWith('/#')) return;
-      if (normalizePath(href) === normalizePath(router.asPath)) return;
+      const href = anchor.getAttribute('href') ?? '';
+
+      if (!isRoutableLink(href) || isSamePath(href, router.asPath)) {
+        return;
+      }
 
       event.preventDefault();
       event.stopPropagation();
@@ -37,29 +53,50 @@ function ViewTransitionProvider({ children }: PropsWithChildren) {
     };
 
     document.addEventListener('click', onClick, true);
+
     return () => document.removeEventListener('click', onClick, true);
   }, [router]);
+};
 
+const useHistoryTransitions = (router: NextRouter) => {
   useEffect(() => {
-    if (!shouldUseViewTransition()) return;
+    if (!shouldUseViewTransition()) {
+      return;
+    }
 
     router.beforePopState(({ as }) => {
       void transitionNavigate(router, as);
+
       return false;
     });
 
-    return () => {
-      router.beforePopState(() => true);
-    };
+    return () => router.beforePopState(() => true);
   }, [router]);
+};
 
+/** Transitions scroll on their own; plain navigations still need the reset */
+const useScrollReset = (router: NextRouter) => {
   useEffect(() => {
-    if (shouldUseViewTransition()) return;
+    if (shouldUseViewTransition()) {
+      return;
+    }
 
-    const scrollTop = () => window.scrollTo(0, 0);
-    router.events.on('routeChangeComplete', scrollTop);
-    return () => router.events.off('routeChangeComplete', scrollTop);
+    router.events.on('routeChangeComplete', scrollToTop);
+
+    return () => router.events.off('routeChangeComplete', scrollToTop);
   }, [router]);
+};
+
+//  ---------------------------------------------------------------------------
+//  UI
+//  ---------------------------------------------------------------------------
+
+function ViewTransitionProvider({ children }: PropsWithChildren) {
+  const router = useRouter();
+
+  useLinkTransitions(router);
+  useHistoryTransitions(router);
+  useScrollReset(router);
 
   return children;
 }
