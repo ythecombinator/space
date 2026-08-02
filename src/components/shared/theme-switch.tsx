@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
+import { MouseEvent, useEffect, useState } from 'react';
 import { FaMoon, FaSun } from 'react-icons/fa';
+
+import { setRevealOrigin, transitionState } from 'utils/view-transition';
 
 //  ---------------------------------------------------------------------------
 //  UI
@@ -12,6 +14,15 @@ function ThemeSwitch() {
   const { theme, setTheme, resolvedTheme } = useTheme();
 
   useEffect(() => setMounted(true), []);
+
+  const isDarkMode = theme === 'dark' || resolvedTheme === 'dark';
+
+  const onToggle = (event: MouseEvent<HTMLButtonElement>) => {
+    const { left, top, width, height } = event.currentTarget.getBoundingClientRect();
+
+    setRevealOrigin(left + width / 2, top + height / 2);
+    transitionState(() => setTheme(isDarkMode ? 'light' : 'dark'), { mode: 'theme', scope: 'none' });
+  };
 
   return (
     <motion.button
@@ -27,13 +38,9 @@ function ThemeSwitch() {
       }}
       aria-label="Toggle Dark Mode"
       type="button"
-      onClick={() => setTheme(theme === 'dark' || resolvedTheme === 'dark' ? 'light' : 'dark')}
+      onClick={onToggle}
     >
-      {mounted && (theme === 'dark' || resolvedTheme === 'dark') ? (
-        <FaSun size={20} aria-hidden />
-      ) : (
-        <FaMoon size={20} aria-hidden />
-      )}
+      {mounted && isDarkMode ? <FaSun size={20} aria-hidden /> : <FaMoon size={20} aria-hidden />}
     </motion.button>
   );
 }
