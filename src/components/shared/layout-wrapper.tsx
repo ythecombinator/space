@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { PropsWithChildren } from 'react';
 
 import { headerNavigationLinks, Routes } from 'config/constants';
@@ -16,6 +17,8 @@ import ThemeSwitch from 'components/shared/theme-switch';
 //  ---------------------------------------------------------------------------
 
 function LayoutWrapper({ children }: PropsWithChildren) {
+  const { asPath } = useRouter();
+
   return (
     <>
       <LayoutGradient />
@@ -39,7 +42,12 @@ function LayoutWrapper({ children }: PropsWithChildren) {
               <NavigationMenuMobile items={headerNavigationLinks} />
             </div>
           </header>
-          <main className="vt-main mb-auto">{children}</main>
+          <main className="mb-auto">
+            {/* key forces a fresh vt-main snapshot per route — a persistent node never animates */}
+            <div key={asPath} className="vt-main">
+              {children}
+            </div>
+          </main>
           <Footer />
         </div>
       </div>
