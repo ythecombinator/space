@@ -76,10 +76,7 @@ function CardLottie({ title, href, animationData, gradient = 'violet', className
           >
             {title}
           </span>
-          <div
-            className="pointer-events-none absolute bottom-0 right-3 h-32 w-32 select-none opacity-75"
-            style={viewTransitionStyle(vtKeys.aboutLottie(href))}
-          >
+          <div className="pointer-events-none absolute bottom-0 right-3 h-32 w-32 select-none opacity-75">
             <Lottie animationData={animationData} loop={true} />
           </div>
         </div>

@@ -132,7 +132,6 @@ function PhotoHighlightsSectionItem(props: PropsWithChildren<FeaturedTalk>) {
               'absolute inset-0 z-0 h-full w-full object-cover object-center transition-[opacity,transform] duration-500 group-hover:scale-110',
               isLoaded ? 'opacity-100' : 'opacity-0'
             )}
-            style={viewTransitionStyle(vtKeys.talkMedia(talkSlug))}
           />
 
           <div
