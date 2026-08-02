@@ -5,7 +5,7 @@ import { FeaturedTalk } from 'services/content/talks';
 
 import { randomElement } from 'utils/array';
 import { classNames } from 'utils/styles';
-import { viewTransitionStyle, vtKeys } from 'utils/view-transition';
+import { viewTransitionProps, vtKeys } from 'utils/view-transition';
 
 import Link from 'components/shared/link';
 import Typography from 'components/shared/typography';
@@ -169,7 +169,7 @@ function PhotoHighlightsSectionItem(props: PropsWithChildren<FeaturedTalk>) {
           >
             <span
               className="font-medium text-white underline-offset-2 hover:underline"
-              style={viewTransitionStyle(vtKeys.talkTitle(talkSlug))}
+              {...viewTransitionProps(vtKeys.talkTitle(talkSlug))}
             >
               {talkTitle}
             </span>

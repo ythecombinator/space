@@ -1,7 +1,7 @@
 import Image, { ImageProps } from 'next/image';
 import { PropsWithChildren } from 'react';
 
-import { viewTransitionStyle } from 'utils/view-transition';
+import { viewTransitionProps } from 'utils/view-transition';
 
 type SectionCoverProps = Pick<ImageProps, 'src' | 'alt'> & {
   /** Full view-transition-name, typically from vtKeys */
@@ -22,7 +22,7 @@ export function SectionCover({ src, alt, transitionKey }: PropsWithChildren<Sect
       height={475}
       sizes="100vw"
       className="aspect-video w-full rounded-lg object-cover grayscale hover:grayscale-0"
-      style={viewTransitionStyle(transitionKey)}
+      {...viewTransitionProps(transitionKey)}
     />
   );
 }

@@ -1,6 +1,6 @@
 import { toBreadcrumbs } from 'utils/string';
 import { classNames } from 'utils/styles';
-import { viewTransitionStyle, vtKeys } from 'utils/view-transition';
+import { viewTransitionProps, vtKeys } from 'utils/view-transition';
 
 import Link from 'components/shared/link';
 
@@ -33,7 +33,7 @@ function Breadcrumbs({ items }: BreadcrumbsProps) {
               <Link
                 className="inline-flex items-center truncate text-sm font-semibold"
                 href={item.path}
-                style={viewTransitionStyle(transitionKey)}
+                {...viewTransitionProps(transitionKey)}
               >
                 {item.label}
               </Link>

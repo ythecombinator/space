@@ -5,7 +5,7 @@ import { Routes } from 'config/constants';
 import { BlogEntry } from 'services/content/posts';
 
 import { formatDate } from 'utils/date';
-import { viewTransitionStyle, vtKeys } from 'utils/view-transition';
+import { viewTransitionProps, vtKeys } from 'utils/view-transition';
 
 import Link from 'components/shared/link';
 import Typography from 'components/shared/typography';
@@ -25,11 +25,11 @@ function AllPostsSectionItem(props: PropsWithChildren<AllPostsSectionItemProps>)
   const { slug, date, title, summary, language } = props;
 
   return (
-    <li key={slug} className="py-4" style={viewTransitionStyle(vtKeys.postRow(slug))}>
+    <li key={slug} className="py-4" {...viewTransitionProps(vtKeys.postRow(slug))}>
       <article className="xl:items-baseline">
         <div
           className="text-sm font-medium leading-6 text-gray-500 dark:text-gray-400 sm:text-base"
-          style={viewTransitionStyle(vtKeys.postDate(slug))}
+          {...viewTransitionProps(vtKeys.postDate(slug))}
         >
           <time dateTime={date}>{formatDate(date)}</time>
         </div>

@@ -6,7 +6,7 @@ import { Routes, siteMetadata } from 'config/constants';
 import TalksContentService from 'services/content/talks';
 
 import { MetadataConfig, generateOpenGraphImage } from 'utils/open-graph';
-import { viewTransitionStyle, vtKeys } from 'utils/view-transition';
+import { viewTransitionProps, vtKeys } from 'utils/view-transition';
 
 import Link from 'components/shared/link';
 import SectionContainer from 'components/shared/section-container';
@@ -100,14 +100,14 @@ function Page(props: Props) {
           </Typography.p>
           <Typography.p>
             Want me to speak at your event? Please check my{' '}
-            <Link href={`/${Routes.talksInvite}`} style={viewTransitionStyle(vtKeys.aboutTitle(Routes.talksInvite))}>
+            <Link href={`/${Routes.talksInvite}`} {...viewTransitionProps(vtKeys.aboutTitle(Routes.talksInvite))}>
               speaker rider
             </Link>{' '}
             and hit me up!
           </Typography.p>
           <Typography.p>
             I also maintain{' '}
-            <Link href={`/${Routes.talksRadar}`} style={viewTransitionStyle(vtKeys.pageTitle(Routes.talksRadar))}>
+            <Link href={`/${Routes.talksRadar}`} {...viewTransitionProps(vtKeys.pageTitle(Routes.talksRadar))}>
               here
             </Link>{' '}
             a curated list with the CFPs (ie. Calls for Papers/Presentations) of conferences I am personally interested
