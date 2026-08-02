@@ -1,5 +1,5 @@
 import { useTheme } from 'next-themes';
-import { PropsWithChildren, useMemo, useState } from 'react';
+import { PropsWithChildren, useMemo, useRef, useState } from 'react';
 import ContentLoader from 'react-content-loader';
 import colors from 'tailwindcss/colors';
 
@@ -74,6 +74,7 @@ function renderPrefix(talkCategory: string) {
 function AllTalksSection({ items: baseItems }: PropsWithChildren<AllTalksSectionProps>) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategories, setSelectedCategories] = useState<string[]>(['talk', 'workshop', 'panel']);
+  const listRef = useRef<HTMLDivElement>(null);
 
   const onChange: SearchBarProps['onChange'] = (evt) => {
     setSearchTerm(evt.target.value);
@@ -81,7 +82,7 @@ function AllTalksSection({ items: baseItems }: PropsWithChildren<AllTalksSection
 
   // Search stays instant — it suspends on every term, which a flushed update cannot wait for
   const onFilter = (categories: string[]) => {
-    transitionState(() => setSelectedCategories(categories));
+    transitionState(() => setSelectedCategories(categories), { within: listRef.current });
   };
 
   return (
@@ -99,7 +100,7 @@ function AllTalksSection({ items: baseItems }: PropsWithChildren<AllTalksSection
       <div className="mb-6">
         <SearchBar label="Search topics, events and places" onChange={onChange} />
       </div>
-      <div className="mb-6">
+      <div className="mb-6" ref={listRef}>
         <SearchProvider schema={searchSchema} data={baseItems} fallback={<AllTalksListSkeleton items={3} />}>
           <AllTalksList searchTerm={searchTerm} selectedCategories={selectedCategories} />
         </SearchProvider>

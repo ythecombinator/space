@@ -1,5 +1,4 @@
 import { NextRouter } from 'next/router';
-import { CSSProperties } from 'react';
 import { flushSync } from 'react-dom';
 
 import { scrollToTop } from 'utils/window';
@@ -10,24 +9,17 @@ import { scrollToTop } from 'utils/window';
 
 type ViewTransitionMode = 'section' | 'detail' | 'list' | 'theme';
 
-/**
- * Which shared names take part:
- * - `all` keeps the page shell and the content names (navigation)
- * - `content` drops the shell, so only the elements that moved read as motion
- * - `none` drops everything and animates the page as a single snapshot
- */
-type TransitionScope = 'all' | 'content' | 'none';
-
 export type TransitionNavigateOptions = {
   shallow?: boolean;
   replace?: boolean;
-  /** Element whose shared names win when the same name is used more than once */
-  preferred?: Element | null;
+  /** The clicked element — only the shared names it carries or contains take part in the morph */
+  source?: Element | null;
 };
 
 export type TransitionStateOptions = {
   mode?: Extract<ViewTransitionMode, 'list' | 'theme'>;
-  scope?: TransitionScope;
+  /** Container whose shared names take part — leave it out to animate the page as a single snapshot */
+  within?: Element | null;
 };
 
 //  ---------------------------------------------------------------------------
@@ -89,7 +81,6 @@ export const vtKeys = {
   aboutCard: (slugOrHref: string) => `vt-about-card-${slugFromHref(slugOrHref)}`,
   aboutTitle: (slugOrHref: string) => `vt-about-title-${slugFromHref(slugOrHref)}`,
   radarRow: (id: string) => `vt-radar-row-${sanitizeSlug(id)}`,
-  logo: 'vt-logo',
 } as const;
 
 //  ---------------------------------------------------------------------------
@@ -102,16 +93,6 @@ const prefersReducedMotion = () =>
   typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 export const shouldUseViewTransition = () => supportsViewTransitions() && !prefersReducedMotion();
-
-export const viewTransitionStyle = (name?: string) => {
-  if (!name) {
-    return undefined;
-  }
-
-  const style: CSSProperties = { viewTransitionName: name };
-
-  return style;
-};
 
 /** The theme reveal grows out of the switch, so its origin and a radius covering the viewport go in as CSS vars */
 export const setRevealOrigin = (x: number, y: number) => {
@@ -150,70 +131,84 @@ const clearTransitionMode = () => {
   delete document.documentElement.dataset.vtMode;
 };
 
+/** Root snapshots capture the full document height — tall pages exceed Chrome's texture budget and abort the transition */
+const setRootSnapshot = (enabled: boolean) => {
+  if (enabled) {
+    document.documentElement.style.removeProperty('view-transition-name');
+    return;
+  }
+
+  document.documentElement.style.viewTransitionName = 'none';
+};
+
+const usesRootSnapshot = (mode: ViewTransitionMode) => mode === 'section' || mode === 'theme';
+
 //  ---------------------------------------------------------------------------
 //  NAMES
 //  ---------------------------------------------------------------------------
 
-const NAMED_SELECTOR = '[style*="view-transition-name"]';
-const SHELL_SELECTOR = '.vt-main, .vt-logo';
-
-const queryAll = (selector: string) => Array.from(document.querySelectorAll<HTMLElement>(selector));
-
-const groupByTransitionName = (elements: HTMLElement[]) =>
-  elements.reduce((groups, element) => {
-    const name = element.style.viewTransitionName;
-
-    if (!name || name === 'none') {
-      return groups;
-    }
-
-    return groups.set(name, [...(groups.get(name) ?? []), element]);
-  }, new Map<string, HTMLElement[]>());
-
-const hideTransitionName = (element: HTMLElement) => {
-  element.dataset.vtOriginal = element.style.viewTransitionName;
-  element.style.viewTransitionName = 'none';
-};
-
-const restoreTransitionNames = () => {
-  queryAll('[data-vt-original]').forEach((element) => {
-    element.style.viewTransitionName = element.dataset.vtOriginal ?? '';
-    delete element.dataset.vtOriginal;
-  });
-};
+const NAME_ATTRIBUTE = 'data-vt-name';
+const NAMED_SELECTOR = `[${NAME_ATTRIBUTE}]`;
 
 /**
- * A view-transition-name must be unique per document — the same talk is listed
- * in several sections, so the names collide and Chrome discards the whole
- * transition. Keep one element per name (the one being navigated from, when
- * known) and disable the rest for the duration of the transition.
+ * Shared names are declared as data, not as CSS.
+ *
+ * The browser snapshots every element carrying a view-transition-name, and a
+ * listing page carries hundreds of them. Declaring the name here and switching
+ * it on for the handful of elements that actually travel keeps a navigation at
+ * a couple of snapshots instead of a hundred.
  */
-const dedupeTransitionNames = (preferred?: Element | null) => {
-  groupByTransitionName(queryAll(NAMED_SELECTOR)).forEach((elements) => {
-    if (elements.length < 2) {
-      return;
+export const viewTransitionProps = (name?: string) => (name ? { [NAME_ATTRIBUTE]: name } : {});
+
+const namedElementsIn = (root: ParentNode) => Array.from(root.querySelectorAll<HTMLElement>(NAMED_SELECTOR));
+
+/** A name may only appear once per document, and the same talk is listed in several sections — first one wins */
+const uniqueByName = (elements: HTMLElement[]) => {
+  const seen = new Set<string>();
+
+  return elements.filter((element) => {
+    const name = element.dataset.vtName;
+
+    if (!name || seen.has(name)) {
+      return false;
     }
 
-    const kept = elements.find((element) => preferred?.contains(element)) ?? elements[0];
+    seen.add(name);
 
-    elements.filter((element) => element !== kept).forEach(hideTransitionName);
+    return true;
   });
 };
 
-const prepareTransitionNames = (scope: TransitionScope, preferred?: Element | null) => {
-  restoreTransitionNames();
+/** The clicked link either carries the shared name, sits inside it (a card) or wraps it (a title) */
+const sharedElementsFor = (source: Element) => {
+  const wrapper = source.closest<HTMLElement>(NAMED_SELECTOR);
 
-  if (scope === 'none') {
-    queryAll(`${NAMED_SELECTOR}, ${SHELL_SELECTOR}`).forEach(hideTransitionName);
-    return;
-  }
-
-  if (scope === 'content') {
-    queryAll(SHELL_SELECTOR).forEach(hideTransitionName);
-  }
-
-  dedupeTransitionNames(preferred);
+  return uniqueByName(wrapper ? [wrapper, ...namedElementsIn(source)] : namedElementsIn(source));
 };
+
+let activeElements: HTMLElement[] = [];
+
+const activate = (elements: HTMLElement[]) => {
+  elements.forEach((element) => {
+    element.style.viewTransitionName = element.dataset.vtName ?? '';
+    activeElements.push(element);
+  });
+};
+
+const activateByName = (names: string[], root: ParentNode) => {
+  const elements = names
+    .map((name) => root.querySelector<HTMLElement>(`[${NAME_ATTRIBUTE}="${CSS.escape(name)}"]`))
+    .filter((element): element is HTMLElement => element !== null);
+
+  activate(elements);
+};
+
+const deactivate = () => {
+  activeElements.forEach((element) => element.style.removeProperty('view-transition-name'));
+  activeElements = [];
+};
+
+const namesOf = (elements: HTMLElement[]) => elements.map((element) => element.dataset.vtName ?? '');
 
 //  ---------------------------------------------------------------------------
 //  RUNNER
@@ -231,39 +226,44 @@ const afterTimeout = (delay: number) => new Promise<void>((resolve) => setTimeou
 /** Chrome aborts a transition whose update callback runs longer than ~4s, so every wait needs a ceiling */
 const waitForPaint = () => Promise.race([nextPaint(), afterTimeout(PAINT_TIMEOUT)]);
 
-type RunOptions = {
-  mode: ViewTransitionMode;
-  scope?: TransitionScope;
-  preferred?: Element | null;
-};
-
 /**
  * Only one transition can be in flight — a second one would make the browser
  * discard the first, so overlapping updates (a held-down filter key, say) are
  * applied straight away instead.
  */
-const runTransition = async (update: () => void | Promise<void>, { mode, scope = 'all', preferred }: RunOptions) => {
+const runTransition = async (update: () => void | Promise<void>, mode: ViewTransitionMode) => {
   if (running) {
     await update();
     return;
   }
 
   running = true;
+  let updated = false;
+
+  const commitUpdate = async () => {
+    if (updated) {
+      return;
+    }
+
+    updated = true;
+    await update();
+  };
 
   try {
-    prepareTransitionNames(scope, preferred);
     setTransitionMode(mode);
+    setRootSnapshot(usesRootSnapshot(mode));
 
     await document.startViewTransition(async () => {
-      await update();
-      prepareTransitionNames(scope);
+      await commitUpdate();
       await waitForPaint();
     }).finished;
   } catch {
-    // Skipped or aborted by the browser — the DOM update itself still happened.
+    // Snapshot capture can fail on tall pages — still commit the navigation/update.
+    await commitUpdate();
   } finally {
     clearTransitionMode();
-    restoreTransitionNames();
+    setRootSnapshot(true);
+    deactivate();
     running = false;
   }
 };
@@ -282,7 +282,7 @@ const runTransition = async (update: () => void | Promise<void>, { mode, scope =
  * the callback is pending and the transition dies on Chrome's timeout.
  */
 export const transitionNavigate = async (router: NextRouter, href: string, options: TransitionNavigateOptions = {}) => {
-  const { shallow, replace = false, preferred } = options;
+  const { shallow, replace = false, source } = options;
 
   const from = router.asPath;
   const destination = normalizePath(href);
@@ -300,13 +300,18 @@ export const transitionNavigate = async (router: NextRouter, href: string, optio
     return navigated;
   }
 
-  await runTransition(
-    async () => {
-      await navigate();
-      scrollToTop();
-    },
-    { mode: getTransitionMode(from, destination), preferred }
-  );
+  const shared = source ? sharedElementsFor(source) : [];
+  const names = namesOf(shared);
+
+  activate(shared);
+
+  await runTransition(async () => {
+    await navigate();
+    scrollToTop();
+    activateByName(names, document);
+  }, getTransitionMode(from, destination));
+
+  scrollToTop();
 
   return true;
 };
@@ -319,12 +324,20 @@ export const transitionNavigate = async (router: NextRouter, href: string, optio
  * Keep suspending updates out of here, since a flush cannot wait on them.
  */
 export const transitionState = (update: () => void, options: TransitionStateOptions = {}) => {
-  const { mode = 'list', scope = 'content' } = options;
+  const { mode = 'list', within } = options;
 
   if (!shouldUseViewTransition()) {
     update();
     return;
   }
 
-  void runTransition(() => flushSync(update), { mode, scope });
+  const shared = within ? uniqueByName(namedElementsIn(within)) : [];
+  const names = namesOf(shared);
+
+  activate(shared);
+
+  void runTransition(() => {
+    flushSync(update);
+    activateByName(names, within?.isConnected ? within : document);
+  }, mode);
 };

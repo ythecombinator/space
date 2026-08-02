@@ -1,7 +1,7 @@
 import { createElement, CSSProperties, type JSX, PropsWithChildren } from 'react';
 
 import { classNames } from 'utils/styles';
-import { viewTransitionStyle } from 'utils/view-transition';
+import { viewTransitionProps } from 'utils/view-transition';
 
 //  ---------------------------------------------------------------------------
 //  TYPES
@@ -30,7 +30,8 @@ function ViewTransitionTarget({
     Tag,
     {
       className: classNames(className) || undefined,
-      style: { ...viewTransitionStyle(name), ...style },
+      style,
+      ...viewTransitionProps(name),
     },
     children
   );

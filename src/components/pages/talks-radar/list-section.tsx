@@ -20,7 +20,7 @@ import { EngagementStatusPrimary, EngagementStatusSecondary, EventEntry } from '
 
 import { SearchProvider, useSearch } from 'utils/search';
 import { classNames } from 'utils/styles';
-import { transitionState, viewTransitionStyle, vtKeys } from 'utils/view-transition';
+import { transitionState, viewTransitionProps, vtKeys } from 'utils/view-transition';
 
 import DropdownMenu from 'components/shared/dropdown-menu';
 import EmptyList from 'components/shared/empty-list';
@@ -412,7 +412,7 @@ function DataSectionTable({ searchTerm, selectedStatus }: Omit<DataSectionTableP
 
   // Rows carry their event identity so re-sorting travels them instead of swapping content in place
   const onSortingChange: OnChangeFn<SortingState> = (updater) => {
-    transitionState(() => setSorting(updater));
+    transitionState(() => setSorting(updater), { within: scrollParentRef.current });
   };
 
   const table = useReactTable({
@@ -496,7 +496,7 @@ function DataSectionTable({ searchTerm, selectedStatus }: Omit<DataSectionTableP
                   key={row.id}
                   data-index={virtualRow.index}
                   ref={rowVirtualizer.measureElement}
-                  style={viewTransitionStyle(vtKeys.radarRow(row.id))}
+                  {...viewTransitionProps(vtKeys.radarRow(row.id))}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <Table.Cell key={cell.id} className={getColumnWidthClass(cell.column.id)}>

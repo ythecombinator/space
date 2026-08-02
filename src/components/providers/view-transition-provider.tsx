@@ -49,7 +49,7 @@ const useLinkTransitions = (router: NextRouter) => {
       event.preventDefault();
       event.stopPropagation();
 
-      void transitionNavigate(router, href, { preferred: anchor });
+      void transitionNavigate(router, href, { source: anchor });
     };
 
     document.addEventListener('click', onClick, true);
@@ -62,6 +62,10 @@ const useHistoryTransitions = (router: NextRouter) => {
   useEffect(() => {
     if (!shouldUseViewTransition()) {
       return;
+    }
+
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
     }
 
     router.beforePopState(({ as }) => {

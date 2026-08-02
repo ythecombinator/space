@@ -21,7 +21,8 @@ function ThemeSwitch() {
     const { left, top, width, height } = event.currentTarget.getBoundingClientRect();
 
     setRevealOrigin(left + width / 2, top + height / 2);
-    transitionState(() => setTheme(isDarkMode ? 'light' : 'dark'), { mode: 'theme', scope: 'none' });
+    // No `within` — the reveal is a full-page snapshot, not a shared-element morph
+    transitionState(() => setTheme(isDarkMode ? 'light' : 'dark'), { mode: 'theme' });
   };
 
   return (
