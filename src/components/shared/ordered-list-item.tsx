@@ -37,7 +37,7 @@ function OrderedListItem(props: PropsWithChildren<OrderedListItemProps>) {
               {prefix}
               <h3
                 className="w-full text-base font-medium text-gray-800 dark:text-gray-100 sm:text-lg"
-                style={viewTransitionStyle(vtKeys.talkTitle(talkSlug))}
+                style={viewTransitionStyle(vtKeys.talkTitle(talkSlug), { contain: false })}
               >
                 {label}
               </h3>

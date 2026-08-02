@@ -20,24 +20,14 @@ export interface PageTitleProps {
 //  ---------------------------------------------------------------------------
 
 function PageTitle({ gradient, transitionKey, children }: PropsWithChildren<PageTitleProps>) {
-  const title = (
+  return (
     <Typography.h1
       className={classNames({
         [`text-transparent bg-clip-text bg-gradient-to-r ${gradients[gradient as Gradient]}`]: gradient,
       })}
     >
-      {children}
+      <span style={viewTransitionStyle(transitionKey, { contain: false })}>{children}</span>
     </Typography.h1>
-  );
-
-  if (!transitionKey) {
-    return title;
-  }
-
-  return (
-    <span className="block" style={viewTransitionStyle(transitionKey)}>
-      {title}
-    </span>
   );
 }
 

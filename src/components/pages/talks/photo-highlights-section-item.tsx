@@ -113,66 +113,69 @@ function PhotoHighlightsSectionItem(props: PropsWithChildren<FeaturedTalk>) {
     <Link href={talkSlug} className="block no-underline hover:no-underline" clearDecoration>
       <div className="rounded-2xl" style={viewTransitionStyle(vtKeys.talkCard(talkSlug))}>
         <div className="group relative h-[280px] w-full overflow-hidden rounded-2xl text-white">
-        {!isLoaded && (
-          <div className="absolute inset-0 z-0">
-            <PhotoHighlightsSectionItemSkeleton />
+          {!isLoaded && (
+            <div className="absolute inset-0 z-0">
+              <PhotoHighlightsSectionItemSkeleton />
+            </div>
+          )}
+
+          <img
+            ref={imgRef}
+            src={photoURL}
+            alt={eventName}
+            loading="lazy"
+            decoding="async"
+            onLoad={markLoadedIfReady}
+            onError={handleImageError}
+            className={classNames(
+              'absolute inset-0 z-0 h-full w-full object-cover object-center transition-[opacity,transform] duration-500 group-hover:scale-110',
+              isLoaded ? 'opacity-100' : 'opacity-0'
+            )}
+            style={viewTransitionStyle(vtKeys.talkMedia(talkSlug))}
+          />
+
+          <div
+            className={classNames(
+              'absolute inset-0 z-5 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] transition-opacity duration-500',
+              isDarkMode ? 'bg-black/50' : 'bg-gray-600/10',
+              isLoaded ? 'opacity-50' : 'opacity-0'
+            )}
+          />
+          <div
+            className={classNames(
+              'absolute inset-0 z-10 transition-opacity duration-500',
+              isLoaded ? 'opacity-100' : 'opacity-0',
+              isDarkMode ? 'bg-black/30' : 'bg-white/30'
+            )}
+          />
+          <div
+            className={classNames(
+              `absolute inset-0 bg-gradient-to-br ${gradientClass} z-20 transition-opacity duration-500`,
+              isLoaded ? 'opacity-20' : 'opacity-0'
+            )}
+          />
+          <div
+            className={classNames(
+              'absolute inset-0 z-40 bg-gradient-to-t from-black/70 via-black/40 to-transparent transition-opacity duration-500',
+              isLoaded ? 'opacity-100' : 'opacity-0'
+            )}
+          />
+
+          <div
+            className={classNames(
+              'relative z-50 flex h-full flex-col justify-end p-6 transition-opacity duration-500',
+              isLoaded ? 'opacity-100' : 'opacity-0'
+            )}
+          >
+            <span
+              className="font-medium text-white underline-offset-2 hover:underline"
+              style={viewTransitionStyle(vtKeys.talkTitle(talkSlug), { contain: false })}
+            >
+              {talkTitle}
+            </span>
+            <Typography.h3>{eventName}</Typography.h3>
+            <Typography.subtle className="text-white">{eventLocation}</Typography.subtle>
           </div>
-        )}
-
-        <img
-          ref={imgRef}
-          src={photoURL}
-          alt={eventName}
-          loading="lazy"
-          decoding="async"
-          onLoad={markLoadedIfReady}
-          onError={handleImageError}
-          className={classNames(
-            'absolute inset-0 z-0 h-full w-full object-cover object-center transition-[opacity,transform] duration-500 group-hover:scale-110',
-            isLoaded ? 'opacity-100' : 'opacity-0'
-          )}
-          style={viewTransitionStyle(vtKeys.talkMedia(talkSlug))}
-        />
-
-        <div
-          className={classNames(
-            'absolute inset-0 z-5 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] transition-opacity duration-500',
-            isDarkMode ? 'bg-black/50' : 'bg-gray-600/10',
-            isLoaded ? 'opacity-50' : 'opacity-0'
-          )}
-        />
-        <div
-          className={classNames(
-            'absolute inset-0 z-10 transition-opacity duration-500',
-            isLoaded ? 'opacity-100' : 'opacity-0',
-            isDarkMode ? 'bg-black/30' : 'bg-white/30'
-          )}
-        />
-        <div
-          className={classNames(
-            `absolute inset-0 bg-gradient-to-br ${gradientClass} z-20 transition-opacity duration-500`,
-            isLoaded ? 'opacity-20' : 'opacity-0'
-          )}
-        />
-        <div
-          className={classNames(
-            'absolute inset-0 z-40 bg-gradient-to-t from-black/70 via-black/40 to-transparent transition-opacity duration-500',
-            isLoaded ? 'opacity-100' : 'opacity-0'
-          )}
-        />
-
-        <div
-          className={classNames(
-            'relative z-50 flex h-full flex-col justify-end p-6 transition-opacity duration-500',
-            isLoaded ? 'opacity-100' : 'opacity-0'
-          )}
-        >
-          <span className="font-medium text-white underline-offset-2 hover:underline" style={viewTransitionStyle(vtKeys.talkTitle(talkSlug))}>
-            {talkTitle}
-          </span>
-          <Typography.h3>{eventName}</Typography.h3>
-          <Typography.subtle className="text-white">{eventLocation}</Typography.subtle>
-        </div>
         </div>
       </div>
     </Link>

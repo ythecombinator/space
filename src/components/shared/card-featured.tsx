@@ -48,7 +48,7 @@ function CardFeatured({
         <div className="p-5">
           <h2
             className="mb-2 text-2xl font-bold leading-8 tracking-tight"
-            style={viewTransitionStyle(titleTransition)}
+            style={viewTransitionStyle(titleTransition, { contain: false })}
           >
             {title}
           </h2>

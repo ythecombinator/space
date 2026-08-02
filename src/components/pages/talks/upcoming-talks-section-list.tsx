@@ -48,7 +48,7 @@ const UpcomingTalksSectionItem: FunctionComponent<UpcomingSession> = ({
       <Typography.subtle className="text-neutral-900 dark:text-neutral-100">
         {eventLocation} • {<time dateTime={eventDate.toString()}>{formatDate(eventDate)}</time>}
       </Typography.subtle>
-      <Typography.h3 className="mt-2" style={viewTransitionStyle(vtKeys.talkTitle(talkSlug))}>
+      <Typography.h3 className="mt-2" style={viewTransitionStyle(vtKeys.talkTitle(talkSlug), { contain: false })}>
         {talkTitle}
       </Typography.h3>
       <Typography.small className="mt-2">{eventName}</Typography.small>

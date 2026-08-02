@@ -34,7 +34,7 @@ function AllPostsSectionItem(props: PropsWithChildren<AllPostsSectionItemProps>)
         </div>
         <Typography.h2 className="my-2 grow text-2xl font-bold leading-8 tracking-tight">
           <Link href={`/${Routes.posts}/${slug}`} className="text-gray-900 dark:text-gray-100">
-            <span style={viewTransitionStyle(vtKeys.postTitle(slug))}>
+            <span style={viewTransitionStyle(vtKeys.postTitle(slug), { contain: false })}>
               {language === 'pt' ? `🇧🇷 — ${title}` : `${title}`}
             </span>
           </Link>

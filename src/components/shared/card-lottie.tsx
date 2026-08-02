@@ -71,7 +71,7 @@ function CardLottie({ title, href, animationData, gradient = 'violet', className
         >
           <span
             className={classNames('block text-2xl font-bold leading-tight tracking-tight', colors.title)}
-            style={viewTransitionStyle(vtKeys.aboutTitle(href))}
+            style={viewTransitionStyle(vtKeys.aboutTitle(href), { contain: false })}
           >
             {title}
           </span>
