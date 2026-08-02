@@ -67,23 +67,23 @@
 }
 
 /* Section navigation */
-html[data-vt-mode='section'] ::view-transition-old(vt-main) {
+html[data-vt-mode='section']::view-transition-old(vt-main) {
   animation: vt-section-main-out var(--vt-duration-section) var(--vt-ease-in-out) both;
 }
 
-html[data-vt-mode='section'] ::view-transition-new(vt-main) {
+html[data-vt-mode='section']::view-transition-new(vt-main) {
   animation: vt-section-main-in var(--vt-duration-section) var(--vt-ease-out) both;
 }
 
 /* List → detail — shared elements morph; page shell stays put */
-html[data-vt-mode='detail'] ::view-transition-old(vt-main),
-html[data-vt-mode='detail'] ::view-transition-new(vt-main),
-html[data-vt-mode='detail'] ::view-transition-old(vt-logo),
-html[data-vt-mode='detail'] ::view-transition-new(vt-logo) {
+html[data-vt-mode='detail']::view-transition-old(vt-main),
+html[data-vt-mode='detail']::view-transition-new(vt-main),
+html[data-vt-mode='detail']::view-transition-old(vt-logo),
+html[data-vt-mode='detail']::view-transition-new(vt-logo) {
   animation: vt-detail-main-hold var(--vt-duration-detail) linear both;
 }
 
-html[data-vt-mode='detail'] ::view-transition-group(*) {
+html[data-vt-mode='detail']::view-transition-group(*) {
   animation-duration: var(--vt-duration-detail);
   animation-timing-function: var(--vt-ease-out);
 }
