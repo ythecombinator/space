@@ -1,23 +1,23 @@
 import { NextRouter } from 'next/router';
-import { CSSProperties, MouseEvent, ReactNode, type JSX } from 'react';
+import { CSSProperties, ReactNode, type JSX } from 'react';
 
 //  ---------------------------------------------------------------------------
 //  TYPES
 //  ---------------------------------------------------------------------------
 
-export type ViewTransitionNavigateOptions = {
-  shallow?: boolean;
-  scroll?: boolean;
-  replace?: boolean;
-};
-
 export type ViewTransitionMode = 'section' | 'detail' | 'about-detail';
+
+export type TransitionNavigateOptions = {
+  shallow?: boolean;
+  replace?: boolean;
+  /** Element whose shared names win when the same name is used more than once */
+  preferred?: Element | null;
+};
 
 //  ---------------------------------------------------------------------------
 //  KEYS
 //  ---------------------------------------------------------------------------
 
-/** CSS custom idents must be stable — strip characters that break view-transition-name */
 export function sanitizeVtSlug(value: string): string {
   return value
     .trim()
@@ -49,15 +49,7 @@ export const vtKeys = {
   aboutTitle: (slugOrHref: string) => `vt-about-title-${slugFromHref(slugOrHref)}`,
   aboutHero: (slugOrHref: string) => `vt-about-hero-${slugFromHref(slugOrHref)}`,
   aboutLottie: (slugOrHref: string) => `vt-about-lottie-${slugFromHref(slugOrHref)}`,
-} as const;
-
-/** @deprecated Use vtKeys instead */
-export const vtNames = {
   logo: 'vt-logo',
-  main: 'vt-main',
-  pageTitle: (key: string) => key,
-  hero: (key: string) => key,
-  aboutCard: (slug: string) => vtKeys.aboutCard(slug),
 } as const;
 
 //  ---------------------------------------------------------------------------
@@ -76,16 +68,12 @@ export function shouldUseViewTransition(): boolean {
   return supportsViewTransitions() && !prefersReducedMotion();
 }
 
-export function skipViewTransitionFromEvent(event: MouseEvent<HTMLAnchorElement>): boolean {
-  return event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0;
-}
-
-export function viewTransitionStyle(name: string | undefined): CSSProperties | undefined {
+export function viewTransitionStyle(name: string | undefined, options?: { contain?: boolean }): CSSProperties | undefined {
   if (!name) return undefined;
 
   return {
     viewTransitionName: name,
-    contain: 'layout',
+    ...(options?.contain ? { contain: 'layout' as const } : {}),
   } as CSSProperties;
 }
 
@@ -129,30 +117,108 @@ export function prepareTransition(from: string, to: string): ViewTransitionMode 
   return mode;
 }
 
-function waitForNextPaint(): Promise<void> {
-  return new Promise((resolve) => {
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => resolve());
+//  ---------------------------------------------------------------------------
+//  UNIQUENESS
+//  ---------------------------------------------------------------------------
+
+/**
+ * A view-transition-name must be unique per document — the same talk is listed
+ * in several sections, so the names collide and Chrome discards the whole
+ * transition. Keep one element per name (the one being navigated from, when
+ * known) and disable the rest for the duration of the transition.
+ */
+export function restoreViewTransitionNames(): void {
+  document.querySelectorAll<HTMLElement>('[data-vt-original]').forEach((element) => {
+    element.style.viewTransitionName = element.dataset.vtOriginal ?? '';
+    delete element.dataset.vtOriginal;
+  });
+}
+
+export function dedupeViewTransitionNames(preferred?: Element | null): void {
+  restoreViewTransitionNames();
+
+  const groups = new Map<string, HTMLElement[]>();
+
+  document.querySelectorAll<HTMLElement>('[style*="view-transition-name"]').forEach((element) => {
+    const name = element.style.viewTransitionName;
+    if (!name || name === 'none') return;
+
+    const group = groups.get(name);
+    if (group) group.push(element);
+    else groups.set(name, [element]);
+  });
+
+  groups.forEach((elements) => {
+    if (elements.length < 2) return;
+
+    const keep = (preferred && elements.find((element) => preferred.contains(element))) ?? elements[0];
+
+    elements.forEach((element) => {
+      if (element === keep) return;
+      element.dataset.vtOriginal = element.style.viewTransitionName;
+      element.style.viewTransitionName = 'none';
     });
   });
 }
 
-function waitForRouteChangeComplete(router: NextRouter): Promise<void> {
-  return new Promise((resolve) => {
-    const done = () => {
-      router.events.off('routeChangeComplete', done);
-      router.events.off('routeChangeError', onError);
-      void waitForNextPaint().then(resolve);
-    };
-    const onError = () => {
-      router.events.off('routeChangeComplete', done);
-      router.events.off('routeChangeError', onError);
-      resolve();
-    };
+/**
+ * Chrome aborts a transition whose update callback runs longer than ~4s, so
+ * every wait in that callback needs an upper bound.
+ */
+async function waitForPaint(): Promise<void> {
+  await Promise.race([
+    new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))),
+    new Promise<void>((resolve) => setTimeout(resolve, 120)),
+  ]);
+}
 
-    router.events.on('routeChangeComplete', done);
-    router.events.on('routeChangeError', onError);
-  });
+/**
+ * Navigate with a view transition on the Pages Router.
+ *
+ * router.push is awaited directly inside the update callback: it resolves once
+ * the destination route is loaded and rendered, which is the signal the browser
+ * needs before capturing the new snapshot. Deferring it through startTransition
+ * and router events instead deadlocks, because rendering is suspended while the
+ * callback is pending and the transition dies on Chrome's timeout.
+ */
+export async function transitionNavigate(
+  router: NextRouter,
+  href: string,
+  options: TransitionNavigateOptions = {}
+): Promise<boolean> {
+  const { shallow, replace = false, preferred } = options;
+  const destination = normalizePath(href);
+  const from = router.asPath;
+
+  const navigate = () => {
+    const method = replace ? router.replace.bind(router) : router.push.bind(router);
+    return method(destination, undefined, { shallow, scroll: false });
+  };
+
+  if (!shouldUseViewTransition() || normalizePath(from) === destination) {
+    const result = await navigate();
+    window.scrollTo(0, 0);
+    return result;
+  }
+
+  dedupeViewTransitionNames(preferred);
+  prepareTransition(from, destination);
+
+  try {
+    await document.startViewTransition(async () => {
+      await navigate();
+      window.scrollTo(0, 0);
+      dedupeViewTransitionNames();
+      await waitForPaint();
+    }).finished;
+  } catch {
+    // Transition skipped or aborted — the navigation itself still happened.
+  } finally {
+    clearTransitionMode();
+    restoreViewTransitionNames();
+  }
+
+  return true;
 }
 
 export function withViewTransition(update: () => void | Promise<void>): void {
@@ -163,42 +229,8 @@ export function withViewTransition(update: () => void | Promise<void>): void {
 
   document.startViewTransition(async () => {
     await update();
-    await waitForNextPaint();
+    await waitForPaint();
   });
-}
-
-export async function navigateWithViewTransition(
-  router: NextRouter,
-  href: string,
-  options: ViewTransitionNavigateOptions = {}
-): Promise<boolean> {
-  const { shallow, scroll = true, replace = false } = options;
-  const destination = normalizePath(href);
-
-  const navigate = () => {
-    const method = replace ? router.replace.bind(router) : router.push.bind(router);
-    return method(destination, undefined, { shallow, scroll });
-  };
-
-  if (!shouldUseViewTransition()) {
-    return navigate();
-  }
-
-  prepareTransition(router.asPath, destination);
-
-  const transition = document.startViewTransition(async () => {
-    const routeChange = waitForRouteChangeComplete(router);
-    await navigate();
-    await routeChange;
-  });
-
-  try {
-    await transition.finished;
-  } finally {
-    clearTransitionMode();
-  }
-
-  return true;
 }
 
 export type ViewTransitionTargetProps = {
@@ -207,4 +239,5 @@ export type ViewTransitionTargetProps = {
   className?: string;
   children?: ReactNode;
   style?: CSSProperties;
+  contain?: boolean;
 };
