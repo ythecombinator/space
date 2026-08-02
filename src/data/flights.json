@@ -1,5 +1,5 @@
 {
-  "lastUpdatedAt": 1784564868375,
+  "lastUpdatedAt": 1785670670177,
   "flights": [
     {
       "number": "1761",
@@ -44,7 +44,7 @@
       "depAirportIata": "FRA",
       "arrAirportIata": "ALC",
       "distance": 1494,
-      "depTimeOriginal": 1790164800
+      "depTimeOriginal": 1790165100
     },
     {
       "number": "1395",

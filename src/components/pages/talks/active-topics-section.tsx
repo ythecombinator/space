@@ -1,13 +1,14 @@
 import { PropsWithChildren } from 'react';
 import { FaChevronRight } from 'react-icons/fa';
 
+import { Topic } from 'services/content/talks';
+
 import CardFeatured from 'components/shared/card-featured';
 import CardScrollArea from 'components/shared/card-scroll-area';
 import Link from 'components/shared/link';
 import SectionContainer from 'components/shared/section-container';
 import SectionHeading from 'components/shared/section-heading';
 import Typography from 'components/shared/typography';
-import { Topic } from 'services/content/talks';
 
 //  ---------------------------------------------------------------------------
 //  TYPES

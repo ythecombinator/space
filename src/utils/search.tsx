@@ -121,4 +121,3 @@ function useSearch<D>(term: string): Array<D> {
 }
 
 export { SearchProvider, useSearch };
-

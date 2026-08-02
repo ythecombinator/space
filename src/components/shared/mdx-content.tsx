@@ -1,5 +1,5 @@
-import * as runtime from 'react/jsx-runtime';
 import { ComponentType } from 'react';
+import * as runtime from 'react/jsx-runtime';
 
 function useMDXComponent(code: string) {
   const fn = new Function(code);

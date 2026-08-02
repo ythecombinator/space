@@ -1,11 +1,5 @@
 import NextLink, { LinkProps as NextLinkProps } from 'next/link';
-import {
-  AnchorHTMLAttributes,
-  CSSProperties,
-  FunctionComponent,
-  PropsWithChildren,
-  Ref,
-} from 'react';
+import { AnchorHTMLAttributes, CSSProperties, FunctionComponent, PropsWithChildren, Ref } from 'react';
 
 import { isAnchorLink, isInternalLink } from 'utils/link';
 

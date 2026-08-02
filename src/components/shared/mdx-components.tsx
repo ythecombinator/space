@@ -61,13 +61,7 @@ function MDXLayoutRenderer({ layout, content, ...rest }: PropsWithChildren<MDXLa
   const mainContent = coreContent(content);
 
   return (
-    <MDXContent
-      code={content.body.code}
-      layout={layout}
-      content={mainContent}
-      components={MDXComponents}
-      {...rest}
-    />
+    <MDXContent code={content.body.code} layout={layout} content={mainContent} components={MDXComponents} {...rest} />
   );
 }
 

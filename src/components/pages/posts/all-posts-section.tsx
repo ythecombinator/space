@@ -34,10 +34,7 @@ const searchSchema = {
 //  UI
 //  ---------------------------------------------------------------------------
 
-const AllPostsSection: FunctionComponent<PropsWithChildren<AllPostsSectionProps>> = ({
-  items,
-  searchTerm,
-}) => (
+const AllPostsSection: FunctionComponent<PropsWithChildren<AllPostsSectionProps>> = ({ items, searchTerm }) => (
   <SearchProvider schema={searchSchema} data={items}>
     <AllPostsList searchTerm={searchTerm} />
   </SearchProvider>

@@ -1,4 +1,3 @@
-
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import {
   CellContext,
@@ -98,7 +97,13 @@ function sortByStartDate(rowA: Row<EventEntry>, rowB: Row<EventEntry>, columnId:
 }
 
 function renderEventCell(cell: CellContext<EventEntry, string>) {
-  return <EventLinksOverlay eventName={cell.getValue()} cfpWebsite={cell.row.original.cfpWebsite} eventWebsite={cell.row.original.eventWebsite} />;
+  return (
+    <EventLinksOverlay
+      eventName={cell.getValue()}
+      cfpWebsite={cell.row.original.cfpWebsite}
+      eventWebsite={cell.row.original.eventWebsite}
+    />
+  );
 }
 
 function EventLinksOverlay({
@@ -153,7 +158,10 @@ function EventLinksOverlay({
           onBlur={closeOverlay}
           className="block max-w-full text-left"
         >
-          <Typography.p className="block max-w-full cursor-help truncate underline decoration-dotted underline-offset-4" title={eventName}>
+          <Typography.p
+            className="block max-w-full cursor-help truncate underline decoration-dotted underline-offset-4"
+            title={eventName}
+          >
             {eventName}
           </Typography.p>
         </button>
@@ -368,15 +376,14 @@ function DataSection({ data }: PropsWithChildren<DataSectionProps>) {
             className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
           />
         </div>
-        <DropdownMenu
-          label="Status"
-          initialSelectedItem="all"
-          items={statusFilterItems}
-          onSelect={setSelectedStatus}
-        />
+        <DropdownMenu label="Status" initialSelectedItem="all" items={statusFilterItems} onSelect={setSelectedStatus} />
       </div>
 
-      <SearchProvider schema={searchSchema} data={data} fallback={<div className="rounded-md border p-4 text-sm text-muted-foreground">Searching events...</div>}>
+      <SearchProvider
+        schema={searchSchema}
+        data={data}
+        fallback={<div className="rounded-md border p-4 text-sm text-muted-foreground">Searching events...</div>}
+      >
         <DataSectionTable searchTerm={searchTerm} selectedStatus={selectedStatus} />
       </SearchProvider>
     </div>
@@ -419,8 +426,7 @@ function DataSectionTable({ searchTerm, selectedStatus }: Omit<DataSectionTableP
   const virtualRows = rowVirtualizer.getVirtualItems();
   const totalSize = rowVirtualizer.getTotalSize();
   const topPaddingHeight = virtualRows.length > 0 ? virtualRows[0].start : 0;
-  const bottomPaddingHeight =
-    virtualRows.length > 0 ? totalSize - virtualRows[virtualRows.length - 1].end : 0;
+  const bottomPaddingHeight = virtualRows.length > 0 ? totalSize - virtualRows[virtualRows.length - 1].end : 0;
   const columnCount = table.getVisibleLeafColumns().length;
 
   useEffect(() => {
