@@ -3,60 +3,42 @@ import { flushSync } from 'react-dom';
 
 import { scrollToTop } from 'utils/window';
 
-//  ---------------------------------------------------------------------------
-//  TYPES
-//  ---------------------------------------------------------------------------
-
 type ViewTransitionMode = 'section' | 'detail' | 'list' | 'theme';
 
-export type TransitionNavigateOptions = {
+type NavigateOptions = {
   shallow?: boolean;
   replace?: boolean;
-  /** The clicked element — only the shared names it carries or contains take part in the morph */
+  /** Clicked element — only shared names it carries or contains take part in the morph */
   source?: Element | null;
 };
 
-export type TransitionStateOptions = {
+type StateOptions = {
   mode?: Extract<ViewTransitionMode, 'list' | 'theme'>;
-  /** Container whose shared names take part — leave it out to animate the page as a single snapshot */
+  /** Scope row/card morphs to this container — omit for a full-page snapshot (theme) */
   within?: Element | null;
 };
 
-//  ---------------------------------------------------------------------------
-//  PATHS
-//  ---------------------------------------------------------------------------
+const VT = 'data-vt-name';
+const NAMED = `[${VT}]`;
+const PAINT_TIMEOUT = 120;
+
+let running = false;
+let active: HTMLElement[] = [];
 
 export const normalizePath = (path: string) => {
-  const withoutQuery = path.split('?')[0]?.split('#')[0] ?? path;
+  const bare = path.split('?')[0]?.split('#')[0] ?? path;
 
-  if (withoutQuery.length > 1 && withoutQuery.endsWith('/')) {
-    return withoutQuery.slice(0, -1);
+  if (bare.length > 1 && bare.endsWith('/')) {
+    return bare.slice(0, -1);
   }
 
-  return withoutQuery;
+  return bare;
 };
 
 export const isSamePath = (path: string, other: string) => normalizePath(path) === normalizePath(other);
 
-const pathnameOf = (href: string) => {
-  if (!href.startsWith('http')) {
-    return normalizePath(href);
-  }
+const segments = (path: string) => normalizePath(path).split('/').filter(Boolean);
 
-  try {
-    return new URL(href).pathname;
-  } catch {
-    return href;
-  }
-};
-
-const segmentsOf = (path: string) => normalizePath(path).split('/').filter(Boolean);
-
-//  ---------------------------------------------------------------------------
-//  KEYS
-//  ---------------------------------------------------------------------------
-
-/** CSS custom idents must be stable — strip whatever breaks view-transition-name */
 const sanitizeSlug = (value: string) =>
   value
     .trim()
@@ -65,7 +47,17 @@ const sanitizeSlug = (value: string) =>
     .replace(/^-+|-+$/g, '');
 
 const slugFromHref = (href: string) => {
-  const pathname = pathnameOf(href);
+  let pathname = href;
+
+  if (href.startsWith('http')) {
+    try {
+      pathname = new URL(href).pathname;
+    } catch {
+      pathname = href;
+    }
+  } else {
+    pathname = normalizePath(href);
+  }
 
   return sanitizeSlug(pathname.split('/').filter(Boolean).pop() ?? pathname);
 };
@@ -83,86 +75,48 @@ export const vtKeys = {
   radarRow: (id: string) => `vt-radar-row-${sanitizeSlug(id)}`,
 } as const;
 
-//  ---------------------------------------------------------------------------
-//  SUPPORT
-//  ---------------------------------------------------------------------------
+export const shouldUseViewTransition = () =>
+  typeof document !== 'undefined' &&
+  'startViewTransition' in document &&
+  !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const supportsViewTransitions = () => typeof document !== 'undefined' && 'startViewTransition' in document;
-
-const prefersReducedMotion = () =>
-  typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-export const shouldUseViewTransition = () => supportsViewTransitions() && !prefersReducedMotion();
-
-/** The theme reveal grows out of the switch, so its origin and a radius covering the viewport go in as CSS vars */
+/** Theme reveal origin — passed to CSS as custom properties */
 export const setRevealOrigin = (x: number, y: number) => {
   const radius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+  const root = document.documentElement;
 
-  document.documentElement.style.setProperty('--vt-origin-x', `${x}px`);
-  document.documentElement.style.setProperty('--vt-origin-y', `${y}px`);
-  document.documentElement.style.setProperty('--vt-origin-radius', `${radius}px`);
+  root.style.setProperty('--vt-origin-x', `${x}px`);
+  root.style.setProperty('--vt-origin-y', `${y}px`);
+  root.style.setProperty('--vt-origin-radius', `${radius}px`);
 };
 
-//  ---------------------------------------------------------------------------
-//  MODE
-//  ---------------------------------------------------------------------------
+/** Inert in markup; switched on only for elements participating in the current transition */
+export const viewTransitionProps = (name?: string) => (name ? { [VT]: name } : {});
 
-/** Drilling one level deeper into the same section — /talks → /talks/some-talk */
-const isOneLevelDeeper = (from: string[], to: string[]) =>
-  from.length >= 1 && to.length === from.length + 1 && from.every((segment, index) => segment === to[index]);
+const modeForRoute = (from: string, to: string): ViewTransitionMode => {
+  const a = segments(from);
+  const b = segments(to);
+  const step = (x: string[], y: string[]) =>
+    x.length >= 1 && y.length === x.length + 1 && x.every((part, i) => part === y[i]);
 
-const getTransitionMode = (from: string, to: string) => {
-  const fromSegments = segmentsOf(from);
-  const toSegments = segmentsOf(to);
-
-  // Going back up plays the same morph in reverse, so arriving and leaving match
-  if (isOneLevelDeeper(fromSegments, toSegments) || isOneLevelDeeper(toSegments, fromSegments)) {
+  if (step(a, b) || step(b, a)) {
     return 'detail';
   }
 
   return 'section';
 };
 
-const setTransitionMode = (mode: ViewTransitionMode) => {
-  document.documentElement.dataset.vtMode = mode;
-};
-
-const clearTransitionMode = () => {
-  delete document.documentElement.dataset.vtMode;
-};
-
-/** Root snapshots capture the full document height — tall pages exceed Chrome's texture budget and abort the transition */
-const setRootSnapshot = (enabled: boolean) => {
-  if (enabled) {
-    document.documentElement.style.removeProperty('view-transition-name');
+const setMode = (mode: ViewTransitionMode | null) => {
+  if (mode) {
+    document.documentElement.dataset.vtMode = mode;
     return;
   }
 
-  document.documentElement.style.viewTransitionName = 'none';
+  delete document.documentElement.dataset.vtMode;
 };
 
-const usesRootSnapshot = (mode: ViewTransitionMode) => mode === 'section' || mode === 'theme';
+const namedIn = (root: ParentNode) => Array.from(root.querySelectorAll<HTMLElement>(NAMED));
 
-//  ---------------------------------------------------------------------------
-//  NAMES
-//  ---------------------------------------------------------------------------
-
-const NAME_ATTRIBUTE = 'data-vt-name';
-const NAMED_SELECTOR = `[${NAME_ATTRIBUTE}]`;
-
-/**
- * Shared names are declared as data, not as CSS.
- *
- * The browser snapshots every element carrying a view-transition-name, and a
- * listing page carries hundreds of them. Declaring the name here and switching
- * it on for the handful of elements that actually travel keeps a navigation at
- * a couple of snapshots instead of a hundred.
- */
-export const viewTransitionProps = (name?: string) => (name ? { [NAME_ATTRIBUTE]: name } : {});
-
-const namedElementsIn = (root: ParentNode) => Array.from(root.querySelectorAll<HTMLElement>(NAMED_SELECTOR));
-
-/** A name may only appear once per document, and the same talk is listed in several sections — first one wins */
 const uniqueByName = (elements: HTMLElement[]) => {
   const seen = new Set<string>();
 
@@ -174,63 +128,42 @@ const uniqueByName = (elements: HTMLElement[]) => {
     }
 
     seen.add(name);
-
     return true;
   });
 };
 
-/** The clicked link either carries the shared name, sits inside it (a card) or wraps it (a title) */
-const sharedElementsFor = (source: Element) => {
-  const wrapper = source.closest<HTMLElement>(NAMED_SELECTOR);
+const sharedFrom = (source: Element) => {
+  const wrapper = source.closest<HTMLElement>(NAMED);
 
-  return uniqueByName(wrapper ? [wrapper, ...namedElementsIn(source)] : namedElementsIn(source));
+  return uniqueByName(wrapper ? [wrapper, ...namedIn(source)] : namedIn(source));
 };
-
-let activeElements: HTMLElement[] = [];
 
 const activate = (elements: HTMLElement[]) => {
   elements.forEach((element) => {
     element.style.viewTransitionName = element.dataset.vtName ?? '';
-    activeElements.push(element);
+    active.push(element);
   });
 };
 
-const activateByName = (names: string[], root: ParentNode) => {
+const activateNames = (names: string[], root: ParentNode) => {
   const elements = names
-    .map((name) => root.querySelector<HTMLElement>(`[${NAME_ATTRIBUTE}="${CSS.escape(name)}"]`))
+    .map((name) => root.querySelector<HTMLElement>(`[${VT}="${CSS.escape(name)}"]`))
     .filter((element): element is HTMLElement => element !== null);
 
   activate(elements);
 };
 
-const deactivate = () => {
-  activeElements.forEach((element) => element.style.removeProperty('view-transition-name'));
-  activeElements = [];
+const resetNames = () => {
+  active.forEach((element) => element.style.removeProperty('view-transition-name'));
+  active = [];
 };
 
-const namesOf = (elements: HTMLElement[]) => elements.map((element) => element.dataset.vtName ?? '');
+const waitForPaint = () =>
+  Promise.race([
+    new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))),
+    new Promise<void>((resolve) => setTimeout(resolve, PAINT_TIMEOUT)),
+  ]);
 
-//  ---------------------------------------------------------------------------
-//  RUNNER
-//  ---------------------------------------------------------------------------
-
-const PAINT_TIMEOUT = 120;
-
-let running = false;
-
-const nextPaint = () =>
-  new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
-
-const afterTimeout = (delay: number) => new Promise<void>((resolve) => setTimeout(resolve, delay));
-
-/** Chrome aborts a transition whose update callback runs longer than ~4s, so every wait needs a ceiling */
-const waitForPaint = () => Promise.race([nextPaint(), afterTimeout(PAINT_TIMEOUT)]);
-
-/**
- * Only one transition can be in flight — a second one would make the browser
- * discard the first, so overlapping updates (a held-down filter key, say) are
- * applied straight away instead.
- */
 const runTransition = async (update: () => void | Promise<void>, mode: ViewTransitionMode) => {
   if (running) {
     await update();
@@ -238,92 +171,67 @@ const runTransition = async (update: () => void | Promise<void>, mode: ViewTrans
   }
 
   running = true;
-  let updated = false;
+  let committed = false;
 
-  const commitUpdate = async () => {
-    if (updated) {
+  const commit = async () => {
+    if (committed) {
       return;
     }
 
-    updated = true;
+    committed = true;
     await update();
   };
 
   try {
-    setTransitionMode(mode);
-    setRootSnapshot(usesRootSnapshot(mode));
+    setMode(mode);
 
     await document.startViewTransition(async () => {
-      await commitUpdate();
+      await commit();
       await waitForPaint();
     }).finished;
   } catch {
-    // Snapshot capture can fail on tall pages — still commit the navigation/update.
-    await commitUpdate();
+    await commit();
   } finally {
-    clearTransitionMode();
-    setRootSnapshot(true);
-    deactivate();
+    setMode(null);
+    resetNames();
     running = false;
   }
 };
 
-//  ---------------------------------------------------------------------------
-//  ENTRY POINTS
-//  ---------------------------------------------------------------------------
-
-/**
- * Navigate with a view transition on the Pages Router.
- *
- * router.push is awaited inside the update callback: it resolves once the
- * destination route is loaded and rendered, which is the signal the browser
- * needs before capturing the new snapshot. Deferring it through startTransition
- * and router events instead deadlocks, because rendering stays suspended while
- * the callback is pending and the transition dies on Chrome's timeout.
- */
-export const transitionNavigate = async (router: NextRouter, href: string, options: TransitionNavigateOptions = {}) => {
+export const transitionNavigate = async (router: NextRouter, href: string, options: NavigateOptions = {}) => {
   const { shallow, replace = false, source } = options;
-
   const from = router.asPath;
   const destination = normalizePath(href);
+  const go = () => {
+    const navigate = replace ? router.replace.bind(router) : router.push.bind(router);
 
-  const navigate = () => {
-    const method = replace ? router.replace.bind(router) : router.push.bind(router);
-
-    return method(destination, undefined, { shallow, scroll: false });
+    return navigate(destination, undefined, { shallow, scroll: false });
   };
 
   if (!shouldUseViewTransition() || isSamePath(from, destination)) {
-    const navigated = await navigate();
+    await go();
     scrollToTop();
 
-    return navigated;
+    return true;
   }
 
-  const shared = source ? sharedElementsFor(source) : [];
-  const names = namesOf(shared);
+  const shared = source ? sharedFrom(source) : [];
+  const names = shared.map((element) => element.dataset.vtName ?? '');
 
   activate(shared);
 
   await runTransition(async () => {
-    await navigate();
+    await go();
     scrollToTop();
-    activateByName(names, document);
-  }, getTransitionMode(from, destination));
+    activateNames(names, document);
+  }, modeForRoute(from, destination));
 
   scrollToTop();
 
   return true;
 };
 
-/**
- * Animate an in-page state change — filtering, sorting, toggling.
- *
- * The update is flushed synchronously: React would otherwise re-render after
- * the browser has captured the new snapshot, and nothing would appear to move.
- * Keep suspending updates out of here, since a flush cannot wait on them.
- */
-export const transitionState = (update: () => void, options: TransitionStateOptions = {}) => {
+export const transitionState = (update: () => void, options: StateOptions = {}) => {
   const { mode = 'list', within } = options;
 
   if (!shouldUseViewTransition()) {
@@ -331,13 +239,13 @@ export const transitionState = (update: () => void, options: TransitionStateOpti
     return;
   }
 
-  const shared = within ? uniqueByName(namedElementsIn(within)) : [];
-  const names = namesOf(shared);
+  const elements = within ? uniqueByName(namedIn(within)) : [];
+  const names = elements.map((element) => element.dataset.vtName ?? '');
 
-  activate(shared);
+  activate(elements);
 
-  void runTransition(() => {
+  return runTransition(() => {
     flushSync(update);
-    activateByName(names, within?.isConnected ? within : document);
+    activateNames(names, within?.isConnected ? within : document);
   }, mode);
 };

@@ -62,8 +62,9 @@ html[data-vt-mode='section']::view-transition-new(root) {
   animation: vt-section-in var(--vt-duration-section) var(--vt-ease-out) both;
 }
 
-/* List ↔ detail — only the shared card/title morph; skip the root snapshot so tall pages stay within Chrome's texture budget */
-html[data-vt-mode='detail'] {
+/* Detail and list — only named elements morph; root snapshots blow Chrome's texture budget on tall pages */
+html[data-vt-mode='detail'],
+html[data-vt-mode='list'] {
   view-transition-name: none;
 }
 
@@ -72,11 +73,6 @@ html[data-vt-mode='detail']::view-transition-old(*),
 html[data-vt-mode='detail']::view-transition-new(*) {
   animation-duration: var(--vt-duration-detail);
   animation-timing-function: var(--vt-ease-out);
-}
-
-/* In-page list changes — same idea: rows travel, the page shell is not snapshotted */
-html[data-vt-mode='list'] {
-  view-transition-name: none;
 }
 
 html[data-vt-mode='list']::view-transition-group(*),
