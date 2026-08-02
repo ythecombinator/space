@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+export const scrollToTop = () => window.scrollTo(0, 0);
+
 export const useWindowSize = () => {
   const [windowSize, setWindowSize] = useState<{
     width: number | undefined;
