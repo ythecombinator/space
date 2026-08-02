@@ -5,6 +5,7 @@ import colors from 'tailwindcss/colors';
 
 import { isEmpty, reversedIndexOf } from 'utils/array';
 import { SearchProvider, useSearch } from 'utils/search';
+import { transitionState } from 'utils/view-transition';
 
 import Chip from 'components/shared/chip';
 import DropdownMenu from 'components/shared/dropdown-menu';
@@ -78,6 +79,11 @@ function AllTalksSection({ items: baseItems }: PropsWithChildren<AllTalksSection
     setSearchTerm(evt.target.value);
   };
 
+  // Search stays instant — it suspends on every term, which a flushed update cannot wait for
+  const onFilter = (categories: string[]) => {
+    transitionState(() => setSelectedCategories(categories));
+  };
+
   return (
     <SectionContainer>
       <div className="mb-6 flex items-center justify-between">
@@ -87,7 +93,7 @@ function AllTalksSection({ items: baseItems }: PropsWithChildren<AllTalksSection
           items={SESSION_TYPE_FILTERS}
           multiSelect
           initialSelectedItems={selectedCategories}
-          onMultiSelect={setSelectedCategories}
+          onMultiSelect={onFilter}
         />
       </div>
       <div className="mb-6">

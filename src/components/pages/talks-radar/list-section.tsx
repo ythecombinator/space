@@ -2,6 +2,7 @@ import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import {
   CellContext,
   Header,
+  OnChangeFn,
   Row,
   SortingState,
   createColumnHelper,
@@ -19,6 +20,7 @@ import { EngagementStatusPrimary, EngagementStatusSecondary, EventEntry } from '
 
 import { SearchProvider, useSearch } from 'utils/search';
 import { classNames } from 'utils/styles';
+import { transitionState, viewTransitionStyle, vtKeys } from 'utils/view-transition';
 
 import DropdownMenu from 'components/shared/dropdown-menu';
 import EmptyList from 'components/shared/empty-list';
@@ -376,7 +378,12 @@ function DataSection({ data }: PropsWithChildren<DataSectionProps>) {
             className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
           />
         </div>
-        <DropdownMenu label="Status" initialSelectedItem="all" items={statusFilterItems} onSelect={setSelectedStatus} />
+        <DropdownMenu
+          label="Status"
+          initialSelectedItem="all"
+          items={statusFilterItems}
+          onSelect={(status) => transitionState(() => setSelectedStatus(status))}
+        />
       </div>
 
       <SearchProvider
@@ -403,11 +410,17 @@ function DataSectionTable({ searchTerm, selectedStatus }: Omit<DataSectionTableP
     return searchedData.filter((item) => item.result === selectedStatus);
   }, [searchedData, selectedStatus]);
 
+  // Rows carry their event identity so re-sorting travels them instead of swapping content in place
+  const onSortingChange: OnChangeFn<SortingState> = (updater) => {
+    transitionState(() => setSorting(updater));
+  };
+
   const table = useReactTable({
     data: tableData,
     columns,
     enableSortingRemoval: false,
-    onSortingChange: setSorting,
+    getRowId: (row) => `${row.event}-${row.dates.start.raw}`,
+    onSortingChange,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     state: {
@@ -479,7 +492,12 @@ function DataSectionTable({ searchTerm, selectedStatus }: Omit<DataSectionTableP
               const row = rows[virtualRow.index];
 
               return (
-                <Table.Row key={row.id} data-index={virtualRow.index} ref={rowVirtualizer.measureElement}>
+                <Table.Row
+                  key={row.id}
+                  data-index={virtualRow.index}
+                  ref={rowVirtualizer.measureElement}
+                  style={viewTransitionStyle(vtKeys.radarRow(row.id))}
+                >
                   {row.getVisibleCells().map((cell) => (
                     <Table.Cell key={cell.id} className={getColumnWidthClass(cell.column.id)}>
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
