@@ -32,7 +32,8 @@ function TopicHighlightsSection(props: PropsWithChildren<TopicHighlightsSectionP
         {items.map((item) => (
           <CardFeatured
             key={item.talkSlug}
-            className="min-w-[300px] py-4 md:px-4"
+            fullWidth={false}
+            className="w-[22rem] py-4 md:px-4"
             title={item.talkTitle}
             description={`Presented ${item.sessionsCount} times`}
             href={item.talkSlug}
