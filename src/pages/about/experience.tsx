@@ -3,20 +3,20 @@ import { InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { NextSeo as Metadata } from 'next-seo';
 
-import { coreContent } from 'utils/content';
-
 import { Routes, siteMetadata } from 'config/constants';
 
 import MarkdownContentService from 'services/content/markdown';
 
+import { coreContent } from 'utils/content';
 import { serializeExperience } from 'utils/linkedin';
 import { MetadataConfig, generateOpenGraphImage } from 'utils/open-graph';
-import { viewTransitionStyle, vtKeys } from 'utils/view-transition';
+import { vtKeys } from 'utils/view-transition';
 
 import MDXContent from 'components/shared/mdx-content';
 import SectionContainer from 'components/shared/section-container';
 import SectionCover from 'components/shared/section-cover';
 import Typography from 'components/shared/typography';
+import ViewTransitionTarget from 'components/shared/view-transition-target';
 
 import Layout from 'components/layouts/page';
 
@@ -73,11 +73,15 @@ function Page({ content, work, volunteering, openGraphImage }: PageProps) {
           images: [{ url: openGraphImage }],
         }}
       />
-      <Layout heading="Build. Share. Rewind." headingGradient="peachy" headingTransitionKey={vtKeys.aboutTitle('experience')}>
+      <Layout
+        heading="Build. Share. Rewind."
+        headingGradient="peachy"
+        headingTransitionKey={vtKeys.aboutTitle('experience')}
+      >
         <SectionContainer className="prose dark:prose-invert">
-          <div className="overflow-hidden rounded-lg" style={viewTransitionStyle(vtKeys.aboutCard('experience'))}>
+          <ViewTransitionTarget as="div" name={vtKeys.aboutCard('experience')} className="overflow-hidden rounded-lg">
             <SectionCover alt="This is me!" src="/content/misc/work.jpg" />
-          </div>
+          </ViewTransitionTarget>
           <MDXContent code={content.body.code} content={mdxContent} />
         </SectionContainer>
 

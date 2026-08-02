@@ -1,9 +1,9 @@
 import { PropsWithChildren } from 'react';
 
 import { classNames, Gradient, gradients } from 'utils/styles';
-import { viewTransitionStyle } from 'utils/view-transition';
 
 import Typography from 'components/shared/typography';
+import ViewTransitionTarget from 'components/shared/view-transition-target';
 
 //  ---------------------------------------------------------------------------
 //  TYPES
@@ -26,7 +26,7 @@ function PageTitle({ gradient, transitionKey, children }: PropsWithChildren<Page
         [`text-transparent bg-clip-text bg-gradient-to-r ${gradients[gradient as Gradient]}`]: gradient,
       })}
     >
-      <span style={viewTransitionStyle(transitionKey, { contain: false })}>{children}</span>
+      <ViewTransitionTarget name={transitionKey}>{children}</ViewTransitionTarget>
     </Typography.h1>
   );
 }

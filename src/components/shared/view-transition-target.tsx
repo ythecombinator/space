@@ -1,7 +1,19 @@
-import { createElement, PropsWithChildren } from 'react';
+import { createElement, CSSProperties, type JSX, PropsWithChildren } from 'react';
 
 import { classNames } from 'utils/styles';
-import { ViewTransitionTargetProps, viewTransitionStyle } from 'utils/view-transition';
+import { viewTransitionStyle } from 'utils/view-transition';
+
+//  ---------------------------------------------------------------------------
+//  TYPES
+//  ---------------------------------------------------------------------------
+
+export type ViewTransitionTargetProps = {
+  /** Full view-transition-name, typically from vtKeys */
+  name?: string;
+  as?: keyof JSX.IntrinsicElements;
+  className?: string;
+  style?: CSSProperties;
+};
 
 //  ---------------------------------------------------------------------------
 //  UI
@@ -13,13 +25,12 @@ function ViewTransitionTarget({
   className,
   children,
   style,
-  contain,
 }: PropsWithChildren<ViewTransitionTargetProps>) {
   return createElement(
     Tag,
     {
-      className: classNames(className),
-      style: { ...viewTransitionStyle(name, { contain }), ...style },
+      className: classNames(className) || undefined,
+      style: { ...viewTransitionStyle(name), ...style },
     },
     children
   );

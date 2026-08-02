@@ -32,7 +32,7 @@ function ActiveTalksSectionItem(props: PropsWithChildren<ActiveTalksSectionItemP
       <ViewTransitionTarget as="div" name={vtKeys.talkCard(talkSlug)}>
         <CardOutlined
           heading={
-            <ViewTransitionTarget name={vtKeys.talkTitle(talkSlug)} contain={false}>
+            <ViewTransitionTarget name={vtKeys.talkTitle(talkSlug)}>
               <div className="flex flex-col gap-2">
                 {talkCategory === 'workshop' && <Chip variant="default">Workshop</Chip>}
                 {talkTitle}

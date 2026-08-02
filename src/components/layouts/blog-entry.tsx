@@ -6,13 +6,14 @@ import { BlogEntry } from 'services/content/posts';
 
 import { formatDate } from 'utils/date';
 import { discussOnLinkedIn, discussOnReddit, discussOnTwitter } from 'utils/social';
-import { viewTransitionStyle, vtKeys } from 'utils/view-transition';
+import { vtKeys } from 'utils/view-transition';
 
 import PageTitle from 'components/shared/page-title';
 import ScrollTop from 'components/shared/scroll-top';
 import SectionCover from 'components/shared/section-cover';
 import SocialShare from 'components/shared/social-share';
 import Typography from 'components/shared/typography';
+import ViewTransitionTarget from 'components/shared/view-transition-target';
 
 //  ---------------------------------------------------------------------------
 //  TYPES
@@ -35,11 +36,11 @@ function BlogEntryLayout({ content, children }: PropsWithChildren<BlogEntryLayou
         <header className="flex flex-col gap-4 space-y-2 pb-10">
           <dl className="flex gap-4">
             <dt className="sr-only">Published on</dt>
-            <dd style={viewTransitionStyle(vtKeys.postDate(slug))}>
+            <ViewTransitionTarget as="dd" name={vtKeys.postDate(slug)}>
               <Typography.subtle className="text-gray-500 dark:text-gray-400">
                 <time dateTime={date}>{formatDate(date)}</time>
               </Typography.subtle>
-            </dd>
+            </ViewTransitionTarget>
 
             <dt className="sr-only">Reading Time</dt>
             <dd>

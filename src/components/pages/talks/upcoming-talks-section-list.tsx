@@ -25,7 +25,9 @@ export type UpcomingTalksSectionListProps = {
 function filterUpcomingSessions(items: Array<UpcomingSession>) {
   const today = Date.now();
 
-  return items.filter((item) => item.eventDate > today).sort((sessionA, sessionB) => sessionA.eventDate - sessionB.eventDate);
+  return items
+    .filter((item) => item.eventDate > today)
+    .sort((sessionA, sessionB) => sessionA.eventDate - sessionB.eventDate);
 }
 
 //  ---------------------------------------------------------------------------
@@ -48,7 +50,7 @@ const UpcomingTalksSectionItem: FunctionComponent<UpcomingSession> = ({
       <Typography.subtle className="text-neutral-900 dark:text-neutral-100">
         {eventLocation} • {<time dateTime={eventDate.toString()}>{formatDate(eventDate)}</time>}
       </Typography.subtle>
-      <Typography.h3 className="mt-2" style={viewTransitionStyle(vtKeys.talkTitle(talkSlug), { contain: false })}>
+      <Typography.h3 className="mt-2" style={viewTransitionStyle(vtKeys.talkTitle(talkSlug))}>
         {talkTitle}
       </Typography.h3>
       <Typography.small className="mt-2">{eventName}</Typography.small>
@@ -63,9 +65,7 @@ function UpcomingTalksSectionList({ items }: UpcomingTalksSectionListProps) {
     return <EmptyList heading="No items found 😢" subHeading="I don't have any sessions scheduled for now." />;
   }
 
-  return upcomingItems.map((item) => (
-    <UpcomingTalksSectionItem key={`${item.talkSlug}-${item.eventName}`} {...item} />
-  ));
+  return upcomingItems.map((item) => <UpcomingTalksSectionItem key={`${item.talkSlug}-${item.eventName}`} {...item} />);
 }
 
 export default UpcomingTalksSectionList;

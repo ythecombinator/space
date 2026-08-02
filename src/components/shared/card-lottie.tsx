@@ -4,6 +4,7 @@ import { classNames } from 'utils/styles';
 import { viewTransitionStyle, vtKeys } from 'utils/view-transition';
 
 import Link from 'components/shared/link';
+import ViewTransitionTarget from 'components/shared/view-transition-target';
 
 //  ---------------------------------------------------------------------------
 //  TYPES
@@ -60,7 +61,7 @@ function CardLottie({ title, href, animationData, gradient = 'violet', className
 
   return (
     <Link href={href} className="group block min-w-[250px] no-underline hover:no-underline">
-      <div className="rounded-lg" style={viewTransitionStyle(vtKeys.aboutCard(href))}>
+      <ViewTransitionTarget as="div" name={vtKeys.aboutCard(href)} className="rounded-lg">
         <div
           className={classNames(
             'relative h-40 overflow-hidden rounded-lg border border-gray-200 bg-gradient-to-br p-6 transition-all duration-300 dark:border-gray-700',
@@ -71,7 +72,7 @@ function CardLottie({ title, href, animationData, gradient = 'violet', className
         >
           <span
             className={classNames('block text-2xl font-bold leading-tight tracking-tight', colors.title)}
-            style={viewTransitionStyle(vtKeys.aboutTitle(href), { contain: false })}
+            style={viewTransitionStyle(vtKeys.aboutTitle(href))}
           >
             {title}
           </span>
@@ -82,7 +83,7 @@ function CardLottie({ title, href, animationData, gradient = 'violet', className
             <Lottie animationData={animationData} loop={true} />
           </div>
         </div>
-      </div>
+      </ViewTransitionTarget>
     </Link>
   );
 }

@@ -9,6 +9,7 @@ import { viewTransitionStyle, vtKeys } from 'utils/view-transition';
 
 import Link from 'components/shared/link';
 import Typography from 'components/shared/typography';
+import ViewTransitionTarget from 'components/shared/view-transition-target';
 
 import PhotoHighlightsSectionItemSkeleton from 'components/pages/talks/photo-highlights-section-item-skeleton';
 
@@ -111,7 +112,7 @@ function PhotoHighlightsSectionItem(props: PropsWithChildren<FeaturedTalk>) {
 
   return (
     <Link href={talkSlug} className="block no-underline hover:no-underline" clearDecoration>
-      <div className="rounded-2xl" style={viewTransitionStyle(vtKeys.talkCard(talkSlug))}>
+      <ViewTransitionTarget as="div" name={vtKeys.talkCard(talkSlug)} className="rounded-2xl">
         <div className="group relative h-[280px] w-full overflow-hidden rounded-2xl text-white">
           {!isLoaded && (
             <div className="absolute inset-0 z-0">
@@ -169,7 +170,7 @@ function PhotoHighlightsSectionItem(props: PropsWithChildren<FeaturedTalk>) {
           >
             <span
               className="font-medium text-white underline-offset-2 hover:underline"
-              style={viewTransitionStyle(vtKeys.talkTitle(talkSlug), { contain: false })}
+              style={viewTransitionStyle(vtKeys.talkTitle(talkSlug))}
             >
               {talkTitle}
             </span>
@@ -177,7 +178,7 @@ function PhotoHighlightsSectionItem(props: PropsWithChildren<FeaturedTalk>) {
             <Typography.subtle className="text-white">{eventLocation}</Typography.subtle>
           </div>
         </div>
-      </div>
+      </ViewTransitionTarget>
     </Link>
   );
 }

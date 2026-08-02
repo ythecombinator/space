@@ -6,11 +6,12 @@ import { Routes, siteMetadata } from 'config/constants';
 import FlightyService from 'services/providers/flighty';
 
 import { MetadataConfig, generateOpenGraphImage } from 'utils/open-graph';
-import { viewTransitionStyle, vtKeys } from 'utils/view-transition';
+import { vtKeys } from 'utils/view-transition';
 
 import SectionContainer from 'components/shared/section-container';
 import SectionCover from 'components/shared/section-cover';
 import Typography from 'components/shared/typography';
+import ViewTransitionTarget from 'components/shared/view-transition-target';
 
 import Layout from 'components/layouts/page';
 
@@ -72,11 +73,15 @@ function Page({ openGraphImage, flights, airports, stats, lastUpdatedAt }: PageP
           images: [{ url: openGraphImage }],
         }}
       />
-      <Layout heading="Adventures. Memories." headingGradient="orangeCoral" headingTransitionKey={vtKeys.aboutTitle('traveling')}>
+      <Layout
+        heading="Adventures. Memories."
+        headingGradient="orangeCoral"
+        headingTransitionKey={vtKeys.aboutTitle('traveling')}
+      >
         <SectionContainer className="prose dark:prose-invert">
-          <div className="overflow-hidden rounded-lg" style={viewTransitionStyle(vtKeys.aboutCard('traveling'))}>
+          <ViewTransitionTarget as="div" name={vtKeys.aboutCard('traveling')} className="overflow-hidden rounded-lg">
             <SectionCover alt="This is me!" src="/content/misc/traveling.jpg" />
-          </div>
+          </ViewTransitionTarget>
         </SectionContainer>
 
         <SectionContainer className="prose dark:prose-invert">
