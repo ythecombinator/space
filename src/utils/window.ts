@@ -1,6 +1,20 @@
 import { useEffect, useState } from 'react';
 
-export const scrollToTop = () => window.scrollTo(0, 0);
+/**
+ * Jump, don't ease — `html.scroll-smooth` turns a bare scrollTo into an animation,
+ * which leaves the new view-transition snapshot mid-page and kills the morph.
+ */
+export const scrollToTop = () => {
+  const root = document.documentElement;
+  const body = document.body;
+  const previous = root.style.scrollBehavior;
+
+  root.style.scrollBehavior = 'auto';
+  root.scrollTop = 0;
+  body.scrollTop = 0;
+  window.scrollTo(0, 0);
+  root.style.scrollBehavior = previous;
+};
 
 export const useWindowSize = () => {
   const [windowSize, setWindowSize] = useState<{
