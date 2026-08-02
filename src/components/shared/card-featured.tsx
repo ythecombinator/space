@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 
 import { classNames } from 'utils/styles';
-import { viewTransitionStyle, vtKeys } from 'utils/view-transition';
+import { vtKeys } from 'utils/view-transition';
 
 import Link from 'components/shared/link';
 import Typography from 'components/shared/typography';
@@ -35,21 +35,18 @@ function CardFeatured({
   children,
 }: PropsWithChildren<CardFeaturedProps>) {
   const slug = talkSlug ?? href;
-  const titleTransition = slug ? vtKeys.talkTitle(slug) : undefined;
   const cardTransition = slug ? vtKeys.talkCard(slug) : undefined;
 
   const cardContent = (
-    <ViewTransitionTarget as="div" name={cardTransition} className="rounded-md">
+    <ViewTransitionTarget as="div" name={cardTransition} className="h-full rounded-md">
       <div
-        className={`relative z-20 h-full overflow-hidden rounded-md bg-violet-30
+        className={`relative z-0 h-full overflow-hidden rounded-md bg-violet-30
       will-change-transform after:pointer-events-none after:absolute after:inset-0 after:z-10 after:bg-texture-pattern after:bg-cover
       after:bg-no-repeat after:opacity-0 after:mix-blend-hard-light after:transition-opacity after:duration-500
       after:will-change-auto hover:after:animate-hue hover:after:opacity-100 dark:bg-violet-950`}
       >
         <div className="p-5">
-          <h2 className="mb-2 text-2xl font-bold leading-8 tracking-tight" style={viewTransitionStyle(titleTransition)}>
-            {title}
-          </h2>
+          <Typography.h2 className="mb-2 my-0 text-black dark:text-white">{title}</Typography.h2>
           <Typography.p>{description}</Typography.p>
           {children}
         </div>
@@ -58,10 +55,8 @@ function CardFeatured({
   );
 
   return (
-    <div className={classNames(fullWidth && 'w-full md:w-1/2', className, 'overflow-hidden')}>
-      <div
-        className={`-z-10 h-full rounded-md bg-gradient-to-r from-[#37CCE5] via-[#3775e5] to-[#37e5a7] p-0.5 dark:p-px`}
-      >
+    <div className={classNames(fullWidth && 'w-full md:w-1/2', !fullWidth && 'shrink-0', className, 'overflow-hidden')}>
+      <div className="h-full rounded-md bg-gradient-to-r from-[#37CCE5] via-[#3775e5] to-[#37e5a7] p-0.5 dark:p-px">
         {href ? (
           <Link href={href} aria-label={`Link to ${title}`}>
             {cardContent}
