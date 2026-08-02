@@ -27,32 +27,46 @@
 }
 
 /* ---------------------------------------------------------------------------
- View Transitions
+ View Transitions — manual SPA transitions (Pages Router)
 --------------------------------------------------------------------------- */
 
 @view-transition {
-  navigation: auto;
+  navigation: none;
 }
 
 :root {
-  --vt-duration-section: 0.38s;
-  --vt-duration-detail: 0.72s;
+  --vt-duration-section: 0.5s;
+  --vt-duration-detail: 0.7s;
   --vt-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --vt-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-::view-transition-group(vt-logo) {
-  animation-duration: var(--vt-duration-detail);
-  animation-timing-function: var(--vt-ease-out);
+.vt-main {
+  view-transition-name: vt-main;
 }
 
-::view-transition-old(vt-logo),
-::view-transition-new(vt-logo) {
-  animation-duration: var(--vt-duration-detail);
-  animation-timing-function: var(--vt-ease-out);
+.vt-logo {
+  view-transition-name: vt-logo;
 }
 
-/* Section navigation — home, posts, talks, about */
+.vt-none {
+  view-transition-name: none;
+}
+
+/* Baseline — always animate the page shell so transitions are visible */
+::view-transition-old(root) {
+  animation: vt-root-fade-out var(--vt-duration-section) var(--vt-ease-in-out) both;
+}
+
+::view-transition-new(root) {
+  animation: vt-root-fade-in var(--vt-duration-section) var(--vt-ease-out) both;
+}
+
+::view-transition-group(root) {
+  animation-duration: var(--vt-duration-section);
+}
+
+/* Section navigation */
 html[data-vt-mode='section'] ::view-transition-old(vt-main) {
   animation: vt-section-main-out var(--vt-duration-section) var(--vt-ease-in-out) both;
 }
@@ -61,38 +75,7 @@ html[data-vt-mode='section'] ::view-transition-new(vt-main) {
   animation: vt-section-main-in var(--vt-duration-section) var(--vt-ease-out) both;
 }
 
-html[data-vt-mode='section'] ::view-transition-old(root) {
-  animation: vt-root-fade-out var(--vt-duration-section) var(--vt-ease-in-out) both;
-}
-
-html[data-vt-mode='section'] ::view-transition-new(root) {
-  animation: vt-root-fade-in var(--vt-duration-section) var(--vt-ease-out) both;
-}
-
-/* List → detail — page shell stays calm; shared elements carry the motion */
-html[data-vt-mode='detail'] ::view-transition-old(vt-main),
-html[data-vt-mode='detail'] ::view-transition-new(vt-main),
-html[data-vt-mode='about-detail'] ::view-transition-old(vt-main),
-html[data-vt-mode='about-detail'] ::view-transition-new(vt-main) {
-  animation: vt-detail-main-hold var(--vt-duration-detail) linear both;
-}
-
-html[data-vt-mode='detail'] ::view-transition-group(*),
-html[data-vt-mode='about-detail'] ::view-transition-group(*) {
-  animation-duration: var(--vt-duration-detail);
-  animation-timing-function: var(--vt-ease-out);
-}
-
-html[data-vt-mode='detail'] ::view-transition-old(*),
-html[data-vt-mode='about-detail'] ::view-transition-old(*) {
-  animation: vt-shared-out var(--vt-duration-detail) var(--vt-ease-in-out) both;
-}
-
-html[data-vt-mode='detail'] ::view-transition-new(*),
-html[data-vt-mode='about-detail'] ::view-transition-new(*) {
-  animation: vt-shared-in var(--vt-duration-detail) var(--vt-ease-out) both;
-}
-
+/* List → detail — shared elements morph; page shell stays put */
 html[data-vt-mode='detail'] ::view-transition-old(vt-main),
 html[data-vt-mode='detail'] ::view-transition-new(vt-main),
 html[data-vt-mode='detail'] ::view-transition-old(vt-logo),
@@ -104,13 +87,10 @@ html[data-vt-mode='about-detail'] ::view-transition-new(vt-logo) {
   animation: vt-detail-main-hold var(--vt-duration-detail) linear both;
 }
 
-/* Default (before mode is set) */
-html:not([data-vt-mode]) ::view-transition-old(vt-main) {
-  animation: vt-section-main-out var(--vt-duration-section) var(--vt-ease-in-out) both;
-}
-
-html:not([data-vt-mode]) ::view-transition-new(vt-main) {
-  animation: vt-section-main-in var(--vt-duration-section) var(--vt-ease-out) both;
+html[data-vt-mode='detail'] ::view-transition-group(*),
+html[data-vt-mode='about-detail'] ::view-transition-group(*) {
+  animation-duration: var(--vt-duration-detail);
+  animation-timing-function: var(--vt-ease-out);
 }
 
 @keyframes vt-section-main-in {
@@ -153,7 +133,7 @@ html:not([data-vt-mode]) ::view-transition-new(vt-main) {
   }
 
   to {
-    opacity: 0.92;
+    opacity: 0;
   }
 }
 
@@ -165,45 +145,11 @@ html:not([data-vt-mode]) ::view-transition-new(vt-main) {
   }
 }
 
-@keyframes vt-shared-in {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes vt-shared-out {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-group(*),
   ::view-transition-old(*),
   ::view-transition-new(*) {
     animation: none !important;
-  }
-}
-
-@layer utilities {
-  .vt-logo {
-    view-transition-name: vt-logo;
-  }
-
-  .vt-main {
-    view-transition-name: vt-main;
-  }
-
-  .vt-none {
-    view-transition-name: none;
   }
 }
 
