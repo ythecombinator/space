@@ -1,5 +1,7 @@
 import { Routes, siteMetadata } from 'config/constants';
 
+import { viewTransitionStyle, vtKeys } from 'utils/view-transition';
+
 import LayoutGradient from 'components/shared/layout-gradient';
 import Link from 'components/shared/link';
 import Signature from 'components/shared/signature';
@@ -17,8 +19,12 @@ function Footer() {
       <div className="flex w-full flex-col-reverse justify-between pb-16 sm:flex-row">
         <div className="flex flex-col sm:flex-row sm:space-x-16">
           <div className="mb-1 flex flex-row justify-center space-x-8 sm:mb-0 sm:flex-col sm:justify-start sm:space-x-0 sm:space-y-4">
-            <Link href={`/${Routes.life}`}>Life</Link>
-            <Link href={`/${Routes.experience}`}>Experience</Link>
+            <Link href={`/${Routes.life}`} style={viewTransitionStyle(vtKeys.aboutTitle(Routes.life))}>
+              Life
+            </Link>
+            <Link href={`/${Routes.experience}`} style={viewTransitionStyle(vtKeys.aboutTitle(Routes.experience))}>
+              Experience
+            </Link>
             <Link href="/feed.xml">RSS</Link>
           </div>
           <div className="mb-1 flex  flex-row justify-center  space-x-8 sm:mb-0 sm:flex-col sm:justify-start sm:space-x-0 sm:space-y-4">

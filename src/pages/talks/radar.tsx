@@ -6,6 +6,7 @@ import { Routes, siteMetadata } from 'config/constants';
 import TalksRadarContentService from 'services/content/talks-radar';
 
 import { MetadataConfig, generateOpenGraphImage } from 'utils/open-graph';
+import { vtKeys } from 'utils/view-transition';
 
 import SectionContainer from 'components/shared/section-container';
 import Typography from 'components/shared/typography';
@@ -65,7 +66,11 @@ function Page({ data, openGraphImage }: Props) {
           images: [{ url: openGraphImage }],
         }}
       />
-      <Layout heading={metadata.description} headingGradient="sublime">
+      <Layout
+        heading={metadata.description}
+        headingGradient="sublime"
+        headingTransitionKey={vtKeys.pageTitle(Routes.talksRadar)}
+      >
         <SectionContainer className="prose dark:prose-invert">
           <Typography.p>
             Coordinating the whole process of submitting different sessions across different events in different parts

@@ -4,6 +4,7 @@ import { NextSeo as Metadata } from 'next-seo';
 import { Routes, siteMetadata } from 'config/constants';
 
 import { MetadataConfig, generateOpenGraphImage } from 'utils/open-graph';
+import { vtKeys } from 'utils/view-transition';
 
 import clientsAnimation from 'content/animations/clients.json';
 import lifeAnimation from 'content/animations/life.json';
@@ -65,7 +66,11 @@ function Page({ openGraphImage }: PageProps) {
           images: [{ url: openGraphImage }],
         }}
       />
-      <Layout heading="Build. Share. Rewind." headingGradient="cottonCandy">
+      <Layout
+        heading="Build. Share. Rewind."
+        headingGradient="cottonCandy"
+        headingTransitionKey={vtKeys.pageTitle(Routes.about)}
+      >
         <SectionContainer className="prose dark:prose-invert">
           <SectionCover alt="This is me!" src="/content/misc/intro.jpg" />
           <Typography.p>
