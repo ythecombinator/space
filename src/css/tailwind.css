@@ -35,71 +35,53 @@
 }
 
 :root {
-  --vt-duration-section: 0.5s;
-  --vt-duration-detail: 0.7s;
-  --vt-duration-list: 0.28s;
-  --vt-duration-theme: 0.6s;
+  --vt-duration-fade: 0.2s;
+  --vt-duration-section: 0.3s;
+  --vt-duration-detail: 0.4s;
+  --vt-duration-list: 0.26s;
+  --vt-duration-theme: 0.5s;
   --vt-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --vt-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-.vt-main {
-  view-transition-name: vt-main;
-}
-
-.vt-logo {
-  view-transition-name: vt-logo;
-}
-
-.vt-none {
-  view-transition-name: none;
-}
-
-/* Baseline — always animate the page shell so transitions are visible */
+/* Baseline — the page cross-fades as a whole, and shared elements travel on top of it */
 ::view-transition-old(root) {
-  animation: vt-root-fade-out var(--vt-duration-section) var(--vt-ease-in-out) both;
+  animation: vt-root-fade-out var(--vt-duration-fade) var(--vt-ease-in-out) both;
 }
 
 ::view-transition-new(root) {
-  animation: vt-root-fade-in var(--vt-duration-section) var(--vt-ease-out) both;
+  animation: vt-root-fade-in var(--vt-duration-fade) var(--vt-ease-out) both;
 }
 
-::view-transition-group(root) {
-  animation-duration: var(--vt-duration-section);
+/* Section navigation — nothing is shared between the two pages, so the page moves as one */
+html[data-vt-mode='section']::view-transition-old(root) {
+  animation: vt-section-out var(--vt-duration-section) var(--vt-ease-in-out) both;
 }
 
-/* Section navigation */
-html[data-vt-mode='section']::view-transition-old(vt-main) {
-  animation: vt-section-main-out var(--vt-duration-section) var(--vt-ease-in-out) both;
+html[data-vt-mode='section']::view-transition-new(root) {
+  animation: vt-section-in var(--vt-duration-section) var(--vt-ease-out) both;
 }
 
-html[data-vt-mode='section']::view-transition-new(vt-main) {
-  animation: vt-section-main-in var(--vt-duration-section) var(--vt-ease-out) both;
+/* List ↔ detail — only the shared card/title morph; skip the root snapshot so tall pages stay within Chrome's texture budget */
+html[data-vt-mode='detail'] {
+  view-transition-name: none;
 }
 
-/* List → detail — shared elements morph; page shell stays put */
-html[data-vt-mode='detail']::view-transition-old(vt-main),
-html[data-vt-mode='detail']::view-transition-new(vt-main),
-html[data-vt-mode='detail']::view-transition-old(vt-logo),
-html[data-vt-mode='detail']::view-transition-new(vt-logo) {
-  animation: vt-detail-main-hold var(--vt-duration-detail) linear both;
-}
-
-html[data-vt-mode='detail']::view-transition-group(*) {
+html[data-vt-mode='detail']::view-transition-group(*),
+html[data-vt-mode='detail']::view-transition-old(*),
+html[data-vt-mode='detail']::view-transition-new(*) {
   animation-duration: var(--vt-duration-detail);
   animation-timing-function: var(--vt-ease-out);
 }
 
-/* In-page list changes — the surrounding chrome is identical, so only the items read as motion */
-html[data-vt-mode='list']::view-transition-old(root) {
-  animation: vt-root-fade-out var(--vt-duration-list) var(--vt-ease-in-out) both;
+/* In-page list changes — same idea: rows travel, the page shell is not snapshotted */
+html[data-vt-mode='list'] {
+  view-transition-name: none;
 }
 
-html[data-vt-mode='list']::view-transition-new(root) {
-  animation: vt-root-fade-in var(--vt-duration-list) var(--vt-ease-out) both;
-}
-
-html[data-vt-mode='list']::view-transition-group(*) {
+html[data-vt-mode='list']::view-transition-group(*),
+html[data-vt-mode='list']::view-transition-old(*),
+html[data-vt-mode='list']::view-transition-new(*) {
   animation-duration: var(--vt-duration-list);
   animation-timing-function: var(--vt-ease-out);
 }
@@ -130,10 +112,10 @@ html[data-vt-mode='theme']::view-transition-new(root) {
   }
 }
 
-@keyframes vt-section-main-in {
+@keyframes vt-section-in {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(10px);
   }
 
   to {
@@ -142,7 +124,7 @@ html[data-vt-mode='theme']::view-transition-new(root) {
   }
 }
 
-@keyframes vt-section-main-out {
+@keyframes vt-section-out {
   from {
     opacity: 1;
     transform: translateY(0);
@@ -150,7 +132,7 @@ html[data-vt-mode='theme']::view-transition-new(root) {
 
   to {
     opacity: 0;
-    transform: translateY(-8px);
+    transform: translateY(-6px);
   }
 }
 
@@ -171,14 +153,6 @@ html[data-vt-mode='theme']::view-transition-new(root) {
 
   to {
     opacity: 0;
-  }
-}
-
-@keyframes vt-detail-main-hold {
-  from,
-  to {
-    opacity: 1;
-    transform: none;
   }
 }
 
