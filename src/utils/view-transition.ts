@@ -105,11 +105,15 @@ export const viewTransitionStyle = (name?: string) => {
 //  ---------------------------------------------------------------------------
 
 /** Drilling one level deeper into the same section — /talks → /talks/some-talk */
-const isDetail = (from: string[], to: string[]) =>
+const isOneLevelDeeper = (from: string[], to: string[]) =>
   from.length >= 1 && to.length === from.length + 1 && from.every((segment, index) => segment === to[index]);
 
 const getTransitionMode = (from: string, to: string) => {
-  if (isDetail(segmentsOf(from), segmentsOf(to))) {
+  const fromSegments = segmentsOf(from);
+  const toSegments = segmentsOf(to);
+
+  // Going back up plays the same morph in reverse, so arriving and leaving match
+  if (isOneLevelDeeper(fromSegments, toSegments) || isOneLevelDeeper(toSegments, fromSegments)) {
     return 'detail';
   }
 
