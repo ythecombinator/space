@@ -43,10 +43,8 @@ function LayoutWrapper({ children }: PropsWithChildren) {
             </div>
           </header>
           <main className="mb-auto">
-            {/* key forces a fresh vt-main snapshot per route — a persistent node never animates */}
-            <div key={asPath} className="vt-main">
-              {children}
-            </div>
+            {/* key swaps the whole subtree per route, so nothing of the previous page lingers */}
+            <div key={asPath}>{children}</div>
           </main>
           <Footer />
         </div>
