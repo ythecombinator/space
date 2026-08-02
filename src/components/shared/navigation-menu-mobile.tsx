@@ -1,6 +1,6 @@
 import { PropsWithChildren, useState } from 'react';
 
-import { withViewTransition } from 'utils/view-transition';
+import { transitionState } from 'utils/view-transition';
 
 import Link from 'components/shared/link';
 
@@ -20,7 +20,7 @@ function NavigationMenuMobile({ items }: PropsWithChildren<NavigationMenuProps>)
   const [navShow, setNavShow] = useState(false);
 
   const onToggleNav = () => {
-    withViewTransition(() => {
+    transitionState(() => {
       setNavShow((status) => {
         if (status) {
           document.body.style.overflow = 'auto';

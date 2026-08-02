@@ -1,5 +1,6 @@
 import { NextRouter } from 'next/router';
 import { CSSProperties } from 'react';
+import { flushSync } from 'react-dom';
 
 import { scrollToTop } from 'utils/window';
 
@@ -7,13 +8,26 @@ import { scrollToTop } from 'utils/window';
 //  TYPES
 //  ---------------------------------------------------------------------------
 
-type ViewTransitionMode = 'section' | 'detail';
+type ViewTransitionMode = 'section' | 'detail' | 'list' | 'theme';
+
+/**
+ * Which shared names take part:
+ * - `all` keeps the page shell and the content names (navigation)
+ * - `content` drops the shell, so only the elements that moved read as motion
+ * - `none` drops everything and animates the page as a single snapshot
+ */
+type TransitionScope = 'all' | 'content' | 'none';
 
 export type TransitionNavigateOptions = {
   shallow?: boolean;
   replace?: boolean;
   /** Element whose shared names win when the same name is used more than once */
   preferred?: Element | null;
+};
+
+export type TransitionStateOptions = {
+  mode?: Extract<ViewTransitionMode, 'list' | 'theme'>;
+  scope?: TransitionScope;
 };
 
 //  ---------------------------------------------------------------------------
@@ -65,17 +79,16 @@ const slugFromHref = (href: string) => {
 };
 
 export const vtKeys = {
+  pageTitle: (slugOrHref: string) => `vt-page-title-${slugFromHref(slugOrHref)}`,
   talkTitle: (slugOrHref: string) => `vt-talk-title-${slugFromHref(slugOrHref)}`,
   talkCard: (slugOrHref: string) => `vt-talk-card-${slugFromHref(slugOrHref)}`,
-  talkMedia: (slugOrHref: string) => `vt-talk-media-${slugFromHref(slugOrHref)}`,
   postTitle: (slug: string) => `vt-post-title-${sanitizeSlug(slug)}`,
   postHero: (slug: string) => `vt-post-hero-${sanitizeSlug(slug)}`,
   postDate: (slug: string) => `vt-post-date-${sanitizeSlug(slug)}`,
   postRow: (slug: string) => `vt-post-row-${sanitizeSlug(slug)}`,
   aboutCard: (slugOrHref: string) => `vt-about-card-${slugFromHref(slugOrHref)}`,
   aboutTitle: (slugOrHref: string) => `vt-about-title-${slugFromHref(slugOrHref)}`,
-  aboutHero: (slugOrHref: string) => `vt-about-hero-${slugFromHref(slugOrHref)}`,
-  aboutLottie: (slugOrHref: string) => `vt-about-lottie-${slugFromHref(slugOrHref)}`,
+  radarRow: (id: string) => `vt-radar-row-${sanitizeSlug(id)}`,
   logo: 'vt-logo',
 } as const;
 
@@ -98,6 +111,15 @@ export const viewTransitionStyle = (name?: string) => {
   const style: CSSProperties = { viewTransitionName: name };
 
   return style;
+};
+
+/** The theme reveal grows out of the switch, so its origin and a radius covering the viewport go in as CSS vars */
+export const setRevealOrigin = (x: number, y: number) => {
+  const radius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+
+  document.documentElement.style.setProperty('--vt-origin-x', `${x}px`);
+  document.documentElement.style.setProperty('--vt-origin-y', `${y}px`);
+  document.documentElement.style.setProperty('--vt-origin-radius', `${radius}px`);
 };
 
 //  ---------------------------------------------------------------------------
@@ -129,11 +151,11 @@ const clearTransitionMode = () => {
 };
 
 //  ---------------------------------------------------------------------------
-//  UNIQUENESS
+//  NAMES
 //  ---------------------------------------------------------------------------
 
 const NAMED_SELECTOR = '[style*="view-transition-name"]';
-const DISABLED_SELECTOR = '[data-vt-original]';
+const SHELL_SELECTOR = '.vt-main, .vt-logo';
 
 const queryAll = (selector: string) => Array.from(document.querySelectorAll<HTMLElement>(selector));
 
@@ -148,13 +170,13 @@ const groupByTransitionName = (elements: HTMLElement[]) =>
     return groups.set(name, [...(groups.get(name) ?? []), element]);
   }, new Map<string, HTMLElement[]>());
 
-const disableTransitionName = (element: HTMLElement) => {
+const hideTransitionName = (element: HTMLElement) => {
   element.dataset.vtOriginal = element.style.viewTransitionName;
   element.style.viewTransitionName = 'none';
 };
 
 const restoreTransitionNames = () => {
-  queryAll(DISABLED_SELECTOR).forEach((element) => {
+  queryAll('[data-vt-original]').forEach((element) => {
     element.style.viewTransitionName = element.dataset.vtOriginal ?? '';
     delete element.dataset.vtOriginal;
   });
@@ -167,8 +189,6 @@ const restoreTransitionNames = () => {
  * known) and disable the rest for the duration of the transition.
  */
 const dedupeTransitionNames = (preferred?: Element | null) => {
-  restoreTransitionNames();
-
   groupByTransitionName(queryAll(NAMED_SELECTOR)).forEach((elements) => {
     if (elements.length < 2) {
       return;
@@ -176,15 +196,32 @@ const dedupeTransitionNames = (preferred?: Element | null) => {
 
     const kept = elements.find((element) => preferred?.contains(element)) ?? elements[0];
 
-    elements.filter((element) => element !== kept).forEach(disableTransitionName);
+    elements.filter((element) => element !== kept).forEach(hideTransitionName);
   });
 };
 
+const prepareTransitionNames = (scope: TransitionScope, preferred?: Element | null) => {
+  restoreTransitionNames();
+
+  if (scope === 'none') {
+    queryAll(`${NAMED_SELECTOR}, ${SHELL_SELECTOR}`).forEach(hideTransitionName);
+    return;
+  }
+
+  if (scope === 'content') {
+    queryAll(SHELL_SELECTOR).forEach(hideTransitionName);
+  }
+
+  dedupeTransitionNames(preferred);
+};
+
 //  ---------------------------------------------------------------------------
-//  NAVIGATION
+//  RUNNER
 //  ---------------------------------------------------------------------------
 
 const PAINT_TIMEOUT = 120;
+
+let running = false;
 
 const nextPaint = () =>
   new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
@@ -194,25 +231,46 @@ const afterTimeout = (delay: number) => new Promise<void>((resolve) => setTimeou
 /** Chrome aborts a transition whose update callback runs longer than ~4s, so every wait needs a ceiling */
 const waitForPaint = () => Promise.race([nextPaint(), afterTimeout(PAINT_TIMEOUT)]);
 
-const runViewTransition = async (update: () => void | Promise<void>) => {
+type RunOptions = {
+  mode: ViewTransitionMode;
+  scope?: TransitionScope;
+  preferred?: Element | null;
+};
+
+/**
+ * Only one transition can be in flight — a second one would make the browser
+ * discard the first, so overlapping updates (a held-down filter key, say) are
+ * applied straight away instead.
+ */
+const runTransition = async (update: () => void | Promise<void>, { mode, scope = 'all', preferred }: RunOptions) => {
+  if (running) {
+    await update();
+    return;
+  }
+
+  running = true;
+
   try {
+    prepareTransitionNames(scope, preferred);
+    setTransitionMode(mode);
+
     await document.startViewTransition(async () => {
       await update();
+      prepareTransitionNames(scope);
       await waitForPaint();
     }).finished;
   } catch {
     // Skipped or aborted by the browser — the DOM update itself still happened.
+  } finally {
+    clearTransitionMode();
+    restoreTransitionNames();
+    running = false;
   }
 };
 
-export const withViewTransition = (update: () => void | Promise<void>) => {
-  if (!shouldUseViewTransition()) {
-    void update();
-    return;
-  }
-
-  void runViewTransition(update);
-};
+//  ---------------------------------------------------------------------------
+//  ENTRY POINTS
+//  ---------------------------------------------------------------------------
 
 /**
  * Navigate with a view transition on the Pages Router.
@@ -242,17 +300,31 @@ export const transitionNavigate = async (router: NextRouter, href: string, optio
     return navigated;
   }
 
-  dedupeTransitionNames(preferred);
-  setTransitionMode(getTransitionMode(from, destination));
-
-  await runViewTransition(async () => {
-    await navigate();
-    scrollToTop();
-    dedupeTransitionNames();
-  });
-
-  clearTransitionMode();
-  restoreTransitionNames();
+  await runTransition(
+    async () => {
+      await navigate();
+      scrollToTop();
+    },
+    { mode: getTransitionMode(from, destination), preferred }
+  );
 
   return true;
+};
+
+/**
+ * Animate an in-page state change — filtering, sorting, toggling.
+ *
+ * The update is flushed synchronously: React would otherwise re-render after
+ * the browser has captured the new snapshot, and nothing would appear to move.
+ * Keep suspending updates out of here, since a flush cannot wait on them.
+ */
+export const transitionState = (update: () => void, options: TransitionStateOptions = {}) => {
+  const { mode = 'list', scope = 'content' } = options;
+
+  if (!shouldUseViewTransition()) {
+    update();
+    return;
+  }
+
+  void runTransition(() => flushSync(update), { mode, scope });
 };
