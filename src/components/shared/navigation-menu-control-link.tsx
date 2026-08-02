@@ -19,7 +19,7 @@ export const NavigationMenuControlLink = forwardRef<
   PropsWithChildren<NavigationMenuControlLinkProps>
 >(({ className, children, ...props }, ref) => (
   <NavigationMenuPrimitive.Link asChild className={className} ref={ref}>
-    <Link shallow {...props}>
+    <Link {...props}>
       {children}
     </Link>
   </NavigationMenuPrimitive.Link>

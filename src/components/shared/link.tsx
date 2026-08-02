@@ -1,17 +1,13 @@
 import NextLink, { LinkProps as NextLinkProps } from 'next/link';
-import { useRouter } from 'next/router';
 import {
   AnchorHTMLAttributes,
   CSSProperties,
   FunctionComponent,
-  MouseEvent,
   PropsWithChildren,
   Ref,
-  useCallback,
 } from 'react';
 
 import { isAnchorLink, isInternalLink } from 'utils/link';
-import { navigateWithViewTransition, skipViewTransitionFromEvent, shouldUseViewTransition } from 'utils/view-transition';
 
 //  ---------------------------------------------------------------------------
 //  TYPES
@@ -24,7 +20,7 @@ export type LinkProps = Omit<NextLinkProps, 'href'> & {
 } & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof NextLinkProps | 'href'>;
 
 //  ---------------------------------------------------------------------------
-//  UI
+//  UI — navigation VT is handled globally in ViewTransitionProvider (capture)
 //  ---------------------------------------------------------------------------
 
 const Link: FunctionComponent<PropsWithChildren<LinkProps>> = ({
@@ -40,26 +36,10 @@ const Link: FunctionComponent<PropsWithChildren<LinkProps>> = ({
   target,
   ...rest
 }) => {
-  const router = useRouter();
-
   const style: CSSProperties = {
     ...(clearDecoration ? { textDecoration: 'none' } : {}),
     ...rest.style,
   };
-
-  const handleClick = useCallback(
-    (event: MouseEvent<HTMLAnchorElement>) => {
-      onClick?.(event);
-      if (event.defaultPrevented) return;
-      if (!isInternalLink(href) || isAnchorLink(href)) return;
-      if (skipViewTransitionFromEvent(event) || target === '_blank') return;
-      if (!shouldUseViewTransition()) return;
-
-      event.preventDefault();
-      void navigateWithViewTransition(router, href, { shallow, replace, scroll });
-    },
-    [href, onClick, replace, router, scroll, shallow, target]
-  );
 
   if (isInternalLink(href)) {
     return (
@@ -67,10 +47,10 @@ const Link: FunctionComponent<PropsWithChildren<LinkProps>> = ({
         href={href}
         shallow={shallow}
         replace={replace}
-        scroll={scroll}
+        scroll={scroll ?? false}
         prefetch={prefetch}
         locale={locale}
-        onClick={handleClick}
+        onClick={onClick}
         target={target}
         {...rest}
         style={style}
