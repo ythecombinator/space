@@ -19,11 +19,44 @@ type StateOptions = {
 };
 
 const VT = 'data-vt-name';
+const VT_CLASS = 'data-vt-class';
 const NAMED = `[${VT}]`;
 const PAINT_TIMEOUT = 120;
 
 let running = false;
 let active: HTMLElement[] = [];
+
+/** Styling hook — one CSS rule covers every element of a kind regardless of its unique name */
+export type ViewTransitionKind = 'card' | 'title' | 'hero' | 'row' | 'date';
+
+export const vtClass: Record<ViewTransitionKind, ViewTransitionKind> = {
+  card: 'card',
+  title: 'title',
+  hero: 'hero',
+  row: 'row',
+  date: 'date',
+};
+
+const KIND_BY_PREFIX: Record<string, ViewTransitionKind> = {
+  'vt-page-title': 'title',
+  'vt-talk-title': 'title',
+  'vt-post-title': 'title',
+  'vt-about-title': 'title',
+  'vt-talk-card': 'card',
+  'vt-about-card': 'hero',
+  'vt-post-hero': 'hero',
+  'vt-post-date': 'date',
+  'vt-post-row': 'row',
+  'vt-radar-row': 'row',
+};
+
+const inferKindFromName = (name: string) => {
+  for (const [prefix, kind] of Object.entries(KIND_BY_PREFIX)) {
+    if (name.startsWith(`${prefix}-`)) {
+      return kind;
+    }
+  }
+};
 
 export const normalizePath = (path: string) => {
   const bare = path.split('?')[0]?.split('#')[0] ?? path;
@@ -90,8 +123,24 @@ export const setRevealOrigin = (x: number, y: number) => {
   root.style.setProperty('--vt-origin-radius', `${radius}px`);
 };
 
-/** Inert in markup; switched on only for elements participating in the current transition */
-export const viewTransitionProps = (name?: string) => (name ? { [VT]: name } : {});
+/** Inert in markup; name + class are switched on only for elements in the current transition */
+export const viewTransitionProps = (name?: string) => {
+  const props: Record<string, string> = {};
+
+  if (!name) {
+    return props;
+  }
+
+  props[VT] = name;
+
+  const kind = inferKindFromName(name);
+
+  if (kind) {
+    props[VT_CLASS] = vtClass[kind];
+  }
+
+  return props;
+};
 
 const modeForRoute = (from: string, to: string): ViewTransitionMode => {
   const a = segments(from);
@@ -141,6 +190,13 @@ const sharedFrom = (source: Element) => {
 const activate = (elements: HTMLElement[]) => {
   elements.forEach((element) => {
     element.style.viewTransitionName = element.dataset.vtName ?? '';
+
+    const kind = element.dataset.vtClass;
+
+    if (kind) {
+      element.style.viewTransitionClass = kind;
+    }
+
     active.push(element);
   });
 };
@@ -154,7 +210,10 @@ const activateNames = (names: string[], root: ParentNode) => {
 };
 
 const resetNames = () => {
-  active.forEach((element) => element.style.removeProperty('view-transition-name'));
+  active.forEach((element) => {
+    element.style.removeProperty('view-transition-name');
+    element.style.removeProperty('view-transition-class');
+  });
   active = [];
 };
 
@@ -189,7 +248,11 @@ const runTransition = async (update: () => void | Promise<void>, mode: ViewTrans
       await commit();
       await waitForPaint();
     }).finished;
-  } catch {
+  } catch (error) {
+    if (process.env.NODE_ENV === 'development') {
+      console.warn('[view-transition]', error);
+    }
+
     await commit();
   } finally {
     setMode(null);

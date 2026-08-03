@@ -26,7 +26,9 @@ function PageTitle({ gradient, transitionKey, children }: PropsWithChildren<Page
         [`text-transparent bg-clip-text bg-gradient-to-r ${gradients[gradient as Gradient]}`]: gradient,
       })}
     >
-      <ViewTransitionTarget name={transitionKey}>{children}</ViewTransitionTarget>
+      <ViewTransitionTarget name={transitionKey}>
+        {children}
+      </ViewTransitionTarget>
     </Typography.h1>
   );
 }

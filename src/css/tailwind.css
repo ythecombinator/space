@@ -28,6 +28,8 @@
 
 /* ---------------------------------------------------------------------------
  View Transitions — manual SPA transitions (Pages Router)
+ @view-transition { navigation: none } because routing is handled in JS.
+ Cross-document MPAs opt in with navigation: auto instead.
 --------------------------------------------------------------------------- */
 
 @view-transition {
@@ -44,58 +46,76 @@
   --vt-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-/* Baseline — the page cross-fades as a whole, and shared elements travel on top of it */
-::view-transition-old(root) {
-  animation: vt-root-fade-out var(--vt-duration-fade) var(--vt-ease-in-out) both;
+@media (prefers-reduced-motion: no-preference) {
+  /* Baseline — the page cross-fades as a whole, and shared elements travel on top of it */
+  ::view-transition-old(root) {
+    animation: vt-root-fade-out var(--vt-duration-fade) var(--vt-ease-in-out) both;
+  }
+
+  ::view-transition-new(root) {
+    animation: vt-root-fade-in var(--vt-duration-fade) var(--vt-ease-out) both;
+  }
+
+  /* Section navigation — nothing is shared between the two pages, so the page moves as one */
+  html[data-vt-mode='section']::view-transition-old(root) {
+    animation: vt-section-out var(--vt-duration-section) var(--vt-ease-in-out) both;
+  }
+
+  html[data-vt-mode='section']::view-transition-new(root) {
+    animation: vt-section-in var(--vt-duration-section) var(--vt-ease-out) both;
+  }
+
+  /* Detail and list — only named elements morph; root snapshots blow Chrome's texture budget on tall pages */
+  html[data-vt-mode='detail'],
+  html[data-vt-mode='list'] {
+    view-transition-name: none;
+  }
+
+  html[data-vt-mode='detail']::view-transition-group(*.card),
+  html[data-vt-mode='detail']::view-transition-group(*.title),
+  html[data-vt-mode='detail']::view-transition-group(*.hero) {
+    animation-duration: var(--vt-duration-detail);
+    animation-timing-function: var(--vt-ease-out);
+    overflow: hidden;
+  }
+
+  /* Snapshots are flat bitmaps — crop instead of stretching during the morph */
+  html[data-vt-mode='detail']::view-transition-old(*.card),
+  html[data-vt-mode='detail']::view-transition-new(*.card),
+  html[data-vt-mode='detail']::view-transition-old(*.hero),
+  html[data-vt-mode='detail']::view-transition-new(*.hero) {
+    object-fit: cover;
+    overflow: hidden;
+  }
+
+  html[data-vt-mode='list']::view-transition-group(*.row) {
+    animation-duration: var(--vt-duration-list);
+    animation-timing-function: var(--vt-ease-out);
+  }
+
+  /* Theme switch — the new palette is revealed by a circle growing out of the switch */
+  html[data-vt-mode='theme']::view-transition-old(root),
+  html[data-vt-mode='theme']::view-transition-new(root) {
+    mix-blend-mode: normal;
+  }
+
+  html[data-vt-mode='theme']::view-transition-old(root) {
+    animation: none;
+    z-index: 0;
+  }
+
+  html[data-vt-mode='theme']::view-transition-new(root) {
+    animation: vt-theme-reveal var(--vt-duration-theme) var(--vt-ease-out) both;
+    z-index: 1;
+  }
 }
 
-::view-transition-new(root) {
-  animation: vt-root-fade-in var(--vt-duration-fade) var(--vt-ease-out) both;
-}
-
-/* Section navigation — nothing is shared between the two pages, so the page moves as one */
-html[data-vt-mode='section']::view-transition-old(root) {
-  animation: vt-section-out var(--vt-duration-section) var(--vt-ease-in-out) both;
-}
-
-html[data-vt-mode='section']::view-transition-new(root) {
-  animation: vt-section-in var(--vt-duration-section) var(--vt-ease-out) both;
-}
-
-/* Detail and list — only named elements morph; root snapshots blow Chrome's texture budget on tall pages */
-html[data-vt-mode='detail'],
-html[data-vt-mode='list'] {
-  view-transition-name: none;
-}
-
-html[data-vt-mode='detail']::view-transition-group(*),
-html[data-vt-mode='detail']::view-transition-old(*),
-html[data-vt-mode='detail']::view-transition-new(*) {
-  animation-duration: var(--vt-duration-detail);
-  animation-timing-function: var(--vt-ease-out);
-}
-
-html[data-vt-mode='list']::view-transition-group(*),
-html[data-vt-mode='list']::view-transition-old(*),
-html[data-vt-mode='list']::view-transition-new(*) {
-  animation-duration: var(--vt-duration-list);
-  animation-timing-function: var(--vt-ease-out);
-}
-
-/* Theme switch — the new palette is revealed by a circle growing out of the switch */
-html[data-vt-mode='theme']::view-transition-old(root),
-html[data-vt-mode='theme']::view-transition-new(root) {
-  mix-blend-mode: normal;
-}
-
-html[data-vt-mode='theme']::view-transition-old(root) {
-  animation: none;
-  z-index: 0;
-}
-
-html[data-vt-mode='theme']::view-transition-new(root) {
-  animation: vt-theme-reveal var(--vt-duration-theme) var(--vt-ease-out) both;
-  z-index: 1;
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0s !important;
+  }
 }
 
 @keyframes vt-theme-reveal {
@@ -152,13 +172,6 @@ html[data-vt-mode='theme']::view-transition-new(root) {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  ::view-transition-group(*),
-  ::view-transition-old(*),
-  ::view-transition-new(*) {
-    animation: none !important;
-  }
-}
 
 @layer base {
   :root {
