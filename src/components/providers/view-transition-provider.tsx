@@ -5,22 +5,25 @@ import { isRoutableLink } from 'utils/link';
 import { isSamePath, shouldUseViewTransition, transitionNavigate } from 'utils/view-transition';
 import { scrollToTop } from 'utils/window';
 
-const isModifiedClick = (event: MouseEvent) =>
-  event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0;
+function isModifiedClick(event: MouseEvent) {
+  return event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0;
+}
 
-const opensOutsideCurrentTab = (anchor: HTMLAnchorElement) => {
+function opensOutsideCurrentTab(anchor: HTMLAnchorElement) {
   const target = anchor.getAttribute('target');
 
   return Boolean(target) && target !== '_self';
-};
+}
 
-const logTransitionError = (context: string) => (error: unknown) => {
-  if (process.env.NODE_ENV === 'development') {
-    console.warn(`[view-transition] ${context}`, error);
+function logTransitionError(context: string, error: unknown) {
+  if (process.env.NODE_ENV !== 'development') {
+    return;
   }
-};
 
-const useViewTransitions = (router: NextRouter) => {
+  console.warn(`[view-transition] ${context}`, error);
+}
+
+function useViewTransitions(router: NextRouter) {
   useEffect(() => {
     if (!shouldUseViewTransition()) {
       router.events.on('routeChangeComplete', scrollToTop);
@@ -32,7 +35,7 @@ const useViewTransitions = (router: NextRouter) => {
       history.scrollRestoration = 'manual';
     }
 
-    const onClick = (event: MouseEvent) => {
+    function onClick(event: MouseEvent) {
       if (event.defaultPrevented || isModifiedClick(event)) {
         return;
       }
@@ -50,12 +53,11 @@ const useViewTransitions = (router: NextRouter) => {
       }
 
       event.preventDefault();
-
-      transitionNavigate(router, href, { source: anchor }).catch(logTransitionError('navigate'));
-    };
+      transitionNavigate(router, href, { source: anchor }).catch((error) => logTransitionError('navigate', error));
+    }
 
     router.beforePopState(({ as }) => {
-      transitionNavigate(router, as).catch(logTransitionError('back'));
+      transitionNavigate(router, as).catch((error) => logTransitionError('back', error));
 
       return false;
     });
@@ -67,7 +69,7 @@ const useViewTransitions = (router: NextRouter) => {
       router.beforePopState(() => true);
     };
   }, [router]);
-};
+}
 
 function ViewTransitionProvider({ children }: PropsWithChildren) {
   useViewTransitions(useRouter());

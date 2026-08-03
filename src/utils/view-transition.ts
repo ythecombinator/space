@@ -8,20 +8,12 @@ type ViewTransitionMode = 'section' | 'detail' | 'list' | 'theme';
 type NavigateOptions = {
   shallow?: boolean;
   replace?: boolean;
-  /** Clicked element — only shared names it carries or contains take part in the morph */
   source?: Element | null;
 };
 
 type StateOptions = {
   mode?: Extract<ViewTransitionMode, 'list' | 'theme'>;
-  /** Scope row/card morphs to this container — omit for a full-page snapshot (theme) */
   within?: Element | null;
-};
-
-type SharedNavRecord = {
-  from: string;
-  to: string;
-  names: string[];
 };
 
 const VT = 'data-vt-name';
@@ -30,21 +22,7 @@ const NAMED = `[${VT}]`;
 const PAINT_TIMEOUT = 120;
 const SHARED_NAV_KEY = 'vt-shared-nav';
 
-let currentTransition: ViewTransition | null = null;
-let active: HTMLElement[] = [];
-
-/** Styling hook — one CSS rule covers every element of a kind regardless of its unique name */
-export type ViewTransitionKind = 'card' | 'title' | 'hero' | 'row' | 'date';
-
-export const vtClass: Record<ViewTransitionKind, ViewTransitionKind> = {
-  card: 'card',
-  title: 'title',
-  hero: 'hero',
-  row: 'row',
-  date: 'date',
-};
-
-const KIND_BY_PREFIX: Record<string, ViewTransitionKind> = {
+const KIND_BY_PREFIX: Record<string, string> = {
   'vt-page-title': 'title',
   'vt-talk-title': 'title',
   'vt-post-title': 'title',
@@ -57,15 +35,10 @@ const KIND_BY_PREFIX: Record<string, ViewTransitionKind> = {
   'vt-radar-row': 'row',
 };
 
-const inferKindFromName = (name: string) => {
-  for (const [prefix, kind] of Object.entries(KIND_BY_PREFIX)) {
-    if (name.startsWith(`${prefix}-`)) {
-      return kind;
-    }
-  }
-};
+let currentTransition: ViewTransition | null = null;
+let active: HTMLElement[] = [];
 
-export const normalizePath = (path: string) => {
+export function normalizePath(path: string) {
   const bare = path.split('?')[0]?.split('#')[0] ?? path;
 
   if (bare.length > 1 && bare.endsWith('/')) {
@@ -73,131 +46,175 @@ export const normalizePath = (path: string) => {
   }
 
   return bare;
-};
+}
 
-export const isSamePath = (path: string, other: string) => normalizePath(path) === normalizePath(other);
+export function isSamePath(path: string, other: string) {
+  return normalizePath(path) === normalizePath(other);
+}
 
-const segments = (path: string) => normalizePath(path).split('/').filter(Boolean);
+function segments(path: string) {
+  return normalizePath(path).split('/').filter(Boolean);
+}
 
-const sanitizeSlug = (value: string) =>
-  value
+function sanitizeSlug(value: string) {
+  return value
     .trim()
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
+}
 
-const slugFromHref = (href: string) => {
-  let pathname = href;
-
-  if (href.startsWith('http')) {
-    try {
-      pathname = new URL(href).pathname;
-    } catch {
-      pathname = href;
-    }
-  } else {
-    pathname = normalizePath(href);
+function slugFromHref(href: string) {
+  if (!href.startsWith('http')) {
+    return sanitizeSlug(segments(href).pop() ?? href);
   }
 
-  return sanitizeSlug(pathname.split('/').filter(Boolean).pop() ?? pathname);
-};
+  try {
+    return sanitizeSlug(new URL(href).pathname.split('/').filter(Boolean).pop() ?? href);
+  } catch {
+    return sanitizeSlug(href);
+  }
+}
+
+function vtPageTitle(slugOrHref: string) {
+  return `vt-page-title-${slugFromHref(slugOrHref)}`;
+}
+
+function vtTalkTitle(slugOrHref: string) {
+  return `vt-talk-title-${slugFromHref(slugOrHref)}`;
+}
+
+function vtTalkCard(slugOrHref: string) {
+  return `vt-talk-card-${slugFromHref(slugOrHref)}`;
+}
+
+function vtPostTitle(slug: string) {
+  return `vt-post-title-${sanitizeSlug(slug)}`;
+}
+
+function vtPostHero(slug: string) {
+  return `vt-post-hero-${sanitizeSlug(slug)}`;
+}
+
+function vtPostDate(slug: string) {
+  return `vt-post-date-${sanitizeSlug(slug)}`;
+}
+
+function vtPostRow(slug: string) {
+  return `vt-post-row-${sanitizeSlug(slug)}`;
+}
+
+function vtAboutCard(slugOrHref: string) {
+  return `vt-about-card-${slugFromHref(slugOrHref)}`;
+}
+
+function vtAboutTitle(slugOrHref: string) {
+  return `vt-about-title-${slugFromHref(slugOrHref)}`;
+}
+
+function vtRadarRow(id: string) {
+  return `vt-radar-row-${sanitizeSlug(id)}`;
+}
 
 export const vtKeys = {
-  pageTitle: (slugOrHref: string) => `vt-page-title-${slugFromHref(slugOrHref)}`,
-  talkTitle: (slugOrHref: string) => `vt-talk-title-${slugFromHref(slugOrHref)}`,
-  talkCard: (slugOrHref: string) => `vt-talk-card-${slugFromHref(slugOrHref)}`,
-  postTitle: (slug: string) => `vt-post-title-${sanitizeSlug(slug)}`,
-  postHero: (slug: string) => `vt-post-hero-${sanitizeSlug(slug)}`,
-  postDate: (slug: string) => `vt-post-date-${sanitizeSlug(slug)}`,
-  postRow: (slug: string) => `vt-post-row-${sanitizeSlug(slug)}`,
-  aboutCard: (slugOrHref: string) => `vt-about-card-${slugFromHref(slugOrHref)}`,
-  aboutTitle: (slugOrHref: string) => `vt-about-title-${slugFromHref(slugOrHref)}`,
-  radarRow: (id: string) => `vt-radar-row-${sanitizeSlug(id)}`,
-} as const;
-
-export const shouldUseViewTransition = () =>
-  typeof document !== 'undefined' &&
-  'startViewTransition' in document &&
-  !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-/** Theme reveal origin — passed to CSS as custom properties */
-export const setRevealOrigin = (x: number, y: number) => {
-  const radius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
-  const root = document.documentElement;
-
-  root.style.setProperty('--vt-origin-x', `${x}px`);
-  root.style.setProperty('--vt-origin-y', `${y}px`);
-  root.style.setProperty('--vt-origin-radius', `${radius}px`);
+  pageTitle: vtPageTitle,
+  talkTitle: vtTalkTitle,
+  talkCard: vtTalkCard,
+  postTitle: vtPostTitle,
+  postHero: vtPostHero,
+  postDate: vtPostDate,
+  postRow: vtPostRow,
+  aboutCard: vtAboutCard,
+  aboutTitle: vtAboutTitle,
+  radarRow: vtRadarRow,
 };
 
-const clearRevealOrigin = () => {
-  const root = document.documentElement;
-
-  root.style.removeProperty('--vt-origin-x');
-  root.style.removeProperty('--vt-origin-y');
-  root.style.removeProperty('--vt-origin-radius');
-};
-
-/** Inert in markup; name + class are switched on only for elements in the current transition */
-export const viewTransitionProps = (name?: string) => {
-  const props: Record<string, string> = {};
-
-  if (!name) {
-    return props;
+export function shouldUseViewTransition() {
+  if (typeof document === 'undefined' || !('startViewTransition' in document)) {
+    return false;
   }
 
-  props[VT] = name;
+  return !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
 
-  const kind = inferKindFromName(name);
+export function setRevealOrigin(x: number, y: number) {
+  const radius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+  const { style } = document.documentElement;
+
+  style.setProperty('--vt-origin-x', `${x}px`);
+  style.setProperty('--vt-origin-y', `${y}px`);
+  style.setProperty('--vt-origin-radius', `${radius}px`);
+}
+
+function clearRevealOrigin() {
+  const { style } = document.documentElement;
+
+  style.removeProperty('--vt-origin-x');
+  style.removeProperty('--vt-origin-y');
+  style.removeProperty('--vt-origin-radius');
+}
+
+function inferKind(name: string) {
+  for (const [prefix, kind] of Object.entries(KIND_BY_PREFIX)) {
+    if (name.startsWith(`${prefix}-`)) {
+      return kind;
+    }
+  }
+}
+
+export function viewTransitionProps(name?: string) {
+  if (!name) {
+    return {};
+  }
+
+  const props: Record<string, string> = { [VT]: name };
+  const kind = inferKind(name);
 
   if (kind) {
-    props[VT_CLASS] = vtClass[kind];
+    props[VT_CLASS] = kind;
   }
 
   return props;
-};
+}
 
-const modeForRoute = (from: string, to: string): ViewTransitionMode => {
+function modeForRoute(from: string, to: string) {
   const a = segments(from);
   const b = segments(to);
-  const step = (x: string[], y: string[]) =>
-    x.length >= 1 && y.length === x.length + 1 && x.every((part, i) => part === y[i]);
+  const isDetailStep = (parent: string[], child: string[]) =>
+    child.length === parent.length + 1 && parent.every((part, index) => part === child[index]);
 
-  if (step(a, b) || step(b, a)) {
+  if (isDetailStep(a, b) || isDetailStep(b, a)) {
     return 'detail';
   }
 
   return 'section';
-};
+}
 
-const setMode = (mode: ViewTransitionMode | null) => {
-  if (mode) {
-    document.documentElement.dataset.vtMode = mode;
+function setMode(mode: ViewTransitionMode | null) {
+  if (!mode) {
+    delete document.documentElement.dataset.vtMode;
     return;
   }
 
-  delete document.documentElement.dataset.vtMode;
-};
+  document.documentElement.dataset.vtMode = mode;
+}
 
-const rememberSharedNav = (from: string, to: string, names: string[]) => {
-  if (names.length === 0 || typeof sessionStorage === 'undefined') {
+function rememberSharedNav(from: string, to: string, names: string[]) {
+  if (!names.length || typeof sessionStorage === 'undefined') {
     return;
   }
 
   try {
-    const record: SharedNavRecord = {
-      from: normalizePath(from),
-      to: normalizePath(to),
-      names,
-    };
-
-    sessionStorage.setItem(SHARED_NAV_KEY, JSON.stringify(record));
+    sessionStorage.setItem(
+      SHARED_NAV_KEY,
+      JSON.stringify({ from: normalizePath(from), to: normalizePath(to), names })
+    );
   } catch {
-    // Private browsing or quota — back nav falls back to section transition
+    // Quota or private mode — back nav falls back to a section transition
   }
-};
+}
 
-const recallSharedNav = (current: string, destination: string) => {
+function recallSharedNav(current: string, destination: string) {
   if (typeof sessionStorage === 'undefined') {
     return [];
   }
@@ -209,21 +226,27 @@ const recallSharedNav = (current: string, destination: string) => {
       return [];
     }
 
-    const record = JSON.parse(raw) as SharedNavRecord;
+    const record = JSON.parse(raw);
 
-    if (record.from === normalizePath(destination) && record.to === normalizePath(current)) {
-      return record.names;
+    if (record?.from !== normalizePath(destination) || record?.to !== normalizePath(current)) {
+      return [];
     }
+
+    if (!Array.isArray(record.names)) {
+      return [];
+    }
+
+    return record.names;
   } catch {
-    // Ignore malformed storage
+    return [];
   }
+}
 
-  return [];
-};
+function namedIn(root: ParentNode) {
+  return Array.from(root.querySelectorAll<HTMLElement>(NAMED));
+}
 
-const namedIn = (root: ParentNode) => Array.from(root.querySelectorAll<HTMLElement>(NAMED));
-
-const uniqueByName = (elements: HTMLElement[]) => {
+function uniqueByName(elements: HTMLElement[]) {
   const seen = new Set<string>();
 
   return elements.filter((element) => {
@@ -236,59 +259,65 @@ const uniqueByName = (elements: HTMLElement[]) => {
     seen.add(name);
     return true;
   });
-};
+}
 
-const elementsByNames = (names: string[], root: ParentNode = document) =>
-  names
-    .map((name) => root.querySelector<HTMLElement>(`[${VT}="${CSS.escape(name)}"]`))
-    .filter((element): element is HTMLElement => element !== null);
+function elementsByNames(names: string[], root: ParentNode = document) {
+  return names.flatMap((name) => {
+    const element = root.querySelector<HTMLElement>(`[${VT}="${CSS.escape(name)}"]`);
 
-const sharedFrom = (source: Element) => {
+    return element ? [element] : [];
+  });
+}
+
+function sharedFrom(source: Element) {
   const wrapper = source.closest<HTMLElement>(NAMED);
 
-  return uniqueByName(wrapper ? [wrapper, ...namedIn(source)] : namedIn(source));
-};
+  if (wrapper) {
+    return uniqueByName([wrapper, ...namedIn(source)]);
+  }
 
-const activate = (elements: HTMLElement[]) => {
-  elements.forEach((element) => {
+  return uniqueByName(namedIn(source));
+}
+
+function activate(elements: HTMLElement[]) {
+  for (const element of elements) {
     element.style.viewTransitionName = element.dataset.vtName ?? '';
 
-    const kind = element.dataset.vtClass;
-
-    if (kind) {
-      element.style.viewTransitionClass = kind;
+    if (element.dataset.vtClass) {
+      element.style.viewTransitionClass = element.dataset.vtClass;
     }
 
     active.push(element);
-  });
-};
+  }
+}
 
-const warnMissingMatches = (names: string[], root: ParentNode) => {
+function warnMissingMatches(names: string[], root: ParentNode) {
   if (process.env.NODE_ENV !== 'development') {
     return;
   }
 
   const missing = names.filter((name) => !root.querySelector(`[${VT}="${CSS.escape(name)}"]`));
 
-  if (missing.length > 0) {
+  if (missing.length) {
     console.warn('[view-transition] no destination match for', missing);
   }
-};
+}
 
-const activateNames = (names: string[], root: ParentNode) => {
+function activateNames(names: string[], root: ParentNode) {
   warnMissingMatches(names, root);
   activate(elementsByNames(names, root));
-};
+}
 
-const resetNames = () => {
-  active.forEach((element) => {
+function resetNames() {
+  for (const element of active) {
     element.style.removeProperty('view-transition-name');
     element.style.removeProperty('view-transition-class');
-  });
-  active = [];
-};
+  }
 
-const abortCurrentTransition = () => {
+  active = [];
+}
+
+function abortCurrentTransition() {
   if (!currentTransition) {
     return;
   }
@@ -296,33 +325,34 @@ const abortCurrentTransition = () => {
   try {
     currentTransition.skipTransition();
   } catch {
-    // Transition may already be done
+    // Already finished
   }
 
   currentTransition = null;
   resetNames();
-};
+}
 
-const waitForPaint = () =>
-  Promise.race([
+function waitForPaint() {
+  return Promise.race([
     new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))),
     new Promise<void>((resolve) => setTimeout(resolve, PAINT_TIMEOUT)),
   ]);
+}
 
-const runTransition = async (update: () => void | Promise<void>, mode: ViewTransitionMode) => {
+async function runTransition(update: () => void | Promise<void>, mode: ViewTransitionMode) {
   abortCurrentTransition();
 
   let committed = false;
   let transition: ViewTransition | null = null;
 
-  const commit = async () => {
+  async function commit() {
     if (committed) {
       return;
     }
 
     committed = true;
     await update();
-  };
+  }
 
   try {
     setMode(mode);
@@ -355,17 +385,33 @@ const runTransition = async (update: () => void | Promise<void>, mode: ViewTrans
 
     resetNames();
   }
-};
+}
 
-export const transitionNavigate = async (router: NextRouter, href: string, options: NavigateOptions = {}) => {
+function resolveShared(from: string, destination: string, source?: Element | null) {
+  if (source) {
+    const shared = sharedFrom(source);
+    const names = shared.map((element) => element.dataset.vtName ?? '');
+
+    rememberSharedNav(from, destination, names);
+
+    return { shared, names };
+  }
+
+  const names = recallSharedNav(from, destination);
+
+  return { shared: uniqueByName(elementsByNames(names)), names };
+}
+
+export async function transitionNavigate(router: NextRouter, href: string, options: NavigateOptions = {}) {
   const { shallow, replace = false, source } = options;
   const from = router.asPath;
   const destination = normalizePath(href);
-  const go = () => {
+
+  async function go() {
     const navigate = replace ? router.replace.bind(router) : router.push.bind(router);
 
     return navigate(destination, undefined, { shallow, scroll: false });
-  };
+  }
 
   if (!shouldUseViewTransition() || isSamePath(from, destination)) {
     await go();
@@ -374,19 +420,9 @@ export const transitionNavigate = async (router: NextRouter, href: string, optio
     return true;
   }
 
-  let shared: HTMLElement[];
-  let names: string[];
+  const { shared, names } = resolveShared(from, destination, source);
 
-  if (source) {
-    shared = sharedFrom(source);
-    names = shared.map((element) => element.dataset.vtName ?? '');
-    rememberSharedNav(from, destination, names);
-  } else {
-    names = recallSharedNav(from, destination);
-    shared = uniqueByName(elementsByNames(names));
-  }
-
-  if (shared.length > 0) {
+  if (shared.length) {
     activate(shared);
   }
 
@@ -397,9 +433,9 @@ export const transitionNavigate = async (router: NextRouter, href: string, optio
   }, modeForRoute(from, destination));
 
   return true;
-};
+}
 
-export const transitionState = (update: () => void, options: StateOptions = {}) => {
+export function transitionState(update: () => void, options: StateOptions = {}) {
   const { mode = 'list', within } = options;
 
   if (!shouldUseViewTransition()) {
@@ -409,7 +445,7 @@ export const transitionState = (update: () => void, options: StateOptions = {}) 
 
   const elements = within ? uniqueByName(namedIn(within)) : [];
 
-  if (mode === 'list' && elements.length === 0) {
+  if (mode === 'list' && !elements.length) {
     update();
     return;
   }
@@ -422,4 +458,4 @@ export const transitionState = (update: () => void, options: StateOptions = {}) 
     flushSync(update);
     activateNames(names, within?.isConnected ? within : document);
   }, mode);
-};
+}
