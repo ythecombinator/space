@@ -199,6 +199,22 @@ function setMode(mode: ViewTransitionMode | null) {
   document.documentElement.dataset.vtMode = mode;
 }
 
+function startViewTransition(mode: ViewTransitionMode, runUpdate: () => Promise<void>) {
+  const run = async () => {
+    await runUpdate();
+    await waitForPaint();
+  };
+
+  try {
+    return document.startViewTransition({ update: run, types: [mode] });
+  } catch {
+    // Older engines: callback form + data-vt-mode for CSS that lacks :active-view-transition-type
+    setMode(mode);
+
+    return document.startViewTransition(run);
+  }
+}
+
 function rememberSharedNav(from: string, to: string, names: string[]) {
   if (!names.length || typeof sessionStorage === 'undefined') {
     return;
@@ -355,12 +371,7 @@ async function runTransition(update: () => void | Promise<void>, mode: ViewTrans
   }
 
   try {
-    setMode(mode);
-
-    transition = document.startViewTransition(async () => {
-      await commit();
-      await waitForPaint();
-    });
+    transition = startViewTransition(mode, commit);
 
     currentTransition = transition;
     transition.ready.catch(() => {});

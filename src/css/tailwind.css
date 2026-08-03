@@ -42,11 +42,17 @@
   --vt-duration-detail: 0.4s;
   --vt-duration-list: 0.26s;
   --vt-duration-theme: 0.5s;
+  --vt-section-blur: 16px;
   --vt-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --vt-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  /* Clicks pass through the snapshot overlay while a transition runs (CSS-Tricks / Bramus) */
+  ::view-transition {
+    pointer-events: none;
+  }
+
   /* Baseline — the page cross-fades as a whole, and shared elements travel on top of it */
   ::view-transition-old(root) {
     animation: vt-root-fade-out var(--vt-duration-fade) var(--vt-ease-in-out) both;
@@ -56,21 +62,29 @@
     animation: vt-root-fade-in var(--vt-duration-fade) var(--vt-ease-out) both;
   }
 
-  /* Section navigation — nothing is shared between the two pages, so the page moves as one */
+  /* Section navigation — blur dissolve on the root snapshot (CSS-Tricks pixelate recipe, scoped here) */
+  html:active-view-transition-type(section)::view-transition-old(root),
   html[data-vt-mode='section']::view-transition-old(root) {
-    animation: vt-section-out var(--vt-duration-section) var(--vt-ease-in-out) both;
+    animation: vt-section-dissolve-out var(--vt-duration-section) var(--vt-ease-in-out) both;
   }
 
+  html:active-view-transition-type(section)::view-transition-new(root),
   html[data-vt-mode='section']::view-transition-new(root) {
-    animation: vt-section-in var(--vt-duration-section) var(--vt-ease-out) both;
+    animation: vt-section-dissolve-in var(--vt-duration-section) var(--vt-ease-out) both;
   }
 
   /* Detail and list — only named elements morph; root snapshots blow Chrome's texture budget on tall pages */
+  html:active-view-transition-type(detail),
+  html:active-view-transition-type(list),
   html[data-vt-mode='detail'],
   html[data-vt-mode='list'] {
     view-transition-name: none;
   }
 
+  html:active-view-transition-type(detail)::view-transition-group(*.card),
+  html:active-view-transition-type(detail)::view-transition-group(*.title),
+  html:active-view-transition-type(detail)::view-transition-group(*.hero),
+  html:active-view-transition-type(detail)::view-transition-group(*.date),
   html[data-vt-mode='detail']::view-transition-group(*.card),
   html[data-vt-mode='detail']::view-transition-group(*.title),
   html[data-vt-mode='detail']::view-transition-group(*.hero),
@@ -81,6 +95,10 @@
   }
 
   /* Snapshots are flat bitmaps — crop instead of stretching during the morph */
+  html:active-view-transition-type(detail)::view-transition-old(*.card),
+  html:active-view-transition-type(detail)::view-transition-new(*.card),
+  html:active-view-transition-type(detail)::view-transition-old(*.hero),
+  html:active-view-transition-type(detail)::view-transition-new(*.hero),
   html[data-vt-mode='detail']::view-transition-old(*.card),
   html[data-vt-mode='detail']::view-transition-new(*.card),
   html[data-vt-mode='detail']::view-transition-old(*.hero),
@@ -89,22 +107,27 @@
     overflow: hidden;
   }
 
+  html:active-view-transition-type(list)::view-transition-group(*.row),
   html[data-vt-mode='list']::view-transition-group(*.row) {
     animation-duration: var(--vt-duration-list);
     animation-timing-function: var(--vt-ease-out);
   }
 
   /* Theme switch — the new palette is revealed by a circle growing out of the switch */
+  html:active-view-transition-type(theme)::view-transition-old(root),
+  html:active-view-transition-type(theme)::view-transition-new(root),
   html[data-vt-mode='theme']::view-transition-old(root),
   html[data-vt-mode='theme']::view-transition-new(root) {
     mix-blend-mode: normal;
   }
 
+  html:active-view-transition-type(theme)::view-transition-old(root),
   html[data-vt-mode='theme']::view-transition-old(root) {
     animation: none;
     z-index: 0;
   }
 
+  html:active-view-transition-type(theme)::view-transition-new(root),
   html[data-vt-mode='theme']::view-transition-new(root) {
     animation: vt-theme-reveal var(--vt-duration-theme) var(--vt-ease-out) both;
     z-index: 1;
@@ -129,27 +152,27 @@
   }
 }
 
-@keyframes vt-section-in {
+@keyframes vt-section-dissolve-in {
   from {
+    filter: blur(var(--vt-section-blur));
     opacity: 0;
-    transform: translateY(10px);
   }
 
   to {
+    filter: blur(0);
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
-@keyframes vt-section-out {
+@keyframes vt-section-dissolve-out {
   from {
+    filter: blur(0);
     opacity: 1;
-    transform: translateY(0);
   }
 
   to {
+    filter: blur(var(--vt-section-blur));
     opacity: 0;
-    transform: translateY(-6px);
   }
 }
 

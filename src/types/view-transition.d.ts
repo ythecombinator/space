@@ -5,8 +5,16 @@ interface ViewTransition {
   skipTransition(): void;
 }
 
+type ViewTransitionUpdate = () => void | Promise<void>;
+
+type ViewTransitionOptions = {
+  update: ViewTransitionUpdate;
+  types?: string[];
+};
+
 interface Document {
-  startViewTransition(callback: () => void | Promise<void>): ViewTransition;
+  startViewTransition(callback: ViewTransitionUpdate): ViewTransition;
+  startViewTransition(options: ViewTransitionOptions): ViewTransition;
 }
 
 interface CSSStyleDeclaration {
