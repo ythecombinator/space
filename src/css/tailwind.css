@@ -73,7 +73,8 @@
 
   html[data-vt-mode='detail']::view-transition-group(*.card),
   html[data-vt-mode='detail']::view-transition-group(*.title),
-  html[data-vt-mode='detail']::view-transition-group(*.hero) {
+  html[data-vt-mode='detail']::view-transition-group(*.hero),
+  html[data-vt-mode='detail']::view-transition-group(*.date) {
     animation-duration: var(--vt-duration-detail);
     animation-timing-function: var(--vt-ease-out);
     overflow: hidden;

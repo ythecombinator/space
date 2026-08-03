@@ -382,7 +382,7 @@ function DataSection({ data }: PropsWithChildren<DataSectionProps>) {
           label="Status"
           initialSelectedItem="all"
           items={statusFilterItems}
-          onSelect={(status) => transitionState(() => setSelectedStatus(status))}
+          onSelect={(status) => setSelectedStatus(status)}
         />
       </div>
 

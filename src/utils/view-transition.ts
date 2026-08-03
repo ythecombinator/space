@@ -18,12 +18,19 @@ type StateOptions = {
   within?: Element | null;
 };
 
+type SharedNavRecord = {
+  from: string;
+  to: string;
+  names: string[];
+};
+
 const VT = 'data-vt-name';
 const VT_CLASS = 'data-vt-class';
 const NAMED = `[${VT}]`;
 const PAINT_TIMEOUT = 120;
+const SHARED_NAV_KEY = 'vt-shared-nav';
 
-let running = false;
+let currentTransition: ViewTransition | null = null;
 let active: HTMLElement[] = [];
 
 /** Styling hook — one CSS rule covers every element of a kind regardless of its unique name */
@@ -123,6 +130,14 @@ export const setRevealOrigin = (x: number, y: number) => {
   root.style.setProperty('--vt-origin-radius', `${radius}px`);
 };
 
+const clearRevealOrigin = () => {
+  const root = document.documentElement;
+
+  root.style.removeProperty('--vt-origin-x');
+  root.style.removeProperty('--vt-origin-y');
+  root.style.removeProperty('--vt-origin-radius');
+};
+
 /** Inert in markup; name + class are switched on only for elements in the current transition */
 export const viewTransitionProps = (name?: string) => {
   const props: Record<string, string> = {};
@@ -164,6 +179,48 @@ const setMode = (mode: ViewTransitionMode | null) => {
   delete document.documentElement.dataset.vtMode;
 };
 
+const rememberSharedNav = (from: string, to: string, names: string[]) => {
+  if (names.length === 0 || typeof sessionStorage === 'undefined') {
+    return;
+  }
+
+  try {
+    const record: SharedNavRecord = {
+      from: normalizePath(from),
+      to: normalizePath(to),
+      names,
+    };
+
+    sessionStorage.setItem(SHARED_NAV_KEY, JSON.stringify(record));
+  } catch {
+    // Private browsing or quota — back nav falls back to section transition
+  }
+};
+
+const recallSharedNav = (current: string, destination: string) => {
+  if (typeof sessionStorage === 'undefined') {
+    return [];
+  }
+
+  try {
+    const raw = sessionStorage.getItem(SHARED_NAV_KEY);
+
+    if (!raw) {
+      return [];
+    }
+
+    const record = JSON.parse(raw) as SharedNavRecord;
+
+    if (record.from === normalizePath(destination) && record.to === normalizePath(current)) {
+      return record.names;
+    }
+  } catch {
+    // Ignore malformed storage
+  }
+
+  return [];
+};
+
 const namedIn = (root: ParentNode) => Array.from(root.querySelectorAll<HTMLElement>(NAMED));
 
 const uniqueByName = (elements: HTMLElement[]) => {
@@ -180,6 +237,11 @@ const uniqueByName = (elements: HTMLElement[]) => {
     return true;
   });
 };
+
+const elementsByNames = (names: string[], root: ParentNode = document) =>
+  names
+    .map((name) => root.querySelector<HTMLElement>(`[${VT}="${CSS.escape(name)}"]`))
+    .filter((element): element is HTMLElement => element !== null);
 
 const sharedFrom = (source: Element) => {
   const wrapper = source.closest<HTMLElement>(NAMED);
@@ -201,12 +263,21 @@ const activate = (elements: HTMLElement[]) => {
   });
 };
 
-const activateNames = (names: string[], root: ParentNode) => {
-  const elements = names
-    .map((name) => root.querySelector<HTMLElement>(`[${VT}="${CSS.escape(name)}"]`))
-    .filter((element): element is HTMLElement => element !== null);
+const warnMissingMatches = (names: string[], root: ParentNode) => {
+  if (process.env.NODE_ENV !== 'development') {
+    return;
+  }
 
-  activate(elements);
+  const missing = names.filter((name) => !root.querySelector(`[${VT}="${CSS.escape(name)}"]`));
+
+  if (missing.length > 0) {
+    console.warn('[view-transition] no destination match for', missing);
+  }
+};
+
+const activateNames = (names: string[], root: ParentNode) => {
+  warnMissingMatches(names, root);
+  activate(elementsByNames(names, root));
 };
 
 const resetNames = () => {
@@ -217,6 +288,21 @@ const resetNames = () => {
   active = [];
 };
 
+const abortCurrentTransition = () => {
+  if (!currentTransition) {
+    return;
+  }
+
+  try {
+    currentTransition.skipTransition();
+  } catch {
+    // Transition may already be done
+  }
+
+  currentTransition = null;
+  resetNames();
+};
+
 const waitForPaint = () =>
   Promise.race([
     new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))),
@@ -224,13 +310,10 @@ const waitForPaint = () =>
   ]);
 
 const runTransition = async (update: () => void | Promise<void>, mode: ViewTransitionMode) => {
-  if (running) {
-    await update();
-    return;
-  }
+  abortCurrentTransition();
 
-  running = true;
   let committed = false;
+  let transition: ViewTransition | null = null;
 
   const commit = async () => {
     if (committed) {
@@ -244,10 +327,15 @@ const runTransition = async (update: () => void | Promise<void>, mode: ViewTrans
   try {
     setMode(mode);
 
-    await document.startViewTransition(async () => {
+    transition = document.startViewTransition(async () => {
       await commit();
       await waitForPaint();
-    }).finished;
+    });
+
+    currentTransition = transition;
+    transition.ready.catch(() => {});
+
+    await transition.finished;
   } catch (error) {
     if (process.env.NODE_ENV === 'development') {
       console.warn('[view-transition]', error);
@@ -255,9 +343,17 @@ const runTransition = async (update: () => void | Promise<void>, mode: ViewTrans
 
     await commit();
   } finally {
+    if (currentTransition === transition) {
+      currentTransition = null;
+    }
+
     setMode(null);
+
+    if (mode === 'theme') {
+      clearRevealOrigin();
+    }
+
     resetNames();
-    running = false;
   }
 };
 
@@ -278,18 +374,27 @@ export const transitionNavigate = async (router: NextRouter, href: string, optio
     return true;
   }
 
-  const shared = source ? sharedFrom(source) : [];
-  const names = shared.map((element) => element.dataset.vtName ?? '');
+  let shared: HTMLElement[];
+  let names: string[];
 
-  activate(shared);
+  if (source) {
+    shared = sharedFrom(source);
+    names = shared.map((element) => element.dataset.vtName ?? '');
+    rememberSharedNav(from, destination, names);
+  } else {
+    names = recallSharedNav(from, destination);
+    shared = uniqueByName(elementsByNames(names));
+  }
+
+  if (shared.length > 0) {
+    activate(shared);
+  }
 
   await runTransition(async () => {
     await go();
     scrollToTop();
     activateNames(names, document);
   }, modeForRoute(from, destination));
-
-  scrollToTop();
 
   return true;
 };
@@ -303,6 +408,12 @@ export const transitionState = (update: () => void, options: StateOptions = {}) 
   }
 
   const elements = within ? uniqueByName(namedIn(within)) : [];
+
+  if (mode === 'list' && elements.length === 0) {
+    update();
+    return;
+  }
+
   const names = elements.map((element) => element.dataset.vtName ?? '');
 
   activate(elements);

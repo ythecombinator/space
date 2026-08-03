@@ -8,3 +8,8 @@ interface ViewTransition {
 interface Document {
   startViewTransition(callback: () => void | Promise<void>): ViewTransition;
 }
+
+interface CSSStyleDeclaration {
+  viewTransitionName: string;
+  viewTransitionClass: string;
+}

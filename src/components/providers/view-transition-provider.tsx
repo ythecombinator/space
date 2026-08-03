@@ -14,6 +14,12 @@ const opensOutsideCurrentTab = (anchor: HTMLAnchorElement) => {
   return Boolean(target) && target !== '_self';
 };
 
+const logTransitionError = (context: string) => (error: unknown) => {
+  if (process.env.NODE_ENV === 'development') {
+    console.warn(`[view-transition] ${context}`, error);
+  }
+};
+
 const useViewTransitions = (router: NextRouter) => {
   useEffect(() => {
     if (!shouldUseViewTransition()) {
@@ -44,13 +50,12 @@ const useViewTransitions = (router: NextRouter) => {
       }
 
       event.preventDefault();
-      event.stopPropagation();
 
-      transitionNavigate(router, href, { source: anchor }).catch(() => {});
+      transitionNavigate(router, href, { source: anchor }).catch(logTransitionError('navigate'));
     };
 
     router.beforePopState(({ as }) => {
-      transitionNavigate(router, as).catch(() => {});
+      transitionNavigate(router, as).catch(logTransitionError('back'));
 
       return false;
     });
