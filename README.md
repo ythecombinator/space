@@ -1,3 +1,5 @@
+
+
 ![hero](./static/banner.png)
 
 ## Stack
@@ -8,7 +10,7 @@
 - **🌙 Dark Mode:** [next-themes](https://github.com/pacocoursey/next-themes)
 - **🧑‍🎨 Animations:** [Framer](https://www.framer.com/docs/animation/)
 - **🗄️ Deployment:** [Netlify](https://www.netlify.com/)
-- **🔍 Searching:** [Orama](hhttps://github.com/oramasearch/orama)
+- **🔍 Searching:** [Orama](https://github.com/oramasearch/orama)
 - **🤖 AI Helpers:** [ChatGPT](https://chat.openai.com) +
   [Copilot](https://github.com/features/copilot)
 
