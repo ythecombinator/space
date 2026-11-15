@@ -1,0 +1,33 @@
+# Matheus Albuquerque
+
+> Full catalog of published pages, posts, and talks. This file lists titles, dates, and links. It does not include article bodies. Follow the .md link for the text.
+
+## Pages
+
+- [Home](https://www.ythecombinator.space/home.md): Staff Software Engineer at Medallia in Prague. Speaker, writer, and Google Developer Expert.
+- [About](https://www.ythecombinator.space/about.md): Biography, the ythecombinator handle, Medallia, TechLabs, and React Summit NYC.
+- [Experience](https://www.ythecombinator.space/about/experience.md): Work history and community roles.
+- [Life](https://www.ythecombinator.space/about/life.md): Background from Fortaleza and how public speaking started.
+- [Traveling](https://www.ythecombinator.space/about/traveling.md): Remote work since 2017 and the move to Prague in 2019. The map is on the HTML page.
+- [Uses](https://www.ythecombinator.space/about/uses.md): Hardware and tools currently in use.
+- [Clients](https://www.ythecombinator.space/about/clients.md): Clients from consultancy work.
+- [CV](https://www.ythecombinator.space/cv.md): Shorter role list. The printable page is the HTML CV.
+- [Posts](https://www.ythecombinator.space/posts.md): 8 published posts.
+- [Talks](https://www.ythecombinator.space/talks.md): Conference and meetup talks.
+- [Speaker invite](https://www.ythecombinator.space/talks/invite.md): Speaker rider: travel, accommodation, fees, workshops, and accessibility.
+- [CFP radar](https://www.ythecombinator.space/talks/radar.md): A personal call-for-papers list. The current entries are on the HTML page.
+
+## Posts
+
+- [How expensive is Prague?](https://www.ythecombinator.space/posts/how-expensive-is-prague.md): 2024-01-24 — career, life — A Latino perspective on renting, healthcare, groceries, and pretty much everything when it comes to the cost of living in the Czech capital.
+- [2022 Wrapped: Communities, Public Speaking, and Other DevRel Stuff From a Non-DevRel Engineer](https://www.ythecombinator.space/posts/2022-wrapped.md): 2022-12-29 — career, community, devrel — It’s that epiphany time of the year, again! But, before, a bit of an introduction!
+- [Jheniffer was always my favorite color](https://www.ythecombinator.space/posts/jheniffer-was-always-my-favorite-color.md): 2020-08-20 — life — I hope yall don't mind the inconvenience, but I need to talk about Jheniffer Rodrigues.
+- [Driving towards a universal navigation strategy in React](https://www.ythecombinator.space/posts/driving-towards-a-universal-navigation-strategy-in-react.md): 2020-01-13 — react, react native, navigation — When I joined STRV, they had a specific request for me; to build a front-end app for iOS, Android, and Web, sharing component and business…
+- [It's all about trusting the magic of beginnings](https://www.ythecombinator.space/posts/it-s-all-about-trusting-the-magic-of-beginnings.md): 2019-07-15 — career, life — After almost two years immersed in countless exciting challenges, it's time to move on.
+- [A Whole Day Playing with IPFS](https://www.ythecombinator.space/posts/a-whole-day-playing-with-ipfs.md): 2017-12-15 — ipfs, distributed systems — This is mostly a controversial decentralized web technologies research story but, before starting, there are a few things I'd like to ensur…
+- [Swift In The Sky With Types](https://www.ythecombinator.space/posts/swift-in-the-sky-with-types.md): 2016-03-28 — swift, type systems — ... Ou apenas mais uma conversa sobre linguagens, compiladores, tipos e... Swift!
+- [O que há de novo com o AngularJS?](https://www.ythecombinator.space/posts/o-que-ha-de-novo-com-o-angularjs.md): 2014-11-10 — angular — Mudanças anunciadas na ng-Europe, a versão 1.3, “morte” de APIs… O AngularJS 2.0 ainda será o AngularJS que conhecemos?
+
+## Talks
+
+Talk titles are loaded from the CMS at build time. Open the talks page if this list is empty.

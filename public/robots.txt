@@ -1,5 +1,37 @@
+# Agent map: https://www.ythecombinator.space/llms.txt
+# Full catalog: https://www.ythecombinator.space/llms-full.txt
+# Markdown mirrors use the same path with .md added, for example /posts/my-post.md
+
 # *
 User-agent: *
+Allow: /
+
+# AI crawlers are welcome. These fetches are how assistants answer questions about this site.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
 Allow: /
 
 # Host

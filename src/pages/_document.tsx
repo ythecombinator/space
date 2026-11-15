@@ -13,6 +13,8 @@ class MyDocument extends Document {
           <meta name="msapplication-TileColor" content="#000000" />
           <meta name="theme-color" content="#000000" />
           <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+          <link rel="describedby" href="/llms.txt" />
+          <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
         </Head>
         <body className="bg-white text-black antialiased dark:bg-background-color dark:text-white">
           <Main />

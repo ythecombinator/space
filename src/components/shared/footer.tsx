@@ -26,6 +26,7 @@ function Footer() {
               Experience
             </Link>
             <Link href="/feed.xml">RSS</Link>
+            <Link href="/llms.txt">For agents</Link>
           </div>
           <div className="mb-1 flex  flex-row justify-center  space-x-8 sm:mb-0 sm:flex-col sm:justify-start sm:space-x-0 sm:space-y-4">
             <Link href={siteMetadata.twitter}>Twitter</Link>

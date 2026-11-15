@@ -1,0 +1,28 @@
+{
+  "files": [
+    "about.md",
+    "about/clients.md",
+    "about/experience.md",
+    "about/life.md",
+    "about/traveling.md",
+    "about/uses.md",
+    "agent/content-index.json",
+    "agent/manifest.json",
+    "cv.md",
+    "home.md",
+    "llms-full.txt",
+    "llms.txt",
+    "posts.md",
+    "posts/2022-wrapped.md",
+    "posts/a-whole-day-playing-with-ipfs.md",
+    "posts/driving-towards-a-universal-navigation-strategy-in-react.md",
+    "posts/how-expensive-is-prague.md",
+    "posts/it-s-all-about-trusting-the-magic-of-beginnings.md",
+    "posts/jheniffer-was-always-my-favorite-color.md",
+    "posts/o-que-ha-de-novo-com-o-angularjs.md",
+    "posts/swift-in-the-sky-with-types.md",
+    "talks.md",
+    "talks/invite.md",
+    "talks/radar.md"
+  ]
+}

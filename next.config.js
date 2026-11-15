@@ -33,6 +33,31 @@ const nextConfig = {
   experimental: {
     largePageDataBytes: 128 * 100000,
   },
+  async headers() {
+    const markdown = [
+      { key: 'Content-Type', value: 'text/markdown; charset=utf-8' },
+      { key: 'X-Robots-Tag', value: 'noindex' },
+    ];
+
+    return [
+      {
+        source: '/llms.txt',
+        headers: [{ key: 'Content-Type', value: 'text/plain; charset=utf-8' }],
+      },
+      {
+        source: '/llms-full.txt',
+        headers: [{ key: 'Content-Type', value: 'text/plain; charset=utf-8' }],
+      },
+      {
+        source: '/agent/:file',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex' }],
+      },
+      ...['/:slug.md', '/posts/:slug.md', '/talks/:slug.md', '/about/:slug.md'].map((source) => ({
+        source,
+        headers: markdown,
+      })),
+    ];
+  },
 };
 
 module.exports = nextConfig;

@@ -1,0 +1,33 @@
+# Matheus Albuquerque
+
+> Developer, speaker, creator. Obsessed with performance and DX. Staff Software Engineer at Medallia in Prague. Google Developer Expert.
+
+Matheus Albuquerque writes, speaks, and builds for the web. This file is a short map. Follow a link for the clean text of a page. The full catalog, including every post and talk, is [llms-full.txt](https://www.ythecombinator.space/llms-full.txt).
+
+## Start here
+
+- [Home](https://www.ythecombinator.space/home.md): who he is, where he works, and how to reach him
+- [About](https://www.ythecombinator.space/about.md): biography, the ythecombinator handle, and where he is based
+- [Talks](https://www.ythecombinator.space/talks.md): conference talks
+- [Invite](https://www.ythecombinator.space/talks/invite.md): speaker rider: travel, fees, workshops, and accessibility
+- [Posts](https://www.ythecombinator.space/posts.md): 8 published posts
+- [Experience](https://www.ythecombinator.space/about/experience.md): roles, clients, and community work
+- [CV](https://www.ythecombinator.space/cv.md): the same roles in a shorter list
+
+## Recent posts
+
+- [How expensive is Prague?](https://www.ythecombinator.space/posts/how-expensive-is-prague.md): 2024-01-24 — A Latino perspective on renting, healthcare, groceries, and pretty much everything when it comes to the cost of living in the Czech capital.
+- [2022 Wrapped: Communities, Public Speaking, and Other DevRel Stuff From a Non-DevRel Engineer](https://www.ythecombinator.space/posts/2022-wrapped.md): 2022-12-29 — It’s that epiphany time of the year, again! But, before, a bit of an introduction!
+- [Jheniffer was always my favorite color](https://www.ythecombinator.space/posts/jheniffer-was-always-my-favorite-color.md): 2020-08-20 — I hope yall don't mind the inconvenience, but I need to talk about Jheniffer Rodrigues.
+- [Driving towards a universal navigation strategy in React](https://www.ythecombinator.space/posts/driving-towards-a-universal-navigation-strategy-in-react.md): 2020-01-13 — When I joined STRV, they had a specific request for me; to build a front-end app for iOS, Android, and Web, sharing component and business…
+- [It's all about trusting the magic of beginnings](https://www.ythecombinator.space/posts/it-s-all-about-trusting-the-magic-of-beginnings.md): 2019-07-15 — After almost two years immersed in countless exciting challenges, it's time to move on.
+
+## Optional
+
+- [Life](https://www.ythecombinator.space/about/life.md): background and how he started speaking
+- [Traveling](https://www.ythecombinator.space/about/traveling.md): working remotely and the move to Prague
+- [Uses](https://www.ythecombinator.space/about/uses.md): hardware and tools
+- [Clients](https://www.ythecombinator.space/about/clients.md): client work from consultancy years
+- [CFP radar](https://www.ythecombinator.space/talks/radar.md): why the call-for-papers list exists; the live list is on the HTML page
+- [RSS](https://www.ythecombinator.space/feed.xml): posts feed
+- [Full catalog](https://www.ythecombinator.space/llms-full.txt): every published post and talk, without article bodies
