@@ -2,33 +2,13 @@ import { ComponentType } from 'react';
 import { FaDev, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 
+import { siteMetadata } from 'config/site';
+
 import LayoutBlogEntry from 'components/layouts/blog-entry';
 import LayoutMDXEntry from 'components/layouts/mdx-entry';
 import LayoutPage from 'components/layouts/page';
 
-export const siteMetadata = {
-  title: 'Matheus Albuquerque',
-  author: 'Matheus Albuquerque',
-  authorFirstName: 'Matheus',
-  authorLastName: 'Albuquerque',
-  description: 'Developer, speaker, creator. Obsessed with performance and DX.',
-  skills: ['JavaScript', 'TypeScript', 'React/Next.js/Remix', 'Node.js', 'GraphQL'],
-  location: 'Prague, Czech Republic',
-  locationLink: 'https://www.google.com/maps/place/Prague',
-  language: 'en-us',
-  theme: 'system',
-  siteUrl: 'https://www.ythecombinator.space',
-  siteLogo: '/static/images/logo.png',
-  socialBanner: 'https://www.ythecombinator.space/content/cover.png',
-  locale: 'en-US',
-  // Social
-  email: 'land@ythecombinator.space',
-  linkedin: 'https://www.linkedin.com/in/ythecombinator',
-  github: 'https://github.com/ythecombinator',
-  twitterHandle: '@ythecombinator',
-  twitter: 'https://twitter.com/ythecombinator',
-  avatar: 'https://avatars.githubusercontent.com/u/2644563?v=4',
-};
+export { siteMetadata };
 
 export const socialNetworksMap = {
   Twitter: {
