@@ -230,6 +230,13 @@
     --ring: 240 5% 64.9%;
 
     --radius: 0.5rem;
+
+    /* Viewport grain — fractal noise tile, pressed into the page on light */
+    --grain-size: 160px;
+    --grain-opacity: 0.35;
+    --grain-blend: multiply;
+    --vignette-opacity: 0;
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
   }
 
   .dark {
@@ -261,6 +268,11 @@
     --destructive-foreground: 0 85.7% 97.3%;
 
     --ring: 240 3.7% 15.9%;
+
+    /* Same tile, lifted off the black ground; vignette only in dark */
+    --grain-opacity: 0.5;
+    --grain-blend: screen;
+    --vignette-opacity: 0.55;
   }
 
   body {
@@ -268,6 +280,43 @@
     font-feature-settings:
       'rlig' 1,
       'calt' 1;
+  }
+}
+
+/* Fixed veil over type, photos, and chrome. Clicks pass through. */
+body::before,
+body::after {
+  content: '';
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+}
+
+body::before {
+  background-image: var(--grain);
+  background-size: var(--grain-size) var(--grain-size);
+  background-repeat: repeat;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: var(--grain-blend);
+}
+
+body::after {
+  background-image: radial-gradient(145% 115% at 50% 35%, transparent 58%, #000 100%);
+  opacity: var(--vignette-opacity);
+}
+
+@media print {
+  body::before,
+  body::after {
+    display: none !important;
+  }
+}
+
+@media (forced-colors: active) {
+  body::before,
+  body::after {
+    display: none !important;
   }
 }
 
