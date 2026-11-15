@@ -8,7 +8,7 @@ Matheus Albuquerque writes, speaks, and builds for the web. This file is a short
 
 - [Home](https://www.ythecombinator.space/home.md): who he is, where he works, and how to reach him
 - [About](https://www.ythecombinator.space/about.md): biography, the ythecombinator handle, and where he is based
-- [Talks](https://www.ythecombinator.space/talks.md): conference talks
+- [Talks](https://www.ythecombinator.space/talks.md): 40 talks, with abstracts
 - [Invite](https://www.ythecombinator.space/talks/invite.md): speaker rider: travel, fees, workshops, and accessibility
 - [Posts](https://www.ythecombinator.space/posts.md): 8 published posts
 - [Experience](https://www.ythecombinator.space/about/experience.md): roles, clients, and community work

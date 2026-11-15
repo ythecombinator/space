@@ -13,7 +13,7 @@
 - [Clients](https://www.ythecombinator.space/about/clients.md): Clients from consultancy work.
 - [CV](https://www.ythecombinator.space/cv.md): Shorter role list. The printable page is the HTML CV.
 - [Posts](https://www.ythecombinator.space/posts.md): 8 published posts.
-- [Talks](https://www.ythecombinator.space/talks.md): Conference and meetup talks.
+- [Talks](https://www.ythecombinator.space/talks.md): 40 sessions in 100 events across 27 countries.
 - [Speaker invite](https://www.ythecombinator.space/talks/invite.md): Speaker rider: travel, accommodation, fees, workshops, and accessibility.
 - [CFP radar](https://www.ythecombinator.space/talks/radar.md): A personal call-for-papers list. The current entries are on the HTML page.
 
@@ -30,4 +30,43 @@
 
 ## Talks
 
-Talk titles are loaded from the CMS at build time. Open the talks page if this list is empty.
+- [Thinking Outside the Box: Alternative Architectures for Modern Web Applications](https://www.ythecombinator.space/talks/thinking-outside-the-box-alternative-architectures-for-modern-web.md): talk — Øredev 2026, DevSum 2026
+- [Compilers, User Interfaces & the Rest of Us](https://www.ythecombinator.space/talks/compilers-user-interfaces-and-the-rest-of-us.md): talk — iJS New York 2026, FrontKon 2026
+- [React: Internals and Advanced Performance Patterns](https://www.ythecombinator.space/talks/react-internals-and-advanced-performance-patterns.md): workshop — iJS New York 2026, ZurichJS Conf 2026
+- [Web Performance APIs That You (Probably) Never Knew Existed](https://www.ythecombinator.space/talks/web-performance-apis-that-you-probably-never-knew-existed.md): talk — Performance — iJS New York 2026, dotJS 2026
+- [Visual Continuity on the Web: My Journey With View Transitions](https://www.ythecombinator.space/talks/visual-continuity-on-the-web-my-journey-with-view-transitions.md): talk — React Alicante 2026
+- [Compilers & Static Analysis for JavaScript Developers](https://www.ythecombinator.space/talks/compilers-and-static-analysis-for-javascript-developers.md): workshop — React Alicante 2026
+- [A Decade and Counting: React’s Rhapsody of Life](https://www.ythecombinator.space/talks/a-decade-reacts-rhapsody-of-life.md): talk — CityJS London 2026, reactjsday 2024
+- [Fundamentals vs Frameworks: What Developers Need to Know When AI Knows Everything](https://www.ythecombinator.space/talks/fundamentals-vs-frameworks-what-developers-need-to-know-when-ai-knows-everything.md): panel — JSNation US 2025
+- [Hydration, Islands, Streaming, Resumability… Oh My!](https://www.ythecombinator.space/talks/hydration-islands-streaming-resumability-oh-my.md): talk — Architecture, Performance, React — iJS Munich 2025, CityJS Athens 2025
+- [Web Performance Meets Human Sciences](https://www.ythecombinator.space/talks/web-performance-meets-human-sciences.md): talk — React Summit 2025, JNation 2025
+- [Speed at Scale: Optimizing The Largest CX Platform Out There](https://www.ythecombinator.space/talks/speed-at-scale-optimizing-the-largest-cx-platform-out-there.md): talk — Case Study, Performance — CityJS London 2025, QCon London 2025
+- [It's 202x and I Can Finally Talk About Atomic CSS](https://www.ythecombinator.space/talks/its-2023-and-i-can-finally-talk-about-atomic-css.md): talk — CSS, Design Systems — The GeekConf 2024, Productboard Frontend Meetup • November 2023
+- [Deep Diving on Concurrent React](https://www.ythecombinator.space/talks/deep-diving-on-concurrent-react.md): talk — Performance, React — iJS Munich 2023, P99 Conf 2023
+- [Inside Fiber: the in-depth overview you wanted a TLDR for](https://www.ythecombinator.space/talks/inside-fiber-the-in-depth-overview-you-wanted-a-tldr-for.md): talk — Performance, React — React India 2023, Frontmania 2022
+- [Consistent UX at Scale: Lessons Learned When I Wore the DesignOps Hat](https://www.ythecombinator.space/talks/consistent-ux-at-scale-lessons-learned-when-i-wore-the-designops-hat.md): talk — Accessibility, Design Systems — WeAreDevelopers World Congress 2023, React Global Online Summit 2023
+- [React Rendering Strategies](https://www.ythecombinator.space/talks/react-rendering-strategies.md): panel — React Nexus 2023
+- [The best is yet to come: the Future of React](https://www.ythecombinator.space/talks/the-best-is-yet-to-come-the-future-of-react.md): talk — React — JavaScript fwdays 20, Frontend Talks PRG • February 2020
+- [Code sharing at scale: one codebase for web, mobile and desktop](https://www.ythecombinator.space/talks/code-sharing-at-scale-one-codebase-for-web-mobile-and-desktop.md): talk — Mobile Development, React Native — Frontend Talks PRG • November 2019, Frontend Talks BRN • November 2019
+- [The Day I Reverse Engineered a Gameboy Advance Game](https://www.ythecombinator.space/talks/the-day-i-reverse-engineered-a-gameboy-advance-game.md): talk — Mad Science, React — BalCCon2k19, The Conf 2019
+- [React 16.x: Way Beyond Hooks](https://www.ythecombinator.space/talks/react-16-x-way-beyond-hooks.md): talk — React — TDC 2019 | Belo Horizonte, TDC 2019 | São Paulo
+- [The state of the state: React state management in 2019](https://www.ythecombinator.space/talks/the-state-of-the-state-react-state-management-in-2019.md): talk — React, State Management — TDC 2019 | Belo Horizonte, TDC 2019 | Florianópolis
+- [The Hitchhiker's Guide to the Front-End Performance](https://www.ythecombinator.space/talks/the-hitchhikers-guide-to-the-front-end-performance.md): talk — JavaScript, Performance — TDC 2019 | Belo Horizonte, Natal Tech Conference
+- [State of the art React development flow with TypeScript](https://www.ythecombinator.space/talks/state-of-the-art-react-development-flow-with-typescript.md): talk — React, TypeScript — ReactNYC: E0l50z-5RHw
+- [The correctness-by-design duck will bite PHP](https://www.ythecombinator.space/talks/the-correctness-by-design-duck-will-bite-php.md): talk — PHP, Programming Languages — PHPeste Fortaleza 2017
+- [Building Swift Libraries](https://www.ythecombinator.space/talks/building-swift-libraries.md): talk — Developer Tools, Mobile Development, Swift — Apple Developer Academy Internals - 08/2017
+- [Server-Side goes Serverless](https://www.ythecombinator.space/talks/server-side-goes-serverless.md): talk — Back-End Development, DevOps, Serverless — Google I/O 2017 Extended Fortaleza
+- [The future favors Swift](https://www.ythecombinator.space/talks/the-future-favors-swift.md): talk — Back-End Development, Swift — 10th CocoaHeads Fortaleza
+- [Sweet Macros O’ Mine](https://www.ythecombinator.space/talks/sweet-macros-o-mine.md): talk — JavaScript, Programming Languages — CeJS 2017
+- [Playing With WatchConnectivity for ~24 hours](https://www.ythecombinator.space/talks/playing-with-watchconnectivity-for-24-hours.md): talk — Swift, watchOS — Apple Developer Academy Internals - 11/2016
+- [SpriteKit - Up and Running](https://www.ythecombinator.space/talks/spritekit-up-and-running.md): workshop — Mobile Development, Swift — Apple Developer Academy Internals - 10/2016
+- [Designing For Humans (like You & Me)](https://www.ythecombinator.space/talks/designing-for-humans-like-you-and-me.md): talk — Design, Design Systems — 9th CocoaHeads Fortaleza, Apple Developer Academy Internals - 06/2016
+- [The Art of Notifications](https://www.ythecombinator.space/talks/the-art-of-notifications.md): workshop — iOS, Swift — Apple Developer Academy Internals - 07/2016
+- [JavaScript In The Sky With Types](https://www.ythecombinator.space/talks/javascript-in-the-sky-with-types.md): talk — Programming Languages, TypeScript — CEJS 2016
+- [An Introduction to Git & Github](https://www.ythecombinator.space/talks/an-introduction-to-git-and-github.md): talk — Developer Tools, Git — Apple Developer Academy Internals - 04/2016, FLISOL 2015
+- [Break On Through (To The λ Side)](https://www.ythecombinator.space/talks/break-on-through-to-the-l-side.md): talk — JavaScript, Programming Languages — II NUG-CE Meetup
+- [Back to the Future: Functional Programming Nowadays](https://www.ythecombinator.space/talks/back-to-the-future-functional-programming-nowadays.md): talk — Programming Languages — I Lambda I/O Fortaleza Meetup, Unidev 2
+- [Rethinking Automation: NPM to rule them all](https://www.ythecombinator.space/talks/rethinking-automation-npm-to-rule-them-all.md): talk — Developer Tools — I NUG-CE Meetup
+- [An open source mobile project in two weeks](https://www.ythecombinator.space/talks/an-open-source-mobile-project-in-two-weeks.md): talk — Angular, Developer Tools, Mobile Development — I Ionic Meetup Fortaleza
+- [Jumping on an adventure with metadata: Micro Data and Open Graph](https://www.ythecombinator.space/talks/jumping-on-an-adventure-with-metadata-micro-data-and-open-graph.md): talk — Developer Tools — IX Pylestras
+- [(Super) Hybrid Apps with Ionic](https://www.ythecombinator.space/talks/super-hybrid-apps-with-ionic.md): talk — Angular, Mobile Development — 3rd CocoaHeads Fortaleza"
