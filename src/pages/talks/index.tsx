@@ -57,9 +57,6 @@ export async function getStaticProps() {
     type: Routes.talks,
   });
 
-  const { normalizeTalks, writeAgentCatalog } = await import('utils/agent/catalog');
-  await writeAgentCatalog({ talks: normalizeTalks(allTalks), talkStats: talksStats });
-
   return {
     props: {
       talksStats,
