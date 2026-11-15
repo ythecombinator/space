@@ -1,0 +1,1 @@
+/// <reference types="webmcp-types" />

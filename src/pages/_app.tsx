@@ -1,4 +1,5 @@
 import ViewTransitionProvider from 'components/providers/view-transition-provider';
+import WebMCPProvider from 'components/providers/webmcp-provider';
 import 'css/tailwind.css';
 import { ThemeProvider } from 'next-themes';
 import { AppProps } from 'next/app';
@@ -51,6 +52,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      <WebMCPProvider />
       <AgentLinks />
       {page}
     </>

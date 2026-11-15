@@ -13,7 +13,7 @@ const nextConfig = {
   compress: true,
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
-  transpilePackages: ['remark', 'react-use-callback-ref', 'react-tweet'],
+  transpilePackages: ['remark', 'react-use-callback-ref', 'react-tweet', 'use-webmcp-tool'],
   images: {
     remotePatterns: [
       {
