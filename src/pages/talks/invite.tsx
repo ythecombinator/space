@@ -1,5 +1,4 @@
 import { InferGetStaticPropsType } from 'next';
-import { NextSeo as Metadata } from 'next-seo';
 
 import { Layouts, Routes, siteMetadata } from 'config/constants';
 
@@ -9,6 +8,7 @@ import TalksContentService from 'services/content/talks';
 import { MetadataConfig, generateOpenGraphImage } from 'utils/open-graph';
 
 import MDXLayoutRenderer from 'components/shared/mdx-components';
+import { NextSeo as Metadata } from 'components/shared/metadata';
 
 import ActiveTalksSection from 'components/pages/talks/active-talks-section';
 import ActiveTopicsSection from 'components/pages/talks/active-topics-section';

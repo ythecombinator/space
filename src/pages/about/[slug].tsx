@@ -1,5 +1,4 @@
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
-import { NextSeo as Metadata } from 'next-seo';
 import { ParsedUrlQuery } from 'querystring';
 
 import { Layouts, Routes, siteMetadata } from 'config/constants';
@@ -9,6 +8,7 @@ import MarkdownContentService from 'services/content/markdown';
 import { generateOpenGraphImage } from 'utils/open-graph';
 
 import MDXLayoutRenderer from 'components/shared/mdx-components';
+import { NextSeo as Metadata } from 'components/shared/metadata';
 
 //  ---------------------------------------------------------------------------
 //  TYPES

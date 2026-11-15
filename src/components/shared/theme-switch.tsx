@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
-import { MouseEvent, useEffect, useState } from 'react';
+import { MouseEvent, useSyncExternalStore } from 'react';
 import { FaMoon, FaSun } from 'react-icons/fa';
 
 import { setRevealOrigin, transitionState } from 'utils/view-transition';
@@ -9,11 +9,11 @@ import { setRevealOrigin, transitionState } from 'utils/view-transition';
 //  UI
 //  ---------------------------------------------------------------------------
 
-function ThemeSwitch() {
-  const [mounted, setMounted] = useState(false);
-  const { theme, setTheme, resolvedTheme } = useTheme();
+const subscribe = () => () => {};
 
-  useEffect(() => setMounted(true), []);
+function ThemeSwitch() {
+  const mounted = useSyncExternalStore(subscribe, () => true, () => false);
+  const { theme, setTheme, resolvedTheme } = useTheme();
 
   const isDarkMode = theme === 'dark' || resolvedTheme === 'dark';
 

@@ -27,14 +27,23 @@ export const useRandomGradient = () => {
   const [gradientClassName, setGradientClassName] = useState('');
 
   useEffect(() => {
+    // Chosen after mount so server and client render the same empty class first.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setGradientClassName(randomElement(Object.values(gradients)));
   }, []);
 
   return gradientClassName;
 };
 
-export const hexToRGBA = (hexCode: string, opacity = 1) => {
-  let hex = hexCode.replace('#', '');
+export const hexToRGBA = (color: string, opacity = 1) => {
+  const alpha = opacity > 1 && opacity <= 100 ? opacity / 100 : opacity;
+
+  // Tailwind 4 ships palette tokens as oklch(), which this helper used to parse as hex.
+  if (!color.startsWith('#')) {
+    return `color-mix(in srgb, ${color} ${Math.round(alpha * 100)}%, transparent)`;
+  }
+
+  let hex = color.replace('#', '');
 
   if (hex.length === 3) {
     hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
@@ -44,9 +53,5 @@ export const hexToRGBA = (hexCode: string, opacity = 1) => {
   const g = parseInt(hex.substring(2, 4), 16);
   const b = parseInt(hex.substring(4, 6), 16);
 
-  if (opacity > 1 && opacity <= 100) {
-    opacity = opacity / 100;
-  }
-
-  return `rgba(${r},${g},${b},${opacity})`;
+  return `rgba(${r},${g},${b},${alpha})`;
 };

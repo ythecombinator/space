@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
-import { ArticleJsonLd, NextSeo as Metadata } from 'next-seo';
+import { ArticleJsonLd } from 'next-seo';
 import { ParsedUrlQuery } from 'querystring';
 
 import { Layouts, Routes, siteMetadata } from 'config/constants';
@@ -12,6 +12,7 @@ import { generateRSS } from 'utils/rss';
 import { usePathName } from 'utils/url';
 
 import MDXLayoutRenderer from 'components/shared/mdx-components';
+import { NextSeo as Metadata } from 'components/shared/metadata';
 
 //  ---------------------------------------------------------------------------
 //  TYPES
@@ -92,10 +93,10 @@ function Page({ post, openGraphImage }: PageProps) {
       <ArticleJsonLd
         type="BlogPosting"
         url={url}
-        title={title}
-        images={[openGraphImage]}
+        headline={title}
+        image={[openGraphImage]}
         datePublished={date}
-        authorName={siteMetadata.author}
+        author={siteMetadata.author}
         description={summary}
       />
       <MDXLayoutRenderer layout={Layouts.blog} content={post} />

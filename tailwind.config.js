@@ -4,12 +4,9 @@ const colors = require('tailwindcss/colors');
 /** @type {import('tailwindcss').Config} */
 const config = {
   content: ['./src/**/*.{js,ts,jsx,tsx}', './velite.config.ts'],
-  darkMode: 'class',
   theme: {
     screens: {
       xs: '425px',
-      narrow: { raw: '(max-aspect-ratio: 3 / 2)' },
-      wide: { raw: '(min-aspect-ratio: 3 / 2)' },
       ...defaultTheme.screens,
     },
     extend: {

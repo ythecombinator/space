@@ -46,14 +46,29 @@ function CurrentLocation() {
       glowColor: isDarkMode ? [0.5, 0.5, 0.5] : [0.9, 0.9, 1],
       markers: [{ location: [50.0755, 14.4378], size: 0.1 }],
       scale: 1.05,
-      onRender: (state) => {
-        state.phi = 2.75 + springRotation.get();
-        state.width = width * 2;
-        state.height = width * 2;
-      },
     });
 
+    let frame = 0;
+    let renderedWidth = width;
+    const render = () => {
+      const next: { phi: number; width?: number; height?: number } = {
+        phi: 2.75 + springRotation.get(),
+      };
+
+      // cobe resets the drawing buffer whenever width/height are passed, so only send them when the canvas size changes.
+      if (width !== renderedWidth) {
+        next.width = width * 2;
+        next.height = width * 2;
+        renderedWidth = width;
+      }
+
+      globe.update(next);
+      frame = requestAnimationFrame(render);
+    };
+    frame = requestAnimationFrame(render);
+
     return () => {
+      cancelAnimationFrame(frame);
       globe.destroy();
       window.removeEventListener('resize', onResize);
     };

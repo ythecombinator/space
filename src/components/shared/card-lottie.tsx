@@ -1,4 +1,4 @@
-import Lottie from 'lottie-react';
+import { Lottie } from 'lottie-react';
 
 import { classNames } from 'utils/styles';
 import { viewTransitionProps, vtKeys } from 'utils/view-transition';
@@ -77,7 +77,7 @@ function CardLottie({ title, href, animationData, gradient = 'violet', className
             {title}
           </span>
           <div className="pointer-events-none absolute bottom-0 right-3 h-32 w-32 select-none opacity-75">
-            <Lottie animationData={animationData} loop={true} />
+            <Lottie src={animationData} autoplay loop className="h-full w-full" />
           </div>
         </div>
       </ViewTransitionTarget>

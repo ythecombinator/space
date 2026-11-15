@@ -1,7 +1,6 @@
 import experience from 'data/experience.json';
 import { InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
-import { NextSeo as Metadata } from 'next-seo';
 
 import { Routes, siteMetadata } from 'config/constants';
 
@@ -13,6 +12,7 @@ import { MetadataConfig, generateOpenGraphImage } from 'utils/open-graph';
 import { vtKeys } from 'utils/view-transition';
 
 import MDXContent from 'components/shared/mdx-content';
+import { NextSeo as Metadata } from 'components/shared/metadata';
 import SectionContainer from 'components/shared/section-container';
 import SectionCover from 'components/shared/section-cover';
 import Typography from 'components/shared/typography';

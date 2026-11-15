@@ -1,5 +1,4 @@
 import { InferGetStaticPropsType } from 'next';
-import { NextSeo as Metadata } from 'next-seo';
 
 import { Routes, siteMetadata } from 'config/constants';
 
@@ -8,6 +7,7 @@ import FlightyService from 'services/providers/flighty';
 import { MetadataConfig, generateOpenGraphImage } from 'utils/open-graph';
 import { vtKeys } from 'utils/view-transition';
 
+import { NextSeo as Metadata } from 'components/shared/metadata';
 import SectionContainer from 'components/shared/section-container';
 import SectionCover from 'components/shared/section-cover';
 import Typography from 'components/shared/typography';

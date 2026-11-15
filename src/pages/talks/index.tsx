@@ -1,5 +1,4 @@
 import { InferGetStaticPropsType } from 'next';
-import { NextSeo as Metadata } from 'next-seo';
 
 import { Routes, siteMetadata } from 'config/constants';
 
@@ -9,6 +8,7 @@ import { MetadataConfig, generateOpenGraphImage } from 'utils/open-graph';
 import { viewTransitionProps, vtKeys } from 'utils/view-transition';
 
 import Link from 'components/shared/link';
+import { NextSeo as Metadata } from 'components/shared/metadata';
 import SectionContainer from 'components/shared/section-container';
 import Typography from 'components/shared/typography';
 

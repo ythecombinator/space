@@ -84,7 +84,7 @@ function Logo({ name, logo }: LogoProps) {
 
 function CustomerPortfolio() {
   return (
-    <div className="my-8 w-full rounded-xl border p-2 shadow-sm">
+    <div className="my-8 w-full rounded-xl border p-2 shadow-xs">
       <motion.div className="relative mx-auto flex overflow-x-hidden">
         <div className="absolute left-0 top-0 z-10 h-full w-full bg-gradient-to-r from-white to-white/0 dark:from-black dark:to-black/0"></div>
         <motion.div animate={animation[0]} className="flex">

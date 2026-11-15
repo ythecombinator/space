@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-import * as Apollo from '@apollo/client';
+import * as Apollo from '@apollo/client/react';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -3082,7 +3082,7 @@ export function useGetTalkLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Ge
         }
 export function useGetTalkSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetTalkQuery, GetTalkQueryVariables>) {
           const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<GetTalkQuery, GetTalkQueryVariables>(GetTalkDocument, options);
+          return Apollo.useSuspenseQuery<GetTalkQuery, GetTalkQueryVariables>(GetTalkDocument, options as Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetTalkQuery, GetTalkQueryVariables>);
         }
 export type GetTalkQueryHookResult = ReturnType<typeof useGetTalkQuery>;
 export type GetTalkLazyQueryHookResult = ReturnType<typeof useGetTalkLazyQuery>;

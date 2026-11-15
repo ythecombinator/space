@@ -1,5 +1,4 @@
 import { InferGetStaticPropsType } from 'next';
-import { NextSeo as Metadata } from 'next-seo';
 import { useState } from 'react';
 
 import { Routes, siteMetadata } from 'config/constants';
@@ -8,6 +7,7 @@ import PostsContentService from 'services/content/posts';
 
 import { MetadataConfig, generateOpenGraphImage } from 'utils/open-graph';
 
+import { NextSeo as Metadata } from 'components/shared/metadata';
 import SearchBar, { SearchBarProps } from 'components/shared/seach-bar';
 
 import Layout from 'components/layouts/page';

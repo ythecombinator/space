@@ -1,5 +1,4 @@
 import { InferGetStaticPropsType } from 'next';
-import { NextSeo as Metadata } from 'next-seo';
 
 import { Routes, siteMetadata } from 'config/constants';
 
@@ -16,6 +15,7 @@ import Admonition from 'components/shared/admonition';
 import CardLottie from 'components/shared/card-lottie';
 import CardScrollArea from 'components/shared/card-scroll-area';
 import CurrentLocation from 'components/shared/current-location';
+import { NextSeo as Metadata } from 'components/shared/metadata';
 import SectionContainer from 'components/shared/section-container';
 import SectionCover from 'components/shared/section-cover';
 import Typography from 'components/shared/typography';

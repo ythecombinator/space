@@ -1,6 +1,6 @@
 import type { AnySchema, Orama, PartialSchemaDeep, Schema } from '@orama/orama';
 import { create, insertMultiple, search } from '@orama/orama';
-import { createContext, type ReactNode, Suspense, useContext, useMemo, useRef } from 'react';
+import { createContext, type ReactNode, Suspense, useContext, useMemo } from 'react';
 import { suspend } from 'suspend-react';
 
 //  ---------------------------------------------------------------------------
@@ -73,19 +73,8 @@ function SearchProvider<S extends AnySchema, D extends PartialSchemaDeep<Schema<
   fallback,
   children,
 }: SearchProviderProps<S, D>) {
-  const prevDataRef = useRef(data);
-  const engineRef = useRef<SearchEngine<S, D> | null>(null);
-
-  if (!engineRef.current || prevDataRef.current !== data) {
-    engineRef.current = new SearchEngine(schema, data);
-    prevDataRef.current = data;
-  }
-
-  const value = useMemo<SearchContextValue>(
-    () => ({ engine: engineRef.current!, data }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [data]
-  );
+  const engine = useMemo(() => new SearchEngine(schema, data), [schema, data]);
+  const value = useMemo<SearchContextValue>(() => ({ engine, data }), [engine, data]);
 
   return (
     <SearchContext.Provider value={value}>

@@ -1,6 +1,4 @@
-import 'css/prism.css';
 import 'css/tailwind.css';
-import { DefaultSeo as Metadata } from 'next-seo';
 import { ThemeProvider } from 'next-themes';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -12,6 +10,7 @@ import { getMetadataProps, usePathName } from 'utils/url';
 
 import ViewTransitionProvider from 'components/providers/view-transition-provider';
 import LayoutWrapper from 'components/shared/layout-wrapper';
+import { DefaultSeo as Metadata } from 'components/shared/metadata';
 
 export default function App({ Component, pageProps }: AppProps) {
   const url = usePathName();

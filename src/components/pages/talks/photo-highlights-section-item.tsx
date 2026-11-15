@@ -71,11 +71,8 @@ function PhotoHighlightsSectionItem(props: PropsWithChildren<FeaturedTalk>) {
 
   const imgRef = useRef<HTMLImageElement>(null);
   const isMountedRef = useRef(true);
-  const photoURLRef = useRef(photoURL);
   const [isLoaded, setIsLoaded] = useState(false);
   const gradientClass = useMemo(() => getGradientClass(), []);
-
-  photoURLRef.current = photoURL;
 
   const setLoadedSafe = useCallback((loaded: boolean) => {
     if (isMountedRef.current) {
@@ -86,12 +83,12 @@ function PhotoHighlightsSectionItem(props: PropsWithChildren<FeaturedTalk>) {
   const markLoadedIfReady = useCallback(() => {
     const img = imgRef.current;
 
-    if (!isMountedRef.current || !img || !isLoadedImage(img, photoURLRef.current)) {
+    if (!isMountedRef.current || !img || !isLoadedImage(img, photoURL)) {
       return;
     }
 
     setLoadedSafe(true);
-  }, [setLoadedSafe]);
+  }, [photoURL, setLoadedSafe]);
 
   const handleImageError = useCallback(() => {
     setLoadedSafe(true);

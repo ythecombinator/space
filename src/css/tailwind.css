@@ -1,6 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@config '../../tailwind.config.js';
+@custom-variant dark (&:where(.dark, .dark *));
+@import './prism.css';
 
 .link-underline {
   border-bottom-width: 0;

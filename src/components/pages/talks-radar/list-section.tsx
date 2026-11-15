@@ -6,10 +6,14 @@ import {
   Row,
   SortingState,
   createColumnHelper,
+  createSortedRowModel,
   flexRender,
-  getCoreRowModel,
-  getSortedRowModel,
-  useReactTable,
+  rowSortingFeature,
+  sortFn_alphanumeric,
+  sortFn_datetime,
+  sortFn_text,
+  tableFeatures,
+  useTable,
 } from '@tanstack/react-table';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import { PropsWithChildren, useEffect, useMemo, useRef, useState } from 'react';
@@ -91,14 +95,24 @@ function renderPlainHeader(label: string) {
   );
 }
 
-function sortByStartDate(rowA: Row<EventEntry>, rowB: Row<EventEntry>, columnId: string) {
+const features = tableFeatures({
+  rowSortingFeature,
+  sortedRowModel: createSortedRowModel(),
+  sortFns: {
+    alphanumeric: sortFn_alphanumeric,
+    datetime: sortFn_datetime,
+    text: sortFn_text,
+  },
+});
+
+function sortByStartDate(rowA: Row<typeof features, EventEntry>, rowB: Row<typeof features, EventEntry>, columnId: string) {
   const startDateA = rowA.getValue<{ start: { raw: string } }>(columnId).start.raw;
   const startDateB = rowB.getValue<{ start: { raw: string } }>(columnId).start.raw;
 
   return new Date(startDateA).getTime() - new Date(startDateB).getTime();
 }
 
-function renderEventCell(cell: CellContext<EventEntry, string>) {
+function renderEventCell(cell: CellContext<typeof features, EventEntry, string>) {
   return (
     <EventLinksOverlay
       eventName={cell.getValue()}
@@ -206,7 +220,7 @@ function EventLinksOverlay({
   );
 }
 
-function renderCountryCell(cell: CellContext<EventEntry, string>) {
+function renderCountryCell(cell: CellContext<typeof features, EventEntry, string>) {
   return (
     <Typography.subtle className="block truncate" title={cell.getValue()}>
       {cell.getValue()}
@@ -214,7 +228,7 @@ function renderCountryCell(cell: CellContext<EventEntry, string>) {
   );
 }
 
-function renderCityCell(cell: CellContext<EventEntry, string>) {
+function renderCityCell(cell: CellContext<typeof features, EventEntry, string>) {
   return (
     <Typography.subtle className="block truncate" title={cell.getValue()}>
       {cell.getValue()}
@@ -222,7 +236,7 @@ function renderCityCell(cell: CellContext<EventEntry, string>) {
   );
 }
 
-function renderDatesCell(cell: CellContext<EventEntry, EventEntry['dates']>) {
+function renderDatesCell(cell: CellContext<typeof features, EventEntry, EventEntry['dates']>) {
   const { start, end, isSingleDayEvent } = cell.getValue();
 
   return (
@@ -238,19 +252,19 @@ function renderDatesCell(cell: CellContext<EventEntry, EventEntry['dates']>) {
   );
 }
 
-function renderDeadlineCell(cell: CellContext<EventEntry, EventEntry['deadline']>) {
+function renderDeadlineCell(cell: CellContext<typeof features, EventEntry, EventEntry['deadline']>) {
   const { formatted, raw } = cell.getValue();
 
   return <time dateTime={raw}>{formatted}</time>;
 }
 
-function renderPrimaryStatusCell(cell: CellContext<EventEntry, EngagementStatusPrimary>) {
+function renderPrimaryStatusCell(cell: CellContext<typeof features, EventEntry, EngagementStatusPrimary>) {
   const status = cell.getValue();
 
   return <Tag variant={primaryTagMap[status]}>{status}</Tag>;
 }
 
-function renderSecondaryStatusCell(cell: CellContext<EventEntry, EngagementStatusSecondary>) {
+function renderSecondaryStatusCell(cell: CellContext<typeof features, EventEntry, EngagementStatusSecondary>) {
   const status = cell.getValue();
 
   if (status === 'REJECTED') {
@@ -271,7 +285,7 @@ function renderSecondaryStatusCell(cell: CellContext<EventEntry, EngagementStatu
   return <Tag variant={secondaryTagMap[status]}>{status}</Tag>;
 }
 
-function renderHeaderCell(header: Header<EventEntry, unknown>) {
+function renderHeaderCell(header: Header<typeof features, EventEntry>) {
   if (header.isPlaceholder) {
     return null;
   }
@@ -297,9 +311,9 @@ function renderHeaderCell(header: Header<EventEntry, unknown>) {
 const ESTIMATED_ROW_HEIGHT = 56;
 const OVERSCAN_ROWS = 8;
 
-const columnHelper = createColumnHelper<EventEntry>();
+const columnHelper = createColumnHelper<typeof features, EventEntry>();
 
-const columns = [
+const columns = columnHelper.columns([
   columnHelper.accessor('event', {
     header: () => renderPlainHeader('Event'),
     cell: renderEventCell,
@@ -317,7 +331,7 @@ const columns = [
   }),
   columnHelper.accessor('dates', {
     header: () => 'Event Dates',
-    sortingFn: sortByStartDate,
+    sortFn: sortByStartDate,
     cell: renderDatesCell,
   }),
   columnHelper.accessor('deadline', {
@@ -334,7 +348,7 @@ const columns = [
     cell: renderSecondaryStatusCell,
     enableSorting: false,
   }),
-];
+]);
 
 //  ---------------------------------------------------------------------------
 //  TYPES
@@ -415,14 +429,13 @@ function DataSectionTable({ searchTerm, selectedStatus }: Omit<DataSectionTableP
     transitionState(() => setSorting(updater), { within: scrollParentRef.current });
   };
 
-  const table = useReactTable({
+  const table = useTable({
+    features,
     data: tableData,
     columns,
     enableSortingRemoval: false,
     getRowId: (row) => `${row.event}-${row.dates.start.raw}`,
     onSortingChange,
-    getCoreRowModel: getCoreRowModel(),
-    getSortedRowModel: getSortedRowModel(),
     state: {
       sorting,
     },
@@ -440,7 +453,7 @@ function DataSectionTable({ searchTerm, selectedStatus }: Omit<DataSectionTableP
   const totalSize = rowVirtualizer.getTotalSize();
   const topPaddingHeight = virtualRows.length > 0 ? virtualRows[0].start : 0;
   const bottomPaddingHeight = virtualRows.length > 0 ? totalSize - virtualRows[virtualRows.length - 1].end : 0;
-  const columnCount = table.getVisibleLeafColumns().length;
+  const columnCount = table.getAllLeafColumns().length;
 
   useEffect(() => {
     rowVirtualizer.measure();
@@ -498,7 +511,7 @@ function DataSectionTable({ searchTerm, selectedStatus }: Omit<DataSectionTableP
                   ref={rowVirtualizer.measureElement}
                   {...viewTransitionProps(vtKeys.radarRow(row.id))}
                 >
-                  {row.getVisibleCells().map((cell) => (
+                  {row.getAllCells().map((cell) => (
                     <Table.Cell key={cell.id} className={getColumnWidthClass(cell.column.id)}>
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </Table.Cell>

@@ -1,11 +1,4 @@
-import {
-  ApolloClient,
-  ApolloQueryResult,
-  InMemoryCache,
-  NormalizedCacheObject,
-  OperationVariables,
-  QueryOptions,
-} from '@apollo/client';
+import { ApolloClient, HttpLink, InMemoryCache, type OperationVariables, type QueryOptions } from '@apollo/client';
 
 //  ---------------------------------------------------------------------------
 //  CONFIG
@@ -21,13 +14,12 @@ const CONTENTFUL_HEADERS = {
 
 export default class ContentfulService {
   private static instance: ContentfulService;
-  private apoloClient: ApolloClient<NormalizedCacheObject>;
+  private apoloClient: ApolloClient;
 
   private constructor(endpoint: string, headers: Record<string, string>) {
     this.apoloClient = new ApolloClient({
-      uri: endpoint,
+      link: new HttpLink({ uri: endpoint, headers }),
       cache: new InMemoryCache(),
-      headers: headers,
     });
   }
 
@@ -39,7 +31,7 @@ export default class ContentfulService {
     return this.instance;
   }
 
-  public query<T>(options: QueryOptions<OperationVariables, T>): Promise<ApolloQueryResult<T>> {
-    return this.apoloClient.query(options);
+  public query<T>(options: QueryOptions<OperationVariables, T>) {
+    return this.apoloClient.query({ ...options, errorPolicy: 'none' });
   }
 }

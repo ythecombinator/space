@@ -14,6 +14,8 @@ interface MDXContentProps {
 
 function MDXContent({ code, components, ...rest }: MDXContentProps) {
   const Component = useMDXComponent(code);
+  // Compiled MDX is a component factory and has to be created from `code`.
+  // eslint-disable-next-line react-hooks/static-components
   return <Component components={components} {...rest} />;
 }
 

@@ -1,7 +1,6 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS } from '@contentful/rich-text-types';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
-import { NextSeo as Metadata } from 'next-seo';
 import { ParsedUrlQuery } from 'querystring';
 
 import { Routes } from 'config/constants';
@@ -12,6 +11,7 @@ import { documentToString } from 'utils/contentful';
 import { generateOpenGraphImage } from 'utils/open-graph';
 import { vtKeys } from 'utils/view-transition';
 
+import { NextSeo as Metadata } from 'components/shared/metadata';
 import SectionContainer from 'components/shared/section-container';
 import Typography from 'components/shared/typography';
 
