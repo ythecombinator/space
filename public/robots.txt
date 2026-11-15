@@ -6,31 +6,39 @@
 User-agent: *
 Allow: /
 
-# AI crawlers are welcome. These fetches are how assistants answer questions about this site.
+# GPTBot
 User-agent: GPTBot
 Allow: /
 
+# OAI-SearchBot
 User-agent: OAI-SearchBot
 Allow: /
 
+# ChatGPT-User
 User-agent: ChatGPT-User
 Allow: /
 
+# ClaudeBot
 User-agent: ClaudeBot
 Allow: /
 
+# Claude-SearchBot
 User-agent: Claude-SearchBot
 Allow: /
 
+# Claude-User
 User-agent: Claude-User
 Allow: /
 
+# PerplexityBot
 User-agent: PerplexityBot
 Allow: /
 
+# Google-Extended
 User-agent: Google-Extended
 Allow: /
 
+# CCBot
 User-agent: CCBot
 Allow: /
 
