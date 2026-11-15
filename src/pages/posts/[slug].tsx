@@ -96,6 +96,7 @@ function Page({ post, openGraphImage }: PageProps) {
         headline={title}
         image={[openGraphImage]}
         datePublished={date}
+        {...(post.lastmod ? { dateModified: post.lastmod } : {})}
         author={siteMetadata.author}
         description={summary}
       />
