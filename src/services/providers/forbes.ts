@@ -1,6 +1,5 @@
 import { outputFile } from 'fs-extra';
 import isInCi from 'is-in-ci';
-import { webkit } from 'playwright';
 
 import {
   CurrencyConversionQuery,
@@ -33,6 +32,7 @@ export default class ForbesCurrencyConverter {
   }
 
   private async fetchConversion({ amount, source, target }: CurrencyConversionQuery): Promise<string> {
+    const { webkit } = await import('playwright');
     const browser = await webkit.launch({
       headless: true,
     });
@@ -87,9 +87,8 @@ export default class ForbesCurrencyConverter {
   }
 
   async bootstrapLocalData() {
-    if (isInCi) {
-      console.info('Running in a CI environment');
-      console.warn('Skipping currency table generation');
+    if (isInCi || process.env.AWS_LAMBDA_FUNCTION_NAME || process.env.LAMBDA_TASK_ROOT) {
+      console.info('Skipping currency table generation outside a local browser');
       return null;
     }
 

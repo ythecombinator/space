@@ -3,7 +3,6 @@ import { outputFile } from 'fs-extra';
 import { compile } from 'handlebars';
 import isInCi from 'is-in-ci';
 import { join } from 'path';
-import { webkit } from 'playwright';
 
 import { Routes, siteMetadata } from 'config/constants';
 
@@ -66,7 +65,12 @@ function compileTemplate({ title, authorName, type, width, height }: TemplatePro
   });
 }
 
+function isServerlessRuntime() {
+  return Boolean(process.env.AWS_LAMBDA_FUNCTION_NAME || process.env.LAMBDA_TASK_ROOT);
+}
+
 async function generateImage({ width, height, content }: Required<ImageProps>) {
+  const { webkit } = await import('playwright');
   const browser = await webkit.launch({
     headless: true,
   });
@@ -93,9 +97,8 @@ export async function generateOpenGraphImage({
   height = DEFAULT_HEIGHT * DEFAULT_MULTIPLIER,
   ...options
 }: ImageOptions) {
-  if (isInCi) {
-    console.info('Running in a CI environment');
-    console.warn('Skipping OG image generation');
+  if (isInCi || isServerlessRuntime()) {
+    console.info('Skipping OG image generation outside a local browser');
     return `${siteMetadata.siteUrl}/${options.path}`;
   }
 
