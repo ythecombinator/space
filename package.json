@@ -53,6 +53,7 @@
     "github-slugger": "2.0.0",
     "got": "16.2.0",
     "graphql": "17.1.0",
+    "gray-matter": "^4.0.3",
     "handlebars": "4.7.10",
     "is-in-ci": "2.0.0",
     "leaflet": "1.9.4",
@@ -91,6 +92,7 @@
     "tailwind-merge": "3.7.0",
     "tailwindcss": "4.3.5",
     "three": "0.187.0",
+    "use-webmcp-tool": "^0.3.0",
     "zod": "4.6.7"
   },
   "devDependencies": {
@@ -121,6 +123,7 @@
     "typescript": "6.0.3",
     "typescript-eslint": "8.72.2",
     "utility-types": "3.11.0",
-    "velite": "0.4.0"
+    "velite": "0.4.0",
+    "webmcp-types": "^0.1.11"
   }
 }
