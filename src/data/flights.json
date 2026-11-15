@@ -1,6 +1,42 @@
 {
-  "lastUpdatedAt": 1785670670177,
+  "lastUpdatedAt": 1794718565731,
   "flights": [
+    {
+      "number": "1359",
+      "airlineIata": "KL",
+      "airlineName": "KLM",
+      "depAirportIata": "AMS",
+      "arrAirportIata": "PRG",
+      "distance": 706,
+      "depTimeOriginal": 1798996200
+    },
+    {
+      "number": "928",
+      "airlineIata": "KL",
+      "airlineName": "KLM",
+      "depAirportIata": "EDI",
+      "arrAirportIata": "AMS",
+      "distance": 665,
+      "depTimeOriginal": 1798982700
+    },
+    {
+      "number": "1141",
+      "airlineIata": "KL",
+      "airlineName": "KLM",
+      "depAirportIata": "AMS",
+      "arrAirportIata": "DUB",
+      "distance": 748,
+      "depTimeOriginal": 1798036800
+    },
+    {
+      "number": "1354",
+      "airlineIata": "KL",
+      "airlineName": "KLM",
+      "depAirportIata": "PRG",
+      "arrAirportIata": "AMS",
+      "distance": 706,
+      "depTimeOriginal": 1798022100
+    },
     {
       "number": "1761",
       "airlineIata": "SK",
@@ -18,6 +54,42 @@
       "arrAirportIata": "CPH",
       "distance": 623,
       "depTimeOriginal": 1793697900
+    },
+    {
+      "number": "1486",
+      "airlineIata": "LX",
+      "airlineName": "SWISS",
+      "depAirportIata": "ZRH",
+      "arrAirportIata": "PRG",
+      "distance": 512,
+      "depTimeOriginal": 1791023700
+    },
+    {
+      "number": "15",
+      "airlineIata": "LX",
+      "airlineName": "SWISS",
+      "depAirportIata": "JFK",
+      "arrAirportIata": "ZRH",
+      "distance": 6312,
+      "depTimeOriginal": 1790987400
+    },
+    {
+      "number": "16",
+      "airlineIata": "LX",
+      "airlineName": "SWISS",
+      "depAirportIata": "ZRH",
+      "arrAirportIata": "JFK",
+      "distance": 6312,
+      "depTimeOriginal": 1790582400
+    },
+    {
+      "number": "1483",
+      "airlineIata": "LX",
+      "airlineName": "SWISS",
+      "depAirportIata": "PRG",
+      "arrAirportIata": "ZRH",
+      "distance": 512,
+      "depTimeOriginal": 1790568900
     },
     {
       "number": "1488",
